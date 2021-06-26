@@ -1,0 +1,711 @@
+Index: src/main/resources/META-INF/withGo.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/META-INF/withGo.xml b/src/main/resources/META-INF/withGo.xml
+new file mode 100644
+--- /dev/null	(date 1617648486483)
++++ b/src/main/resources/META-INF/withGo.xml	(date 1617648486483)
+@@ -0,0 +1,31 @@
++<!--
++  ~ The MIT License (MIT)
++  ~
++  ~ Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
++  ~
++  ~ Permission is hereby granted, free of charge, to any person obtaining a copy
++  ~ of this software and associated documentation files (the "Software"), to deal
++  ~ in the Software without restriction, including without limitation the rights
++  ~ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++  ~ copies of the Software, and to permit persons to whom the Software is
++  ~ furnished to do so, subject to the following conditions:
++  ~
++  ~ The above copyright notice and this permission notice shall be included in all
++  ~ copies or substantial portions of the Software.
++  ~
++  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++  ~ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++  ~ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
++  ~ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++  ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++  ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
++  ~ SOFTWARE.
++  ~
++  ~
++  -->
++
++<idea-plugin>
++    <extensions defaultExtensionNs="com.intellij">
++        <highlightVisitor implementation="com.mallowigi.idea.visitors.GoVisitor" />
++    </extensions>
++</idea-plugin>
+Index: src/main/resources/META-INF/withScala.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/META-INF/withScala.xml b/src/main/resources/META-INF/withScala.xml
+new file mode 100644
+--- /dev/null	(date 1617648486490)
++++ b/src/main/resources/META-INF/withScala.xml	(date 1617648486490)
+@@ -0,0 +1,31 @@
++<!--
++  ~ The MIT License (MIT)
++  ~
++  ~ Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
++  ~
++  ~ Permission is hereby granted, free of charge, to any person obtaining a copy
++  ~ of this software and associated documentation files (the "Software"), to deal
++  ~ in the Software without restriction, including without limitation the rights
++  ~ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++  ~ copies of the Software, and to permit persons to whom the Software is
++  ~ furnished to do so, subject to the following conditions:
++  ~
++  ~ The above copyright notice and this permission notice shall be included in all
++  ~ copies or substantial portions of the Software.
++  ~
++  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++  ~ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++  ~ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
++  ~ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++  ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++  ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
++  ~ SOFTWARE.
++  ~
++  ~
++  -->
++
++<idea-plugin>
++    <extensions defaultExtensionNs="com.intellij">
++        <highlightVisitor implementation="com.mallowigi.idea.visitors.ScalaVisitor" />
++    </extensions>
++</idea-plugin>
+Index: src/main/resources/META-INF/withPython.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/META-INF/withPython.xml b/src/main/resources/META-INF/withPython.xml
+new file mode 100644
+--- /dev/null	(date 1617648486489)
++++ b/src/main/resources/META-INF/withPython.xml	(date 1617648486489)
+@@ -0,0 +1,31 @@
++<!--
++  ~ The MIT License (MIT)
++  ~
++  ~ Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
++  ~
++  ~ Permission is hereby granted, free of charge, to any person obtaining a copy
++  ~ of this software and associated documentation files (the "Software"), to deal
++  ~ in the Software without restriction, including without limitation the rights
++  ~ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++  ~ copies of the Software, and to permit persons to whom the Software is
++  ~ furnished to do so, subject to the following conditions:
++  ~
++  ~ The above copyright notice and this permission notice shall be included in all
++  ~ copies or substantial portions of the Software.
++  ~
++  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++  ~ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++  ~ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
++  ~ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++  ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++  ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
++  ~ SOFTWARE.
++  ~
++  ~
++  -->
++
++<idea-plugin>
++    <extensions defaultExtensionNs="com.intellij">
++        <highlightVisitor implementation="com.mallowigi.idea.visitors.PythonVisitor" />
++    </extensions>
++</idea-plugin>
+Index: src/main/resources/META-INF/withJson.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/META-INF/withJson.xml b/src/main/resources/META-INF/withJson.xml
+new file mode 100644
+--- /dev/null	(date 1617648486485)
++++ b/src/main/resources/META-INF/withJson.xml	(date 1617648486485)
+@@ -0,0 +1,31 @@
++<!--
++  ~ The MIT License (MIT)
++  ~
++  ~ Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
++  ~
++  ~ Permission is hereby granted, free of charge, to any person obtaining a copy
++  ~ of this software and associated documentation files (the "Software"), to deal
++  ~ in the Software without restriction, including without limitation the rights
++  ~ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++  ~ copies of the Software, and to permit persons to whom the Software is
++  ~ furnished to do so, subject to the following conditions:
++  ~
++  ~ The above copyright notice and this permission notice shall be included in all
++  ~ copies or substantial portions of the Software.
++  ~
++  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++  ~ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++  ~ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
++  ~ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++  ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++  ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
++  ~ SOFTWARE.
++  ~
++  ~
++  -->
++
++<idea-plugin>
++    <extensions defaultExtensionNs="com.intellij">
++        <highlightVisitor implementation="com.mallowigi.idea.visitors.JsonVisitor" />
++    </extensions>
++</idea-plugin>
+Index: src/main/resources/META-INF/withYaml.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/META-INF/withYaml.xml b/src/main/resources/META-INF/withYaml.xml
+new file mode 100644
+--- /dev/null	(date 1617648486490)
++++ b/src/main/resources/META-INF/withYaml.xml	(date 1617648486490)
+@@ -0,0 +1,31 @@
++<!--
++  ~ The MIT License (MIT)
++  ~
++  ~ Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
++  ~
++  ~ Permission is hereby granted, free of charge, to any person obtaining a copy
++  ~ of this software and associated documentation files (the "Software"), to deal
++  ~ in the Software without restriction, including without limitation the rights
++  ~ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++  ~ copies of the Software, and to permit persons to whom the Software is
++  ~ furnished to do so, subject to the following conditions:
++  ~
++  ~ The above copyright notice and this permission notice shall be included in all
++  ~ copies or substantial portions of the Software.
++  ~
++  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++  ~ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++  ~ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
++  ~ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++  ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++  ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
++  ~ SOFTWARE.
++  ~
++  ~
++  -->
++
++<idea-plugin>
++    <extensions defaultExtensionNs="com.intellij">
++        <highlightVisitor implementation="com.mallowigi.idea.visitors.YamlVisitor" />
++    </extensions>
++</idea-plugin>
+Index: src/main/resources/META-INF/withAppCode.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/META-INF/withAppCode.xml b/src/main/resources/META-INF/withAppCode.xml
+new file mode 100644
+--- /dev/null	(date 1617648486481)
++++ b/src/main/resources/META-INF/withAppCode.xml	(date 1617648486481)
+@@ -0,0 +1,31 @@
++<!--
++  ~ The MIT License (MIT)
++  ~
++  ~ Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
++  ~
++  ~ Permission is hereby granted, free of charge, to any person obtaining a copy
++  ~ of this software and associated documentation files (the "Software"), to deal
++  ~ in the Software without restriction, including without limitation the rights
++  ~ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++  ~ copies of the Software, and to permit persons to whom the Software is
++  ~ furnished to do so, subject to the following conditions:
++  ~
++  ~ The above copyright notice and this permission notice shall be included in all
++  ~ copies or substantial portions of the Software.
++  ~
++  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++  ~ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++  ~ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
++  ~ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++  ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++  ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
++  ~ SOFTWARE.
++  ~
++  ~
++  -->
++
++<idea-plugin>
++    <extensions defaultExtensionNs="com.intellij">
++        <highlightVisitor implementation="com.mallowigi.idea.visitors.AppCodeVisitor" />
++    </extensions>
++</idea-plugin>
+Index: src/main/resources/META-INF/withProperties.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/META-INF/withProperties.xml b/src/main/resources/META-INF/withProperties.xml
+new file mode 100644
+--- /dev/null	(date 1617648486488)
++++ b/src/main/resources/META-INF/withProperties.xml	(date 1617648486488)
+@@ -0,0 +1,31 @@
++<!--
++  ~ The MIT License (MIT)
++  ~
++  ~ Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
++  ~
++  ~ Permission is hereby granted, free of charge, to any person obtaining a copy
++  ~ of this software and associated documentation files (the "Software"), to deal
++  ~ in the Software without restriction, including without limitation the rights
++  ~ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++  ~ copies of the Software, and to permit persons to whom the Software is
++  ~ furnished to do so, subject to the following conditions:
++  ~
++  ~ The above copyright notice and this permission notice shall be included in all
++  ~ copies or substantial portions of the Software.
++  ~
++  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++  ~ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++  ~ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
++  ~ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++  ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++  ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
++  ~ SOFTWARE.
++  ~
++  ~
++  -->
++
++<idea-plugin>
++    <extensions defaultExtensionNs="com.intellij">
++        <highlightVisitor implementation="com.mallowigi.idea.visitors.PropertiesVisitor" />
++    </extensions>
++</idea-plugin>
+Index: src/main/java/com/mallowigi/idea/visitors/ScalaVisitor.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/mallowigi/idea/visitors/ScalaVisitor.java b/src/main/java/com/mallowigi/idea/visitors/ScalaVisitor.java
+new file mode 100644
+--- /dev/null	(date 1617648486479)
++++ b/src/main/java/com/mallowigi/idea/visitors/ScalaVisitor.java	(date 1617648486479)
+@@ -0,0 +1,43 @@
++/*
++ * The MIT License (MIT)
++ *
++ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining a copy
++ * of this software and associated documentation files (the "Software"), to deal
++ * in the Software without restriction, including without limitation the rights
++ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++ * copies of the Software, and to permit persons to whom the Software is
++ * furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be included in all
++ * copies or substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
++ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
++ * SOFTWARE.
++ *
++ *
++ */
++
++package com.mallowigi.idea.visitors;
++
++import com.intellij.codeInsight.daemon.impl.HighlightVisitor;
++import com.intellij.openapi.editor.colors.TextAttributesKey;
++import org.jetbrains.annotations.NotNull;
++
++public class ScalaVisitor extends AbstractVisitor {
++  @Override
++  public @NotNull HighlightVisitor clone() {
++    return null;
++  }
++
++  @Override
++  TextAttributesKey getKeywordKind(final String name) {
++    return null;
++  }
++}
+Index: src/main/java/com/mallowigi/idea/visitors/PropertiesVisitor.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/mallowigi/idea/visitors/PropertiesVisitor.java b/src/main/java/com/mallowigi/idea/visitors/PropertiesVisitor.java
+new file mode 100644
+--- /dev/null	(date 1617648486477)
++++ b/src/main/java/com/mallowigi/idea/visitors/PropertiesVisitor.java	(date 1617648486477)
+@@ -0,0 +1,43 @@
++/*
++ * The MIT License (MIT)
++ *
++ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining a copy
++ * of this software and associated documentation files (the "Software"), to deal
++ * in the Software without restriction, including without limitation the rights
++ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++ * copies of the Software, and to permit persons to whom the Software is
++ * furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be included in all
++ * copies or substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
++ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
++ * SOFTWARE.
++ *
++ *
++ */
++
++package com.mallowigi.idea.visitors;
++
++import com.intellij.codeInsight.daemon.impl.HighlightVisitor;
++import com.intellij.openapi.editor.colors.TextAttributesKey;
++import org.jetbrains.annotations.NotNull;
++
++public class PropertiesVisitor extends AbstractVisitor {
++  @Override
++  public @NotNull HighlightVisitor clone() {
++    return null;
++  }
++
++  @Override
++  TextAttributesKey getKeywordKind(final String name) {
++    return null;
++  }
++}
+Index: src/main/java/com/mallowigi/idea/visitors/RubyVisitor.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/mallowigi/idea/visitors/RubyVisitor.java b/src/main/java/com/mallowigi/idea/visitors/RubyVisitor.java
+new file mode 100644
+--- /dev/null	(date 1617648486478)
++++ b/src/main/java/com/mallowigi/idea/visitors/RubyVisitor.java	(date 1617648486478)
+@@ -0,0 +1,43 @@
++/*
++ * The MIT License (MIT)
++ *
++ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining a copy
++ * of this software and associated documentation files (the "Software"), to deal
++ * in the Software without restriction, including without limitation the rights
++ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++ * copies of the Software, and to permit persons to whom the Software is
++ * furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be included in all
++ * copies or substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
++ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
++ * SOFTWARE.
++ *
++ *
++ */
++
++package com.mallowigi.idea.visitors;
++
++import com.intellij.codeInsight.daemon.impl.HighlightVisitor;
++import com.intellij.openapi.editor.colors.TextAttributesKey;
++import org.jetbrains.annotations.NotNull;
++
++public class RubyVisitor extends AbstractVisitor {
++  @Override
++  public @NotNull HighlightVisitor clone() {
++    return null;
++  }
++
++  @Override
++  TextAttributesKey getKeywordKind(final String name) {
++    return null;
++  }
++}
+Index: src/main/java/com/mallowigi/idea/visitors/JsonVisitor.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/mallowigi/idea/visitors/JsonVisitor.java b/src/main/java/com/mallowigi/idea/visitors/JsonVisitor.java
+new file mode 100644
+--- /dev/null	(date 1617648486476)
++++ b/src/main/java/com/mallowigi/idea/visitors/JsonVisitor.java	(date 1617648486476)
+@@ -0,0 +1,43 @@
++/*
++ * The MIT License (MIT)
++ *
++ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining a copy
++ * of this software and associated documentation files (the "Software"), to deal
++ * in the Software without restriction, including without limitation the rights
++ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++ * copies of the Software, and to permit persons to whom the Software is
++ * furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be included in all
++ * copies or substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
++ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
++ * SOFTWARE.
++ *
++ *
++ */
++
++package com.mallowigi.idea.visitors;
++
++import com.intellij.codeInsight.daemon.impl.HighlightVisitor;
++import com.intellij.openapi.editor.colors.TextAttributesKey;
++import org.jetbrains.annotations.NotNull;
++
++public class JsonVisitor extends AbstractVisitor {
++  @Override
++  public @NotNull HighlightVisitor clone() {
++    return null;
++  }
++
++  @Override
++  TextAttributesKey getKeywordKind(final String name) {
++    return null;
++  }
++}
+Index: src/main/java/com/mallowigi/idea/visitors/YamlVisitor.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/mallowigi/idea/visitors/YamlVisitor.java b/src/main/java/com/mallowigi/idea/visitors/YamlVisitor.java
+new file mode 100644
+--- /dev/null	(date 1617648486479)
++++ b/src/main/java/com/mallowigi/idea/visitors/YamlVisitor.java	(date 1617648486479)
+@@ -0,0 +1,43 @@
++/*
++ * The MIT License (MIT)
++ *
++ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining a copy
++ * of this software and associated documentation files (the "Software"), to deal
++ * in the Software without restriction, including without limitation the rights
++ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++ * copies of the Software, and to permit persons to whom the Software is
++ * furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be included in all
++ * copies or substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
++ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
++ * SOFTWARE.
++ *
++ *
++ */
++
++package com.mallowigi.idea.visitors;
++
++import com.intellij.codeInsight.daemon.impl.HighlightVisitor;
++import com.intellij.openapi.editor.colors.TextAttributesKey;
++import org.jetbrains.annotations.NotNull;
++
++public class YamlVisitor extends AbstractVisitor {
++  @Override
++  public @NotNull HighlightVisitor clone() {
++    return null;
++  }
++
++  @Override
++  TextAttributesKey getKeywordKind(final String name) {
++    return null;
++  }
++}
+Index: src/main/java/com/mallowigi/idea/visitors/PythonVisitor.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/mallowigi/idea/visitors/PythonVisitor.java b/src/main/java/com/mallowigi/idea/visitors/PythonVisitor.java
+new file mode 100644
+--- /dev/null	(date 1617648486478)
++++ b/src/main/java/com/mallowigi/idea/visitors/PythonVisitor.java	(date 1617648486478)
+@@ -0,0 +1,43 @@
++/*
++ * The MIT License (MIT)
++ *
++ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining a copy
++ * of this software and associated documentation files (the "Software"), to deal
++ * in the Software without restriction, including without limitation the rights
++ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++ * copies of the Software, and to permit persons to whom the Software is
++ * furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be included in all
++ * copies or substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
++ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
++ * SOFTWARE.
++ *
++ *
++ */
++
++package com.mallowigi.idea.visitors;
++
++import com.intellij.codeInsight.daemon.impl.HighlightVisitor;
++import com.intellij.openapi.editor.colors.TextAttributesKey;
++import org.jetbrains.annotations.NotNull;
++
++public class PythonVisitor extends AbstractVisitor {
++  @Override
++  public @NotNull HighlightVisitor clone() {
++    return null;
++  }
++
++  @Override
++  TextAttributesKey getKeywordKind(final String name) {
++    return null;
++  }
++}
+Index: src/main/java/com/mallowigi/idea/visitors/AppCodeVisitor.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/mallowigi/idea/visitors/AppCodeVisitor.java b/src/main/java/com/mallowigi/idea/visitors/AppCodeVisitor.java
+new file mode 100644
+--- /dev/null	(date 1617648486473)
++++ b/src/main/java/com/mallowigi/idea/visitors/AppCodeVisitor.java	(date 1617648486473)
+@@ -0,0 +1,43 @@
++/*
++ * The MIT License (MIT)
++ *
++ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining a copy
++ * of this software and associated documentation files (the "Software"), to deal
++ * in the Software without restriction, including without limitation the rights
++ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++ * copies of the Software, and to permit persons to whom the Software is
++ * furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be included in all
++ * copies or substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
++ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
++ * SOFTWARE.
++ *
++ *
++ */
++
++package com.mallowigi.idea.visitors;
++
++import com.intellij.codeInsight.daemon.impl.HighlightVisitor;
++import com.intellij.openapi.editor.colors.TextAttributesKey;
++import org.jetbrains.annotations.NotNull;
++
++public class AppCodeVisitor extends AbstractVisitor {
++  @Override
++  public @NotNull HighlightVisitor clone() {
++    return null;
++  }
++
++  @Override
++  TextAttributesKey getKeywordKind(final String name) {
++    return null;
++  }
++}
+Index: src/main/java/com/mallowigi/idea/visitors/GoVisitor.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/mallowigi/idea/visitors/GoVisitor.java b/src/main/java/com/mallowigi/idea/visitors/GoVisitor.java
+new file mode 100644
+--- /dev/null	(date 1617648486474)
++++ b/src/main/java/com/mallowigi/idea/visitors/GoVisitor.java	(date 1617648486474)
+@@ -0,0 +1,43 @@
++/*
++ * The MIT License (MIT)
++ *
++ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining a copy
++ * of this software and associated documentation files (the "Software"), to deal
++ * in the Software without restriction, including without limitation the rights
++ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++ * copies of the Software, and to permit persons to whom the Software is
++ * furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be included in all
++ * copies or substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
++ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
++ * SOFTWARE.
++ *
++ *
++ */
++
++package com.mallowigi.idea.visitors;
++
++import com.intellij.codeInsight.daemon.impl.HighlightVisitor;
++import com.intellij.openapi.editor.colors.TextAttributesKey;
++import org.jetbrains.annotations.NotNull;
++
++public class GoVisitor extends AbstractVisitor {
++  @Override
++  public @NotNull HighlightVisitor clone() {
++    return null;
++  }
++
++  @Override
++  TextAttributesKey getKeywordKind(final String name) {
++    return null;
++  }
++}

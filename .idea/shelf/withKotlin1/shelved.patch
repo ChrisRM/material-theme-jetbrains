@@ -1,0 +1,181 @@
+Index: src/main/java/com/mallowigi/idea/visitors/AbstractVisitor.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/mallowigi/idea/visitors/AbstractVisitor.java b/src/main/java/com/mallowigi/idea/visitors/AbstractVisitor.java
+new file mode 100644
+--- /dev/null	(date 1617648486473)
++++ b/src/main/java/com/mallowigi/idea/visitors/AbstractVisitor.java	(date 1617648486473)
+@@ -0,0 +1,104 @@
++/*
++ * The MIT License (MIT)
++ *
++ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining a copy
++ * of this software and associated documentation files (the "Software"), to deal
++ * in the Software without restriction, including without limitation the rights
++ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++ * copies of the Software, and to permit persons to whom the Software is
++ * furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be included in all
++ * copies or substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
++ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
++ * SOFTWARE.
++ *
++ *
++ */
++
++package com.mallowigi.idea.visitors;
++
++import com.intellij.codeInsight.daemon.impl.HighlightVisitor;
++import com.intellij.codeInsight.daemon.impl.analysis.HighlightInfoHolder;
++import com.intellij.openapi.editor.colors.TextAttributesKey;
++import com.intellij.psi.PsiElement;
++import com.intellij.psi.PsiFile;
++import com.intellij.psi.PsiKeyword;
++import com.intellij.psi.PsiLiteral;
++import com.mallowigi.idea.MTConfig;
++import com.mallowigi.idea.highlighters.LanguageHighlighter;
++import org.jetbrains.annotations.NotNull;
++import org.jetbrains.annotations.Nullable;
++
++public abstract class AbstractVisitor implements HighlightVisitor, Cloneable {
++  @Nullable
++  private HighlightInfoHolder myHolder;
++
++  @SuppressWarnings("DesignForExtension")
++  @Override
++  public boolean suitableForFile(@NotNull final PsiFile file) {
++    return false;
++  }
++
++  @SuppressWarnings("MethodWithMoreThanThreeNegations")
++  @Override
++  public final void visit(@NotNull final PsiElement element) {
++    if (!MTConfig.getInstance().isCodeAdditionsEnabled()) {
++      return;
++    }
++    if (!isHighlightable(element)) {
++      return;
++    }
++
++    final String name = element.getText();
++    if (name != null) {
++      final TextAttributesKey attributesKey = getKeywordKind(name);
++      if (attributesKey != null) {
++        LanguageHighlighter.highlight(myHolder, element, attributesKey);
++      }
++    }
++  }
++
++  @Override
++  public final boolean analyze(@NotNull final PsiFile file,
++                               final boolean updateWholeFile,
++                               @NotNull final HighlightInfoHolder holder,
++                               @NotNull final Runnable action) {
++    if (updateWholeFile) {
++      myHolder = holder;
++    }
++
++    try {
++      action.run();
++    } finally {
++      myHolder = null;
++    }
++
++    return true;
++  }
++
++  @Override
++  public abstract @NotNull HighlightVisitor clone();
++
++  /**
++   * Checks if element is highlightable
++   */
++  @SuppressWarnings("DesignForExtension")
++  boolean isHighlightable(final @Nullable PsiElement element) {
++    return !(element instanceof PsiKeyword || element instanceof PsiLiteral);
++  }
++
++  /**
++   * Find the keyword attibutes key
++   */
++  abstract TextAttributesKey getKeywordKind(String name);
++
++}
+Index: src/main/java/com/mallowigi/idea/highlighters/LanguageHighlighter.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/mallowigi/idea/highlighters/LanguageHighlighter.java b/src/main/java/com/mallowigi/idea/highlighters/LanguageHighlighter.java
+new file mode 100644
+--- /dev/null	(date 1617648486469)
++++ b/src/main/java/com/mallowigi/idea/highlighters/LanguageHighlighter.java	(date 1617648486469)
+@@ -0,0 +1,57 @@
++/*
++ * The MIT License (MIT)
++ *
++ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining a copy
++ * of this software and associated documentation files (the "Software"), to deal
++ * in the Software without restriction, including without limitation the rights
++ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++ * copies of the Software, and to permit persons to whom the Software is
++ * furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be included in all
++ * copies or substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
++ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
++ * SOFTWARE.
++ *
++ *
++ */
++
++package com.mallowigi.idea.highlighters;
++
++import com.intellij.codeInsight.daemon.impl.HighlightInfo;
++import com.intellij.codeInsight.daemon.impl.HighlightInfoType;
++import com.intellij.codeInsight.daemon.impl.analysis.HighlightInfoHolder;
++import com.intellij.openapi.editor.colors.TextAttributesKey;
++import com.intellij.psi.PsiElement;
++import org.jetbrains.annotations.NotNull;
++import org.jetbrains.annotations.Nullable;
++
++public enum LanguageHighlighter {
++  ;
++
++  public static void highlight(final @Nullable HighlightInfoHolder myHolder,
++                               final PsiElement element,
++                               final TextAttributesKey attributesKey) {
++    assert myHolder != null;
++    myHolder.clear();
++    myHolder.add(getHighlightInfo(element, attributesKey));
++  }
++
++  private static HighlightInfo getHighlightInfo(final PsiElement element, final TextAttributesKey attributesKey) {
++    return getHighlightInfoBuilder(attributesKey).range(element).create();
++  }
++
++  @NotNull
++  private static HighlightInfo.Builder getHighlightInfoBuilder(final TextAttributesKey attributesKey) {
++    return HighlightInfo.newHighlightInfo(HighlightInfoType.UNUSED_SYMBOL)
++                        .textAttributes(attributesKey);
++  }
++}
