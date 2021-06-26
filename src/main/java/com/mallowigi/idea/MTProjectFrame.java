@@ -36,7 +36,6 @@ import com.intellij.util.messages.MessageBusConnection;
 import com.intellij.util.ui.JBInsets;
 import com.intellij.util.ui.JBSwingUtilities;
 import com.intellij.util.ui.JBUI;
-import com.intellij.util.ui.StartupUiUtil;
 import com.mallowigi.idea.listeners.ConfigNotifier;
 import com.mallowigi.idea.utils.MTUI;
 import com.mallowigi.idea.utils.MTUiUtils;
@@ -164,8 +163,8 @@ public final class MTProjectFrame extends IdeRootPaneNorthExtension implements D
     }
   }
 
-  private static final class MTProjectTitlePanel extends JPanel {
-    private static final Pattern COMPILE = Pattern.compile(MTUiUtils.PROJECT_PATTERN);
+  private final class MTProjectTitlePanel extends JPanel {
+    private final Pattern COMPILE = Pattern.compile(MTUiUtils.PROJECT_PATTERN);
     private final Project myProject;
 
     private MTProjectTitlePanel(final Project project) {
@@ -184,18 +183,8 @@ public final class MTProjectFrame extends IdeRootPaneNorthExtension implements D
       final int padding = JBUI.scale(4);
       final Shape oldClip = g.getClip();
 
-      // Draw icon
-      final RecentProjectsManagerBase recentProjectsManage = RecentProjectsManagerBase.getInstanceEx();
-      final Icon recentIcon = recentProjectsManage.getProjectIcon(Objects.requireNonNull(myProject.getBasePath()),
-        StartupUiUtil.isUnderDarcula());
-
-      //      IconUtil.paintInCenterOf(this, g, recentIcon);
-
       g.setColor(MTUI.Panel.getBackground());
       g.fillRoundRect(x - padding, padding, textWidth + padding * 2, rect.height - padding * 2, padding, padding);
-
-      g.clip(rect);
-      recentIcon.paintIcon(this, g, x, y);
 
       g.setColor(MTUI.Panel.getForeground());
       g.drawString(str, x, y);
@@ -215,6 +204,12 @@ public final class MTProjectFrame extends IdeRootPaneNorthExtension implements D
         graphics.setColor(getFrameColor());
         graphics.fill(headerRectangle);
         graphics.setFont(MTUI.Panel.getFont());
+
+        // Draw icon
+        final RecentProjectsManagerBase recentProjectsManage = RecentProjectsManagerBase.getInstanceEx();
+        final Icon recentIcon = recentProjectsManage.getProjectIcon(Objects.requireNonNull(myProject.getBasePath()), false, false);
+        recentIcon.paintIcon(this, graphics, 100, 0);
+        //        IconUtil.paintInCenterOf(this, g, recentIcon);
 
         if (shouldDrawText()) {
           final String textToDraw = getTextToDraw();
@@ -260,6 +255,21 @@ public final class MTProjectFrame extends IdeRootPaneNorthExtension implements D
         textToDraw = mtConfig.getCustomTitle();
       }
       return COMPILE.matcher(textToDraw).replaceAll(myProject.getName());
+    }
+
+    @Override
+    public void updateUI() {
+      super.updateUI();
+      setOpaque(false);
+      //      if (myWrapperPanel == null || myProjectFramePanel == null) {
+      //        return;
+      //      }
+      //
+      //      myWrapperPanel.setBorder(new NavBarBorder());
+      //      myWrapperPanel.setOpaque(false);
+      //      myWrapperPanel.getViewport().setOpaque(false);
+      //      myWrapperPanel.setViewportBorder(null);
+      //      myProjectFramePanel.setBorder(null);ss
     }
   }
 }
