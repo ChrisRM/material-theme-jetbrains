@@ -47,7 +47,6 @@ import com.intellij.util.ui.UIUtil;
 import com.mallowigi.idea.ui.MTActionButtonLook;
 import com.mallowigi.idea.ui.MTNavBarUI;
 import com.mallowigi.idea.utils.MTUI;
-import com.mallowigi.idea.utils.MTUiUtils;
 import com.mallowigi.idea.utils.StaticPatcher;
 import training.ui.UISettings;
 
@@ -167,12 +166,10 @@ public enum UIReplacer {
     StaticPatcher.setFinalStatic(JBColor.class, "BLACK", MTUI.Panel.getForeground());
     StaticPatcher.setFinalStatic(JBColor.class, "gray", MTUI.Panel.getPrimaryForeground());
     StaticPatcher.setFinalStatic(JBColor.class, "GRAY", MTUI.Panel.getPrimaryForeground());
-    StaticPatcher.setFinalStatic(JBColor.class, "lightGray", MTUiUtils.toJBColor(MTUiUtils.brighter(MTUI.Panel.getPrimaryForeground(), 4)));
-    StaticPatcher.setFinalStatic(JBColor.class,
-      "LIGHT_GRAY",
-      MTUiUtils.toJBColor(MTUiUtils.brighter(MTUI.Panel.getPrimaryForeground(), 4)));
-    StaticPatcher.setFinalStatic(JBColor.class, "darkGray", MTUiUtils.toJBColor(MTUiUtils.darker(MTUI.Panel.getPrimaryForeground(), 4)));
-    StaticPatcher.setFinalStatic(JBColor.class, "DARK_GRAY", MTUiUtils.toJBColor(MTUiUtils.darker(MTUI.Panel.getPrimaryForeground(), 4)));
+    StaticPatcher.setFinalStatic(JBColor.class, "lightGray", MTUI.Separator.getSeparatorColor());
+    StaticPatcher.setFinalStatic(JBColor.class, "LIGHT_GRAY", MTUI.Separator.getSeparatorColor());
+    StaticPatcher.setFinalStatic(JBColor.class, "darkGray", MTUI.Separator.getSeparatorColor());
+    StaticPatcher.setFinalStatic(JBColor.class, "DARK_GRAY", MTUI.Separator.getSeparatorColor());
 
     StaticPatcher.setFinalStatic(DarculaColors.class, "BLUE", MTUI.Panel.getAccentColor());
     StaticPatcher.setFinalStatic(DarculaColors.class, "RED", MTUI.Panel.getAccentColor());
