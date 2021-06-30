@@ -181,6 +181,9 @@ public enum UIReplacer {
     StaticPatcher.setFinalStatic(LightColors.class, "GREEN", new JBColor(MTUI.MTColor.GREEN, MTUI.MTColor.DARK_GREEN));
     StaticPatcher.setFinalStatic(LightColors.class, "CYAN", new JBColor(MTUI.MTColor.CYAN, MTUI.MTColor.DARK_CYAN));
 
+    // comment
+    final int abbbb = 10;
+
   }
 
   private static void patchOnMouseOver() throws NoSuchFieldException, IllegalAccessException {

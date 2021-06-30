@@ -3177,8 +3177,9 @@
         </option>
         <option name="NOT_USED_ELEMENT_ATTRIBUTES">
             <value>
-                <option name="FOREGROUND" value="93a1a1" />
+                <option name="FOREGROUND" value="53666d" />
                 <option name="FONT_TYPE" value="2" />
+                <option name="EFFECT_TYPE" value="2" />
             </value>
         </option>
         <option name="Number">

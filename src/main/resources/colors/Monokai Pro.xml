@@ -2949,8 +2949,7 @@
         </option>
         <option name="NOT_USED_ELEMENT_ATTRIBUTES">
             <value>
-                <option name="FOREGROUND" value="5b595c" />
-                <option name="EFFECT_COLOR" value="5b595c" />
+                <option name="FOREGROUND" value="d3d3d1" />
                 <option name="EFFECT_TYPE" value="2" />
             </value>
         </option>
