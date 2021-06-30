@@ -77,7 +77,8 @@ intellij {
   plugins.set(listOf(
       "java",
       "training",
-      "com.intellij.CloudConfig"
+      "com.intellij.CloudConfig",
+      "XPathView",
   ))
 }
 

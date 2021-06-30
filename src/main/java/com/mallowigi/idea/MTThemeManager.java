@@ -30,6 +30,7 @@ import com.intellij.ide.ui.LafManager;
 import com.intellij.ide.ui.UISettings;
 import com.intellij.ide.ui.UITheme;
 import com.intellij.ide.ui.laf.LafManagerImpl;
+import com.intellij.ide.ui.laf.UIThemeBasedLookAndFeelInfo;
 import com.intellij.ide.ui.laf.darcula.DarculaInstaller;
 import com.intellij.ide.ui.laf.darcula.DarculaLaf;
 import com.intellij.openapi.Disposable;
@@ -80,11 +81,11 @@ import java.util.Locale;
  * Manages appearance settings
  */
 @SuppressWarnings({"ClassWithTooManyMethods",
-  "DuplicateStringLiteralInspection",
-  "UtilityClass",
-  "UnstableApiUsage",
-  "FeatureEnvy",
-  "OverlyComplexClass"})
+    "DuplicateStringLiteralInspection",
+    "UtilityClass",
+    "UnstableApiUsage",
+    "FeatureEnvy",
+    "OverlyComplexClass"})
 public final class MTThemeManager implements Disposable {
   private static final MTConfig CONFIG = MTConfig.getInstance();
 
@@ -332,6 +333,11 @@ public final class MTThemeManager implements Disposable {
     }
   }
 
+  public static boolean isMaterialTheme(@NonNls final UIManager.LookAndFeelInfo theme) {
+    return theme instanceof UIThemeBasedLookAndFeelInfo &&
+        MTThemes.getThemeFor(((UIThemeBasedLookAndFeelInfo) theme).getTheme().getId()) != null;
+  }
+
   /**
    * Activate a Look and Feel
    *
@@ -390,7 +396,7 @@ public final class MTThemeManager implements Disposable {
 
   private static void refreshColorScheme() {
     ApplicationManager.getApplication().invokeAndWait(() -> ((EditorColorsManagerImpl) EditorColorsManager.getInstance()).schemeChangedOrSwitched(null),
-      ModalityState.defaultModalityState());
+        ModalityState.defaultModalityState());
   }
 
   /**
@@ -401,7 +407,7 @@ public final class MTThemeManager implements Disposable {
     // Find LAF theme and trigger a theme change
     final LafManager lafManager = LafManager.getInstance();
     final UIManager.LookAndFeelInfo lafInfo = ContainerUtil.find(lafManager.getInstalledLookAndFeels(),
-      lookAndFeelInfo -> lookAndFeelInfo.getName().equals(selectedTheme.getThemeName()));
+        lookAndFeelInfo -> lookAndFeelInfo.getName().equals(selectedTheme.getThemeName()));
 
     MTChangeLAFAnimator.showSnapshot();
     if (lafInfo != null) {
@@ -489,25 +495,25 @@ public final class MTThemeManager implements Disposable {
 
     if (CONFIG.isAccentScrollbars()) {
       return CONFIG.isThemedScrollbars() ?
-             new Couple<>(transAccentColor, hoverAccentColor) :
-             new Couple<>(hoverAccentColor, accentColor);
+          new Couple<>(transAccentColor, hoverAccentColor) :
+          new Couple<>(hoverAccentColor, accentColor);
     } else {
       return CONFIG.isThemedScrollbars() ?
-             new Couple<>(transThemedColor, hoverThemedColor) :
-             new Couple<>(hoverThemedColor, themedColor);
+          new Couple<>(transThemedColor, hoverThemedColor) :
+          new Couple<>(hoverThemedColor, themedColor);
     }
   }
 
   private static void fireThemeChanged(final MTThemeFacade newTheme) {
     ApplicationManager.getApplication().getMessageBus()
-                      .syncPublisher(MTTopics.THEMES)
-                      .themeChanged(newTheme);
+        .syncPublisher(MTTopics.THEMES)
+        .themeChanged(newTheme);
   }
 
   private static void fireAccentChanged(final Color accentColorColor) {
     ApplicationManager.getApplication().getMessageBus()
-                      .syncPublisher(MTTopics.ACCENTS)
-                      .accentChanged(accentColorColor);
+        .syncPublisher(MTTopics.ACCENTS)
+        .accentChanged(accentColorColor);
   }
 
   //endregion
@@ -548,9 +554,9 @@ public final class MTThemeManager implements Disposable {
 
     @NonNls final String language = Locale.getDefault().getLanguage();
     final boolean cjkLocale =
-      (Locale.CHINESE.getLanguage().equals(language) ||
-        Locale.JAPANESE.getLanguage().equals(language) ||
-        Locale.KOREAN.getLanguage().equals(language));
+        (Locale.CHINESE.getLanguage().equals(language) ||
+            Locale.JAPANESE.getLanguage().equals(language) ||
+            Locale.KOREAN.getLanguage().equals(language));
 
     FontUIResource font = UIUtil.getFontWithFallback(DEFAULT_FONT, Font.PLAIN, DEFAULT_FONT_SIZE);
     if (cjkLocale) {
