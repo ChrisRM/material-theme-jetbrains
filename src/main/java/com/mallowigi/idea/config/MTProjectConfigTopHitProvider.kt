@@ -33,7 +33,7 @@ import com.intellij.openapi.project.Project
 import com.mallowigi.idea.MTProjectConfig
 import com.mallowigi.idea.messages.MaterialThemeBundle
 import org.jetbrains.annotations.NonNls
-import java.util.*
+import java.util.Collections
 import java.util.function.Supplier
 
 class MTProjectConfigTopHitProvider : ProjectLevelProvider {
@@ -47,15 +47,13 @@ class MTProjectConfigTopHitProvider : ProjectLevelProvider {
         option(project, MaterialThemeBundle.message("MTProjectForm.isUpperCaseTabsCheckbox.text"), "isUpperCaseTabs", "setUpperCaseTabs"),
         option(project, MaterialThemeBundle.message("MTProjectForm.useProjectFrameCheckbox.text"), "isUseProjectFrame", "setUseProjectFrame"),
         option(project, MaterialThemeBundle.message("MTProjectForm.showProjectTitleCheckbox.text"), "isUseProjectTitle", "setUseProjectTitle"),
+        option(project, MaterialThemeBundle.message("MTProjectForm.showIconCheckbox.text"), "isUseProjectIcon", "setUseProjectIcon"),
         option(project, MaterialThemeBundle.message("MTProjectForm.useCustomTextCheckbox.text"), "isUseCustomTitle", "setUseCustomTitle")
     ))
   }
 
   companion object {
-    private fun option(project: Project,
-                       option: @NonNls String?,
-                       getter: String,
-                       setter: String): BooleanOptionDescription {
+    private fun option(project: Project, option: @NonNls String?, getter: String, setter: String): BooleanOptionDescription {
       return object : PublicMethodBasedOptionDescription(MaterialThemeBundle.message("option.prefix.project") + option,
                                                          MTProjectConfigurable.ID,
                                                          getter,

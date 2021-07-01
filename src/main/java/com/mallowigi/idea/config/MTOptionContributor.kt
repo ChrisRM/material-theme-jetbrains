@@ -30,7 +30,7 @@ import com.intellij.ide.ui.search.SearchableOptionContributor
 import com.intellij.ide.ui.search.SearchableOptionProcessor
 import com.intellij.openapi.options.Configurable
 import com.mallowigi.idea.messages.MaterialThemeBundle
-import java.util.*
+import java.util.Collections
 
 /**
  * Provider for Searchable options
@@ -98,6 +98,7 @@ class MTOptionContributor : SearchableOptionContributor() {
         MaterialThemeBundle.message("MTForm.useMaterialWallpapersCheckbox.text"),
         MaterialThemeBundle.message("MTForm.useProjectFrameCheckbox.text"),
         MaterialThemeBundle.message("MTForm.projectTitleCheckbox.text"),
+        MaterialThemeBundle.message("MTForm.showIconCheckbox.text"),
         MaterialThemeBundle.message("MTForm.customTextCheckbox.text"),
         MaterialThemeBundle.message("MTForm.customTextHint.text")
         //endregion

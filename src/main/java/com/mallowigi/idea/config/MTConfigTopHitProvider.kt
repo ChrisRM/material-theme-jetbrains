@@ -32,7 +32,7 @@ import com.intellij.ide.ui.search.OptionDescription
 import com.mallowigi.idea.MTConfig
 import com.mallowigi.idea.messages.MaterialThemeBundle
 import org.jetbrains.annotations.NonNls
-import java.util.*
+import java.util.Collections
 import java.util.function.Supplier
 
 class MTConfigTopHitProvider : ApplicationLevelProvider {
@@ -82,6 +82,7 @@ class MTConfigTopHitProvider : ApplicationLevelProvider {
         option(MaterialThemeBundle.message("MTForm.showWhatsNewCheckbox.text"), "isShowWhatsNew", "setShowWhatsNew"),
         option(MaterialThemeBundle.message("MTForm.useProjectFrameCheckbox.text"), "isUseProjectFrame", "setUseProjectFrame"),
         option(MaterialThemeBundle.message("MTForm.projectTitleCheckbox.text"), "isUseProjectTitle", "setUseProjectTitle"),
+        option(MaterialThemeBundle.message("MTForm.showIconCheckbox.text"), "isUseProjectIcon", "setUseProjectIcon"),
         option(MaterialThemeBundle.message("MTForm.customTextCheckbox.text"), "isUseCustomTitle", "setUseCustomTitle")
     ))
 
