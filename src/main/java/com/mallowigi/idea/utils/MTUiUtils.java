@@ -45,6 +45,7 @@ import com.intellij.openapi.editor.colors.EditorColorsScheme;
 import com.intellij.openapi.extensions.PluginId;
 import com.intellij.openapi.options.ShowSettingsUtil;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.openapi.wm.impl.IdeBackgroundUtil;
 import com.intellij.ui.ColorUtil;
@@ -100,6 +101,11 @@ public enum MTUiUtils {
   public static final String DARCULA = "Darcula";
   @NonNls
   public static final String PLUGIN_NAME = "MaterialThemeUI";
+
+  @SuppressWarnings("HardcodedFileSeparator")
+  @NonNls
+  public static final @Nullable Icon LINK_ICON = IconLoader.findIcon("icons/mt/link2.svg");
+
   private static final RenderingHints RENDERING_HINTS;
   @NonNls
   public static final String NOTO_SANS = "Noto Sans";
@@ -107,16 +113,11 @@ public enum MTUiUtils {
   public static final String PROJECT_PATTERN = "\\{project\\}";
 
   static {
-    RENDERING_HINTS = new RenderingHints(RenderingHints.KEY_ALPHA_INTERPOLATION,
-      RenderingHints.VALUE_ALPHA_INTERPOLATION_SPEED);
-    RENDERING_HINTS.put(RenderingHints.KEY_ANTIALIASING,
-      RenderingHints.VALUE_ANTIALIAS_ON);
-    RENDERING_HINTS.put(RenderingHints.KEY_RENDERING,
-      RenderingHints.VALUE_RENDER_SPEED);
-    RENDERING_HINTS.put(RenderingHints.KEY_TEXT_ANTIALIASING,
-      RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-    RENDERING_HINTS.put(RenderingHints.KEY_FRACTIONALMETRICS,
-      RenderingHints.VALUE_FRACTIONALMETRICS_ON);
+    RENDERING_HINTS = new RenderingHints(RenderingHints.KEY_ALPHA_INTERPOLATION, RenderingHints.VALUE_ALPHA_INTERPOLATION_SPEED);
+    RENDERING_HINTS.put(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+    RENDERING_HINTS.put(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_SPEED);
+    RENDERING_HINTS.put(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+    RENDERING_HINTS.put(RenderingHints.KEY_FRACTIONALMETRICS, RenderingHints.VALUE_FRACTIONALMETRICS_ON);
   }
 
   public static Map getHints() {

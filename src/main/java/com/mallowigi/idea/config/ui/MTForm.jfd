@@ -542,7 +542,7 @@ new FormModel {
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 					"$layoutConstraints": "fillx,hidemode 3,align left top"
 					"$columnConstraints": "[left][right]"
-					"$rowConstraints": "[][][][]0[]"
+					"$rowConstraints": "[][][][][]0[][]"
 				} ) {
 					name: "projectFramePanel"
 					"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
@@ -569,24 +569,31 @@ new FormModel {
 						"value": "cell 0 2,align left center,grow 0 0"
 					} )
 					add( new FormComponent( "javax.swing.JCheckBox" ) {
+						name: "showIconCheckbox"
+						"text": new FormMessage( null, "MTForm.showIconCheckbox.text" )
+						"toolTipText": new FormMessage( null, "MTForm.showIconCheckbox.toolTipText" )
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 3,align left center,grow 0 0"
+					} )
+					add( new FormComponent( "javax.swing.JCheckBox" ) {
 						name: "customTextCheckbox"
 						"text": new FormMessage( null, "MTForm.customTextCheckbox.text" )
 						"toolTipText": new FormMessage( null, "MTForm.customTextCheckbox.toolTipText" )
 						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "customTextCheckboxActionPerformed", true ) )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 0 3,align left center,grow 0 0"
+						"value": "cell 0 4,align left center,grow 0 0"
 					} )
 					add( new FormComponent( "javax.swing.JTextField" ) {
 						name: "customTextField"
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 1 3,alignx right,growx 0,width 150:150:150"
+						"value": "cell 1 4,alignx right,growx 0,width 150:150:150"
 					} )
 					add( new FormComponent( "com.jformdesigner.designer.wrapper.JGoodiesFormsLabel" ) {
 						name: "customTextHint"
 						"foreground": #SwingColor1
 						"text": new FormMessage( null, "MTForm.customTextHint.text" )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 0 4,gapx 16"
+						"value": "cell 0 5,gapx 16"
 					} )
 				}, new FormLayoutConstraints( null ) {
 					"title": new FormMessage( null, "MTForm.projectFramePanel.tab.title" )

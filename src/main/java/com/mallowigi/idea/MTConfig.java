@@ -179,6 +179,8 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   @Property
   boolean useProjectTitle = true;
   @Property
+  boolean useProjectIcon = true;
+  @Property
   IndicatorStyles indicatorStyle = IndicatorStyles.BORDER;
   @Property
   int customSidebarHeight = DEFAULT_LINE_HEIGHT;
@@ -369,6 +371,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     setUseProjectFrame(form.isUseProjectFrame());
     setShowWhatsNew(form.isShowWhatsNew());
     setUseProjectTitle(form.isUseProjectTitle());
+    setUseProjectIcon(form.isUseProjectIcon());
     setUseCustomTitle(form.isUseCustomTitle());
     setCustomTitle(form.getCustomTitle());
 
@@ -430,6 +433,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     useMaterialWallpapers = false;
     useColoredDirectories = true;
     useProjectFrame = false;
+    useProjectIcon = true;
     useProjectTitle = true;
     useCustomTitle = false;
     customTitle = DEFAULT_TITLE;
@@ -1729,6 +1733,21 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
 
   public boolean isUseProjectTitleChanged(final boolean useProjectTitle) {
     return this.useProjectTitle != useProjectTitle;
+  }
+
+  //endregion
+
+  //region Project Frame Icon
+  public boolean isUseProjectIcon() {
+    return useProjectIcon;
+  }
+
+  private void setUseProjectIcon(final boolean useProjectIcon) {
+    this.useProjectIcon = useProjectIcon;
+  }
+
+  public boolean isUseProjectIconChanged(final boolean useProjectIcon) {
+    return this.useProjectIcon != useProjectIcon;
   }
 
   //endregion

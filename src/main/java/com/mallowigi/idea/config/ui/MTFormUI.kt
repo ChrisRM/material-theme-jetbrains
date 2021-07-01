@@ -23,20 +23,14 @@
  *
  *
  */
+package com.mallowigi.idea.config.ui
 
-package com.mallowigi.idea.config.ui;
+import javax.swing.JComponent
 
-import javax.swing.*;
-
-public interface MTFormUI {
-  void init();
-
-  void initComponents();
-
-  void setupComponents();
-
-  JComponent getContent();
-
-  void dispose();
-
+interface MTFormUI {
+  fun init()
+  fun initComponents()
+  fun setupComponents()
+  val content: JComponent?
+  fun dispose()
 }

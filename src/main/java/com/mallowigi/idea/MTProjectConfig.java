@@ -93,6 +93,8 @@ public final class MTProjectConfig implements PersistentStateComponent<MTProject
   @Property
   boolean useProjectTitle = true;
   @Property
+  boolean useProjectIcon = true;
+  @Property
   boolean useCustomTitle = false;
   @NonNls
   @Property
@@ -167,6 +169,7 @@ public final class MTProjectConfig implements PersistentStateComponent<MTProject
     setUseProjectFrame(form.isUseProjectFrame());
     setProjectFrameColor(form.getProjectFrameColor());
     setUseProjectTitle(form.isUseProjectTitle());
+    setUseProjectIcon(form.isUseProjectIcon());
     setUseCustomTitle(form.isUseCustomTitle());
     setCustomTitle(form.getCustomTitle());
 
@@ -190,6 +193,7 @@ public final class MTProjectConfig implements PersistentStateComponent<MTProject
     upperCaseTabs = false;
     useProjectFrame = false;
     useProjectTitle = true;
+    useProjectIcon = true;
     useCustomTitle = false;
     customTitle = MTConfig.DEFAULT_TITLE;
   }
@@ -402,6 +406,21 @@ public final class MTProjectConfig implements PersistentStateComponent<MTProject
 
   public boolean isUseProjectTitleChanged(final boolean useProjectTitle) {
     return this.useProjectTitle != useProjectTitle;
+  }
+
+  //endregion
+
+  //region Project Frame Icon
+  public boolean isUseProjectIcon() {
+    return useProjectIcon;
+  }
+
+  private void setUseProjectIcon(final boolean useProjectIcon) {
+    this.useProjectIcon = useProjectIcon;
+  }
+
+  public boolean isUseProjectIconChanged(final boolean useProjectIcon) {
+    return this.useProjectIcon != useProjectIcon;
   }
 
   //endregion
