@@ -1,5 +1,11 @@
 ## Changelog
 ----
+### Unreleased
+
+### Features
+
+- Added themed [XPathView Plugin](https://plugins.jetbrains.com/plugin/12478-xpathview--xslt) configurations.
+
 ## 6.6.0
 ### Features
 - New Set of Settings for the **Project Frame**:

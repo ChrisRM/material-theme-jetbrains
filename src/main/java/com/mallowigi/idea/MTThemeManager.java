@@ -30,6 +30,7 @@ import com.intellij.ide.ui.LafManager;
 import com.intellij.ide.ui.UISettings;
 import com.intellij.ide.ui.UITheme;
 import com.intellij.ide.ui.laf.LafManagerImpl;
+import com.intellij.ide.ui.laf.UIThemeBasedLookAndFeelInfo;
 import com.intellij.ide.ui.laf.darcula.DarculaInstaller;
 import com.intellij.ide.ui.laf.darcula.DarculaLaf;
 import com.intellij.openapi.Disposable;
@@ -330,6 +331,11 @@ public final class MTThemeManager implements Disposable {
       mtTheme.setThemeName(name);
       activate(mtTheme);
     }
+  }
+
+  public static boolean isMaterialTheme(@NonNls final UIManager.LookAndFeelInfo theme) {
+    return theme instanceof UIThemeBasedLookAndFeelInfo &&
+        MTThemes.getThemeFor(((UIThemeBasedLookAndFeelInfo) theme).getTheme().getId()) != null;
   }
 
   /**
