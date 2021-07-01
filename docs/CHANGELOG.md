@@ -1,10 +1,17 @@
 ## Changelog
 ----
-### Unreleased
+
+## 6.7.0
 
 ### Features
-
+- Add **Project Icon** to the **Project Frame**
 - Added themed [XPathView Plugin](https://plugins.jetbrains.com/plugin/12478-xpathview--xslt) configurations.
+- **Language Additions**: Fix back `console`, `window`, `global` not being colored correctly. ([#1780](https://github.com/ChrisRM/material-theme-jetbrains/issues/1780))
+- Refactor **File Status Colors**, allowing to restore the file status colors when resetting the color scheme ([#1732](https://github.com/ChrisRM/material-theme-jetbrains/issues/1732))
+- Fix [#1773](https://github.com/ChrisRM/material-theme-jetbrains/issues/1773)
+- Fix [#1764](https://github.com/ChrisRM/material-theme-jetbrains/issues/1764)
+- Fix [#1776](https://github.com/ChrisRM/material-theme-jetbrains/issues/1776)
+- Improve unused variables contrast ([#1775](https://github.com/ChrisRM/material-theme-jetbrains/issues/1775))
 
 ## 6.6.0
 ### Features
