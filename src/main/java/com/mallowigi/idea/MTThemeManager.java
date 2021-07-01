@@ -30,6 +30,7 @@ import com.intellij.ide.ui.LafManager;
 import com.intellij.ide.ui.UISettings;
 import com.intellij.ide.ui.UITheme;
 import com.intellij.ide.ui.laf.LafManagerImpl;
+import com.intellij.ide.ui.laf.UIThemeBasedLookAndFeelInfo;
 import com.intellij.ide.ui.laf.darcula.DarculaInstaller;
 import com.intellij.ide.ui.laf.darcula.DarculaLaf;
 import com.intellij.openapi.Disposable;
@@ -64,7 +65,7 @@ import com.mallowigi.idea.utils.MTChangeLAFAnimator;
 import com.mallowigi.idea.utils.MTUI;
 import com.mallowigi.idea.utils.MTUiUtils;
 import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 import sun.awt.AppContext;
 
 import javax.swing.*;
@@ -83,7 +84,8 @@ import java.util.Locale;
   "DuplicateStringLiteralInspection",
   "UtilityClass",
   "UnstableApiUsage",
-  "FeatureEnvy"})
+  "FeatureEnvy",
+  "OverlyComplexClass"})
 public final class MTThemeManager implements Disposable {
   private static final MTConfig CONFIG = MTConfig.getInstance();
 
@@ -331,6 +333,11 @@ public final class MTThemeManager implements Disposable {
     }
   }
 
+  public static boolean isMaterialTheme(@NonNls final UIManager.LookAndFeelInfo theme) {
+    return theme instanceof UIThemeBasedLookAndFeelInfo &&
+        MTThemes.getThemeFor(((UIThemeBasedLookAndFeelInfo) theme).getTheme().getId()) != null;
+  }
+
   /**
    * Activate a Look and Feel
    *
@@ -388,9 +395,8 @@ public final class MTThemeManager implements Disposable {
   }
 
   private static void refreshColorScheme() {
-    ApplicationManager.getApplication().invokeAndWait(() -> {
-      ((EditorColorsManagerImpl) EditorColorsManager.getInstance()).schemeChangedOrSwitched(null);
-    });
+    ApplicationManager.getApplication().invokeAndWait(() -> ((EditorColorsManagerImpl) EditorColorsManager.getInstance()).schemeChangedOrSwitched(null),
+      ModalityState.defaultModalityState());
   }
 
   /**
@@ -467,33 +473,35 @@ public final class MTThemeManager implements Disposable {
 
   @SuppressWarnings("MethodWithMultipleLoops")
   private static void applyScrollbars(final Color accentColor) {
-    final Color transColor = ColorUtil.toAlpha(accentColor, 50);
-    final Color hoverColor = ColorUtil.toAlpha(accentColor, 75);
+    final Couple<Color> scrollbarColors = getScrollbarColors(accentColor);
+    final Color scrollbarColor = scrollbarColors.getFirst();
+    final Color scrollbarHoverColor = scrollbarColors.getSecond();
 
-    // IDE scrollbars
-    final Couple<Color> scrollbarColors = getScrollbarColors(accentColor, transColor, hoverColor);
-    if (scrollbarColors != null) { //null unless accent scrollbars is on
-      final Color scrollbarColor = scrollbarColors.getFirst();
-      final Color scrollbarHoverColor = scrollbarColors.getSecond();
-
-      for (final String resource : AccentResources.SCROLLBAR_RESOURCES) {
-        UIManager.put(resource, scrollbarColor);
-      }
-      for (final String resource : AccentResources.SCROLLBAR_HOVER_RESOURCES) {
-        UIManager.put(resource, scrollbarHoverColor);
-      }
+    for (final String resource : AccentResources.SCROLLBAR_RESOURCES) {
+      UIManager.put(resource, scrollbarColor);
     }
+    for (final String resource : AccentResources.SCROLLBAR_HOVER_RESOURCES) {
+      UIManager.put(resource, scrollbarHoverColor);
+    }
+    reloadUI();
   }
 
-  @Nullable
-  private static Couple<Color> getScrollbarColors(final Color accentColor, final Color transColor, final Color hoverColor) {
-    // Scrollbars
+  private static @NotNull Couple<Color> getScrollbarColors(final Color accentColor) {
+    final Color transAccentColor = ColorUtil.toAlpha(accentColor, 50);
+    final Color hoverAccentColor = ColorUtil.toAlpha(accentColor, 75);
+    final Color themedColor = MTUI.Label.getLabelForeground();
+    final Color transThemedColor = ColorUtil.toAlpha(themedColor, 50);
+    final Color hoverThemedColor = ColorUtil.toAlpha(themedColor, 75);
+
     if (CONFIG.isAccentScrollbars()) {
       return CONFIG.isThemedScrollbars() ?
-             new Couple<>(transColor, hoverColor) :
-             new Couple<>(hoverColor, accentColor);
+             new Couple<>(transAccentColor, hoverAccentColor) :
+             new Couple<>(hoverAccentColor, accentColor);
+    } else {
+      return CONFIG.isThemedScrollbars() ?
+             new Couple<>(transThemedColor, hoverThemedColor) :
+             new Couple<>(hoverThemedColor, themedColor);
     }
-    return null;
   }
 
   private static void fireThemeChanged(final MTThemeFacade newTheme) {

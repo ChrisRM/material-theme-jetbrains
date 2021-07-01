@@ -79,7 +79,7 @@
         <option name="DOC_COMMENT_LINK" value="268bd2" />
         <option name="ERROR_HINT" value="611738" />
         <option name="FILESTATUS_ADDED" value="859900" />
-        <option name="FILESTATUS_COPIED" value="2aa198" />
+        <option name="FILESTATUS_COPIED" value="859900" />
         <option name="FILESTATUS_DELETED" value="b58900" />
         <option name="FILESTATUS_HIJACKED" value="d33682" />
         <option name="FILESTATUS_IDEA_FILESTATUS_DELETED_FROM_FILE_SYSTEM" value="b58900" />
@@ -98,6 +98,28 @@
         <option name="FILESTATUS_addedOutside" value="d33682" />
         <option name="FILESTATUS_changelistConflict" value="cb4b16" />
         <option name="FILESTATUS_modifiedOutside" value="6c71c4" />
+
+        <option name="MT_FILESTATUS_ADDED" value="859900" />
+        <option name="MT_FILESTATUS_COPIED" value="859900" />
+        <option name="MT_FILESTATUS_DELETED" value="b58900" />
+        <option name="MT_FILESTATUS_HIJACKED" value="d33682" />
+        <option name="MT_FILESTATUS_IDEA_FILESTATUS_DELETED_FROM_FILE_SYSTEM" value="b58900" />
+        <option name="MT_FILESTATUS_IDEA_FILESTATUS_IGNORED" value="b58900" />
+        <option name="MT_FILESTATUS_IDEA_FILESTATUS_MERGED_WITH_BOTH_CONFLICTS" value="cb4b16" />
+        <option name="MT_FILESTATUS_IDEA_FILESTATUS_MERGED_WITH_CONFLICTS" value="cb4b16" />
+        <option name="MT_FILESTATUS_IDEA_FILESTATUS_MERGED_WITH_PROPERTY_CONFLICTS" value="cb4b16" />
+        <option name="MT_FILESTATUS_MERGED" value="6c71c4" />
+        <option name="MT_FILESTATUS_MODIFIED" value="2aa198" />
+        <option name="MT_FILESTATUS_NOT_CHANGED_IMMEDIATE" value="268bd2" />
+        <option name="MT_FILESTATUS_NOT_CHANGED_RECURSIVE" value="268bd2" />
+        <option name="MT_FILESTATUS_OBSOLETE" value="b58900" />
+        <option name="MT_FILESTATUS_RENAMED" value="268bd2" />
+        <option name="MT_FILESTATUS_SWITCHED" value="268bd2" />
+        <option name="MT_FILESTATUS_UNKNOWN" value="d33682" />
+        <option name="MT_FILESTATUS_addedOutside" value="d33682" />
+        <option name="MT_FILESTATUS_changelistConflict" value="cb4b16" />
+        <option name="MT_FILESTATUS_modifiedOutside" value="6c71c4" />
+
         <option name="FOLDED_TEXT_BORDER_COLOR" value="1b4652" />
         <option name="GUTTER_BACKGROUND" value="2b36" />
         <option name="HTML_TAG_TREE_LEVEL0" value="dc322f" />
@@ -3159,7 +3181,7 @@
         </option>
         <option name="NOT_USED_ELEMENT_ATTRIBUTES">
             <value>
-                <option name="FOREGROUND" value="586e75" />
+                <option name="FOREGROUND" value="7a8686" />
                 <option name="FONT_TYPE" value="2" />
                 <option name="EFFECT_TYPE" value="2" />
             </value>

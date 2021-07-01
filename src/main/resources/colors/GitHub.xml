@@ -78,7 +78,7 @@
         <option name="FILESTATUS_ADDED" value="22863a" />
         <option name="FILESTATUS_COPIED" value="22863a" />
         <option name="FILESTATUS_DELETED" value="6a737d" />
-        <option name="FILESTATUS_HIJACKED" value="6a737d" />
+        <option name="FILESTATUS_HIJACKED" value="6f42c1" />
         <option name="FILESTATUS_IDEA_FILESTATUS_DELETED_FROM_FILE_SYSTEM" value="6a737d" />
         <option name="FILESTATUS_IDEA_FILESTATUS_IGNORED" value="32f62" />
         <option name="FILESTATUS_IDEA_FILESTATUS_MERGED_WITH_BOTH_CONFLICTS" value="d73a49" />
@@ -94,9 +94,33 @@
         <option name="FILESTATUS_SUPPRESSED" value="6a737d" />
         <option name="FILESTATUS_SWITCHED" value="e36209" />
         <option name="FILESTATUS_UNKNOWN" value="e36209" />
-        <option name="FILESTATUS_addedOutside" value="22863a" />
+        <option name="FILESTATUS_addedOutside" value="b08800" />
         <option name="FILESTATUS_changelistConflict" value="d73a49" />
         <option name="FILESTATUS_modifiedOutside" value="6f42c1" />
+
+        <option name="MT_FILESTATUS_ADDED" value="22863a" />
+        <option name="MT_FILESTATUS_COPIED" value="22863a" />
+        <option name="MT_FILESTATUS_DELETED" value="6a737d" />
+        <option name="MT_FILESTATUS_HIJACKED" value="6f42c1" />
+        <option name="MT_FILESTATUS_IDEA_FILESTATUS_DELETED_FROM_FILE_SYSTEM" value="6a737d" />
+        <option name="MT_FILESTATUS_IDEA_FILESTATUS_IGNORED" value="32f62" />
+        <option name="MT_FILESTATUS_IDEA_FILESTATUS_MERGED_WITH_BOTH_CONFLICTS" value="d73a49" />
+        <option name="MT_FILESTATUS_IDEA_FILESTATUS_MERGED_WITH_CONFLICTS" value="d73a49" />
+        <option name="MT_FILESTATUS_IDEA_FILESTATUS_MERGED_WITH_PROPERTY_CONFLICTS" value="d73a49" />
+        <option name="MT_FILESTATUS_IDEA_SVN_FILESTATUS_EXTERNAL" value="22863a" />
+        <option name="MT_FILESTATUS_IGNORE.PROJECT_VIEW.IGNORED" value="32f62" />
+        <option name="MT_FILESTATUS_MERGED" value="6f42c1" />
+        <option name="MT_FILESTATUS_MODIFIED" value="5cc5" />
+        <option name="MT_FILESTATUS_NOT_CHANGED_IMMEDIATE" value="5cc5" />
+        <option name="MT_FILESTATUS_NOT_CHANGED_RECURSIVE" value="5cc5" />
+        <option name="MT_FILESTATUS_OBSOLETE" value="6a737d" />
+        <option name="MT_FILESTATUS_SUPPRESSED" value="6a737d" />
+        <option name="MT_FILESTATUS_SWITCHED" value="e36209" />
+        <option name="MT_FILESTATUS_UNKNOWN" value="e36209" />
+        <option name="MT_FILESTATUS_addedOutside" value="b08800" />
+        <option name="MT_FILESTATUS_changelistConflict" value="d73a49" />
+        <option name="MT_FILESTATUS_modifiedOutside" value="6f42c1" />
+
         <option name="FOLDED_TEXT_BORDER_COLOR" value="fafafa" />
         <option name="GUTTER_BACKGROUND" value="ffffff" />
         <option name="INDENT_GUIDE" value="dddddd" />
@@ -2850,7 +2874,7 @@
         </option>
         <option name="NOT_USED_ELEMENT_ATTRIBUTES">
             <value>
-                <option name="FOREGROUND" value="aaaaaa" />
+                <option name="FOREGROUND" value="1c2125" />
             </value>
         </option>
         <option name="OC.BLOCK_COMMENT">

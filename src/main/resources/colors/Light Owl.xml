@@ -83,20 +83,42 @@
         <option name="FILESTATUS_HIJACKED" value="2aa298" />
         <option name="FILESTATUS_IDEA_FILESTATUS_DELETED_FROM_FILE_SYSTEM" value="de3d3b" />
         <option name="FILESTATUS_IDEA_FILESTATUS_IGNORED" value="93a1a1" />
-        <option name="FILESTATUS_IDEA_FILESTATUS_MERGED_WITH_BOTH_CONFLICTS" value="d6438a" />
-        <option name="FILESTATUS_IDEA_FILESTATUS_MERGED_WITH_CONFLICTS" value="d6438a" />
-        <option name="FILESTATUS_IDEA_FILESTATUS_MERGED_WITH_PROPERTY_CONFLICTS" value="d6438a" />
+        <option name="FILESTATUS_IDEA_FILESTATUS_MERGED_WITH_BOTH_CONFLICTS" value="c96765" />
+        <option name="FILESTATUS_IDEA_FILESTATUS_MERGED_WITH_CONFLICTS" value="c96765" />
+        <option name="FILESTATUS_IDEA_FILESTATUS_MERGED_WITH_PROPERTY_CONFLICTS" value="c96765" />
         <option name="FILESTATUS_MERGED" value="e0af02" />
         <option name="FILESTATUS_MODIFIED" value="6fbef6" />
         <option name="FILESTATUS_NOT_CHANGED_IMMEDIATE" value="57b6c2" />
         <option name="FILESTATUS_NOT_CHANGED_RECURSIVE" value="57b6c2" />
         <option name="FILESTATUS_RENAMED" value="2aa298" />
         <option name="FILESTATUS_SUPPRESSED" value="403f53" />
-        <option name="FILESTATUS_SWITCHED" value="6fbef6" />
+        <option name="FILESTATUS_SWITCHED" value="2aa298" />
         <option name="FILESTATUS_UNKNOWN" value="4876d6" />
-        <option name="FILESTATUS_addedOutside" value="4876d6" />
-        <option name="FILESTATUS_changelistConflict" value="d6438a" />
+        <option name="FILESTATUS_addedOutside" value="2aa298" />
+        <option name="FILESTATUS_changelistConflict" value="c96765" />
         <option name="FILESTATUS_modifiedOutside" value="e0af02" />
+
+        <option name="MT_FILESTATUS_ADDED" value="49d0c5" />
+        <option name="MT_FILESTATUS_COPIED" value="49d0c5" />
+        <option name="MT_FILESTATUS_DELETED" value="de3d3b" />
+        <option name="MT_FILESTATUS_HIJACKED" value="2aa298" />
+        <option name="MT_FILESTATUS_IDEA_FILESTATUS_DELETED_FROM_FILE_SYSTEM" value="de3d3b" />
+        <option name="MT_FILESTATUS_IDEA_FILESTATUS_IGNORED" value="93a1a1" />
+        <option name="MT_FILESTATUS_IDEA_FILESTATUS_MERGED_WITH_BOTH_CONFLICTS" value="c96765" />
+        <option name="MT_FILESTATUS_IDEA_FILESTATUS_MERGED_WITH_CONFLICTS" value="c96765" />
+        <option name="MT_FILESTATUS_IDEA_FILESTATUS_MERGED_WITH_PROPERTY_CONFLICTS" value="c96765" />
+        <option name="MT_FILESTATUS_MERGED" value="e0af02" />
+        <option name="MT_FILESTATUS_MODIFIED" value="6fbef6" />
+        <option name="MT_FILESTATUS_NOT_CHANGED_IMMEDIATE" value="57b6c2" />
+        <option name="MT_FILESTATUS_NOT_CHANGED_RECURSIVE" value="57b6c2" />
+        <option name="MT_FILESTATUS_RENAMED" value="2aa298" />
+        <option name="MT_FILESTATUS_SUPPRESSED" value="403f53" />
+        <option name="MT_FILESTATUS_SWITCHED" value="2aa298" />
+        <option name="MT_FILESTATUS_UNKNOWN" value="4876d6" />
+        <option name="MT_FILESTATUS_addedOutside" value="2aa298" />
+        <option name="MT_FILESTATUS_changelistConflict" value="c96765" />
+        <option name="MT_FILESTATUS_modifiedOutside" value="e0af02" />
+
         <option name="FOLDED_TEXT_BORDER_COLOR" value="93a1a1" />
         <option name="GUTTER_BACKGROUND" value="fbfbfb" />
         <option name="INDENT_GUIDE" value="d9d9d9" />
@@ -2924,7 +2946,7 @@
         </option>
         <option name="NOT_USED_ELEMENT_ATTRIBUTES">
             <value>
-                <option name="FOREGROUND" value="989fb1" />
+                <option name="FOREGROUND" value="343344" />
             </value>
         </option>
         <option name="OC.CLASS_REFERENCE">

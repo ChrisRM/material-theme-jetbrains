@@ -30,6 +30,7 @@
 
 package com.mallowigi.idea.config.ui;
 
+import com.intellij.openapi.application.ex.ApplicationInfoEx;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.ComboBox;
 import com.intellij.openapi.ui.Messages;
@@ -93,6 +94,7 @@ public class MTProjectForm implements MTFormUI {
       disablePremium(useProjectFrameCheckbox);
       disablePremium(projectFrameColor);
       disablePremium(showProjectTitleCheckbox);
+      disablePremium(showIconCheckbox);
       disablePremium(useCustomTextCheckbox);
       disablePremium(customTextField);
     }
@@ -138,6 +140,7 @@ public class MTProjectForm implements MTFormUI {
     useProjectFrameCheckbox = new JCheckBox();
     projectFrameColor = new ColorPanel();
     showProjectTitleCheckbox = new JCheckBox();
+    showIconCheckbox = new JCheckBox();
     useCustomTextCheckbox = new JCheckBox();
     customTextField = new JTextField();
 
@@ -237,6 +240,8 @@ public class MTProjectForm implements MTFormUI {
               "[]" +
                 "[]" +
                 "[]" +
+                "[]" +
+                "[]" +
                 "[]"));
 
             //---- projectFrameDesc ----
@@ -256,12 +261,17 @@ public class MTProjectForm implements MTFormUI {
             showProjectTitleCheckbox.setToolTipText(bundle.getString("MTProjectForm.showProjectTitleCheckbox.toolTipText"));
             projectFramePanel.add(showProjectTitleCheckbox, "cell 0 2,align left center,grow 0 0");
 
+            //---- showIconCheckbox ----
+            showIconCheckbox.setText(bundle.getString("MTProjectForm.showIconCheckbox.text"));
+            showIconCheckbox.setToolTipText(bundle.getString("MTProjectForm.showIconCheckbox.toolTipText"));
+            projectFramePanel.add(showIconCheckbox, "cell 0 3,align left center,grow 0 0");
+
             //---- useCustomTextCheckbox ----
             useCustomTextCheckbox.setText(bundle.getString("MTProjectForm.useCustomTextCheckbox.text"));
             useCustomTextCheckbox.setToolTipText(bundle.getString("MTProjectForm.useCustomTextCheckbox.toolTipText"));
             useCustomTextCheckbox.addActionListener(e -> useCustomTextCheckboxActionPerformed(e));
-            projectFramePanel.add(useCustomTextCheckbox, "cell 0 3,align left center,grow 0 0");
-            projectFramePanel.add(customTextField, "cell 1 3,alignx right,growx 0,width 150:150:150");
+            projectFramePanel.add(useCustomTextCheckbox, "cell 0 4,align left center,grow 0 0");
+            projectFramePanel.add(customTextField, "cell 1 4,alignx right,growx 0,width 150:150:150");
           }
           tabbedPane1.addTab(bundle.getString("MTProjectForm.projectFramePanel.tab.title"), null, projectFramePanel, bundle.getString(
             "MTProjectForm.projectFramePanel.tab.toolTipText"));
@@ -305,6 +315,7 @@ public class MTProjectForm implements MTFormUI {
     disableEnable(useProjectFrameCheckbox, state);
     disableEnable(projectFrameColor, state);
     disableEnable(showProjectTitleCheckbox, state);
+    disableEnable(showIconCheckbox, state);
     disableEnable(useCustomTextCheckbox, state);
     disableEnable(customTextField, state);
 
@@ -312,6 +323,11 @@ public class MTProjectForm implements MTFormUI {
     enableDisableProjectFrame(useProjectFrameCheckbox.isSelected());
     enableDisableCustomTitle(useCustomTextCheckbox.isSelected());
 
+    final boolean eap = ApplicationInfoEx.getInstanceEx().isEAP();
+    if (!eap) {
+      showIconCheckbox.setEnabled(false);
+      showIconCheckbox.setToolTipText(MaterialThemeBundle.message("MTProjectForm.showIconCheckbox.disabledTooltipText"));
+    }
   }
 
   private void afterStateSet() {
@@ -337,6 +353,7 @@ public class MTProjectForm implements MTFormUI {
     setUseProjectFrame(mtConfig.isUseProjectFrame());
     setProjectFrameColor(mtConfig.getProjectFrameColor());
     setUseProjectTitle(mtConfig.isUseProjectTitle());
+    setUseProjectIcon(mtConfig.isUseProjectIcon());
     setUseCustomTitle(mtConfig.isUseCustomTitle());
     setCustomTitle(mtConfig.getCustomTitle());
 
@@ -345,6 +362,7 @@ public class MTProjectForm implements MTFormUI {
     afterStateSet();
   }
 
+  @SuppressWarnings("OverlyComplexMethod")
   public final boolean isModified(final MTBaseConfig config) {
     final MTProjectConfig mtConfig = (MTProjectConfig) config;
 
@@ -358,6 +376,7 @@ public class MTProjectForm implements MTFormUI {
     modified = modified || mtConfig.isUseProjectFrameChanged(isUseProjectFrame());
     modified = modified || mtConfig.isProjectFrameColorChanged(getProjectFrameColor());
     modified = modified || mtConfig.isUseProjectTitleChanged(isUseProjectTitle());
+    modified = modified || mtConfig.isUseProjectIconChanged(isUseProjectIcon());
     modified = modified || mtConfig.isUseCustomTitleChanged(isUseCustomTitle());
     modified = modified || mtConfig.isCustomTitleChanged(getCustomTitle());
 
@@ -458,6 +477,17 @@ public class MTProjectForm implements MTFormUI {
 
   private void setUseProjectTitle(final boolean enabled) {
     showProjectTitleCheckbox.setSelected(enabled);
+  }
+
+  //endregion
+
+  //region Project Icon
+  public final boolean isUseProjectIcon() {
+    return showIconCheckbox.isSelected();
+  }
+
+  private void setUseProjectIcon(final boolean enabled) {
+    showIconCheckbox.setSelected(enabled);
   }
 
   //endregion
@@ -565,6 +595,7 @@ public class MTProjectForm implements MTFormUI {
   private JCheckBox useProjectFrameCheckbox;
   private ColorPanel projectFrameColor;
   private JCheckBox showProjectTitleCheckbox;
+  private JCheckBox showIconCheckbox;
   private JCheckBox useCustomTextCheckbox;
   private JTextField customTextField;
   // JFormDesigner - End of variables declaration  //GEN-END:variables

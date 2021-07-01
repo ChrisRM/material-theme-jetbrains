@@ -9,7 +9,7 @@ exceptions:
 
 formatting:
   Indentation:
-    active: true
+    active: false
     autoCorrect: true
     indentSize: 2
     continuationIndentSize: 2
@@ -17,6 +17,8 @@ formatting:
     active: true
     autoCorrect: true
     indentSize: 2
+  MaximumLineLength:
+    maxLineLength: 160
 
 performance:
   SpreadOperator:

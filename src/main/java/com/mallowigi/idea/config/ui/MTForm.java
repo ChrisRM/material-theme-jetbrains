@@ -29,11 +29,11 @@ package com.mallowigi.idea.config.ui;
 import com.intellij.CommonBundle;
 import com.intellij.application.options.colors.ColorAndFontOptions;
 import com.intellij.ide.DataManager;
+import com.intellij.openapi.application.ex.ApplicationInfoEx;
 import com.intellij.openapi.options.SearchableConfigurable;
 import com.intellij.openapi.options.ex.Settings;
 import com.intellij.openapi.ui.ComboBox;
 import com.intellij.openapi.ui.Messages;
-import com.intellij.openapi.util.IconLoader;
 import com.intellij.ui.ColorPanel;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.ListCellRendererWrapper;
@@ -82,8 +82,7 @@ import static com.mallowigi.idea.utils.MTUiUtils.disablePremium;
   "ConfusingFloatingPointLiteral",
   "unused",
   "PublicMethodNotExposedInInterface",
-  "UndesirableClassUsage"
-  ,
+  "UndesirableClassUsage",
   "unchecked",
   "HardcodedFileSeparator",
   "MethodWithMoreThanThreeNegations",
@@ -172,6 +171,7 @@ public class MTForm implements MTFormUI {
   private JLabel projectFrameDesc;
   private JCheckBox useProjectFrameCheckbox;
   private JCheckBox projectTitleCheckbox;
+  private JCheckBox showIconCheckbox;
   private JCheckBox customTextCheckbox;
   private JTextField customTextField;
   private JLabel customTextHint;
@@ -184,49 +184,6 @@ public class MTForm implements MTFormUI {
   private JCheckBox showWhatsNewCheckbox;
   private JButton resetDefaultsButton;
   // GEN-END:variables
-
-  @SuppressWarnings("OverlyLongMethod")
-  private void disablePremiumFeatures() {
-    final boolean isFreeLicense = !MTLicenseChecker.isLicensed();
-    if (isFreeLicense) {
-      disablePremium(highContrastCheckbox);
-      disablePremium(directoriesColorLink);
-      disablePremium(scrollbarsLink);
-      disablePremium(activeTabHighlightCheckbox);
-      disablePremium(activeTabHighlightColor);
-      disablePremium(thicknessLabel);
-      disablePremium(highlightSpinner);
-      disablePremium(isUpperCaseTabsCheckbox);
-      disablePremium(positionLabel);
-      disablePremium(tabHighlightPositionComboBox);
-      disablePremium(tabFontSizeCheckbox);
-      disablePremium(tabFontSizeSpinner);
-      disablePremium(selectedIndicatorLabel);
-      disablePremium(indicatorStyleComboBox);
-      disablePremium(indicatorThicknessLabel);
-      disablePremium(indicatorThicknessSpinner);
-      disablePremium(secondAccentLabel);
-      disablePremium(styledDirectoriesCheckbox);
-      disablePremium(fontSizeCheckbox);
-      disablePremium(fontSizeSpinner);
-      disablePremium(accentModeCheckbox);
-      disablePremium(secondAccentColorChooser);
-      disablePremium(tabShadowCheckbox);
-      disablePremium(useMaterialFontCheckbox);
-      disablePremium(fileColorsCheckbox);
-      disablePremium(useMaterialWallpapersCheckbox);
-      disablePremium(useProjectFrameCheckbox);
-      disablePremium(codeAdditionsCheckBox);
-      disablePremium(isColoredOpenedDirsCheckbox);
-      disablePremium(borderedButtonsCheckbox);
-      disablePremium(enforceLanguageOnOff);
-      disablePremium(enforceHighlightingLabel);
-      disablePremium(projectTitleCheckbox);
-      disablePremium(customTextCheckbox);
-      disablePremium(customTextField);
-      disablePremium(customTextHint);
-    }
-  }
 
   @Override
   public final void init() {
@@ -297,6 +254,7 @@ public class MTForm implements MTFormUI {
     setUseProjectFrame(mtConfig.isUseProjectFrame());
     setUseStripedToolWindows(mtConfig.isStripedToolWindowsEnabled());
     setUseProjectTitle(mtConfig.isUseProjectTitle());
+    setUseProjectIcon(mtConfig.isUseProjectIcon());
     setUseCustomTitle(mtConfig.isUseCustomTitle());
     setCustomTitle(mtConfig.getCustomTitle());
 
@@ -356,6 +314,7 @@ public class MTForm implements MTFormUI {
     modified = modified || mtConfig.isUseMaterialWallpapersChanged(isUseMaterialWallpapers());
     modified = modified || mtConfig.isUseProjectFrameChanged(isUseProjectFrame());
     modified = modified || mtConfig.isUseProjectTitleChanged(isUseProjectTitle());
+    modified = modified || mtConfig.isUseProjectIconChanged(isUseProjectIcon());
     modified = modified || mtConfig.isUseCustomTitleChanged(isUseCustomTitle());
     modified = modified || mtConfig.isCustomTitleChanged(getCustomTitle());
 
@@ -851,6 +810,17 @@ public class MTForm implements MTFormUI {
 
   //endregion
 
+  //region Project Icon
+  public final boolean isUseProjectIcon() {
+    return showIconCheckbox.isSelected();
+  }
+
+  private void setUseProjectIcon(final boolean enabled) {
+    showIconCheckbox.setSelected(enabled);
+  }
+
+  //endregion
+
   //region Use Custom Title
   public final boolean isUseCustomTitle() {
     return customTextCheckbox.isSelected();
@@ -1104,6 +1074,7 @@ public class MTForm implements MTFormUI {
     projectFrameDesc = compFactory.createLabel(bundle.getString("MTForm.projectFrameDesc.textWithMnemonic"));
     useProjectFrameCheckbox = new JCheckBox();
     projectTitleCheckbox = new JCheckBox();
+    showIconCheckbox = new JCheckBox();
     customTextCheckbox = new JCheckBox();
     customTextField = new JTextField();
     customTextHint = compFactory.createLabel("");
@@ -1575,7 +1546,9 @@ public class MTForm implements MTFormUI {
             "[]" +
               "[]" +
               "[]" +
+              "[]" +
               "[]0" +
+              "[]" +
               "[]"));
 
           //---- projectFrameDesc ----
@@ -1593,17 +1566,22 @@ public class MTForm implements MTFormUI {
           projectTitleCheckbox.setToolTipText(bundle.getString("MTForm.projectTitleCheckbox.toolTipText"));
           projectFramePanel.add(projectTitleCheckbox, "cell 0 2,align left center,grow 0 0");
 
+          //---- showIconCheckbox ----
+          showIconCheckbox.setText(bundle.getString("MTForm.showIconCheckbox.text"));
+          showIconCheckbox.setToolTipText(bundle.getString("MTForm.showIconCheckbox.toolTipText"));
+          projectFramePanel.add(showIconCheckbox, "cell 0 3,align left center,grow 0 0");
+
           //---- customTextCheckbox ----
           customTextCheckbox.setText(bundle.getString("MTForm.customTextCheckbox.text"));
           customTextCheckbox.setToolTipText(bundle.getString("MTForm.customTextCheckbox.toolTipText"));
           customTextCheckbox.addActionListener(e -> customTextCheckboxActionPerformed(e));
-          projectFramePanel.add(customTextCheckbox, "cell 0 3,align left center,grow 0 0");
-          projectFramePanel.add(customTextField, "cell 1 3,alignx right,growx 0,width 150:150:150");
+          projectFramePanel.add(customTextCheckbox, "cell 0 4,align left center,grow 0 0");
+          projectFramePanel.add(customTextField, "cell 1 4,alignx right,growx 0,width 150:150:150");
 
           //---- customTextHint ----
           customTextHint.setForeground(UIManager.getColor("Label.disabledForeground"));
           customTextHint.setText(bundle.getString("MTForm.customTextHint.text"));
-          projectFramePanel.add(customTextHint, "cell 0 4,gapx 16");
+          projectFramePanel.add(customTextHint, "cell 0 5,gapx 16");
         }
         tabbedPane1.addTab(bundle.getString("MTForm.projectFramePanel.tab.title"), projectFramePanel);
 
@@ -1668,6 +1646,53 @@ public class MTForm implements MTFormUI {
 
   @Override
   public final void setupComponents() {
+    configureSpinners();
+
+    // Disable features that are not available on certain platforms or versions
+    disableFeatures();
+
+    // Themes
+    themeComboBox.setModel(new DefaultComboBoxModel<>(MTThemes.getAllThemes()));
+    themeComboBox.setRenderer(new ListCellRendererWrapper<MTThemeFacade>() {
+      @Override
+      public void customize(final JList list, final MTThemeFacade value, final int index, final boolean selected, final boolean hasFocus) {
+        final Icon baseIcon;
+        if (value == null) {
+          return;
+        }
+        baseIcon = value.getIcon();
+        setIcon(baseIcon);
+        setText(value.getThemeName());
+      }
+    });
+
+    // Indicator
+    indicatorStyleComboBox.setModel(new DefaultComboBoxModel<>(IndicatorStyles.values()));
+
+    // Positions
+    tabHighlightPositionComboBox.setModel(new DefaultComboBoxModel<>(TabHighlightPositions.values()));
+
+    configureLinks();
+
+    // Disable the premium features
+    disablePremiumFeatures();
+  }
+
+  /**
+   * Disable features that are not available on certain platforms/versions/etc
+   */
+  private void disableFeatures() {
+    final boolean eap = ApplicationInfoEx.getInstanceEx().isEAP();
+    showIconCheckbox.setEnabled(eap);
+    if (!eap) {
+      showIconCheckbox.setToolTipText(MaterialThemeBundle.message("MTProjectForm.showIconCheckbox.disabledTooltipText"));
+    }
+  }
+
+  /**
+   * Configure the spinners and their bounds
+   */
+  private void configureSpinners() {
     final MTConfig config = MTConfig.getInstance();
     final int highlightThickness = MTUiUtils.valueInRange(config.getHighlightThickness(), MTConfig.MIN_HIGHLIGHT_THICKNESS,
       MTConfig.MAX_HIGHLIGHT_THICKNESS);
@@ -1698,32 +1723,16 @@ public class MTForm implements MTFormUI {
     indicatorThicknessSpinnerModel = new SpinnerNumberModel(highlightThickness, MTConfig.MIN_INDICATOR_THICKNESS,
       MTConfig.MAX_INDICATOR_THICKNESS, 1);
     indicatorThicknessSpinner.setModel(indicatorThicknessSpinnerModel);
+  }
 
-    fileColorsLink.setIcon(IconLoader.findIcon("icons/mt/link2.svg"));
-    directoriesColorLink.setIcon(IconLoader.findIcon("icons/mt/link2.svg"));
-    fileStatusColorsLink.setIcon(IconLoader.findIcon("icons/mt/link2.svg"));
-    scrollbarsLink.setIcon(IconLoader.findIcon("icons/mt/link2.svg"));
-
-    // Themes
-    themeComboBox.setModel(new DefaultComboBoxModel<>(MTThemes.getAllThemes()));
-    themeComboBox.setRenderer(new ListCellRendererWrapper<MTThemeFacade>() {
-      @Override
-      public void customize(final JList list, final MTThemeFacade value, final int index, final boolean selected, final boolean hasFocus) {
-        final Icon baseIcon;
-        if (value == null) {
-          return;
-        }
-        baseIcon = value.getIcon();
-        setIcon(baseIcon);
-        setText(value.getThemeName());
-      }
-    });
-
-    // Indicator
-    indicatorStyleComboBox.setModel(new DefaultComboBoxModel<>(IndicatorStyles.values()));
-
-    // Positions
-    tabHighlightPositionComboBox.setModel(new DefaultComboBoxModel<>(TabHighlightPositions.values()));
+  /**
+   * Create the links and their targets
+   */
+  private void configureLinks() {
+    fileColorsLink.setIcon(MTUiUtils.LINK_ICON);
+    directoriesColorLink.setIcon(MTUiUtils.LINK_ICON);
+    fileStatusColorsLink.setIcon(MTUiUtils.LINK_ICON);
+    scrollbarsLink.setIcon(MTUiUtils.LINK_ICON);
 
     scrollbarsLink.setListener((aSource, aLinkData) -> {
       final Settings settings = Settings.KEY.getData(DataManager.getInstance().getDataContext(content));
@@ -1736,7 +1745,6 @@ public class MTForm implements MTFormUI {
         }
       }
     }, null);
-
     fileColorsLink.setListener((aSource, aLinkData) -> {
       final Settings settings = Settings.KEY.getData(DataManager.getInstance().getDataContext(content));
 
@@ -1744,7 +1752,6 @@ public class MTForm implements MTFormUI {
         settings.select(settings.find(MTCustomThemeConfigurable.class));
       }
     }, null);
-
     fileStatusColorsLink.setListener((aSource, aLinkData) -> {
       final Settings settings = Settings.KEY.getData(DataManager.getInstance().getDataContext(content));
 
@@ -1756,7 +1763,6 @@ public class MTForm implements MTFormUI {
         }
       }
     }, null);
-
     directoriesColorLink.setListener((aSource, aLinkData) -> {
       final Settings settings = Settings.KEY.getData(DataManager.getInstance().getDataContext(content));
 
@@ -1768,8 +1774,53 @@ public class MTForm implements MTFormUI {
         }
       }
     }, null);
+  }
 
-    disablePremiumFeatures();
+  /**
+   * Disable features for non premium users
+   */
+  @SuppressWarnings("OverlyLongMethod")
+  private void disablePremiumFeatures() {
+    final boolean isFreeLicense = !MTLicenseChecker.isLicensed();
+    if (isFreeLicense) {
+      disablePremium(highContrastCheckbox);
+      disablePremium(directoriesColorLink);
+      disablePremium(scrollbarsLink);
+      disablePremium(activeTabHighlightCheckbox);
+      disablePremium(activeTabHighlightColor);
+      disablePremium(thicknessLabel);
+      disablePremium(highlightSpinner);
+      disablePremium(isUpperCaseTabsCheckbox);
+      disablePremium(positionLabel);
+      disablePremium(tabHighlightPositionComboBox);
+      disablePremium(tabFontSizeCheckbox);
+      disablePremium(tabFontSizeSpinner);
+      disablePremium(selectedIndicatorLabel);
+      disablePremium(indicatorStyleComboBox);
+      disablePremium(indicatorThicknessLabel);
+      disablePremium(indicatorThicknessSpinner);
+      disablePremium(secondAccentLabel);
+      disablePremium(styledDirectoriesCheckbox);
+      disablePremium(fontSizeCheckbox);
+      disablePremium(fontSizeSpinner);
+      disablePremium(accentModeCheckbox);
+      disablePremium(secondAccentColorChooser);
+      disablePremium(tabShadowCheckbox);
+      disablePremium(useMaterialFontCheckbox);
+      disablePremium(fileColorsCheckbox);
+      disablePremium(useMaterialWallpapersCheckbox);
+      disablePremium(useProjectFrameCheckbox);
+      disablePremium(codeAdditionsCheckBox);
+      disablePremium(isColoredOpenedDirsCheckbox);
+      disablePremium(borderedButtonsCheckbox);
+      disablePremium(enforceLanguageOnOff);
+      disablePremium(enforceHighlightingLabel);
+      disablePremium(projectTitleCheckbox);
+      disablePremium(customTextCheckbox);
+      disablePremium(customTextField);
+      disablePremium(showIconCheckbox);
+      disablePremium(customTextHint);
+    }
   }
 
   public static void showFontWarningDialog() {

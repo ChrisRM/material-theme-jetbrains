@@ -31,7 +31,7 @@ import com.intellij.openapi.editor.DefaultLanguageHighlighterColors;
 import com.intellij.openapi.editor.colors.TextAttributesKey;
 import com.intellij.openapi.util.TextRange;
 import com.intellij.psi.PsiElement;
-import com.intellij.psi.tree.IElementType;
+import com.intellij.psi.impl.source.tree.LeafPsiElement;
 import com.intellij.util.ObjectUtils;
 import com.mallowigi.idea.MTConfig;
 import org.jetbrains.annotations.NotNull;
@@ -77,11 +77,14 @@ public class JSAnnotator extends BaseAnnotator {
     if (kind == null) {
       return;
     }
-
-    final IElementType elementType = element.getNode().getElementType();
-    if (!elementType.toString().contains("KEYWORD") && !elementType.toString().contains("LITERAL")) {
+    if (!(element instanceof LeafPsiElement)) {
       return;
     }
+
+    //    final IElementType elementType = element.getNode().getElementType();
+    //    if (!elementType.toString().contains("KEYWORD") && !elementType.toString().contains("LITERAL")) {
+    //      return;
+    //    }
 
     final TextRange textRange = element.getTextRange();
     final TextRange range = new TextRange(textRange.getStartOffset(), textRange.getEndOffset());

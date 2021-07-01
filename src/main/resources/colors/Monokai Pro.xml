@@ -93,9 +93,32 @@
         <option name="FILESTATUS_SUPPRESSED" value="727072" />
         <option name="FILESTATUS_SWITCHED" value="ab9df2" />
         <option name="FILESTATUS_UNKNOWN" value="f59762" />
-        <option name="FILESTATUS_addedOutside" value="a9dc76" />
+        <option name="FILESTATUS_addedOutside" value="ffd866" />
         <option name="FILESTATUS_changelistConflict" value="f65f87" />
         <option name="FILESTATUS_modifiedOutside" value="ab9df2" />
+
+        <option name="MT_FILESTATUS_ADDED" value="a9dc76" />
+        <option name="MT_FILESTATUS_COPIED" value="a9dc76" />
+        <option name="MT_FILESTATUS_DELETED" value="727072" />
+        <option name="MT_FILESTATUS_HIJACKED" value="ffd866" />
+        <option name="MT_FILESTATUS_IDEA_FILESTATUS_DELETED_FROM_FILE_SYSTEM" value="727072" />
+        <option name="MT_FILESTATUS_IDEA_FILESTATUS_IGNORED" value="ab7967" />
+        <option name="MT_FILESTATUS_IDEA_FILESTATUS_MERGED_WITH_BOTH_CONFLICTS" value="fc9867" />
+        <option name="MT_FILESTATUS_IDEA_FILESTATUS_MERGED_WITH_CONFLICTS" value="fc9867" />
+        <option name="MT_FILESTATUS_IDEA_FILESTATUS_MERGED_WITH_PROPERTY_CONFLICTS" value="fc9867" />
+        <option name="MT_FILESTATUS_IDEA_SVN_FILESTATUS_EXTERNAL" value="a9dc76" />
+        <option name="MT_FILESTATUS_IGNORE.PROJECT_VIEW.IGNORED" value="ab7967" />
+        <option name="MT_FILESTATUS_MERGED" value="ab9df2" />
+        <option name="MT_FILESTATUS_MODIFIED" value="78dce8" />
+        <option name="MT_FILESTATUS_NOT_CHANGED_IMMEDIATE" value="78dce8" />
+        <option name="MT_FILESTATUS_NOT_CHANGED_RECURSIVE" value="78dce8" />
+        <option name="MT_FILESTATUS_SUPPRESSED" value="727072" />
+        <option name="MT_FILESTATUS_SWITCHED" value="ab9df2" />
+        <option name="MT_FILESTATUS_UNKNOWN" value="f59762" />
+        <option name="MT_FILESTATUS_addedOutside" value="ffd866" />
+        <option name="MT_FILESTATUS_changelistConflict" value="f65f87" />
+        <option name="MT_FILESTATUS_modifiedOutside" value="ab9df2" />
+
         <option name="GUTTER_BACKGROUND" value="2d2a2e" />
         <option name="INDENT_GUIDE" value="403e41" />
         <option name="INFORMATION_HINT" value="403e41" />
@@ -2926,8 +2949,7 @@
         </option>
         <option name="NOT_USED_ELEMENT_ATTRIBUTES">
             <value>
-                <option name="FOREGROUND" value="5b595c" />
-                <option name="EFFECT_COLOR" value="5b595c" />
+                <option name="FOREGROUND" value="d3d3d1" />
                 <option name="EFFECT_TYPE" value="2" />
             </value>
         </option>

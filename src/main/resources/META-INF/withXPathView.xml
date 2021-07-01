@@ -1,0 +1,9 @@
+<idea-plugin>
+  <extensions defaultExtensionNs="com.intellij">
+    <postStartupActivity implementation="com.mallowigi.idea.integrations.XPathListener" />
+  </extensions>
+  <applicationListeners>
+    <listener class="com.mallowigi.idea.integrations.XPathListener"
+              topic="com.intellij.ide.ui.LafManagerListener" />
+  </applicationListeners>
+</idea-plugin>

@@ -50,7 +50,8 @@ import java.util.regex.Pattern;
 
 import static com.mallowigi.idea.utils.MTUiUtils.stringToARGB;
 
-@SuppressWarnings("SyntheticAccessorCall")
+@SuppressWarnings({"SyntheticAccessorCall",
+  "MethodOnlyUsedFromInnerClass"})
 public final class MTProjectFrame extends IdeRootPaneNorthExtension implements Disposable {
   private final Project myProject;
   private final MessageBusConnection connect;
@@ -163,8 +164,8 @@ public final class MTProjectFrame extends IdeRootPaneNorthExtension implements D
     }
   }
 
-  private final class MTProjectTitlePanel extends JPanel {
-    private final Pattern COMPILE = Pattern.compile(MTUiUtils.PROJECT_PATTERN);
+  private static final class MTProjectTitlePanel extends JPanel {
+    private final Pattern projectPattern = Pattern.compile(MTUiUtils.PROJECT_PATTERN);
     private final Project myProject;
 
     private MTProjectTitlePanel(final Project project) {
@@ -184,12 +185,14 @@ public final class MTProjectFrame extends IdeRootPaneNorthExtension implements D
       final Shape oldClip = g.getClip();
 
       // Draw icon
-      final RecentProjectsManagerBase recentProjectsManage = RecentProjectsManagerBase.getInstanceEx();
-      final Icon recentIcon = recentProjectsManage.getProjectIcon(Objects.requireNonNull(myProject.getBasePath()), false, false);
-      recentIcon.paintIcon(this,
-        g,
-        x - recentIcon.getIconWidth() - padding * 2,
-        padding / 2);
+      if (shouldPaintIcon()) {
+        final RecentProjectsManagerBase recentProjectsManage = RecentProjectsManagerBase.getInstanceEx();
+        final Icon recentIcon = recentProjectsManage.getProjectIcon(Objects.requireNonNull(myProject.getBasePath()), false, false);
+        recentIcon.paintIcon(this,
+          g,
+          x - recentIcon.getIconWidth() - padding * 2,
+          padding / 2);
+      }
 
       if (shouldDrawText()) {
         g.setColor(MTUI.Panel.getBackground());
@@ -245,6 +248,15 @@ public final class MTProjectFrame extends IdeRootPaneNorthExtension implements D
       return MTConfig.getInstance().isUseProjectTitle();
     }
 
+    private boolean shouldPaintIcon() {
+      final MTProjectConfig projectConfig = MTUiUtils.getProjectConfigIfEnabled(myProject);
+      if (projectConfig != null) {
+        return projectConfig.isUseProjectIcon();
+      }
+
+      return MTConfig.getInstance().isUseProjectIcon();
+    }
+
     @SuppressWarnings("FeatureEnvy")
     private String getTextToDraw() {
       String textToDraw = MTConfig.DEFAULT_TITLE;
@@ -256,7 +268,7 @@ public final class MTProjectFrame extends IdeRootPaneNorthExtension implements D
       } else if (mtConfig.isUseCustomTitle()) {
         textToDraw = mtConfig.getCustomTitle();
       }
-      return COMPILE.matcher(textToDraw).replaceAll(myProject.getName());
+      return projectPattern.matcher(textToDraw).replaceAll(myProject.getName());
     }
 
     @Override
