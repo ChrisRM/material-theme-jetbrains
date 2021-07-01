@@ -18,23 +18,24 @@ class XPathListener : LafManagerListener, StartupActivity {
 
   private fun installXPathSearchColors() {
     val currentLookAndFeel = LafManager.getInstance().currentLookAndFeel
+    val xpathConfig = XPathAppComponent.getInstance().config
     if (MTThemeManager.isMaterialTheme(currentLookAndFeel)) {
       val schemeForCurrentUITheme = EditorColorsManager.getInstance().schemeForCurrentUITheme
       // install themed search results text attributes.
       val textSearchResultAttributes = schemeForCurrentUITheme.getAttributes(EditorColors.TEXT_SEARCH_RESULT_ATTRIBUTES)
-      XPathAppComponent.getInstance().config.attributes.backgroundColor = textSearchResultAttributes.backgroundColor
-      XPathAppComponent.getInstance().config.attributes.foregroundColor = textSearchResultAttributes.foregroundColor
-      XPathAppComponent.getInstance().config.contextAttributes.backgroundColor =
+      xpathConfig.attributes.backgroundColor = textSearchResultAttributes.backgroundColor
+      xpathConfig.attributes.foregroundColor = textSearchResultAttributes.foregroundColor
+      xpathConfig.contextAttributes.backgroundColor =
         schemeForCurrentUITheme.getAttributes(IDENTIFIER_UNDER_CARET_ATTRIBUTES).backgroundColor
     } else {
       // reset to defaults
       val config = Config()
-      XPathAppComponent.getInstance().config.attributes.backgroundColor = config.attributes.backgroundColor
-      XPathAppComponent.getInstance().config.attributes.foregroundColor = config.attributes.foregroundColor
+      xpathConfig.attributes.backgroundColor = config.attributes.backgroundColor
+      xpathConfig.attributes.foregroundColor = config.attributes.foregroundColor
 
-      XPathAppComponent.getInstance().config.contextAttributes.backgroundColor =
+      xpathConfig.contextAttributes.backgroundColor =
         config.contextAttributes.backgroundColor
-      XPathAppComponent.getInstance().config.contextAttributes.foregroundColor =
+      xpathConfig.contextAttributes.foregroundColor =
         config.contextAttributes.foregroundColor
     }
   }
