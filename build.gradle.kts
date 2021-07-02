@@ -34,7 +34,7 @@ plugins {
   // Kotlin support
   id("org.jetbrains.kotlin.jvm") version "1.5.20"
   // gradle-intellij-plugin - read more: https://github.com/JetBrains/gradle-intellij-plugin
-  id("org.jetbrains.intellij") version "1.0"
+  id("org.jetbrains.intellij") version "1.1.2"
   // gradle-changelog-plugin - read more: https://github.com/JetBrains/gradle-changelog-plugin
   id("org.jetbrains.changelog") version "1.1.2"
   // detekt linter - read more: https://detekt.github.io/detekt/gradle.html
@@ -74,12 +74,14 @@ intellij {
   updateSinceUntilBuild.set(true)
 
   // Plugin Dependencies. Uses `platformPlugins` property from the gradle.properties file.
-  plugins.set(listOf(
+  plugins.set(
+    listOf(
       "java",
       "training",
       "com.intellij.CloudConfig",
       "XPathView",
-  ))
+    )
+  )
 }
 
 // Configure gradle-changelog-plugin plugin.
@@ -140,7 +142,7 @@ tasks {
 
     // Get the latest available change notes from the changelog file
     changeNotes.set(
-        changelog.getLatest().toHTML()
+      changelog.getLatest().toHTML()
     )
   }
 
