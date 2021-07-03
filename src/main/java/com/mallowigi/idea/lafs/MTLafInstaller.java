@@ -42,7 +42,7 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
-import javax.swing.plaf.ColorUIResource;
+import javax.swing.plaf.*;
 import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
@@ -54,12 +54,12 @@ import java.util.Objects;
  * @author helio
  * Created on 2018-10-29
  */
-@SuppressWarnings({"ClassWithTooManyMethods",
-  "OverlyLongMethod",
-  "DuplicateStringLiteralInspection",
-  "OverlyCoupledClass",
-  "MagicNumber",
-  "StandardVariableNames"})
+@SuppressWarnings( {"ClassWithTooManyMethods",
+    "OverlyLongMethod",
+    "DuplicateStringLiteralInspection",
+    "OverlyCoupledClass",
+    "MagicNumber",
+    "StandardVariableNames"})
 public class MTLafInstaller {
   /**
    * The Theme
@@ -90,7 +90,7 @@ public class MTLafInstaller {
     replaceSelectedIndicator(defaults);
     replaceDropdowns(defaults);
     replaceTableHeaders(defaults);
-    //    replaceRootPane(defaults);
+    replaceRootPane(defaults);
     replaceMenus(defaults);
     replaceTabbedPanes(defaults);
     replaceLabels(defaults);
@@ -465,10 +465,10 @@ public class MTLafInstaller {
    *
    * @param defaults of type UIDefaults the defaults to fill
    */
-  @SuppressWarnings({"MagicCharacter",
-    "DuplicateStringLiteralInspection",
-    "FeatureEnvy",
-    "Duplicates"})
+  @SuppressWarnings( {"MagicCharacter",
+      "DuplicateStringLiteralInspection",
+      "FeatureEnvy",
+      "Duplicates"})
   static void loadDefaults(final UIDefaults defaults) {
     @NonNls final Map<String, Object> globalProps = new HashMap<>(100);
     final MTThemeable selectedTheme = MTConfig.getInstance().getSelectedTheme().getTheme();
@@ -515,5 +515,4 @@ public class MTLafInstaller {
   final String getPrefix() {
     return Objects.requireNonNull(theme).getId();
   }
-
 }

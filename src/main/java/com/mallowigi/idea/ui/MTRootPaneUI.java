@@ -34,7 +34,6 @@ import com.intellij.openapi.util.SystemInfo;
 import com.intellij.openapi.util.SystemInfoRt;
 import com.intellij.openapi.util.registry.Registry;
 import com.intellij.ui.ColorUtil;
-import com.intellij.util.lang.JavaVersion;
 import com.intellij.util.ui.JBInsets;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
@@ -45,28 +44,25 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
-import javax.swing.border.AbstractBorder;
-import javax.swing.border.Border;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.basic.BasicRootPaneUI;
+import javax.swing.border.*;
+import javax.swing.plaf.*;
+import javax.swing.plaf.basic.*;
 import java.awt.*;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
+import java.awt.event.*;
 import java.beans.PropertyChangeListener;
 
 import static com.mallowigi.idea.utils.MTUiUtils.stringToARGB;
 
-@SuppressWarnings({"DuplicateStringLiteralInspection",
-  "SyntheticAccessorCall",
-  "StandardVariableNames"})
+@SuppressWarnings( {"DuplicateStringLiteralInspection",
+    "SyntheticAccessorCall",
+    "StandardVariableNames"})
 public final class MTRootPaneUI extends DarculaRootPaneUI {
   private static final int JDK_VER = 11;
 
-  private Runnable disposer = null;
+  private final Runnable disposer = null;
 
-  @SuppressWarnings({"MethodOverridesStaticMethodOfSuperclass",
-    "unused"})
+  @SuppressWarnings( {"MethodOverridesStaticMethodOfSuperclass",
+      "unused"})
   public static ComponentUI createUI(final JComponent component) {
     return hasCustomDecoration() ? new MTRootPaneUI() : createWindowsRootPaneUI();
   }
@@ -78,7 +74,7 @@ public final class MTRootPaneUI extends DarculaRootPaneUI {
   @SuppressWarnings("OverlyBroadCatchBlock")
   private static ComponentUI createWindowsRootPaneUI() {
     try {
-      return (ComponentUI) Class.forName("com.sun.java.swing.plaf.windows.WindowsRootPaneUI").getConstructor().newInstance();
+      return (ComponentUI) Class.forName("com.sun.java.swing.plaf.windows.WindowsRootPaneUI").newInstance();
     } catch (final Exception e) {
       return new BasicRootPaneUI();
     }
@@ -95,29 +91,25 @@ public final class MTRootPaneUI extends DarculaRootPaneUI {
   @Override
   public void installUI(final JComponent c) {
     super.installUI(c);
-    //    final boolean darkTitleBar = MTConfig.getInstance().isDarkTitleBar();
     final boolean isPremium = MTLicenseChecker.isLicensed();
 
     if (!isPremium) {
       return;
     }
 
-    if (SystemInfo.isMac || SystemInfo.isLinux) {
-      //      if (darkTitleBar) {
-
-      if (JavaVersion.current().feature >= JDK_VER) {
-        final JRootPane rootPane = (JRootPane) c;
-
-        c.addHierarchyListener((event) -> {
-          final Window window = UIUtil.getWindow(c);
-          final String title = getWindowTitle(window);
-          if (title != null && !isDialogWindow(window)) {
-            setCustomTitleBar(window, rootPane, (runnable) -> disposer = runnable);
-          }
-        });
-        //        }
-      }
-    }
+    //    if (SystemInfo.isMac) {
+    //      if (JavaVersion.current().feature >= JDK_VER) {
+    //        final JRootPane rootPane = (JRootPane) c;
+    //
+    //        c.addHierarchyListener((event) -> {
+    //          final Window window = UIUtil.getWindow(c);
+    //          final String title = getWindowTitle(window);
+    //          if (title != null && !isDialogWindow(window)) {
+    //            setCustomTitleBar(window, rootPane, (runnable) -> disposer = runnable);
+    //          }
+    //        });
+    //      }
+    //    }
   }
 
   private static int getTransparentTitleBarHeight(final JRootPane rootPane) {
@@ -207,5 +199,4 @@ public final class MTRootPaneUI extends DarculaRootPaneUI {
     return window instanceof JDialog ? ((Dialog) window).isModal() :
            !(window instanceof JFrame) || ((Frame) window).isUndecorated();
   }
-
 }
