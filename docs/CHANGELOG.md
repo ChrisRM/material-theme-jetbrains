@@ -1,5 +1,16 @@
 ## Changelog
 ----
+
+## 6.7.2
+
+### Fixes
+- Fix issue with notification showing all the time when the what's new window is disabled
+
+## 6.7.1
+
+### Fixes
+- Fix titlebar issue in Windows
+
 ## 6.7.0
 
 ### Features

@@ -62,14 +62,12 @@ class MTUpdatesComponent : StartupActivity {
     // Show new version notification
     val pluginVersion = MTUiUtils.getVersion()
     val updated = pluginVersion != config!!.getVersion()
+    config!!.setVersion(pluginVersion)
 
     // Show notification update
     if (updated && MTConfig.getInstance().isShowWhatsNew) {
-      config!!.setVersion(pluginVersion)
       ApplicationManager.getApplication().invokeLater {
-        MTWhatsNewAction.openWhatsNewFile(myProject!!,
-                                          MTWhatsNewAction.WHATS_NEW_URL,
-                                          null)
+        MTWhatsNewAction.openWhatsNewFile(myProject!!, MTWhatsNewAction.WHATS_NEW_URL, null)
       }
     }
 
@@ -78,8 +76,7 @@ class MTUpdatesComponent : StartupActivity {
       val notification = createStatsNotification()
       Notifications.Bus.notify(notification, myProject)
     }
-    if (updated && !isInstallAtomShown &&
-        !PluginManager.isPluginInstalled(PluginId.getId(MaterialThemeBundle.message("atom.pluginid")))) {
+    if (updated && !isInstallAtomShown && !PluginManager.isPluginInstalled(PluginId.getId(MaterialThemeBundle.message("atom.pluginid")))) {
       val notification = createInstallAtomNotification()
       Notifications.Bus.notify(notification, myProject)
     }
@@ -120,11 +117,11 @@ class MTUpdatesComponent : StartupActivity {
       val group = NotificationGroupManager.getInstance().getNotificationGroup(MTNotifications.CHANNEL)
       val notif = MTStatisticsNotification()
       return group.createNotification(
-          notif.title,
-          notif.subtitle,
-          notif.content,
-          notif.type,
-          notif.listener
+        notif.title,
+        notif.subtitle,
+        notif.content,
+        notif.type,
+        notif.listener
       )
     }
 
@@ -132,11 +129,11 @@ class MTUpdatesComponent : StartupActivity {
       val group = NotificationGroupManager.getInstance().getNotificationGroup(MTNotifications.CHANNEL)
       val notif = MTInstallAtomNotification()
       return group.createNotification(
-          notif.title,
-          notif.subtitle,
-          notif.content,
-          notif.type,
-          notif.listener
+        notif.title,
+        notif.subtitle,
+        notif.content,
+        notif.type,
+        notif.listener
       )
     }
 
