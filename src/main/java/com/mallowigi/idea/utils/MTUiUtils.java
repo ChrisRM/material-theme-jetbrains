@@ -70,6 +70,7 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Collections;
@@ -77,6 +78,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.stream.Stream;
 
 /**
  * All kinds of utils and constants
@@ -474,5 +476,11 @@ public enum MTUiUtils {
       return null;
     }
     return null;
+  }
+
+  public static Field findField(final Stream<Field> fieldStream, final @NonNls String name) {
+    return fieldStream.filter(field -> name.equals(field.getName()))
+                      .findFirst()
+                      .orElse(null);
   }
 }

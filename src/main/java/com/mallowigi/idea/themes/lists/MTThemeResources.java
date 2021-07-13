@@ -243,6 +243,7 @@ public enum MTThemeResources {
         "InternalFrame.activeTitleForeground",
         "Label.foreground",
         "Label.selectedDisabledForeground",
+        "Lesson.Tooltip.foreground",
         "List.foreground",
         "Menu.foreground",
         "MenuBar.foreground",
@@ -344,7 +345,9 @@ public enum MTThemeResources {
         "InternalFrame.inactiveTitleForeground", // deprecated
         "Label.grayForeground", // deprecated
         "Label.infoForeground",
-        "Label.textForeground", // deprecated
+        "Label.textForeground", //
+        "Lesson.stepNumberForeground",
+        "Lesson.Tooltip.stepNumberForeground",
         "Link.secondaryForeground",
         "Menu.acceleratorForeground",
         "MenuItem.acceleratorForeground",
@@ -519,6 +522,7 @@ public enum MTThemeResources {
         "GotItTooltip.endBorderColor",
         "GotItTooltip.startBackground",
         "GotItTooltip.startBorderColor",
+        "Lesson.Tooltip.spanBackground",
         "Notification.MoreButton.background",
         "Notification.MoreButton.innerBorderColor",
         "Outline.color", // deprecated
@@ -550,6 +554,7 @@ public enum MTThemeResources {
         "CompletionPopup.background",
         "EditorGroupsTabs.borderColor",
         "EditorTabs.borderColor",
+        "Lesson.shortcutBackground",
         "List.background",
         "MemoryIndicator.allocatedBackground",
         "MemoryIndicator.unusedColor", // deprecated
@@ -873,6 +878,7 @@ public enum MTThemeResources {
         "Canvas.Tooltip.background",
         "GotItTooltip.background",
         "GotItTooltip.borderColor",
+        "Lesson.Tooltip.background",
         "Notification.background",
         "Notification.borderColor",
         "Notifications.background", // deprecated
