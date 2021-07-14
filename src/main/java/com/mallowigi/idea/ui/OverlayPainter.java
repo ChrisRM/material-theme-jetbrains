@@ -28,16 +28,20 @@ package com.mallowigi.idea.ui;
 
 import com.intellij.openapi.ui.AbstractPainter;
 import com.intellij.ui.JBColor;
+import com.intellij.ui.components.panels.NonOpaquePanel;
 import com.intellij.util.ui.GraphicsUtil;
 
 import java.awt.*;
+import java.awt.geom.Rectangle2D;
 
 public class OverlayPainter extends AbstractPainter {
-  private OverlayPainter(final Shape myBoundingBox) {
-    this.myBoundingBox = myBoundingBox;
-  }
-
   private final Shape myBoundingBox;
+
+  public OverlayPainter(final NonOpaquePanel component) {
+    final Dimension size = component.getSize();
+    final Rectangle r = new Rectangle(size);
+    myBoundingBox = new Rectangle2D.Double(r.x, r.y, r.width, r.height);
+  }
 
   @Override
   public boolean needsRepaint() {
