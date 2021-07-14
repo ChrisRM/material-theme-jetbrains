@@ -42,7 +42,7 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
-import javax.swing.plaf.*;
+import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
@@ -54,12 +54,12 @@ import java.util.Objects;
  * @author helio
  * Created on 2018-10-29
  */
-@SuppressWarnings( {"ClassWithTooManyMethods",
-    "OverlyLongMethod",
-    "DuplicateStringLiteralInspection",
-    "OverlyCoupledClass",
-    "MagicNumber",
-    "StandardVariableNames"})
+@SuppressWarnings({"ClassWithTooManyMethods",
+  "OverlyLongMethod",
+  "DuplicateStringLiteralInspection",
+  "OverlyCoupledClass",
+  "MagicNumber",
+  "StandardVariableNames"})
 public class MTLafInstaller {
   /**
    * The Theme
@@ -115,86 +115,76 @@ public class MTLafInstaller {
    */
   @SuppressWarnings("DuplicateStringLiteralInspection")
   static void installDefaults(@NonNls final UIDefaults defaults) {
-    defaults.put("Caret.width", 2);
-    defaults.put("Border.width", 2); // deprecated
-    defaults.put("Component.focusWidth", 2);
-    defaults.put("CompletionPopup.nonFocusedState", true);
-    defaults.put("CellEditor.border.width", 2);
-    defaults.put("Window.border", "1,1,1,1,000000");
-    defaults.put("Tree.border", "1,1,1,1");
-    defaults.put("ActionsList.mnemonicsBorderInsets", "0,8,1,6");
     defaults.put("ActionsList.cellBorderInsets", "1,12,1,12");
     defaults.put("ActionsList.icon.gap", 8);
     defaults.put("ActionsList.mnemonic.icon.gap", 6);
     defaults.put("ActionsList.mnemonics.insets", "0,8,0,8");
-    defaults.put("ListUI", "com.intellij.ui.components.WideSelectionListUI");
-
+    defaults.put("ActionsList.mnemonicsBorderInsets", "0,8,1,6");
+    defaults.put("Border.width", 2); // deprecated
     defaults.put("Button.arc", 6);
-    defaults.put("Component.arc", 0);
-
-    defaults.put("Menu.maxGutterIconWidth", 18);
-    defaults.put("MenuItem.maxGutterIconWidth", 18);
-    defaults.put("MenuItem.acceleratorDelimiter", "-");
-    defaults.put("MenuItem.border", new DarculaMenuItemBorder());
-    defaults.put("Menu.border", new DarculaMenuItemBorder());
-    defaults.put("MenuBar.border", new DarculaMenuBarBorder());
-
-    defaults.put("TextArea.caretBlinkRate", 500);
-    defaults.put("Tree.paintLines", false);
-    defaults.put("Table.cellNoFocusBorder", JBUI.insets(4, 4, 4, 4));
-    defaults.put("CheckBoxMenuItem.borderPainted", false);
-    defaults.put("RadioButtonMenuItem.borderPainted", false);
-    defaults.put("ComboBox.squareButton", true);
-    defaults.put("ComboBox.padding", JBUI.insets(1, 5, 1, 5));
+    defaults.put("Caret.width", 2);
+    defaults.put("CellEditor.border.width", 2);
     defaults.put("CheckBox.border.width", 3);
-    defaults.put("RadioButton.border.width", 3);
-    defaults.put("List.rowHeight", 20);
-    defaults.put("Table.rowHeight", 20);
-
-    defaults.put("HelpTooltip.verticalGap", 4);
-    defaults.put("HelpTooltip.horizontalGap", 10);
-    defaults.put("HelpTooltip.maxWidth", 250);
-    defaults.put("HelpTooltip.xOffset", 1);
-    defaults.put("HelpTooltip.yOffset", 1);
-
-    defaults.put("HelpTooltip.defaultTextBorderInsets", JBUI.insets(10, 10, 10, 16));
-    defaults.put("HelpTooltip.fontSizeDelta", 0);
-    defaults.put("HelpTooltip.smallTextBorderInsets", JBUI.insets(4, 8, 5, 8));
-    defaults.put("ValidationTooltip.maxWidth", 384);
-
-    defaults.put("Spinner.arrowButtonInsets", JBUI.insets(1, 1, 1, 1));
-    defaults.put("Spinner.editorBorderPainted", false);
-    defaults.put("ScrollBarUI", JBScrollBar.class.getName());
-    defaults.put(JBScrollBar.class.getName(), JBScrollBar.class);
-
-    // todo remove deprecated keys
-    defaults.put("Focus.activeErrorBorderColor", new ColorUIResource(0xE53935));
-    defaults.put("Component.focusErrorColor", new ColorUIResource(0xE53935));
+    defaults.put("CheckBoxMenuItem.borderPainted", false);
+    defaults.put("ComboBox.padding", JBUI.insets(1, 5, 1, 5));
+    defaults.put("ComboBox.squareButton", true);
+    defaults.put("CompletionPopup.nonFocusedState", true);
+    defaults.put("Component.arc", 0);
     defaults.put("Component.errorFocusColor", new ColorUIResource(0xE53935));
-    defaults.put("Focus.inactiveErrorBorderColor", new ColorUIResource(0x743A3A));
-    defaults.put("Component.inactiveFocusErrorColor", new ColorUIResource(0x743A3A));
-    defaults.put("Component.inactiveErrorFocusColor", new ColorUIResource(0x743A3A));
-    defaults.put("Focus.activeWarningBorderColor", new ColorUIResource(0xFFB62C));
+    defaults.put("Component.focusErrorColor", new ColorUIResource(0xE53935));
     defaults.put("Component.focusWarningColor", new ColorUIResource(0xFFB62C));
-    defaults.put("Component.warningFocusColor", new ColorUIResource(0xFFB62C));
-    defaults.put("Focus.inactiveWarningBorderColor", new ColorUIResource(0x7F6C00));
+    defaults.put("Component.focusWidth", 2);
+    defaults.put("Component.inactiveErrorFocusColor", new ColorUIResource(0x743A3A));
+    defaults.put("Component.inactiveFocusErrorColor", new ColorUIResource(0x743A3A));
     defaults.put("Component.inactiveFocusWarningColor", new ColorUIResource(0x7F6C00));
     defaults.put("Component.inactiveWarningFocusColor", new ColorUIResource(0x7F6C00));
-
-    defaults.put("TabbedPane.tabAreaInsets", JBUI.insets(0));
-    defaults.put("TabbedPane.selectedLabelShift", 0);
+    defaults.put("Component.warningFocusColor", new ColorUIResource(0xFFB62C));
+    defaults.put("EditorTabs.underlineHeight", 0);
+    defaults.put("Focus.activeErrorBorderColor", new ColorUIResource(0xE53935));
+    defaults.put("Focus.activeWarningBorderColor", new ColorUIResource(0xFFB62C));
+    defaults.put("Focus.inactiveErrorBorderColor", new ColorUIResource(0x743A3A));
+    defaults.put("Focus.inactiveWarningBorderColor", new ColorUIResource(0x7F6C00));
+    defaults.put("HelpTooltip.defaultTextBorderInsets", JBUI.insets(10, 10, 10, 16));
+    defaults.put("HelpTooltip.fontSizeDelta", 0);
+    defaults.put("HelpTooltip.horizontalGap", 10);
+    defaults.put("HelpTooltip.maxWidth", 250);
+    defaults.put("HelpTooltip.smallTextBorderInsets", JBUI.insets(4, 8, 5, 8));
+    defaults.put("HelpTooltip.verticalGap", 4);
+    defaults.put("HelpTooltip.xOffset", 1);
+    defaults.put("HelpTooltip.yOffset", 1);
+    defaults.put("List.rowHeight", 20);
+    defaults.put("List.selectedItemAlpha", 100);
+    defaults.put("ListUI", "com.intellij.ui.components.WideSelectionListUI");
+    defaults.put("Menu.border", new DarculaMenuItemBorder());
+    defaults.put("Menu.maxGutterIconWidth", 18);
+    defaults.put("MenuBar.border", new DarculaMenuBarBorder());
+    defaults.put("MenuItem.acceleratorDelimiter", "-");
+    defaults.put("MenuItem.border", new DarculaMenuItemBorder());
+    defaults.put("MenuItem.maxGutterIconWidth", 18);
+    defaults.put("NewClass.separatorWidth", 10);
+    defaults.put("Popup.Advertiser.borderInsets", JBUI.insets(5, 10, 5, 15));
+    defaults.put("RadioButton.border.width", 3);
+    defaults.put("RadioButtonMenuItem.borderPainted", false);
+    defaults.put("ScrollBarUI", JBScrollBar.class.getName());
+    defaults.put("Spinner.arrowButtonInsets", JBUI.insets(1, 1, 1, 1));
+    defaults.put("Spinner.editorBorderPainted", false);
+    defaults.put("TabbedPane.fontSizeOffset", 0);
     defaults.put("TabbedPane.labelShift", 0);
-    defaults.put("TabbedPane.tabsOverlapBorder", true);
+    defaults.put("TabbedPane.selectedLabelShift", 0);
+    defaults.put("TabbedPane.tabAreaInsets", JBUI.insets(0));
+    defaults.put("TabbedPane.tabFillStyle", "underline");
     defaults.put("TabbedPane.tabHeight", 32);
     defaults.put("TabbedPane.tabSelectionHeight", 2);
-    defaults.put("TabbedPane.tabFillStyle", "underline");
-    defaults.put("TabbedPane.fontSizeOffset", 0);
-
+    defaults.put("TabbedPane.tabsOverlapBorder", true);
+    defaults.put("Table.cellNoFocusBorder", JBUI.insets(4, 4, 4, 4));
+    defaults.put("Table.rowHeight", 20);
     defaults.put("TableHeader.height", 25);
-    defaults.put("NewClass.separatorWidth", 10);
-
-    defaults.put("List.selectedItemAlpha", 100);
-    defaults.put("EditorTabs.underlineHeight", 0);
+    defaults.put("TextArea.caretBlinkRate", 500);
+    defaults.put("Tree.border", "1,1,1,1");
+    defaults.put("Tree.paintLines", false);
+    defaults.put("ValidationTooltip.maxWidth", 384);
+    defaults.put("Window.border", "1,1,1,1,000000");
+    defaults.put(JBScrollBar.class.getName(), JBScrollBar.class);
   }
 
   private static void replaceDefaultButtons(final UIDefaults defaults) {
@@ -465,10 +455,10 @@ public class MTLafInstaller {
    *
    * @param defaults of type UIDefaults the defaults to fill
    */
-  @SuppressWarnings( {"MagicCharacter",
-      "DuplicateStringLiteralInspection",
-      "FeatureEnvy",
-      "Duplicates"})
+  @SuppressWarnings({"MagicCharacter",
+    "DuplicateStringLiteralInspection",
+    "FeatureEnvy",
+    "Duplicates"})
   static void loadDefaults(final UIDefaults defaults) {
     @NonNls final Map<String, Object> globalProps = new HashMap<>(100);
     final MTThemeable selectedTheme = MTConfig.getInstance().getSelectedTheme().getTheme();
