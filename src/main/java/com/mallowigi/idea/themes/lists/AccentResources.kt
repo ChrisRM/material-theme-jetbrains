@@ -23,194 +23,180 @@
  *
  *
  */
+package com.mallowigi.idea.themes.lists
 
-package com.mallowigi.idea.themes.lists;
+object AccentResources {
+  @JvmField
+  val ACCENT_RESOURCES: Set<String> = setOf(
+    "ActionButton.pressedBackground",
+    "ActionButton.pressedBorderColor",
+    "BookmarkIcon.background",
+    "Button.darcula.defaultFocusedOutlineColor",  // deprecated
+    "Button.darcula.focusedOutlineColor",  // deprecated
+    "Button.darcula.outlineDefaultEndColor",  // deprecated
+    "Button.darcula.outlineDefaultStartColor",  // deprecated
+    "Button.darcula.outlineEndColor",  // deprecated
+    "Button.darcula.outlineStartColor",  // deprecated
+    "Button.default.endBorderColor",
+    "Button.default.focusColor",
+    "Button.default.focusedBorderColor",
+    "Button.default.startBorderColor",
+    "Button.endBorderColor",
+    "Button.focusedBorderColor",
+    "Button.startBorderColor",
+    "CheckBox.background.selected",
+    "CheckBox.borderColor.selected",
+    "CheckBox.disabledBorderColor.selected",
+    "CheckBox.focused.background.selected",
+    "CheckBox.focusedArmed.background.selected",
+    "CheckBox.inactiveFillColor.selected",
+    "Checkbox.Background.Selected",
+    "Checkbox.Background.Selected.Dark",
+    "Checkbox.Border.Selected",
+    "Checkbox.Border.Selected.Dark",
+    "Checkbox.Focus.Thin.Selected",
+    "Checkbox.Focus.Thin.Selected.Dark",
+    "Checkbox.Focus.Wide.Selected",
+    "Checkbox.Focus.Wide.Selected.Dark",
+    "CodeWithMe.AccessEnabled.accessDot",
+    "ComboBox.darcula.hoveredArrowButtonForeground",  // deprecated
+    "ComboBox.modifiedItemForeground",
+    "CompletionPopup.matchForeground",
+    "CompletionPopup.matchSelectedForeground",  // deprecated
+    "CompletionPopup.matchSelectionForeground",
+    "Component.focusColor",
+    "Component.focusedBorderColor",
+    "Counter.background",
+    "CurrentMnemonic.background",
+    "CurrentMnemonic.borderColor",
+    "Debugger.Variables.changedValueForeground",
+    "Debugger.Variables.modifyingValueForeground",
+    "Debugger.Variables.valueForeground",
+    "DefaultTabs.inactiveUnderlineColor",
+    "DefaultTabs.underlineColor",
+    "DragAndDrop.borderColor",
+    "EditorGroupsTabs.inactiveUnderlineColor",
+    "EditorGroupsTabs.underlineColor",
+    "EditorPane.caretForeground",
+    "EditorTabs.active.underlineColor",  // deprecated
+    "EditorTabs.inactiveUnderlineColor",
+    "EditorTabs.underlineColor",
+    "Focus.defaultButtonBorderColor",  // deprecated
+    "FormattedTextField.caretForeground",
+    "Git.Log.Ref.LocalBranch",  // deprecated
+    "GotItTooltip.linkForeground",
+    "Hg.Log.Ref.Branch",  //deprecated
+    "Hyperlink.linkColor",  // deprecated
+    "Label.errorForeground",
+    "Link.activeForeground",
+    "Link.hoverForeground",
+    "Link.pressedForeground",
+    "Link.visitedForeground",
+    "LiveIndicator.color",
+    "NavBar.selectedColor",  // deprecated
+    "NewPSD.warning",
+    "Notification.Error.foreground",  // deprecated
+    "Notification.Link.foreground",  //deprecated
+    "Notification.errorForeground",
+    "Notification.linkForeground",  // deprecated
+    "Outline.focusedColor",
+    "ParameterInfo.currentParameterForeground",
+    "ParameterInfo.highlightedColor",  //deprecated
+    "PasswordField.caretForeground",
+    "Plugins.Button.updateBackground",
+    "Plugins.tagForeground",
+    "Popup.Advertiser.foreground",
+    "ProgressBar.foreground",
+    "ProgressBar.indeterminateEndColor",
+    "ProgressBar.indeterminateStartColor",
+    "ProgressBar.progressColor",
+    "PsiViewer.referenceHighlightColor",
+    "RadioButton.darcula.selectionDisabledShadowColor",  // deprecated
+    "RadioButton.darcula.selectionEnabledColor",  // deprecated
+    "RadioButton.darcula.selectionEnabledShadowColor",  // deprecated
+    "RadioButton.focusColor",  // deprecated
+    "RadioButton.selectionDisabledShadowColor",  // deprecated
+    "RadioButton.selectionEnabledColor",  // deprecated
+    "RadioButton.selectionEnabledShadowColor",  // deprecated
+    "ScrollBar.Thumb.Hovered.background",  // deprecated
+    "ScrollBar.Thumb.NonOpaque.Hovered.background",  // deprecated
+    "SearchEverywhere.Advertiser.foreground",
+    "SearchMatch.endBackground",
+    "SearchMatch.endColor",  // deprecated
+    "SearchMatch.startBackground",
+    "SearchMatch.startColor",  // deprecated
+    "Settings.Spotlight.borderColor",
+    "Slider.buttonBorderColor",
+    "Slider.buttonColor",
+    "Slider.thumb",
+    "TabbedPane.selectedColor",  // deprecated
+    "TabbedPane.underlineColor",
+    "TextArea.caretForeground",
+    "TextField.caretForeground",
+    "TextField.selectedSeparatorColor",  // deprecated
+    "TextPane.caretForeground",
+    "ToggleButton.on.background",  // deprecated
+    "ToggleButton.on.foreground",  // deprecated
+    "ToggleButton.onBackground",
+    "ToggleButton.onForeground",
+    "ToolWindow.HeaderTab.inactiveUnderlineColor",
+    "ToolWindow.HeaderTab.underlineColor",
+    "Tree.modifiedItemForeground",
+    "UIDesigner.Panel.lines3d",
+    "UIDesigner.motion.AddConstraintColor",
+    "UIDesigner.motion.AddConstraintPlus",
+    "UIDesigner.motion.Key.selectedForeground",
+    "UIDesigner.motion.PositionMarkColor",
+    "UIDesigner.motion.TimeCursor.End.selectedForeground",
+    "UIDesigner.motion.TimeCursor.Start.selectedForeground",
+    "UIDesigner.motion.TimeCursor.selectedForeground",
+    "UIDesigner.motion.graphLine.lineSeparatorColor",
+    "UIDesigner.motion.ourCS_SelectedFocusBorder.focusedBorderColor",
+    "VersionControl.GitLog.localBranchIconColor",
+    "VersionControl.HgLog.branchIconColor",
+    "dropArea.base",
+    "link",
+    "link.foreground",  // deprecated
+    "link.hover.foreground",  // deprecated
+    "link.pressed.foreground",  // deprecated
+    "link.visited.foreground",  // deprecated
+    "material.tab.borderColor"
 
-import com.google.common.collect.Sets;
-import org.jetbrains.annotations.NonNls;
+  )
 
-import java.util.Collections;
-import java.util.Set;
+  @JvmField
+  val ACCENT_TRANSPARENT_RESOURCES: Set<String> = setOf(
+    "ActionButton.focusedBorderColor",
+    "ActionButton.hoverBackground",
+    "ActionButton.hoverBorderColor",
+    "Focus.Color",  // deprecated
+    "Focus.borderColor",  // deprecated
+    "Focus.color" // deprecated
 
-@SuppressWarnings({"StaticMethodOnlyUsedInOneClass",
-  "DuplicateStringLiteralInspection"})
-public enum AccentResources {
-  DEFAULT;
+  )
 
-  @SuppressWarnings("DuplicateStringLiteralInspection")
-  @NonNls
-  public static final Set<String> ACCENT_RESOURCES = Collections.unmodifiableSet(
-    Sets.newHashSet(
-      "ActionButton.pressedBackground",
-      "ActionButton.pressedBorderColor",
-      "BookmarkIcon.background",
-      "Button.darcula.defaultFocusedOutlineColor", // deprecated
-      "Button.darcula.focusedOutlineColor", // deprecated
-      "Button.darcula.outlineDefaultEndColor", // deprecated
-      "Button.darcula.outlineDefaultStartColor", // deprecated
-      "Button.darcula.outlineEndColor", // deprecated
-      "Button.darcula.outlineStartColor", // deprecated
-      "Button.default.endBorderColor",
-      "Button.default.focusColor",
-      "Button.default.focusedBorderColor",
-      "Button.default.startBorderColor",
-      "Button.endBorderColor",
-      "Button.focusedBorderColor",
-      "Button.startBorderColor",
-      "CheckBox.background.selected",
-      "CheckBox.borderColor.selected",
-      "CheckBox.disabledBorderColor.selected",
-      "CheckBox.focused.background.selected",
-      "CheckBox.focusedArmed.background.selected",
-      "CheckBox.inactiveFillColor.selected",
-      "Checkbox.Background.Selected",
-      "Checkbox.Background.Selected.Dark",
-      "Checkbox.Border.Selected",
-      "Checkbox.Border.Selected.Dark",
-      "Checkbox.Focus.Thin.Selected",
-      "Checkbox.Focus.Thin.Selected.Dark",
-      "Checkbox.Focus.Wide.Selected",
-      "Checkbox.Focus.Wide.Selected.Dark",
-      "CodeWithMe.AccessEnabled.accessDot",
-      "ComboBox.darcula.hoveredArrowButtonForeground", // deprecated
-      "ComboBox.modifiedItemForeground",
-      "CompletionPopup.matchForeground",
-      "CompletionPopup.matchSelectedForeground", // deprecated
-      "CompletionPopup.matchSelectionForeground",
-      "Component.focusColor",
-      "Component.focusedBorderColor",
-      "Counter.background",
-      "CurrentMnemonic.background",
-      "CurrentMnemonic.borderColor",
-      "Debugger.Variables.changedValueForeground",
-      "Debugger.Variables.modifyingValueForeground",
-      "Debugger.Variables.valueForeground",
-      "DefaultTabs.inactiveUnderlineColor",
-      "DefaultTabs.underlineColor",
-      "EditorGroupsTabs.inactiveUnderlineColor",
-      "EditorGroupsTabs.underlineColor",
-      "EditorPane.caretForeground",
-      "EditorTabs.active.underlineColor", // deprecated
-      "EditorTabs.inactiveUnderlineColor",
-      "EditorTabs.underlineColor",
-      "Focus.defaultButtonBorderColor", // deprecated
-      "FormattedTextField.caretForeground",
-      "Git.Log.Ref.LocalBranch", // deprecated
-      "GotItTooltip.linkForeground",
-      "Hg.Log.Ref.Branch", //deprecated
-      "Hyperlink.linkColor", // deprecated
-      "Label.errorForeground",
-      "Link.activeForeground",
-      "Link.hoverForeground",
-      "Link.pressedForeground",
-      "Link.visitedForeground",
-      "LiveIndicator.color",
-      "NavBar.selectedColor", // deprecated
-      "NewPSD.warning",
-      "Notification.Error.foreground", // deprecated
-      "Notification.Link.foreground", //deprecated
-      "Notification.errorForeground",
-      "Notification.linkForeground", // deprecated
-      "Outline.focusedColor",
-      "ParameterInfo.currentParameterForeground",
-      "ParameterInfo.highlightedColor", //deprecated
-      "PasswordField.caretForeground",
-      "Plugins.Button.updateBackground",
-      "Plugins.tagForeground",
-      "Popup.Advertiser.foreground",
-      "ProgressBar.foreground",
-      "ProgressBar.indeterminateEndColor",
-      "ProgressBar.indeterminateStartColor",
-      "ProgressBar.progressColor",
-      "PsiViewer.referenceHighlightColor",
-      "RadioButton.darcula.selectionDisabledShadowColor", // deprecated
-      "RadioButton.darcula.selectionEnabledColor", // deprecated
-      "RadioButton.darcula.selectionEnabledShadowColor", // deprecated
-      "RadioButton.focusColor", // deprecated
-      "RadioButton.selectionDisabledShadowColor", // deprecated
-      "RadioButton.selectionEnabledColor", // deprecated
-      "RadioButton.selectionEnabledShadowColor", // deprecated
-      "ScrollBar.Thumb.Hovered.background", // deprecated
-      "ScrollBar.Thumb.NonOpaque.Hovered.background", // deprecated
-      "SearchEverywhere.Advertiser.foreground",
-      "SearchMatch.endBackground",
-      "SearchMatch.endColor", // deprecated
-      "SearchMatch.startBackground",
-      "SearchMatch.startColor", // deprecated
-      "Settings.Spotlight.borderColor",
-      "Slider.buttonBorderColor",
-      "Slider.buttonColor",
-      "Slider.thumb",
-      "TabbedPane.selectedColor", // deprecated
-      "TabbedPane.underlineColor",
-      "TextArea.caretForeground",
-      "TextField.caretForeground",
-      "TextField.selectedSeparatorColor", // deprecated
-      "TextPane.caretForeground",
-      "ToggleButton.on.background", // deprecated
-      "ToggleButton.on.foreground", // deprecated
-      "ToggleButton.onBackground",
-      "ToggleButton.onForeground",
-      "ToolWindow.HeaderTab.inactiveUnderlineColor",
-      "ToolWindow.HeaderTab.underlineColor",
-      "Tree.modifiedItemForeground",
-      "UIDesigner.Panel.lines3d",
-      "UIDesigner.motion.AddConstraintColor",
-      "UIDesigner.motion.AddConstraintPlus",
-      "UIDesigner.motion.Key.selectedForeground",
-      "UIDesigner.motion.PositionMarkColor",
-      "UIDesigner.motion.TimeCursor.End.selectedForeground",
-      "UIDesigner.motion.TimeCursor.Start.selectedForeground",
-      "UIDesigner.motion.TimeCursor.selectedForeground",
-      "UIDesigner.motion.graphLine.lineSeparatorColor",
-      "UIDesigner.motion.ourCS_SelectedFocusBorder.focusedBorderColor",
-      "VersionControl.GitLog.localBranchIconColor",
-      "VersionControl.HgLog.branchIconColor",
-      "dropArea.base",
-      "link",
-      "link.foreground", // deprecated
-      "link.hover.foreground", // deprecated
-      "link.pressed.foreground", // deprecated
-      "link.visited.foreground", // deprecated
-      "material.tab.borderColor"
-    ));
+  @JvmField
+  val SCROLLBAR_RESOURCES: Set<String> = setOf(
+    "ScrollBar.Mac.Transparent.thumbBorderColor",
+    "ScrollBar.Mac.Transparent.thumbColor",
+    "ScrollBar.Mac.thumbBorderColor",
+    "ScrollBar.Mac.thumbColor",
+    "ScrollBar.Transparent.thumbBorderColor",
+    "ScrollBar.Transparent.thumbColor",
+    "ScrollBar.thumbBorderColor",
+    "ScrollBar.thumbColor"
 
-  @NonNls
-  public static final Set<String> ACCENT_TRANSPARENT_RESOURCES = Collections.unmodifiableSet(
-    Sets.newHashSet(
-      "ActionButton.focusedBorderColor",
-      "ActionButton.hoverBackground",
-      "ActionButton.hoverBorderColor",
-      "Focus.Color", // deprecated
-      "Focus.borderColor", // deprecated
-      "Focus.color" // deprecated
-    ));
+  )
 
-  @NonNls
-  public static final Set<String> SCROLLBAR_RESOURCES = Collections.unmodifiableSet(
-    Sets.newHashSet(
-      "ScrollBar.Mac.Transparent.thumbBorderColor",
-      "ScrollBar.Mac.Transparent.thumbColor",
-      "ScrollBar.Mac.thumbBorderColor",
-      "ScrollBar.Mac.thumbColor",
-      "ScrollBar.Transparent.thumbBorderColor",
-      "ScrollBar.Transparent.thumbColor",
-      "ScrollBar.thumbBorderColor",
-      "ScrollBar.thumbColor"
-    )
-  );
-
-  @NonNls
-  public static final Set<String> SCROLLBAR_HOVER_RESOURCES = Collections.unmodifiableSet(
-    Sets.newHashSet(
-      "ScrollBar.Mac.Transparent.hoverThumbBorderColor",
-      "ScrollBar.Mac.Transparent.hoverThumbColor",
-      "ScrollBar.Mac.hoverThumbBorderColor",
-      "ScrollBar.Mac.hoverThumbColor",
-      "ScrollBar.Transparent.hoverThumbBorderColor",
-      "ScrollBar.Transparent.hoverThumbColor",
-      "ScrollBar.hoverThumbBorderColor",
-      "ScrollBar.hoverThumbColor"
-    )
-  );
+  @JvmField
+  val SCROLLBAR_HOVER_RESOURCES: Set<String> = setOf(
+    "ScrollBar.Mac.Transparent.hoverThumbBorderColor",
+    "ScrollBar.Mac.Transparent.hoverThumbColor",
+    "ScrollBar.Mac.hoverThumbBorderColor",
+    "ScrollBar.Mac.hoverThumbColor",
+    "ScrollBar.Transparent.hoverThumbBorderColor",
+    "ScrollBar.Transparent.hoverThumbColor",
+    "ScrollBar.hoverThumbBorderColor",
+    "ScrollBar.hoverThumbColor"
+  )
 }

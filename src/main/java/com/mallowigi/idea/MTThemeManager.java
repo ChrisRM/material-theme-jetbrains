@@ -335,7 +335,7 @@ public final class MTThemeManager implements Disposable {
 
   public static boolean isMaterialTheme(@NonNls final UIManager.LookAndFeelInfo theme) {
     return theme instanceof UIThemeBasedLookAndFeelInfo &&
-        MTThemes.getThemeFor(((UIThemeBasedLookAndFeelInfo) theme).getTheme().getId()) != null;
+      MTThemes.getThemeFor(((UIThemeBasedLookAndFeelInfo) theme).getTheme().getId()) != null;
   }
 
   /**

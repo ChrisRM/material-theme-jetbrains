@@ -23,50 +23,39 @@
  *
  *
  */
+package com.mallowigi.idea.themes.lists
 
-package com.mallowigi.idea.themes.lists;
-
-import com.google.common.collect.Sets;
-import org.jetbrains.annotations.NonNls;
-
-import java.util.Collections;
-import java.util.Set;
-
-public enum ContrastResources {
-  DEFAULT;
-
-  @SuppressWarnings("DuplicateStringLiteralInspection")
-  @NonNls
-  public static final Set<String> CONTRASTED_RESOURCES = Collections.unmodifiableSet(
-      Sets.newHashSet(
-          "ActionToolbar.background", // deprecated
-          "activeCaption", // deprecated
-          "ComboBox.darcula.arrowButtonBackground", // deprecated
-          "ComboBox.darcula.editable.arrowButtonBackground", // deprecated
-          "ComboBox.arrowFillColor", // deprecated
-          "ComboBox.background",
-          "ComboBox.ArrowButton.nonEditableBackground",
-          "desktop", // deprecated
-          "Editor.background",
-          "EditorPane.background",
-          "FormattedTextField.background",
-          "MenuBar.background", // deprecated
-          "MenuBar.shadow",
-          "PasswordField.background",
-          "Plugins.SearchField.background",
-          "SidePanel.background",
-          "SplitPane.highlight",
-          "TabbedPane.borderColor", // deprecated
-          "TabbedPane.darkShadow", // deprecated
-          "TabbedPane.mt.tab.background", // deprecated
-          "TabbedPane.shadow",
-          "TextArea.background",
-          "TextField.background",
-          "ToolBar.background",
-          "ToolWindow.HeaderTab.underlinedTabInactiveBackground",
-          "Tree.background",
-          "Tree.textBackground",
-          "Viewport.background",
-          "window"
-      ));
+object ContrastResources {
+  @JvmField
+  val CONTRASTED_RESOURCES: Set<String> = setOf(
+    "ActionToolbar.background",  // deprecated
+    "activeCaption",  // deprecated
+    "ComboBox.darcula.arrowButtonBackground",  // deprecated
+    "ComboBox.darcula.editable.arrowButtonBackground",  // deprecated
+    "ComboBox.arrowFillColor",  // deprecated
+    "ComboBox.background",
+    "ComboBox.ArrowButton.nonEditableBackground",
+    "desktop",  // deprecated
+    "Editor.background",
+    "EditorPane.background",
+    "FormattedTextField.background",
+    "MenuBar.background",  // deprecated
+    "MenuBar.shadow",
+    "PasswordField.background",
+    "Plugins.SearchField.background",
+    "SidePanel.background",
+    "SplitPane.highlight",
+    "TabbedPane.borderColor",  // deprecated
+    "TabbedPane.darkShadow",  // deprecated
+    "TabbedPane.mt.tab.background",  // deprecated
+    "TabbedPane.shadow",
+    "TextArea.background",
+    "TextField.background",
+    "ToolBar.background",
+    "ToolWindow.HeaderTab.underlinedTabInactiveBackground",
+    "Tree.background",
+    "Tree.textBackground",
+    "Viewport.background",
+    "window"
+  )
 }
