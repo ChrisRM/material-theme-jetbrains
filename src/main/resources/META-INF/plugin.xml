@@ -114,7 +114,7 @@
 
 
     <depends>com.intellij.modules.platform</depends>
-    <depends>com.intellij.modules.lang</depends>
+    <depends optional="true" config-file="withLang.xml">com.intellij.modules.lang</depends>
     <depends optional="true" config-file="withLearning.xml">training</depends>
 
     <!--suppress PluginXmlValidity -->
