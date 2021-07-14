@@ -105,7 +105,6 @@ object AccentResources {
     "PasswordField.caretForeground",
     "Plugins.Button.updateBackground",
     "Plugins.tagForeground",
-    "Popup.Advertiser.foreground",
     "ProgressBar.foreground",
     "ProgressBar.indeterminateEndColor",
     "ProgressBar.indeterminateStartColor",
@@ -120,7 +119,6 @@ object AccentResources {
     "RadioButton.selectionEnabledShadowColor",  // deprecated
     "ScrollBar.Thumb.Hovered.background",  // deprecated
     "ScrollBar.Thumb.NonOpaque.Hovered.background",  // deprecated
-    "SearchEverywhere.Advertiser.foreground",
     "SearchMatch.endBackground",
     "SearchMatch.endColor",  // deprecated
     "SearchMatch.startBackground",

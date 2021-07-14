@@ -336,8 +336,10 @@ object MTThemeResources {
       "MenuItem.acceleratorForeground",
       "ParameterInfo.ContextHelp.foreground",  // deprecated
       "ParameterInfo.infoForeground",
+      "Popup.Advertiser.foreground",
       "RadioButtonMenuItem.acceleratorForeground",
       "RadioButtonMenuItem.acceleratorSelectionForeground",
+      "SearchEverywhere.Advertiser.foreground",
       "SearchEverywhere.List.separatorForeground",
       "SearchEverywhere.shortcutForeground",  // deprecated
       "SearchResults.Ordinal.File.Foreground",

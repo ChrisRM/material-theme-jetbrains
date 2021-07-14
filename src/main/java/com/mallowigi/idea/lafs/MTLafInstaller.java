@@ -115,7 +115,6 @@ public class MTLafInstaller {
    */
   @SuppressWarnings("DuplicateStringLiteralInspection")
   static void installDefaults(@NonNls final UIDefaults defaults) {
-    defaults.put("ActionsList.cellBorderInsets", "1,12,1,12");
     defaults.put("ActionsList.icon.gap", 8);
     defaults.put("ActionsList.mnemonic.icon.gap", 6);
     defaults.put("ActionsList.mnemonics.insets", "0,8,0,8");
@@ -162,13 +161,14 @@ public class MTLafInstaller {
     defaults.put("MenuItem.border", new DarculaMenuItemBorder());
     defaults.put("MenuItem.maxGutterIconWidth", 18);
     defaults.put("NewClass.separatorWidth", 10);
-    defaults.put("Popup.Advertiser.borderInsets", JBUI.insets(5, 10, 5, 15));
+    defaults.put("Popup.Advertiser.borderInsets", JBUI.insets(10, 10, 10, 15));
     defaults.put("RadioButton.border.width", 3);
     defaults.put("RadioButtonMenuItem.borderPainted", false);
     defaults.put("ScrollBarUI", JBScrollBar.class.getName());
     defaults.put("Spinner.arrowButtonInsets", JBUI.insets(1, 1, 1, 1));
     defaults.put("Spinner.editorBorderPainted", false);
     defaults.put("TabbedPane.fontSizeOffset", 0);
+    defaults.put("SearchEverywhere.Advertiser.borderInsets", JBUI.insets(10, 10, 10, 15));
     defaults.put("TabbedPane.labelShift", 0);
     defaults.put("TabbedPane.selectedLabelShift", 0);
     defaults.put("TabbedPane.tabAreaInsets", JBUI.insets(0));

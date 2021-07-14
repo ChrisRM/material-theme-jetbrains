@@ -658,9 +658,11 @@ public final class MTThemeManager implements Disposable {
     if (CONFIG.isCompactMenus()) {
       UIManager.put("PopupMenuSeparator.height", 3);
       UIManager.put("PopupMenuSeparator.stripeIndent", 1);
+      UIManager.put("ActionsList.cellBorderInsets", JBUI.insets(1, 10, 1, 15));
     } else {
       UIManager.put("PopupMenuSeparator.height", 10);
       UIManager.put("PopupMenuSeparator.stripeIndent", 5);
+      UIManager.put("ActionsList.cellBorderInsets", JBUI.insets(5, 10, 5, 15));
     }
   }
   //endregion
