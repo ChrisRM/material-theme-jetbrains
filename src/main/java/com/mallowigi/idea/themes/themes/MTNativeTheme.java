@@ -38,12 +38,11 @@ import com.mallowigi.idea.themes.lists.ContrastResources;
 import com.mallowigi.idea.utils.MTColorUtils;
 import com.mallowigi.idea.utils.MTUI;
 import com.mallowigi.idea.utils.MTUiUtils;
+import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
-
-import static com.mallowigi.idea.themes.MTAccentMode.getSelectionColor;
 
 @SuppressWarnings("DesignForExtension")
 public class MTNativeTheme extends MTAbstractTheme {
@@ -178,7 +177,7 @@ public class MTNativeTheme extends MTAbstractTheme {
   }
 
   @Override
-  protected String getBackgroundImage() {
+  protected @Nullable String getBackgroundImage() {
     return null;
   }
 
@@ -196,7 +195,7 @@ public class MTNativeTheme extends MTAbstractTheme {
     MTUiUtils.buildAccentResources(MTAccentMode.DARKER_ACCENT_RESOURCES, darkerAccentColor, accentMode);
     MTUiUtils.buildAccentResources(MTAccentMode.ACCENT_TRANSPARENT_EXTRA_RESOURCES, accentColorTransparent, accentMode);
     // Add new selection color resources
-    MTUiUtils.buildAccentResources(MTAccentMode.SELECTION_RESOURCES, getSelectionColor(), accentMode);
+    MTUiUtils.buildAccentResources(MTAccentMode.SELECTION_RESOURCES, MTAccentMode.getSelectionColor(), accentMode);
     MTUiUtils.buildAccentResources(MTAccentMode.SECOND_ACCENT_RESOURCES, secondAccentColor, accentMode);
 
   }
