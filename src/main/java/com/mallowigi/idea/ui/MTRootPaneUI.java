@@ -28,13 +28,13 @@ package com.mallowigi.idea.ui;
 
 import com.intellij.ide.DataManager;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaRootPaneUI;
+import com.intellij.openapi.Disposable;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.Disposer;
 import com.intellij.openapi.util.SystemInfo;
 import com.intellij.openapi.util.SystemInfoRt;
 import com.intellij.openapi.util.registry.Registry;
-import com.intellij.openapi.wm.IdeGlassPaneUtil;
 import com.intellij.ui.ColorUtil;
 import com.intellij.util.ui.JBInsets;
 import com.intellij.util.ui.JBUI;
@@ -64,6 +64,7 @@ public final class MTRootPaneUI extends DarculaRootPaneUI {
   private static final int JDK_VER = 11;
 
   private final Runnable disposer = null;
+  final Disposable overlayDisposable = Disposer.newDisposable("OverlayPainter");
 
   @SuppressWarnings({"MethodOverridesStaticMethodOfSuperclass",
     "unused"})
@@ -97,9 +98,14 @@ public final class MTRootPaneUI extends DarculaRootPaneUI {
     super.installUI(c);
 
     final JRootPane rootPane = (JRootPane) c;
+    final OverlayPainter painter = new OverlayPainter(rootPane, overlayDisposable);
 
     c.addHierarchyListener((event) -> {
-      IdeGlassPaneUtil.installPainter(rootPane, new OverlayPainter(rootPane), Disposer.newDisposable("OverlayPainter"));
+      final Window window = UIUtil.getWindow(c);
+      if (isDialogWindow(window)) {
+        painter.addSpotlight(event.getComponent());
+      }
+
     });
   }
 

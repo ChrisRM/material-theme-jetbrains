@@ -26,35 +26,42 @@
 
 package com.mallowigi.idea.ui;
 
+import com.intellij.openapi.Disposable;
+import com.intellij.openapi.options.ex.GlassPanel;
 import com.intellij.openapi.ui.AbstractPainter;
-import com.intellij.ui.ColorUtil;
-import com.intellij.util.ui.GraphicsUtil;
+import com.intellij.openapi.wm.IdeGlassPaneUtil;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.geom.Rectangle2D;
 
 public class OverlayPainter extends AbstractPainter {
-  private final Shape myBoundingBox;
+  private final GlassPanel myGlassPanel;
+  private final JComponent component;
+  private final Disposable overlayDisposable;
+  boolean myVisible;
 
-  public OverlayPainter(final JComponent component) {
-    final Dimension size = component.getSize();
-    final Rectangle r = new Rectangle(size);
-    myBoundingBox = new Rectangle2D.Double(r.x, r.y, r.width, r.height);
+  public OverlayPainter(final JComponent component, final Disposable overlayDisposable) {
+    this.component = component;
+    this.overlayDisposable = overlayDisposable;
+    myGlassPanel = new GlassPanel(this.component);
+    IdeGlassPaneUtil.installPainter(this.component, this, this.overlayDisposable);
+
   }
 
   @Override
   public boolean needsRepaint() {
-    return myBoundingBox != null;
+    return true;
   }
 
   @Override
   public void executePaint(final Component component, final Graphics2D g) {
-    if (myBoundingBox == null) {
-      return;
-    }
-    GraphicsUtil.setupAAPainting(g);
-    g.setColor(ColorUtil.toAlpha(Color.BLACK, 150));
-    g.fill(myBoundingBox);
+    //    if (myVisible && myGlassPanel.isVisible()) {
+    myGlassPanel.paintSpotlight(g, this.component);
+    //    }
+  }
+
+  void addSpotlight(final Component event) {
+    myGlassPanel.clear();
+    myGlassPanel.addSpotlight((JComponent) event);
   }
 }
