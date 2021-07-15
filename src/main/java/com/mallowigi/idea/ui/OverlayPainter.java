@@ -27,17 +27,17 @@
 package com.mallowigi.idea.ui;
 
 import com.intellij.openapi.ui.AbstractPainter;
-import com.intellij.ui.JBColor;
-import com.intellij.ui.components.panels.NonOpaquePanel;
+import com.intellij.ui.ColorUtil;
 import com.intellij.util.ui.GraphicsUtil;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
 
 public class OverlayPainter extends AbstractPainter {
   private final Shape myBoundingBox;
 
-  public OverlayPainter(final NonOpaquePanel component) {
+  public OverlayPainter(final JComponent component) {
     final Dimension size = component.getSize();
     final Rectangle r = new Rectangle(size);
     myBoundingBox = new Rectangle2D.Double(r.x, r.y, r.width, r.height);
@@ -54,7 +54,7 @@ public class OverlayPainter extends AbstractPainter {
       return;
     }
     GraphicsUtil.setupAAPainting(g);
-    g.setColor(new JBColor(0x3d7dcc, 0x404a57));
+    g.setColor(ColorUtil.toAlpha(Color.BLACK, 150));
     g.fill(myBoundingBox);
   }
 }

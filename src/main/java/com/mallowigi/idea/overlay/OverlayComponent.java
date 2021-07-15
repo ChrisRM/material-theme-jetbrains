@@ -27,27 +27,24 @@
 package com.mallowigi.idea.overlay;
 
 import com.intellij.openapi.Disposable;
-import com.intellij.openapi.util.Disposer;
-import com.intellij.openapi.wm.IdeGlassPaneUtil;
 import com.intellij.openapi.wm.ex.ToolWindowEx;
 import com.intellij.ui.components.panels.NonOpaquePanel;
 import com.intellij.util.ui.accessibility.ScreenReader;
-import com.mallowigi.idea.ui.OverlayPainter;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
 
 public class OverlayComponent implements Disposable {
-  private final OverlayPainter myPainter;
-  private Disposable myGlassPaneListenersDisposable = Disposer.newDisposable();
+  //  private final OverlayPainter myPainter;
+  //  private Disposable myGlassPaneListenersDisposable = Disposer.newDisposable();
 
   OverlayComponent() {
-    final NonOpaquePanel myComponent = new MyComponent();
-
-    myPainter = new OverlayPainter(myComponent);
-    myGlassPaneListenersDisposable = Disposer.newDisposable("GlassPaneListeners");
-    Disposer.register(this, myGlassPaneListenersDisposable);
-    IdeGlassPaneUtil.find(myComponent).addPainter(myComponent, myPainter, myGlassPaneListenersDisposable);
+    //    final NonOpaquePanel myComponent = new MyComponent();
+    //
+    //    myPainter = new OverlayPainter(myComponent);
+    //    myGlassPaneListenersDisposable = Disposer.newDisposable("GlassPaneListeners");
+    //    Disposer.register(this, myGlassPaneListenersDisposable);
+    //    IdeGlassPaneUtil.find(myComponent).addPainter(myComponent, myPainter, myGlassPaneListenersDisposable);
   }
 
   @Override

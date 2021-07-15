@@ -147,9 +147,9 @@
         <component>
             <implementation-class>com.mallowigi.idea.MTHackComponent</implementation-class>
         </component>
-        <component>
-            <implementation-class>com.mallowigi.idea.overlay.OverlayComponent</implementation-class>
-        </component>
+        <!--        <component>-->
+        <!--            <implementation-class>com.mallowigi.idea.ui.OverlayPainter</implementation-class>-->
+        <!--        </component>-->
     </application-components>
 
     <extensions defaultExtensionNs="com.intellij">

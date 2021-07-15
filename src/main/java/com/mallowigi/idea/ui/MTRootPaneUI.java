@@ -30,39 +30,43 @@ import com.intellij.ide.DataManager;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaRootPaneUI;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.util.Disposer;
 import com.intellij.openapi.util.SystemInfo;
 import com.intellij.openapi.util.SystemInfoRt;
 import com.intellij.openapi.util.registry.Registry;
+import com.intellij.openapi.wm.IdeGlassPaneUtil;
 import com.intellij.ui.ColorUtil;
 import com.intellij.util.ui.JBInsets;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
-import com.mallowigi.idea.MTLicenseChecker;
 import com.mallowigi.idea.utils.MTUI;
 import com.mallowigi.idea.utils.MTUiUtils;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
-import javax.swing.border.*;
-import javax.swing.plaf.*;
-import javax.swing.plaf.basic.*;
+import javax.swing.border.AbstractBorder;
+import javax.swing.border.Border;
+import javax.swing.plaf.ComponentUI;
+import javax.swing.plaf.basic.BasicRootPaneUI;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.beans.PropertyChangeListener;
 
 import static com.mallowigi.idea.utils.MTUiUtils.stringToARGB;
 
-@SuppressWarnings( {"DuplicateStringLiteralInspection",
-    "SyntheticAccessorCall",
-    "StandardVariableNames"})
+@SuppressWarnings({"DuplicateStringLiteralInspection",
+  "SyntheticAccessorCall",
+  "StandardVariableNames"})
 public final class MTRootPaneUI extends DarculaRootPaneUI {
   private static final int JDK_VER = 11;
 
   private final Runnable disposer = null;
 
-  @SuppressWarnings( {"MethodOverridesStaticMethodOfSuperclass",
-      "unused"})
+  @SuppressWarnings({"MethodOverridesStaticMethodOfSuperclass",
+    "unused"})
   public static ComponentUI createUI(final JComponent component) {
     return hasCustomDecoration() ? new MTRootPaneUI() : createWindowsRootPaneUI();
   }
@@ -91,25 +95,12 @@ public final class MTRootPaneUI extends DarculaRootPaneUI {
   @Override
   public void installUI(final JComponent c) {
     super.installUI(c);
-    final boolean isPremium = MTLicenseChecker.isLicensed();
 
-    if (!isPremium) {
-      return;
-    }
+    final JRootPane rootPane = (JRootPane) c;
 
-    //    if (SystemInfo.isMac) {
-    //      if (JavaVersion.current().feature >= JDK_VER) {
-    //        final JRootPane rootPane = (JRootPane) c;
-    //
-    //        c.addHierarchyListener((event) -> {
-    //          final Window window = UIUtil.getWindow(c);
-    //          final String title = getWindowTitle(window);
-    //          if (title != null && !isDialogWindow(window)) {
-    //            setCustomTitleBar(window, rootPane, (runnable) -> disposer = runnable);
-    //          }
-    //        });
-    //      }
-    //    }
+    c.addHierarchyListener((event) -> {
+      IdeGlassPaneUtil.installPainter(rootPane, new OverlayPainter(rootPane), Disposer.newDisposable("OverlayPainter"));
+    });
   }
 
   private static int getTransparentTitleBarHeight(final JRootPane rootPane) {
