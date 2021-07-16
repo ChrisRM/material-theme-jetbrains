@@ -28,6 +28,7 @@ package com.mallowigi.idea.utils;
 
 import com.intellij.codeInsight.hint.HintManager;
 import com.intellij.codeInsight.hint.HintUtil;
+import com.intellij.ide.actions.BigPopupUI;
 import com.intellij.ide.plugins.IdeaPluginDescriptor;
 import com.intellij.ide.plugins.PluginManager;
 import com.intellij.ide.plugins.PluginManagerCore;
@@ -53,6 +54,7 @@ import com.intellij.ui.JBColor;
 import com.intellij.ui.LightweightHint;
 import com.intellij.ui.awt.RelativePoint;
 import com.intellij.util.ObjectUtils;
+import com.intellij.util.containers.ContainerUtil;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
 import com.mallowigi.idea.MTConfig;
@@ -485,8 +487,43 @@ public enum MTUiUtils {
   }
 
   public static boolean isDialogWindow(final Window window) {
-    return window instanceof JDialog ? ((Dialog) window).isModal() :
-           !(window instanceof JFrame) || ((Frame) window).isUndecorated();
+    if (window instanceof JDialog) {
+      return ((Dialog) window).isModal();
+    } else if (window != null && !(window instanceof JFrame)) {
+      return !isContextMenu(window);
+      //      return !window.getClass().getName().contains("HeavyWeightWindow");
+    }
+    return false;
+  }
+
+  public static boolean isContextMenu(final Window window) {
+    if (window instanceof JWindow) {
+      final JLayeredPane layeredPane = ((JWindow) window).getLayeredPane();
+      for (final Component component : layeredPane.getComponents()) {
+        if (component instanceof JPanel) {
+          final Component[] children = ((JPanel) component).getComponents();
+          if (ContainerUtil.findInstance(children, JPopupMenu.class) != null) {
+            return true;
+          }
+        }
+      }
+    }
+    return false;
+  }
+
+  public static boolean isBigPopup(final Window window) {
+    if (window instanceof JWindow) {
+      final JLayeredPane layeredPane = ((JWindow) window).getLayeredPane();
+      for (final Component component : layeredPane.getComponents()) {
+        if (component instanceof JPanel) {
+          final Component[] children = ((JPanel) component).getComponents();
+          if (ContainerUtil.findInstance(children, BigPopupUI.class) == null) {
+            return true;
+          }
+        }
+      }
+    }
+    return false;
   }
 
   private static @Nullable String getWindowTitle(final Window window) {
