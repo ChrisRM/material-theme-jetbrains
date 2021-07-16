@@ -26,44 +26,18 @@
 
 package com.mallowigi.idea.ui;
 
-import com.intellij.ide.DataManager;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaRootPaneUI;
 import com.intellij.openapi.Disposable;
-import com.intellij.openapi.actionSystem.CommonDataKeys;
-import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.Disposer;
 import com.intellij.openapi.util.SystemInfo;
-import com.intellij.openapi.util.SystemInfoRt;
-import com.intellij.openapi.util.registry.Registry;
-import com.intellij.ui.ColorUtil;
-import com.intellij.util.ui.JBInsets;
-import com.intellij.util.ui.JBUI;
-import com.intellij.util.ui.UIUtil;
-import com.mallowigi.idea.utils.MTUI;
-import com.mallowigi.idea.utils.MTUiUtils;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
-import javax.swing.border.AbstractBorder;
-import javax.swing.border.Border;
 import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicRootPaneUI;
-import java.awt.*;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
-import java.beans.PropertyChangeListener;
 
-import static com.mallowigi.idea.utils.MTUiUtils.stringToARGB;
-
-@SuppressWarnings({"DuplicateStringLiteralInspection",
-  "SyntheticAccessorCall",
-  "StandardVariableNames"})
+@SuppressWarnings("StandardVariableNames")
 public final class MTRootPaneUI extends DarculaRootPaneUI {
-  private static final int JDK_VER = 11;
 
-  private final Runnable disposer = null;
   final Disposable overlayDisposable = Disposer.newDisposable("OverlayPainter");
 
   @SuppressWarnings({"MethodOverridesStaticMethodOfSuperclass",
@@ -86,114 +60,11 @@ public final class MTRootPaneUI extends DarculaRootPaneUI {
   }
 
   @Override
-  public void uninstallUI(final JComponent c) {
-    super.uninstallUI(c);
-    if (disposer != null) {
-      disposer.run();
-    }
-  }
-
-  @Override
   public void installUI(final JComponent c) {
     super.installUI(c);
-
     final JRootPane rootPane = (JRootPane) c;
-    final OverlayPainter painter = new OverlayPainter(rootPane, overlayDisposable);
+    new OverlayPainter(rootPane, overlayDisposable);
 
-    c.addHierarchyListener((event) -> {
-      final Window window = UIUtil.getWindow(c);
-      if (isDialogWindow(window)) {
-        painter.addSpotlight(event.getComponent());
-      }
-
-    });
   }
 
-  private static int getTransparentTitleBarHeight(final JRootPane rootPane) {
-    final Object property = rootPane.getClientProperty("Window.transparentTitleBarHeight");
-    if (property instanceof Integer) {
-      return (int) property;
-    }
-    return "small".equals(rootPane.getClientProperty("Window.style")) ? 19 : 24;
-  }
-
-  public static @Nullable Project getCurrentProject() {
-    return CommonDataKeys.PROJECT.getData(DataManager.getInstance().getDataContext());
-  }
-
-  @NotNull
-  private static Color getFrameColor(final String title) {
-    final Color projectColor = new Color(stringToARGB(title));
-
-    return ColorUtil.withAlpha(MTUiUtils.darker(projectColor, 2), 0.5);
-  }
-
-  private static void setCustomTitleBar(@NotNull final Window window,
-                                        @NotNull final JRootPane rootPane,
-                                        final java.util.function.Consumer<? super Runnable> onDispose) {
-    if (!SystemInfoRt.isMac || !Registry.is("ide.mac.transparentTitleBarAppearance", false)) {
-      return;
-    }
-
-    final JBInsets topWindowInset = JBUI.insetsTop(getTransparentTitleBarHeight(rootPane));
-
-    rootPane.putClientProperty("apple.awt.fullWindowContent", true);
-    rootPane.putClientProperty("apple.awt.transparentTitleBar", true);
-
-    // Use standard properties starting jdk 17
-    if (Runtime.version().feature() >= 17) {
-      rootPane.putClientProperty("apple.awt.windowTitleVisible", false);
-    }
-
-    final Border customDecorationBorder = new AbstractBorder() {
-      @Override
-      public Insets getBorderInsets(final Component c) {
-        return topWindowInset;
-      }
-
-      @Override
-      public void paintBorder(final Component c, final Graphics g, final int x, final int y, final int width, final int height) {
-        final Graphics2D graphics = (Graphics2D) g.create();
-        try {
-          final Shape headerRectangle = new Rectangle(0, 0, c.getWidth(), topWindowInset.top);
-          final Color titleColor = getCurrentProject() == null ? UIUtil.getPanelBackground() : getFrameColor(getCurrentProject().getName());
-          graphics.setColor(titleColor);
-          graphics.fill(headerRectangle);
-          final Color color = window.isActive() ? MTUI.Label.getLabelForeground() : MTUI.Label.getLabelDisabledForeground();
-          graphics.setColor(color);
-        } finally {
-          graphics.dispose();
-        }
-      }
-    };
-    rootPane.setBorder(customDecorationBorder);
-
-    final WindowListener windowAdapter = new WindowAdapter() {
-      @Override
-      public void windowActivated(final WindowEvent e) {
-        rootPane.repaint();
-      }
-
-      @Override
-      public void windowDeactivated(final WindowEvent e) {
-        rootPane.repaint();
-      }
-    };
-    final PropertyChangeListener propertyChangeListener = e -> rootPane.repaint();
-    window.addPropertyChangeListener("title", propertyChangeListener);
-    onDispose.accept((Runnable) () -> {
-      window.removeWindowListener(windowAdapter);
-      window.removePropertyChangeListener("title", propertyChangeListener);
-    });
-  }
-
-  private static @Nullable String getWindowTitle(final Window window) {
-    return window instanceof JDialog ? ((Dialog) window).getTitle() :
-           window instanceof JFrame ? ((Frame) window).getTitle() : null;
-  }
-
-  private static boolean isDialogWindow(final Window window) {
-    return window instanceof JDialog ? ((Dialog) window).isModal() :
-           !(window instanceof JFrame) || ((Frame) window).isUndecorated();
-  }
 }

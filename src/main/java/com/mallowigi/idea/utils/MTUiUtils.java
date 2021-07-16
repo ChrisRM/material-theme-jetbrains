@@ -483,4 +483,14 @@ public enum MTUiUtils {
                       .findFirst()
                       .orElse(null);
   }
+
+  public static boolean isDialogWindow(final Window window) {
+    return window instanceof JDialog ? ((Dialog) window).isModal() :
+           !(window instanceof JFrame) || ((Frame) window).isUndecorated();
+  }
+
+  private static @Nullable String getWindowTitle(final Window window) {
+    return window instanceof JDialog ? ((Dialog) window).getTitle() :
+           window instanceof JFrame ? ((Frame) window).getTitle() : null;
+  }
 }
