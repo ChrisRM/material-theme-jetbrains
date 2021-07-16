@@ -30,10 +30,13 @@ import com.intellij.ide.ui.laf.darcula.ui.DarculaRootPaneUI;
 import com.intellij.openapi.Disposable;
 import com.intellij.openapi.util.Disposer;
 import com.intellij.openapi.util.SystemInfo;
+import com.intellij.util.ui.UIUtil;
+import com.mallowigi.idea.utils.MTUiUtils;
 
 import javax.swing.*;
 import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicRootPaneUI;
+import java.awt.*;
 
 @SuppressWarnings("StandardVariableNames")
 public final class MTRootPaneUI extends DarculaRootPaneUI {
@@ -62,8 +65,15 @@ public final class MTRootPaneUI extends DarculaRootPaneUI {
   @Override
   public void installUI(final JComponent c) {
     super.installUI(c);
+
     final JRootPane rootPane = (JRootPane) c;
-    new OverlayPainter(rootPane, overlayDisposable);
+    rootPane.addHierarchyListener((event) -> {
+      final Window window = UIUtil.getWindow(rootPane);
+      if (!MTUiUtils.isDialogWindow(window)) {
+        OverlayPainter.getInstance().add(rootPane, overlayDisposable);
+      }
+
+    });
 
   }
 
