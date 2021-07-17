@@ -30,7 +30,6 @@ import com.intellij.openapi.application.ApplicationInfo;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ApplicationNamesInfo;
 import com.intellij.openapi.components.PersistentStateComponent;
-import com.intellij.openapi.components.ServiceManager;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
 import com.intellij.ui.ColorUtil;
@@ -152,6 +151,8 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   @Property
   boolean statusBarTheme = true;
   @Property
+  boolean showOverlays = true;
+  @Property
   boolean themedScrollbars = true;
   @Property
   boolean treeFontSizeEnabled = false;
@@ -161,8 +162,11 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   boolean upperCaseButtons = true;
   @Property
   boolean upperCaseTabs = false;
+  /**
+   * @deprecated Use useMaterialFont2 instead
+   */
   @Property
-  @Deprecated
+  @Deprecated(since = "2.7")
   boolean useMaterialFont = true;
   @Property
   boolean useMaterialFont2 = false;
@@ -212,7 +216,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   @Property
   String userId = new UID().toString();
   @Property
-  String version = "6.6.0";
+  String version = "6.8.0";
   @Property
   TabHighlightPositions tabHighlightPosition = TabHighlightPositions.DEFAULT;
   @Property
@@ -228,7 +232,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   private transient boolean isReset = false;
 
   @Transient
-  private transient boolean isPremium = false;
+  private transient boolean isPremium;
 
   @Transient
   public transient Boolean hadStripesEnabled = null;
@@ -251,7 +255,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    * @return the MTConfig instance
    */
   public static MTConfig getInstance() {
-    return ServiceManager.getService(MTConfig.class);
+    return ApplicationManager.getApplication().getService(MTConfig.class);
   }
 
   /**
@@ -268,6 +272,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   /**
    * Get the state of MTConfig
    */
+  @SuppressWarnings("AccessingNonPublicFieldOfAnotherObject")
   @NotNull
   @Override
   public MTConfig getState() {
@@ -320,6 +325,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     // First fire before change
     fireBeforeChanged(form);
     isReset = false;
+    pristineConfig = false;
 
     setSettingsSelectedTab(form.getSelectedTabIndex());
     setAccentColor(ColorUtil.toHex(form.getCustomAccentColor()));
@@ -328,49 +334,49 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     setBorderedButtons(form.isBorderedButtons());
     setCodeAdditionsEnabled(form.isCodeAdditionsEnabled());
     setCompactDropdowns(form.isCompactDropdowns());
+    setCompactMenus(form.isCompactMenus());
     setCompactSidebar(form.isCompactSidebar());
+    setCompactStatusBar(form.isCompactStatusBar());
+    setCompactTables(form.isCompactTables());
+    setContrastMode(form.isContrastMode());
     setCustomSidebarHeight(form.getCustomSidebarHeight());
+    setCustomTitle(form.getCustomTitle());
+    setCustomTreeIndentEnabled(form.isCustomTreeIndent());
+    setEnforcedLanguageAdditions(form.isEnforcedLanguageAdditions());
     setFileStatusColorsEnabled(form.isFileStatusColors());
+    setHighContrast(form.isHighContrast());
     setHighlightColor(form.getHighlightColor());
     setHighlightColorEnabled(form.isHighlightColorEnabled());
     setHighlightThickness(form.getHighlightThickness());
     setIndicatorStyle(form.getIndicatorStyle());
     setIndicatorThickness(form.getIndicatorThickness());
-    setEnforcedLanguageAdditions(form.isEnforcedLanguageAdditions());
-    setCompactMenus(form.isCompactMenus());
-    setCompactStatusBar(form.isCompactStatusBar());
-    setCompactTables(form.isCompactTables());
-    setContrastMode(form.isContrastMode());
-    setCustomTreeIndentEnabled(form.isCustomTreeIndent());
-    setHighContrast(form.isHighContrast());
-    setStyledDirectories(form.isStyledDirectories());
-    setIsTabsShadow(form.isTabsShadow());
     setInvertedSelectionColor(form.isInvertedSelectionColor());
-    setUpperCaseTabs(form.isUpperCaseTabs());
+    setIsTabsShadow(form.isTabsShadow());
     setLeftTreeIndent(form.getLeftTreeIndent());
     setOverrideAccentColor(form.isOverrideAccents());
-    pristineConfig = false;
     setRightTreeIndent(form.getRightTreeIndent());
-    setSelectedTheme(form.getTheme());
     setSecondAccentColor(ColorUtil.toHex(form.getSecondAccentColor()));
+    setSelectedTheme(form.getTheme());
+    setShowWhatsNew(form.isShowWhatsNew());
+    setShowOverlays(form.isShowOverlays());
     setStripedToolWindowsEnabled(form.isStripedToolWindowsEnabled());
+    setStyledDirectories(form.isStyledDirectories());
+    setTabFontSize(form.getTabFontSize());
+    setTabFontSizeEnabled(form.isTabFontSizeEnabled());
     setTabHighlightPosition(form.getTabHighlightPosition());
     setTabsHeight(form.getTabsHeight());
     setThemedScrollbars(form.isThemedScrollbars());
-    setTabFontSize(form.getTabFontSize());
-    setTabFontSizeEnabled(form.isTabFontSizeEnabled());
     setTreeFontSize(form.getTreeFontSize());
     setTreeFontSizeEnabled(form.isTreeFontSizeEnabled());
     setUpperCaseButtons(form.isUpperCaseButtons());
+    setUpperCaseTabs(form.isUpperCaseTabs());
+    setUseColoredDirectories(form.isUseColoredDirectories());
+    setUseCustomTitle(form.isUseCustomTitle());
     setUseMaterialFont2(form.isUseMaterialFonts());
     setUseMaterialWallpapers(form.isUseMaterialWallpapers());
-    setUseColoredDirectories(form.isUseColoredDirectories());
     setUseProjectFrame(form.isUseProjectFrame());
-    setShowWhatsNew(form.isShowWhatsNew());
-    setUseProjectTitle(form.isUseProjectTitle());
     setUseProjectIcon(form.isUseProjectIcon());
-    setUseCustomTitle(form.isUseCustomTitle());
-    setCustomTitle(form.getCustomTitle());
+    setUseProjectTitle(form.isUseProjectTitle());
 
     // Then fire changed
     fireChanged();
@@ -384,13 +390,13 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     accentScrollbars = true;
     borderedButtons = false;
     codeAdditionsEnabled = true;
-    enforcedLanguageAdditions = false;
     compactDropdowns = false;
     compactSidebar = false;
     customSidebarHeight = DEFAULT_LINE_HEIGHT;
+    customTitle = DEFAULT_TITLE;
+    enforcedLanguageAdditions = false;
     fileStatusColorsEnabled = true;
     highlightColor = ACCENT_COLOR;
-    isHighlightColorEnabled = false;
     highlightThickness = DEFAULT_THICKNESS;
     indicatorStyle = IndicatorStyles.BORDER;
     indicatorThickness = DEFAULT_THICKNESS;
@@ -399,8 +405,9 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     isCompactTables = false;
     isContrastMode = false;
     isCustomTreeIndentEnabled = false;
-    isInvertedSelectionColor = false;
     isHighContrast = false;
+    isHighlightColorEnabled = false;
+    isInvertedSelectionColor = false;
     isMaterialDesign = true;
     isMaterialTheme = true;
     isStyledDirectories = false;
@@ -411,28 +418,28 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     rightTreeIndent = 6;
     secondAccentColor = SECOND_ACCENT_COLOR;
     selectedTheme = MTThemes.OCEANIC.getName();
+    showOverlays = true;
     showWhatsNew = true;
     statusBarTheme = true;
     stripedToolWindowsEnabled = false;
+    tabFontSize = DEFAULT_TAB_FONT_SIZE;
+    tabFontSizeEnabled = false;
     tabHighlightPosition = TabHighlightPositions.DEFAULT;
     tabOpacity = DEFAULT_TAB_OPACITY;
     tabsHeight = DEFAULT_TAB_HEIGHT;
     themedScrollbars = true;
-    tabFontSize = DEFAULT_TAB_FONT_SIZE;
-    tabFontSizeEnabled = false;
     treeFontSize = DEFAULT_TREE_FONT_SIZE;
     treeFontSizeEnabled = false;
     upperCaseButtons = true;
     upperCaseTabs = false;
+    useColoredDirectories = true;
+    useCustomTitle = false;
     useMaterialFont = true;
     useMaterialFont2 = false;
     useMaterialWallpapers = false;
-    useColoredDirectories = true;
     useProjectFrame = false;
     useProjectIcon = true;
     useProjectTitle = true;
-    useCustomTitle = false;
-    customTitle = DEFAULT_TITLE;
   }
 
   @SuppressWarnings("FeatureEnvy")
@@ -1632,6 +1639,20 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   }
   //endregion
 
+  //region Overlays
+  public boolean isShowOverlays() {
+    return showOverlays;
+  }
+
+  public void setShowOverlays(final boolean showOverlays) {
+    this.showOverlays = showOverlays;
+  }
+
+  public boolean isShowOverlaysChanged(final boolean showOverlays) {
+    return this.showOverlays != showOverlays;
+  }
+  //endregion
+
   //region Striped Tool Windows
   public boolean isStripedToolWindowsEnabled() {
     return stripedToolWindowsEnabled;
@@ -1833,23 +1854,23 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   @SuppressWarnings("DuplicateStringLiteralInspection")
   private JSONObject getNativePropertiesAsJson() throws JSONException {
     @NonNls final JSONObject hashMap = new JSONObject();
+    hashMap.put("IDE", ApplicationNamesInfo.getInstance().getFullProductName());
+    hashMap.put("IDEVersion", ApplicationInfo.getInstance().getBuild().getBaselineVersion());
     hashMap.put("accentColor", accentColor);
     hashMap.put("accentMode", accentMode);
     hashMap.put("accentScrollbars", accentScrollbars);
     hashMap.put("codeAdditions", codeAdditionsEnabled);
-    hashMap.put("enforceLanguageAdditions", enforcedLanguageAdditions);
     hashMap.put("compactDropdowns", compactDropdowns);
     hashMap.put("compactSidebar", compactSidebar);
     hashMap.put("customSidebarHeight", customSidebarHeight);
+    hashMap.put("customTitle", customTitle);
+    hashMap.put("enforceLanguageAdditions", enforcedLanguageAdditions);
     hashMap.put("fileStatusColorsEnabled", fileStatusColorsEnabled);
     hashMap.put("highlightColor", highlightColor);
     hashMap.put("highlightThickness", highlightThickness);
-    hashMap.put("IDE", ApplicationNamesInfo.getInstance().getFullProductName());
-    hashMap.put("IDEVersion", ApplicationInfo.getInstance().getBuild().getBaselineVersion());
     hashMap.put("indicatorStyles", indicatorStyle);
     hashMap.put("indicatorThickness", indicatorThickness);
     hashMap.put("isCompactMenus", isCompactMenus);
-    hashMap.put("isPremium", isPremium);
     hashMap.put("isCompactStatusBar", isCompactStatusBar);
     hashMap.put("isCompactTables", isCompactTables);
     hashMap.put("isContrastMode", isContrastMode);
@@ -1858,6 +1879,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     hashMap.put("isInvertedSelectionColor", isInvertedSelectionColor);
     hashMap.put("isMaterialDesign", isMaterialDesign);
     hashMap.put("isMaterialTheme", isMaterialTheme);
+    hashMap.put("isPremium", isPremium);
     hashMap.put("isStyledDirectories", isStyledDirectories);
     hashMap.put("isTabsShadow", isTabsShadow);
     hashMap.put("leftTreeIndent", leftTreeIndent);
@@ -1866,25 +1888,25 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     hashMap.put("rightTreeIndent", rightTreeIndent);
     hashMap.put("secondAccentMode", secondAccentColor);
     hashMap.put("selectedTheme", selectedTheme);
+    hashMap.put("showOverlays", showOverlays);
     hashMap.put("showWhatsNew", showWhatsNew);
     hashMap.put("statusBarTheme", statusBarTheme);
     hashMap.put("stripedToolWindowsEnabled", stripedToolWindowsEnabled);
+    hashMap.put("tabFontSize", tabFontSize);
+    hashMap.put("tabFontSizeEnabled", tabFontSizeEnabled);
     hashMap.put("tabHighlightPosition", tabHighlightPosition);
     hashMap.put("tabOpacity", tabOpacity);
     hashMap.put("tabsHeight", tabsHeight);
     hashMap.put("themedScrollbars", themedScrollbars);
-    hashMap.put("tabFontSize", tabFontSize);
-    hashMap.put("tabFontSizeEnabled", tabFontSizeEnabled);
     hashMap.put("treeFontSize", treeFontSize);
     hashMap.put("treeFontSizeEnabled", treeFontSizeEnabled);
     hashMap.put("upperCaseButtons", upperCaseButtons);
     hashMap.put("upperCaseTabs", upperCaseTabs);
+    hashMap.put("useCustomTitle", useCustomTitle);
     hashMap.put("useMaterialFont", useMaterialFont2);
     hashMap.put("useMaterialWallpapers", useMaterialWallpapers);
     hashMap.put("useProjectFrame", useProjectFrame);
     hashMap.put("useProjectTitle", useProjectTitle);
-    hashMap.put("useCustomTitle", useCustomTitle);
-    hashMap.put("customTitle", customTitle);
 
     hashMap.put("userId", userId);
     hashMap.put("version", version);

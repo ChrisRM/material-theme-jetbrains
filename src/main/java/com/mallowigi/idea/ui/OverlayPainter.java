@@ -32,6 +32,7 @@ import com.intellij.ui.paint.LinePainter2D;
 import com.intellij.ui.paint.RectanglePainter;
 import com.intellij.util.containers.ContainerUtil;
 import com.intellij.util.ui.JBUI;
+import com.mallowigi.idea.MTConfig;
 import com.mallowigi.idea.utils.MTUiUtils;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -58,10 +59,6 @@ public final class OverlayPainter implements AWTEventListener, Disposable {
    */
   @NotNull
   private final Collection<OverlayComponent> overlaidRootPanes = new ArrayList<>(2);
-  /**
-   * Whether the overlaying should happen
-   */
-  private final boolean isOverlayEnabled = true;
 
   /**
    * Stack of opened windows
@@ -128,7 +125,9 @@ public final class OverlayPainter implements AWTEventListener, Disposable {
    */
   @Override
   public void eventDispatched(final AWTEvent event) {
-    if (!isOverlayEnabled) {
+    if (!MTConfig.getInstance().isShowOverlays()) {
+      openedWindows = 0;
+      removeOverlays();
       return;
     }
 
