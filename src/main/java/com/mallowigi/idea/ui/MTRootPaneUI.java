@@ -69,7 +69,7 @@ public final class MTRootPaneUI extends DarculaRootPaneUI {
     final JRootPane rootPane = (JRootPane) c;
     rootPane.addHierarchyListener((event) -> {
       final Window window = UIUtil.getWindow(rootPane);
-      if (!MTUiUtils.isDialogWindow(window)) {
+      if (MTUiUtils.isFrameWindow(window)) {
         OverlayPainter.getInstance().add(rootPane, overlayDisposable);
       }
 

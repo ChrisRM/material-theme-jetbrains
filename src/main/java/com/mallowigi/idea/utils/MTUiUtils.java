@@ -486,11 +486,20 @@ public enum MTUiUtils {
                       .orElse(null);
   }
 
+  public static boolean isFrameWindow(final Window window) {
+    return window instanceof JFrame && !window.getClass().getName().contains("HeavyWeightWindow");
+  }
+
   public static boolean isDialogWindow(final Window window) {
+    if (window == null) {
+      return false;
+    }
+
     if (window instanceof JDialog) {
       return ((Dialog) window).isModal();
-    } else if (window != null && !(window instanceof JFrame)) {
-      return !isContextMenu(window);
+    } else if (!(window instanceof JFrame)) {
+      return isBigPopup(window);
+      //      return !isContextMenu(window);
       //      return !window.getClass().getName().contains("HeavyWeightWindow");
     }
     return false;
@@ -498,10 +507,10 @@ public enum MTUiUtils {
 
   public static boolean isContextMenu(final Window window) {
     if (window instanceof JWindow) {
-      final JLayeredPane layeredPane = ((JWindow) window).getLayeredPane();
+      final JLayeredPane layeredPane = ((RootPaneContainer) window).getLayeredPane();
       for (final Component component : layeredPane.getComponents()) {
         if (component instanceof JPanel) {
-          final Component[] children = ((JPanel) component).getComponents();
+          final Component[] children = ((Container) component).getComponents();
           if (ContainerUtil.findInstance(children, JPopupMenu.class) != null) {
             return true;
           }
@@ -513,14 +522,23 @@ public enum MTUiUtils {
 
   public static boolean isBigPopup(final Window window) {
     if (window instanceof JWindow) {
-      final JLayeredPane layeredPane = ((JWindow) window).getLayeredPane();
-      for (final Component component : layeredPane.getComponents()) {
-        if (component instanceof JPanel) {
-          final Component[] children = ((JPanel) component).getComponents();
-          if (ContainerUtil.findInstance(children, BigPopupUI.class) == null) {
-            return true;
-          }
-        }
+      final JLayeredPane layeredPane = ((RootPaneContainer) window).getLayeredPane();
+      return hasComponentOfType(layeredPane, BigPopupUI.class);
+      //      for (final Component component : layeredPane.getComponents()) {
+      //        if (component instanceof JPanel) {
+      //          return hasComponentOfType(component, BigPopupUI.class);
+      //        }
+      //      }
+    }
+    return false;
+  }
+
+  public static boolean hasComponentOfType(final Component parent, final Class type) {
+    if (parent instanceof Container) {
+      final Component[] children = ((Container) parent).getComponents();
+      if (children.length > 0) {
+        return ContainerUtil.findInstance(children, type) != null ||
+          ContainerUtil.find(children, child -> hasComponentOfType(child, type)) != null;
       }
     }
     return false;
