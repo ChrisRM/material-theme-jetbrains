@@ -25,11 +25,11 @@
  */
 package com.mallowigi.idea.ui;
 
-import com.mallowigi.idea.utils.MTUI;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaSpinnerUI;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.JBValue;
 import com.intellij.util.ui.MacUIUtil;
+import com.mallowigi.idea.utils.MTUI;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -46,7 +46,7 @@ import java.awt.geom.Path2D;
 public final class MTSpinnerUI extends DarculaSpinnerUI {
 
   @SuppressWarnings({"MethodOverridesStaticMethodOfSuperclass",
-      "unused"})
+    "unused"})
   public static ComponentUI createUI(final JComponent component) {
     return new MTSpinnerUI();
   }
@@ -73,7 +73,6 @@ public final class MTSpinnerUI extends DarculaSpinnerUI {
     return button;
   }
 
-
   @Override
   protected void paintArrowButton(final Graphics g,
                                   final BasicArrowButton button,
@@ -87,7 +86,7 @@ public final class MTSpinnerUI extends DarculaSpinnerUI {
     final MTSpinnerArrowButton arrowButton = new MTSpinnerArrowButton(direction);
     arrowButton.addMouseListener(new SpinnerButtonHighlightedAdapter(arrowButton));
 
-    // add border
+    // addRootPane border
     //    final Border buttonBorder = UIManager.getBorder("Spinner.arrowButtonBorder");
     //    if (buttonBorder instanceof UIResource) {
     //      // Wrap the border to avoid having the UIResource be replaced by
@@ -227,7 +226,7 @@ public final class MTSpinnerUI extends DarculaSpinnerUI {
       try {
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL,
-            MacUIUtil.USE_QUARTZ ? RenderingHints.VALUE_STROKE_PURE : RenderingHints.VALUE_STROKE_NORMALIZE);
+          MacUIUtil.USE_QUARTZ ? RenderingHints.VALUE_STROKE_PURE : RenderingHints.VALUE_STROKE_NORMALIZE);
 
         final int bw = JBUI.scale(2);
 

@@ -1,18 +1,12 @@
 
 9
 	README.md,8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
-r
-Bsrc/main/java/com/mallowigi/idea/themes/lists/AccentResources.java,4/b/4b0d4921193b36e093973b69b6303d46227243cd
-s
-Csrc/main/java/com/mallowigi/idea/themes/lists/MTThemeResources.java,a/1/a1a28f93f45c62a57f61b5946c547d2cdafcc54e
 q
 Asrc/main/java/com/mallowigi/idea/themes/themes/MTNativeTheme.java,8/3/830ba3369acddd8889bff4166feb40189a433058
 `
 0src/main/java/com/mallowigi/idea/utils/MTUI.java,4/a/4a2c200cc478d86141c03d1080dcf8e341a5d1c0
 d
 4src/main/java/com/mallowigi/idea/MTProjectFrame.java,c/9/c9b5727cee8bd860a8de2533cc77f342b70b8b8b
-e
-5src/main/java/com/mallowigi/idea/ui/MTRootPaneUI.java,1/2/129fd4eb4ab8bd1b1927d73557b98e3c69062984
 e
 5src/main/java/com/mallowigi/idea/MTHackComponent.java,4/0/40163698450700f27e70b2342c3e844941932ce3
 A
@@ -21,8 +15,6 @@ i
 9src/main/java/com/mallowigi/idea/lafs/MTLafInstaller.java,a/0/a0cee16f4107eebd4df207c00741c1b383478d39
 <
 publishToken,9/a/9a4babb4fc0d7011969eadd9c7a450adc93303c9
-<
-build.gradle,f/0/f07866736216be0ee2aba49e392191aeae700a35
 [
 +src/main/resources/icons/actions/mt/psi.svg,1/8/18334f455608f0852dc57b8f2b0a229e3c6c2223
 T
@@ -35,21 +27,9 @@ l
 <src/main/java/com/mallowigi/idea/actions/MTToggleAction.java,5/4/5425c3370c4f4fbc462aebac592eb46d4180fb45
 h
 8src/main/java/com/mallowigi/idea/ui/MTOnOffButtonUI.java,e/7/e7828eb36056f75e6d672c682c240b8530568a83
-s
-Csrc/main/java/com/mallowigi/idea/config/MTConfigTopHitProvider.java,f/0/f05cac4f1f99a2ae78da8ae628f2502592fff553
-p
-@src/main/java/com/mallowigi/idea/config/MTOptionContributor.java,b/6/b6b23a921b58f1d84cdd57836adbe6fd2fb9954e
 l
 <src/main/java/com/mallowigi/idea/MTBundledThemesManager.java,b/6/b61b7729e0c06e2d3f2eb2dbb435740d30bc0765
-i
-9src/main/java/com/mallowigi/idea/themes/MTAccentMode.java,0/f/0fc1dfa115644c88f3073cdbb289c389d8f49283
 A
 docs/CHANGELOG.md,c/3/c3fe97d1dc2ab87ecbadae8a25c9f6f45669e388
 i
 9src/main/java/com/mallowigi/idea/actions/ActionGroup.java,f/5/f532af0a58c02957d1d001ede68d28703d6fabc0
-`
-0java/com/mallowigi/idea/actions/ActionGroup.java,b/e/beb81940b2ff3fe3f1fa8f6204b2adb9cc9807ec
-i
-9java/com/mallowigi/idea/themes/lists/AccentResources.java,9/9/9924bb20f76081113a93852cb5f611023ec06b0a
-`
-0java/com/mallowigi/idea/themes/MTAccentMode.java,6/1/61b88ec5c718256e8082ad73eb06fe205b58c0ff

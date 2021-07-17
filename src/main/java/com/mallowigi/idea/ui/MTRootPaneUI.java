@@ -27,8 +27,6 @@
 package com.mallowigi.idea.ui;
 
 import com.intellij.ide.ui.laf.darcula.ui.DarculaRootPaneUI;
-import com.intellij.openapi.Disposable;
-import com.intellij.openapi.util.Disposer;
 import com.intellij.openapi.util.SystemInfo;
 import com.intellij.util.ui.UIUtil;
 import com.mallowigi.idea.utils.MTUiUtils;
@@ -40,8 +38,6 @@ import java.awt.*;
 
 @SuppressWarnings("StandardVariableNames")
 public final class MTRootPaneUI extends DarculaRootPaneUI {
-
-  final Disposable overlayDisposable = Disposer.newDisposable("OverlayPainter");
 
   @SuppressWarnings({"MethodOverridesStaticMethodOfSuperclass",
     "unused"})
@@ -70,7 +66,7 @@ public final class MTRootPaneUI extends DarculaRootPaneUI {
     rootPane.addHierarchyListener((event) -> {
       final Window window = UIUtil.getWindow(rootPane);
       if (MTUiUtils.isFrameWindow(window)) {
-        OverlayPainter.getInstance().add(rootPane, overlayDisposable);
+        OverlayPainter.getInstance().addRootPane(rootPane);
       }
 
     });

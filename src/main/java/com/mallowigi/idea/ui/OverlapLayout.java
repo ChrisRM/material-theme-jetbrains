@@ -88,7 +88,7 @@ public class OverlapLayout implements LayoutManager2, java.io.Serializable {
   /**
    * When components are overlapped above the ZOrder of each component is
    * changed resulting in the components position in the container being
-   * changed. For example when you add a component to the end of the
+   * changed. For example when you addRootPane a component to the end of the
    * container it will be moved to the beginning. If you then try to access
    * the component using Component.componentAt(), you will get the first
    * component, not the last.

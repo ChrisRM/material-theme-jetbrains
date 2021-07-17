@@ -28,8 +28,6 @@ package com.mallowigi.idea.ui;
 
 import com.intellij.openapi.Disposable;
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.ui.AbstractPainter;
-import com.intellij.ui.JBColor;
 import com.intellij.ui.paint.LinePainter2D;
 import com.intellij.ui.paint.RectanglePainter;
 import com.intellij.util.containers.ContainerUtil;
@@ -43,18 +41,32 @@ import java.awt.*;
 import java.awt.event.AWTEventListener;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
 
-public class OverlayPainter extends AbstractPainter implements AWTEventListener, Disposable {
+public final class OverlayPainter implements AWTEventListener, Disposable {
+  /**
+   * Listen to window events
+   */
   private static final long MASK = AWTEvent.WINDOW_EVENT_MASK | AWTEvent.WINDOW_STATE_EVENT_MASK;
+  /**
+   * The registered root panes
+   */
   @NotNull
-  private final List<Component> myComponents = new ArrayList<>();
+  private final Collection<Component> rootPanes = new ArrayList<>(2);
+  /**
+   * The currently overlayed root panes
+   */
   @NotNull
-  private Component myInitialComponent;
-  @NotNull
-  private final List<HighlightComponent> myHighlightComponents = new ArrayList<>();
-  private final boolean myIsHighlighted = true;
-  private Disposable overlayDisposable;
+  private final Collection<OverlayComponent> overlaidRootPanes = new ArrayList<>(2);
+  /**
+   * Whether the overlaying should happen
+   */
+  private final boolean isOverlayEnabled = true;
+
+  /**
+   * Stack of opened windows
+   */
+  private int openedWindows = 0;
 
   public static OverlayPainter getInstance() {
     return ApplicationManager.getApplication().getService(OverlayPainter.class);
@@ -64,6 +76,18 @@ public class OverlayPainter extends AbstractPainter implements AWTEventListener,
     Toolkit.getDefaultToolkit().addAWTEventListener(this, MASK);
   }
 
+  @Override
+  public void dispose() {
+    Toolkit.getDefaultToolkit().removeAWTEventListener(this);
+    removeOverlays();
+  }
+
+  /**
+   * Get the IdeGlassPane of a component
+   *
+   * @param component the component
+   * @return the IdeGlassPane
+   */
   @Nullable
   private static JComponent getGlassPane(@NotNull final Component component) {
     final JRootPane rootPane = SwingUtilities.getRootPane(component);
@@ -71,124 +95,100 @@ public class OverlayPainter extends AbstractPainter implements AWTEventListener,
   }
 
   @Nullable
-  private static HighlightComponent createHighlighter(@NotNull final Component component, @Nullable final Rectangle bounds) {
-    Rectangle rectangle = bounds;
-    final JComponent glassPane = getGlassPane(component);
+  private static OverlayComponent createOverlay(@NotNull final Component rootPane) {
+    final Rectangle bounds;
+    final JComponent glassPane = getGlassPane(rootPane);
     if (glassPane == null) {
       return null;
     }
 
-    if (rectangle != null) {
-      rectangle = SwingUtilities.convertRectangle(component, rectangle, glassPane);
-    } else {
-      final Point pt = SwingUtilities.convertPoint(component, new Point(0, 0), glassPane);
-      rectangle = new Rectangle(pt.x, pt.y, component.getWidth(), component.getHeight());
+    // Get bounds of rootpane
+    final Point pt = SwingUtilities.convertPoint(rootPane, new Point(0, 0), glassPane);
+    bounds = new Rectangle(pt.x, pt.y, rootPane.getWidth(), rootPane.getHeight());
+    if (bounds.width == 0 || bounds.height == 0) {
+      bounds.width = Math.max(bounds.width, 1);
+      bounds.height = Math.max(bounds.height, 1);
     }
 
-    JBColor color = new JBColor(Color.WHITE, Color.BLACK);
-    if (rectangle.width == 0 || rectangle.height == 0) {
-      rectangle.width = Math.max(rectangle.width, 1);
-      rectangle.height = Math.max(rectangle.height, 1);
-      color = JBColor.BLUE;
-    }
+    final Insets insets = rootPane instanceof Container ? ((Container) rootPane).getInsets() : JBUI.emptyInsets();
+    final OverlayComponent overlayComponent = new OverlayComponent(insets);
+    overlayComponent.setBounds(bounds);
 
-    final Insets insets = component instanceof JComponent ? ((JComponent) component).getInsets() : JBUI.emptyInsets();
-    final HighlightComponent highlightComponent = new HighlightComponent(color, insets);
-    highlightComponent.setBounds(rectangle);
-
-    glassPane.add(highlightComponent);
+    glassPane.add(overlayComponent);
     glassPane.revalidate();
     glassPane.repaint();
 
-    return highlightComponent;
+    return overlayComponent;
   }
 
-  @Override
-  public boolean needsRepaint() {
-    return true;
-  }
-
-  @Override
-  public void executePaint(final Component component, final Graphics2D g) {
-    updateHighlighting();
-  }
-
-  @Override
-  public void dispose() {
-    //    myInitialComponent.removeHierarchyListener();
-    overlayDisposable.dispose();
-    Toolkit.getDefaultToolkit().removeAWTEventListener(this);
-
-  }
-
+  /**
+   * Show/Hide the overlay when a window is shown or hidden
+   *
+   * @param event the event
+   */
   @Override
   public void eventDispatched(final AWTEvent event) {
+    if (!isOverlayEnabled) {
+      return;
+    }
+
     final Object source = event == null ? null : event.getSource();
     if (source instanceof Window) {
-      //      for (Container container = (Window) source; container instanceof Window && container instanceof RootPaneContainer; container =
-      //        container.getParent()) {
-      //        final JRootPane root = ((RootPaneContainer) container).getRootPane();
-      //        if (root != null) {
-      //          final JComponent pane = (JComponent) root.getGlassPane();
-      //          if (pane instanceof IdeGlassPaneImpl) {
-      //
-      //          }
-      //        }
-      //      }
-      if (MTUiUtils.isDialogWindow((Window) source)) {
-        if (event.getID() == WindowEvent.WINDOW_OPENED) {
-          updateHighlighting();
-        } else if (event.getID() == WindowEvent.WINDOW_CLOSED) {
-          removeHighlighting();
+      // Remove highlights when all windows are closed
+      if (event.getID() == WindowEvent.WINDOW_CLOSED) {
+        openedWindows--;
+        if (openedWindows == 0) {
+          removeOverlays();
         }
       }
+      // If a dialog window is opened, show the overlay
+      else if (event.getID() == WindowEvent.WINDOW_OPENED && MTUiUtils.isDialogWindow((Window) source)) {
+        openedWindows++;
+        updateOverlays();
+      }
     }
   }
 
-  private void updateHighlighting() {
-    for (final HighlightComponent component : myHighlightComponents) {
-      final JComponent glassPane = getGlassPane(component);
+  private void updateOverlays() {
+    removeOverlays();
+
+    for (final Component rootPane : rootPanes) {
+      ContainerUtil.addIfNotNull(overlaidRootPanes, createOverlay(rootPane));
+    }
+  }
+
+  /**
+   * Remove all overlays
+   */
+  private void removeOverlays() {
+    for (final OverlayComponent overlay : overlaidRootPanes) {
+      final JComponent glassPane = getGlassPane(overlay);
       if (glassPane != null) {
-        glassPane.remove(component);
+        glassPane.remove(overlay);
         glassPane.revalidate();
         glassPane.repaint();
       }
     }
-    myHighlightComponents.clear();
-
-    if (myIsHighlighted) {
-      for (final Component component : myComponents) {
-        ContainerUtil.addIfNotNull(myHighlightComponents, createHighlighter(component, null));
-      }
-    }
+    overlaidRootPanes.clear();
   }
 
-  private void removeHighlighting() {
-    for (final HighlightComponent component : myHighlightComponents) {
-      final JComponent glassPane = getGlassPane(component);
-      if (glassPane != null) {
-        glassPane.remove(component);
-        glassPane.revalidate();
-        glassPane.repaint();
-      }
-    }
-    myHighlightComponents.clear();
+  /**
+   * Add a root pane to the list of rootpanes
+   *
+   * @param rootPane the rootpane
+   */
+  void addRootPane(final JRootPane rootPane) {
+    rootPanes.add(rootPane);
   }
 
-  void add(final JRootPane rootPane, final Disposable overlayDisposable) {
-    this.overlayDisposable = overlayDisposable;
-    myComponents.add(rootPane);
-    myInitialComponent = rootPane;
-  }
-
-  private static final class HighlightComponent extends JComponent {
-    @NotNull
-    private final Color myColor;
+  /**
+   * The Overlay itself
+   */
+  private static final class OverlayComponent extends JComponent {
     @NotNull
     private final Insets myInsets;
 
-    private HighlightComponent(@NotNull final Color color, @NotNull final Insets insets) {
-      myColor = color;
+    OverlayComponent(@NotNull final Insets insets) {
       myInsets = insets;
     }
 
@@ -198,10 +198,11 @@ public class OverlayPainter extends AbstractPainter implements AWTEventListener,
       final Graphics2D g2d = (Graphics2D) g;
 
       final Color oldColor = g2d.getColor();
-      final Composite old = g2d.getComposite();
+      final Composite oldComposite = g2d.getComposite();
       g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.2f));
 
       final Rectangle r = getBounds();
+      final Color myColor = Color.BLACK;
       RectanglePainter.paint(g2d, 0, 0, r.width, r.height, 0, myColor, null);
 
       ((Graphics2D) g).setPaint(myColor.darker());
@@ -218,7 +219,7 @@ public class OverlayPainter extends AbstractPainter implements AWTEventListener,
         LinePainter2D.paint(g2d, 0, r.height - i - 1, r.width, r.height - i - 1);
       }
 
-      g2d.setComposite(old);
+      g2d.setComposite(oldComposite);
       g2d.setColor(oldColor);
     }
   }
