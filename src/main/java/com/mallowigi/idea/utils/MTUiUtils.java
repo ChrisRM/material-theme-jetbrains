@@ -320,6 +320,14 @@ public enum MTUiUtils {
     }
   }
 
+  /**
+   * Return the equivalent enum of a string, or defaultValue if not found
+   *
+   * @param value        the string of the enum value
+   * @param defaultValue fallback value
+   * @param <T>          type of the value
+   * @return the enum if found, or the default value
+   */
   @SuppressWarnings("unchecked")
   public static <T extends Enum<T>> String parseEnumValue(final Object value, final T defaultValue) {
     if (value instanceof String) {
@@ -341,6 +349,13 @@ public enum MTUiUtils {
       PropertiesComponent.getInstance().getValue(IdeBackgroundUtil.FRAME_PROP) != null;
   }
 
+  /**
+   * Create a tooltip
+   *
+   * @param message       tooltip contents
+   * @param preferredSize tooltip size
+   * @return the tooltip as LightweightHint
+   */
   public static LightweightHint createHintTooltip(final String message, final Dimension preferredSize) {
     // Create a tooltip
     final JComponent informationLabel = HintUtil.createInformationLabel(message);
@@ -352,6 +367,14 @@ public enum MTUiUtils {
     return new LightweightHint(informationLabel);
   }
 
+  /**
+   * Create a tooltip with a link
+   *
+   * @param message       tooltip contents
+   * @param linkUrl       link target
+   * @param preferredSize tooltip size
+   * @return the tooltip as LightweightHint
+   */
   public static LightweightHint createLinkHintTooltip(final String message, final String linkUrl, final Dimension preferredSize) {
     // Create a tooltip
     final JComponent informationLabel = HintUtil.createInformationLabel(
@@ -376,6 +399,11 @@ public enum MTUiUtils {
     return new LightweightHint(informationLabel);
   }
 
+  /**
+   * Helper method to disable a component and add a tooltip asking to buy a premium account
+   *
+   * @param component component to disable
+   */
   public static void disablePremium(final JComponent component) {
     component.setEnabled(false);
     component.setToolTipText(null);
@@ -396,10 +424,24 @@ public enum MTUiUtils {
     });
   }
 
+  /**
+   * Toggle enabled state of a component
+   *
+   * @param component the component
+   * @param state     the new state
+   */
   public static void disableEnable(final JComponent component, final boolean state) {
     component.setEnabled(state);
   }
 
+  /**
+   * Show a custom tooltip on a component
+   *
+   * @param component    the component
+   * @param hint         the tooltip
+   * @param isHintHidden hidden state of the tooltip
+   * @return true if the tooltip is displayed
+   */
   @SuppressWarnings("MagicNumber")
   static AtomicBoolean showHint(final JComponent component, final LightweightHint hint, final AtomicBoolean isHintHidden) {
     final AtomicBoolean newIsHintHidden = new AtomicBoolean(isHintHidden.get());
@@ -434,6 +476,9 @@ public enum MTUiUtils {
     return Integer.min(max, Integer.max(value, min));
   }
 
+  /**
+   * Converts a color to a JBColor
+   */
   public static JBColor toJBColor(final Color color) {
     return new JBColor(color, color);
   }
@@ -454,12 +499,8 @@ public enum MTUiUtils {
   /**
    * Converts a string to a color
    */
-  public static int stringToARGB(final CharSequence charSequence) {
-    return hashCode(charSequence);
-  }
-
   @SuppressWarnings("CharUsedInArithmeticContext")
-  private static int hashCode(final CharSequence charSequence) {
+  public static int stringToARGB(final CharSequence charSequence) {
     int hash = 0;
     final int length = charSequence.length();
     for (int i = 0; i < length; i++) {
@@ -468,10 +509,19 @@ public enum MTUiUtils {
     return hash;
   }
 
+  /**
+   * Alias for getting the current color scheme
+   */
   public static @NotNull EditorColorsScheme getCurrentColorScheme() {
     return EditorColorsManager.getInstance().getGlobalScheme();
   }
 
+  /**
+   * Returns the MTProjectConfig of the current project
+   *
+   * @param project the project
+   * @return the config if enabled, null otherwise
+   */
   public static @Nullable MTProjectConfig getProjectConfigIfEnabled(final Project project) {
     if (project != null && !project.isDisposed()) {
       final MTProjectConfig projectConfig = MTProjectConfig.getInstance(project);
@@ -483,20 +533,39 @@ public enum MTUiUtils {
     return null;
   }
 
+  /**
+   * Finds the first field with the given name
+   *
+   * @param fieldStream field list
+   * @param name        field name to search
+   * @return the field if found, null otherwise
+   */
   public static Field findField(final Stream<Field> fieldStream, final @NonNls String name) {
     return fieldStream.filter(field -> name.equals(field.getName()))
                       .findFirst()
                       .orElse(null);
   }
 
+  /**
+   * Checks if the window is a frame and not a heavyweightwindow (used for popups, tooltips, etc)
+   *
+   * @param window window to check
+   * @return true if not heavyweight frame
+   */
   public static boolean isFrameWindow(final Window window) {
     return window instanceof JFrame && !isHeavyWeightWindow(window);
   }
 
+  /**
+   * Checks if a window is a heavyweight window (popups, tooltips, etc)
+   */
   private static boolean isHeavyWeightWindow(final Window window) {
     return window != null && window.getClass().getName().contains("HeavyWeightWindow");
   }
 
+  /**
+   * Checks if the window is a dialog or popup window
+   */
   public static boolean isDialogWindow(final Window window) {
     if (window == null) {
       return false;
@@ -505,11 +574,14 @@ public enum MTUiUtils {
     if (window instanceof JDialog) {
       return true;
     } else if (!(window instanceof JFrame)) {
-      return isBigPopup(window);
+      return isPopup(window);
     }
     return false;
   }
 
+  /**
+   * Checks if a window is a context menu
+   */
   public static boolean isContextMenu(final Window window) {
     if (window instanceof JWindow) {
       final JLayeredPane layeredPane = ((RootPaneContainer) window).getLayeredPane();
@@ -525,7 +597,10 @@ public enum MTUiUtils {
     return false;
   }
 
-  public static boolean isBigPopup(final Window window) {
+  /**
+   * Checks if a window represents a popup. Examples: Search Everything, Run Anything, New File
+   */
+  public static boolean isPopup(final Window window) {
     if (window instanceof JWindow) {
       final JLayeredPane layeredPane = ((RootPaneContainer) window).getLayeredPane();
       return hasComponentOfTypes(layeredPane, BigPopupUI.class, NewItemSimplePopupPanel.class);
@@ -533,9 +608,16 @@ public enum MTUiUtils {
     return false;
   }
 
-  public static boolean hasComponentOfTypes(final Component parent, final Class... types) {
-    if (parent instanceof Container) {
-      final Component[] children = ((Container) parent).getComponents();
+  /**
+   * Checks if a component or its descendants contains a component of one of the given types
+   *
+   * @param comp  the component
+   * @param types the types to check against
+   * @return true if one of the descendants is of one of the given types
+   */
+  public static boolean hasComponentOfTypes(final Component comp, final Class... types) {
+    if (comp instanceof Container) {
+      final Component[] children = ((Container) comp).getComponents();
       if (ContainerUtil.find(children, child -> isInstanceOfTypes(child, types)) != null) {
         return true;
       } else if (children.length > 0) {
@@ -545,10 +627,16 @@ public enum MTUiUtils {
     return false;
   }
 
+  /**
+   * Checks if an object is an instance of one of the provided types
+   */
   public static boolean isInstanceOfTypes(final Object object, final Class... types) {
-    return !ContainerUtil.all(Arrays.asList(types), type -> !type.isInstance(object));
+    return Arrays.stream(types).anyMatch(type -> type.isInstance(object));
   }
 
+  /**
+   * Gets a window or popup's title
+   */
   private static @Nullable String getWindowTitle(final Window window) {
     if (window instanceof JDialog) {
       return ((Dialog) window).getTitle();

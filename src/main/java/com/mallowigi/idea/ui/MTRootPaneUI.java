@@ -52,7 +52,7 @@ public final class MTRootPaneUI extends DarculaRootPaneUI {
   @SuppressWarnings("OverlyBroadCatchBlock")
   private static ComponentUI createWindowsRootPaneUI() {
     try {
-      return (ComponentUI) Class.forName("com.sun.java.swing.plaf.windows.WindowsRootPaneUI").newInstance();
+      return (ComponentUI) Class.forName("com.sun.java.swing.plaf.windows.WindowsRootPaneUI").getDeclaredConstructor().newInstance();
     } catch (final Exception e) {
       return new BasicRootPaneUI();
     }
@@ -63,12 +63,11 @@ public final class MTRootPaneUI extends DarculaRootPaneUI {
     super.installUI(c);
 
     final JRootPane rootPane = (JRootPane) c;
-    rootPane.addHierarchyListener((event) -> {
+    rootPane.addHierarchyListener(event -> {
       final Window window = UIUtil.getWindow(rootPane);
       if (MTUiUtils.isFrameWindow(window)) {
         OverlayPainter.getInstance().addRootPane(rootPane);
       }
-
     });
 
   }
