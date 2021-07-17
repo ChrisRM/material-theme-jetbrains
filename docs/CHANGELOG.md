@@ -1,6 +1,17 @@
 ## Changelog
 ----
 
+## 6.8.0
+
+### Features
+- New Setting: **Overlays**: Add an overlay on the root pane that shows when popups are opened! (experimental)
+
+### Fixes
+- Refactor the Learning plugin's theming
+
+### Other
+- Convert resource lists to Kotlin
+
 ## 6.7.2
 
 ### Fixes
