@@ -41,8 +41,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.AWTEventListener;
 import java.awt.event.WindowEvent;
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Deque;
 
 public final class OverlayPainter implements AWTEventListener, Disposable {
   /**
@@ -63,7 +65,7 @@ public final class OverlayPainter implements AWTEventListener, Disposable {
   /**
    * Stack of opened windows
    */
-  private int openedWindows = 0;
+  private final Deque<Object> openedWindowsStack = new ArrayDeque<>(1);
 
   public static OverlayPainter getInstance() {
     return ApplicationManager.getApplication().getService(OverlayPainter.class);
@@ -126,24 +128,25 @@ public final class OverlayPainter implements AWTEventListener, Disposable {
   @Override
   public void eventDispatched(final AWTEvent event) {
     if (!MTConfig.getInstance().isShowOverlays()) {
-      openedWindows = 0;
-      removeOverlays();
+      if (!openedWindowsStack.isEmpty()) {
+        openedWindowsStack.clear();
+        removeOverlays();
+      }
       return;
     }
 
     final Object source = event == null ? null : event.getSource();
     if (source instanceof Window) {
       // Remove highlights when all windows are closed
-      if (event.getID() == WindowEvent.WINDOW_CLOSED) {
-        openedWindows--;
-        if (openedWindows <= 0) {
-          openedWindows = 0;
+      if (event.getID() == WindowEvent.WINDOW_CLOSED && openedWindowsStack.peek() == source) {
+        openedWindowsStack.pop();
+        if (openedWindowsStack.isEmpty()) {
           removeOverlays();
         }
       }
       // If a dialog window is opened, show the overlay
       else if (event.getID() == WindowEvent.WINDOW_OPENED && MTUiUtils.isDialogWindow((Window) source)) {
-        openedWindows++;
+        openedWindowsStack.push(source);
         updateOverlays();
       }
     }
