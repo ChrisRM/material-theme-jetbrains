@@ -98,7 +98,7 @@ public final class MTLafComponent implements AppLifecycleListener {
       final UIThemeBasedLookAndFeelInfo lookAndFeel = (UIThemeBasedLookAndFeelInfo) currentLookAndFeel;
       MTThemeManager.activateLAF(lookAndFeel.getTheme());
     } else if (activeLookAndFeel instanceof DarculaLookAndFeelInfo) {
-      MTThemeManager.activateLAF("darcula", true, "Darcula");
+      MTThemeManager.activateLAF("darcula", true, MTUiUtils.DARCULA);
     } else if (activeLookAndFeel instanceof IntelliJLookAndFeelInfo) {
       MTThemeManager.activateLAF("default", false, "Light");
     }
@@ -165,9 +165,7 @@ public final class MTLafComponent implements AppLifecycleListener {
   }
 
   private static void patchTree() {
-    ApplicationManager.getApplication().invokeLater(() -> { // don't do heavy operations right away
-      MTLafInstaller.replaceTree(UIManager.getLookAndFeelDefaults());
-    });
+    ApplicationManager.getApplication().invokeLater(() -> MTLafInstaller.replaceTree(UIManager.getLookAndFeelDefaults()));
   }
 
   /**

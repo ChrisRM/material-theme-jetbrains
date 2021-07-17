@@ -33,6 +33,7 @@ import com.intellij.ide.plugins.IdeaPluginDescriptor;
 import com.intellij.ide.plugins.PluginManager;
 import com.intellij.ide.plugins.PluginManagerCore;
 import com.intellij.ide.ui.LafManager;
+import com.intellij.ide.ui.newItemPopup.NewItemSimplePopupPanel;
 import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.notification.Notification;
 import com.intellij.notification.NotificationListener;
@@ -75,10 +76,7 @@ import java.io.IOException;
 import java.lang.reflect.Field;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.Collections;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Random;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.stream.Stream;
 
@@ -87,7 +85,9 @@ import java.util.stream.Stream;
  */
 @SuppressWarnings({"unused",
   "StaticMethodOnlyUsedInOneClass",
-  "ClassWithTooManyMethods"})
+  "ClassWithTooManyMethods",
+  "HardcodedFileSeparator",
+  "OverlyComplexClass"})
 public enum MTUiUtils {
   DEFAULT;
 
@@ -320,6 +320,7 @@ public enum MTUiUtils {
     }
   }
 
+  @SuppressWarnings("unchecked")
   public static <T extends Enum<T>> String parseEnumValue(final Object value, final T defaultValue) {
     if (value instanceof String) {
       @NonNls final String name = StringUtil.toUpperCase((String) value);
@@ -399,6 +400,7 @@ public enum MTUiUtils {
     component.setEnabled(state);
   }
 
+  @SuppressWarnings("MagicNumber")
   static AtomicBoolean showHint(final JComponent component, final LightweightHint hint, final AtomicBoolean isHintHidden) {
     final AtomicBoolean newIsHintHidden = new AtomicBoolean(isHintHidden.get());
     if (isHintHidden.get()) {
@@ -456,11 +458,12 @@ public enum MTUiUtils {
     return hashCode(charSequence);
   }
 
+  @SuppressWarnings("CharUsedInArithmeticContext")
   private static int hashCode(final CharSequence charSequence) {
     int hash = 0;
     final int length = charSequence.length();
     for (int i = 0; i < length; i++) {
-      hash = (int) charSequence.charAt(i) + ((hash << 5) - hash);
+      hash = charSequence.charAt(i) + ((hash << 5) - hash);
     }
     return hash;
   }
@@ -487,7 +490,11 @@ public enum MTUiUtils {
   }
 
   public static boolean isFrameWindow(final Window window) {
-    return window instanceof JFrame && !window.getClass().getName().contains("HeavyWeightWindow");
+    return window instanceof JFrame && !isHeavyWeightWindow(window);
+  }
+
+  private static boolean isHeavyWeightWindow(final Window window) {
+    return window != null && window.getClass().getName().contains("HeavyWeightWindow");
   }
 
   public static boolean isDialogWindow(final Window window) {
@@ -496,11 +503,9 @@ public enum MTUiUtils {
     }
 
     if (window instanceof JDialog) {
-      return ((Dialog) window).isModal();
+      return true;
     } else if (!(window instanceof JFrame)) {
       return isBigPopup(window);
-      //      return !isContextMenu(window);
-      //      return !window.getClass().getName().contains("HeavyWeightWindow");
     }
     return false;
   }
@@ -523,29 +528,33 @@ public enum MTUiUtils {
   public static boolean isBigPopup(final Window window) {
     if (window instanceof JWindow) {
       final JLayeredPane layeredPane = ((RootPaneContainer) window).getLayeredPane();
-      return hasComponentOfType(layeredPane, BigPopupUI.class);
-      //      for (final Component component : layeredPane.getComponents()) {
-      //        if (component instanceof JPanel) {
-      //          return hasComponentOfType(component, BigPopupUI.class);
-      //        }
-      //      }
+      return hasComponentOfTypes(layeredPane, BigPopupUI.class, NewItemSimplePopupPanel.class);
     }
     return false;
   }
 
-  public static boolean hasComponentOfType(final Component parent, final Class type) {
+  public static boolean hasComponentOfTypes(final Component parent, final Class... types) {
     if (parent instanceof Container) {
       final Component[] children = ((Container) parent).getComponents();
-      if (children.length > 0) {
-        return ContainerUtil.findInstance(children, type) != null ||
-          ContainerUtil.find(children, child -> hasComponentOfType(child, type)) != null;
+      if (ContainerUtil.find(children, child -> isInstanceOfTypes(child, types)) != null) {
+        return true;
+      } else if (children.length > 0) {
+        return ContainerUtil.find(children, child -> hasComponentOfTypes(child, types)) != null;
       }
     }
     return false;
   }
 
+  public static boolean isInstanceOfTypes(final Object object, final Class... types) {
+    return !ContainerUtil.all(Arrays.asList(types), type -> !type.isInstance(object));
+  }
+
   private static @Nullable String getWindowTitle(final Window window) {
-    return window instanceof JDialog ? ((Dialog) window).getTitle() :
-           window instanceof JFrame ? ((Frame) window).getTitle() : null;
+    if (window instanceof JDialog) {
+      return ((Dialog) window).getTitle();
+    } else if (window instanceof JFrame) {
+      return ((Frame) window).getTitle();
+    }
+    return null;
   }
 }
