@@ -31,7 +31,6 @@ import com.google.gson.internal.LinkedTreeMap;
 import com.intellij.openapi.actionSystem.*;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ModalityState;
-import com.intellij.openapi.components.ServiceManager;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.ui.LicensingFacade;
 import com.mallowigi.idea.messages.MaterialThemeBundle;
@@ -142,7 +141,7 @@ public final class MTLicenseChecker {
   }
 
   public static MTLicenseChecker getInstance() {
-    return ServiceManager.getService(MTLicenseChecker.class);
+    return ApplicationManager.getApplication().getService(MTLicenseChecker.class);
   }
 
   /**

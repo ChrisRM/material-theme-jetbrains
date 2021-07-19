@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -28,7 +28,6 @@ package com.mallowigi.idea;
 
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.PersistentStateComponent;
-import com.intellij.openapi.components.ServiceManager;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
 import com.intellij.ui.ColorUtil;
@@ -114,7 +113,7 @@ public final class MTCustomThemeConfig implements PersistentStateComponent<MTCus
 
   @NotNull
   public static MTCustomThemeConfig getInstance() {
-    return Objects.requireNonNull(ServiceManager.getService(MTCustomThemeConfig.class));
+    return Objects.requireNonNull(ApplicationManager.getApplication().getService(MTCustomThemeConfig.class));
   }
 
   @SuppressWarnings({"StaticMethodOnlyUsedInOneClass",

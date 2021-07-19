@@ -37,7 +37,6 @@ import com.intellij.openapi.Disposable;
 import com.intellij.openapi.application.Application;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ModalityState;
-import com.intellij.openapi.components.ServiceManager;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.openapi.editor.colors.EditorColorsScheme;
 import com.intellij.openapi.editor.colors.impl.AppEditorFontOptions;
@@ -48,8 +47,8 @@ import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.util.SystemInfo;
 import com.intellij.openapi.util.registry.Registry;
 import com.intellij.ui.ColorUtil;
-import com.intellij.ui.GuiUtils;
 import com.intellij.ui.scale.JBUIScale;
+import com.intellij.util.ModalityUiUtil;
 import com.intellij.util.ObjectUtils;
 import com.intellij.util.SVGLoader;
 import com.intellij.util.containers.ContainerUtil;
@@ -119,7 +118,7 @@ public final class MTThemeManager implements Disposable {
    * @return the instance
    */
   public static MTThemeManager getInstance() {
-    return ServiceManager.getService(MTThemeManager.class);
+    return ApplicationManager.getApplication().getService(MTThemeManager.class);
   }
 
   //region Action Toggles
@@ -149,6 +148,10 @@ public final class MTThemeManager implements Disposable {
   public static void toggleHighContrast() {
     CONFIG.setHighContrast(!CONFIG.isHighContrast());
     activate();
+  }
+
+  public static void toggleOverlays() {
+    CONFIG.setShowOverlays(!CONFIG.isShowOverlays());
   }
 
   /**
@@ -287,10 +290,9 @@ public final class MTThemeManager implements Disposable {
    * Update file icons.
    */
   private static void updateFileIcons() {
-    GuiUtils.invokeLaterIfNeeded(() -> {
+    ModalityUiUtil.invokeLaterIfNeeded(() -> {
       final Application app = ApplicationManager.getApplication();
       app.runWriteAction(() -> FileTypeManagerEx.getInstanceEx().fireFileTypesChanged());
-      //      app.runWriteAction(ActionToolbarImpl::updateAllToolbarsImmediately);
     }, ModalityState.NON_MODAL);
   }
   //endregion
@@ -301,15 +303,6 @@ public final class MTThemeManager implements Disposable {
    * Activate selected theme or deactivate current
    */
   public static void activate() {
-    final MTThemeFacade mtTheme = CONFIG.getSelectedTheme();
-    activate(mtTheme);
-  }
-
-  /**
-   * Specify whether to activate with color scheme
-   */
-  @SuppressWarnings("SameParameterValue")
-  static void activateWithColorScheme() {
     final MTThemeFacade mtTheme = CONFIG.getSelectedTheme();
     activate(mtTheme);
   }
@@ -385,13 +378,6 @@ public final class MTThemeManager implements Disposable {
     UIReplacer.patchUI();
 
     fireThemeChanged(newTheme);
-
-    //    ApplicationManager.getApplication().invokeAndWait(() -> {
-    //      final PropertiesComponent propertiesComponent = PropertiesComponent.getInstance();
-    //      final String themeColorScheme = CONFIG.getSelectedTheme().getThemeColorScheme();
-    //      propertiesComponent.setValue("Darcula.SavedEditorTheme", themeColorScheme);
-    //      propertiesComponent.setValue("Default.SavedEditorTheme", themeColorScheme);
-    //    });
   }
 
   private static void refreshColorScheme() {
@@ -654,6 +640,7 @@ public final class MTThemeManager implements Disposable {
   /**
    * Apply custom tree indent
    */
+  @SuppressWarnings("MagicNumber")
   private static void applyMenusHeight() {
     if (CONFIG.isCompactMenus()) {
       UIManager.put("PopupMenuSeparator.height", 3);

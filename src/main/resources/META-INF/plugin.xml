@@ -135,7 +135,6 @@
     <depends optional="true" config-file="withXPathView.xml">XPathView</depends>
 
     <resource-bundle>messages.MaterialThemeBundle</resource-bundle>
-    <!--    <resource-bundle>messages.LanguageAdditionsBundle</resource-bundle>-->
 
     <extensionPoints>
         <!--suppress PluginXmlDynamicPlugin -->
@@ -147,9 +146,6 @@
         <component>
             <implementation-class>com.mallowigi.idea.MTHackComponent</implementation-class>
         </component>
-        <!--        <component>-->
-        <!--            <implementation-class>com.mallowigi.idea.ui.OverlayPainter</implementation-class>-->
-        <!--        </component>-->
     </application-components>
 
     <extensions defaultExtensionNs="com.intellij">
@@ -273,7 +269,8 @@
                     icon="/icons/actions/themes/deepocean.svg">
             </action>
             <separator />
-            <action id="MTMonokaiTheme" class="com.mallowigi.idea.actions.themes.MTMonokaiThemeAction"
+            <action id="MTMonokaiTheme"
+                    class="com.mallowigi.idea.actions.themes.MTMonokaiThemeAction"
                     icon="/icons/actions/themes/monokai.svg">
             </action>
             <action id="MTGitHubTheme"
@@ -603,6 +600,9 @@
             <action id="MTToggleOutlineButtonsAction"
                     class="com.mallowigi.idea.actions.MTToggleOutlineButtonsAction"
                     icon="/icons/actions/mt/outlineButtons.svg" />
+            <action id="MTToggleOverlaysAction"
+                    class="com.mallowigi.idea.actions.MTToggleOverlaysAction"
+                    icon="/icons/actions/mt/overlays.svg" />
             <action id="MTToggleProjectFrameAction"
                     class="com.mallowigi.idea.actions.MTProjectFrameAction"
                     icon="/icons/actions/mt/projectFrame.svg" />

@@ -161,7 +161,7 @@ public final class MTLafComponent implements AppLifecycleListener {
 
   @SuppressWarnings("WeakerAccess")
   static void activateTheme() {
-    MTThemeManager.activateWithColorScheme();
+    MTThemeManager.activate();
   }
 
   private static void patchTree() {

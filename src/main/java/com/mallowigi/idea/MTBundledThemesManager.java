@@ -29,8 +29,8 @@ package com.mallowigi.idea;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import com.intellij.openapi.application.ApplicationBundle;
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.WriteAction;
-import com.intellij.openapi.components.ServiceManager;
 import com.intellij.openapi.fileChooser.FileChooserFactory;
 import com.intellij.openapi.fileChooser.FileSaverDescriptor;
 import com.intellij.openapi.fileChooser.FileSaverDialog;
@@ -72,7 +72,7 @@ public final class MTBundledThemesManager {
   private final Map<String, MTBundledTheme> bundledThemes = new HashMap<>(10);
 
   public static MTBundledThemesManager getInstance() {
-    return ServiceManager.getService(MTBundledThemesManager.class);
+    return ApplicationManager.getApplication().getService(MTBundledThemesManager.class);
   }
 
   /**

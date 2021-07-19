@@ -29,7 +29,6 @@ package com.mallowigi.idea;
 import com.intellij.openapi.application.ApplicationInfo;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ApplicationNamesInfo;
-import com.intellij.openapi.components.ServiceManager;
 import com.intellij.util.ObjectUtils;
 import com.mallowigi.idea.messages.MaterialThemeBundle;
 import com.mixpanel.mixpanelapi.ClientDelivery;
@@ -102,6 +101,8 @@ public final class MTAnalytics {
   private static final String MIXPANEL_KEY = "mixpanelKey";
   @NonNls
   public static final String OUTLINE_BUTTONS = "OutlineButtons";
+  @NonNls
+  public static final String OVERLAYS = "Overlays";
 
   private final MessageBuilder messageBuilder;
   private final MixpanelAPI mixpanel;
@@ -119,7 +120,7 @@ public final class MTAnalytics {
   }
 
   public static MTAnalytics getInstance() {
-    return ServiceManager.getService(MTAnalytics.class);
+    return ApplicationManager.getApplication().getService(MTAnalytics.class);
   }
 
   /**
