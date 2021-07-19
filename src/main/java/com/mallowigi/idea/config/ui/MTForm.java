@@ -1804,43 +1804,42 @@ public class MTForm implements MTFormUI {
   private void disablePremiumFeatures() {
     final boolean isFreeLicense = !MTLicenseChecker.isLicensed();
     if (isFreeLicense) {
-      disablePremium(highContrastCheckbox);
-      disablePremium(directoriesColorLink);
-      disablePremium(scrollbarsLink);
+      disablePremium(accentModeCheckbox);
       disablePremium(activeTabHighlightCheckbox);
       disablePremium(activeTabHighlightColor);
-      disablePremium(thicknessLabel);
+      disablePremium(borderedButtonsCheckbox);
+      disablePremium(codeAdditionsCheckBox);
+      disablePremium(customTextCheckbox);
+      disablePremium(customTextField);
+      disablePremium(customTextHint);
+      disablePremium(directoriesColorLink);
+      disablePremium(enforceHighlightingLabel);
+      disablePremium(enforceLanguageOnOff);
+      disablePremium(fontSizeCheckbox);
+      disablePremium(fontSizeSpinner);
+      disablePremium(highContrastCheckbox);
       disablePremium(highlightSpinner);
-      disablePremium(isUpperCaseTabsCheckbox);
-      disablePremium(positionLabel);
-      disablePremium(tabHighlightPositionComboBox);
-      disablePremium(tabFontSizeCheckbox);
-      disablePremium(tabFontSizeSpinner);
-      disablePremium(selectedIndicatorLabel);
       disablePremium(indicatorStyleComboBox);
       disablePremium(indicatorThicknessLabel);
       disablePremium(indicatorThicknessSpinner);
-      disablePremium(secondAccentLabel);
-      disablePremium(styledDirectoriesCheckbox);
-      disablePremium(fontSizeCheckbox);
-      disablePremium(fontSizeSpinner);
-      disablePremium(accentModeCheckbox);
+      disablePremium(isColoredOpenedDirsCheckbox);
+      disablePremium(isUpperCaseTabsCheckbox);
+      disablePremium(positionLabel);
+      disablePremium(projectTitleCheckbox);
+      disablePremium(scrollbarsLink);
       disablePremium(secondAccentColorChooser);
+      disablePremium(secondAccentLabel);
+      disablePremium(selectedIndicatorLabel);
+      disablePremium(showIconCheckbox);
+      disablePremium(styledDirectoriesCheckbox);
+      disablePremium(tabFontSizeCheckbox);
+      disablePremium(tabFontSizeSpinner);
+      disablePremium(tabHighlightPositionComboBox);
       disablePremium(tabShadowCheckbox);
+      disablePremium(thicknessLabel);
       disablePremium(useMaterialFontCheckbox);
-      disablePremium(fileColorsCheckbox);
       disablePremium(useMaterialWallpapersCheckbox);
       disablePremium(useProjectFrameCheckbox);
-      disablePremium(codeAdditionsCheckBox);
-      disablePremium(isColoredOpenedDirsCheckbox);
-      disablePremium(borderedButtonsCheckbox);
-      disablePremium(enforceLanguageOnOff);
-      disablePremium(enforceHighlightingLabel);
-      disablePremium(projectTitleCheckbox);
-      disablePremium(customTextCheckbox);
-      disablePremium(customTextField);
-      disablePremium(showIconCheckbox);
-      disablePremium(customTextHint);
     }
   }
 
