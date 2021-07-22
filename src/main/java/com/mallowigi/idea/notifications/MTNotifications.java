@@ -44,7 +44,6 @@ import org.jetbrains.annotations.Nullable;
 import java.awt.*;
 import java.util.Objects;
 
-@SuppressWarnings("MethodWithTooManyParameters")
 public enum MTNotifications {
   DEFAULT;
 
@@ -64,12 +63,16 @@ public enum MTNotifications {
     final Notification notification = createNotification(
       MaterialThemeBundle.message("notification.update.title", MTUiUtils.getVersion()),
       MaterialThemeBundle.message("notification.update.content"),
-      CHANNEL,
       NotificationType.INFORMATION,
       listener
     );
 
     showFullNotification(project, notification);
+  }
+
+  public static void showSimple(@NotNull final Project project, @NotNull final String content) {
+    final Notification notification = createNotification("", content, NotificationType.INFORMATION);
+    Notifications.Bus.notify(notification, project);
   }
 
   /**
@@ -81,57 +84,39 @@ public enum MTNotifications {
    * @param type     notification type
    * @param listener optional listener
    */
-  public static void show(@NotNull final Project project,
-                          @NotNull final String title,
-                          @NotNull final String content,
-                          @NotNull final NotificationType type,
-                          @Nullable final NotificationListener listener) {
-    show(project, title, content, CHANNEL, type, listener);
+  public static void showWithListener(@NotNull final Project project,
+                                      @NotNull final String title,
+                                      @NotNull final String content,
+                                      @NotNull final NotificationType type,
+                                      @Nullable final NotificationListener listener) {
+    final Notification notification = createNotification(title, content, type, listener);
+    Notifications.Bus.notify(notification, project);
   }
 
-  /**
-   * Shows {@link Notification}.
-   *
-   * @param project   current project
-   * @param title     notification title
-   * @param displayId notification group
-   * @param content   notification text
-   * @param type      notification type
-   * @param listener  optional listener
-   */
-  private static void show(@NotNull final Project project,
-                           @NotNull final String title,
-                           @NotNull final String content,
-                           @NotNull final String displayId,
-                           @NotNull final NotificationType type,
-                           @Nullable final NotificationListener listener) {
-    final Notification notification = createNotification(title, content, displayId, type, listener);
-    Notifications.Bus.notify(notification, project);
+  @NotNull
+  private static Notification createNotification(@NotNull final String title,
+                                                 @NotNull final String content,
+                                                 @NotNull final NotificationType type) {
+    final NotificationGroup group = NotificationGroupManager.getInstance().getNotificationGroup(CHANNEL);
+    return group.createNotification(title, content, type);
   }
 
   /**
    * Create a notification
    *
-   * @param title     notification title
-   * @param content   the content
-   * @param displayId the channel id
-   * @param type      the type (sticky...)
-   * @param listener  optional listener
+   * @param title    notification title
+   * @param content  the content
+   * @param type     the type (sticky...)
+   * @param listener optional listener
    * @return new notification to be displayed
    */
   @NotNull
   private static Notification createNotification(@NotNull final String title,
                                                  @NotNull final String content,
-                                                 @NonNls @NotNull final String displayId,
                                                  @NotNull final NotificationType type,
                                                  @Nullable final NotificationListener listener) {
-    //    final NotificationGroup group = new NotificationGroup(
-    //      displayId,
-    //      NotificationDisplayType.STICKY_BALLOON,
-    //      true
-    //    );
-    final NotificationGroup group = NotificationGroupManager.getInstance().getNotificationGroup(displayId);
-    return group.createNotification(title, content, type, listener);
+    assert listener != null;
+    return createNotification(title, content, type).setListener(listener);
   }
 
   /**

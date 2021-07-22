@@ -51,7 +51,7 @@ public class MTRemoveWallpaperAction extends AnAction {
 
     IdeBackgroundUtil.repaintAllWindows();
 
-    MTNotifications.show(project,
+    MTNotifications.showWithListener(project,
       "",
       MaterialThemeBundle.message("mt.actions.wallpaperRemoved"),
       NotificationType.INFORMATION,

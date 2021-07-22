@@ -48,11 +48,12 @@ public final class MTStatisticsNotification extends Notification {
     super(MTNotifications.CHANNEL,
       MaterialThemeBundle.message("mt.stats.notification.title", MTUiUtils.getPluginName()),
       MaterialThemeBundle.message("mt.stats.config.details", MaterialThemeBundle.message("mt.stats.plugin.team")),
-      NotificationType.INFORMATION,
-      (notification1, event) -> {
-        MTConfig.getInstance().setAllowDataCollection(ALLOW.equals(event.getDescription()));
-        PropertiesComponent.getInstance().setValue(SHOW_STATISTICS_AGREEMENT, true);
-        notification1.expire();
-      });
+      NotificationType.INFORMATION);
+
+    setListener((notification1, event) -> {
+      MTConfig.getInstance().setAllowDataCollection(ALLOW.equals(event.getDescription()));
+      PropertiesComponent.getInstance().setValue(SHOW_STATISTICS_AGREEMENT, true);
+      notification1.expire();
+    });
   }
 }
