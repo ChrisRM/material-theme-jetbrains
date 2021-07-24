@@ -42,5 +42,6 @@ public final class MTToggleOutlineButtonsAction extends MTToggleAction {
   public void setSelected(@NotNull final AnActionEvent e, final boolean state) {
     MTThemeManager.toggleOutlinedButtons();
     MTAnalytics.getInstance().trackValue(MTAnalytics.OUTLINE_BUTTONS, state);
+    super.setSelected(e, state);
   }
 }

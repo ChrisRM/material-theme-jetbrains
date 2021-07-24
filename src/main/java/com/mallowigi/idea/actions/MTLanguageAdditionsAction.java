@@ -42,5 +42,6 @@ public final class MTLanguageAdditionsAction extends MTToggleAction {
   public void setSelected(@NotNull final AnActionEvent e, final boolean state) {
     MTThemeManager.toggleCodeAdditions();
     MTAnalytics.getInstance().trackValue(MTAnalytics.LANGUAGE_ADDITIONS, state);
+    super.setSelected(e, state);
   }
 }

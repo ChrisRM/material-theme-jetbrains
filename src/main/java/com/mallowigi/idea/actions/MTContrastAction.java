@@ -43,6 +43,7 @@ public final class MTContrastAction extends MTToggleAction {
   public void setSelected(@NotNull final AnActionEvent e, final boolean state) {
     MTThemeManager.toggleContrast();
     MTAnalytics.getInstance().trackValue(MTAnalytics.CONTRAST_MODE, state);
+    super.setSelected(e, state);
   }
 
   @Override

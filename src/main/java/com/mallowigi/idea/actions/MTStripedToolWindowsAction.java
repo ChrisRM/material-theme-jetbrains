@@ -45,6 +45,7 @@ public final class MTStripedToolWindowsAction extends MTToggleAction {
   public void setSelected(@NotNull final AnActionEvent e, final boolean state) {
     MTThemeManager.toggleStripedToolWindows();
     MTAnalytics.getInstance().trackValue(MTAnalytics.STRIPED_TOOL_WINDOWS, state);
+    super.setSelected(e, state);
 
     // todo remove this once the layout is fixed
     if (!MTConfig.getInstance().hadStripesEnabled) {

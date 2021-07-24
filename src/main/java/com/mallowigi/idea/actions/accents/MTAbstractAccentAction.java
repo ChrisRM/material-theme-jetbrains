@@ -54,6 +54,7 @@ public abstract class MTAbstractAccentAction extends MTToggleAction implements D
 
     ActionToolbarImpl.updateAllToolbarsImmediately();
     MTAnalytics.getInstance().trackValue(MTAnalytics.ACCENT, accentColor);
+    super.setSelected(e, state);
   }
 
   @SuppressWarnings("CallToSuspiciousStringMethod")

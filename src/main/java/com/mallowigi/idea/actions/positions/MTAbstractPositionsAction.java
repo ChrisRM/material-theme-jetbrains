@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,11 +26,11 @@
 
 package com.mallowigi.idea.actions.positions;
 
+import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.mallowigi.idea.MTAnalytics;
 import com.mallowigi.idea.MTConfig;
 import com.mallowigi.idea.actions.MTToggleAction;
 import com.mallowigi.idea.config.enums.TabHighlightPositions;
-import com.intellij.openapi.actionSystem.AnActionEvent;
 import org.jetbrains.annotations.NotNull;
 
 abstract class MTAbstractPositionsAction extends MTToggleAction {
@@ -47,6 +47,7 @@ abstract class MTAbstractPositionsAction extends MTToggleAction {
     mtConfig.setTabHighlightPosition(position);
 
     MTAnalytics.getInstance().trackValue(MTAnalytics.TAB_HIGHLIGHT_POSITION, position);
+    super.setSelected(e, state);
   }
 
   /**

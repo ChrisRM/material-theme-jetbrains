@@ -17,10 +17,6 @@ i
 +src/main/resources/icons/actions/mt/psi.svg,1/8/18334f455608f0852dc57b8f2b0a229e3c6c2223
 T
 $src/main/resources/colors/Github.xml,4/7/47cd1f49494e942ba7343389685f4284568cf673
-x
-Hsrc/main/java/com/mallowigi/idea/actions/themes/MTDarkerThemeAction.java,f/f/ff1c4612e714fd84845aa92fa68d5ffc0f087e0f
-z
-Jsrc/main/java/com/mallowigi/idea/actions/themes/MTAbstractThemeAction.java,0/b/0b7a251161453b5b4b4f58a4730eed94452579fd
 h
 8src/main/java/com/mallowigi/idea/ui/MTOnOffButtonUI.java,e/7/e7828eb36056f75e6d672c682c240b8530568a83
 l
@@ -43,13 +39,7 @@ g
 7src/main/java/com/mallowigi/idea/ui/OverlayPainter.java,d/5/d58b0f1921c8681b0213d11051c2b6a94cc2b504
 e
 5src/main/java/com/mallowigi/idea/config/ui/MTForm.jfd,d/b/dbb22895f102e55f1738248e97c010aa2ac676f5
-t
-Dsrc/main/java/com/mallowigi/idea/actions/MTToggleOverlaysAction.java,8/9/8981a6b2b311dfa1b05e030b9693ab944e5bbc97
 f
 6src/main/java/com/mallowigi/idea/config/ui/MTForm.java,a/8/a8fe9898bad6a63f67a6ee11ee954a44f1eeee65
 i
 9src/main/java/com/mallowigi/idea/actions/ActionGroup.java,f/5/f532af0a58c02957d1d001ede68d28703d6fabc0
-p
-@src/main/java/com/mallowigi/idea/actions/MTAccentModeAction.java,a/1/a15249db06d0d5d01cdaa647ed8b221d18ad74c9
-l
-<src/main/java/com/mallowigi/idea/actions/MTToggleAction.java,5/4/5425c3370c4f4fbc462aebac592eb46d4180fb45

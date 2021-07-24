@@ -43,6 +43,7 @@ public final class MTCompactSidebarAction extends MTToggleAction {
   public void setSelected(@NotNull final AnActionEvent e, final boolean state) {
     MTThemeManager.toggleCompactSidebar();
     MTAnalytics.getInstance().trackValue(MTAnalytics.COMPACT_SIDEBAR, state);
+    super.setSelected(e, state);
   }
 
   @Override

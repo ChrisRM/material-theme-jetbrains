@@ -49,6 +49,7 @@ public abstract class MTAbstractThemeAction extends MTToggleAction implements Du
     MTThemeManager.setLookAndFeel(selectedTheme);
 
     MTAnalytics.getInstance().trackValue(MTAnalytics.SELECT_THEME, selectedTheme);
+    super.setSelected(e, state);
   }
 
   @Override

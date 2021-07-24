@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -49,6 +49,7 @@ abstract class MTAbstractIndicatorsAction extends MTToggleAction {
 
     ActionToolbarImpl.updateAllToolbarsImmediately();
     MTAnalytics.getInstance().trackValue(MTAnalytics.INDICATOR_STYLE, indicatorStyle);
+    super.setSelected(e, state);
   }
 
   /**

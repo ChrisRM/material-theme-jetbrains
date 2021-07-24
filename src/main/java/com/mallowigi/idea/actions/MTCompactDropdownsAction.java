@@ -43,6 +43,7 @@ public final class MTCompactDropdownsAction extends MTToggleAction {
   public void setSelected(@NotNull final AnActionEvent e, final boolean state) {
     MTThemeManager.toggleCompactDropdowns();
     MTAnalytics.getInstance().trackValue(MTAnalytics.COMPACT_DROPDOWNS, state);
+    super.setSelected(e, state);
   }
 
   @Override

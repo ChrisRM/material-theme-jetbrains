@@ -42,5 +42,6 @@ public final class MTToggleOverlaysAction extends MTToggleAction {
   public void setSelected(@NotNull final AnActionEvent e, final boolean state) {
     MTThemeManager.toggleOverlays();
     MTAnalytics.getInstance().trackValue(MTAnalytics.OVERLAYS, state);
+    super.setSelected(e, state);
   }
 }

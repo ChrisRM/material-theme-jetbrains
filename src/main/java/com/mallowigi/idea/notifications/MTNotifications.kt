@@ -57,6 +57,7 @@ object MTNotifications {
     showFullNotification(project, notification)
   }
 
+  @JvmStatic
   fun showSimple(project: Project, content: String) {
     val notification = createNotification("", content, NotificationType.INFORMATION)
     Notifications.Bus.notify(notification, project)

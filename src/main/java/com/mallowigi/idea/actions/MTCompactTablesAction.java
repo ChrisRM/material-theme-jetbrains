@@ -42,6 +42,7 @@ public final class MTCompactTablesAction extends MTToggleAction {
   public void setSelected(@NotNull final AnActionEvent e, final boolean state) {
     MTThemeManager.toggleCompactTableCells();
     MTAnalytics.getInstance().trackValue(MTAnalytics.COMPACT_TABLES, state);
+    super.setSelected(e, state);
   }
 
   @Override

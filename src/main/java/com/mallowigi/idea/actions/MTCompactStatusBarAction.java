@@ -43,6 +43,7 @@ public final class MTCompactStatusBarAction extends MTToggleAction {
   public void setSelected(@NotNull final AnActionEvent e, final boolean state) {
     MTThemeManager.toggleCompactStatusBar();
     MTAnalytics.getInstance().trackValue(MTAnalytics.COMPACT_STATUSBAR, state);
+    super.setSelected(e, state);
   }
 
   @Override

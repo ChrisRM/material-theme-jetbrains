@@ -42,6 +42,7 @@ public final class MTOverrideAccentColorAction extends MTToggleAction {
   public void setSelected(@NotNull final AnActionEvent e, final boolean state) {
     MTThemeManager.toggleOverrideAccent();
     MTAnalytics.getInstance().trackValue(MTAnalytics.OVERRIDE_ACCENT, state);
+    super.setSelected(e, state);
   }
 
   @Override
