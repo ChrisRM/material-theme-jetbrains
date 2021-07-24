@@ -23,25 +23,20 @@
  *
  *
  */
+package com.mallowigi.idea.wizard
 
-package com.mallowigi.idea.wizard;
+import com.intellij.ide.customize.AbstractCustomizeWizardStep
+import com.intellij.ide.customize.CustomizeIDEWizardDialog
+import com.intellij.ide.customize.CustomizeIDEWizardStepsProvider
+import com.mallowigi.idea.wizard.steps.*
 
-import com.intellij.ide.customize.AbstractCustomizeWizardStep;
-import com.intellij.ide.customize.CustomizeIDEWizardDialog;
-import com.intellij.ide.customize.CustomizeIDEWizardStepsProvider;
-import com.mallowigi.idea.wizard.steps.*;
-import org.jetbrains.annotations.NotNull;
-
-import java.util.List;
-
-public final class MTWizardStepsProvider implements CustomizeIDEWizardStepsProvider {
-  @Override
-  public void initSteps(final CustomizeIDEWizardDialog wizardDialog, @NotNull final List<? super AbstractCustomizeWizardStep> steps) {
-    steps.add(new MTWizardWelcomePanel());
-    steps.add(new MTWizardThemesPanel());
-    steps.add(new MTWizardContrastPanel());
-    steps.add(new MTWizardAccentPanel());
-    steps.add(new MTWizardOtherOptionsPanel());
-    steps.add(new MTWizardFinishPanel());
+class MTWizardStepsProvider : CustomizeIDEWizardStepsProvider {
+  override fun initSteps(wizardDialog: CustomizeIDEWizardDialog, steps: MutableList<in AbstractCustomizeWizardStep?>) {
+    steps.add(MTWizardWelcomePanel())
+    steps.add(MTWizardThemesPanel())
+    steps.add(MTWizardContrastPanel())
+    steps.add(MTWizardAccentPanel())
+    steps.add(MTWizardOtherOptionsPanel())
+    steps.add(MTWizardFinishPanel())
   }
 }

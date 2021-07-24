@@ -37,8 +37,6 @@ q
 Asrc/main/java/com/mallowigi/idea/config/ui/MTCustomThemeForm.java,2/c/2cf1b8de46a5fa2f4a58550e88b8bd3c56d08b14
 p
 @src/main/java/com/mallowigi/idea/config/ui/MTCustomThemeForm.jfd,2/6/26db82282bc2c1c251b0f9bcfafffb5eb1bfe8e2
-^
-.src/main/java/com/mallowigi/idea/MTConfig.java,6/f/6f78327bd2b2f90776263d4febb3b9367defc562
 e
 5src/main/java/com/mallowigi/idea/ui/MTRootPaneUI.java,1/2/129fd4eb4ab8bd1b1927d73557b98e3c69062984
 g

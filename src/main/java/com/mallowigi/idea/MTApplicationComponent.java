@@ -48,9 +48,9 @@ public final class MTApplicationComponent implements AppLifecycleListener {
    */
   @SuppressWarnings("FeatureEnvy")
   private static void initWizard() {
-    final boolean hasWizardBeenShown = !MTConfig.getInstance().isWizardShown();
-    if (hasWizardBeenShown) {
-      ApplicationManager.getApplication().invokeLater(() -> new MTWizardDialog(new MTWizardStepsProvider()).show());
+    final boolean firstRun = !MTConfig.getInstance().isWizardShown();
+    if (firstRun) {
+      ApplicationManager.getApplication().invokeLater(() -> new MTWizardDialog(new MTWizardStepsProvider(), true).show());
       MTConfig.getInstance().setIsWizardShown(true);
     }
   }
