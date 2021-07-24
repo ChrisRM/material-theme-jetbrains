@@ -50,7 +50,8 @@ import static com.mallowigi.idea.utils.MTUiUtils.disablePremium;
  */
 @SuppressWarnings({"FieldCanBeLocal",
   "ClassWithTooManyFields",
-  "unused"})
+  "unused",
+  "ConstantConditions"})
 public final class MTWizardContrastPanel extends AbstractCustomizeWizardStep {
 
   private final MTConfig config;
@@ -58,17 +59,23 @@ public final class MTWizardContrastPanel extends AbstractCustomizeWizardStep {
   public MTWizardContrastPanel() {
     config = MTConfig.getInstance();
     initComponents();
+    initCheckboxes();
+
     setupComponents();
   }
 
   private void setupComponents() {
-    contrastCheckbox.setSelected(config.isContrastMode());
-    highContrastCheckbox.setSelected(config.isHighContrast());
 
     final boolean isFreeLicense = !MTLicenseChecker.isLicensed();
     if (isFreeLicense) {
       disablePremium(highContrastCheckbox);
+      disablePremium(highContrastPanel);
     }
+  }
+
+  private void initCheckboxes() {
+    contrastCheckbox.setSelected(config.isContrastMode());
+    highContrastCheckbox.setSelected(config.isHighContrast());
   }
 
   @Override

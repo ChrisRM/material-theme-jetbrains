@@ -50,7 +50,7 @@ class MTWizardDialog(
     title = MTWizardBundle.message("mt.wizard.title")
     peer.setAppIcons()
     configCopy = MTConfig.getInstance().clone()
-    setSize(1200, 700)
+    setSize(1200, 800)
     if (firstRun) {
       MTThemeManager.setLookAndFeel(MTThemes.OCEANIC)
       MTThemeManager.activate()
@@ -67,7 +67,7 @@ class MTWizardDialog(
   override fun createCenterPanel(): JComponent? {
     val centerPanel = super.createCenterPanel()
     if (centerPanel != null) {
-      centerPanel.preferredSize = JBUI.size(1200, 700)
+      centerPanel.preferredSize = JBUI.size(1200, 800)
     }
     return centerPanel
   }
