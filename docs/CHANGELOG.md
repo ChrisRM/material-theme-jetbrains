@@ -5,12 +5,18 @@
 
 ### Features
 - New Setting: **Overlays**: Add an overlay on the root pane that shows when popups are opened! (experimental)
+- Restore the **Uppercase bold tabs**: Now with this setting only the active tab is bold
+- Add more recent settings to the Wizard: *Tab Highlight Position*, *Overlays*, *Project View Font Size*
 
 ### Fixes
-- Refactor the Learning plugin's theming
+- Refactor the *Learning* plugin's theming
+- Fixes the notifications not showing up
+- Fixes Wizard's initial dimensions and initial theme
 
 ### Other
 - Convert resource lists to Kotlin
+- Convert Tab Highlight Positions to Kotlin
+- Convert Tab Shadows to Kotlin
 
 ## 6.7.2
 
