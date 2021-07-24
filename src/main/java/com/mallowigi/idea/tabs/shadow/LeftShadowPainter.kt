@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,42 +23,36 @@
  *
  *
  */
+package com.mallowigi.idea.tabs.shadow
 
-package com.mallowigi.idea.tabs.shadowPainters;
+import com.intellij.ui.ColorUtil
+import java.awt.Color
+import java.awt.Graphics2D
+import java.awt.Point
 
-import com.intellij.ui.ColorUtil;
+class LeftShadowPainter : ShadowPainter() {
+  override fun drawShadow(g2d: Graphics2D, from: Point?, to: Point) {
+    val w = to.getX().toInt()
+    val h = to.getY().toInt()
+    if (h == 0) return
 
-import java.awt.*;
-
-@SuppressWarnings("MagicNumber")
-public final class LeftShadowPainter extends ShadowPainter {
-
-  @Override
-  public void drawShadow(final Graphics2D g2d, final Point from, final Point to) {
-    final int w = (int) to.getX();
-    final int h = (int) to.getY();
-    if (h == 0) {
-      return;
-    }
-
-    final Color bg = getShadowColor();
-    g2d.setColor(ColorUtil.toAlpha(bg, 50));
-    g2d.drawLine(w - 1, 0, w - 1, h);
+    val bg: Color = shadowColor
+    g2d.color = ColorUtil.toAlpha(bg, 50)
+    g2d.drawLine(w - 1, 0, w - 1, h)
 
     // draw the drop-shadow
-    final Color mid = ColorUtil.toAlpha(bg, 40);
-    g2d.setColor(mid);
-    g2d.drawLine(w - 2, 0, w - 2, h);
+    val mid = ColorUtil.toAlpha(bg, 40)
+    g2d.color = mid
+    g2d.drawLine(w - 2, 0, w - 2, h)
 
     // draw the drop-shadow
-    final Color mid2 = ColorUtil.toAlpha(bg, 30);
-    g2d.setColor(mid2);
-    g2d.drawLine(w - 3, 0, w - 3, h);
-    g2d.drawLine(w - 4, 0, w - 4, h);
+    val mid2 = ColorUtil.toAlpha(bg, 30)
+    g2d.color = mid2
+    g2d.drawLine(w - 3, 0, w - 3, h)
+    g2d.drawLine(w - 4, 0, w - 4, h)
 
-    final Color edge = ColorUtil.toAlpha(bg, 25);
-    g2d.setColor(edge);
-    g2d.drawLine(w - 5, 0, w - 5, h);
+    val edge = ColorUtil.toAlpha(bg, 25)
+    g2d.color = edge
+    g2d.drawLine(w - 5, 0, w - 5, h)
   }
-
 }

@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,15 +23,29 @@
  *
  *
  */
+package com.mallowigi.idea.tabs
 
-package com.mallowigi.idea.tabs.shadowPainters;
+import com.intellij.openapi.project.Project
+import com.mallowigi.idea.MTConfig
+import com.mallowigi.idea.tabs.highlights.HighlightTabPainter.Companion.getHighlightTabPainter
+import com.mallowigi.idea.utils.MTUiUtils
+import java.awt.Graphics2D
+import java.awt.Rectangle
 
-import java.awt.*;
+object MTTabsHighlightPainter {
+  @JvmStatic
+  fun paintHighlight(project: Project?, borderThickness: Int, g2d: Graphics2D?, rect: Rectangle) {
+    var tabHighlightPosition = MTConfig.getInstance().tabHighlightPosition
 
-public final class NoneShadowPainter extends ShadowPainter {
-
-  @Override
-  public void drawShadow(final Graphics2D g2d, final Point from, final Point to) {
-
+    // Check if per project enabled
+    val projectConfig = MTUiUtils.getProjectConfigIfEnabled(project)
+    if (projectConfig != null) {
+      tabHighlightPosition = projectConfig.tabHighlightPosition
+    }
+    val tabPainter = getHighlightTabPainter(tabHighlightPosition)
+    tabPainter.paintBottom(borderThickness, g2d, rect, rect.width)
+    tabPainter.paintTop(borderThickness, g2d, rect, rect.width)
+    tabPainter.paintLeft(borderThickness, g2d, rect, rect.width)
+    tabPainter.paintRight(borderThickness, g2d, rect, rect.width)
   }
 }

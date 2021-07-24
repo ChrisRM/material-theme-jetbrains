@@ -54,7 +54,7 @@ public final class MTEditorUpperTabs implements EditorTabTitleProvider {
     final int index = 0;
     final int length = name.length();
 
-    array = extractedMethod(index, length, name);
+    array = toWords(index, length, name);
 
     return ArrayUtil.toStringArray(array);
   }
@@ -65,7 +65,7 @@ public final class MTEditorUpperTabs implements EditorTabTitleProvider {
     "IfStatementWithTooManyBranches",
     "AssignmentToMethodParameter",
     "SameParameterValue"})
-  private static Collection<String> extractedMethod(int index, final int length, final String name) {
+  private static Collection<String> toWords(int index, final int length, final String name) {
     final Collection<String> array = new ArrayList<>(10);
     while (index < length) {
       final int wordStart = index;
