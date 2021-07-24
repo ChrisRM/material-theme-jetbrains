@@ -49,11 +49,9 @@ t
 Dsrc/main/java/com/mallowigi/idea/actions/MTToggleOverlaysAction.java,8/9/8981a6b2b311dfa1b05e030b9693ab944e5bbc97
 f
 6src/main/java/com/mallowigi/idea/config/ui/MTForm.java,a/8/a8fe9898bad6a63f67a6ee11ee954a44f1eeee65
-e
-5src/main/java/com/mallowigi/idea/utils/MTUiUtils.java,c/c/cced929689dadf1a35a348f1e2d941560046dd61
 i
 9src/main/java/com/mallowigi/idea/actions/ActionGroup.java,f/5/f532af0a58c02957d1d001ede68d28703d6fabc0
-u
-Esrc/main/java/com/mallowigi/idea/actions/MTRemoveWallpaperAction.java,b/b/bbaed118561763cb8efe1738d3ab213ea674ba94
 p
 @src/main/java/com/mallowigi/idea/actions/MTAccentModeAction.java,a/1/a15249db06d0d5d01cdaa647ed8b221d18ad74c9
+l
+<src/main/java/com/mallowigi/idea/actions/MTToggleAction.java,5/4/5425c3370c4f4fbc462aebac592eb46d4180fb45

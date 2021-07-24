@@ -23,34 +23,40 @@
  *
  *
  */
-package com.mallowigi.idea.notifications;
+package com.mallowigi.idea.notifications
 
-import com.intellij.ide.util.PropertiesComponent;
-import com.intellij.notification.Notification;
-import com.intellij.notification.NotificationType;
-import com.mallowigi.idea.MTConfig;
-import com.mallowigi.idea.messages.MaterialThemeBundle;
-import com.mallowigi.idea.utils.MTUiUtils;
-import org.jetbrains.annotations.NonNls;
+import com.intellij.ide.util.PropertiesComponent
+import com.intellij.notification.Notification
+import com.intellij.notification.NotificationType
+import com.intellij.openapi.updateSettings.impl.pluginsAdvertisement.installAndEnable
+import com.mallowigi.idea.messages.MaterialThemeBundle
+import com.mallowigi.idea.utils.MTUiUtils
+import org.jetbrains.annotations.NonNls
+import javax.swing.event.HyperlinkEvent
 
-@SuppressWarnings("DialogTitleCapitalization")
-public final class MTInstallAtomNotification extends Notification {
-
-  @NonNls
-  private static final String DECLINE = "decline";
-  @NonNls
-  public static final String SHOW_INSTALL_ATOM = "mt.showInstallAtom";
-
-  @SuppressWarnings("FeatureEnvy")
-  public MTInstallAtomNotification() {
-    super(MTNotifications.CHANNEL,
-      MaterialThemeBundle.message("atom.plugin.title", MTUiUtils.getPluginName()),
-      MaterialThemeBundle.message("atom.plugin.content", MaterialThemeBundle.message("mt.stats.plugin.team")),
-      NotificationType.INFORMATION,
-      (notification1, event) -> {
-        MTConfig.getInstance().setAllowDataCollection(DECLINE.equals(event.getDescription()));
-        PropertiesComponent.getInstance().setValue(SHOW_INSTALL_ATOM, true);
-        notification1.expire();
-      });
+@Suppress("DialogTitleCapitalization")
+class MTInstallAtomNotification : Notification(
+  MTNotifications.CHANNEL,
+  MaterialThemeBundle.message("atom.plugin.title", MTUiUtils.getPluginName()),
+  MaterialThemeBundle.message("atom.plugin.content", MaterialThemeBundle.message("mt.stats.plugin.team")),
+  NotificationType.INFORMATION
+) {
+  companion object {
+    const val SHOW_INSTALL_ATOM: @NonNls String = "mt.showInstallAtom"
   }
+
+  init {
+    setListener { notification1: Notification, event: HyperlinkEvent ->
+      when (event.description) {
+        "decline" -> closeNotification(notification1)
+        else -> installAndEnable(null, setOf(MTUiUtils.getAtomPluginId()), true) { closeNotification(notification1) }
+      }
+    }
+  }
+
+  private fun closeNotification(notification1: Notification) {
+    PropertiesComponent.getInstance().setValue(SHOW_INSTALL_ATOM, true)
+    notification1.expire()
+  }
+
 }

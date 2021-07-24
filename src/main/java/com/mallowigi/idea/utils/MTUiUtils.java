@@ -100,6 +100,8 @@ public enum MTUiUtils {
   @NonNls
   public static final String PLUGIN_ID = "com.chrisrm.idea.MaterialThemeUI";
   @NonNls
+  public static final String ATOM_PLUGIN_ID = "com.mallowigi";
+  @NonNls
   public static final String APPEARANCE_SECTION = "Appearance";
   @NonNls
   public static final String DARCULA = "Darcula";
@@ -258,8 +260,18 @@ public enum MTUiUtils {
     return PluginManagerCore.getPlugin(PluginId.getId(PLUGIN_ID));
   }
 
+  /**
+   * Checks whether the atom plugin is installed
+   */
   public static boolean hasAtomPluginInstalled() {
-    return PluginManager.isPluginInstalled(PluginId.getId(MaterialThemeBundle.message("atom.pluginid")));
+    return PluginManager.isPluginInstalled(PluginId.getId(ATOM_PLUGIN_ID));
+  }
+
+  /**
+   * Returns the Atom Plugin id
+   */
+  public static PluginId getAtomPluginId() {
+    return PluginId.getId(ATOM_PLUGIN_ID);
   }
 
   /**
@@ -572,7 +584,7 @@ public enum MTUiUtils {
     }
 
     if (window instanceof JDialog) {
-      return true;
+      return ((Dialog) window).isModal();
     } else if (!(window instanceof JFrame)) {
       return isPopup(window);
     }

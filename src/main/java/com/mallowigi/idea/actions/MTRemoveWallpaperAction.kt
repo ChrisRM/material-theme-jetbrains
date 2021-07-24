@@ -23,40 +23,37 @@
  *
  *
  */
+package com.mallowigi.idea.actions
 
-package com.mallowigi.idea.actions;
+import com.intellij.ide.util.PropertiesComponent
+import com.intellij.notification.NotificationType
+import com.intellij.openapi.actionSystem.AnAction
+import com.intellij.openapi.actionSystem.AnActionEvent
+import com.intellij.openapi.project.Project
+import com.intellij.openapi.wm.impl.IdeBackgroundUtil
+import com.mallowigi.idea.MTAnalytics
+import com.mallowigi.idea.messages.MaterialThemeBundle
+import com.mallowigi.idea.notifications.MTNotifications.showWithListener
+import com.mallowigi.idea.utils.MTUiUtils
 
-import com.intellij.ide.util.PropertiesComponent;
-import com.intellij.notification.NotificationType;
-import com.intellij.openapi.actionSystem.AnAction;
-import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.wm.impl.IdeBackgroundUtil;
-import com.mallowigi.idea.MTAnalytics;
-import com.mallowigi.idea.messages.MaterialThemeBundle;
-import com.mallowigi.idea.notifications.MTNotifications;
-import com.mallowigi.idea.utils.MTUiUtils;
+class MTRemoveWallpaperAction : AnAction() {
 
-public class MTRemoveWallpaperAction extends AnAction {
-  private static final String FRAME_PROP = IdeBackgroundUtil.FRAME_PROP;
+  override fun actionPerformed(e: AnActionEvent): Unit = installWallpaper(e.project)
 
-  @Override
-  public final void actionPerformed(final AnActionEvent e) {
-    installWallpaper(e.getProject());
-  }
+  private fun installWallpaper(project: Project?) {
+    val propertiesComponent = PropertiesComponent.getInstance()
+    propertiesComponent.unsetValue(IdeBackgroundUtil.FRAME_PROP)
 
-  private static void installWallpaper(final Project project) {
-    final PropertiesComponent propertiesComponent = PropertiesComponent.getInstance();
-    propertiesComponent.unsetValue(FRAME_PROP);
+    IdeBackgroundUtil.repaintAllWindows()
 
-    IdeBackgroundUtil.repaintAllWindows();
-
-    MTNotifications.showWithListener(project,
+    showWithListener(
+      project!!,
       "",
       MaterialThemeBundle.message("mt.actions.wallpaperRemoved"),
       NotificationType.INFORMATION,
-      MTUiUtils.openAppearanceSettings(project));
+      MTUiUtils.openAppearanceSettings(project)
+    )
 
-    MTAnalytics.getInstance().track(MTAnalytics.REMOVE_WALLPAPER);
+    MTAnalytics.getInstance().track(MTAnalytics.REMOVE_WALLPAPER)
   }
 }

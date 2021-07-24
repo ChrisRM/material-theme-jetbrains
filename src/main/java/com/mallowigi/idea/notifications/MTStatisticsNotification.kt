@@ -23,37 +23,32 @@
  *
  *
  */
-package com.mallowigi.idea.notifications;
+package com.mallowigi.idea.notifications
 
-import com.intellij.ide.util.PropertiesComponent;
-import com.intellij.notification.Notification;
-import com.intellij.notification.NotificationType;
-import com.mallowigi.idea.MTConfig;
-import com.mallowigi.idea.messages.MaterialThemeBundle;
-import com.mallowigi.idea.utils.MTUiUtils;
-import org.jetbrains.annotations.NonNls;
+import com.intellij.ide.util.PropertiesComponent
+import com.intellij.notification.Notification
+import com.intellij.notification.NotificationType
+import com.mallowigi.idea.MTConfig
+import com.mallowigi.idea.messages.MaterialThemeBundle
+import com.mallowigi.idea.utils.MTUiUtils
+import org.jetbrains.annotations.NonNls
+import javax.swing.event.HyperlinkEvent
 
-/**
- * @author Sergey.Malenkov
- */
-public final class MTStatisticsNotification extends Notification {
+class MTStatisticsNotification : Notification(
+  MTNotifications.CHANNEL,
+  MaterialThemeBundle.message("mt.stats.notification.title", MTUiUtils.getPluginName()),
+  MaterialThemeBundle.message("mt.stats.config.details", MaterialThemeBundle.message("mt.stats.plugin.team")),
+  NotificationType.INFORMATION
+) {
+  companion object {
+    const val SHOW_STATISTICS_AGREEMENT: @NonNls String = "mt.showStatisticsAgreement"
+  }
 
-  @NonNls
-  private static final String ALLOW = "allow";
-  @NonNls
-  public static final String SHOW_STATISTICS_AGREEMENT = "mt.showStatisticsAgreement";
-
-  @SuppressWarnings("FeatureEnvy")
-  public MTStatisticsNotification() {
-    super(MTNotifications.CHANNEL,
-      MaterialThemeBundle.message("mt.stats.notification.title", MTUiUtils.getPluginName()),
-      MaterialThemeBundle.message("mt.stats.config.details", MaterialThemeBundle.message("mt.stats.plugin.team")),
-      NotificationType.INFORMATION);
-
-    setListener((notification1, event) -> {
-      MTConfig.getInstance().setAllowDataCollection(ALLOW.equals(event.getDescription()));
-      PropertiesComponent.getInstance().setValue(SHOW_STATISTICS_AGREEMENT, true);
-      notification1.expire();
-    });
+  init {
+    setListener { notification1: Notification, event: HyperlinkEvent ->
+      MTConfig.getInstance().setAllowDataCollection("allow" == event.description)
+      PropertiesComponent.getInstance().setValue(SHOW_STATISTICS_AGREEMENT, true)
+      notification1.expire()
+    }
   }
 }

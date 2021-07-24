@@ -39,7 +39,6 @@ import com.intellij.ui.jcef.JBCefApp;
 import com.intellij.util.Url;
 import com.intellij.util.Urls;
 import com.mallowigi.idea.MTConfig;
-import com.mallowigi.idea.MTUpdatesComponent;
 import com.mallowigi.idea.messages.MaterialThemeBundle;
 import com.mallowigi.idea.utils.MTUiUtils;
 import org.jetbrains.annotations.Contract;
@@ -90,7 +89,7 @@ public final class MTWhatsNewAction extends AnAction implements DumbAware {
     final String title = MaterialThemeBundle.message("whats.new.action.title");
 
     if (!JBCefApp.isSupported()) {
-      MTNotifications.showUpdate(project, MTUpdatesComponent::onPaypalClick);
+      MTNotifications.showUpdate(project);
     } else if (url != null) {
       final String themeId = MTConfig.getInstance().getSelectedTheme().getThemeId();
       final Url embeddedUrl = Urls.newFromEncoded(url).addParameters(Map.of("theme", themeId));
