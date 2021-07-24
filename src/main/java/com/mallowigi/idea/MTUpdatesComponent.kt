@@ -30,32 +30,33 @@ import com.intellij.notification.Notification
 import com.intellij.notification.Notifications
 import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.project.Project
-import com.intellij.openapi.project.ProjectManagerListener
+import com.intellij.openapi.startup.StartupActivity
 import com.mallowigi.idea.notifications.MTInstallAtomNotification
 import com.mallowigi.idea.notifications.MTNotifications
 import com.mallowigi.idea.notifications.MTStatisticsNotification
 import com.mallowigi.idea.notifications.MTWhatsNewAction
 import com.mallowigi.idea.utils.MTUiUtils
 
-/**
- * M t updates component
- *
- * @constructor Create empty M t updates component
- */
-class MTUpdatesComponent : ProjectManagerListener {
+class MTUpdatesComponent : StartupActivity.Background {
   private var config: MTConfig? = MTConfig.getInstance()
 
-  override fun projectOpened(project: Project) {
+  override fun runActivity(project: Project) {
+    config = MTConfig.getInstance()
+    projectOpened(project)
+  }
+
+  private fun projectOpened(project: Project) {
     // Show new version notification
     val pluginVersion = MTUiUtils.getVersion()
     val updated = pluginVersion != config!!.getVersion()
     config!!.setVersion(pluginVersion)
 
     // Show notification update
-    if (updated && MTConfig.getInstance().isShowWhatsNew) {
-      ApplicationManager.getApplication().invokeLater {
-        MTWhatsNewAction.openWhatsNewFile(project, MTWhatsNewAction.WHATS_NEW_URL, null)
-      }
+    if (updated) {
+      ApplicationManager.getApplication().invokeLater(
+        { MTWhatsNewAction.openWhatsNewFile(project, MTWhatsNewAction.WHATS_NEW_URL, null) },
+        project.disposed
+      )
     }
 
     // Show agreement

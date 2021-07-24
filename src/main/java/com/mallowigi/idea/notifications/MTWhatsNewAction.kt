@@ -23,95 +23,69 @@
  *
  *
  */
-package com.mallowigi.idea.notifications;
+package com.mallowigi.idea.notifications
 
-import com.intellij.ide.BrowserUtil;
-import com.intellij.ide.IdeBundle;
-import com.intellij.openapi.actionSystem.AnAction;
-import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.diagnostic.Logger;
-import com.intellij.openapi.fileEditor.impl.HTMLEditorProvider;
-import com.intellij.openapi.project.DumbAware;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.util.NlsContexts.DetailedDescription;
-import com.intellij.openapi.util.io.StreamUtil;
-import com.intellij.ui.jcef.JBCefApp;
-import com.intellij.util.Url;
-import com.intellij.util.Urls;
-import com.mallowigi.idea.MTConfig;
-import com.mallowigi.idea.messages.MaterialThemeBundle;
-import com.mallowigi.idea.utils.MTUiUtils;
-import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+import com.intellij.ide.BrowserUtil
+import com.intellij.openapi.actionSystem.AnAction
+import com.intellij.openapi.actionSystem.AnActionEvent
+import com.intellij.openapi.fileEditor.impl.HTMLEditorProvider
+import com.intellij.openapi.project.DumbAware
+import com.intellij.openapi.project.Project
+import com.intellij.openapi.util.NlsContexts.DetailedDescription
+import com.intellij.ui.jcef.JBCefApp
+import com.intellij.util.Urls.newFromEncoded
+import com.mallowigi.idea.MTConfig
+import com.mallowigi.idea.messages.MaterialThemeBundle
+import com.mallowigi.idea.utils.MTUiUtils
+import org.jetbrains.annotations.Contract
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
-import java.util.Map;
+class MTWhatsNewAction : AnAction(), DumbAware {
+  override fun actionPerformed(e: AnActionEvent) {
+    val whatsNewUrl = WHATS_NEW_URL
+    val project = e.project
 
-public final class MTWhatsNewAction extends AnAction implements DumbAware {
-  public static final String WHATS_NEW_URL = "https://www.material-theme.com/docs/what-s-new/";
-
-  private static boolean shouldShow() {
-    @NonNls final String pluginVersion = MTUiUtils.getVersion();
-
-    return !pluginVersion.equals(MTConfig.getInstance().getVersion());
-  }
-
-  @Override
-  public void actionPerformed(@NotNull final AnActionEvent e) {
-    final String whatsNewUrl = WHATS_NEW_URL;
-    final Project project = e.getProject();
     if (project != null && JBCefApp.isSupported() && shouldShow()) {
-      openWhatsNewFile(project, whatsNewUrl, null);
+      openWhatsNewFile(project, whatsNewUrl, null)
     } else {
-      BrowserUtil.browse(whatsNewUrl);
+      BrowserUtil.browse(whatsNewUrl)
     }
   }
 
-  @Override
-  public void update(@NotNull final AnActionEvent e) {
-    final boolean available = shouldShow();
-    e.getPresentation().setEnabledAndVisible(available);
+  override fun update(e: AnActionEvent) {
+    val available = shouldShow()
+    e.presentation.isEnabledAndVisible = available
+
     if (available) {
-      e.getPresentation().setText(MaterialThemeBundle.message("whats.new.action.title"));
-      e.getPresentation().setDescription(MaterialThemeBundle.message("whats.new.action.custom.description", MTUiUtils.getVersion()));
+      e.presentation.text = MaterialThemeBundle.message("whats.new.action.title")
+      e.presentation.description =
+        MaterialThemeBundle.message("whats.new.action.custom.description", MTUiUtils.getVersion())
     }
   }
 
-  @Contract("_, null, null -> fail")
-  public static void openWhatsNewFile(@NotNull final Project project, final String url, @DetailedDescription final String content) {
-    if (url == null && content == null) {
-      throw new IllegalArgumentException();
-    }
+  companion object {
+    const val WHATS_NEW_URL: String = "https://www.material-theme.com/docs/what-s-new/"
 
-    final String title = MaterialThemeBundle.message("whats.new.action.title");
+    private fun shouldShow(): Boolean = MTUiUtils.getVersion() != MTConfig.getInstance().version
 
-    if (!JBCefApp.isSupported()) {
-      MTNotifications.showUpdate(project);
-    } else if (url != null) {
-      final String themeId = MTConfig.getInstance().getSelectedTheme().getThemeId();
-      final Url embeddedUrl = Urls.newFromEncoded(url).addParameters(Map.of("theme", themeId));
-      final String finalUrl = embeddedUrl.toExternalForm();
+    @JvmStatic
+    @Contract("_, null, null -> fail")
+    fun openWhatsNewFile(project: Project, url: String?, content: @DetailedDescription String?) {
+      require(!(url == null && content == null))
 
-      String timeoutContent = null;
-      try (final InputStream html = MTWhatsNewAction.class.getResourceAsStream("messages/whatsNewTimeoutText.html")) {
-        if (html != null) {
-          //noinspection HardCodedStringLiteral
-          timeoutContent = new String(StreamUtil.readBytes(html), StandardCharsets.UTF_8)
-            .replace("__THEME__", "")
-            .replace("__TITLE__", IdeBundle.message("whats.new.timeout.title"))
-            .replace("__MESSAGE__", IdeBundle.message("whats.new.timeout.message"))
-            .replace("__ACTION__", IdeBundle.message("whats.new.timeout.action", url));
-        }
-      } catch (final IOException e) {
-        Logger.getInstance(MTWhatsNewAction.class).error(e);
+      val title = MaterialThemeBundle.message("whats.new.action.title")
+
+      if (!JBCefApp.isSupported()) {
+        MTNotifications.showUpdate(project)
+      } else if (url != null) {
+        val themeId = MTConfig.getInstance().selectedTheme.themeId
+        val embeddedUrl = newFromEncoded(url).addParameters(mapOf("theme" to themeId))
+        val finalUrl = embeddedUrl.toExternalForm()
+        val timeoutContent: String? = null
+
+        HTMLEditorProvider.openEditor(project, title, finalUrl, timeoutContent)
+      } else {
+        HTMLEditorProvider.openEditor(project, title, content!!)
       }
-
-      HTMLEditorProvider.openEditor(project, title, finalUrl, timeoutContent);
-    } else {
-      HTMLEditorProvider.openEditor(project, title, content);
     }
   }
 }

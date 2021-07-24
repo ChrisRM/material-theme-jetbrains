@@ -83,6 +83,14 @@ object MTNotifications {
     Notifications.Bus.notify(notification, project)
   }
 
+  /**
+   * Create a notification
+   *
+   * @param title    notification title
+   * @param content  the content
+   * @param type     the type (sticky...)
+   * @return new notification to be displayed
+   */
   private fun createNotification(
     title: String,
     content: String,
@@ -98,7 +106,7 @@ object MTNotifications {
    * @param title    notification title
    * @param content  the content
    * @param type     the type (sticky...)
-   * @param listener optional listener
+   * @param listener listener
    * @return new notification to be displayed
    */
   private fun createNotification(

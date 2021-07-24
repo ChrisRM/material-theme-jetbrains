@@ -231,6 +231,7 @@
 
         <webHelpProvider implementation="com.mallowigi.idea.help.MTHelpProvider" id="MTHelpTopic" />
 
+        <backgroundPostStartupActivity implementation="com.mallowigi.idea.MTUpdatesComponent" />
         <postStartupActivity implementation="com.mallowigi.idea.tabs.MTTabsPainterPatcherComponent" />
     </extensions>
 
@@ -239,8 +240,6 @@
         <listener class="com.mallowigi.idea.MTLafComponent" topic="com.intellij.ide.AppLifecycleListener" />
         <listener class="com.mallowigi.idea.MTApplicationComponent" topic="com.intellij.ide.AppLifecycleListener" />
         <listener class="com.mallowigi.idea.MTFixStripes" topic="com.intellij.openapi.project.ProjectManagerListener" />
-        <listener class="com.mallowigi.idea.MTUpdatesComponent"
-                  topic="com.intellij.openapi.project.ProjectManagerListener" />
     </applicationListeners>
 
     <actions>
