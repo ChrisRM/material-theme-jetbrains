@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,36 +23,36 @@
  *
  *
  */
+package com.mallowigi.idea.tabs.highlights
 
-package com.mallowigi.idea.tabs.highlightTabPainters;
+import java.awt.Graphics2D
+import java.awt.Rectangle
+import javax.swing.SwingConstants
 
-import javax.swing.*;
-import java.awt.*;
-
-public class LeftHighlightTabPainter extends HighlightTabPainter {
-  @Override
-  public void paintBottom(final int borderThickness, final Graphics2D g2d, final Rectangle rect, final int width) {
-    // do nothing
-  }
-
-  @Override
-  public void paintTop(final int borderThickness, final Graphics2D g2d, final Rectangle rect, final int width) {
-    // do nothing
-  }
-
-  @Override
-  public final void paintLeft(final int borderThickness, final Graphics2D g2d, final Rectangle rect, final int width) {
-    final int positionFromPlacement = getEditorTabPlacement();
-    // Paint on right if tabs at right, otherwise paint on left
-    if (positionFromPlacement == SwingConstants.RIGHT) {
-      paintOnRight(borderThickness, g2d, rect);
-    } else {
-      paintOnLeft(borderThickness, g2d, rect);
+class ToplessHighlightTabPainter : HighlightTabPainter() {
+  override fun paintBottom(borderThickness: Int, g2d: Graphics2D?, rect: Rectangle?, width: Int) {
+    val positionFromPlacement = editorTabPlacement
+    // if tabs at bottom, do not paint (becomes bottomless)
+    if (positionFromPlacement != SwingConstants.BOTTOM) {
+      paintOnBottom(borderThickness, g2d!!, rect!!, width)
     }
+    // do nothing
   }
 
-  @Override
-  public void paintRight(final int borderThickness, final Graphics2D g2d, final Rectangle rect, final int width) {
+  override fun paintTop(borderThickness: Int, g2d: Graphics2D?, rect: Rectangle?, width: Int) {
+    val positionFromPlacement = editorTabPlacement
+    // Paint top anyway on bottom tabs
+    if (positionFromPlacement == SwingConstants.BOTTOM) {
+      paintOnTop(borderThickness, g2d!!, rect!!)
+    }
     // do nothing
+  }
+
+  override fun paintLeft(borderThickness: Int, g2d: Graphics2D?, rect: Rectangle?, width: Int) {
+    paintOnLeft(borderThickness, g2d!!, rect!!)
+  }
+
+  override fun paintRight(borderThickness: Int, g2d: Graphics2D?, rect: Rectangle?, width: Int) {
+    paintOnRight(borderThickness, g2d!!, rect!!)
   }
 }

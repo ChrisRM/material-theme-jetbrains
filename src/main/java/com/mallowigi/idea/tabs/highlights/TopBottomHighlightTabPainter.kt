@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,29 +23,19 @@
  *
  *
  */
+package com.mallowigi.idea.tabs.highlights
 
-package com.mallowigi.idea.tabs.highlightTabPainters;
+import java.awt.Graphics2D
+import java.awt.Rectangle
 
-import java.awt.*;
+class TopBottomHighlightTabPainter : HighlightTabPainter() {
+  override fun paintBottom(borderThickness: Int, g2d: Graphics2D?, rect: Rectangle?, width: Int): Unit =
+    paintOnBottom(borderThickness, g2d!!, rect!!, width)
 
-public class FullHighlightTabPainter extends HighlightTabPainter {
-  @Override
-  public final void paintBottom(final int borderThickness, final Graphics2D g2d, final Rectangle rect, final int width) {
-    paintOnBottom(borderThickness, g2d, rect, width);
-  }
+  override fun paintTop(borderThickness: Int, g2d: Graphics2D?, rect: Rectangle?, width: Int): Unit =
+    paintOnTop(borderThickness, g2d!!, rect!!)
 
-  @Override
-  public final void paintTop(final int borderThickness, final Graphics2D g2d, final Rectangle rect, final int width) {
-    paintOnTop(borderThickness, g2d, rect);
-  }
+  override fun paintLeft(borderThickness: Int, g2d: Graphics2D?, rect: Rectangle?, width: Int): Unit = Unit
 
-  @Override
-  public final void paintLeft(final int borderThickness, final Graphics2D g2d, final Rectangle rect, final int width) {
-    paintOnLeft(borderThickness, g2d, rect);
-  }
-
-  @Override
-  public final void paintRight(final int borderThickness, final Graphics2D g2d, final Rectangle rect, final int width) {
-    paintOnRight(borderThickness, g2d, rect);
-  }
+  override fun paintRight(borderThickness: Int, g2d: Graphics2D?, rect: Rectangle?, width: Int): Unit = Unit
 }

@@ -30,7 +30,7 @@ import com.intellij.openapi.project.Project;
 import com.mallowigi.idea.MTConfig;
 import com.mallowigi.idea.MTProjectConfig;
 import com.mallowigi.idea.config.enums.TabHighlightPositions;
-import com.mallowigi.idea.tabs.highlightTabPainters.HighlightTabPainter;
+import com.mallowigi.idea.tabs.highlights.HighlightTabPainter;
 import com.mallowigi.idea.utils.MTUiUtils;
 
 import java.awt.*;

@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,36 +23,26 @@
  *
  *
  */
+package com.mallowigi.idea.tabs.highlights
 
-package com.mallowigi.idea.tabs.highlightTabPainters;
+import java.awt.Graphics2D
+import java.awt.Rectangle
+import javax.swing.SwingConstants
 
-import javax.swing.*;
-import java.awt.*;
-
-public class BottomHighlightTabPainter extends HighlightTabPainter {
-  @Override
-  public final void paintBottom(final int borderThickness, final Graphics2D g2d, final Rectangle rect, final int width) {
-    final int positionFromPlacement = getEditorTabPlacement();
+class BottomHighlightTabPainter : HighlightTabPainter() {
+  override fun paintBottom(borderThickness: Int, g2d: Graphics2D?, rect: Rectangle?, width: Int) {
+    val positionFromPlacement = editorTabPlacement
     // Paint on top if tabs at bottom, otherwise paint on bottom
     if (positionFromPlacement == SwingConstants.BOTTOM) {
-      paintOnTop(borderThickness, g2d, rect);
+      paintOnTop(borderThickness, g2d!!, rect!!)
     } else {
-      paintOnBottom(borderThickness, g2d, rect, width);
+      paintOnBottom(borderThickness, g2d!!, rect!!, width)
     }
   }
 
-  @Override
-  public void paintTop(final int borderThickness, final Graphics2D g2d, final Rectangle rect, final int width) {
-    // do nothing
-  }
+  override fun paintTop(borderThickness: Int, g2d: Graphics2D?, rect: Rectangle?, width: Int): Unit = Unit
 
-  @Override
-  public void paintLeft(final int borderThickness, final Graphics2D g2d, final Rectangle rect, final int width) {
-    // do nothing
-  }
+  override fun paintLeft(borderThickness: Int, g2d: Graphics2D?, rect: Rectangle?, width: Int): Unit = Unit
 
-  @Override
-  public void paintRight(final int borderThickness, final Graphics2D g2d, final Rectangle rect, final int width) {
-    // do nothing
-  }
+  override fun paintRight(borderThickness: Int, g2d: Graphics2D?, rect: Rectangle?, width: Int): Unit = Unit
 }
