@@ -35,7 +35,7 @@ new FormModel {
 					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 						"$layoutConstraints": "fillx,hidemode 3,align left top"
 						"$columnConstraints": "[left][right]"
-						"$rowConstraints": "[][][][][]"
+						"$rowConstraints": "[][][][][][]"
 					} ) {
 						name: "tabPanel"
 						add( new FormComponent( "com.jformdesigner.designer.wrapper.JGoodiesFormsLabel" ) {
@@ -81,12 +81,19 @@ new FormModel {
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "cell 0 3,align left center,grow 0 0"
 						} )
+						add( new FormComponent( "javax.swing.JCheckBox" ) {
+							name: "isActiveBoldTabsCheckbox"
+							"text": new FormMessage( null, "MTProjectForm.isActiveBoldTabsCheckbox.text" )
+							"toolTipText": new FormMessage( null, "MTProjectForm.isActiveBoldTabsCheckbox.toolTipText" )
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "cell 0 4,align left center,grow 0 0"
+						} )
 						add( new FormComponent( "javax.swing.JLabel" ) {
 							name: "positionLabel"
 							"text": new FormMessage( null, "MTProjectForm.positionLabel.text" )
 							"toolTipText": new FormMessage( null, "MTProjectForm.positionLabel.toolTipText" )
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-							"value": "cell 0 4,aligny center,growy 0"
+							"value": "cell 0 5,aligny center,growy 0"
 						} )
 						add( new FormComponent( "com.intellij.openapi.ui.ComboBox" ) {
 							name: "tabHighlightPositionComboBox"
@@ -95,7 +102,7 @@ new FormModel {
 								"JavaCodeGenerator.typeParameters": "TabHighlightPositions"
 							}
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-							"value": "cell 1 4,align right center,grow 0 0,width 120:120:120"
+							"value": "cell 1 5,align right center,grow 0 0,width 120:120:120"
 						} )
 					}, new FormLayoutConstraints( null ) {
 						"title": new FormMessage( null, "MTProjectForm.tabPanel.tab.title" )

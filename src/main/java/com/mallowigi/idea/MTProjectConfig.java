@@ -69,6 +69,8 @@ public final class MTProjectConfig implements PersistentStateComponent<MTProject
   @Property
   boolean isActive = false;
   @Property
+  boolean activeBoldTab = false;
+  @Property
   boolean borderedButtons = false;
   @Property
   boolean isHighlightColorEnabled = false;
@@ -160,18 +162,19 @@ public final class MTProjectConfig implements PersistentStateComponent<MTProject
     isReset = false;
 
     setIsActive(form.isActive());
-    setSettingsSelectedTab(form.getSelectedTabIndex());
+    setCustomTitle(form.getCustomTitle());
     setHighlightColor(form.getHighlightColor());
     setHighlightColorEnabled(form.isHighlightColorEnabled());
     setHighlightThickness(form.getHighlightThickness());
-    setUpperCaseTabs(form.isUpperCaseTabs());
-    setTabHighlightPosition(form.getTabHighlightPosition());
-    setUseProjectFrame(form.isUseProjectFrame());
+    setIsActiveBoldTab(form.isActiveBoldTab());
     setProjectFrameColor(form.getProjectFrameColor());
-    setUseProjectTitle(form.isUseProjectTitle());
-    setUseProjectIcon(form.isUseProjectIcon());
+    setSettingsSelectedTab(form.getSelectedTabIndex());
+    setTabHighlightPosition(form.getTabHighlightPosition());
+    setUpperCaseTabs(form.isUpperCaseTabs());
     setUseCustomTitle(form.isUseCustomTitle());
-    setCustomTitle(form.getCustomTitle());
+    setUseProjectFrame(form.isUseProjectFrame());
+    setUseProjectIcon(form.isUseProjectIcon());
+    setUseProjectTitle(form.isUseProjectTitle());
 
     // Then fire changed
     fireChanged();
@@ -181,21 +184,22 @@ public final class MTProjectConfig implements PersistentStateComponent<MTProject
   public void resetSettings() {
     isReset = true;
     isActive = false;
+    activeBoldTab = false;
     borderedButtons = false;
+    customTitle = MTConfig.DEFAULT_TITLE;
     highlightColor = MTConfig.ACCENT_COLOR;
-    isHighlightColorEnabled = false;
     highlightThickness = MTConfig.DEFAULT_THICKNESS;
     indicatorStyle = IndicatorStyles.BORDER;
     indicatorThickness = MTConfig.DEFAULT_THICKNESS;
+    isHighlightColorEnabled = false;
     projectFrameColor = MTConfig.ACCENT_COLOR;
     tabHighlightPosition = TabHighlightPositions.DEFAULT;
     upperCaseButtons = true;
     upperCaseTabs = false;
-    useProjectFrame = false;
-    useProjectTitle = true;
-    useProjectIcon = true;
     useCustomTitle = false;
-    customTitle = MTConfig.DEFAULT_TITLE;
+    useProjectFrame = false;
+    useProjectIcon = true;
+    useProjectTitle = true;
   }
 
   @Override
@@ -203,7 +207,7 @@ public final class MTProjectConfig implements PersistentStateComponent<MTProject
     return false;
   }
 
-  //region Is Project Settings Active
+  //region ~~~~~~~~~~~~~ Is Project Settings Active ~~~~~~~~~~~~~
   public boolean isActive() {
     return isPremium && isActive;
   }
@@ -217,75 +221,40 @@ public final class MTProjectConfig implements PersistentStateComponent<MTProject
   }
   //endregion
 
-  //region Tabs Highlight
+  //region ~~~~~~~~~~~~~ Tabs Settings ~~~~~~~~~~~~~
 
-  /**
-   * Set a new tab highlight color
-   *
-   * @param color the new highlight color
-   */
+  //region ----------- Tabs Highlight ----------- 
+
   public void setHighlightColor(@NotNull final Color color) {
     highlightColor = ColorUtil.toHex(color);
   }
 
-  /**
-   * Checks whether the tab highlightColor is different from the previous one
-   *
-   * @param color new highlight color
-   * @return true if changed
-   */
   public boolean isHighlightColorChanged(@NotNull final Color color) {
     // Old code is old
     final Color current = getHighlightColor();
     return !Objects.equals(current, color);
   }
 
-  /**
-   * Return whether custom highlight is enabled
-   *
-   * @return true if enabled
-   */
   public boolean isHighlightColorEnabled() {
     return isPremium && isHighlightColorEnabled;
   }
 
-  /**
-   * Enable/Disable custom highlight
-   *
-   * @param enabled state
-   */
   public void setHighlightColorEnabled(final boolean enabled) {
     isHighlightColorEnabled = enabled;
   }
 
-  /**
-   * Checks whether the highlight color enabled state has changed
-   *
-   * @param enabled new enabled state
-   * @return true if changed
-   */
   public boolean isHighlightColorEnabledChanged(final boolean enabled) {
     return isHighlightColorEnabled != enabled;
   }
 
-  /**
-   * Get the tab highlight color
-   *
-   * @return the highlight color
-   */
   public Color getHighlightColor() {
     return ColorUtil.fromHex(highlightColor);
   }
 
   //endregion
 
-  //region Tab highlight thickness
+  //region ----------- Tab highlight thickness -----------
 
-  /**
-   * Set highlight thickness
-   *
-   * @param thickness thickness value
-   */
   public void setHighlightThickness(final int thickness) {
     if (MTConfig.MIN_HIGHLIGHT_THICKNESS > thickness || thickness > MTConfig.MAX_HIGHLIGHT_THICKNESS) {
       return;
@@ -293,27 +262,16 @@ public final class MTProjectConfig implements PersistentStateComponent<MTProject
     highlightThickness = thickness;
   }
 
-  /**
-   * Checks whether the highlight thickness has changed
-   *
-   * @param thickness new thickness
-   * @return true if changed
-   */
   public boolean isHighlightThicknessChanged(final int thickness) {
     return highlightThickness != thickness;
   }
 
-  /**
-   * Get user's highlight thickness
-   *
-   * @return highlight thickness
-   */
   public int getHighlightThickness() {
     return isPremium ? highlightThickness : 2;
   }
   // endregion
 
-  //region Tab Placement
+  //region ----------- Tab Placement -----------
   public TabHighlightPositions getTabHighlightPosition() {
     return isPremium ? tabHighlightPosition : TabHighlightPositions.BOTTOM;
   }
@@ -327,39 +285,43 @@ public final class MTProjectConfig implements PersistentStateComponent<MTProject
   }
   //endregion
 
-  //region Uppercase tabs
+  //region ----------- Uppercase tabs -----------
 
-  /**
-   * Sets the isUpperCaseTabs of this MTConfig object.
-   *
-   * @param isUpperCaseTabs the isUpperCaseTabs of this MTConfig object.
-   */
   public void setUpperCaseTabs(final boolean isUpperCaseTabs) {
     upperCaseTabs = isUpperCaseTabs;
   }
 
-  /**
-   * ...
-   *
-   * @param upperCaseTabs of type boolean
-   * @return boolean
-   */
   public boolean isUpperCaseTabsChanged(final boolean upperCaseTabs) {
     return this.upperCaseTabs != upperCaseTabs;
   }
 
-  /**
-   * Returns the upperCaseTabs of this MTConfig object.
-   *
-   * @return the upperCaseTabs (type boolean) of this MTConfig object.
-   */
   public boolean isUpperCaseTabs() {
     return isPremium && upperCaseTabs;
   }
 
   // endregion
 
-  //region Project Frame
+  //region ----------- Active tab bold -----------
+
+  public void setIsActiveBoldTab(final boolean isActiveBoldTab) {
+    activeBoldTab = isActiveBoldTab;
+  }
+
+  public boolean isActiveBoldTabChanged(final boolean activeBoldTab) {
+    return this.activeBoldTab != activeBoldTab;
+  }
+
+  public boolean isActiveBoldTab() {
+    return isPremium && activeBoldTab;
+  }
+
+  // endregion
+
+  //endregion
+
+  //region ~~~~~~~~~~~~~ Project Frame Settings ~~~~~~~~~~~~~
+
+  //region ----------- Project Frame -----------
   public boolean isUseProjectFrame() {
     return isPremium && useProjectFrame;
   }
@@ -373,7 +335,7 @@ public final class MTProjectConfig implements PersistentStateComponent<MTProject
   }
   //endregion
 
-  //region Project Frame color
+  //region ----------- Project Frame color -----------
 
   public void setProjectFrameColor(@NotNull final Color color) {
     projectFrameColor = ColorUtil.toHex(color);
@@ -384,18 +346,13 @@ public final class MTProjectConfig implements PersistentStateComponent<MTProject
     return !Objects.equals(current, color);
   }
 
-  /**
-   * Get the tab highlight color
-   *
-   * @return the highlight color
-   */
   public Color getProjectFrameColor() {
     return ColorUtil.fromHex(projectFrameColor);
   }
 
   //endregion
 
-  //region Project Frame Title
+  //region ----------- Project Frame Title -----------
   public boolean isUseProjectTitle() {
     return useProjectTitle;
   }
@@ -410,7 +367,7 @@ public final class MTProjectConfig implements PersistentStateComponent<MTProject
 
   //endregion
 
-  //region Project Frame Icon
+  //region ----------- Project Frame Icon -----------
   public boolean isUseProjectIcon() {
     return useProjectIcon;
   }
@@ -425,7 +382,7 @@ public final class MTProjectConfig implements PersistentStateComponent<MTProject
 
   //endregion
 
-  //region Customize Project Frame Title
+  //region ----------- Customize Project Frame Title -----------
   public boolean isUseCustomTitle() {
     return useCustomTitle;
   }
@@ -440,7 +397,7 @@ public final class MTProjectConfig implements PersistentStateComponent<MTProject
 
   //endregion
 
-  //region Custom Title
+  //region ----------- Custom Title -----------
   public String getCustomTitle() {
     return customTitle;
   }
@@ -452,6 +409,7 @@ public final class MTProjectConfig implements PersistentStateComponent<MTProject
   public boolean isCustomTitleChanged(@NonNls final String customTitle) {
     return !Objects.equals(this.customTitle, customTitle);
   }
+  //endregion
   //endregion
 
   //region other data

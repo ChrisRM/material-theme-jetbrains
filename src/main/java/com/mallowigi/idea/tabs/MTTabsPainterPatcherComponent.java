@@ -28,6 +28,7 @@ package com.mallowigi.idea.tabs;
 
 import com.intellij.openapi.Disposable;
 import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.application.ModalityState;
 import com.intellij.openapi.application.ex.ApplicationManagerEx;
 import com.intellij.openapi.fileEditor.FileEditor;
 import com.intellij.openapi.fileEditor.FileEditorManagerEvent;
@@ -48,6 +49,7 @@ import com.intellij.util.ui.UIUtil;
 import com.mallowigi.idea.MTConfig;
 import com.mallowigi.idea.MTProjectConfig;
 import com.mallowigi.idea.listeners.ConfigNotifier;
+import com.mallowigi.idea.utils.MTUiUtils;
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
@@ -98,12 +100,12 @@ public final class MTTabsPainterPatcherComponent implements StartupActivity.Back
     connect.subscribe(ConfigNotifier.CONFIG_TOPIC, new ConfigNotifier() {
       @Override
       public void configChanged(final MTConfig mtConfig) {
-        resetTabsBoldness(project);
+        ApplicationManager.getApplication().invokeAndWait(() -> resetTabsBoldness(project), ModalityState.NON_MODAL);
       }
 
       @Override
       public void projectConfigChanged(final MTProjectConfig mtConfig) {
-        resetTabsBoldness(project);
+        ApplicationManager.getApplication().invokeAndWait(() -> resetTabsBoldness(project), ModalityState.NON_MODAL);
       }
 
     });
@@ -130,14 +132,15 @@ public final class MTTabsPainterPatcherComponent implements StartupActivity.Back
     final JBTabPainter proxy = (JBTabPainter) Enhancer.create(MTTabsPainter.class, new TabPainterInterceptor(tabsPainter));
 
     ApplicationManager.getApplication().invokeLater(() -> {
-      applyCustomFontSize(component);
-      applyBoldTabs(component);
+      applyCustomFontSize(component, project);
+      applyBoldTabs(component, project);
     });
 
     ReflectionUtil.setField(JBEditorTabs.class, component, JBTabPainter.class, "myTabPainter", proxy);
   }
 
-  private void applyCustomFontSize(final JBEditorTabs component) {
+  private void applyCustomFontSize(final JBEditorTabs component,
+                                   final @NotNull Project project) {
     if (config.isTabFontSizeEnabled()) {
       final float tabFontSize = config.getTabFontSize();
       final Map<TabInfo, TabLabel> myInfo2Label = component.myInfo2Label;
@@ -149,8 +152,9 @@ public final class MTTabsPainterPatcherComponent implements StartupActivity.Back
     }
   }
 
-  private void applyBoldTabs(final JBEditorTabs component) {
-    if (config.isActiveBoldTab()) {
+  private void applyBoldTabs(final JBEditorTabs component,
+                             final @NotNull Project project) {
+    if (isActiveBoldTab(project)) {
       final TabInfo selectedInfo = component.getSelectedInfo();
       final Map<TabInfo, TabLabel> myInfo2Label = component.myInfo2Label;
 
@@ -164,13 +168,28 @@ public final class MTTabsPainterPatcherComponent implements StartupActivity.Back
     }
   }
 
-  static void resetTabsBoldness(final @NotNull Project project) {
+  private boolean isActiveBoldTab(final @NotNull Project project) {
+    final MTProjectConfig projectConfig = MTUiUtils.getProjectConfigIfEnabled(project);
+    if (projectConfig != null) {
+      return projectConfig.isActiveBoldTab();
+    }
+    return config.isActiveBoldTab();
+  }
+
+  void resetTabsBoldness(final @NotNull Project project) {
     final FileEditorManagerEx manager = FileEditorManagerEx.getInstanceEx(project);
     final EditorWindow[] windows = manager.getWindows();
     for (final EditorWindow editorWindow : windows) {
+      final TabInfo selectedInfo = editorWindow.getTabbedPane().getTabs().getSelectedInfo();
       final List<TabInfo> tabs = editorWindow.getTabbedPane().getTabs().getTabs();
+
       for (final TabInfo tab : tabs) {
-        tab.setDefaultStyle(SimpleTextAttributes.STYLE_PLAIN);
+        if (tab == selectedInfo) {
+          final int style = isActiveBoldTab(project) ? SimpleTextAttributes.STYLE_BOLD : SimpleTextAttributes.STYLE_PLAIN;
+          tab.setDefaultStyle(style);
+        } else {
+          tab.setDefaultStyle(SimpleTextAttributes.STYLE_PLAIN);
+        }
       }
     }
   }
