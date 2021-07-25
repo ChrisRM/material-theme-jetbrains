@@ -31,6 +31,7 @@ import com.intellij.notification.Notifications
 import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.startup.StartupActivity
+import com.mallowigi.idea.config.application.MTConfig
 import com.mallowigi.idea.notifications.MTInstallAtomNotification
 import com.mallowigi.idea.notifications.MTNotifications
 import com.mallowigi.idea.notifications.MTStatisticsNotification

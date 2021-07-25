@@ -23,32 +23,43 @@
  *
  *
  */
-package com.mallowigi.idea.notifications
+package com.mallowigi.idea.config.application
 
-import com.intellij.ide.util.PropertiesComponent
-import com.intellij.notification.Notification
-import com.intellij.notification.NotificationType
-import com.mallowigi.idea.config.application.MTConfig
+import com.intellij.openapi.options.SearchableConfigurable
+import com.mallowigi.idea.config.MTBaseConfig
+import com.mallowigi.idea.config.MTConfigurableBase
+import com.mallowigi.idea.config.ui.MTForm
 import com.mallowigi.idea.messages.MaterialThemeBundle
 import com.mallowigi.idea.utils.MTUiUtils
+import org.jetbrains.annotations.Nls
 import org.jetbrains.annotations.NonNls
-import javax.swing.event.HyperlinkEvent
 
-class MTStatisticsNotification : Notification(
-  MTNotifications.CHANNEL,
-  MaterialThemeBundle.message("mt.stats.notification.title", MTUiUtils.getPluginName()),
-  MaterialThemeBundle.message("mt.stats.config.details", MaterialThemeBundle.message("mt.stats.plugin.team")),
-  NotificationType.INFORMATION
-) {
+/**
+ * Service used to load and save settings from MTConfig
+ */
+class MTConfigurable : MTConfigurableBase<MTForm?, MTConfig?>(), SearchableConfigurable {
+  override fun getDisplayName(): @Nls String? = MaterialThemeBundle.message("mt.settings.titles.materialTheme")
+
+  override fun getHelpTopic(): @NonNls String = "${MTUiUtils.HELP_PREFIX}.$HELP_ID"
+
+  override fun getId(): String = ID
+
+  override fun setFormState(form: MTForm?, config: MTConfig): Unit = form!!.setFormState(config)
+
+  override fun getConfig(): MTConfig = MTConfig.getInstance()
+
+  override fun createForm(): MTForm = MTForm()
+
+  override fun doApply(form: MTForm?, config: MTConfig?): Unit = config!!.applySettings(form)
+
+  override fun checkModified(form: MTForm?, config: MTConfig?): Boolean = checkFormModified(config)
+
+  private fun checkFormModified(config: MTBaseConfig<MTForm, MTConfig>?): Boolean = form!!.isModified(config)
+
   companion object {
-    const val SHOW_STATISTICS_AGREEMENT: @NonNls String = "mt.showStatisticsAgreement"
+    const val ID: String = "MTConfigurable"
+
+    const val HELP_ID: @NonNls String = "MTConfig"
   }
 
-  init {
-    setListener { notification1: Notification, event: HyperlinkEvent ->
-      MTConfig.getInstance().setAllowDataCollection("allow" == event.description)
-      PropertiesComponent.getInstance().setValue(SHOW_STATISTICS_AGREEMENT, true)
-      notification1.expire()
-    }
-  }
 }

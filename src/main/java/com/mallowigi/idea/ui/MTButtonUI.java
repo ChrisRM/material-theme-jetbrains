@@ -36,7 +36,7 @@ import com.intellij.ui.ColorUtil;
 import com.intellij.ui.JBColor;
 import com.intellij.ui.scale.JBUIScale;
 import com.intellij.util.ui.*;
-import com.mallowigi.idea.MTConfig;
+import com.mallowigi.idea.config.application.MTConfig;
 import com.mallowigi.idea.utils.ButtonBackgroundTimer;
 import com.mallowigi.idea.utils.MTUI;
 import org.jetbrains.annotations.NotNull;

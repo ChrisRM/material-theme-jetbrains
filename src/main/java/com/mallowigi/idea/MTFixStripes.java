@@ -33,6 +33,7 @@ import com.intellij.openapi.wm.impl.IdeRootPane;
 import com.intellij.openapi.wm.impl.ToolwindowToolbar;
 import com.intellij.openapi.wm.impl.WindowManagerImpl;
 import com.intellij.util.ui.UIUtil;
+import com.mallowigi.idea.config.application.MTConfig;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;

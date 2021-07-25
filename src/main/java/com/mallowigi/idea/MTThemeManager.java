@@ -54,6 +54,7 @@ import com.intellij.util.SVGLoader;
 import com.intellij.util.containers.ContainerUtil;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
+import com.mallowigi.idea.config.application.MTConfig;
 import com.mallowigi.idea.listeners.MTTopics;
 import com.mallowigi.idea.themes.MTThemeFacade;
 import com.mallowigi.idea.themes.MTThemes;

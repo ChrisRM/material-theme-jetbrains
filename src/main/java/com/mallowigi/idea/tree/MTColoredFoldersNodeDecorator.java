@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -32,8 +32,8 @@ import com.intellij.ide.projectView.ProjectViewNodeDecorator;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.packageDependencies.ui.PackageDependenciesNode;
 import com.intellij.ui.ColoredTreeCellRenderer;
-import com.mallowigi.idea.MTConfig;
 import com.mallowigi.idea.config.MTFileColorsPage;
+import com.mallowigi.idea.config.application.MTConfig;
 
 public final class MTColoredFoldersNodeDecorator implements ProjectViewNodeDecorator {
 

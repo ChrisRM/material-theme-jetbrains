@@ -33,7 +33,7 @@ import com.intellij.openapi.util.registry.Registry;
 import com.intellij.ui.components.JBScrollBar;
 import com.intellij.ui.tree.ui.Control;
 import com.intellij.util.ui.JBUI;
-import com.mallowigi.idea.MTConfig;
+import com.mallowigi.idea.config.application.MTConfig;
 import com.mallowigi.idea.themes.models.MTThemeable;
 import com.mallowigi.idea.ui.*;
 import com.mallowigi.idea.ui.indicators.MTSelectedTreePainter;

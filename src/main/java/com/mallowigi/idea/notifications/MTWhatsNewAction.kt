@@ -34,7 +34,7 @@ import com.intellij.openapi.project.Project
 import com.intellij.openapi.util.NlsContexts.DetailedDescription
 import com.intellij.ui.jcef.JBCefApp
 import com.intellij.util.Urls.newFromEncoded
-import com.mallowigi.idea.MTConfig
+import com.mallowigi.idea.config.application.MTConfig
 import com.mallowigi.idea.messages.MaterialThemeBundle
 import com.mallowigi.idea.utils.MTUiUtils
 import org.jetbrains.annotations.Contract

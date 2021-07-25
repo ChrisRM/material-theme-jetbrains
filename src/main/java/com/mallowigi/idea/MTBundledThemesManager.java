@@ -40,6 +40,7 @@ import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.vfs.VirtualFileWrapper;
 import com.intellij.util.ThrowableRunnable;
+import com.mallowigi.idea.config.application.MTConfig;
 import com.mallowigi.idea.messages.MaterialThemeBundle;
 import com.mallowigi.idea.themes.BundledThemeEP;
 import com.mallowigi.idea.themes.MTThemeFacade;

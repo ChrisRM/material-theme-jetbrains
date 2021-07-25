@@ -28,8 +28,8 @@ package com.mallowigi.idea.actions;
 
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.mallowigi.idea.MTAnalytics;
-import com.mallowigi.idea.MTConfig;
 import com.mallowigi.idea.MTThemeManager;
+import com.mallowigi.idea.config.application.MTConfig;
 import com.mallowigi.idea.config.ui.MTForm;
 import org.jetbrains.annotations.NotNull;
 

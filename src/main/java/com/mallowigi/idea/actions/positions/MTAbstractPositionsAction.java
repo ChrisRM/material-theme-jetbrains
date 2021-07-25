@@ -28,8 +28,8 @@ package com.mallowigi.idea.actions.positions;
 
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.mallowigi.idea.MTAnalytics;
-import com.mallowigi.idea.MTConfig;
 import com.mallowigi.idea.actions.MTToggleAction;
+import com.mallowigi.idea.config.application.MTConfig;
 import com.mallowigi.idea.config.enums.TabHighlightPositions;
 import org.jetbrains.annotations.NotNull;
 

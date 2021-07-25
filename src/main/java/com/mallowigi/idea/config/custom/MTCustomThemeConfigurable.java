@@ -24,10 +24,10 @@
  *
  */
 
-package com.mallowigi.idea.config;
+package com.mallowigi.idea.config.custom;
 
 import com.intellij.openapi.options.SearchableConfigurable;
-import com.mallowigi.idea.MTCustomThemeConfig;
+import com.mallowigi.idea.config.MTConfigurableBase;
 import com.mallowigi.idea.config.ui.MTCustomThemeForm;
 import com.mallowigi.idea.messages.MaterialThemeBundle;
 import com.mallowigi.idea.utils.MTUiUtils;

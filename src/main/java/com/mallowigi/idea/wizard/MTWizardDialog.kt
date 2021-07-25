@@ -29,8 +29,8 @@ import com.intellij.ide.customize.CustomizeIDEWizardDialog
 import com.intellij.ide.customize.CustomizeIDEWizardStepsProvider
 import com.intellij.openapi.ui.popup.util.PopupUtil
 import com.intellij.util.ui.JBUI
-import com.mallowigi.idea.MTConfig
 import com.mallowigi.idea.MTThemeManager
+import com.mallowigi.idea.config.application.MTConfig
 import com.mallowigi.idea.messages.MTWizardBundle
 import com.mallowigi.idea.themes.MTThemes
 import java.awt.event.ActionEvent

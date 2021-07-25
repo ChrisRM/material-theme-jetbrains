@@ -23,7 +23,7 @@
  *
  *
  */
-package com.mallowigi.idea.config
+package com.mallowigi.idea.config.project
 
 import com.intellij.ide.ui.search.SearchableOptionContributor
 import com.intellij.ide.ui.search.SearchableOptionProcessor

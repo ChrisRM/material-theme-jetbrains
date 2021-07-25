@@ -29,8 +29,8 @@ package com.mallowigi.idea.actions.indicators;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl;
 import com.mallowigi.idea.MTAnalytics;
-import com.mallowigi.idea.MTConfig;
 import com.mallowigi.idea.actions.MTToggleAction;
+import com.mallowigi.idea.config.application.MTConfig;
 import com.mallowigi.idea.config.enums.IndicatorStyles;
 import org.jetbrains.annotations.NotNull;
 

@@ -24,7 +24,7 @@
  *
  */
 
-package com.mallowigi.idea;
+package com.mallowigi.idea.config.custom;
 
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.PersistentStateComponent;

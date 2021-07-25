@@ -24,7 +24,7 @@
  *
  */
 
-package com.mallowigi.idea;
+package com.mallowigi.idea.config.project;
 
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.PersistentStateComponent;
@@ -35,7 +35,9 @@ import com.intellij.ui.ColorUtil;
 import com.intellij.util.xmlb.XmlSerializerUtil;
 import com.intellij.util.xmlb.annotations.Property;
 import com.intellij.util.xmlb.annotations.Transient;
+import com.mallowigi.idea.MTLicenseChecker;
 import com.mallowigi.idea.config.MTBaseConfig;
+import com.mallowigi.idea.config.application.MTConfig;
 import com.mallowigi.idea.config.enums.IndicatorStyles;
 import com.mallowigi.idea.config.enums.TabHighlightPositions;
 import com.mallowigi.idea.config.ui.MTForm;

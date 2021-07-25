@@ -23,14 +23,13 @@
  *
  *
  */
-package com.mallowigi.idea.config
+package com.mallowigi.idea.config.project
 
 import com.intellij.ide.ui.OptionsSearchTopHitProvider.ProjectLevelProvider
 import com.intellij.ide.ui.PublicMethodBasedOptionDescription
 import com.intellij.ide.ui.search.BooleanOptionDescription
 import com.intellij.ide.ui.search.OptionDescription
 import com.intellij.openapi.project.Project
-import com.mallowigi.idea.MTProjectConfig
 import com.mallowigi.idea.messages.MaterialThemeBundle
 import org.jetbrains.annotations.NonNls
 import java.util.Collections

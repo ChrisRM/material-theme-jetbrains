@@ -23,30 +23,28 @@
  *
  *
  */
+package com.mallowigi.idea
 
-package com.mallowigi.idea;
+import com.intellij.cloudConfig.CloudConfigAppender
+import com.intellij.util.containers.ContainerUtil
+import com.mallowigi.idea.config.application.MTConfig
+import com.mallowigi.idea.config.custom.MTCustomThemeConfig
+import com.mallowigi.idea.config.project.MTProjectConfig
+import com.mallowigi.idea.messages.MaterialThemeBundle
 
-import com.intellij.cloudConfig.CloudConfigAppender;
-import com.intellij.util.containers.ContainerUtil;
-import com.mallowigi.idea.config.MTConfigurable;
-import com.mallowigi.idea.messages.MaterialThemeBundle;
-import org.jetbrains.annotations.NotNull;
-
-import java.util.List;
-
-public final class MTCloudProvider implements CloudConfigAppender {
-  @Override
-  public @NotNull List<Class<?>> appendClassesToStream() {
-    return ContainerUtil.newArrayList(MTConfig.class, MTCustomThemeConfig.class, MTProjectConfig.class);
+class MTCloudProvider : CloudConfigAppender {
+  override fun appendClassesToStream(): List<Class<*>> {
+    return ContainerUtil.newArrayList<Class<*>>(
+      MTConfig::class.java,
+      MTCustomThemeConfig::class.java,
+      MTProjectConfig::class.java
+    )
   }
 
-  @SuppressWarnings("FeatureEnvy")
-  @Override
-  public @NotNull String getConfigDescription(@NotNull final Class<?> clazz) {
-    if (MTConfigurable.HELP_ID.equals(clazz.getSimpleName())) {
-      return MaterialThemeBundle.message("mt.settings.titles", MaterialThemeBundle.message("mt.settings.titles.materialTheme"));
-    }
-    return MaterialThemeBundle.message("mt.settings.titles", MaterialThemeBundle.message("mt.settings.titles.customTheme"));
-
+  override fun getConfigDescription(clazz: Class<*>): String {
+    return MaterialThemeBundle.message(
+      "mt.settings.titles",
+      MaterialThemeBundle.message("mt.settings.titles.${clazz.simpleName}")
+    )
   }
 }

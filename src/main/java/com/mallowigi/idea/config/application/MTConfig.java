@@ -24,7 +24,7 @@
  *
  */
 
-package com.mallowigi.idea;
+package com.mallowigi.idea.config.application;
 
 import com.intellij.openapi.application.ApplicationInfo;
 import com.intellij.openapi.application.ApplicationManager;
@@ -37,6 +37,7 @@ import com.intellij.util.ObjectUtils;
 import com.intellij.util.xmlb.XmlSerializerUtil;
 import com.intellij.util.xmlb.annotations.Property;
 import com.intellij.util.xmlb.annotations.Transient;
+import com.mallowigi.idea.MTLicenseChecker;
 import com.mallowigi.idea.config.MTBaseConfig;
 import com.mallowigi.idea.config.enums.IndicatorStyles;
 import com.mallowigi.idea.config.enums.TabHighlightPositions;
@@ -95,10 +96,10 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   public static final int DEFAULT_LEFT_INDENT = 6;
   public static final int DEFAULT_RIGHT_INDENT = 10;
   public static final int DEFAULT_TAB_HEIGHT = 32;
-  static final String ACCENT_COLOR = MTAccents.FUCHSIA.getHexColor();
+  public static final String ACCENT_COLOR = MTAccents.FUCHSIA.getHexColor();
   static final String SECOND_ACCENT_COLOR = MTAccents.TURQUOISE.getHexColor();
   @NonNls
-  static final String DEFAULT_TITLE = "{project}";
+  public static final String DEFAULT_TITLE = "{project}";
   //endregion
   @Property
   boolean accentMode = false;

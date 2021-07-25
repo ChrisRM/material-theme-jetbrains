@@ -45,6 +45,7 @@ import com.intellij.util.PlatformUtils;
 import com.intellij.util.containers.ContainerUtil;
 import com.intellij.util.ui.PlatformColors;
 import com.intellij.util.ui.UIUtil;
+import com.mallowigi.idea.config.application.MTConfig;
 import com.mallowigi.idea.ui.MTActionButtonLook;
 import com.mallowigi.idea.ui.MTNavBarUI;
 import com.mallowigi.idea.utils.MTUI;
@@ -89,7 +90,7 @@ public enum UIReplacer {
         patchLearner();
       }
 
-      if (!"CodeWithMeGuest".equals(PlatformUtils.getPlatformPrefix())) {
+      if (!"CodeWithMeGuest" .equals(PlatformUtils.getPlatformPrefix())) {
         patchLocalHistory();
       }
     } catch (final IllegalAccessException | NoSuchFieldException | ClassNotFoundException e) {

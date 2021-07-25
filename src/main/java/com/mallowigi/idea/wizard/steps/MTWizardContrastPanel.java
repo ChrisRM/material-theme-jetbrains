@@ -32,9 +32,9 @@ package com.mallowigi.idea.wizard.steps;
 
 import com.intellij.ide.customize.AbstractCustomizeWizardStep;
 import com.intellij.ui.components.JBScrollPane;
-import com.mallowigi.idea.MTConfig;
 import com.mallowigi.idea.MTLicenseChecker;
 import com.mallowigi.idea.MTThemeManager;
+import com.mallowigi.idea.config.application.MTConfig;
 import com.mallowigi.idea.messages.MTWizardBundle;
 import net.miginfocom.swing.MigLayout;
 

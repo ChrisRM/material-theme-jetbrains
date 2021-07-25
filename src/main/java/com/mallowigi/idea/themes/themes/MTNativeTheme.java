@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2020 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -30,7 +30,7 @@ import com.intellij.ide.ui.LafManager;
 import com.intellij.ide.ui.laf.UIThemeBasedLookAndFeelInfo;
 import com.intellij.ide.ui.laf.darcula.DarculaLookAndFeelInfo;
 import com.intellij.ui.ColorUtil;
-import com.mallowigi.idea.MTConfig;
+import com.mallowigi.idea.config.application.MTConfig;
 import com.mallowigi.idea.lafs.MTDarculaLaf;
 import com.mallowigi.idea.lafs.MTNativeLaf;
 import com.mallowigi.idea.themes.MTAccentMode;
@@ -177,7 +177,8 @@ public class MTNativeTheme extends MTAbstractTheme {
   }
 
   @Override
-  protected @Nullable String getBackgroundImage() {
+  protected @Nullable
+  String getBackgroundImage() {
     return null;
   }
 

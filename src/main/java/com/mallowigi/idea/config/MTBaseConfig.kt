@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,33 +23,51 @@
  *
  *
  */
+package com.mallowigi.idea.config
 
-package com.mallowigi.idea.config;
+import com.intellij.openapi.components.PersistentStateComponent
+import com.mallowigi.idea.config.ui.MTForm
+import com.mallowigi.idea.config.ui.MTFormUI
 
-import com.mallowigi.idea.config.ui.MTForm;
-import com.mallowigi.idea.config.ui.MTFormUI;
-import com.intellij.openapi.components.PersistentStateComponent;
-import org.jetbrains.annotations.NotNull;
-
-public interface MTBaseConfig<FORM extends MTFormUI, CONFIG extends PersistentStateComponent> {
-
-  void loadState(@NotNull CONFIG state);
+/**
+ * base config
+ *
+ * @param FORM
+ * @param CONFIG
+ * @constructor Create empty M t base config
+ */
+interface MTBaseConfig<FORM : MTFormUI?, CONFIG : PersistentStateComponent<*>?> {
+  /**
+   * Load state
+   *
+   * @param state
+   */
+  fun loadState(state: CONFIG)
 
   /**
    * Fire an event to the application bus that the settings have changed
    *
    * @param form the form state
    */
-  void fireBeforeChanged(FORM form);
+  fun fireBeforeChanged(form: FORM)
 
-  void fireChanged();
+  /**
+   * Fire changed
+   *
+   */
+  fun fireChanged()
 
-  void applySettings(FORM form);
+  /**
+   * Apply settings
+   *
+   * @param form
+   */
+  fun applySettings(form: FORM)
 
   /**
    * Convenience method to reset settings
    */
-  void resetSettings();
+  fun resetSettings()
 
   /**
    * Check whether the saving needs a restart
@@ -57,5 +75,5 @@ public interface MTBaseConfig<FORM extends MTFormUI, CONFIG extends PersistentSt
    * @param form of type MTForm
    * @return boolean
    */
-  boolean needsRestart(MTForm form);
+  fun needsRestart(form: MTForm?): Boolean
 }

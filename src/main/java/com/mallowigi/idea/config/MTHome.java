@@ -27,7 +27,7 @@
 package com.mallowigi.idea.config;
 
 import com.intellij.openapi.options.SearchableConfigurable;
-import com.mallowigi.idea.MTConfig;
+import com.mallowigi.idea.config.application.MTConfig;
 import com.mallowigi.idea.config.ui.MTHomeForm;
 import com.mallowigi.idea.messages.MaterialThemeBundle;
 import com.mallowigi.idea.utils.MTUiUtils;

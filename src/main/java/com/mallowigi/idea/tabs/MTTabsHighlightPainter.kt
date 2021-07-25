@@ -26,7 +26,7 @@
 package com.mallowigi.idea.tabs
 
 import com.intellij.openapi.project.Project
-import com.mallowigi.idea.MTConfig
+import com.mallowigi.idea.config.application.MTConfig
 import com.mallowigi.idea.tabs.highlights.HighlightTabPainter.Companion.getHighlightTabPainter
 import com.mallowigi.idea.utils.MTUiUtils
 import java.awt.Graphics2D

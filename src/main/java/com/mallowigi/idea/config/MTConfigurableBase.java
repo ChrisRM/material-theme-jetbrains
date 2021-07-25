@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,11 +26,11 @@
 
 package com.mallowigi.idea.config;
 
-import com.mallowigi.idea.config.ui.MTFormUI;
 import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.options.BaseConfigurable;
 import com.intellij.openapi.options.ConfigurationException;
 import com.intellij.util.ui.UIUtil;
+import com.mallowigi.idea.config.ui.MTFormUI;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -38,10 +38,10 @@ import javax.swing.*;
 import java.util.Objects;
 
 @SuppressWarnings({"SynchronizedMethod",
-    "rawtypes"})
-abstract class MTConfigurableBase<FORM extends MTFormUI, CONFIG extends PersistentStateComponent> extends BaseConfigurable {
+  "rawtypes"})
+public abstract class MTConfigurableBase<F extends MTFormUI, C extends PersistentStateComponent> extends BaseConfigurable {
   @Nullable
-  private volatile FORM form;
+  private volatile F form;
 
   /**
    * Link a form to a config
@@ -49,19 +49,19 @@ abstract class MTConfigurableBase<FORM extends MTFormUI, CONFIG extends Persiste
    * @param form   the form
    * @param config the config
    */
-  protected abstract void setFormState(FORM form, @NotNull CONFIG config);
+  protected abstract void setFormState(F form, @NotNull C config);
 
   /**
    * Returns the config object for this setting
    */
   @NotNull
-  protected abstract CONFIG getConfig();
+  protected abstract C getConfig();
 
   /**
    * Create the Form UI for the settings
    */
   @NotNull
-  protected abstract FORM createForm();
+  protected abstract F createForm();
 
   /**
    * Called when applying settings
@@ -69,7 +69,7 @@ abstract class MTConfigurableBase<FORM extends MTFormUI, CONFIG extends Persiste
    * @param form   the form
    * @param config the config
    */
-  protected abstract void doApply(FORM form, @Nullable CONFIG config) throws ConfigurationException;
+  protected abstract void doApply(F form, @Nullable C config) throws ConfigurationException;
 
   /**
    * Checks whether the user has modified the settings
@@ -78,7 +78,7 @@ abstract class MTConfigurableBase<FORM extends MTFormUI, CONFIG extends Persiste
    * @param config the config
    * @return true if modified
    */
-  protected abstract boolean checkModified(FORM form, @Nullable CONFIG config);
+  protected abstract boolean checkModified(F form, @Nullable C config);
 
   /**
    * Used to disable the apply button
@@ -123,7 +123,7 @@ abstract class MTConfigurableBase<FORM extends MTFormUI, CONFIG extends Persiste
   }
 
   /**
-   * Dispose the FORM on dispose
+   * Dispose the F on dispose
    */
   @Override
   public final synchronized void disposeUIResources() {
@@ -145,7 +145,7 @@ abstract class MTConfigurableBase<FORM extends MTFormUI, CONFIG extends Persiste
    * Return the created form
    */
   @Nullable
-  final FORM getForm() {
+  protected final F getForm() {
     return form;
   }
 
@@ -155,7 +155,7 @@ abstract class MTConfigurableBase<FORM extends MTFormUI, CONFIG extends Persiste
   private synchronized void initComponent() {
     if (form == null) {
       form = UIUtil.invokeAndWaitIfNeeded(() -> {
-        final FORM myForm = createForm();
+        final F myForm = createForm();
         myForm.init();
         return myForm;
       });

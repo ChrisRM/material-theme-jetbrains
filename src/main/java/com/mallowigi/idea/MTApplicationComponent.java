@@ -28,6 +28,7 @@ package com.mallowigi.idea;
 
 import com.intellij.ide.AppLifecycleListener;
 import com.intellij.openapi.application.ApplicationManager;
+import com.mallowigi.idea.config.application.MTConfig;
 import com.mallowigi.idea.wizard.MTWizardDialog;
 import com.mallowigi.idea.wizard.MTWizardStepsProvider;
 

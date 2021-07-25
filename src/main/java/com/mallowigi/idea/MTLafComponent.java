@@ -37,6 +37,7 @@ import com.intellij.openapi.application.ModalityState;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.util.messages.MessageBusConnection;
 import com.mallowigi.idea.config.MTBaseConfig;
+import com.mallowigi.idea.config.application.MTConfig;
 import com.mallowigi.idea.config.ui.MTForm;
 import com.mallowigi.idea.lafs.MTLafInstaller;
 import com.mallowigi.idea.listeners.ConfigNotifier;

@@ -27,8 +27,8 @@
 package com.mallowigi.idea.listeners;
 
 import com.intellij.util.messages.Topic;
-import com.mallowigi.idea.MTConfig;
-import com.mallowigi.idea.MTProjectConfig;
+import com.mallowigi.idea.config.application.MTConfig;
+import com.mallowigi.idea.config.project.MTProjectConfig;
 import com.mallowigi.idea.config.ui.MTForm;
 import com.mallowigi.idea.config.ui.MTProjectForm;
 

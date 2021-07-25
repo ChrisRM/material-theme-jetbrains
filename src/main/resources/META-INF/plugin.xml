@@ -153,9 +153,9 @@
                             id="OverlayPainter" />
         <applicationService serviceImplementation="com.mallowigi.idea.MTLicenseChecker"
                             id="MTLicenseChecker" />
-        <applicationService serviceImplementation="com.mallowigi.idea.MTConfig"
+        <applicationService serviceImplementation="com.mallowigi.idea.config.application.MTConfig"
                             id="MTConfig" />
-        <applicationService serviceImplementation="com.mallowigi.idea.MTCustomThemeConfig"
+        <applicationService serviceImplementation="com.mallowigi.idea.config.custom.MTCustomThemeConfig"
                             id="MTCustomThemeConfig" />
         <applicationService serviceImplementation="com.mallowigi.idea.MTThemeManager"
                             id="MTThemeManager" />
@@ -165,20 +165,20 @@
                             id="MTAnalytics" />
         <applicationService serviceImplementation="com.mallowigi.idea.themes.MTAccentMode"
                             id="MTAccentMode" />
-        <projectService serviceImplementation="com.mallowigi.idea.MTProjectConfig" />
+        <projectService serviceImplementation="com.mallowigi.idea.config.project.MTProjectConfig" />
 
         <applicationConfigurable instance="com.mallowigi.idea.config.MTHome"
                                  id="MTHome"
                                  groupId="appearance" />
-        <applicationConfigurable instance="com.mallowigi.idea.config.MTConfigurable"
+        <applicationConfigurable instance="com.mallowigi.idea.config.application.MTConfigurable"
                                  id="MTConfigurable"
                                  parentId="MTHome"
                                  groupId="appearance" />
-        <applicationConfigurable instance="com.mallowigi.idea.config.MTCustomThemeConfigurable"
+        <applicationConfigurable instance="com.mallowigi.idea.config.custom.MTCustomThemeConfigurable"
                                  groupId="appearance"
                                  parentId="MTHome"
                                  id="MTCustomThemeConfigurable" />
-        <projectConfigurable instance="com.mallowigi.idea.config.MTProjectConfigurable"
+        <projectConfigurable instance="com.mallowigi.idea.config.project.MTProjectConfigurable"
                              id="MTProjectConfigurable"
                              parentId="MTHome"
                              groupId="appearance" />
@@ -214,14 +214,15 @@
         <themeProvider id="MOONLIGHT" path="/themes/moonlight.theme.json" />
 
 
-        <search.optionContributor implementation="com.mallowigi.idea.config.MTOptionContributor"
+        <search.optionContributor implementation="com.mallowigi.idea.config.application.MTOptionContributor"
                                   id="MTOptionContributor" />
-        <search.optionContributor implementation="com.mallowigi.idea.config.MTProjectOptionContributor"
+        <search.optionContributor implementation="com.mallowigi.idea.config.project.MTProjectOptionContributor"
                                   id="MTProjectOptionContributor" />
-        <search.topHitProvider implementation="com.mallowigi.idea.config.MTConfigTopHitProvider"
+        <search.topHitProvider implementation="com.mallowigi.idea.config.application.MTConfigTopHitProvider"
                                id="MTConfigTopHitProvider" />
-        <search.projectOptionsTopHitProvider implementation="com.mallowigi.idea.config.MTProjectConfigTopHitProvider"
-                                             id="MTProjectConfigTopHitProvider" />
+        <search.projectOptionsTopHitProvider
+                implementation="com.mallowigi.idea.config.project.MTProjectConfigTopHitProvider"
+                id="MTProjectConfigTopHitProvider" />
 
         <!--suppress PluginXmlValidity -->
         <ideRootPaneNorth implementation="com.mallowigi.idea.MTProjectFrame" order="first" />
