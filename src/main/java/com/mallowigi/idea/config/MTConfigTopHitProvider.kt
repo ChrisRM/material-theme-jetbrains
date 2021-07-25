@@ -41,49 +41,185 @@ class MTConfigTopHitProvider : ApplicationLevelProvider {
   override fun getOptions(): Collection<OptionDescription> = OPTION_DESCRIPTIONS!!
 
   companion object {
-    @Suppress("LongLine")
-    private val OPTION_DESCRIPTIONS: @NonNls Collection<OptionDescription>? = Collections.unmodifiableCollection(listOf(
-        option(MaterialThemeBundle.message("MTForm.contrastCheckBox.text"), "isContrastMode", "setIsContrastMode"),
-        option(MaterialThemeBundle.message("MTForm.highContrastCheckbox.text"), "isHighContrast", "setIsHighContrast"),
-        option(MaterialThemeBundle.message("MTForm.overrideAccentCheckbox.text"), "isOverrideAccentColor", "setOverrideAccentColor"),
-
-        option(MaterialThemeBundle.message("MTForm.activeTabHighlightCheckbox.text"), "isHighlightColorEnabled", "setHighlightColorEnabled"),
-        option(MaterialThemeBundle.message("MTForm.isUpperCaseTabsCheckbox.text"), "isUpperCaseTabs", "setUpperCaseTabs"),
-        option(MaterialThemeBundle.message("MTForm.fontSizeCheckbox.text"), "isTabFontSizeEnabled", "setTabFontSize"),
-
-        option(MaterialThemeBundle.message("MTForm.isCompactStatusbarCheckbox.text"), "isCompactStatusBar", "setIsCompactStatusBar"),
-        option(MaterialThemeBundle.message("MTForm.isCompactTablesCheckbox.text"), "isCompactTables", "setIsCompactTables"),
-        option(MaterialThemeBundle.message("MTForm.compactDropdownsCheckbox.text"), "isCompactDropdowns", "setCompactDropdowns"),
-        option(MaterialThemeBundle.message("MTForm.isCompactMenusCheckbox.text"), "isCompactMenus", "setIsCompactMenus"),
-
-        option(MaterialThemeBundle.message("MTForm.isCompactSidebarCheckbox.text"), "isCompactSidebar", "setCompactSidebar"),
-        option(MaterialThemeBundle.message("MTForm.customTreeIndentCheckbox.text"), "isCustomTreeIndent", "setIsCustomTreeIndent"),
-        option(MaterialThemeBundle.message("MTForm.styledDirectoriesCheckbox.text"), "isStyledDirectories", "setIsStyledDirectories"),
-        option(MaterialThemeBundle.message("MTForm.fontSizeCheckbox.text"), "isTreeFontSizeEnabled", "setTreeFontSizeEnabled"),
-
-        option(MaterialThemeBundle.message("MTForm.upperCaseButtonsCheckbox.text"), "isUpperCaseButtons", "setUpperCaseButtons"),
-        option(MaterialThemeBundle.message("MTForm.borderedButtonsCheckbox.text"), "isBorderedButtons", "setBorderedButtons"),
-        option(MaterialThemeBundle.message("MTForm.accentScrollbarsCheckbox.text"), "isAccentScrollbars", "setAccentScrollbars"),
-        option(MaterialThemeBundle.message("MTForm.themedScrollbarsCheckbox.text"), "isThemedScrollbars", "setThemedScrollbars"),
-        option(MaterialThemeBundle.message("MTForm.invertedSelectionColorCheckbox.text"), "isInvertedSelectionColor", "setIsInvertedSelectionColor"),
-
-        option(MaterialThemeBundle.message("MTForm.tabShadowCheckbox.text"), "isTabsShadow", "setIsTabsShadow"),
-        option(MaterialThemeBundle.message("MTForm.useMaterialFontCheckbox.text"), "isUseMaterialFont2", "setUseMaterialFont2"),
-        option(MaterialThemeBundle.message("MTForm.fileColorsCheckbox.text"), "isFileStatusColorsEnabled", "setFileStatusColorsEnabled"),
-        option(MaterialThemeBundle.message("MTForm.useMaterialWallpapersCheckbox.text"), "isUseMaterialWallpapers", "setUseMaterialWallpapers"),
-        option(MaterialThemeBundle.message("MTForm.accentModeCheckbox.text"), "isAccentMode", "setAccentMode"),
-        option(MaterialThemeBundle.message("MTForm.toolWindowStripeCheckbox.text"), "isStripedToolWindowsEnabled", "setStripedToolWindowsEnabled"),
-
-        option(MaterialThemeBundle.message("MTForm.codeAdditionsCheckBox.text"), "isCodeAdditionsEnabled", "setCodeAdditionsEnabled"),
-        option(MaterialThemeBundle.message("MTForm.enforceLanguageOnOff.text"), "isEnforcedLanguageAdditions", "setEnforcedLanguageAdditions"),
-        option(MaterialThemeBundle.message("MTForm.isColoredOpenedDirsCheckbox.text"), "isUseColoredDirectories", "setUseColoredDirectories"),
-
-        option(MaterialThemeBundle.message("MTForm.showWhatsNewCheckbox.text"), "isShowWhatsNew", "setShowWhatsNew"),
-        option(MaterialThemeBundle.message("MTForm.useProjectFrameCheckbox.text"), "isUseProjectFrame", "setUseProjectFrame"),
-        option(MaterialThemeBundle.message("MTForm.projectTitleCheckbox.text"), "isUseProjectTitle", "setUseProjectTitle"),
-        option(MaterialThemeBundle.message("MTForm.showIconCheckbox.text"), "isUseProjectIcon", "setUseProjectIcon"),
-        option(MaterialThemeBundle.message("MTForm.customTextCheckbox.text"), "isUseCustomTitle", "setUseCustomTitle")
-    ))
+    private val OPTION_DESCRIPTIONS: @NonNls Collection<OptionDescription>? = Collections.unmodifiableCollection(
+      listOf(
+        option(
+          MaterialThemeBundle.message("MTForm.accentModeCheckbox.text"),
+          "isAccentMode",
+          "setAccentMode"
+        ),
+        option(
+          MaterialThemeBundle.message("MTForm.accentScrollbarsCheckbox.text"),
+          "isAccentScrollbars",
+          "setAccentScrollbars"
+        ),
+        option(
+          MaterialThemeBundle.message("MTForm.activeTabBoldCheckbox.text"),
+          "isActiveTabBold",
+          "setIsActiveTabBold"
+        ),
+        option(
+          MaterialThemeBundle.message("MTForm.activeTabHighlightCheckbox.text"),
+          "isHighlightColorEnabled",
+          "setHighlightColorEnabled"
+        ),
+        option(
+          MaterialThemeBundle.message("MTForm.borderedButtonsCheckbox.text"),
+          "isBorderedButtons",
+          "setBorderedButtons"
+        ),
+        option(
+          MaterialThemeBundle.message("MTForm.codeAdditionsCheckBox.text"),
+          "isCodeAdditionsEnabled",
+          "setCodeAdditionsEnabled"
+        ),
+        option(
+          MaterialThemeBundle.message("MTForm.compactDropdownsCheckbox.text"),
+          "isCompactDropdowns",
+          "setCompactDropdowns"
+        ),
+        option(
+          MaterialThemeBundle.message("MTForm.contrastCheckBox.text"),
+          "isContrastMode",
+          "setIsContrastMode"
+        ),
+        option(
+          MaterialThemeBundle.message("MTForm.customTextCheckbox.text"),
+          "isUseCustomTitle",
+          "setUseCustomTitle"
+        ),
+        option(
+          MaterialThemeBundle.message("MTForm.customTreeIndentCheckbox.text"),
+          "isCustomTreeIndent",
+          "setIsCustomTreeIndent"
+        ),
+        option(
+          MaterialThemeBundle.message("MTForm.enforceLanguageOnOff.text"),
+          "isEnforcedLanguageAdditions",
+          "setEnforcedLanguageAdditions"
+        ),
+        option(
+          MaterialThemeBundle.message("MTForm.fileColorsCheckbox.text"),
+          "isFileStatusColorsEnabled",
+          "setFileStatusColorsEnabled"
+        ),
+        option(
+          MaterialThemeBundle.message("MTForm.fontSizeCheckbox.text"),
+          "isTabFontSizeEnabled",
+          "setTabFontSize"
+        ),
+        option(
+          MaterialThemeBundle.message("MTForm.fontSizeCheckbox.text"),
+          "isTreeFontSizeEnabled",
+          "setTreeFontSizeEnabled"
+        ),
+        option(
+          MaterialThemeBundle.message("MTForm.highContrastCheckbox.text"),
+          "isHighContrast",
+          "setIsHighContrast"
+        ),
+        option(
+          MaterialThemeBundle.message("MTForm.invertedSelectionColorCheckbox.text"),
+          "isInvertedSelectionColor",
+          "setIsInvertedSelectionColor"
+        ),
+        option(
+          MaterialThemeBundle.message("MTForm.isColoredOpenedDirsCheckbox.text"),
+          "isUseColoredDirectories",
+          "setUseColoredDirectories"
+        ),
+        option(
+          MaterialThemeBundle.message("MTForm.isCompactMenusCheckbox.text"),
+          "isCompactMenus",
+          "setIsCompactMenus"
+        ),
+        option(
+          MaterialThemeBundle.message("MTForm.isCompactSidebarCheckbox.text"),
+          "isCompactSidebar",
+          "setCompactSidebar"
+        ),
+        option(
+          MaterialThemeBundle.message("MTForm.isCompactStatusbarCheckbox.text"),
+          "isCompactStatusBar",
+          "setIsCompactStatusBar"
+        ),
+        option(
+          MaterialThemeBundle.message("MTForm.isCompactTablesCheckbox.text"),
+          "isCompactTables",
+          "setIsCompactTables"
+        ),
+        option(
+          MaterialThemeBundle.message("MTForm.isUpperCaseTabsCheckbox.text"),
+          "isUpperCaseTabs",
+          "setUpperCaseTabs"
+        ),
+        option(
+          MaterialThemeBundle.message("MTForm.showOverlaysCheckbox.text"),
+          "isShowOverlays",
+          "setShowOverlays"
+        ),
+        option(
+          MaterialThemeBundle.message("MTForm.overrideAccentCheckbox.text"),
+          "isOverrideAccentColor",
+          "setOverrideAccentColor"
+        ),
+        option(
+          MaterialThemeBundle.message("MTForm.projectTitleCheckbox.text"),
+          "isUseProjectTitle",
+          "setUseProjectTitle"
+        ),
+        option(
+          MaterialThemeBundle.message("MTForm.showIconCheckbox.text"),
+          "isUseProjectIcon",
+          "setUseProjectIcon"
+        ),
+        option(
+          MaterialThemeBundle.message("MTForm.showWhatsNewCheckbox.text"),
+          "isShowWhatsNew",
+          "setShowWhatsNew"
+        ),
+        option(
+          MaterialThemeBundle.message("MTForm.styledDirectoriesCheckbox.text"),
+          "isStyledDirectories",
+          "setIsStyledDirectories"
+        ),
+        option(
+          MaterialThemeBundle.message("MTForm.tabShadowCheckbox.text"),
+          "isTabsShadow",
+          "setIsTabsShadow"
+        ),
+        option(
+          MaterialThemeBundle.message("MTForm.themedScrollbarsCheckbox.text"),
+          "isThemedScrollbars",
+          "setThemedScrollbars"
+        ),
+        option(
+          MaterialThemeBundle.message("MTForm.toolWindowStripeCheckbox.text"),
+          "isStripedToolWindowsEnabled",
+          "setStripedToolWindowsEnabled"
+        ),
+        option(
+          MaterialThemeBundle.message("MTForm.upperCaseButtonsCheckbox.text"),
+          "isUpperCaseButtons",
+          "setUpperCaseButtons"
+        ),
+        option(
+          MaterialThemeBundle.message("MTForm.useMaterialFontCheckbox.text"),
+          "isUseMaterialFont2",
+          "setUseMaterialFont2"
+        ),
+        option(
+          MaterialThemeBundle.message("MTForm.useMaterialWallpapersCheckbox.text"),
+          "isUseMaterialWallpapers",
+          "setUseMaterialWallpapers"
+        ),
+        option(
+          MaterialThemeBundle.message("MTForm.useProjectFrameCheckbox.text"),
+          "isUseProjectFrame",
+          "setUseProjectFrame"
+        ),
+      )
+    )
 
     private fun option(option: @NonNls String?, getter: String, setter: String): BooleanOptionDescription {
       return object : PublicMethodBasedOptionDescription(MaterialThemeBundle.message("option.prefix") + option,

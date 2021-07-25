@@ -33,6 +33,7 @@ import com.intellij.ide.ui.laf.IntelliJLookAndFeelInfo;
 import com.intellij.ide.ui.laf.UIThemeBasedLookAndFeelInfo;
 import com.intellij.ide.ui.laf.darcula.DarculaLookAndFeelInfo;
 import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.application.ModalityState;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.util.messages.MessageBusConnection;
 import com.mallowigi.idea.config.MTBaseConfig;
@@ -118,7 +119,7 @@ public final class MTLafComponent implements AppLifecycleListener {
     activeLookAndFeel = LafManager.getInstance().getCurrentLookAndFeel();
 
     // Activate the theme
-    ApplicationManager.getApplication().invokeAndWait(() -> activateLaf(activeLookAndFeel));
+    ApplicationManager.getApplication().invokeAndWait(() -> activateLaf(activeLookAndFeel), ModalityState.NON_MODAL);
 
     // Listen for changes on the settings
     final MessageBusConnection connect = ApplicationManager.getApplication().getMessageBus().connect();
@@ -219,7 +220,7 @@ public final class MTLafComponent implements AppLifecycleListener {
       activateTheme();
     }
 
-    ApplicationManager.getApplication().invokeAndWait(UIReplacer::patchUI);
+    ApplicationManager.getApplication().invokeAndWait(UIReplacer::patchUI, ModalityState.NON_MODAL);
 
     if (willRestartIde) {
       MTUiUtils.restartIde();

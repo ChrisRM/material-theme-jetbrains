@@ -89,6 +89,7 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
       disablePremium(languageAdditionsCheckbox);
       disablePremium(languageAdditionsLabel);
       disablePremium(materialFontsCheckBox);
+      disablePremium(activeTabBoldCheckbox);
       disablePremium(materialFontsLabel);
       disablePremium(materialWallpapersCheckbox);
       disablePremium(materialWallpapersLabel);
@@ -265,6 +266,10 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
     config.setTreeFontSize((Integer) projectViewFontSizeSpinner.getModel().getValue());
   }
 
+  private void activeTabBoldCheckboxActionPerformed(final ActionEvent e) {
+    config.setIsActiveBoldTab(activeTabBoldCheckbox.isSelected());
+  }
+
   @SuppressWarnings({"OverlyLongMethod",
     "StringConcatenation",
     "Convert2MethodRef"})
@@ -283,6 +288,8 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
     thicknessDesc = new JTextPane();
     uppercaseTabsCheckbox = new JCheckBox();
     uppercaseTabsDesc = new JTextPane();
+    activeTabBoldCheckbox = new JCheckBox();
+    activeTabBoldDesc = new JTextPane();
     tabHighlightLabel = new JLabel();
     tabHighlightCombobox = new ComboBox<>();
     tabHighlightDesc = new JTextPane();
@@ -356,6 +363,8 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
               "[]0" +
               "[]" +
               "[]0" +
+              "[]" +
+              "[]0" +
               "[]0"));
 
           //---- tabHeight ----
@@ -405,22 +414,34 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
           uppercaseTabsDesc.setEnabled(false);
           tabsPanel.add(uppercaseTabsDesc, "pad 0 10 0 10,cell 0 5");
 
+          //---- activeTabBoldCheckbox ----
+          activeTabBoldCheckbox.setText(bundle.getString("MTWizardOtherOptionsPanel.activeTabBoldCheckbox.text"));
+          activeTabBoldCheckbox.addActionListener(e -> activeTabBoldCheckboxActionPerformed(e));
+          tabsPanel.add(activeTabBoldCheckbox, "cell 0 6");
+
+          //---- activeTabBoldDesc ----
+          activeTabBoldDesc.setText(bundle.getString("MTWizardOtherOptionsPanel.activeTabBoldDesc.text"));
+          activeTabBoldDesc.setFont(UIManager.getFont("Label.font"));
+          activeTabBoldDesc.setBackground(UIManager.getColor("Panel.background"));
+          activeTabBoldDesc.setEnabled(false);
+          tabsPanel.add(activeTabBoldDesc, "pad 0 10 0 10,cell 0 7");
+
           //---- tabHighlightLabel ----
           tabHighlightLabel.setText(bundle.getString("MTWizardOtherOptionsPanel.tabHighlightLabel.text"));
           tabHighlightLabel.setToolTipText(bundle.getString("MTWizardOtherOptionsPanel.tabHighlightLabel.toolTipText"));
-          tabsPanel.add(tabHighlightLabel, "pad 0 4 0 0,cell 0 6,growx");
+          tabsPanel.add(tabHighlightLabel, "pad 0 4 0 0,cell 0 8,growx");
 
           //---- tabHighlightCombobox ----
           tabHighlightCombobox.setToolTipText(bundle.getString("MTWizardOtherOptionsPanel.tabHighlightCombobox.toolTipText"));
           tabHighlightCombobox.addActionListener(e -> tabHighlightComboboxActionPerformed(e));
-          tabsPanel.add(tabHighlightCombobox, "cell 0 6");
+          tabsPanel.add(tabHighlightCombobox, "cell 0 8");
 
           //---- tabHighlightDesc ----
           tabHighlightDesc.setText(bundle.getString("MTWizardOtherOptionsPanel.tabHighlightDesc.text"));
           tabHighlightDesc.setFont(UIManager.getFont("Label.font"));
           tabHighlightDesc.setBackground(UIManager.getColor("Panel.background"));
           tabHighlightDesc.setEnabled(false);
-          tabsPanel.add(tabHighlightDesc, "pad 0 10 0 10,cell 0 7");
+          tabsPanel.add(tabHighlightDesc, "pad 0 10 0 10,cell 0 9");
         }
         content.add(tabsPanel, "cell 0 0,aligny top,growy 0");
 
@@ -696,6 +717,8 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
   private JTextPane thicknessDesc;
   private JCheckBox uppercaseTabsCheckbox;
   private JTextPane uppercaseTabsDesc;
+  private JCheckBox activeTabBoldCheckbox;
+  private JTextPane activeTabBoldDesc;
   private JLabel tabHighlightLabel;
   private ComboBox<TabHighlightPositions> tabHighlightCombobox;
   private JTextPane tabHighlightDesc;

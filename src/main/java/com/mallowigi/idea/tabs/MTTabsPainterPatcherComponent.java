@@ -150,7 +150,7 @@ public final class MTTabsPainterPatcherComponent implements StartupActivity.Back
   }
 
   private void applyBoldTabs(final JBEditorTabs component) {
-    if (config.isUpperCaseTabs()) {
+    if (config.isActiveBoldTab()) {
       final TabInfo selectedInfo = component.getSelectedInfo();
       final Map<TabInfo, TabLabel> myInfo2Label = component.myInfo2Label;
 

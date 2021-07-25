@@ -39,10 +39,12 @@ class MTOptionContributor : SearchableOptionContributor() {
   override fun processOptions(processor: SearchableOptionProcessor) {
     val configurable: Configurable = MTConfigurable()
     val displayName = configurable.displayName
-    val strings = Collections.unmodifiableList(Lists.newArrayList(
-        //region Strings
+    val strings = Collections.unmodifiableList(
+      Lists.newArrayList(
+        //region List of Strings
         MaterialThemeBundle.message("MTForm.accentModeCheckbox.text"),
         MaterialThemeBundle.message("MTForm.accentScrollbarsCheckbox.text"),
+        MaterialThemeBundle.message("MTForm.activeTabBoldCheckbox.text"),
         MaterialThemeBundle.message("MTForm.activeTabHighlightCheckbox.text"),
         MaterialThemeBundle.message("MTForm.borderedButtonsCheckbox.text"),
         MaterialThemeBundle.message("MTForm.codeAdditionsCheckBox.text"),
@@ -53,6 +55,8 @@ class MTOptionContributor : SearchableOptionContributor() {
         MaterialThemeBundle.message("MTForm.componentsPanel.tab.title"),
         MaterialThemeBundle.message("MTForm.contrastCheckBox.text"),
         MaterialThemeBundle.message("MTForm.customAccentColorLabel.text"),
+        MaterialThemeBundle.message("MTForm.customTextCheckbox.text"),
+        MaterialThemeBundle.message("MTForm.customTextHint.text"),
         MaterialThemeBundle.message("MTForm.customTreeIndentCheckbox.text"),
         MaterialThemeBundle.message("MTForm.directoriesColorLink.text"),
         MaterialThemeBundle.message("MTForm.enforceLanguageOnOff.text"),
@@ -76,6 +80,7 @@ class MTOptionContributor : SearchableOptionContributor() {
         MaterialThemeBundle.message("MTForm.overrideAccentCheckbox.text"),
         MaterialThemeBundle.message("MTForm.panelDesc.textWithMnemonic"),
         MaterialThemeBundle.message("MTForm.positionLabel.text"),
+        MaterialThemeBundle.message("MTForm.projectTitleCheckbox.text"),
         MaterialThemeBundle.message("MTForm.projectViewDesc.textWithMnemonic"),
         MaterialThemeBundle.message("MTForm.projectViewPanel.tab.title"),
         MaterialThemeBundle.message("MTForm.resetDefaultsButton.text"),
@@ -83,6 +88,8 @@ class MTOptionContributor : SearchableOptionContributor() {
         MaterialThemeBundle.message("MTForm.scrollbarsLink.text"),
         MaterialThemeBundle.message("MTForm.selectedIndicatorLabel.text"),
         MaterialThemeBundle.message("MTForm.selectedThemeLabel.text"),
+        MaterialThemeBundle.message("MTForm.showIconCheckbox.text"),
+        MaterialThemeBundle.message("MTForm.showOverlaysCheckbox.text"),
         MaterialThemeBundle.message("MTForm.showWhatsNewCheckbox.text"),
         MaterialThemeBundle.message("MTForm.styledDirectoriesCheckbox.text"),
         MaterialThemeBundle.message("MTForm.tabFontSizeCheckbox.text"),
@@ -95,13 +102,10 @@ class MTOptionContributor : SearchableOptionContributor() {
         MaterialThemeBundle.message("MTForm.upperCaseButtonsCheckbox.text"),
         MaterialThemeBundle.message("MTForm.useMaterialFontCheckbox.text"),
         MaterialThemeBundle.message("MTForm.useMaterialWallpapersCheckbox.text"),
-        MaterialThemeBundle.message("MTForm.useProjectFrameCheckbox.text"),
-        MaterialThemeBundle.message("MTForm.projectTitleCheckbox.text"),
-        MaterialThemeBundle.message("MTForm.showIconCheckbox.text"),
-        MaterialThemeBundle.message("MTForm.customTextCheckbox.text"),
-        MaterialThemeBundle.message("MTForm.customTextHint.text")
+        MaterialThemeBundle.message("MTForm.useProjectFrameCheckbox.text")
         //endregion
-    ))
+      )
+    )
     for (s in strings) {
       processor.addOptions(s ?: return, null, displayName, MTConfigurable.ID, displayName, true)
     }

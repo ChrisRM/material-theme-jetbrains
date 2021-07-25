@@ -22,7 +22,7 @@ new FormModel {
 					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 						"$layoutConstraints": "insets 0,hidemode 3"
 						"$columnConstraints": "[grow,left]"
-						"$rowConstraints": "[20,fill]0[][]0[][]0[][]0[]0"
+						"$rowConstraints": "[20,fill]0[][]0[][]0[][]0[][]0[]0"
 					} ) {
 						name: "tabsPanel"
 						"border": new javax.swing.border.TitledBorder( "i18nKey=MTWizardOtherOptionsPanel.tabsPanel.border" )
@@ -92,12 +92,28 @@ new FormModel {
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "pad 0 10 0 10,cell 0 5"
 						} )
+						add( new FormComponent( "javax.swing.JCheckBox" ) {
+							name: "activeTabBoldCheckbox"
+							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.activeTabBoldCheckbox.text" )
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "activeTabBoldCheckboxActionPerformed", true ) )
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "cell 0 6"
+						} )
+						add( new FormComponent( "javax.swing.JTextPane" ) {
+							name: "activeTabBoldDesc"
+							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.activeTabBoldDesc.text" )
+							"font": #SwingFont0
+							"background": #SwingColor0
+							"enabled": false
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "pad 0 10 0 10,cell 0 7"
+						} )
 						add( new FormComponent( "javax.swing.JLabel" ) {
 							name: "tabHighlightLabel"
 							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.tabHighlightLabel.text" )
 							"toolTipText": new FormMessage( null, "MTWizardOtherOptionsPanel.tabHighlightLabel.toolTipText" )
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-							"value": "pad 0 4 0 0,cell 0 6,growx"
+							"value": "pad 0 4 0 0,cell 0 8,growx"
 						} )
 						add( new FormComponent( "com.intellij.openapi.ui.ComboBox" ) {
 							name: "tabHighlightCombobox"
@@ -107,7 +123,7 @@ new FormModel {
 							}
 							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "tabHighlightComboboxActionPerformed", true ) )
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-							"value": "cell 0 6"
+							"value": "cell 0 8"
 						} )
 						add( new FormComponent( "javax.swing.JTextPane" ) {
 							name: "tabHighlightDesc"
@@ -116,7 +132,7 @@ new FormModel {
 							"background": #SwingColor0
 							"enabled": false
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-							"value": "pad 0 10 0 10,cell 0 7"
+							"value": "pad 0 10 0 10,cell 0 9"
 						} )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 0 0,aligny top,growy 0"

@@ -119,6 +119,8 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   @Property
   boolean fileStatusColorsEnabled = true;
   @Property
+  boolean isActiveBoldTab = false;
+  @Property
   boolean isHighlightColorEnabled = false;
   @Property
   boolean isCompactMenus = false;
@@ -165,6 +167,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   /**
    * @deprecated Use useMaterialFont2 instead
    */
+  @SuppressWarnings("Since15")
   @Property
   @Deprecated(since = "2.7")
   boolean useMaterialFont = true;
@@ -331,6 +334,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     setAccentColor(ColorUtil.toHex(form.getCustomAccentColor()));
     setAccentMode(form.isAccentMode());
     setAccentScrollbars(form.isAccentScrollbars());
+    setIsActiveBoldTab(form.isActiveBoldTab());
     setBorderedButtons(form.isBorderedButtons());
     setCodeAdditionsEnabled(form.isCodeAdditionsEnabled());
     setCompactDropdowns(form.isCompactDropdowns());
@@ -388,6 +392,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     accentColor = ACCENT_COLOR;
     accentMode = false;
     accentScrollbars = true;
+    isActiveBoldTab = false;
     borderedButtons = false;
     codeAdditionsEnabled = true;
     compactDropdowns = false;
@@ -465,30 +470,18 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     return getNativePropertiesAsJson();
   }
 
-  //region Selected theme
+  //region ~~~~~~~~~~~~~ Main Settings ~~~~~~~~~~~~~
 
-  /**
-   * Sets the selectedTheme
-   *
-   * @param selectedTheme the selectedTheme of this MTConfig object.
-   */
+  //region ----------- Selected theme -----------
+
   public void setSelectedTheme(final MTThemeFacade selectedTheme) {
     this.selectedTheme = selectedTheme.getThemeId();
   }
 
-  /**
-   * Checks if the theme has changed
-   *
-   * @param theme of type MTThemeFacade
-   * @return boolean
-   */
   public boolean isSelectedThemeChanged(final MTThemeFacade theme) {
     return !selectedTheme.equals(theme.getName());
   }
 
-  /**
-   * Return the selected theme
-   */
   public MTThemeFacade getSelectedTheme() {
     final MTThemeFacade themeFor = MTThemes.getThemeFor(selectedTheme);
     if (!isPremium && themeFor != null && themeFor.isPremium()) {
@@ -499,235 +492,55 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   }
   //endregion
 
-  //region Version
+  //region ----------- Contrast mode -----------
 
-  /**
-   * Sets the version of the plugin
-   *
-   * @param version the version of this MTConfig object.
-   */
-  public void setVersion(final String version) {
-    this.version = version;
-  }
-
-  /**
-   * Returns the version of the plugin
-   *
-   * @return the version (type String) of this MTConfig object.
-   */
-  public String getVersion() {
-    return version;
-  }
-
-  //endregion
-
-  //region Tabs Highlight
-
-  /**
-   * Set a new tab highlight color
-   *
-   * @param color the new highlight color
-   */
-  public void setHighlightColor(@NotNull final Color color) {
-    highlightColor = ColorUtil.toHex(color);
-  }
-
-  /**
-   * Checks whether the tab highlightColor is different from the previous one
-   *
-   * @param color new highlight color
-   * @return true if changed
-   */
-  public boolean isHighlightColorChanged(@NotNull final Color color) {
-    // Old code is old
-    final Color current = getHighlightColor();
-    return !Objects.equals(current, color);
-  }
-
-  /**
-   * Return whether custom highlight is enabled
-   *
-   * @return true if enabled
-   */
-  public boolean isHighlightColorEnabled() {
-    return isPremium && isHighlightColorEnabled;
-  }
-
-  /**
-   * Enable/Disable custom highlight
-   *
-   * @param enabled state
-   */
-  public void setHighlightColorEnabled(final boolean enabled) {
-    isHighlightColorEnabled = enabled;
-  }
-
-  /**
-   * Checks whether the highlight color enabled state has changed
-   *
-   * @param enabled new enabled state
-   * @return true if changed
-   */
-  public boolean isHighlightColorEnabledChanged(final boolean enabled) {
-    return isHighlightColorEnabled != enabled;
-  }
-
-  /**
-   * Get the tab highlight color
-   *
-   * @return the highlight color
-   */
-  public Color getHighlightColor() {
-    return ColorUtil.fromHex(highlightColor);
-  }
-
-  //endregion
-
-  //region Tab highlight thickness
-
-  /**
-   * Set highlight thickness
-   *
-   * @param thickness thickness value
-   */
-  public void setHighlightThickness(final int thickness) {
-    if (MIN_HIGHLIGHT_THICKNESS > thickness || thickness > MAX_HIGHLIGHT_THICKNESS) {
-      return;
-    }
-    highlightThickness = thickness;
-  }
-
-  /**
-   * Checks whether the highlight thickness has changed
-   *
-   * @param thickness new thickness
-   * @return true if changed
-   */
-  public boolean isHighlightThicknessChanged(final int thickness) {
-    return highlightThickness != thickness;
-  }
-
-  /**
-   * Get user's highlight thickness
-   *
-   * @return highlight thickness
-   */
-  public int getHighlightThickness() {
-    return isPremium ? highlightThickness : 2;
-  }
-  // endregion
-
-  //region Tab Placement
-  public TabHighlightPositions getTabHighlightPosition() {
-    return isPremium ? tabHighlightPosition : TabHighlightPositions.BOTTOM;
-  }
-
-  public void setTabHighlightPosition(final TabHighlightPositions tabHighlightPosition) {
-    this.tabHighlightPosition = tabHighlightPosition;
-  }
-
-  public boolean isTabHighlightPositionChanged(final TabHighlightPositions tabHighlightPosition) {
-    return this.tabHighlightPosition != tabHighlightPosition;
-  }
-  //endregion
-
-  //region Contrast mode
-
-  /**
-   * Enable/disable contrast mode
-   *
-   * @param isContrastMode contrast mode value
-   */
   public void setContrastMode(final boolean isContrastMode) {
     this.isContrastMode = isContrastMode;
   }
 
-  /**
-   * Checks whether the contrast mode has changed
-   *
-   * @param isContrastMode of type boolean
-   * @return boolean
-   */
   public boolean isContrastModeChanged(final boolean isContrastMode) {
     return this.isContrastMode != isContrastMode;
   }
 
-  /**
-   * Checks whether we are in contrast mode
-   *
-   * @return true if contrast mode
-   */
   public boolean isContrastMode() {
     return isContrastMode;
   }
 
   //endregion
 
-  //region Styled Directories
+  //region ----------- High Contrast -----------
 
-  /**
-   * Enable/Disable the styled directories
-   *
-   * @param isStyledDirectories the isStyledDirectories of this MTConfig object.
-   */
-  public void setStyledDirectories(final boolean isStyledDirectories) {
-    this.isStyledDirectories = isStyledDirectories;
+  public void setHighContrast(final boolean isHighContrast) {
+    this.isHighContrast = isHighContrast;
   }
 
-  /**
-   * ...
-   *
-   * @param isStyledDirectories of type boolean
-   * @return boolean
-   */
-  public boolean isStyledDirectoriesChanged(final boolean isStyledDirectories) {
-    return this.isStyledDirectories != isStyledDirectories;
+  public boolean isHighContrastChanged(final boolean isHighContrast) {
+    return this.isHighContrast != isHighContrast;
   }
 
-  /**
-   * Returns whether the styled directories are enabled
-   *
-   * @return the isStyledDirectories (type boolean) of this MTConfig object.
-   */
-  public boolean isStyledDirectories() {
-    return isPremium && isStyledDirectories;
+  public boolean isHighContrast() {
+    return isPremium && isHighContrast;
   }
 
   //endregion
 
-  //region Accent Color
+  //region ----------- Accent Color -----------
 
-  /**
-   * Sets the accentColor of this MTConfig object.
-   *
-   * @param accentColor the accentColor of this MTConfig object.
-   */
   public void setAccentColor(final String accentColor) {
     this.accentColor = accentColor;
   }
 
-  /**
-   * ...
-   *
-   * @param customAccentColor of type Color
-   * @return boolean
-   */
   public boolean isAccentColorChanged(final Color customAccentColor) {
     return !Objects.equals(accentColor, ColorUtil.toHex(customAccentColor));
   }
 
-  /**
-   * Returns the accentColor of this MTConfig object.
-   *
-   * @return the accentColor (type String) of this MTConfig object.
-   */
   public String getAccentColor() {
     return accentColor;
   }
 
   //endregion
 
-  //region Override Accent Color
+  //region ----------- Override Accent Color -----------
 
   /**
    * Sets the overrideAccentColor of this MTConfig object.
@@ -759,71 +572,332 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
 
   //endregion
 
-  //region Second Accent Color
+  //endregion
 
-  /**
-   * Sets the accentColor of this MTConfig object.
-   *
-   * @param accentColor the accentColor of this MTConfig object.
-   */
-  public void setSecondAccentColor(final String accentColor) {
-    secondAccentColor = accentColor;
+  //region ~~~~~~~~~~~~~ Tab Settings ~~~~~~~~~~~~~
+
+  //region ----------- Tabs Highlight -----------
+
+  public void setHighlightColor(@NotNull final Color color) {
+    highlightColor = ColorUtil.toHex(color);
   }
 
-  /**
-   * ...
-   *
-   * @param color of type Color
-   * @return boolean
-   */
-  public boolean isSecondAccentColorChanged(final Color color) {
-    return !Objects.equals(secondAccentColor, ColorUtil.toHex(color));
+  public boolean isHighlightColorChanged(@NotNull final Color color) {
+    final Color current = getHighlightColor();
+    return !Objects.equals(current, color);
   }
 
-  /**
-   * Returns the accentColor of this MTConfig object.
-   *
-   * @return the accentColor (type String) of this MTConfig object.
-   */
-  public String getSecondAccentColor() {
-    return secondAccentColor;
+  public boolean isHighlightColorEnabled() {
+    return isPremium && isHighlightColorEnabled;
+  }
+
+  public void setHighlightColorEnabled(final boolean enabled) {
+    isHighlightColorEnabled = enabled;
+  }
+
+  public boolean isHighlightColorEnabledChanged(final boolean enabled) {
+    return isHighlightColorEnabled != enabled;
+  }
+
+  public Color getHighlightColor() {
+    return ColorUtil.fromHex(highlightColor);
   }
 
   //endregion
 
-  //region Compact Sidebar
+  //region ----------- Tab highlight thickness -----------
+
+  public void setHighlightThickness(final int thickness) {
+    if (MIN_HIGHLIGHT_THICKNESS > thickness || thickness > MAX_HIGHLIGHT_THICKNESS) {
+      return;
+    }
+    highlightThickness = thickness;
+  }
+
+  public boolean isHighlightThicknessChanged(final int thickness) {
+    return highlightThickness != thickness;
+  }
+
+  public int getHighlightThickness() {
+    return isPremium ? highlightThickness : 2;
+  }
+  // endregion
+
+  //region ----------- Uppercase tabs -----------
+
+  public void setUpperCaseTabs(final boolean isUpperCaseTabs) {
+    upperCaseTabs = isUpperCaseTabs;
+  }
+
+  public boolean isUpperCaseTabsChanged(final boolean upperCaseTabs) {
+    return this.upperCaseTabs != upperCaseTabs;
+  }
+
+  public boolean isUpperCaseTabs() {
+    return isPremium && upperCaseTabs;
+  }
+
+  // endregion
+
+  //region ----------- Active Bold tab -----------
+
+  public void setIsActiveBoldTab(final boolean isActiveBoldTab) {
+    this.isActiveBoldTab = isActiveBoldTab;
+  }
+
+  public boolean isActiveBoldTabChanged(final boolean isActiveBoldTab) {
+    return this.isActiveBoldTab != isActiveBoldTab;
+  }
+
+  public boolean isActiveBoldTab() {
+    return isPremium && isActiveBoldTab;
+  }
+
+  // endregion
+
+  //region ----------- Tabs Height -----------
+
+  public void setTabsHeight(final Integer tabsHeight) {
+    this.tabsHeight = tabsHeight;
+  }
+
+  public boolean isTabsHeightChanged(final Integer tabsHeight) {
+    return !Objects.equals(this.tabsHeight, tabsHeight);
+  }
+
+  public int getTabsHeight() {
+    return tabsHeight;
+  }
+
+  //endregion
+
+  //region ----------- Tab Highlight Position -----------
+  public TabHighlightPositions getTabHighlightPosition() {
+    return isPremium ? tabHighlightPosition : TabHighlightPositions.BOTTOM;
+  }
+
+  public void setTabHighlightPosition(final TabHighlightPositions tabHighlightPosition) {
+    this.tabHighlightPosition = tabHighlightPosition;
+  }
+
+  public boolean isTabHighlightPositionChanged(final TabHighlightPositions tabHighlightPosition) {
+    return this.tabHighlightPosition != tabHighlightPosition;
+  }
+  //endregion
+
+  // region ----------- Tab Font Size -----------
 
   /**
-   * Sets the compactSidebar of this MTConfig object.
+   * Sets the tabFontSize of this MTConfig object.
    *
-   * @param compactSidebar the compactSidebar of this MTConfig object.
+   * @param tabFontSize the tabFontSize of this MTConfig object.
    */
-  public void setCompactSidebar(final boolean compactSidebar) {
-    this.compactSidebar = compactSidebar;
+  public void setTabFontSize(final int tabFontSize) {
+    this.tabFontSize = tabFontSize;
   }
 
   /**
    * ...
    *
-   * @param compactSidebar of type boolean
+   * @param tabFontSize of type Integer
    * @return boolean
    */
+  public boolean isTabFontSizeChanged(final Integer tabFontSize) {
+    return this.tabFontSize != tabFontSize;
+  }
+
+  /**
+   * Returns the tabFontSizeEnabled of this MTConfig object.
+   *
+   * @return the tabFontSizeEnabled (type boolean) of this MTConfig object.
+   */
+  public boolean isTabFontSizeEnabled() {
+    return isPremium && tabFontSizeEnabled;
+  }
+
+  /**
+   * Sets the tabFontSizeEnabled of this MTConfig object.
+   *
+   * @param tabFontSizeEnabled the tabFontSizeEnabled of this MTConfig object.
+   */
+  public void setTabFontSizeEnabled(final boolean tabFontSizeEnabled) {
+    this.tabFontSizeEnabled = tabFontSizeEnabled;
+  }
+
+  /**
+   * ...
+   *
+   * @param tabFontSizeEnabled of type boolean
+   * @return boolean
+   */
+  public boolean isTabFontSizeEnabledChanged(final boolean tabFontSizeEnabled) {
+    return this.tabFontSizeEnabled != tabFontSizeEnabled;
+  }
+
+  /**
+   * Returns the treeFontSize of this MTConfig object.
+   *
+   * @return the treeFontSize (type int) of this MTConfig object.
+   */
+  public int getTabFontSize() {
+    return tabFontSize;
+  }
+
+  // endregion
+
+  //endregion
+
+  //region ~~~~~~~~~~~~~ Compact Settings ~~~~~~~~~~~~~
+
+  //region ----------- Compact Status Bar -----------
+
+  /**
+   * Sets the isCompactStatusBar of this MTConfig object.
+   *
+   * @param isCompactStatusBar the isCompactStatusBar of this MTConfig object.
+   */
+  public void setCompactStatusBar(final boolean isCompactStatusBar) {
+    this.isCompactStatusBar = isCompactStatusBar;
+  }
+
+  /**
+   * ...
+   *
+   * @param compactStatusBar of type boolean
+   * @return boolean
+   */
+  public boolean isCompactStatusBarChanged(final boolean compactStatusBar) {
+    return isCompactStatusBar != compactStatusBar;
+  }
+
+  /**
+   * Returns the compactStatusBar of this MTConfig object.
+   *
+   * @return the compactStatusBar (type boolean) of this MTConfig object.
+   */
+  public boolean isCompactStatusBar() {
+    return isCompactStatusBar;
+  }
+
+  //endregion
+
+  //region ----------- Compact dropdowns -----------
+
+  /**
+   * Sets the compactDropdowns of this MTConfig object.
+   *
+   * @param compactDropdowns the compactDropdowns of this MTConfig object.
+   */
+  public void setCompactDropdowns(final boolean compactDropdowns) {
+    this.compactDropdowns = compactDropdowns;
+  }
+
+  /**
+   * ...
+   *
+   * @param isCompactDropdowns of type boolean
+   * @return boolean
+   */
+  public boolean isCompactDropdownsChanged(final boolean isCompactDropdowns) {
+    return compactDropdowns != isCompactDropdowns;
+  }
+
+  /**
+   * Returns the compactDropdowns of this MTConfig object.
+   *
+   * @return the compactDropdowns (type boolean) of this MTConfig object.
+   */
+  public boolean isCompactDropdowns() {
+    return compactDropdowns;
+  }
+
+  //endregion
+
+  //region ----------- Compact Tables -----------
+
+  /**
+   * Sets the isCompactTables of this MTConfig object.
+   *
+   * @param isCompactTables the isCompactTables of this MTConfig object.
+   */
+  public void setCompactTables(final boolean isCompactTables) {
+    this.isCompactTables = isCompactTables;
+  }
+
+  /**
+   * ...
+   *
+   * @param compactTables of type boolean
+   * @return boolean
+   */
+  public boolean isCompactTablesChanged(final boolean compactTables) {
+    return isCompactTables != compactTables;
+  }
+
+  /**
+   * Returns the compactTables of this MTConfig object.
+   *
+   * @return the compactTables (type boolean) of this MTConfig object.
+   */
+  public boolean isCompactTables() {
+    return isCompactTables;
+  }
+
+  //endregion
+
+  //region ----------- Compact Menus -----------
+
+  /**
+   * Sets the isCompactMenus of this MTConfig object.
+   *
+   * @param compactMenus the isCompactMenus of this MTConfig object.
+   */
+  public void setCompactMenus(final boolean compactMenus) {
+    isCompactMenus = compactMenus;
+  }
+
+  /**
+   * ...
+   *
+   * @param compactMenus of type boolean
+   * @return boolean
+   */
+  public boolean isCompactMenusChanged(final boolean compactMenus) {
+    return isCompactMenus != compactMenus;
+  }
+
+  /**
+   * Returns the compactMenus of this MTConfig object.
+   *
+   * @return the compactMenus (type boolean) of this MTConfig object.
+   */
+  public boolean isCompactMenus() {
+    return isCompactMenus;
+  }
+
+  // endregion
+
+  //endregion
+
+  //region ~~~~~~~~~~~~~ Project View Settings ~~~~~~~~~~~~~
+
+  //region ----------- Compact Sidebar -----------
+
+  public void setCompactSidebar(final boolean compactSidebar) {
+    this.compactSidebar = compactSidebar;
+  }
+
   public boolean isCompactSidebarChanged(final boolean compactSidebar) {
     return this.compactSidebar != compactSidebar;
   }
 
-  /**
-   * Returns the compactSidebar of this MTConfig object.
-   *
-   * @return the compactSidebar (type boolean) of this MTConfig object.
-   */
   public boolean isCompactSidebar() {
     return compactSidebar;
   }
 
   //endregion
 
-  //region Custom Sidebar Height
+  //region ----------- Custom Sidebar Height -----------
 
   /**
    * Sets the customSidebarHeight of this MTConfig object.
@@ -858,39 +932,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
 
   //endregion
 
-  //region Tabs Height
-
-  /**
-   * Sets the tabsHeight of this MTConfig object.
-   *
-   * @param tabsHeight the tabsHeight of this MTConfig object.
-   */
-  public void setTabsHeight(final Integer tabsHeight) {
-    this.tabsHeight = tabsHeight;
-  }
-
-  /**
-   * ...
-   *
-   * @param tabsHeight of type Integer
-   * @return boolean
-   */
-  public boolean isTabsHeightChanged(final Integer tabsHeight) {
-    return !Objects.equals(this.tabsHeight, tabsHeight);
-  }
-
-  /**
-   * Returns the tabsHeight of this MTConfig object.
-   *
-   * @return the tabsHeight (type int) of this MTConfig object.
-   */
-  public int getTabsHeight() {
-    return tabsHeight;
-  }
-
-  //endregion
-
-  //region Custom Tree Indents
+  //region ----------- Custom Tree Indents -----------
 
   /**
    * Sets the rightTreeIndent of this MTConfig object.
@@ -978,199 +1020,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
 
   //endregion
 
-  //region Themed Scrollbars
-
-  /**
-   * Sets the themedScrollbars of this MTConfig object.
-   *
-   * @param themedScrollbars the themedScrollbars of this MTConfig object.
-   */
-  public void setThemedScrollbars(final boolean themedScrollbars) {
-    this.themedScrollbars = themedScrollbars;
-  }
-
-  /**
-   * ...
-   *
-   * @param themedScrollbars of type boolean
-   * @return boolean
-   */
-  public boolean isThemedScrollbarsChanged(final boolean themedScrollbars) {
-    return this.themedScrollbars != themedScrollbars;
-  }
-
-  /**
-   * Returns the accentScrollbars of this MTConfig object.
-   *
-   * @return the accentScrollbars (type boolean) of this MTConfig object.
-   */
-  public boolean isAccentScrollbars() {
-    return accentScrollbars;
-  }
-
-  /**
-   * Sets the accentScrollbars of this MTConfig object.
-   *
-   * @param accentScrollbars the accentScrollbars of this MTConfig object.
-   */
-  public void setAccentScrollbars(final boolean accentScrollbars) {
-    this.accentScrollbars = accentScrollbars;
-  }
-
-  /**
-   * ...
-   *
-   * @param accentScrollbars of type boolean
-   * @return boolean
-   */
-  public boolean isAccentScrollbarsChanged(final boolean accentScrollbars) {
-    return this.accentScrollbars != accentScrollbars;
-  }
-
-  /**
-   * Returns the themedScrollbars of this MTConfig object.
-   *
-   * @return the themedScrollbars (type boolean) of this MTConfig object.
-   */
-  public boolean isThemedScrollbars() {
-    return themedScrollbars;
-  }
-
-  //endregion
-
-  //region Compact Status Bar
-
-  /**
-   * Sets the isCompactStatusBar of this MTConfig object.
-   *
-   * @param isCompactStatusBar the isCompactStatusBar of this MTConfig object.
-   */
-  public void setCompactStatusBar(final boolean isCompactStatusBar) {
-    this.isCompactStatusBar = isCompactStatusBar;
-  }
-
-  /**
-   * ...
-   *
-   * @param compactStatusBar of type boolean
-   * @return boolean
-   */
-  public boolean isCompactStatusBarChanged(final boolean compactStatusBar) {
-    return isCompactStatusBar != compactStatusBar;
-  }
-
-  /**
-   * Returns the compactStatusBar of this MTConfig object.
-   *
-   * @return the compactStatusBar (type boolean) of this MTConfig object.
-   */
-  public boolean isCompactStatusBar() {
-    return isCompactStatusBar;
-  }
-
-  //endregion
-
-  //region Compact Tables
-
-  /**
-   * Sets the isCompactTables of this MTConfig object.
-   *
-   * @param isCompactTables the isCompactTables of this MTConfig object.
-   */
-  public void setCompactTables(final boolean isCompactTables) {
-    this.isCompactTables = isCompactTables;
-  }
-
-  /**
-   * ...
-   *
-   * @param compactTables of type boolean
-   * @return boolean
-   */
-  public boolean isCompactTablesChanged(final boolean compactTables) {
-    return isCompactTables != compactTables;
-  }
-
-  /**
-   * Returns the compactTables of this MTConfig object.
-   *
-   * @return the compactTables (type boolean) of this MTConfig object.
-   */
-  public boolean isCompactTables() {
-    return isCompactTables;
-  }
-
-  //endregion
-
-  //region Compact Menus
-
-  /**
-   * Sets the isCompactMenus of this MTConfig object.
-   *
-   * @param compactMenus the isCompactMenus of this MTConfig object.
-   */
-  public void setCompactMenus(final boolean compactMenus) {
-    isCompactMenus = compactMenus;
-  }
-
-  /**
-   * ...
-   *
-   * @param compactMenus of type boolean
-   * @return boolean
-   */
-  public boolean isCompactMenusChanged(final boolean compactMenus) {
-    return isCompactMenus != compactMenus;
-  }
-
-  /**
-   * Returns the compactMenus of this MTConfig object.
-   *
-   * @return the compactMenus (type boolean) of this MTConfig object.
-   */
-  public boolean isCompactMenus() {
-    return isCompactMenus;
-  }
-
-  // endregion
-
-  //region Uppercase tabs
-
-  /**
-   * Sets the isUpperCaseTabs of this MTConfig object.
-   *
-   * @param isUpperCaseTabs the isUpperCaseTabs of this MTConfig object.
-   */
-  public void setUpperCaseTabs(final boolean isUpperCaseTabs) {
-    upperCaseTabs = isUpperCaseTabs;
-  }
-
-  /**
-   * ...
-   *
-   * @param upperCaseTabs of type boolean
-   * @return boolean
-   */
-  public boolean isUpperCaseTabsChanged(final boolean upperCaseTabs) {
-    return this.upperCaseTabs != upperCaseTabs;
-  }
-
-  /**
-   * Returns the upperCaseTabs of this MTConfig object.
-   *
-   * @return the upperCaseTabs (type boolean) of this MTConfig object.
-   */
-  public boolean isUpperCaseTabs() {
-    return isPremium && upperCaseTabs;
-  }
-
-  // endregion
-
-  //region Transparent titlebar
-
-  //endregion
-
-  //region Indicator Styles
+  //region ----------- Indicator Styles -----------
 
   /**
    * Sets the indicatorStyle of this MTConfig object.
@@ -1202,7 +1052,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
 
   // endregion
 
-  // region indicator thickness
+  // region ----------- Indicator thickness -----------
 
   /**
    * Sets the indicatorThickness of this MTConfig object.
@@ -1234,189 +1084,23 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
 
   // endregion
 
-  // region Material fonts
+  //region ----------- Styled Directories -----------
 
-  /**
-   * Sets the useMaterialFont of this MTConfig object.
-   *
-   * @param useMaterialFont the useMaterialFont of this MTConfig object.
-   */
-  public void setUseMaterialFont2(final boolean useMaterialFont) {
-    useMaterialFont2 = useMaterialFont;
+  public void setStyledDirectories(final boolean isStyledDirectories) {
+    this.isStyledDirectories = isStyledDirectories;
   }
 
-  /**
-   * ...
-   *
-   * @param useMaterialFont of type boolean
-   * @return boolean
-   */
-  public boolean isUseMaterialFontChanged(final boolean useMaterialFont) {
-    return useMaterialFont2 != useMaterialFont;
+  public boolean isStyledDirectoriesChanged(final boolean isStyledDirectories) {
+    return this.isStyledDirectories != isStyledDirectories;
   }
 
-  /**
-   * Returns the useMaterialFont of this MTConfig object.
-   *
-   * @return the useMaterialFont (type boolean) of this MTConfig object.
-   */
-  public boolean isUseMaterialFont2() {
-    return isPremium && useMaterialFont2;
+  public boolean isStyledDirectories() {
+    return isPremium && isStyledDirectories;
   }
 
   //endregion
 
-  // region Tab Font Size
-
-  /**
-   * Sets the tabFontSize of this MTConfig object.
-   *
-   * @param tabFontSize the tabFontSize of this MTConfig object.
-   */
-  public void setTabFontSize(final int tabFontSize) {
-    this.tabFontSize = tabFontSize;
-  }
-
-  /**
-   * ...
-   *
-   * @param tabFontSize of type Integer
-   * @return boolean
-   */
-  public boolean isTabFontSizeChanged(final Integer tabFontSize) {
-    return this.tabFontSize != tabFontSize;
-  }
-
-  /**
-   * Returns the tabFontSizeEnabled of this MTConfig object.
-   *
-   * @return the tabFontSizeEnabled (type boolean) of this MTConfig object.
-   */
-  public boolean isTabFontSizeEnabled() {
-    return isPremium && tabFontSizeEnabled;
-  }
-
-  /**
-   * Sets the tabFontSizeEnabled of this MTConfig object.
-   *
-   * @param tabFontSizeEnabled the tabFontSizeEnabled of this MTConfig object.
-   */
-  public void setTabFontSizeEnabled(final boolean tabFontSizeEnabled) {
-    this.tabFontSizeEnabled = tabFontSizeEnabled;
-  }
-
-  /**
-   * ...
-   *
-   * @param tabFontSizeEnabled of type boolean
-   * @return boolean
-   */
-  public boolean isTabFontSizeEnabledChanged(final boolean tabFontSizeEnabled) {
-    return this.tabFontSizeEnabled != tabFontSizeEnabled;
-  }
-
-  /**
-   * Returns the treeFontSize of this MTConfig object.
-   *
-   * @return the treeFontSize (type int) of this MTConfig object.
-   */
-  public int getTabFontSize() {
-    return tabFontSize;
-  }
-
-  // endregion
-
-  //region Compact dropdowns
-
-  /**
-   * Sets the compactDropdowns of this MTConfig object.
-   *
-   * @param compactDropdowns the compactDropdowns of this MTConfig object.
-   */
-  public void setCompactDropdowns(final boolean compactDropdowns) {
-    this.compactDropdowns = compactDropdowns;
-  }
-
-  /**
-   * ...
-   *
-   * @param isCompactDropdowns of type boolean
-   * @return boolean
-   */
-  public boolean isCompactDropdownsChanged(final boolean isCompactDropdowns) {
-    return compactDropdowns != isCompactDropdowns;
-  }
-
-  /**
-   * Returns the compactDropdowns of this MTConfig object.
-   *
-   * @return the compactDropdowns (type boolean) of this MTConfig object.
-   */
-  public boolean isCompactDropdowns() {
-    return compactDropdowns;
-  }
-
-  //endregion
-
-  //region UpperCase Buttons
-
-  /**
-   * Sets the upperCaseButtons of this MTConfig object.
-   *
-   * @param upperCaseButtons the upperCaseButtons of this MTConfig object.
-   */
-  public void setUpperCaseButtons(final boolean upperCaseButtons) {
-    this.upperCaseButtons = upperCaseButtons;
-  }
-
-  /**
-   * ...
-   *
-   * @param isUppercaseButtons of type boolean
-   * @return boolean
-   */
-  public boolean isUpperCaseButtonsChanged(final boolean isUppercaseButtons) {
-    return upperCaseButtons != isUppercaseButtons;
-  }
-
-  /**
-   * Returns the upperCaseButtons of this MTConfig object.
-   *
-   * @return the upperCaseButtons (type boolean) of this MTConfig object.
-   */
-  public boolean isUpperCaseButtons() {
-    return upperCaseButtons;
-  }
-
-  //endregion
-
-  //region Bordered Buttons
-
-  /**
-   * Sets the borderedButtons of this MTConfig object.
-   *
-   * @param borderedButtons the borderedButtons of this MTConfig object.
-   */
-  public void setBorderedButtons(final boolean borderedButtons) {
-    this.borderedButtons = borderedButtons;
-  }
-
-  public boolean isBorderedButtonsChanged(final boolean isBorderedButtons) {
-    return borderedButtons != isBorderedButtons;
-  }
-
-  /**
-   * Returns the borderedButtons of this MTConfig object.
-   *
-   * @return the borderedButtons (type boolean) of this MTConfig object.
-   */
-  public boolean isBorderedButtons() {
-    return isPremium && borderedButtons;
-  }
-
-  //endregion
-
-  // region Tree Font Size
+  // region ----------- Tree Font Size -----------
 
   /**
    * Sets the treeFontSize of this MTConfig object.
@@ -1476,7 +1160,185 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
 
   // endregion
 
-  //region File Status Colors
+  //endregion
+
+  //region ~~~~~~~~~~~~~ Component Settings ~~~~~~~~~~~~~
+
+  //region ----------- Uppercase Buttons -----------
+
+  public void setUpperCaseButtons(final boolean upperCaseButtons) {
+    this.upperCaseButtons = upperCaseButtons;
+  }
+
+  public boolean isUpperCaseButtonsChanged(final boolean isUppercaseButtons) {
+    return upperCaseButtons != isUppercaseButtons;
+  }
+
+  public boolean isUpperCaseButtons() {
+    return upperCaseButtons;
+  }
+
+  //endregion
+
+  //region ----------- Bordered Buttons -----------
+
+  public void setBorderedButtons(final boolean borderedButtons) {
+    this.borderedButtons = borderedButtons;
+  }
+
+  public boolean isBorderedButtonsChanged(final boolean isBorderedButtons) {
+    return borderedButtons != isBorderedButtons;
+  }
+
+  public boolean isBorderedButtons() {
+    return isPremium && borderedButtons;
+  }
+
+  //endregion
+
+  //region ----------- Themed Scrollbars -----------
+
+  /**
+   * Sets the themedScrollbars of this MTConfig object.
+   *
+   * @param themedScrollbars the themedScrollbars of this MTConfig object.
+   */
+  public void setThemedScrollbars(final boolean themedScrollbars) {
+    this.themedScrollbars = themedScrollbars;
+  }
+
+  /**
+   * ...
+   *
+   * @param themedScrollbars of type boolean
+   * @return boolean
+   */
+  public boolean isThemedScrollbarsChanged(final boolean themedScrollbars) {
+    return this.themedScrollbars != themedScrollbars;
+  }
+
+  /**
+   * Returns the accentScrollbars of this MTConfig object.
+   *
+   * @return the accentScrollbars (type boolean) of this MTConfig object.
+   */
+  public boolean isAccentScrollbars() {
+    return accentScrollbars;
+  }
+
+  /**
+   * Sets the accentScrollbars of this MTConfig object.
+   *
+   * @param accentScrollbars the accentScrollbars of this MTConfig object.
+   */
+  public void setAccentScrollbars(final boolean accentScrollbars) {
+    this.accentScrollbars = accentScrollbars;
+  }
+
+  /**
+   * ...
+   *
+   * @param accentScrollbars of type boolean
+   * @return boolean
+   */
+  public boolean isAccentScrollbarsChanged(final boolean accentScrollbars) {
+    return this.accentScrollbars != accentScrollbars;
+  }
+
+  /**
+   * Returns the themedScrollbars of this MTConfig object.
+   *
+   * @return the themedScrollbars (type boolean) of this MTConfig object.
+   */
+  public boolean isThemedScrollbars() {
+    return themedScrollbars;
+  }
+
+  //endregion
+
+  //region ----------- Tabs Shadow -----------
+
+  /**
+   * Returns the tabsShadow of this MTConfig object.
+   *
+   * @return the tabsShadow (type boolean) of this MTConfig object.
+   */
+  public boolean isTabsShadow() {
+    return isPremium && isTabsShadow;
+  }
+
+  /**
+   * ...
+   *
+   * @param tabsShadow of type boolean
+   * @return boolean
+   */
+  public boolean isTabsShadowChanged(final boolean tabsShadow) {
+    return isTabsShadow != tabsShadow;
+  }
+
+  /**
+   * Sets the isTabsShadow of this MTConfig object.
+   *
+   * @param isTabsShadow the isTabsShadow of this MTConfig object.
+   */
+  public void setIsTabsShadow(final boolean isTabsShadow) {
+    this.isTabsShadow = isTabsShadow;
+  }
+  // endregion
+
+  //region ----------- Inverted Completion Color ----------- 
+  public boolean isInvertedSelectionColor() {
+    return isInvertedSelectionColor;
+  }
+
+  public void setInvertedSelectionColor(final boolean invertedSelectionColor) {
+    isInvertedSelectionColor = invertedSelectionColor;
+  }
+
+  public boolean isInvertedSelectionColorChanged(final boolean isInvertedSelectionColor) {
+    return this.isInvertedSelectionColor != isInvertedSelectionColor;
+  }
+
+  //endregion
+
+  //endregion
+
+  //region ~~~~~~~~~~~~~ Features Settings ~~~~~~~~~~~~~
+
+  // region ----------- Material fonts -----------
+
+  /**
+   * Sets the useMaterialFont of this MTConfig object.
+   *
+   * @param useMaterialFont the useMaterialFont of this MTConfig object.
+   */
+  public void setUseMaterialFont2(final boolean useMaterialFont) {
+    useMaterialFont2 = useMaterialFont;
+  }
+
+  /**
+   * ...
+   *
+   * @param useMaterialFont of type boolean
+   * @return boolean
+   */
+  public boolean isUseMaterialFontChanged(final boolean useMaterialFont) {
+    return useMaterialFont2 != useMaterialFont;
+  }
+
+  /**
+   * Returns the useMaterialFont of this MTConfig object.
+   *
+   * @return the useMaterialFont (type boolean) of this MTConfig object.
+   */
+  public boolean isUseMaterialFont2() {
+    return isPremium && useMaterialFont2;
+  }
+
+  //endregion
+
+  //region ----------- File Status Colors -----------
 
   /**
    * Sets the fileStatusColorsEnabled of this MTConfig object.
@@ -1508,70 +1370,82 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
 
   //endregion
 
-  //region High Contrast
-
-  /**
-   * Sets the isHighContrast of this MTConfig object.
-   *
-   * @param isHighContrast the isHighContrast of this MTConfig object.
-   */
-  public void setHighContrast(final boolean isHighContrast) {
-    this.isHighContrast = isHighContrast;
+  //region ----------- Material Wallpapers -----------
+  public boolean isUseMaterialWallpapers() {
+    return isPremium && useMaterialWallpapers;
   }
 
-  /**
-   * ...
-   *
-   * @param isHighContrast of type boolean
-   * @return boolean
-   */
-  public boolean isHighContrastChanged(final boolean isHighContrast) {
-    return this.isHighContrast != isHighContrast;
+  public void setUseMaterialWallpapers(final boolean useMaterialWallpapers) {
+    this.useMaterialWallpapers = useMaterialWallpapers;
   }
 
-  /**
-   * Returns the isHighContrast of this MTConfig object.
-   *
-   * @return the isHighContrast (type boolean) of this MTConfig object.
-   */
-  public boolean isHighContrast() {
-    return isPremium && isHighContrast;
+  public boolean isUseMaterialWallpapersChanged(final boolean useMaterialWallpapers) {
+    return this.useMaterialWallpapers != useMaterialWallpapers;
+  }
+  //endregion
+
+  //region ----------- Overlays -----------
+  public boolean isShowOverlays() {
+    return showOverlays;
+  }
+
+  public void setShowOverlays(final boolean showOverlays) {
+    this.showOverlays = showOverlays;
+  }
+
+  public boolean isShowOverlaysChanged(final boolean showOverlays) {
+    return this.showOverlays != showOverlays;
+  }
+  //endregion
+
+  //region ----------- Striped Tool Windows -----------
+  public boolean isStripedToolWindowsEnabled() {
+    return stripedToolWindowsEnabled;
+  }
+
+  public void setStripedToolWindowsEnabled(final boolean stripedToolWindowsEnabled) {
+    this.stripedToolWindowsEnabled = stripedToolWindowsEnabled;
+  }
+
+  public boolean isStripedToolWindowsChanged(final boolean stripedToolWindows) {
+    return stripedToolWindowsEnabled != stripedToolWindows;
+  }
+  //endregion
+
+  //region ----------- Accent Mode ----------- 
+  public boolean isAccentMode() {
+    return isPremium && accentMode;
+  }
+
+  public void setAccentMode(final boolean accentMode) {
+    this.accentMode = accentMode;
+  }
+
+  public boolean isAccentModeChanged(final boolean accentMode) {
+    return this.accentMode != accentMode;
+  }
+  //endregion
+
+  //region ----------- Second Accent Color -----------
+  public void setSecondAccentColor(final String accentColor) {
+    secondAccentColor = accentColor;
+  }
+
+  public boolean isSecondAccentColorChanged(final Color color) {
+    return !Objects.equals(secondAccentColor, ColorUtil.toHex(color));
+  }
+
+  public String getSecondAccentColor() {
+    return secondAccentColor;
   }
 
   //endregion
 
-  //region Tabs Shadow
+  //endregion
 
-  /**
-   * Returns the tabsShadow of this MTConfig object.
-   *
-   * @return the tabsShadow (type boolean) of this MTConfig object.
-   */
-  public boolean isTabsShadow() {
-    return isPremium && isTabsShadow;
-  }
+  //region ~~~~~~~~~~~~~ Other Settings ~~~~~~~~~~~~~
 
-  /**
-   * ...
-   *
-   * @param tabsShadow of type boolean
-   * @return boolean
-   */
-  public boolean isTabsShadowChanged(final boolean tabsShadow) {
-    return isTabsShadow != tabsShadow;
-  }
-
-  /**
-   * Sets the isTabsShadow of this MTConfig object.
-   *
-   * @param isTabsShadow the isTabsShadow of this MTConfig object.
-   */
-  public void setIsTabsShadow(final boolean isTabsShadow) {
-    this.isTabsShadow = isTabsShadow;
-  }
-  // endregion
-
-  //region Code Additions
+  //region ----------- Code Additions -----------
   public boolean isCodeAdditionsEnabled() {
     return isPremium && codeAdditionsEnabled;
   }
@@ -1597,7 +1471,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   }
   //endregion
 
-  //region Colored Directories
+  //region ----------- Colored Open Directories -----------
   public boolean isUseColoredDirectories() {
     return isPremium && useColoredDirectories;
   }
@@ -1611,63 +1485,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   }
   // endregion
 
-  //region Accent Mode
-  public boolean isAccentMode() {
-    return isPremium && accentMode;
-  }
-
-  public void setAccentMode(final boolean accentMode) {
-    this.accentMode = accentMode;
-  }
-
-  public boolean isAccentModeChanged(final boolean accentMode) {
-    return this.accentMode != accentMode;
-  }
-  //endregion
-
-  //region Material Wallpapers
-  public boolean isUseMaterialWallpapers() {
-    return isPremium && useMaterialWallpapers;
-  }
-
-  public void setUseMaterialWallpapers(final boolean useMaterialWallpapers) {
-    this.useMaterialWallpapers = useMaterialWallpapers;
-  }
-
-  public boolean isUseMaterialWallpapersChanged(final boolean useMaterialWallpapers) {
-    return this.useMaterialWallpapers != useMaterialWallpapers;
-  }
-  //endregion
-
-  //region Overlays
-  public boolean isShowOverlays() {
-    return showOverlays;
-  }
-
-  public void setShowOverlays(final boolean showOverlays) {
-    this.showOverlays = showOverlays;
-  }
-
-  public boolean isShowOverlaysChanged(final boolean showOverlays) {
-    return this.showOverlays != showOverlays;
-  }
-  //endregion
-
-  //region Striped Tool Windows
-  public boolean isStripedToolWindowsEnabled() {
-    return stripedToolWindowsEnabled;
-  }
-
-  public void setStripedToolWindowsEnabled(final boolean stripedToolWindowsEnabled) {
-    this.stripedToolWindowsEnabled = stripedToolWindowsEnabled;
-  }
-
-  public boolean isStripedToolWindowsChanged(final boolean stripedToolWindows) {
-    return stripedToolWindowsEnabled != stripedToolWindows;
-  }
-  //endregion
-
-  //region Show Whats New
+  //region ----------- Show Whats New -----------
   public boolean isShowWhatsNew() {
     return showWhatsNew;
   }
@@ -1681,22 +1499,10 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   }
   //endregion
 
-  //region Inverted Completion Color
-  public boolean isInvertedSelectionColor() {
-    return isInvertedSelectionColor;
-  }
-
-  public void setInvertedSelectionColor(final boolean invertedSelectionColor) {
-    isInvertedSelectionColor = invertedSelectionColor;
-  }
-
-  public boolean isInvertedSelectionColorChanged(final boolean isInvertedSelectionColor) {
-    return this.isInvertedSelectionColor != isInvertedSelectionColor;
-  }
-
   //endregion
 
-  //region Project Frame
+  //region ~~~~~~~~~~~~~ Project Frame Settings ~~~~~~~~~~~~~
+  //region ----------- Project Frame -----------
   public boolean isUseProjectFrame() {
     return isPremium && useProjectFrame;
   }
@@ -1710,7 +1516,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   }
   //endregion
 
-  //region Project Frame Title
+  //region ----------- Project Frame Title -----------
   public boolean isUseProjectTitle() {
     return useProjectTitle;
   }
@@ -1725,7 +1531,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
 
   //endregion
 
-  //region Project Frame Icon
+  //region ----------- Project Frame Icon -----------
   public boolean isUseProjectIcon() {
     return useProjectIcon;
   }
@@ -1740,7 +1546,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
 
   //endregion
 
-  //region Customize Project Frame Title
+  //region ----------- Customize Project Frame Title -----------
   public boolean isUseCustomTitle() {
     return useCustomTitle;
   }
@@ -1755,7 +1561,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
 
   //endregion
 
-  //region Custom Title
+  //region ----------- Custom Title -----------
   public String getCustomTitle() {
     return customTitle;
   }
@@ -1769,74 +1575,48 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   }
   //endregion
 
-  //region other data
+  //endregion
+
+  //region ~~~~~~~~~ other data ~~~~~~~~~~~
   public boolean isReset() {
     return isReset;
   }
 
-  /**
-   * Returns the settingsSelectedTab of this MTConfig object.
-   *
-   * @return the settingsSelectedTab (type Integer) of this MTConfig object.
-   */
+  //region ----------- Settings Tab -----------
   public Integer getSettingsSelectedTab() {
     return MTUiUtils.valueInRange(settingsSelectedTab, 0, MAX_TAB_INDEX);
   }
 
-  /**
-   * Sets the settingsSelectedTab of this MTConfig object.
-   *
-   * @param settingsSelectedTab the settingsSelectedTab of this MTConfig object.
-   */
   public void setSettingsSelectedTab(final Integer settingsSelectedTab) {
     this.settingsSelectedTab = settingsSelectedTab;
   }
+  //endregion
 
-  /**
-   * Returns the userId of this MTConfig object.
-   *
-   * @return the userId (type String) of this MTConfig object.
-   */
+  //region ----------- Data Collection -----------
   public String getUserId() {
     return userId;
   }
 
-  /**
-   * Returns the disallowDataCollection of this MTConfig object.
-   *
-   * @return the disallowDataCollection (type boolean) of this MTConfig object.
-   */
   public boolean isDisallowDataCollection() {
     return !allowDataCollection;
   }
 
-  /**
-   * Sets the allowDataCollection of this MTConfig object.
-   *
-   * @param allowDataCollection the allowDataCollection of this MTConfig object.
-   */
   public void setAllowDataCollection(final boolean allowDataCollection) {
     this.allowDataCollection = allowDataCollection;
   }
+  //endregion
 
-  /**
-   * Returns the isWizardShown of this MTConfig object.
-   *
-   * @return the isWizardShown (type boolean) of this MTConfig object.
-   */
+  //region ----------- Wizard shown -----------
   public boolean isWizardShown() {
     return isWizardShown;
   }
 
-  /**
-   * Sets the isWizardShown of this MTConfig object.
-   *
-   * @param isWizardShown the isWizardShown of this MTConfig object.
-   */
   public void setIsWizardShown(final boolean isWizardShown) {
     this.isWizardShown = isWizardShown;
   }
+  //endregion
 
+  //region ----------- Premium -----------
   public boolean isPremium() {
     return isPremium;
   }
@@ -1844,6 +1624,29 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   public void setPremium(final boolean premium) {
     isPremium = premium;
   }
+  //endregion
+
+  //region ----------- Version -----------
+
+  /**
+   * Sets the version of the plugin
+   *
+   * @param version the version of this MTConfig object.
+   */
+  public void setVersion(final String version) {
+    this.version = version;
+  }
+
+  /**
+   * Returns the version of the plugin
+   *
+   * @return the version (type String) of this MTConfig object.
+   */
+  public String getVersion() {
+    return version;
+  }
+
+  //endregion
 
   /**
    * Returns this MTConfig as a json
