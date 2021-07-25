@@ -25,7 +25,6 @@
  */
 package com.mallowigi.idea.config
 
-import com.google.common.collect.Lists
 import com.intellij.ide.ui.search.SearchableOptionContributor
 import com.intellij.ide.ui.search.SearchableOptionProcessor
 import com.intellij.openapi.options.Configurable
@@ -40,7 +39,7 @@ class MTOptionContributor : SearchableOptionContributor() {
     val configurable: Configurable = MTConfigurable()
     val displayName = configurable.displayName
     val strings = Collections.unmodifiableList(
-      Lists.newArrayList(
+      listOf(
         //region List of Strings
         MaterialThemeBundle.message("MTForm.accentModeCheckbox.text"),
         MaterialThemeBundle.message("MTForm.accentScrollbarsCheckbox.text"),

@@ -39,21 +39,63 @@ import java.util.function.Supplier
 class MTProjectConfigTopHitProvider : ProjectLevelProvider {
   override fun getId(): @NonNls String = "mtProjectConfig"
 
-  @Suppress("LongLine")
   override fun getOptions(project: Project): Collection<OptionDescription> {
-    return Collections.unmodifiableCollection(listOf(
+    return Collections.unmodifiableCollection(
+      listOf(
         option(project, MaterialThemeBundle.message("MTProjectForm.isActiveCheckbox.text"), "isActive", "setIsActive"),
-        option(project, MaterialThemeBundle.message("MTProjectForm.activeTabHighlightCheckbox.text"), "isHighlightColorEnabled", "setHighlightColorEnabled"),
-        option(project, MaterialThemeBundle.message("MTProjectForm.isUpperCaseTabsCheckbox.text"), "isUpperCaseTabs", "setUpperCaseTabs"),
-        option(project, MaterialThemeBundle.message("MTProjectForm.useProjectFrameCheckbox.text"), "isUseProjectFrame", "setUseProjectFrame"),
-        option(project, MaterialThemeBundle.message("MTProjectForm.showProjectTitleCheckbox.text"), "isUseProjectTitle", "setUseProjectTitle"),
-        option(project, MaterialThemeBundle.message("MTProjectForm.showIconCheckbox.text"), "isUseProjectIcon", "setUseProjectIcon"),
-        option(project, MaterialThemeBundle.message("MTProjectForm.useCustomTextCheckbox.text"), "isUseCustomTitle", "setUseCustomTitle")
-    ))
+        option(
+          project,
+          MaterialThemeBundle.message("MTProjectForm.activeTabHighlightCheckbox.text"),
+          "isHighlightColorEnabled",
+          "setHighlightColorEnabled"
+        ),
+        option(
+          project,
+          MaterialThemeBundle.message("MTProjectForm.isActiveBoldTabsCheckbox.text"),
+          "isActiveBoldTab",
+          "setIsActiveBoldTab"
+        ),
+        option(
+          project,
+          MaterialThemeBundle.message("MTProjectForm.isUpperCaseTabsCheckbox.text"),
+          "isUpperCaseTabs",
+          "setUpperCaseTabs"
+        ),
+        option(
+          project,
+          MaterialThemeBundle.message("MTProjectForm.showIconCheckbox.text"),
+          "isUseProjectIcon",
+          "setUseProjectIcon"
+        ),
+        option(
+          project,
+          MaterialThemeBundle.message("MTProjectForm.showProjectTitleCheckbox.text"),
+          "isUseProjectTitle",
+          "setUseProjectTitle"
+        ),
+        option(
+          project,
+          MaterialThemeBundle.message("MTProjectForm.useCustomTextCheckbox.text"),
+          "isUseCustomTitle",
+          "setUseCustomTitle"
+        ),
+        option(
+          project,
+          MaterialThemeBundle.message("MTProjectForm.useProjectFrameCheckbox.text"),
+          "isUseProjectFrame",
+          "setUseProjectFrame"
+        ),
+      )
+    )
   }
 
   companion object {
-    private fun option(project: Project, option: @NonNls String?, getter: String, setter: String): BooleanOptionDescription {
+    private fun option(
+      project: Project,
+      option: @NonNls String?,
+      getter: String,
+      setter: String
+    ): BooleanOptionDescription {
       return object : PublicMethodBasedOptionDescription(MaterialThemeBundle.message("option.prefix.project") + option,
                                                          MTProjectConfigurable.ID,
                                                          getter,

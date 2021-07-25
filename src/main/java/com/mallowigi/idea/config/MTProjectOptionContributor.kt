@@ -25,7 +25,6 @@
  */
 package com.mallowigi.idea.config
 
-import com.google.common.collect.Lists
 import com.intellij.ide.ui.search.SearchableOptionContributor
 import com.intellij.ide.ui.search.SearchableOptionProcessor
 import com.intellij.openapi.options.Configurable
@@ -39,21 +38,22 @@ class MTProjectOptionContributor : SearchableOptionContributor() {
   override fun processOptions(processor: SearchableOptionProcessor) {
     val configurable: Configurable = MTProjectConfigurable(null)
     val displayName = configurable.displayName
-    val strings = Collections.unmodifiableList(Lists.newArrayList(
-        //region Strings
-        MaterialThemeBundle.message("MTForm.activeTabHighlightCheckbox.text"),
-        MaterialThemeBundle.message("MTForm.isUpperCaseTabsCheckbox.text"),
-        MaterialThemeBundle.message("MTForm.positionLabel.text"),
-        MaterialThemeBundle.message("MTForm.tabPanel.tab.title"),
-        MaterialThemeBundle.message("MTForm.tabsDesc.textWithMnemonic"),
-        MaterialThemeBundle.message("MTForm.thicknessLabel.text"),
-        MaterialThemeBundle.message("MTForm.useProjectFrameCheckbox.text"),
-        MaterialThemeBundle.message("MTForm.projectTitleCheckbox.text"),
-        MaterialThemeBundle.message("MTForm.showIconCheckbox.text"),
-        MaterialThemeBundle.message("MTForm.customTextCheckbox.text"),
-        MaterialThemeBundle.message("MTForm.customTextHint.text")
+    val strings = Collections.unmodifiableList(
+      listOf(
+        //region List of Strings
+        MaterialThemeBundle.message("MTProjectForm.activeTabHighlightCheckbox.text"),
+        MaterialThemeBundle.message("MTProjectForm.isUpperCaseTabsCheckbox.text"),
+        MaterialThemeBundle.message("MTProjectForm.isActiveBoldTabsCheckbox.text"),
+        MaterialThemeBundle.message("MTProjectForm.positionLabel.text"),
+        MaterialThemeBundle.message("MTProjectForm.tabPanel.tab.title"),
+        MaterialThemeBundle.message("MTProjectForm.thicknessLabel.text"),
+        MaterialThemeBundle.message("MTProjectForm.useProjectFrameCheckbox.text"),
+        MaterialThemeBundle.message("MTProjectForm.showProjectTitleCheckbox.text"),
+        MaterialThemeBundle.message("MTProjectForm.showIconCheckbox.text"),
+        MaterialThemeBundle.message("MTProjectForm.useCustomTextCheckbox.text"),
         //endregion
-    ))
+      )
+    )
     for (s in strings) {
       processor.addOptions(s ?: return, null, displayName, MTProjectConfigurable.ID, displayName, true)
     }
