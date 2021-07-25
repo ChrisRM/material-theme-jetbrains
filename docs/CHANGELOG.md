@@ -4,8 +4,8 @@
 ## 6.8.0
 
 ### Features
-- New Setting: **Overlays**: Add an overlay on the root pane that shows when popups are opened! (experimental)
-- Restore the **Uppercase bold tabs**: Now with this setting only the active tab is bold
+- New Setting: **Overlays**: Add an overlay on the root pane that shows when popups are opened!
+- New Setting: **Bold Active tab**: Make active tab bold (also available in per project settings)
 - Add more recent settings to the Wizard: *Tab Highlight Position*, *Overlays*, *Project View Font Size*
 
 ### Fixes
@@ -17,6 +17,7 @@
 - Convert resource lists to Kotlin
 - Convert Tab Highlight Positions to Kotlin
 - Convert Tab Shadows to Kotlin
+- Rearrange settings classes, and also convert to Kotlin
 
 ## 6.7.2
 
