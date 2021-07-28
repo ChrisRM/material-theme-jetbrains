@@ -190,7 +190,7 @@
                                 id="MTEditorUpperTabs" />
         <statusBarWidgetFactory implementation="com.mallowigi.idea.status.MTStatusBarFactory" />
 
-        <notificationGroup displayType="STICKY_BALLOON" id="Material Theme Notifications" />
+        <notificationGroup displayType="BALLOON" id="Material Theme Notifications" />
 
         <themeProvider id="CUSTOM" path="/themes/custom.theme.json" />
         <themeProvider id="LIGHT_CUSTOM" path="/themes/light_custom.theme.json" />

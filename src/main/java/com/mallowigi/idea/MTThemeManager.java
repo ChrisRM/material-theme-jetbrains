@@ -643,7 +643,6 @@ public final class MTThemeManager implements Disposable {
   /**
    * Apply custom tree indent
    */
-  @SuppressWarnings("MagicNumber")
   private static void applyMenusHeight() {
     if (CONFIG.isCompactMenus()) {
       UIManager.put("PopupMenuSeparator.height", 3);
@@ -662,7 +661,7 @@ public final class MTThemeManager implements Disposable {
    */
   @SuppressWarnings("MagicNumber")
   private static void applyDropdownLists() {
-    if (CONFIG.isCompactMenus()) {
+    if (CONFIG.isCompactDropdowns()) {
       UIManager.put("ActionsList.cellBorderInsets", JBUI.insets(1, 10, 1, 15));
     } else {
       UIManager.put("ActionsList.cellBorderInsets", JBUI.insets(5, 10, 5, 15));

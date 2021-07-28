@@ -69,10 +69,6 @@ i
 9src/main/java/com/mallowigi/idea/wizard/MTWizardDialog.kt,3/2/32412edce1ecb3feaf01b96490636ec79b1b9135
 e
 5src/main/java/com/mallowigi/idea/utils/MTUiUtils.java,c/c/cced929689dadf1a35a348f1e2d941560046dd61
-w
-Gsrc/main/java/com/mallowigi/idea/wizard/steps/MTWizardContrastPanel.jfd,0/9/09e3f879fb3bc4550d4bc02655bff5ddc50af8aa
-x
-Hsrc/main/java/com/mallowigi/idea/wizard/steps/MTWizardContrastPanel.java,8/3/832b582830bf245917e2b6d93e4283616eac6236
 {
 Ksrc/main/java/com/mallowigi/idea/notifications/MTInstallAtomNotification.kt,3/0/304fa8fa3ca08169bce097fa2c2f1e7cc54941de
 s
@@ -307,8 +303,6 @@ e
 5src/main/java/com/mallowigi/idea/config/ui/MTForm.jfd,d/b/dbb22895f102e55f1738248e97c010aa2ac676f5
 f
 6src/main/java/com/mallowigi/idea/config/ui/MTForm.java,a/8/a8fe9898bad6a63f67a6ee11ee954a44f1eeee65
-|
-Lsrc/main/java/com/mallowigi/idea/wizard/steps/MTWizardOtherOptionsPanel.java,c/2/c27efb2979477b3feba166be4bdf7a03efcb9269
 m
 =src/main/java/com/mallowigi/idea/config/MTFileColorsPage.java,0/a/0a8107d1e4c37101c14265c320919b96a3714f00
 c
