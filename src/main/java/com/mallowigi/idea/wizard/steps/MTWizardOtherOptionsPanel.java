@@ -627,7 +627,7 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
             "[grow,left]",
             // rows
             "[20,fill]0" +
-              "[]0" +
+              "[]" +
               "[]0" +
               "[]" +
               "[]0" +

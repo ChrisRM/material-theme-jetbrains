@@ -197,6 +197,7 @@ public final class MTThemeManager implements Disposable {
     final boolean isCompactDropdowns = CONFIG.isCompactDropdowns();
     CONFIG.setCompactDropdowns(!isCompactDropdowns);
 
+    applyDropdownLists();
     UIReplacer.patchUI();
   }
 
@@ -364,6 +365,7 @@ public final class MTThemeManager implements Disposable {
     applyCompactSidebar(false);
     applyCustomTreeIndent();
     applyMenusHeight();
+    applyDropdownLists();
     applyAccents(false);
     applyFonts();
     applyCompactToolWindowHeaders();
@@ -646,10 +648,23 @@ public final class MTThemeManager implements Disposable {
     if (CONFIG.isCompactMenus()) {
       UIManager.put("PopupMenuSeparator.height", 3);
       UIManager.put("PopupMenuSeparator.stripeIndent", 1);
-      UIManager.put("ActionsList.cellBorderInsets", JBUI.insets(1, 10, 1, 15));
     } else {
       UIManager.put("PopupMenuSeparator.height", 10);
       UIManager.put("PopupMenuSeparator.stripeIndent", 5);
+    }
+  }
+  //endregion
+
+  //region Compact Dropdowns support
+
+  /**
+   * Apply custom tree indent
+   */
+  @SuppressWarnings("MagicNumber")
+  private static void applyDropdownLists() {
+    if (CONFIG.isCompactMenus()) {
+      UIManager.put("ActionsList.cellBorderInsets", JBUI.insets(1, 10, 1, 15));
+    } else {
       UIManager.put("ActionsList.cellBorderInsets", JBUI.insets(5, 10, 5, 15));
     }
   }
