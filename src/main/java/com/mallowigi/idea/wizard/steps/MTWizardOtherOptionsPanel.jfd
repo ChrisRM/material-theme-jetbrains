@@ -58,6 +58,7 @@ new FormModel {
 							"labelFor": new FormReference( "highlightSpinner" )
 							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.thicknessLabel.text" )
 							"toolTipText": new FormMessage( null, "MTWizardOtherOptionsPanel.thicknessLabel.toolTipText" )
+							"icon": new com.jformdesigner.model.SwingIcon( 0, "/icons/mt/premium.png" )
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "pad 0 4 0 0,cell 0 2,aligny center,grow 100 0"
 						} )
@@ -83,6 +84,12 @@ new FormModel {
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "cell 0 4"
 						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "uppercasePremiumIcon"
+							"icon": &SwingIcon0 new com.jformdesigner.model.SwingIcon( 0, "/icons/mt/premium.png" )
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "cell 0 4,alignx right,growx 0"
+						} )
 						add( new FormComponent( "javax.swing.JTextPane" ) {
 							name: "uppercaseTabsDesc"
 							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.uppercaseTabsDesc.text" )
@@ -99,6 +106,18 @@ new FormModel {
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "cell 0 6"
 						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "uppercasePremiumIcon2"
+							"icon": #SwingIcon0
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "cell 0 6,alignx right,growx 0"
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "newIcon"
+							"icon": &SwingIcon1 new com.jformdesigner.model.SwingIcon( 0, "/icons/mt/new.png" )
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "cell 0 6"
+						} )
 						add( new FormComponent( "javax.swing.JTextPane" ) {
 							name: "activeTabBoldDesc"
 							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.activeTabBoldDesc.text" )
@@ -112,8 +131,11 @@ new FormModel {
 							name: "tabHighlightLabel"
 							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.tabHighlightLabel.text" )
 							"toolTipText": new FormMessage( null, "MTWizardOtherOptionsPanel.tabHighlightLabel.toolTipText" )
+							"icon": new com.jformdesigner.model.SwingIcon( 0, "/icons/mt/premium.png" )
+							"labelFor": new FormReference( "tabHighlightCombobox" )
+							"horizontalTextPosition": 2
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-							"value": "pad 0 4 0 0,cell 0 8,growx"
+							"value": "pad 0 4 0 0,cell 0 8,aligny center,grow 100 0"
 						} )
 						add( new FormComponent( "com.intellij.openapi.ui.ComboBox" ) {
 							name: "tabHighlightCombobox"
@@ -167,6 +189,12 @@ new FormModel {
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "cell 0 2"
 						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "uppercasePremiumIcon3"
+							"icon": #SwingIcon0
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "cell 0 2"
+						} )
 						add( new FormComponent( "javax.swing.JTextPane" ) {
 							name: "materialWallpapersLabel"
 							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.materialWallpapersLabel.text" )
@@ -183,6 +211,12 @@ new FormModel {
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "cell 0 4"
 						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "uppercasePremiumIcon4"
+							"icon": #SwingIcon0
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "cell 0 4"
+						} )
 						add( new FormComponent( "javax.swing.JTextPane" ) {
 							name: "materialFontsLabel"
 							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.materialFontsLabel.text" )
@@ -196,6 +230,18 @@ new FormModel {
 							name: "overlayCheckbox"
 							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.overlayCheckbox.text" )
 							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "overlayCheckboxActionPerformed", true ) )
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "cell 0 6"
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "uppercasePremiumIcon5"
+							"icon": #SwingIcon0
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "cell 0 6"
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "newIcon2"
+							"icon": #SwingIcon1
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "cell 0 6"
 						} )
@@ -299,6 +345,12 @@ new FormModel {
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "cell 0 0"
 						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "uppercasePremiumIcon6"
+							"icon": #SwingIcon0
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "cell 0 0"
+						} )
 						add( new FormComponent( "javax.swing.JTextPane" ) {
 							name: "languageAdditionsLabel"
 							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.languageAdditionsLabel.text" )
@@ -312,6 +364,12 @@ new FormModel {
 							name: "projectFrameCheckbox"
 							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.projectFrameCheckbox.text" )
 							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "projectFrameCheckboxActionPerformed", true ) )
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "cell 0 2"
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "uppercasePremiumIcon7"
+							"icon": #SwingIcon0
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "cell 0 2"
 						} )
@@ -339,6 +397,8 @@ new FormModel {
 							"horizontalTextPosition": 10
 							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.sidebarHeight.text" )
 							"toolTipText": new FormMessage( null, "MTWizardOtherOptionsPanel.sidebarHeight.toolTipText" )
+							"icon": new com.jformdesigner.model.SwingIcon( 0, "/icons/mt/premium.png" )
+							"labelFor": new FormReference( "sidebarHeightSpinner" )
 							auxiliary() {
 								"JavaCodeGenerator.variableLocal": true
 							}
@@ -364,6 +424,9 @@ new FormModel {
 							name: "selectedIndicatorLabel"
 							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.selectedIndicatorLabel.text" )
 							"toolTipText": new FormMessage( null, "MTWizardOtherOptionsPanel.selectedIndicatorLabel.toolTipText" )
+							"icon": new com.jformdesigner.model.SwingIcon( 0, "/icons/mt/premium.png" )
+							"labelFor": new FormReference( "indicatorStyleComboBox" )
+							"horizontalTextPosition": 10
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "pad 0 4 0 0,cell 0 2,growx"
 						} )
@@ -390,6 +453,8 @@ new FormModel {
 							name: "projectViewFontSizeLabel"
 							"horizontalTextPosition": 10
 							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.projectViewFontSizeLabel.text" )
+							"labelFor": new FormReference( "projectViewFontSizeSpinner" )
+							"icon": new com.jformdesigner.model.SwingIcon( 0, "/icons/mt/premium.png" )
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "pad 0 4 0 0,cell 0 4,aligny center,grow 100 0"
 						} )
@@ -425,7 +490,8 @@ new FormModel {
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 990, 675 )
+			"size": new java.awt.Dimension( 990, 720 )
 		} )
 	}
 }
+

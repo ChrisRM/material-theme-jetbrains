@@ -272,7 +272,8 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
 
   @SuppressWarnings({"OverlyLongMethod",
     "StringConcatenation",
-    "Convert2MethodRef"})
+    "Convert2MethodRef",
+    "ConstantConditions"})
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
@@ -287,8 +288,11 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
     highlightSpinner = new JSpinner();
     thicknessDesc = new JTextPane();
     uppercaseTabsCheckbox = new JCheckBox();
+    uppercasePremiumIcon = new JLabel();
     uppercaseTabsDesc = new JTextPane();
     activeTabBoldCheckbox = new JCheckBox();
+    uppercasePremiumIcon2 = new JLabel();
+    newIcon = new JLabel();
     activeTabBoldDesc = new JTextPane();
     tabHighlightLabel = new JLabel();
     tabHighlightCombobox = new ComboBox<>();
@@ -297,10 +301,14 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
     fileColorsCheckbox = new JCheckBox();
     fileColorsDesc = new JTextPane();
     materialWallpapersCheckbox = new JCheckBox();
+    uppercasePremiumIcon3 = new JLabel();
     materialWallpapersLabel = new JTextPane();
     materialFontsCheckBox = new JCheckBox();
+    uppercasePremiumIcon4 = new JLabel();
     materialFontsLabel = new JTextPane();
     overlayCheckbox = new JCheckBox();
+    uppercasePremiumIcon5 = new JLabel();
+    newIcon2 = new JLabel();
     overlayLabel = new JTextPane();
     panelPanel = new JPanel();
     compactStatusCheckbox = new JCheckBox();
@@ -313,8 +321,10 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
     compactMenusDesc3 = new JTextPane();
     otherPanel = new JPanel();
     languageAdditionsCheckbox = new JCheckBox();
+    uppercasePremiumIcon6 = new JLabel();
     languageAdditionsLabel = new JTextPane();
     projectFrameCheckbox = new JCheckBox();
+    uppercasePremiumIcon7 = new JLabel();
     projectFrameLabel = new JTextPane();
     projectPanel = new JPanel();
     final JLabel sidebarHeight = new JLabel();
@@ -389,6 +399,7 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
           thicknessLabel.setLabelFor(highlightSpinner);
           thicknessLabel.setText(bundle.getString("MTWizardOtherOptionsPanel.thicknessLabel.text"));
           thicknessLabel.setToolTipText(bundle.getString("MTWizardOtherOptionsPanel.thicknessLabel.toolTipText"));
+          thicknessLabel.setIcon(new ImageIcon(getClass().getResource("/icons/mt/premium.png")));
           tabsPanel.add(thicknessLabel, "pad 0 4 0 0,cell 0 2,aligny center,grow 100 0");
 
           //---- highlightSpinner ----
@@ -407,6 +418,10 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
           uppercaseTabsCheckbox.addActionListener(e -> uppercaseTabsCheckboxActionPerformed(e));
           tabsPanel.add(uppercaseTabsCheckbox, "cell 0 4");
 
+          //---- uppercasePremiumIcon ----
+          uppercasePremiumIcon.setIcon(new ImageIcon(getClass().getResource("/icons/mt/premium.png")));
+          tabsPanel.add(uppercasePremiumIcon, "cell 0 4,alignx right,growx 0");
+
           //---- uppercaseTabsDesc ----
           uppercaseTabsDesc.setText(bundle.getString("MTWizardOtherOptionsPanel.uppercaseTabsDesc.text"));
           uppercaseTabsDesc.setFont(UIManager.getFont("Label.font"));
@@ -419,6 +434,14 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
           activeTabBoldCheckbox.addActionListener(e -> activeTabBoldCheckboxActionPerformed(e));
           tabsPanel.add(activeTabBoldCheckbox, "cell 0 6");
 
+          //---- uppercasePremiumIcon2 ----
+          uppercasePremiumIcon2.setIcon(new ImageIcon(getClass().getResource("/icons/mt/premium.png")));
+          tabsPanel.add(uppercasePremiumIcon2, "cell 0 6,alignx right,growx 0");
+
+          //---- newIcon ----
+          newIcon.setIcon(new ImageIcon(getClass().getResource("/icons/mt/new.png")));
+          tabsPanel.add(newIcon, "cell 0 6");
+
           //---- activeTabBoldDesc ----
           activeTabBoldDesc.setText(bundle.getString("MTWizardOtherOptionsPanel.activeTabBoldDesc.text"));
           activeTabBoldDesc.setFont(UIManager.getFont("Label.font"));
@@ -429,7 +452,10 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
           //---- tabHighlightLabel ----
           tabHighlightLabel.setText(bundle.getString("MTWizardOtherOptionsPanel.tabHighlightLabel.text"));
           tabHighlightLabel.setToolTipText(bundle.getString("MTWizardOtherOptionsPanel.tabHighlightLabel.toolTipText"));
-          tabsPanel.add(tabHighlightLabel, "pad 0 4 0 0,cell 0 8,growx");
+          tabHighlightLabel.setIcon(new ImageIcon(getClass().getResource("/icons/mt/premium.png")));
+          tabHighlightLabel.setLabelFor(tabHighlightCombobox);
+          tabHighlightLabel.setHorizontalTextPosition(SwingConstants.LEFT);
+          tabsPanel.add(tabHighlightLabel, "pad 0 4 0 0,cell 0 8,aligny center,grow 100 0");
 
           //---- tabHighlightCombobox ----
           tabHighlightCombobox.setToolTipText(bundle.getString("MTWizardOtherOptionsPanel.tabHighlightCombobox.toolTipText"));
@@ -479,6 +505,10 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
           materialWallpapersCheckbox.addActionListener(e -> mtWallpapersCheckboxActionPerformed(e));
           featuresPanel.add(materialWallpapersCheckbox, "cell 0 2");
 
+          //---- uppercasePremiumIcon3 ----
+          uppercasePremiumIcon3.setIcon(new ImageIcon(getClass().getResource("/icons/mt/premium.png")));
+          featuresPanel.add(uppercasePremiumIcon3, "cell 0 2");
+
           //---- materialWallpapersLabel ----
           materialWallpapersLabel.setText(bundle.getString("MTWizardOtherOptionsPanel.materialWallpapersLabel.text"));
           materialWallpapersLabel.setFont(UIManager.getFont("Label.font"));
@@ -491,6 +521,10 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
           materialFontsCheckBox.addActionListener(e -> materialFontsChanged(e));
           featuresPanel.add(materialFontsCheckBox, "cell 0 4");
 
+          //---- uppercasePremiumIcon4 ----
+          uppercasePremiumIcon4.setIcon(new ImageIcon(getClass().getResource("/icons/mt/premium.png")));
+          featuresPanel.add(uppercasePremiumIcon4, "cell 0 4");
+
           //---- materialFontsLabel ----
           materialFontsLabel.setText(bundle.getString("MTWizardOtherOptionsPanel.materialFontsLabel.text"));
           materialFontsLabel.setFont(UIManager.getFont("Label.font"));
@@ -502,6 +536,14 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
           overlayCheckbox.setText(bundle.getString("MTWizardOtherOptionsPanel.overlayCheckbox.text"));
           overlayCheckbox.addActionListener(e -> overlayCheckboxActionPerformed(e));
           featuresPanel.add(overlayCheckbox, "cell 0 6");
+
+          //---- uppercasePremiumIcon5 ----
+          uppercasePremiumIcon5.setIcon(new ImageIcon(getClass().getResource("/icons/mt/premium.png")));
+          featuresPanel.add(uppercasePremiumIcon5, "cell 0 6");
+
+          //---- newIcon2 ----
+          newIcon2.setIcon(new ImageIcon(getClass().getResource("/icons/mt/new.png")));
+          featuresPanel.add(newIcon2, "cell 0 6");
 
           //---- overlayLabel ----
           overlayLabel.setText(bundle.getString("MTWizardOtherOptionsPanel.overlayLabel.text"));
@@ -597,6 +639,10 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
           languageAdditionsCheckbox.addActionListener(e -> fileColorsCheckboxActionPerformed(e));
           otherPanel.add(languageAdditionsCheckbox, "cell 0 0");
 
+          //---- uppercasePremiumIcon6 ----
+          uppercasePremiumIcon6.setIcon(new ImageIcon(getClass().getResource("/icons/mt/premium.png")));
+          otherPanel.add(uppercasePremiumIcon6, "cell 0 0");
+
           //---- languageAdditionsLabel ----
           languageAdditionsLabel.setText(bundle.getString("MTWizardOtherOptionsPanel.languageAdditionsLabel.text"));
           languageAdditionsLabel.setFont(UIManager.getFont("Label.font"));
@@ -608,6 +654,10 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
           projectFrameCheckbox.setText(bundle.getString("MTWizardOtherOptionsPanel.projectFrameCheckbox.text"));
           projectFrameCheckbox.addActionListener(e -> projectFrameCheckboxActionPerformed(e));
           otherPanel.add(projectFrameCheckbox, "cell 0 2");
+
+          //---- uppercasePremiumIcon7 ----
+          uppercasePremiumIcon7.setIcon(new ImageIcon(getClass().getResource("/icons/mt/premium.png")));
+          otherPanel.add(uppercasePremiumIcon7, "cell 0 2");
 
           //---- projectFrameLabel ----
           projectFrameLabel.setText(bundle.getString("MTWizardOtherOptionsPanel.projectFrameLabel.text"));
@@ -637,6 +687,8 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
           sidebarHeight.setHorizontalTextPosition(SwingConstants.LEADING);
           sidebarHeight.setText(bundle.getString("MTWizardOtherOptionsPanel.sidebarHeight.text"));
           sidebarHeight.setToolTipText(bundle.getString("MTWizardOtherOptionsPanel.sidebarHeight.toolTipText"));
+          sidebarHeight.setIcon(new ImageIcon(getClass().getResource("/icons/mt/premium.png")));
+          sidebarHeight.setLabelFor(sidebarHeightSpinner);
           projectPanel.add(sidebarHeight, "pad 0 4 0 0,cell 0 0,aligny center,grow 100 0");
 
           //---- sidebarHeightSpinner ----
@@ -653,6 +705,9 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
           //---- selectedIndicatorLabel ----
           selectedIndicatorLabel.setText(bundle.getString("MTWizardOtherOptionsPanel.selectedIndicatorLabel.text"));
           selectedIndicatorLabel.setToolTipText(bundle.getString("MTWizardOtherOptionsPanel.selectedIndicatorLabel.toolTipText"));
+          selectedIndicatorLabel.setIcon(new ImageIcon(getClass().getResource("/icons/mt/premium.png")));
+          selectedIndicatorLabel.setLabelFor(indicatorStyleComboBox);
+          selectedIndicatorLabel.setHorizontalTextPosition(SwingConstants.LEADING);
           projectPanel.add(selectedIndicatorLabel, "pad 0 4 0 0,cell 0 2,growx");
 
           //---- indicatorStyleComboBox ----
@@ -670,6 +725,8 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
           //---- projectViewFontSizeLabel ----
           projectViewFontSizeLabel.setHorizontalTextPosition(SwingConstants.LEADING);
           projectViewFontSizeLabel.setText(bundle.getString("MTWizardOtherOptionsPanel.projectViewFontSizeLabel.text"));
+          projectViewFontSizeLabel.setLabelFor(projectViewFontSizeSpinner);
+          projectViewFontSizeLabel.setIcon(new ImageIcon(getClass().getResource("/icons/mt/premium.png")));
           projectPanel.add(projectViewFontSizeLabel, "pad 0 4 0 0,cell 0 4,aligny center,grow 100 0");
 
           //---- projectViewFontSizeSpinner ----
@@ -716,8 +773,11 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
   private JSpinner highlightSpinner;
   private JTextPane thicknessDesc;
   private JCheckBox uppercaseTabsCheckbox;
+  private JLabel uppercasePremiumIcon;
   private JTextPane uppercaseTabsDesc;
   private JCheckBox activeTabBoldCheckbox;
+  private JLabel uppercasePremiumIcon2;
+  private JLabel newIcon;
   private JTextPane activeTabBoldDesc;
   private JLabel tabHighlightLabel;
   private ComboBox<TabHighlightPositions> tabHighlightCombobox;
@@ -726,10 +786,14 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
   private JCheckBox fileColorsCheckbox;
   private JTextPane fileColorsDesc;
   private JCheckBox materialWallpapersCheckbox;
+  private JLabel uppercasePremiumIcon3;
   private JTextPane materialWallpapersLabel;
   private JCheckBox materialFontsCheckBox;
+  private JLabel uppercasePremiumIcon4;
   private JTextPane materialFontsLabel;
   private JCheckBox overlayCheckbox;
+  private JLabel uppercasePremiumIcon5;
+  private JLabel newIcon2;
   private JTextPane overlayLabel;
   private JPanel panelPanel;
   private JCheckBox compactStatusCheckbox;
@@ -742,8 +806,10 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
   private JTextPane compactMenusDesc3;
   private JPanel otherPanel;
   private JCheckBox languageAdditionsCheckbox;
+  private JLabel uppercasePremiumIcon6;
   private JTextPane languageAdditionsLabel;
   private JCheckBox projectFrameCheckbox;
+  private JLabel uppercasePremiumIcon7;
   private JTextPane projectFrameLabel;
   private JPanel projectPanel;
   private JSpinner sidebarHeightSpinner;
