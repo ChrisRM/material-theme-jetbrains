@@ -228,7 +228,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   @Property
   private boolean enforcedLanguageAdditions = false;
   @Property
-  private boolean stripedToolWindowsEnabled = false;
+  private boolean stripedToolWindowsEnabled = true;
   @Property
   private boolean showWhatsNew = true;
 

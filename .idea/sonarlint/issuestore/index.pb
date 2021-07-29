@@ -197,8 +197,6 @@ z
 Jsrc/main/java/com/mallowigi/idea/actions/accents/MTSilverAccentAction.java,e/5/e5dadc89bed5613bcb8bc2f75d1fe0b21b25202a
 {
 Ksrc/main/java/com/mallowigi/idea/actions/accents/MTFuchsiaAccentAction.java,f/2/f27194ff6feb14382a81ef6160edc753bdf40669
-e
-5src/main/java/com/mallowigi/idea/utils/MTAccents.java,7/6/76de2026c0de26d1cfccec36be6b7e0400ca4f71
 y
 Isrc/main/java/com/mallowigi/idea/actions/accents/MTWaterAccentAction.java,7/9/79d3b6a13f10982c628bf0ddb3c07d82445dc008
 y
@@ -331,8 +329,6 @@ g
 7src/main/java/com/mallowigi/idea/config/MTBaseConfig.kt,7/1/710a42780479379c2e71d33890d70ea2366f4419
 u
 Esrc/main/java/com/mallowigi/idea/config/application/MTConfigurable.kt,5/4/545158ffb4099d65bab6b72839a4457ba6069440
-q
-Asrc/main/java/com/mallowigi/idea/config/application/MTConfig.java,7/2/72ec04ae8c5581a0c47d2504614db47e2aaef218
 w
 Gsrc/main/java/com/mallowigi/idea/config/custom/MTCustomThemeConfig.java,5/4/547fcd2586eeb0a842d9310dabf3837ba6bd5037
 t
