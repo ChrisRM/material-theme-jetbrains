@@ -43,8 +43,6 @@ s
 Csrc/main/java/com/mallowigi/idea/themes/themes/MTAbstractTheme.java,b/d/bd16ebe72421cb66b8e2fe5d97540ebc766302eb
 @
 build.gradle.kts,d/b/dbcff70658daf80b53ce624f6adcaa529df5ed8d
-A
-gradle.properties,2/a/2afbb999f001938c88fa43fc2ef52abf0f8213e4
 z
 Jsrc/main/java/com/mallowigi/idea/notifications/MTStatisticsNotification.kt,a/3/a32e93e3e6d10ce963e5b90a836e612758afc3df
 f
