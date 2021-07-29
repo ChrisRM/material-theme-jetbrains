@@ -28,6 +28,7 @@ package com.mallowigi.idea;
 
 import com.intellij.ui.ColorUtil;
 import com.intellij.util.SVGLoader;
+import com.mallowigi.idea.config.application.MTConfig;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
@@ -89,13 +90,13 @@ public class MTAccentColorPatcher implements SVGLoader.SvgElementColorPatcherPro
         final String accentHexColor = getColorHex(accentColor);
         final String themeHexColor = getColorHex(themeColor);
 
-        if ("true".equals(accentProp) || "fill".equals(accentProp)) {
+        if ("true" .equals(accentProp) || "fill" .equals(accentProp)) {
           svg.setAttribute("fill", "#" + accentHexColor);
-        } else if ("stroke".equals(accentProp)) {
+        } else if ("stroke" .equals(accentProp)) {
           svg.setAttribute("stroke", "#" + accentHexColor);
-        } else if ("true".equals(themeProp) || "fill".equals(themeProp)) {
+        } else if ("true" .equals(themeProp) || "fill" .equals(themeProp)) {
           svg.setAttribute("fill", "#" + themeHexColor);
-        } else if ("stroke".equals(themeProp)) {
+        } else if ("stroke" .equals(themeProp)) {
           svg.setAttribute("stroke", "#" + themeHexColor);
         }
         final NodeList nodes = svg.getChildNodes();

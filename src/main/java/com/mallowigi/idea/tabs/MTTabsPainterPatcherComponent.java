@@ -26,22 +26,30 @@
 
 package com.mallowigi.idea.tabs;
 
+import com.intellij.openapi.Disposable;
+import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.application.ModalityState;
 import com.intellij.openapi.application.ex.ApplicationManagerEx;
 import com.intellij.openapi.fileEditor.FileEditor;
 import com.intellij.openapi.fileEditor.FileEditorManagerEvent;
 import com.intellij.openapi.fileEditor.FileEditorManagerListener;
+import com.intellij.openapi.fileEditor.ex.FileEditorManagerEx;
+import com.intellij.openapi.fileEditor.impl.EditorWindow;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.startup.StartupActivity;
 import com.intellij.openapi.wm.WindowManager;
+import com.intellij.ui.SimpleTextAttributes;
 import com.intellij.ui.tabs.JBTabPainter;
 import com.intellij.ui.tabs.TabInfo;
 import com.intellij.ui.tabs.impl.JBEditorTabs;
 import com.intellij.ui.tabs.impl.TabLabel;
 import com.intellij.util.ReflectionUtil;
-import com.intellij.util.messages.MessageBus;
 import com.intellij.util.messages.MessageBusConnection;
 import com.intellij.util.ui.UIUtil;
-import com.mallowigi.idea.MTConfig;
+import com.mallowigi.idea.config.application.MTConfig;
+import com.mallowigi.idea.config.project.MTProjectConfig;
+import com.mallowigi.idea.listeners.ConfigNotifier;
+import com.mallowigi.idea.utils.MTUiUtils;
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
@@ -50,6 +58,7 @@ import org.jetbrains.annotations.NotNull;
 import java.awt.*;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -59,8 +68,9 @@ import java.util.Objects;
  * @author Dennis.Ushakov
  */
 @SuppressWarnings("WeakerAccess")
-public final class MTTabsPainterPatcherComponent implements StartupActivity {
+public final class MTTabsPainterPatcherComponent implements StartupActivity.Background, Disposable {
   private MTConfig config = null;
+  private final MessageBusConnection connect = ApplicationManagerEx.getApplicationEx().getMessageBus().connect();
 
   @SuppressWarnings("OverlyComplexAnonymousInnerClass")
   public void initComponent(final JBEditorTabs editorTabs,
@@ -71,9 +81,6 @@ public final class MTTabsPainterPatcherComponent implements StartupActivity {
       patchPainter(editorTabs, project);
     }
 
-    final MessageBus bus = ApplicationManagerEx.getApplicationEx().getMessageBus();
-
-    final MessageBusConnection connect = bus.connect();
     connect.subscribe(FileEditorManagerListener.FILE_EDITOR_MANAGER, new FileEditorManagerListener() {
       @Override
       public void selectionChanged(@NotNull final FileEditorManagerEvent event) {
@@ -82,7 +89,6 @@ public final class MTTabsPainterPatcherComponent implements StartupActivity {
           Component component = editor.getComponent();
           while (component != null) {
             if (component instanceof JBEditorTabs) {
-              final Project project = event.getManager().getProject();
               patchPainter((JBEditorTabs) component, project);
               return;
             }
@@ -90,6 +96,18 @@ public final class MTTabsPainterPatcherComponent implements StartupActivity {
           }
         }
       }
+    });
+    connect.subscribe(ConfigNotifier.CONFIG_TOPIC, new ConfigNotifier() {
+      @Override
+      public void configChanged(final MTConfig mtConfig) {
+        ApplicationManager.getApplication().invokeAndWait(() -> resetTabsBoldness(project), ModalityState.NON_MODAL);
+      }
+
+      @Override
+      public void projectConfigChanged(final MTProjectConfig mtConfig) {
+        ApplicationManager.getApplication().invokeAndWait(() -> resetTabsBoldness(project), ModalityState.NON_MODAL);
+      }
+
     });
   }
 
@@ -101,6 +119,11 @@ public final class MTTabsPainterPatcherComponent implements StartupActivity {
     initComponent(editorTabs, project);
   }
 
+  @Override
+  public void dispose() {
+    connect.disconnect();
+  }
+
   /**
    * Patch tabsPainter
    */
@@ -108,12 +131,16 @@ public final class MTTabsPainterPatcherComponent implements StartupActivity {
     final MTTabsPainter tabsPainter = new MTTabsPainter(component, project);
     final JBTabPainter proxy = (JBTabPainter) Enhancer.create(MTTabsPainter.class, new TabPainterInterceptor(tabsPainter));
 
-    applyCustomFontSize(component);
+    ApplicationManager.getApplication().invokeLater(() -> {
+      applyCustomFontSize(component, project);
+      applyBoldTabs(component, project);
+    });
 
     ReflectionUtil.setField(JBEditorTabs.class, component, JBTabPainter.class, "myTabPainter", proxy);
   }
 
-  private void applyCustomFontSize(final JBEditorTabs component) {
+  private void applyCustomFontSize(final JBEditorTabs component,
+                                   final @NotNull Project project) {
     if (config.isTabFontSizeEnabled()) {
       final float tabFontSize = config.getTabFontSize();
       final Map<TabInfo, TabLabel> myInfo2Label = component.myInfo2Label;
@@ -121,6 +148,48 @@ public final class MTTabsPainterPatcherComponent implements StartupActivity {
       for (final TabLabel value : myInfo2Label.values()) {
         final Font font = value.getLabelComponent().getFont().deriveFont(tabFontSize);
         value.getLabelComponent().setFont(font);
+      }
+    }
+  }
+
+  private void applyBoldTabs(final JBEditorTabs component,
+                             final @NotNull Project project) {
+    if (isActiveBoldTab(project)) {
+      final TabInfo selectedInfo = component.getSelectedInfo();
+      final Map<TabInfo, TabLabel> myInfo2Label = component.myInfo2Label;
+
+      for (final TabLabel value : myInfo2Label.values()) {
+        value.getInfo().setDefaultStyle(SimpleTextAttributes.STYLE_PLAIN);
+      }
+
+      if (selectedInfo != null) {
+        selectedInfo.setDefaultStyle(SimpleTextAttributes.STYLE_BOLD);
+      }
+    }
+  }
+
+  private boolean isActiveBoldTab(final @NotNull Project project) {
+    final MTProjectConfig projectConfig = MTUiUtils.getProjectConfigIfEnabled(project);
+    if (projectConfig != null) {
+      return projectConfig.isActiveBoldTab();
+    }
+    return config.isActiveBoldTab();
+  }
+
+  void resetTabsBoldness(final @NotNull Project project) {
+    final FileEditorManagerEx manager = FileEditorManagerEx.getInstanceEx(project);
+    final EditorWindow[] windows = manager.getWindows();
+    for (final EditorWindow editorWindow : windows) {
+      final TabInfo selectedInfo = editorWindow.getTabbedPane().getTabs().getSelectedInfo();
+      final List<TabInfo> tabs = editorWindow.getTabbedPane().getTabs().getTabs();
+
+      for (final TabInfo tab : tabs) {
+        if (tab == selectedInfo) {
+          final int style = isActiveBoldTab(project) ? SimpleTextAttributes.STYLE_BOLD : SimpleTextAttributes.STYLE_PLAIN;
+          tab.setDefaultStyle(style);
+        } else {
+          tab.setDefaultStyle(SimpleTextAttributes.STYLE_PLAIN);
+        }
       }
     }
   }

@@ -38,15 +38,18 @@ import com.intellij.openapi.keymap.impl.ui.MouseShortcutPanel;
 import com.intellij.openapi.roots.ui.configuration.JavaModuleSourceRootEditHandler;
 import com.intellij.openapi.roots.ui.configuration.JavaTestSourceRootEditHandler;
 import com.intellij.ui.*;
+import com.intellij.ui.colorpicker.ColorPickerBuilderKt;
 import com.intellij.ui.tabs.FileColorManagerImpl;
 import com.intellij.ui.tabs.impl.SingleHeightTabs;
 import com.intellij.util.PlatformUtils;
 import com.intellij.util.containers.ContainerUtil;
 import com.intellij.util.ui.PlatformColors;
 import com.intellij.util.ui.UIUtil;
+import com.mallowigi.idea.config.application.MTConfig;
 import com.mallowigi.idea.ui.MTActionButtonLook;
 import com.mallowigi.idea.ui.MTNavBarUI;
 import com.mallowigi.idea.utils.MTUI;
+import com.mallowigi.idea.utils.MTUiUtils;
 import com.mallowigi.idea.utils.StaticPatcher;
 import training.ui.UISettings;
 
@@ -55,10 +58,12 @@ import java.awt.*;
 import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.Map;
+import java.util.stream.Stream;
 
 @SuppressWarnings({"FeatureEnvy",
   "MagicNumber",
-  "DuplicateStringLiteralInspection"})
+  "DuplicateStringLiteralInspection",
+  "KotlinInternalInJava"})
 public enum UIReplacer {
   DEFAULT;
 
@@ -78,13 +83,14 @@ public enum UIReplacer {
       patchBookmarks();
       patchJavaModules();
       patchColors();
+      patchColorPicker();
       patchScopes();
 
       if (PluginManagerCore.isPluginInstalled(PluginId.getId("training"))) {
         patchLearner();
       }
 
-      if (!"CodeWithMeGuest".equals(PlatformUtils.getPlatformPrefix())) {
+      if (!"CodeWithMeGuest" .equals(PlatformUtils.getPlatformPrefix())) {
         patchLocalHistory();
       }
     } catch (final IllegalAccessException | NoSuchFieldException | ClassNotFoundException e) {
@@ -95,37 +101,11 @@ public enum UIReplacer {
   private static void patchLearner() throws NoSuchFieldException, IllegalAccessException {
     try {
       final Class<?> uiSettings = Class.forName("training.ui.UISettings");
-      final JBColor bg = new JBColor(MTUI.Panel.getBackground(), MTUI.Panel.getBackground());
-      final JBColor foreground = new JBColor(MTUI.Panel.getForeground(), MTUI.Panel.getForeground());
-      final JBColor text = new JBColor(MTUI.Panel.getPrimaryForeground(), MTUI.Panel.getPrimaryForeground());
-      final JBColor accent = new JBColor(MTUI.Panel.getAccentColor(), MTUI.Panel.getAccentColor());
-
+      final JBColor border = new JBColor(MTUI.Separator.getSeparatorColor(), MTUI.Separator.getSeparatorColor());
       final Field[] fields = uiSettings.getDeclaredFields();
-      final Object[] jbColors = Arrays.stream(fields)
-                                      .filter(field -> field.getType().equals(JBColor.class))
-                                      .toArray();
+      final Stream<Field> fieldStream = Arrays.stream(fields).filter(field -> field.getType().equals(Color.class));
 
-      final Object[] colors = Arrays.stream(fields)
-                                    .filter(field -> field.getType().equals(Color.class))
-                                    .toArray();
-
-      // default text color
-      StaticPatcher.setFinal(UISettings.Companion.getInstance(), (Field) jbColors[0], foreground);
-      // active lesson
-      StaticPatcher.setFinal(UISettings.Companion.getInstance(), (Field) jbColors[1], foreground);
-      // link
-      StaticPatcher.setFinal(UISettings.Companion.getInstance(), (Field) jbColors[2], accent);
-      // shortcut
-      StaticPatcher.setFinal(UISettings.Companion.getInstance(), (Field) jbColors[3], text);
-      // separator
-      StaticPatcher.setFinal(UISettings.Companion.getInstance(), (Field) jbColors[4], text);
-      // shortcut background color
-      StaticPatcher.setFinal(UISettings.Companion.getInstance(), (Field) jbColors[5], bg);
-      // Passed color
-      StaticPatcher.setFinal(UISettings.Companion.getInstance(), (Field) jbColors[8], text);
-
-      // description color
-      StaticPatcher.setFinal(UISettings.Companion.getInstance(), (Field) colors[1], text);
+      StaticPatcher.setFinal(UISettings.Companion.getInstance(), MTUiUtils.findField(fieldStream, "separatorColor"), border);
     } catch (final Exception e) {
       // do nothing, plugin is absent
     }
@@ -139,6 +119,11 @@ public enum UIReplacer {
   private static void patchJavaModules() throws NoSuchFieldException, IllegalAccessException {
     StaticPatcher.setFinalStatic(JavaModuleSourceRootEditHandler.class, "SOURCES_COLOR", MTUI.MTColor.BLUE);
     StaticPatcher.setFinalStatic(JavaTestSourceRootEditHandler.class, "TESTS_COLOR", MTUI.MTColor.GREEN);
+  }
+
+  private static void patchColorPicker() throws NoSuchFieldException, IllegalAccessException {
+    StaticPatcher.setFinalStatic(ColorPickerBuilderKt.class, "PICKER_BACKGROUND_COLOR", MTUI.Panel.getSecondaryBackground());
+    StaticPatcher.setFinalStatic(ColorPickerBuilderKt.class, "PICKER_TEXT_COLOR", MTUI.Panel.getForeground());
   }
 
   @SuppressWarnings("OverlyLongMethod")

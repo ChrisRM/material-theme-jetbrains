@@ -1,4 +1,4 @@
-JFDML JFormDesigner: "7.0.3.0.337" Java: "11.0.10" encoding: "UTF-8"
+JFDML JFormDesigner: "7.0.4.0.360" Java: "11.0.11" encoding: "UTF-8"
 
 new FormModel {
 	"i18n.bundlePackage": "messages"
@@ -15,14 +15,14 @@ new FormModel {
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 					"$layoutConstraints": "fillx,novisualpadding,hidemode 3,align left top"
 					"$columnConstraints": "[325,grow,fill][grow,fill]"
-					"$rowConstraints": "[][][][]"
+					"$rowConstraints": "[][][]"
 				} ) {
 					name: "content"
 					"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 						"$layoutConstraints": "insets 0,hidemode 3"
 						"$columnConstraints": "[grow,left]"
-						"$rowConstraints": "[20,fill]0[][]0[][]0[]"
+						"$rowConstraints": "[20,fill]0[][]0[][]0[][]0[][]0[]0"
 					} ) {
 						name: "tabsPanel"
 						"border": new javax.swing.border.TitledBorder( "i18nKey=MTWizardOtherOptionsPanel.tabsPanel.border" )
@@ -58,9 +58,7 @@ new FormModel {
 							"labelFor": new FormReference( "highlightSpinner" )
 							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.thicknessLabel.text" )
 							"toolTipText": new FormMessage( null, "MTWizardOtherOptionsPanel.thicknessLabel.toolTipText" )
-							auxiliary() {
-								"JavaCodeGenerator.variableLocal": true
-							}
+							"icon": new com.jformdesigner.model.SwingIcon( 0, "/icons/mt/premium.png" )
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "pad 0 4 0 0,cell 0 2,aligny center,grow 100 0"
 						} )
@@ -86,6 +84,12 @@ new FormModel {
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "cell 0 4"
 						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "uppercasePremiumIcon"
+							"icon": &SwingIcon0 new com.jformdesigner.model.SwingIcon( 0, "/icons/mt/premium.png" )
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "cell 0 4,alignx right,growx 0"
+						} )
 						add( new FormComponent( "javax.swing.JTextPane" ) {
 							name: "uppercaseTabsDesc"
 							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.uppercaseTabsDesc.text" )
@@ -95,16 +99,73 @@ new FormModel {
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "pad 0 10 0 10,cell 0 5"
 						} )
+						add( new FormComponent( "javax.swing.JCheckBox" ) {
+							name: "activeTabBoldCheckbox"
+							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.activeTabBoldCheckbox.text" )
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "activeTabBoldCheckboxActionPerformed", true ) )
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "cell 0 6"
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "uppercasePremiumIcon2"
+							"icon": #SwingIcon0
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "cell 0 6,alignx right,growx 0"
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "newIcon"
+							"icon": &SwingIcon1 new com.jformdesigner.model.SwingIcon( 0, "/icons/mt/new.png" )
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "cell 0 6"
+						} )
+						add( new FormComponent( "javax.swing.JTextPane" ) {
+							name: "activeTabBoldDesc"
+							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.activeTabBoldDesc.text" )
+							"font": #SwingFont0
+							"background": #SwingColor0
+							"enabled": false
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "pad 0 10 0 10,cell 0 7"
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "tabHighlightLabel"
+							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.tabHighlightLabel.text" )
+							"toolTipText": new FormMessage( null, "MTWizardOtherOptionsPanel.tabHighlightLabel.toolTipText" )
+							"icon": new com.jformdesigner.model.SwingIcon( 0, "/icons/mt/premium.png" )
+							"labelFor": new FormReference( "tabHighlightCombobox" )
+							"horizontalTextPosition": 2
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "pad 0 4 0 0,cell 0 8,aligny center,grow 100 0"
+						} )
+						add( new FormComponent( "com.intellij.openapi.ui.ComboBox" ) {
+							name: "tabHighlightCombobox"
+							"toolTipText": new FormMessage( null, "MTWizardOtherOptionsPanel.tabHighlightCombobox.toolTipText" )
+							auxiliary() {
+								"JavaCodeGenerator.typeParameters": "TabHighlightPositions"
+							}
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "tabHighlightComboboxActionPerformed", true ) )
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "cell 0 8"
+						} )
+						add( new FormComponent( "javax.swing.JTextPane" ) {
+							name: "tabHighlightDesc"
+							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.tabHighlightDesc.text" )
+							"font": #SwingFont0
+							"background": #SwingColor0
+							"enabled": false
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "pad 0 10 0 10,cell 0 9"
+						} )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 0 0,aligny top,growy 0"
 					} )
 					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 						"$layoutConstraints": "insets 0,hidemode 3"
 						"$columnConstraints": "[grow,left]"
-						"$rowConstraints": "0[18,fill]0[][]0[][17]0[][]0[][]0[]0"
+						"$rowConstraints": "0[18,fill]0[][]0[][17]0[][]0[]0"
 					} ) {
-						name: "otherPanel"
-						"border": new javax.swing.border.TitledBorder( "i18nKey=MTWizardOtherOptionsPanel.otherPanel.border" )
+						name: "featuresPanel"
+						"border": new javax.swing.border.TitledBorder( "i18nKey=MTWizardOtherOptionsPanel.featuresPanel.border" )
 						add( new FormComponent( "javax.swing.JCheckBox" ) {
 							name: "fileColorsCheckbox"
 							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.fileColorsCheckbox.text" )
@@ -128,6 +189,12 @@ new FormModel {
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "cell 0 2"
 						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "uppercasePremiumIcon3"
+							"icon": #SwingIcon0
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "cell 0 2"
+						} )
 						add( new FormComponent( "javax.swing.JTextPane" ) {
 							name: "materialWallpapersLabel"
 							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.materialWallpapersLabel.text" )
@@ -138,27 +205,17 @@ new FormModel {
 							"value": "pad 0 10 0 10,cell 0 3"
 						} )
 						add( new FormComponent( "javax.swing.JCheckBox" ) {
-							name: "projectFrameCheckbox"
-							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.projectFrameCheckbox.text" )
-							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "projectFrameCheckboxActionPerformed", true ) )
-						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-							"value": "cell 0 4"
-						} )
-						add( new FormComponent( "javax.swing.JTextPane" ) {
-							name: "projectFrameLabel"
-							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.projectFrameLabel.text" )
-							"font": #SwingFont0
-							"background": #SwingColor0
-							"enabled": false
-						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-							"value": "pad 0 10 0 10,cell 0 5"
-						} )
-						add( new FormComponent( "javax.swing.JCheckBox" ) {
 							name: "materialFontsCheckBox"
 							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.materialFontsCheckBox.text" )
 							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "materialFontsChanged", true ) )
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-							"value": "cell 0 6"
+							"value": "cell 0 4"
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "uppercasePremiumIcon4"
+							"icon": #SwingIcon0
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "cell 0 4"
 						} )
 						add( new FormComponent( "javax.swing.JTextPane" ) {
 							name: "materialFontsLabel"
@@ -167,23 +224,35 @@ new FormModel {
 							"background": #SwingColor0
 							"enabled": false
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-							"value": "pad 0 10 0 10,cell 0 7"
+							"value": "pad 0 10 0 10,cell 0 5"
 						} )
 						add( new FormComponent( "javax.swing.JCheckBox" ) {
-							name: "themedTitleBarCheckbox"
-							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.themedTitleBarCheckbox.text" )
-							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "themedTitleBarActionPerformed", true ) )
+							name: "overlayCheckbox"
+							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.overlayCheckbox.text" )
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "overlayCheckboxActionPerformed", true ) )
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-							"value": "cell 0 8"
+							"value": "cell 0 6"
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "uppercasePremiumIcon5"
+							"icon": #SwingIcon0
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "cell 0 6"
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "newIcon2"
+							"icon": #SwingIcon1
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "cell 0 6"
 						} )
 						add( new FormComponent( "javax.swing.JTextPane" ) {
-							name: "themedTitleBarLabel"
-							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.themedTitleBarLabel.text" )
+							name: "overlayLabel"
+							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.overlayLabel.text" )
 							"font": #SwingFont0
 							"background": #SwingColor0
 							"enabled": false
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-							"value": "pad 0 10 0 10,cell 0 9"
+							"value": "pad 0 10 0 10,cell 0 7"
 						} )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 1 0,aligny top,growy 0"
@@ -265,14 +334,20 @@ new FormModel {
 					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 						"$layoutConstraints": "insets 0,hidemode 3"
 						"$columnConstraints": "[grow,left]"
-						"$rowConstraints": "0[18,fill]0[17]0"
+						"$rowConstraints": "0[18,fill]0[17][]0[]"
 					} ) {
-						name: "otherPanel2"
-						"border": new javax.swing.border.EmptyBorder( 5, 5, 5, 5 )
+						name: "otherPanel"
+						"border": new javax.swing.border.TitledBorder( "Other Settings" )
 						add( new FormComponent( "javax.swing.JCheckBox" ) {
 							name: "languageAdditionsCheckbox"
 							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.languageAdditionsCheckbox.text" )
 							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "fileColorsCheckboxActionPerformed", true ) )
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "cell 0 0"
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "uppercasePremiumIcon6"
+							"icon": #SwingIcon0
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "cell 0 0"
 						} )
@@ -285,13 +360,35 @@ new FormModel {
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "pad 0 10 0 10,cell 0 1"
 						} )
+						add( new FormComponent( "javax.swing.JCheckBox" ) {
+							name: "projectFrameCheckbox"
+							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.projectFrameCheckbox.text" )
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "projectFrameCheckboxActionPerformed", true ) )
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "cell 0 2"
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "uppercasePremiumIcon7"
+							"icon": #SwingIcon0
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "cell 0 2"
+						} )
+						add( new FormComponent( "javax.swing.JTextPane" ) {
+							name: "projectFrameLabel"
+							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.projectFrameLabel.text" )
+							"font": #SwingFont0
+							"background": #SwingColor0
+							"enabled": false
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "pad 0 10 0 10,cell 0 3"
+						} )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 1 1,aligny top,growy 0"
 					} )
 					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 						"$layoutConstraints": "insets 0,hidemode 3"
 						"$columnConstraints": "[grow,left]"
-						"$rowConstraints": "[20,fill]0[]0[]0[]"
+						"$rowConstraints": "[20,fill]0[][]0[][]0[]"
 					} ) {
 						name: "projectPanel"
 						"border": new javax.swing.border.TitledBorder( "i18nKey=MTWizardOtherOptionsPanel.projectPanel.border" )
@@ -300,6 +397,8 @@ new FormModel {
 							"horizontalTextPosition": 10
 							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.sidebarHeight.text" )
 							"toolTipText": new FormMessage( null, "MTWizardOtherOptionsPanel.sidebarHeight.toolTipText" )
+							"icon": new com.jformdesigner.model.SwingIcon( 0, "/icons/mt/premium.png" )
+							"labelFor": new FormReference( "sidebarHeightSpinner" )
 							auxiliary() {
 								"JavaCodeGenerator.variableLocal": true
 							}
@@ -325,6 +424,9 @@ new FormModel {
 							name: "selectedIndicatorLabel"
 							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.selectedIndicatorLabel.text" )
 							"toolTipText": new FormMessage( null, "MTWizardOtherOptionsPanel.selectedIndicatorLabel.toolTipText" )
+							"icon": new com.jformdesigner.model.SwingIcon( 0, "/icons/mt/premium.png" )
+							"labelFor": new FormReference( "indicatorStyleComboBox" )
+							"horizontalTextPosition": 10
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "pad 0 4 0 0,cell 0 2,growx"
 						} )
@@ -339,13 +441,37 @@ new FormModel {
 							"value": "cell 0 2"
 						} )
 						add( new FormComponent( "javax.swing.JTextPane" ) {
-							name: "arrowsStyleDesc2"
-							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.arrowsStyleDesc2.text" )
+							name: "indicatorStyleDesc"
+							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.indicatorStyleDesc.text" )
 							"font": #SwingFont0
 							"background": #SwingColor0
 							"enabled": false
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "pad 0 10 0 10,cell 0 3"
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "projectViewFontSizeLabel"
+							"horizontalTextPosition": 10
+							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.projectViewFontSizeLabel.text" )
+							"labelFor": new FormReference( "projectViewFontSizeSpinner" )
+							"icon": new com.jformdesigner.model.SwingIcon( 0, "/icons/mt/premium.png" )
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "pad 0 4 0 0,cell 0 4,aligny center,grow 100 0"
+						} )
+						add( new FormComponent( "javax.swing.JSpinner" ) {
+							name: "projectViewFontSizeSpinner"
+							addEvent( new FormEvent( "javax.swing.event.ChangeListener", "stateChanged", "projectViewFontSizeSpinnerStateChanged", true ) )
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "cell 0 4,wmax 60"
+						} )
+						add( new FormComponent( "javax.swing.JTextPane" ) {
+							name: "projectViewFontSizeDesc"
+							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.projectViewFontSizeDesc.text" )
+							"font": #SwingFont0
+							"background": #SwingColor0
+							"enabled": false
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "pad 0 10 0 10,cell 0 5"
 						} )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 0 2,aligny top,growy 0"
@@ -364,7 +490,8 @@ new FormModel {
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 990, 605 )
+			"size": new java.awt.Dimension( 990, 720 )
 		} )
 	}
 }
+

@@ -36,11 +36,17 @@ import com.intellij.util.ObjectUtils;
 import com.intellij.util.ui.GraphicsUtil;
 import com.intellij.util.ui.JBUI;
 import com.mallowigi.idea.MTLicenseChecker;
+import com.mallowigi.idea.messages.MaterialThemeBundle;
+import com.mallowigi.idea.notifications.MTNotifications;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import java.awt.*;
+import java.text.MessageFormat;
+import java.util.Objects;
 
+@SuppressWarnings({"MagicNumber",
+  "DesignForExtension"})
 public abstract class MTToggleAction extends ToggleAction {
   @Override
   public void update(@NotNull final AnActionEvent e) {
@@ -61,6 +67,16 @@ public abstract class MTToggleAction extends ToggleAction {
     checkLicense(e);
   }
 
+  @Override
+  public void setSelected(@NotNull final AnActionEvent e, final boolean state) {
+    final String notificationMessage = e.getPresentation().getText();
+    final String restText = MaterialThemeBundle.message(state ? "action.toggle.enabled" : "action.toggle.disabled");
+    MTNotifications.showSimple(
+      Objects.requireNonNull(e.getProject()),
+      MessageFormat.format("<b>{0}</b> {1}", notificationMessage, restText)
+    );
+  }
+
   protected void checkLicense(final @NotNull AnActionEvent e) {
     final Presentation presentation = e.getPresentation();
     presentation.setEnabled(MTLicenseChecker.isLicensed());
@@ -71,10 +87,12 @@ public abstract class MTToggleAction extends ToggleAction {
     return IconUtil.toSize(icon, JBUI.scale(18), JBUI.scale(18));
   }
 
+  @SuppressWarnings("OverlyComplexAnonymousInnerClass")
   private static Icon selectedFallbackIcon(final Icon icon) {
     return new Icon() {
+      @SuppressWarnings("ParameterNameDiffersFromOverriddenParameter")
       @Override
-      public void paintIcon(final Component c, final Graphics g, final int x, final int y) {
+      public void paintIcon(final Component component, final Graphics g, final int x, final int y) {
         final Graphics g2d = g.create();
 
         try {

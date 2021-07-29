@@ -84,6 +84,9 @@ public enum StaticPatcher {
   @SuppressWarnings("StaticMethodOnlyUsedInOneClass")
   public static void setFinal(final Object instance, final Field field, final Object newValue)
     throws NoSuchFieldException, IllegalAccessException {
+    if (field == null) {
+      return;
+    }
     field.setAccessible(true);
 
     final Field modifiersField = Field.class.getDeclaredField("modifiers");

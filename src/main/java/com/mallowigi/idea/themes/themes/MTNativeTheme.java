@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2020 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -30,7 +30,7 @@ import com.intellij.ide.ui.LafManager;
 import com.intellij.ide.ui.laf.UIThemeBasedLookAndFeelInfo;
 import com.intellij.ide.ui.laf.darcula.DarculaLookAndFeelInfo;
 import com.intellij.ui.ColorUtil;
-import com.mallowigi.idea.MTConfig;
+import com.mallowigi.idea.config.application.MTConfig;
 import com.mallowigi.idea.lafs.MTDarculaLaf;
 import com.mallowigi.idea.lafs.MTNativeLaf;
 import com.mallowigi.idea.themes.MTAccentMode;
@@ -38,12 +38,11 @@ import com.mallowigi.idea.themes.lists.ContrastResources;
 import com.mallowigi.idea.utils.MTColorUtils;
 import com.mallowigi.idea.utils.MTUI;
 import com.mallowigi.idea.utils.MTUiUtils;
+import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
-
-import static com.mallowigi.idea.themes.MTAccentMode.getSelectionColor;
 
 @SuppressWarnings("DesignForExtension")
 public class MTNativeTheme extends MTAbstractTheme {
@@ -178,7 +177,8 @@ public class MTNativeTheme extends MTAbstractTheme {
   }
 
   @Override
-  protected String getBackgroundImage() {
+  protected @Nullable
+  String getBackgroundImage() {
     return null;
   }
 
@@ -196,7 +196,7 @@ public class MTNativeTheme extends MTAbstractTheme {
     MTUiUtils.buildAccentResources(MTAccentMode.DARKER_ACCENT_RESOURCES, darkerAccentColor, accentMode);
     MTUiUtils.buildAccentResources(MTAccentMode.ACCENT_TRANSPARENT_EXTRA_RESOURCES, accentColorTransparent, accentMode);
     // Add new selection color resources
-    MTUiUtils.buildAccentResources(MTAccentMode.SELECTION_RESOURCES, getSelectionColor(), accentMode);
+    MTUiUtils.buildAccentResources(MTAccentMode.SELECTION_RESOURCES, MTAccentMode.getSelectionColor(), accentMode);
     MTUiUtils.buildAccentResources(MTAccentMode.SECOND_ACCENT_RESOURCES, secondAccentColor, accentMode);
 
   }

@@ -33,8 +33,8 @@ import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.util.ArrayUtil;
 import com.intellij.util.Function;
-import com.mallowigi.idea.MTConfig;
-import com.mallowigi.idea.MTProjectConfig;
+import com.mallowigi.idea.config.application.MTConfig;
+import com.mallowigi.idea.config.project.MTProjectConfig;
 import com.mallowigi.idea.utils.MTUiUtils;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -54,7 +54,7 @@ public final class MTEditorUpperTabs implements EditorTabTitleProvider {
     final int index = 0;
     final int length = name.length();
 
-    array = extractedMethod(index, length, name);
+    array = toWords(index, length, name);
 
     return ArrayUtil.toStringArray(array);
   }
@@ -65,7 +65,7 @@ public final class MTEditorUpperTabs implements EditorTabTitleProvider {
     "IfStatementWithTooManyBranches",
     "AssignmentToMethodParameter",
     "SameParameterValue"})
-  private static Collection<String> extractedMethod(int index, final int length, final String name) {
+  private static Collection<String> toWords(int index, final int length, final String name) {
     final Collection<String> array = new ArrayList<>(10);
     while (index < length) {
       final int wordStart = index;
@@ -124,7 +124,7 @@ public final class MTEditorUpperTabs implements EditorTabTitleProvider {
     for (final String word : words) {
       // { "common", "/__", "init", "__.", "py" }
       // if the character is not a java part nor a []()., replace with separator
-      final boolean isSpecialChar = "[(.)/]".contains(word.substring(0, 1));
+      final boolean isSpecialChar = "[(.)/]" .contains(word.substring(0, 1));
       if (!Character.isLetterOrDigit(word.charAt(0)) && !isSpecialChar) {
         buf.append(SPACE);
         insertSeparator = false;

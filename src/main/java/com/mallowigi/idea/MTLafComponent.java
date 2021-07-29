@@ -33,9 +33,11 @@ import com.intellij.ide.ui.laf.IntelliJLookAndFeelInfo;
 import com.intellij.ide.ui.laf.UIThemeBasedLookAndFeelInfo;
 import com.intellij.ide.ui.laf.darcula.DarculaLookAndFeelInfo;
 import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.application.ModalityState;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.util.messages.MessageBusConnection;
 import com.mallowigi.idea.config.MTBaseConfig;
+import com.mallowigi.idea.config.application.MTConfig;
 import com.mallowigi.idea.config.ui.MTForm;
 import com.mallowigi.idea.lafs.MTLafInstaller;
 import com.mallowigi.idea.listeners.ConfigNotifier;
@@ -98,7 +100,7 @@ public final class MTLafComponent implements AppLifecycleListener {
       final UIThemeBasedLookAndFeelInfo lookAndFeel = (UIThemeBasedLookAndFeelInfo) currentLookAndFeel;
       MTThemeManager.activateLAF(lookAndFeel.getTheme());
     } else if (activeLookAndFeel instanceof DarculaLookAndFeelInfo) {
-      MTThemeManager.activateLAF("darcula", true, "Darcula");
+      MTThemeManager.activateLAF("darcula", true, MTUiUtils.DARCULA);
     } else if (activeLookAndFeel instanceof IntelliJLookAndFeelInfo) {
       MTThemeManager.activateLAF("default", false, "Light");
     }
@@ -118,7 +120,7 @@ public final class MTLafComponent implements AppLifecycleListener {
     activeLookAndFeel = LafManager.getInstance().getCurrentLookAndFeel();
 
     // Activate the theme
-    ApplicationManager.getApplication().invokeAndWait(() -> activateLaf(activeLookAndFeel));
+    ApplicationManager.getApplication().invokeAndWait(() -> activateLaf(activeLookAndFeel), ModalityState.NON_MODAL);
 
     // Listen for changes on the settings
     final MessageBusConnection connect = ApplicationManager.getApplication().getMessageBus().connect();
@@ -161,13 +163,11 @@ public final class MTLafComponent implements AppLifecycleListener {
 
   @SuppressWarnings("WeakerAccess")
   static void activateTheme() {
-    MTThemeManager.activateWithColorScheme();
+    MTThemeManager.activate();
   }
 
   private static void patchTree() {
-    ApplicationManager.getApplication().invokeLater(() -> { // don't do heavy operations right away
-      MTLafInstaller.replaceTree(UIManager.getLookAndFeelDefaults());
-    });
+    ApplicationManager.getApplication().invokeLater(() -> MTLafInstaller.replaceTree(UIManager.getLookAndFeelDefaults()));
   }
 
   /**
@@ -221,7 +221,7 @@ public final class MTLafComponent implements AppLifecycleListener {
       activateTheme();
     }
 
-    ApplicationManager.getApplication().invokeAndWait(UIReplacer::patchUI);
+    ApplicationManager.getApplication().invokeAndWait(UIReplacer::patchUI, ModalityState.NON_MODAL);
 
     if (willRestartIde) {
       MTUiUtils.restartIde();

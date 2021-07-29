@@ -33,7 +33,7 @@ import com.intellij.openapi.util.TextRange;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.impl.source.tree.LeafPsiElement;
 import com.intellij.util.ObjectUtils;
-import com.mallowigi.idea.MTConfig;
+import com.mallowigi.idea.config.application.MTConfig;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

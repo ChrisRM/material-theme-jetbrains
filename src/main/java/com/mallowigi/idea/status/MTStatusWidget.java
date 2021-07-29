@@ -34,7 +34,7 @@ import com.intellij.openapi.wm.StatusBar;
 import com.intellij.ui.ColorUtil;
 import com.intellij.util.messages.MessageBusConnection;
 import com.intellij.util.ui.*;
-import com.mallowigi.idea.MTConfig;
+import com.mallowigi.idea.config.application.MTConfig;
 import com.mallowigi.idea.listeners.AccentsListener;
 import com.mallowigi.idea.listeners.ConfigNotifier;
 import com.mallowigi.idea.listeners.MTTopics;

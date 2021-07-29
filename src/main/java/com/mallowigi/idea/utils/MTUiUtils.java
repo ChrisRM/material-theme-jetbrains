@@ -28,10 +28,12 @@ package com.mallowigi.idea.utils;
 
 import com.intellij.codeInsight.hint.HintManager;
 import com.intellij.codeInsight.hint.HintUtil;
+import com.intellij.ide.actions.BigPopupUI;
 import com.intellij.ide.plugins.IdeaPluginDescriptor;
 import com.intellij.ide.plugins.PluginManager;
 import com.intellij.ide.plugins.PluginManagerCore;
 import com.intellij.ide.ui.LafManager;
+import com.intellij.ide.ui.newItemPopup.NewItemSimplePopupPanel;
 import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.notification.Notification;
 import com.intellij.notification.NotificationListener;
@@ -53,11 +55,12 @@ import com.intellij.ui.JBColor;
 import com.intellij.ui.LightweightHint;
 import com.intellij.ui.awt.RelativePoint;
 import com.intellij.util.ObjectUtils;
+import com.intellij.util.containers.ContainerUtil;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
-import com.mallowigi.idea.MTConfig;
-import com.mallowigi.idea.MTProjectConfig;
 import com.mallowigi.idea.MTThemeManager;
+import com.mallowigi.idea.config.application.MTConfig;
+import com.mallowigi.idea.config.project.MTProjectConfig;
 import com.mallowigi.idea.messages.MaterialThemeBundle;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
@@ -70,20 +73,21 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.Collections;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Random;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.stream.Stream;
 
 /**
  * All kinds of utils and constants
  */
 @SuppressWarnings({"unused",
   "StaticMethodOnlyUsedInOneClass",
-  "ClassWithTooManyMethods"})
+  "ClassWithTooManyMethods",
+  "HardcodedFileSeparator",
+  "OverlyComplexClass"})
 public enum MTUiUtils {
   DEFAULT;
 
@@ -95,6 +99,8 @@ public enum MTUiUtils {
   public static final String DOCS_URL = "https://www.material-theme.com/";
   @NonNls
   public static final String PLUGIN_ID = "com.chrisrm.idea.MaterialThemeUI";
+  @NonNls
+  public static final String ATOM_PLUGIN_ID = "com.mallowigi";
   @NonNls
   public static final String APPEARANCE_SECTION = "Appearance";
   @NonNls
@@ -254,8 +260,18 @@ public enum MTUiUtils {
     return PluginManagerCore.getPlugin(PluginId.getId(PLUGIN_ID));
   }
 
+  /**
+   * Checks whether the atom plugin is installed
+   */
   public static boolean hasAtomPluginInstalled() {
-    return PluginManager.isPluginInstalled(PluginId.getId(MaterialThemeBundle.message("atom.pluginid")));
+    return PluginManager.isPluginInstalled(PluginId.getId(ATOM_PLUGIN_ID));
+  }
+
+  /**
+   * Returns the Atom Plugin id
+   */
+  public static PluginId getAtomPluginId() {
+    return PluginId.getId(ATOM_PLUGIN_ID);
   }
 
   /**
@@ -316,6 +332,15 @@ public enum MTUiUtils {
     }
   }
 
+  /**
+   * Return the equivalent enum of a string, or defaultValue if not found
+   *
+   * @param value        the string of the enum value
+   * @param defaultValue fallback value
+   * @param <T>          type of the value
+   * @return the enum if found, or the default value
+   */
+  @SuppressWarnings("unchecked")
   public static <T extends Enum<T>> String parseEnumValue(final Object value, final T defaultValue) {
     if (value instanceof String) {
       @NonNls final String name = StringUtil.toUpperCase((String) value);
@@ -336,6 +361,13 @@ public enum MTUiUtils {
       PropertiesComponent.getInstance().getValue(IdeBackgroundUtil.FRAME_PROP) != null;
   }
 
+  /**
+   * Create a tooltip
+   *
+   * @param message       tooltip contents
+   * @param preferredSize tooltip size
+   * @return the tooltip as LightweightHint
+   */
   public static LightweightHint createHintTooltip(final String message, final Dimension preferredSize) {
     // Create a tooltip
     final JComponent informationLabel = HintUtil.createInformationLabel(message);
@@ -347,6 +379,14 @@ public enum MTUiUtils {
     return new LightweightHint(informationLabel);
   }
 
+  /**
+   * Create a tooltip with a link
+   *
+   * @param message       tooltip contents
+   * @param linkUrl       link target
+   * @param preferredSize tooltip size
+   * @return the tooltip as LightweightHint
+   */
   public static LightweightHint createLinkHintTooltip(final String message, final String linkUrl, final Dimension preferredSize) {
     // Create a tooltip
     final JComponent informationLabel = HintUtil.createInformationLabel(
@@ -371,6 +411,11 @@ public enum MTUiUtils {
     return new LightweightHint(informationLabel);
   }
 
+  /**
+   * Helper method to disable a component and add a tooltip asking to buy a premium account
+   *
+   * @param component component to disable
+   */
   public static void disablePremium(final JComponent component) {
     component.setEnabled(false);
     component.setToolTipText(null);
@@ -391,10 +436,25 @@ public enum MTUiUtils {
     });
   }
 
+  /**
+   * Toggle enabled state of a component
+   *
+   * @param component the component
+   * @param state     the new state
+   */
   public static void disableEnable(final JComponent component, final boolean state) {
     component.setEnabled(state);
   }
 
+  /**
+   * Show a custom tooltip on a component
+   *
+   * @param component    the component
+   * @param hint         the tooltip
+   * @param isHintHidden hidden state of the tooltip
+   * @return true if the tooltip is displayed
+   */
+  @SuppressWarnings("MagicNumber")
   static AtomicBoolean showHint(final JComponent component, final LightweightHint hint, final AtomicBoolean isHintHidden) {
     final AtomicBoolean newIsHintHidden = new AtomicBoolean(isHintHidden.get());
     if (isHintHidden.get()) {
@@ -428,6 +488,9 @@ public enum MTUiUtils {
     return Integer.min(max, Integer.max(value, min));
   }
 
+  /**
+   * Converts a color to a JBColor
+   */
   public static JBColor toJBColor(final Color color) {
     return new JBColor(color, color);
   }
@@ -448,23 +511,29 @@ public enum MTUiUtils {
   /**
    * Converts a string to a color
    */
+  @SuppressWarnings("CharUsedInArithmeticContext")
   public static int stringToARGB(final CharSequence charSequence) {
-    return hashCode(charSequence);
-  }
-
-  private static int hashCode(final CharSequence charSequence) {
     int hash = 0;
     final int length = charSequence.length();
     for (int i = 0; i < length; i++) {
-      hash = (int) charSequence.charAt(i) + ((hash << 5) - hash);
+      hash = charSequence.charAt(i) + ((hash << 5) - hash);
     }
     return hash;
   }
 
+  /**
+   * Alias for getting the current color scheme
+   */
   public static @NotNull EditorColorsScheme getCurrentColorScheme() {
     return EditorColorsManager.getInstance().getGlobalScheme();
   }
 
+  /**
+   * Returns the MTProjectConfig of the current project
+   *
+   * @param project the project
+   * @return the config if enabled, null otherwise
+   */
   public static @Nullable MTProjectConfig getProjectConfigIfEnabled(final Project project) {
     if (project != null && !project.isDisposed()) {
       final MTProjectConfig projectConfig = MTProjectConfig.getInstance(project);
@@ -472,6 +541,119 @@ public enum MTUiUtils {
         return projectConfig;
       }
       return null;
+    }
+    return null;
+  }
+
+  /**
+   * Finds the first field with the given name
+   *
+   * @param fieldStream field list
+   * @param name        field name to search
+   * @return the field if found, null otherwise
+   */
+  public static Field findField(final Stream<Field> fieldStream, final @NonNls String name) {
+    return fieldStream.filter(field -> name.equals(field.getName()))
+                      .findFirst()
+                      .orElse(null);
+  }
+
+  /**
+   * Checks if the window is a frame and not a heavyweightwindow (used for popups, tooltips, etc)
+   *
+   * @param window window to check
+   * @return true if not heavyweight frame
+   */
+  public static boolean isFrameWindow(final Window window) {
+    return window instanceof JFrame && !isHeavyWeightWindow(window);
+  }
+
+  /**
+   * Checks if a window is a heavyweight window (popups, tooltips, etc)
+   */
+  private static boolean isHeavyWeightWindow(final Window window) {
+    return window != null && window.getClass().getName().contains("HeavyWeightWindow");
+  }
+
+  /**
+   * Checks if the window is a dialog or popup window
+   */
+  public static boolean isDialogWindow(final Window window) {
+    if (window == null) {
+      return false;
+    }
+
+    if (window instanceof JDialog) {
+      return ((Dialog) window).isModal();
+    } else if (!(window instanceof JFrame)) {
+      return isPopup(window);
+    }
+    return false;
+  }
+
+  /**
+   * Checks if a window is a context menu
+   */
+  public static boolean isContextMenu(final Window window) {
+    if (window instanceof JWindow) {
+      final JLayeredPane layeredPane = ((RootPaneContainer) window).getLayeredPane();
+      for (final Component component : layeredPane.getComponents()) {
+        if (component instanceof JPanel) {
+          final Component[] children = ((Container) component).getComponents();
+          if (ContainerUtil.findInstance(children, JPopupMenu.class) != null) {
+            return true;
+          }
+        }
+      }
+    }
+    return false;
+  }
+
+  /**
+   * Checks if a window represents a popup. Examples: Search Everything, Run Anything, New File
+   */
+  public static boolean isPopup(final Window window) {
+    if (window instanceof JWindow) {
+      final JLayeredPane layeredPane = ((RootPaneContainer) window).getLayeredPane();
+      return hasComponentOfTypes(layeredPane, BigPopupUI.class, NewItemSimplePopupPanel.class);
+    }
+    return false;
+  }
+
+  /**
+   * Checks if a component or its descendants contains a component of one of the given types
+   *
+   * @param comp  the component
+   * @param types the types to check against
+   * @return true if one of the descendants is of one of the given types
+   */
+  public static boolean hasComponentOfTypes(final Component comp, final Class... types) {
+    if (comp instanceof Container) {
+      final Component[] children = ((Container) comp).getComponents();
+      if (ContainerUtil.find(children, child -> isInstanceOfTypes(child, types)) != null) {
+        return true;
+      } else if (children.length > 0) {
+        return ContainerUtil.find(children, child -> hasComponentOfTypes(child, types)) != null;
+      }
+    }
+    return false;
+  }
+
+  /**
+   * Checks if an object is an instance of one of the provided types
+   */
+  public static boolean isInstanceOfTypes(final Object object, final Class... types) {
+    return Arrays.stream(types).anyMatch(type -> type.isInstance(object));
+  }
+
+  /**
+   * Gets a window or popup's title
+   */
+  private static @Nullable String getWindowTitle(final Window window) {
+    if (window instanceof JDialog) {
+      return ((Dialog) window).getTitle();
+    } else if (window instanceof JFrame) {
+      return ((Frame) window).getTitle();
     }
     return null;
   }

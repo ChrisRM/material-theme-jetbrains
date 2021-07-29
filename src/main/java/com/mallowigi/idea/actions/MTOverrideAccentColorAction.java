@@ -28,8 +28,8 @@ package com.mallowigi.idea.actions;
 
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.mallowigi.idea.MTAnalytics;
-import com.mallowigi.idea.MTConfig;
 import com.mallowigi.idea.MTThemeManager;
+import com.mallowigi.idea.config.application.MTConfig;
 import org.jetbrains.annotations.NotNull;
 
 public final class MTOverrideAccentColorAction extends MTToggleAction {
@@ -42,6 +42,7 @@ public final class MTOverrideAccentColorAction extends MTToggleAction {
   public void setSelected(@NotNull final AnActionEvent e, final boolean state) {
     MTThemeManager.toggleOverrideAccent();
     MTAnalytics.getInstance().trackValue(MTAnalytics.OVERRIDE_ACCENT, state);
+    super.setSelected(e, state);
   }
 
   @Override

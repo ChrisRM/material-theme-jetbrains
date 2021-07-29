@@ -1,6 +1,24 @@
 ## Changelog
 ----
 
+## 6.8.0
+
+### Features
+- New Setting: **Overlays**: Add an overlay on the root pane that shows when popups are opened!
+- New Setting: **Bold Active tab**: Make active tab bold (also available in per project settings)
+- Add more recent settings to the Wizard: *Tab Highlight Position*, *Overlays*, *Project View Font Size*
+
+### Fixes
+- Refactor the *Learning* plugin's theming
+- Fixes the notifications not showing up
+- Fixes Wizard's initial dimensions and initial theme
+
+### Other
+- Convert resource lists to Kotlin
+- Convert Tab Highlight Positions to Kotlin
+- Convert Tab Shadows to Kotlin
+- Rearrange settings classes, and also convert to Kotlin
+
 ## 6.7.2
 
 ### Fixes

@@ -28,8 +28,8 @@ package com.mallowigi.idea.actions;
 
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.mallowigi.idea.MTAnalytics;
-import com.mallowigi.idea.MTConfig;
 import com.mallowigi.idea.MTThemeManager;
+import com.mallowigi.idea.config.application.MTConfig;
 import org.jetbrains.annotations.NotNull;
 
 public final class MTLanguageAdditionsAction extends MTToggleAction {
@@ -42,5 +42,6 @@ public final class MTLanguageAdditionsAction extends MTToggleAction {
   public void setSelected(@NotNull final AnActionEvent e, final boolean state) {
     MTThemeManager.toggleCodeAdditions();
     MTAnalytics.getInstance().trackValue(MTAnalytics.LANGUAGE_ADDITIONS, state);
+    super.setSelected(e, state);
   }
 }

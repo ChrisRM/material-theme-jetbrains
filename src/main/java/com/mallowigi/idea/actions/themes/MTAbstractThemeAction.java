@@ -29,9 +29,9 @@ package com.mallowigi.idea.actions.themes;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.project.DumbAware;
 import com.mallowigi.idea.MTAnalytics;
-import com.mallowigi.idea.MTConfig;
 import com.mallowigi.idea.MTThemeManager;
 import com.mallowigi.idea.actions.MTToggleAction;
+import com.mallowigi.idea.config.application.MTConfig;
 import com.mallowigi.idea.themes.MTThemeFacade;
 import com.mallowigi.idea.ui.MTButtonUI;
 import org.jetbrains.annotations.NotNull;
@@ -49,6 +49,7 @@ public abstract class MTAbstractThemeAction extends MTToggleAction implements Du
     MTThemeManager.setLookAndFeel(selectedTheme);
 
     MTAnalytics.getInstance().trackValue(MTAnalytics.SELECT_THEME, selectedTheme);
+    super.setSelected(e, state);
   }
 
   @Override

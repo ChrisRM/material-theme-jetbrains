@@ -3,4 +3,9 @@
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel target="1.8" />
   </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="com.chrisrm.idea.MaterialThemeUI.material-theme-jetbrains.main" options="--add-exports java.desktop/sun.awt=ALL-UNNAMED" />
+    </option>
+  </component>
 </project>

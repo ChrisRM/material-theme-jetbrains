@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -30,7 +30,7 @@ import com.intellij.ide.ui.laf.darcula.DarculaUIUtil;
 import com.intellij.openapi.ui.ComboBoxWithWidePopup;
 import com.intellij.ui.scale.JBUIScale;
 import com.intellij.util.ui.MacUIUtil;
-import com.mallowigi.idea.MTConfig;
+import com.mallowigi.idea.config.application.MTConfig;
 import com.mallowigi.idea.utils.MTUI;
 
 import javax.swing.*;

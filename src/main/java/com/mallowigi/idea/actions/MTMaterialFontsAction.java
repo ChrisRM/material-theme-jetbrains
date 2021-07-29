@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -28,8 +28,8 @@ package com.mallowigi.idea.actions;
 
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.mallowigi.idea.MTAnalytics;
-import com.mallowigi.idea.MTConfig;
 import com.mallowigi.idea.MTThemeManager;
+import com.mallowigi.idea.config.application.MTConfig;
 import com.mallowigi.idea.config.ui.MTForm;
 import org.jetbrains.annotations.NotNull;
 
@@ -49,5 +49,6 @@ public final class MTMaterialFontsAction extends MTToggleAction {
 
     MTThemeManager.toggleMaterialFonts();
     MTAnalytics.getInstance().trackValue(MTAnalytics.MATERIAL_FONTS, state);
+    super.setSelected(e, state);
   }
 }

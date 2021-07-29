@@ -36,6 +36,8 @@ import com.intellij.util.messages.MessageBusConnection;
 import com.intellij.util.ui.JBInsets;
 import com.intellij.util.ui.JBSwingUtilities;
 import com.intellij.util.ui.JBUI;
+import com.mallowigi.idea.config.application.MTConfig;
+import com.mallowigi.idea.config.project.MTProjectConfig;
 import com.mallowigi.idea.listeners.ConfigNotifier;
 import com.mallowigi.idea.utils.MTUI;
 import com.mallowigi.idea.utils.MTUiUtils;

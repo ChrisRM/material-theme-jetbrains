@@ -37,7 +37,6 @@ import com.intellij.openapi.Disposable;
 import com.intellij.openapi.application.Application;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ModalityState;
-import com.intellij.openapi.components.ServiceManager;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.openapi.editor.colors.EditorColorsScheme;
 import com.intellij.openapi.editor.colors.impl.AppEditorFontOptions;
@@ -48,13 +47,14 @@ import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.util.SystemInfo;
 import com.intellij.openapi.util.registry.Registry;
 import com.intellij.ui.ColorUtil;
-import com.intellij.ui.GuiUtils;
 import com.intellij.ui.scale.JBUIScale;
+import com.intellij.util.ModalityUiUtil;
 import com.intellij.util.ObjectUtils;
 import com.intellij.util.SVGLoader;
 import com.intellij.util.containers.ContainerUtil;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
+import com.mallowigi.idea.config.application.MTConfig;
 import com.mallowigi.idea.listeners.MTTopics;
 import com.mallowigi.idea.themes.MTThemeFacade;
 import com.mallowigi.idea.themes.MTThemes;
@@ -103,7 +103,7 @@ public final class MTThemeManager implements Disposable {
   @NonNls
   private static final String DARCULA = "darcula";
   @NonNls
-  private static final String NEW_STRIPES_UI = "ide.new.stripes.ui";
+  private static final String NEW_STRIPES_UI = "ide.experimental.ui.toolwindow.stripes";
   @NonNls
   private static final String TOOL_WINDOW_TAB_VERTICAL_PADDING = "ToolWindow.tab.verticalPadding";
 
@@ -119,7 +119,7 @@ public final class MTThemeManager implements Disposable {
    * @return the instance
    */
   public static MTThemeManager getInstance() {
-    return ServiceManager.getService(MTThemeManager.class);
+    return ApplicationManager.getApplication().getService(MTThemeManager.class);
   }
 
   //region Action Toggles
@@ -149,6 +149,10 @@ public final class MTThemeManager implements Disposable {
   public static void toggleHighContrast() {
     CONFIG.setHighContrast(!CONFIG.isHighContrast());
     activate();
+  }
+
+  public static void toggleOverlays() {
+    CONFIG.setShowOverlays(!CONFIG.isShowOverlays());
   }
 
   /**
@@ -193,6 +197,7 @@ public final class MTThemeManager implements Disposable {
     final boolean isCompactDropdowns = CONFIG.isCompactDropdowns();
     CONFIG.setCompactDropdowns(!isCompactDropdowns);
 
+    applyDropdownLists();
     UIReplacer.patchUI();
   }
 
@@ -287,10 +292,9 @@ public final class MTThemeManager implements Disposable {
    * Update file icons.
    */
   private static void updateFileIcons() {
-    GuiUtils.invokeLaterIfNeeded(() -> {
+    ModalityUiUtil.invokeLaterIfNeeded(() -> {
       final Application app = ApplicationManager.getApplication();
       app.runWriteAction(() -> FileTypeManagerEx.getInstanceEx().fireFileTypesChanged());
-      //      app.runWriteAction(ActionToolbarImpl::updateAllToolbarsImmediately);
     }, ModalityState.NON_MODAL);
   }
   //endregion
@@ -301,15 +305,6 @@ public final class MTThemeManager implements Disposable {
    * Activate selected theme or deactivate current
    */
   public static void activate() {
-    final MTThemeFacade mtTheme = CONFIG.getSelectedTheme();
-    activate(mtTheme);
-  }
-
-  /**
-   * Specify whether to activate with color scheme
-   */
-  @SuppressWarnings("SameParameterValue")
-  static void activateWithColorScheme() {
     final MTThemeFacade mtTheme = CONFIG.getSelectedTheme();
     activate(mtTheme);
   }
@@ -335,7 +330,7 @@ public final class MTThemeManager implements Disposable {
 
   public static boolean isMaterialTheme(@NonNls final UIManager.LookAndFeelInfo theme) {
     return theme instanceof UIThemeBasedLookAndFeelInfo &&
-        MTThemes.getThemeFor(((UIThemeBasedLookAndFeelInfo) theme).getTheme().getId()) != null;
+      MTThemes.getThemeFor(((UIThemeBasedLookAndFeelInfo) theme).getTheme().getId()) != null;
   }
 
   /**
@@ -370,6 +365,7 @@ public final class MTThemeManager implements Disposable {
     applyCompactSidebar(false);
     applyCustomTreeIndent();
     applyMenusHeight();
+    applyDropdownLists();
     applyAccents(false);
     applyFonts();
     applyCompactToolWindowHeaders();
@@ -385,18 +381,11 @@ public final class MTThemeManager implements Disposable {
     UIReplacer.patchUI();
 
     fireThemeChanged(newTheme);
-
-    //    ApplicationManager.getApplication().invokeAndWait(() -> {
-    //      final PropertiesComponent propertiesComponent = PropertiesComponent.getInstance();
-    //      final String themeColorScheme = CONFIG.getSelectedTheme().getThemeColorScheme();
-    //      propertiesComponent.setValue("Darcula.SavedEditorTheme", themeColorScheme);
-    //      propertiesComponent.setValue("Default.SavedEditorTheme", themeColorScheme);
-    //    });
   }
 
   private static void refreshColorScheme() {
     ApplicationManager.getApplication().invokeAndWait(() -> ((EditorColorsManagerImpl) EditorColorsManager.getInstance()).schemeChangedOrSwitched(null),
-      ModalityState.defaultModalityState());
+      ModalityState.NON_MODAL);
   }
 
   /**
@@ -661,6 +650,21 @@ public final class MTThemeManager implements Disposable {
     } else {
       UIManager.put("PopupMenuSeparator.height", 10);
       UIManager.put("PopupMenuSeparator.stripeIndent", 5);
+    }
+  }
+  //endregion
+
+  //region Compact Dropdowns support
+
+  /**
+   * Apply custom tree indent
+   */
+  @SuppressWarnings("MagicNumber")
+  private static void applyDropdownLists() {
+    if (CONFIG.isCompactDropdowns()) {
+      UIManager.put("ActionsList.cellBorderInsets", JBUI.insets(1, 10, 1, 15));
+    } else {
+      UIManager.put("ActionsList.cellBorderInsets", JBUI.insets(5, 10, 5, 15));
     }
   }
   //endregion

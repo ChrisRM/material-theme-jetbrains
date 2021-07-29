@@ -32,9 +32,9 @@ package com.mallowigi.idea.wizard.steps;
 
 import com.intellij.ide.customize.AbstractCustomizeWizardStep;
 import com.intellij.ui.components.JBScrollPane;
-import com.mallowigi.idea.MTConfig;
 import com.mallowigi.idea.MTLicenseChecker;
 import com.mallowigi.idea.MTThemeManager;
+import com.mallowigi.idea.config.application.MTConfig;
 import com.mallowigi.idea.messages.MTWizardBundle;
 import net.miginfocom.swing.MigLayout;
 
@@ -50,7 +50,8 @@ import static com.mallowigi.idea.utils.MTUiUtils.disablePremium;
  */
 @SuppressWarnings({"FieldCanBeLocal",
   "ClassWithTooManyFields",
-  "unused"})
+  "unused",
+  "ConstantConditions"})
 public final class MTWizardContrastPanel extends AbstractCustomizeWizardStep {
 
   private final MTConfig config;
@@ -58,17 +59,23 @@ public final class MTWizardContrastPanel extends AbstractCustomizeWizardStep {
   public MTWizardContrastPanel() {
     config = MTConfig.getInstance();
     initComponents();
+    initCheckboxes();
+
     setupComponents();
   }
 
   private void setupComponents() {
-    contrastCheckbox.setSelected(config.isContrastMode());
-    highContrastCheckbox.setSelected(config.isHighContrast());
 
     final boolean isFreeLicense = !MTLicenseChecker.isLicensed();
     if (isFreeLicense) {
       disablePremium(highContrastCheckbox);
+      disablePremium(highContrastPanel);
     }
+  }
+
+  private void initCheckboxes() {
+    contrastCheckbox.setSelected(config.isContrastMode());
+    highContrastCheckbox.setSelected(config.isHighContrast());
   }
 
   @Override

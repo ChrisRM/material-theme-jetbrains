@@ -58,6 +58,7 @@ public final class MTHackComponent {
     hackLiveIndicator();
     //    hackVcsConfigPanel();
     hackFileColors();
+    hackEapAgreement();
   }
 
   private static void hackFileColors() {
@@ -320,6 +321,37 @@ public final class MTHackComponent {
         }
       });
       vcsDirectoryConfigPanelClass.toClass();
+    } catch (final Throwable e) {
+      e.printStackTrace();
+    }
+  }
+
+  private static void hackEapAgreement() {
+    try {
+      @NonNls final ClassPool cp = new ClassPool(true);
+      cp.insertClassPath(new ClassClassPath(VcsContentAnnotationConfigurable.class));
+      final CtClass agreementClass = cp.get("com.intellij.ide.gdpr.AgreementUi");
+
+      //      final CtMethod createHtmlEditorPane = agreementClass.getDeclaredMethod("createHtmlEditorPane");
+      //      createHtmlEditorPane.instrument(new ExprEditor() {
+      //        @Override
+      //        public void edit(final MethodCall m) throws CannotCompileException {
+      //          if ("setBackground".equals(m.getMethodName())) {
+      //            m.replace("{ $1 = javax.swing.UIManager.getColor(\"Panel.background\"); $proceed($$); }");
+      //          }
+      //        }
+      //      });
+
+      final CtMethod addEapPanel = agreementClass.getDeclaredMethod("addEapPanel");
+      addEapPanel.instrument(new ExprEditor() {
+        @Override
+        public void edit(final MethodCall m) throws CannotCompileException {
+          if ("setBackground".equals(m.getMethodName())) {
+            m.replace("{ $1 = javax.swing.UIManager.getColor(\"Panel.background\"); $proceed($$); }");
+          }
+        }
+      });
+      agreementClass.toClass();
     } catch (final Throwable e) {
       e.printStackTrace();
     }

@@ -28,6 +28,7 @@ package com.mallowigi.idea;
 
 import com.intellij.ide.AppLifecycleListener;
 import com.intellij.openapi.application.ApplicationManager;
+import com.mallowigi.idea.config.application.MTConfig;
 import com.mallowigi.idea.wizard.MTWizardDialog;
 import com.mallowigi.idea.wizard.MTWizardStepsProvider;
 
@@ -48,9 +49,9 @@ public final class MTApplicationComponent implements AppLifecycleListener {
    */
   @SuppressWarnings("FeatureEnvy")
   private static void initWizard() {
-    final boolean hasWizardBeenShown = !MTConfig.getInstance().isWizardShown();
-    if (hasWizardBeenShown) {
-      ApplicationManager.getApplication().invokeLater(() -> new MTWizardDialog(new MTWizardStepsProvider()).show());
+    final boolean firstRun = !MTConfig.getInstance().isWizardShown();
+    if (firstRun) {
+      ApplicationManager.getApplication().invokeLater(() -> new MTWizardDialog(new MTWizardStepsProvider(), true).show());
       MTConfig.getInstance().setIsWizardShown(true);
     }
   }
