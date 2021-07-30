@@ -42,7 +42,7 @@ public final class MTRootPaneUI extends DarculaRootPaneUI {
   @SuppressWarnings({"MethodOverridesStaticMethodOfSuperclass",
     "unused"})
   public static ComponentUI createUI(final JComponent component) {
-    return hasCustomDecoration() ? new MTRootPaneUI() : createWindowsRootPaneUI();
+    return new MTRootPaneUI();
   }
 
   private static boolean hasCustomDecoration() {
