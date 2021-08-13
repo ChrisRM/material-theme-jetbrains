@@ -44,8 +44,9 @@ import org.jetbrains.annotations.NonNls;
 @SuppressWarnings({
   "CallToSuspiciousStringMethod",
   "DuplicateStringLiteralInspection",
-  "OverlyBroadCatchBlock"
-})
+  "OverlyBroadCatchBlock",
+  "KotlinInternalInJava",
+  "StandardVariableNames"})
 public final class MTHackComponent {
 
   static {
@@ -56,9 +57,12 @@ public final class MTHackComponent {
     hackNewScreenHardcodedColor();
     hackScrollbars();
     hackLiveIndicator();
-    //    hackVcsConfigPanel();
     hackFileColors();
     hackEapAgreement();
+    hackExperimentalUI();
+  }
+
+  private MTHackComponent() {
   }
 
   private static void hackFileColors() {
@@ -81,9 +85,6 @@ public final class MTHackComponent {
       getColorNames.instrument(new ExprEditor() {
         @Override
         public void edit(final MethodCall m) throws CannotCompileException {
-          //          if ("map".equals(m.getMethodName())) {
-          //            m.replace("{ $_ = $proceed(java.util.function.Function.identity()); }");
-          //          }
           if ("message".equals(m.getMethodName())) {
             m.replace("{ $_ = key; }");
           }
@@ -303,29 +304,6 @@ public final class MTHackComponent {
     }
   }
 
-  /**
-   * Hack unregistered roots color
-   */
-  private static void hackVcsConfigPanel() {
-    try {
-      @NonNls final ClassPool cp = new ClassPool(true);
-      cp.insertClassPath(new ClassClassPath(VcsContentAnnotationConfigurable.class));
-      final CtClass vcsDirectoryConfigPanelClass = cp.get("com.intellij.openapi.vcs.configurable.VcsDirectoryConfigurationPanel");
-
-      final CtMethod getUnregisteredRootBackground = vcsDirectoryConfigPanelClass.getDeclaredMethod("getUnregisteredRootBackground");
-      getUnregisteredRootBackground.instrument(new ExprEditor() {
-        @Override
-        public void edit(final NewExpr e) throws CannotCompileException {
-          final String bgColor = "javax.swing.UIManager.getColor(\"Table.stripeColor\")";
-          e.replace(String.format("{ $_ = %s; $proceed($$); }", bgColor));
-        }
-      });
-      vcsDirectoryConfigPanelClass.toClass();
-    } catch (final Throwable e) {
-      e.printStackTrace();
-    }
-  }
-
   private static void hackEapAgreement() {
     try {
       @NonNls final ClassPool cp = new ClassPool(true);
@@ -354,6 +332,27 @@ public final class MTHackComponent {
       agreementClass.toClass();
     } catch (final Throwable e) {
       e.printStackTrace();
+    }
+  }
+
+  private static void hackExperimentalUI() {
+    try {
+      @NonNls final ClassPool cp = new ClassPool(true);
+      cp.insertClassPath(new ClassClassPath(VcsContentAnnotationConfigurable.class));
+      final CtClass experimentalUIClass = cp.get("com.intellij.ui.ExperimentalUI");
+
+      final CtMethod isEnabled = experimentalUIClass.getDeclaredMethod("isEnabled");
+      isEnabled.instrument(new ExprEditor() {
+        @Override
+        public void edit(final MethodCall m) throws CannotCompileException {
+          if ("isEAP".equals(m.getMethodName())) {
+            m.replace("{ $_ = true; $proceed($$); }");
+          }
+        }
+      });
+      experimentalUIClass.toClass();
+    } catch (final Throwable e) {
+      // do nothing
     }
   }
 }

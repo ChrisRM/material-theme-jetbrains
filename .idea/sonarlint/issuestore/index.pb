@@ -7,8 +7,6 @@ Asrc/main/java/com/mallowigi/idea/themes/themes/MTNativeTheme.java,8/3/830ba336
 0src/main/java/com/mallowigi/idea/utils/MTUI.java,4/a/4a2c200cc478d86141c03d1080dcf8e341a5d1c0
 d
 4src/main/java/com/mallowigi/idea/MTProjectFrame.java,c/9/c9b5727cee8bd860a8de2533cc77f342b70b8b8b
-e
-5src/main/java/com/mallowigi/idea/MTHackComponent.java,4/0/40163698450700f27e70b2342c3e844941932ce3
 i
 9src/main/java/com/mallowigi/idea/lafs/MTLafInstaller.java,a/0/a0cee16f4107eebd4df207c00741c1b383478d39
 <
@@ -237,8 +235,6 @@ r
 Bsrc/main/java/com/mallowigi/idea/actions/MTHighContrastAction.java,f/9/f9bf53ac628527ec8a7fa9d6e96a9a36457778d3
 w
 Gsrc/main/java/com/mallowigi/idea/actions/MTLanguageAdditionsAction.java,e/1/e1914c7717bde14f3544813a0ebb0ab6bf91b1f4
-x
-Hsrc/main/java/com/mallowigi/idea/actions/MTStripedToolWindowsAction.java,d/5/d5caf50e6b3f8b91139f972b76cdd9f2e43aca22
 r
 Bsrc/main/java/com/mallowigi/idea/actions/MTProjectFrameAction.java,d/7/d702bd7a05d613f725ca82ac2f66d89deea14f46
 w
@@ -337,3 +333,7 @@ x
 Hsrc/main/java/com/mallowigi/idea/wizard/steps/MTWizardContrastPanel.java,8/3/832b582830bf245917e2b6d93e4283616eac6236
 w
 Gsrc/main/java/com/mallowigi/idea/wizard/steps/MTWizardContrastPanel.jfd,0/9/09e3f879fb3bc4550d4bc02655bff5ddc50af8aa
+m
+=src/main/java/com/mallowigi/idea/config/ui/MTProjectForm.java,d/0/d039777e981801cead67cedf577673054fd85b6a
+A
+docs/CHANGELOG.md,c/3/c3fe97d1dc2ab87ecbadae8a25c9f6f45669e388
