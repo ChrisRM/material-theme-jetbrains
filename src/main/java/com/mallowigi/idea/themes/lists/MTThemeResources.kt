@@ -88,7 +88,6 @@ object MTThemeResources {
       "Dialog.titleColor",  // deprecated
       "DialogWrapper.southPanelBackground",
       "DialogWrapper.southPanelDivider",
-      "DragAndDrop.areaBackground",
       "DragAndDrop.areaBorderColor",
       "DragAndDrop.backgroundBorderColor",  // deprecated
       "DragAndDrop.backgroundColor",  //deprecated
@@ -311,6 +310,7 @@ object MTThemeResources {
       "CompletionPopup.selectionInactiveInfoForeground",
       "Component.grayForeground",  // deprecated
       "Component.infoForeground",
+      "Component.iconColor",
       "Debugger.Variables.collectingDataForeground",
       "Debugger.Variables.evaluatingExpressionForeground",
       "Editor.shortcutForeground",
@@ -578,6 +578,7 @@ object MTThemeResources {
       "CheckBox.darcula.disabledBorderColor2",  // deprecated
       "CheckBox.disabledText",
       "CheckBoxMenuItem.disabledForeground",
+      "CodeWithMe.AccessDisabled.accessDot",
       "ComboBox.ArrowButton.disabledIconColor",
       "ComboBox.darcula.arrowButtonDisabledForeground",  // deprecated
       "ComboBox.disabledForeground",
@@ -776,6 +777,7 @@ object MTThemeResources {
       "Checkbox.Border.Default.Dark",
       "Component.borderColor",
       "Component.focusedBorderColor",
+      "Component.hoverIconColor",
       "DebuggerTabs.active.background",  // deprecated
       "DebuggerTabs.selectedBackground",  // deprecated
       "DefaultTabs.hoverColor",  // not implemented

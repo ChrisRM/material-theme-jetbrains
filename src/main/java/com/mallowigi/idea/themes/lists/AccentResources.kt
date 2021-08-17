@@ -167,6 +167,7 @@ object AccentResources {
     "ActionButton.focusedBorderColor",
     "ActionButton.hoverBackground",
     "ActionButton.hoverBorderColor",
+    "DragAndDrop.rowBackground",
     "Focus.Color",  // deprecated
     "Focus.borderColor",  // deprecated
     "Focus.color" // deprecated

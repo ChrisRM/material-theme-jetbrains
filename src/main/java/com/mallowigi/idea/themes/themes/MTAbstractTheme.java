@@ -451,6 +451,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
   private static void buildTransparentColors() {
     final Set<String> colors = Collections.unmodifiableSet(
       Sets.newHashSet(
+        "DragAndDrop.areaBackground",
         "ScrollBar.hoverTrackColor",
         "ScrollBar.trackColor",
         "ScrollBar.Mac.hoverTrackColor",
