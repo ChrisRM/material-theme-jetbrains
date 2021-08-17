@@ -333,3 +333,13 @@ m
 =src/main/java/com/mallowigi/idea/config/ui/MTProjectForm.java,d/0/d039777e981801cead67cedf577673054fd85b6a
 A
 docs/CHANGELOG.md,c/3/c3fe97d1dc2ab87ecbadae8a25c9f6f45669e388
+`
+0src/main/java/com/mallowigi/idea/utils/MTUI.java,4/a/4a2c200cc478d86141c03d1080dcf8e341a5d1c0
+s
+Csrc/main/java/com/mallowigi/idea/themes/themes/MTAbstractTheme.java,b/d/bd16ebe72421cb66b8e2fe5d97540ebc766302eb
+p
+@src/main/java/com/mallowigi/idea/themes/lists/AccentResources.kt,e/d/ed82e9147ac01f61d0fde4c3996ec8219e78db66
+`
+0src/main/java/com/mallowigi/idea/UIReplacer.java,b/d/bd9386fc3c9ba438824d842299f427cbce957295
+q
+Asrc/main/java/com/mallowigi/idea/themes/lists/MTThemeResources.kt,8/8/88fd91503db402839dccc353c2eee19d682d8ae1

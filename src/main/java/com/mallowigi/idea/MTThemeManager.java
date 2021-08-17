@@ -376,7 +376,7 @@ public final class MTThemeManager implements Disposable {
 
     // Monochrome filter and co
     LafManager.getInstance().updateUI();
-    refreshColorScheme();
+    //    refreshColorScheme();
     // Custom UI Patches
     UIReplacer.patchUI();
 
@@ -384,7 +384,7 @@ public final class MTThemeManager implements Disposable {
   }
 
   private static void refreshColorScheme() {
-    ApplicationManager.getApplication().invokeAndWait(() -> ((EditorColorsManagerImpl) EditorColorsManager.getInstance()).schemeChangedOrSwitched(null),
+    ApplicationManager.getApplication().invokeLater(() -> ((EditorColorsManagerImpl) EditorColorsManager.getInstance()).schemeChangedOrSwitched(null),
       ModalityState.NON_MODAL);
   }
 
