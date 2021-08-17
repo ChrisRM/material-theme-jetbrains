@@ -1,6 +1,18 @@
 ## Changelog
 ----
 
+## 6.8.1
+
+### Fixes
+- Restore the JetBrains layout as the default one
+- Fix error when switching themes when inside a modal
+- Fix transparency during drag and drop
+- Fix _Show Whats new_ option not being respected
+
+### Other
+- Renamed "_Striped Tool Windows_" to "_Large Tool Windows_" to be clearer.
+- Upgrade gradle to 7.2
+
 ## 6.8.0
 
 ### Features

@@ -50,10 +50,11 @@ class MTUpdatesComponent : StartupActivity.Background {
     // Show new version notification
     val pluginVersion = MTUiUtils.getVersion()
     val updated = pluginVersion != config!!.getVersion()
+    val showWhatsNew = config!!.isShowWhatsNew
     config!!.setVersion(pluginVersion)
 
     // Show notification update
-    if (updated) {
+    if (updated && showWhatsNew) {
       ApplicationManager.getApplication().invokeLater(
         { MTWhatsNewAction.openWhatsNewFile(project, MTWhatsNewAction.WHATS_NEW_URL, null) },
         project.disposed

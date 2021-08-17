@@ -39,10 +39,6 @@ i
 build.gradle.kts,d/b/dbcff70658daf80b53ce624f6adcaa529df5ed8d
 z
 Jsrc/main/java/com/mallowigi/idea/notifications/MTStatisticsNotification.kt,a/3/a32e93e3e6d10ce963e5b90a836e612758afc3df
-f
-6src/main/java/com/mallowigi/idea/MTUpdatesComponent.kt,6/b/6bb69b5f343221a8c3af3eb093a2f96a8f62ed2c
-r
-Bsrc/main/java/com/mallowigi/idea/notifications/MTWhatsNewAction.kt,3/a/3adffacdfc900f3c21bb31a469cfb28a1ca0b622
 p
 @src/main/java/com/mallowigi/idea/wizard/MTWizardStepsProvider.kt,d/9/d94d46fb89eb46cfcd17c06d0376ddcc61d9a6de
 r
@@ -331,12 +327,6 @@ w
 Gsrc/main/java/com/mallowigi/idea/wizard/steps/MTWizardContrastPanel.jfd,0/9/09e3f879fb3bc4550d4bc02655bff5ddc50af8aa
 m
 =src/main/java/com/mallowigi/idea/config/ui/MTProjectForm.java,d/0/d039777e981801cead67cedf577673054fd85b6a
-A
-docs/CHANGELOG.md,c/3/c3fe97d1dc2ab87ecbadae8a25c9f6f45669e388
-`
-0src/main/java/com/mallowigi/idea/utils/MTUI.java,4/a/4a2c200cc478d86141c03d1080dcf8e341a5d1c0
-s
-Csrc/main/java/com/mallowigi/idea/themes/themes/MTAbstractTheme.java,b/d/bd16ebe72421cb66b8e2fe5d97540ebc766302eb
 p
 @src/main/java/com/mallowigi/idea/themes/lists/AccentResources.kt,e/d/ed82e9147ac01f61d0fde4c3996ec8219e78db66
 `

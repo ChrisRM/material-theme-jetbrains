@@ -716,7 +716,7 @@ public enum MTUI {
     }
 
     public static Color getTransparentBackground() {
-      return ColorUtil.withAlpha(JBColor.namedColor(PANEL_BACKGROUND, UIUtil.getPanelBackground()), 0.3);
+      return ColorUtil.withAlpha(JBColor.namedColor(SELECTION_BACKGROUND, UIUtil.getPanelBackground()), 0.6);
     }
 
     public static Color getExcludedBackground() {
