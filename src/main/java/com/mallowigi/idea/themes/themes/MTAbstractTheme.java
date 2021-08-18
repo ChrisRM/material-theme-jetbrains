@@ -451,7 +451,6 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
   private static void buildTransparentColors() {
     final Set<String> colors = Collections.unmodifiableSet(
       Sets.newHashSet(
-        "DragAndDrop.areaBackground",
         "ScrollBar.hoverTrackColor",
         "ScrollBar.trackColor",
         "ScrollBar.Mac.hoverTrackColor",
@@ -462,8 +461,16 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
         "ScrollBar.Mac.Transparent.trackColor"
       ));
 
+    final Set<String> selectionColors = Collections.unmodifiableSet(
+      Sets.newHashSet(
+        "DragAndDrop.areaBackground"
+      ));
+
     final Color transparentBackground = MTUI.Panel.getTransparentBackground();
     MTUiUtils.buildResources(colors, transparentBackground);
+
+    final Color transparentSelectionBackground = MTUI.Panel.getTransparentSelectionBackground();
+    MTUiUtils.buildResources(selectionColors, transparentSelectionBackground);
   }
 
   /**

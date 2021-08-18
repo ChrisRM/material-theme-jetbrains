@@ -715,8 +715,12 @@ public enum MTUI {
       return JBColor.namedColor(HIGHLIGHT_BACKGROUND, DarculaUIUtil.getOutlineColor(true, true));
     }
 
+    public static Color getTransparentSelectionBackground() {
+      return ColorUtil.withAlpha(JBColor.namedColor(SELECTION_BACKGROUND, UIUtil.getListSelectionBackground(true)), 0.6);
+    }
+
     public static Color getTransparentBackground() {
-      return ColorUtil.withAlpha(JBColor.namedColor(SELECTION_BACKGROUND, UIUtil.getPanelBackground()), 0.6);
+      return ColorUtil.withAlpha(JBColor.namedColor(PANEL_BACKGROUND, UIUtil.getPanelBackground()), 0.3);
     }
 
     public static Color getExcludedBackground() {

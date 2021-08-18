@@ -1,6 +1,4 @@
 
-9
-	README.md,8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 q
 Asrc/main/java/com/mallowigi/idea/themes/themes/MTNativeTheme.java,8/3/830ba3369acddd8889bff4166feb40189a433058
 d
@@ -333,3 +331,9 @@ p
 0src/main/java/com/mallowigi/idea/UIReplacer.java,b/d/bd9386fc3c9ba438824d842299f427cbce957295
 q
 Asrc/main/java/com/mallowigi/idea/themes/lists/MTThemeResources.kt,8/8/88fd91503db402839dccc353c2eee19d682d8ae1
+d
+4src/main/java/com/mallowigi/idea/MTThemeManager.java,b/9/b9e53ddb39fdd19f555e28cf7d2899053065b75d
+C
+docs/CHANGELOG.html,1/b/1b4553bcb50f1e0165501a112abf9d72d18fa46c
+9
+	README.md,8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
