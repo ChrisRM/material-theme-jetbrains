@@ -29,7 +29,6 @@ package com.mallowigi.idea.config.ui;
 import com.intellij.CommonBundle;
 import com.intellij.application.options.colors.ColorAndFontOptions;
 import com.intellij.ide.DataManager;
-import com.intellij.openapi.application.ex.ApplicationInfoEx;
 import com.intellij.openapi.options.SearchableConfigurable;
 import com.intellij.openapi.options.ex.Settings;
 import com.intellij.openapi.ui.ComboBox;
@@ -1729,12 +1728,12 @@ public class MTForm implements MTFormUI {
   /**
    * Disable features that are not available on certain platforms/versions/etc
    */
-  private void disableFeatures() {
-    final boolean eap = ApplicationInfoEx.getInstanceEx().isEAP();
-    showIconCheckbox.setEnabled(eap);
-    if (!eap) {
-      showIconCheckbox.setToolTipText(MaterialThemeBundle.message("MTProjectForm.showIconCheckbox.disabledTooltipText"));
-    }
+  private static void disableFeatures() {
+    //    final boolean eap = ApplicationInfoEx.getInstanceEx().isEAP();
+    //    showIconCheckbox.setEnabled(eap);
+    //    if (!eap) {
+    //      showIconCheckbox.setToolTipText(MaterialThemeBundle.message("MTProjectForm.showIconCheckbox.disabledTooltipText"));
+    //    }
   }
 
   /**
