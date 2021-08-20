@@ -39,8 +39,6 @@ import com.intellij.ui.ListCellRendererWrapper;
 import com.intellij.ui.components.OnOffButton;
 import com.intellij.ui.components.labels.LinkLabel;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
-import com.mallowigi.idea.MTHCLicenseChecker;
-import com.mallowigi.idea.MTLicenseChecker;
 import com.mallowigi.idea.config.MTBaseConfig;
 import com.mallowigi.idea.config.MTFileColorsPage;
 import com.mallowigi.idea.config.MTScrollbarsPage;
@@ -52,6 +50,8 @@ import com.mallowigi.idea.messages.MaterialThemeBundle;
 import com.mallowigi.idea.themes.MTThemeFacade;
 import com.mallowigi.idea.themes.MTThemes;
 import com.mallowigi.idea.utils.MTUiUtils;
+import com.mallowigi.idea.visitors.MTHCLicenseChecker;
+import com.mallowigi.idea.visitors.MTMainProductLicenseChecker;
 import net.miginfocom.swing.MigLayout;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
@@ -264,7 +264,7 @@ public class MTForm implements MTFormUI {
     setUseProjectTitle(mtConfig.isUseProjectTitle());
     setUseStripedToolWindows(mtConfig.isStripedToolWindowsEnabled());
 
-    mtConfig.setPremium(MTLicenseChecker.isLicensed());
+    mtConfig.setPremium(MTMainProductLicenseChecker.getInstance().isLicensed());
 
     afterStateSet();
   }
@@ -1829,8 +1829,8 @@ public class MTForm implements MTFormUI {
    */
   @SuppressWarnings("OverlyLongMethod")
   private void disablePremiumFeatures() {
-    final boolean isFreeLicense = !MTLicenseChecker.isLicensed();
-    final boolean lacksHCPlugin = !MTHCLicenseChecker.isLicensed();
+    final boolean isFreeLicense = !MTMainProductLicenseChecker.getInstance().isLicensed();
+    final boolean lacksHCPlugin = !MTHCLicenseChecker.getInstance().isLicensed();
     if (isFreeLicense) {
       disablePremium(activeTabBoldCheckbox);
       disablePremium(accentModeCheckbox);

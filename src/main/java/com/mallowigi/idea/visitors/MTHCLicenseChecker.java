@@ -24,22 +24,19 @@
  *
  */
 
-package com.mallowigi.idea.actions.themes;
+package com.mallowigi.idea.visitors;
 
-import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.mallowigi.idea.themes.MTThemes;
-import com.mallowigi.idea.visitors.MTMainProductLicenseChecker;
-import org.jetbrains.annotations.NotNull;
+import com.intellij.openapi.application.ApplicationManager;
 
-public final class MTCustomThemeAction extends MTAbstractThemeAction {
+public final class MTHCLicenseChecker extends MTLicenseChecker {
 
   @Override
-  protected MTThemes getTheme() {
-    return MTThemes.CUSTOM;
+  public String getProductCode() {
+    return "PMATERIALUIHC";
   }
 
-  @Override
-  protected void checkLicense(final @NotNull AnActionEvent e) {
-    e.getPresentation().setEnabled(MTMainProductLicenseChecker.getInstance().isLicensed());
+  public static MTHCLicenseChecker getInstance() {
+    return ApplicationManager.getApplication().getService(MTHCLicenseChecker.class);
   }
+
 }

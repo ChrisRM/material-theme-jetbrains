@@ -28,14 +28,14 @@ package com.mallowigi.idea.actions;
 
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.mallowigi.idea.MTLicenseChecker;
 import com.mallowigi.idea.messages.MaterialThemeBundle;
+import com.mallowigi.idea.visitors.MTMainProductLicenseChecker;
 import org.jetbrains.annotations.NotNull;
 
 public final class MTActivateLicenseAction extends AnAction {
   @Override
   public void actionPerformed(@NotNull final AnActionEvent e) {
-    MTLicenseChecker.requestLicense(MaterialThemeBundle.message("plugin.activateLicense"));
+    MTMainProductLicenseChecker.getInstance().requestLicense(MaterialThemeBundle.message("plugin.activateLicense"));
   }
 
   @Override
@@ -45,6 +45,6 @@ public final class MTActivateLicenseAction extends AnAction {
 
   @Override
   public void update(@NotNull final AnActionEvent e) {
-    e.getPresentation().setEnabled(!MTLicenseChecker.isLicensed());
+    e.getPresentation().setEnabled(!MTMainProductLicenseChecker.getInstance().isLicensed());
   }
 }

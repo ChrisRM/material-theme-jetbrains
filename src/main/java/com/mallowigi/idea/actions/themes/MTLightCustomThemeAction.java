@@ -27,8 +27,8 @@
 package com.mallowigi.idea.actions.themes;
 
 import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.mallowigi.idea.MTLicenseChecker;
 import com.mallowigi.idea.themes.MTThemes;
+import com.mallowigi.idea.visitors.MTMainProductLicenseChecker;
 import org.jetbrains.annotations.NotNull;
 
 public final class MTLightCustomThemeAction extends MTAbstractThemeAction {
@@ -40,6 +40,6 @@ public final class MTLightCustomThemeAction extends MTAbstractThemeAction {
 
   @Override
   protected void checkLicense(final @NotNull AnActionEvent e) {
-    e.getPresentation().setEnabled(MTLicenseChecker.isLicensed());
+    e.getPresentation().setEnabled(MTMainProductLicenseChecker.getInstance().isLicensed());
   }
 }

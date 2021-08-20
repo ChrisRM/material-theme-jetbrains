@@ -35,9 +35,9 @@ import com.intellij.util.IconUtil;
 import com.intellij.util.ObjectUtils;
 import com.intellij.util.ui.GraphicsUtil;
 import com.intellij.util.ui.JBUI;
-import com.mallowigi.idea.MTLicenseChecker;
 import com.mallowigi.idea.messages.MaterialThemeBundle;
 import com.mallowigi.idea.notifications.MTNotifications;
+import com.mallowigi.idea.visitors.MTMainProductLicenseChecker;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
@@ -79,7 +79,7 @@ public abstract class MTToggleAction extends ToggleAction {
 
   protected void checkLicense(final @NotNull AnActionEvent e) {
     final Presentation presentation = e.getPresentation();
-    presentation.setEnabled(MTLicenseChecker.isLicensed());
+    presentation.setEnabled(MTMainProductLicenseChecker.getInstance().isLicensed());
   }
 
   @NotNull
