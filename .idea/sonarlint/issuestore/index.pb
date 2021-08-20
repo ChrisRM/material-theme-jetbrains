@@ -33,8 +33,6 @@ g
 7src/main/java/com/mallowigi/idea/ui/OverlayPainter.java,d/5/d58b0f1921c8681b0213d11051c2b6a94cc2b504
 i
 9src/main/java/com/mallowigi/idea/actions/ActionGroup.java,f/5/f532af0a58c02957d1d001ede68d28703d6fabc0
-@
-build.gradle.kts,d/b/dbcff70658daf80b53ce624f6adcaa529df5ed8d
 z
 Jsrc/main/java/com/mallowigi/idea/notifications/MTStatisticsNotification.kt,a/3/a32e93e3e6d10ce963e5b90a836e612758afc3df
 p
@@ -307,14 +305,10 @@ g
 7src/main/java/com/mallowigi/idea/config/MTBaseConfig.kt,7/1/710a42780479379c2e71d33890d70ea2366f4419
 u
 Esrc/main/java/com/mallowigi/idea/config/application/MTConfigurable.kt,5/4/545158ffb4099d65bab6b72839a4457ba6069440
-w
-Gsrc/main/java/com/mallowigi/idea/config/custom/MTCustomThemeConfig.java,5/4/547fcd2586eeb0a842d9310dabf3837ba6bd5037
 t
 Dsrc/main/java/com/mallowigi/idea/config/project/MTProjectConfig.java,5/1/513d00b1c76feb1b2dae36658cdfd3824a99858d
 c
 3src/main/java/com/mallowigi/idea/MTCloudProvider.kt,6/c/6cd725d1e9b7c199f3d7874fb82f7e9f058b8c0b
-x
-Hsrc/main/java/com/mallowigi/idea/wizard/steps/MTWizardContrastPanel.java,8/3/832b582830bf245917e2b6d93e4283616eac6236
 w
 Gsrc/main/java/com/mallowigi/idea/wizard/steps/MTWizardContrastPanel.jfd,0/9/09e3f879fb3bc4550d4bc02655bff5ddc50af8aa
 m

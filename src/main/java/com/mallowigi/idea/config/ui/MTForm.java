@@ -39,6 +39,7 @@ import com.intellij.ui.ListCellRendererWrapper;
 import com.intellij.ui.components.OnOffButton;
 import com.intellij.ui.components.labels.LinkLabel;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
+import com.mallowigi.idea.MTHCLicenseChecker;
 import com.mallowigi.idea.MTLicenseChecker;
 import com.mallowigi.idea.config.MTBaseConfig;
 import com.mallowigi.idea.config.MTFileColorsPage;
@@ -1829,6 +1830,7 @@ public class MTForm implements MTFormUI {
   @SuppressWarnings("OverlyLongMethod")
   private void disablePremiumFeatures() {
     final boolean isFreeLicense = !MTLicenseChecker.isLicensed();
+    final boolean lacksHCPlugin = !MTHCLicenseChecker.isLicensed();
     if (isFreeLicense) {
       disablePremium(activeTabBoldCheckbox);
       disablePremium(accentModeCheckbox);
@@ -1844,7 +1846,6 @@ public class MTForm implements MTFormUI {
       disablePremium(enforceLanguageOnOff);
       disablePremium(fontSizeCheckbox);
       disablePremium(fontSizeSpinner);
-      disablePremium(highContrastCheckbox);
       disablePremium(highlightSpinner);
       disablePremium(indicatorStyleComboBox);
       disablePremium(indicatorThicknessLabel);
@@ -1867,6 +1868,10 @@ public class MTForm implements MTFormUI {
       disablePremium(useMaterialFontCheckbox);
       disablePremium(useMaterialWallpapersCheckbox);
       disablePremium(useProjectFrameCheckbox);
+    }
+
+    if (isFreeLicense && lacksHCPlugin) {
+      disablePremium(highContrastCheckbox);
     }
   }
 

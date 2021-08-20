@@ -32,6 +32,7 @@ package com.mallowigi.idea.wizard.steps;
 
 import com.intellij.ide.customize.AbstractCustomizeWizardStep;
 import com.intellij.ui.components.JBScrollPane;
+import com.mallowigi.idea.MTHCLicenseChecker;
 import com.mallowigi.idea.MTLicenseChecker;
 import com.mallowigi.idea.MTThemeManager;
 import com.mallowigi.idea.config.application.MTConfig;
@@ -67,7 +68,9 @@ public final class MTWizardContrastPanel extends AbstractCustomizeWizardStep {
   private void setupComponents() {
 
     final boolean isFreeLicense = !MTLicenseChecker.isLicensed();
-    if (isFreeLicense) {
+    final boolean lacksHCPlugin = !MTHCLicenseChecker.isLicensed();
+
+    if (isFreeLicense && lacksHCPlugin) {
       disablePremium(highContrastCheckbox);
       disablePremium(highContrastPanel);
     }
