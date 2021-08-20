@@ -60,6 +60,7 @@ public final class MTHackComponent {
     hackFileColors();
     hackEapAgreement();
     hackExperimentalUI();
+    hackTagButton();
   }
 
   private MTHackComponent() {
@@ -351,6 +352,27 @@ public final class MTHackComponent {
         }
       });
       experimentalUIClass.toClass();
+    } catch (final Throwable e) {
+      // do nothing
+    }
+  }
+
+  private static void hackTagButton() {
+    try {
+      @NonNls final ClassPool cp = new ClassPool(true);
+      cp.insertClassPath(new ClassClassPath(VcsContentAnnotationConfigurable.class));
+      final CtClass tagButtonClass = cp.get("com.intellij.execution.ui.TagButton");
+
+      final CtMethod getBackgroundColor = tagButtonClass.getDeclaredMethod("getBackgroundColor");
+      getBackgroundColor.instrument(new ExprEditor() {
+        @Override
+        public void edit(final MethodCall m) throws CannotCompileException {
+          if ("hoverBackground".equals(m.getMethodName())) {
+            m.replace("{ $_ = javax.swing.UIManager.getColor(\"Button.startBackground\"); $proceed($$); }");
+          }
+        }
+      });
+      tagButtonClass.toClass();
     } catch (final Throwable e) {
       // do nothing
     }

@@ -5,8 +5,6 @@ d
 4src/main/java/com/mallowigi/idea/MTProjectFrame.java,c/9/c9b5727cee8bd860a8de2533cc77f342b70b8b8b
 i
 9src/main/java/com/mallowigi/idea/lafs/MTLafInstaller.java,a/0/a0cee16f4107eebd4df207c00741c1b383478d39
-<
-publishToken,9/a/9a4babb4fc0d7011969eadd9c7a450adc93303c9
 [
 +src/main/resources/icons/actions/mt/psi.svg,1/8/18334f455608f0852dc57b8f2b0a229e3c6c2223
 T
@@ -19,8 +17,6 @@ d
 4src/main/java/com/mallowigi/idea/ui/MTSpinnerUI.java,f/1/f11bcaad2ab41d2935426112cddf462ca6432d2f
 f
 6src/main/java/com/mallowigi/idea/ui/OverlapLayout.java,8/1/816953787a9df2d94d70836cdf5a1b3deea1a740
-j
-:src/main/java/com/mallowigi/idea/config/ui/MTHomeForm.java,c/9/c9b9f50f615d07197cee2efaada65bc66c68e50f
 r
 Bsrc/main/java/com/mallowigi/idea/config/enums/IndicatorStyles.java,0/d/0d97be6c88b93d1eea290120b380c7d8bc63365c
 q
@@ -313,21 +309,13 @@ t
 Dsrc/main/java/com/mallowigi/idea/config/project/MTProjectConfig.java,5/1/513d00b1c76feb1b2dae36658cdfd3824a99858d
 c
 3src/main/java/com/mallowigi/idea/MTCloudProvider.kt,6/c/6cd725d1e9b7c199f3d7874fb82f7e9f058b8c0b
-x
-Hsrc/main/java/com/mallowigi/idea/wizard/steps/MTWizardContrastPanel.java,8/3/832b582830bf245917e2b6d93e4283616eac6236
 w
 Gsrc/main/java/com/mallowigi/idea/wizard/steps/MTWizardContrastPanel.jfd,0/9/09e3f879fb3bc4550d4bc02655bff5ddc50af8aa
 m
 =src/main/java/com/mallowigi/idea/config/ui/MTProjectForm.java,d/0/d039777e981801cead67cedf577673054fd85b6a
-p
-@src/main/java/com/mallowigi/idea/themes/lists/AccentResources.kt,e/d/ed82e9147ac01f61d0fde4c3996ec8219e78db66
 `
 0src/main/java/com/mallowigi/idea/UIReplacer.java,b/d/bd9386fc3c9ba438824d842299f427cbce957295
-q
-Asrc/main/java/com/mallowigi/idea/themes/lists/MTThemeResources.kt,8/8/88fd91503db402839dccc353c2eee19d682d8ae1
 d
 4src/main/java/com/mallowigi/idea/MTThemeManager.java,b/9/b9e53ddb39fdd19f555e28cf7d2899053065b75d
 C
 docs/CHANGELOG.html,1/b/1b4553bcb50f1e0165501a112abf9d72d18fa46c
-9
-	README.md,8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
