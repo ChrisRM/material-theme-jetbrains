@@ -1,8 +1,6 @@
 
 q
 Asrc/main/java/com/mallowigi/idea/themes/themes/MTNativeTheme.java,8/3/830ba3369acddd8889bff4166feb40189a433058
-d
-4src/main/java/com/mallowigi/idea/MTProjectFrame.java,c/9/c9b5727cee8bd860a8de2533cc77f342b70b8b8b
 i
 9src/main/java/com/mallowigi/idea/lafs/MTLafInstaller.java,a/0/a0cee16f4107eebd4df207c00741c1b383478d39
 [

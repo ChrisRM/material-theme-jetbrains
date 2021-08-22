@@ -115,8 +115,6 @@ public enum MTUiUtils {
   private static final RenderingHints RENDERING_HINTS;
   @NonNls
   public static final String NOTO_SANS = "Noto Sans";
-  @NonNls
-  public static final String PROJECT_PATTERN = "\\{project\\}";
 
   static {
     RENDERING_HINTS = new RenderingHints(RenderingHints.KEY_ALPHA_INTERPOLATION, RenderingHints.VALUE_ALPHA_INTERPOLATION_SPEED);

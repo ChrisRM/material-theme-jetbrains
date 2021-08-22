@@ -29,7 +29,11 @@ package com.mallowigi.idea;
 import com.intellij.ide.RecentProjectsManagerBase;
 import com.intellij.ide.ui.UISettings;
 import com.intellij.openapi.Disposable;
+import com.intellij.openapi.fileEditor.ex.FileEditorManagerEx;
+import com.intellij.openapi.module.Module;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.roots.ProjectRootManager;
+import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.wm.IdeRootPaneNorthExtension;
 import com.intellij.ui.ColorUtil;
 import com.intellij.util.messages.MessageBusConnection;
@@ -167,7 +171,10 @@ public final class MTProjectFrame extends IdeRootPaneNorthExtension implements D
   }
 
   private static final class MTProjectTitlePanel extends JPanel {
-    private final Pattern projectPattern = Pattern.compile(MTUiUtils.PROJECT_PATTERN);
+    private final Pattern projectPattern = Pattern.compile("\\{project\\}");
+    private final Pattern modulePattern = Pattern.compile("\\{module\\}");
+    private final Pattern filePattern = Pattern.compile("\\{file\\}");
+
     private final Project myProject;
 
     private MTProjectTitlePanel(final Project project) {
@@ -270,22 +277,46 @@ public final class MTProjectFrame extends IdeRootPaneNorthExtension implements D
       } else if (mtConfig.isUseCustomTitle()) {
         textToDraw = mtConfig.getCustomTitle();
       }
-      return projectPattern.matcher(textToDraw).replaceAll(myProject.getName());
+      return replacePatterns(textToDraw);
+    }
+
+    private String replacePatterns(final String textToDraw) {
+      String result = textToDraw;
+      result = projectPattern.matcher(result).replaceAll(myProject.getName());
+      if (textToDraw.contains("{module}")) {
+        result = replaceModule(result);
+      }
+      if (textToDraw.contains("{file}")) {
+        result = replaceFile(result);
+      }
+      return result;
+    }
+
+    private String replaceModule(final String result) {
+      String newResult = result;
+      final VirtualFile virtualFile = FileEditorManagerEx.getInstanceEx(myProject).getCurrentFile();
+      if (virtualFile != null) {
+        final Module moduleForFile = ProjectRootManager.getInstance(myProject).getFileIndex().getModuleForFile(virtualFile);
+        if (moduleForFile != null) {
+          newResult = modulePattern.matcher(newResult).replaceAll(moduleForFile.getName());
+        }
+      }
+      return newResult;
+    }
+
+    private String replaceFile(final String result) {
+      String newResult = result;
+      final VirtualFile virtualFile = FileEditorManagerEx.getInstanceEx(myProject).getCurrentFile();
+      if (virtualFile != null) {
+        newResult = filePattern.matcher(newResult).replaceAll(virtualFile.getName());
+      }
+      return newResult;
     }
 
     @Override
     public void updateUI() {
       super.updateUI();
       setOpaque(false);
-      //      if (myWrapperPanel == null || myProjectFramePanel == null) {
-      //        return;
-      //      }
-      //
-      //      myWrapperPanel.setBorder(new NavBarBorder());
-      //      myWrapperPanel.setOpaque(false);
-      //      myWrapperPanel.getViewport().setOpaque(false);
-      //      myWrapperPanel.setViewportBorder(null);
-      //      myProjectFramePanel.setBorder(null);ss
     }
   }
 }
