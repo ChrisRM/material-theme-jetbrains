@@ -41,6 +41,8 @@ import javassist.expr.MethodCall;
 import javassist.expr.NewExpr;
 import org.jetbrains.annotations.NonNls;
 
+import static com.mallowigi.idea.MTThemeManager.NEW_STRIPES_UI;
+
 @SuppressWarnings({
   "CallToSuspiciousStringMethod",
   "DuplicateStringLiteralInspection",
@@ -340,17 +342,10 @@ public final class MTHackComponent {
     try {
       @NonNls final ClassPool cp = new ClassPool(true);
       cp.insertClassPath(new ClassClassPath(VcsContentAnnotationConfigurable.class));
-      final CtClass experimentalUIClass = cp.get("com.intellij.ui.ExperimentalUI");
+      final CtClass experimentalUIClass = cp.get("com.intellij.openapi.util.registry.ExperimentalUI");
 
-      final CtMethod isEnabled = experimentalUIClass.getDeclaredMethod("isEnabled");
-      isEnabled.instrument(new ExprEditor() {
-        @Override
-        public void edit(final MethodCall m) throws CannotCompileException {
-          if ("isEAP".equals(m.getMethodName())) {
-            m.replace("{ $_ = true; $proceed($$); }");
-          }
-        }
-      });
+      final CtMethod isEnabled = experimentalUIClass.getDeclaredMethod("isNewToolWindowsStripes");
+      isEnabled.setBody("{ return com.intellij.openapi.util.registry.Registry.is(\"" + NEW_STRIPES_UI + "\"); }");
       experimentalUIClass.toClass();
     } catch (final Throwable e) {
       // do nothing

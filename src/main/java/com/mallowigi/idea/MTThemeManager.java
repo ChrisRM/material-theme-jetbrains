@@ -103,7 +103,7 @@ public final class MTThemeManager implements Disposable {
   @NonNls
   private static final String DARCULA = "darcula";
   @NonNls
-  private static final String NEW_STRIPES_UI = "ide.experimental.ui.toolwindow.stripes";
+  static final String NEW_STRIPES_UI = "ide.experimental.ui.toolwindow.stripes";
   @NonNls
   private static final String TOOL_WINDOW_TAB_VERTICAL_PADDING = "ToolWindow.tab.verticalPadding";
 

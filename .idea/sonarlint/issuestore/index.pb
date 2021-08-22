@@ -315,7 +315,5 @@ m
 =src/main/java/com/mallowigi/idea/config/ui/MTProjectForm.java,d/0/d039777e981801cead67cedf577673054fd85b6a
 `
 0src/main/java/com/mallowigi/idea/UIReplacer.java,b/d/bd9386fc3c9ba438824d842299f427cbce957295
-d
-4src/main/java/com/mallowigi/idea/MTThemeManager.java,b/9/b9e53ddb39fdd19f555e28cf7d2899053065b75d
 C
 docs/CHANGELOG.html,1/b/1b4553bcb50f1e0165501a112abf9d72d18fa46c
