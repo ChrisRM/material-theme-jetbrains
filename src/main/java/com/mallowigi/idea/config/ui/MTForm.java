@@ -174,7 +174,7 @@ public class MTForm implements MTFormUI {
   private JCheckBox showIconCheckbox;
   private JCheckBox customTextCheckbox;
   private JTextField customTextField;
-  private JLabel customTextHint;
+  private JTextPane customTextHint;
   private JPanel otherTweaksPanel;
   private JLabel tweaksDesc;
   private JCheckBox codeAdditionsCheckBox;
@@ -823,6 +823,7 @@ public class MTForm implements MTFormUI {
 
   private void setUseProjectFrame(final boolean useProjectFrame) {
     useProjectFrameCheckbox.setSelected(useProjectFrame);
+    enableDisableProjectFrameOptions(useProjectFrame);
   }
   // endregion
 
@@ -934,6 +935,12 @@ public class MTForm implements MTFormUI {
     customTextField.setEnabled(useCustomTitle);
   }
 
+  private void enableDisableProjectFrameOptions(final boolean useProjectFrame) {
+    projectTitleCheckbox.setEnabled(useProjectFrame);
+    showIconCheckbox.setEnabled(useProjectFrame);
+    customTextCheckbox.setEnabled(useProjectFrame);
+  }
+
   //endregion
 
   //region Events - Actions Listeners
@@ -1014,6 +1021,11 @@ public class MTForm implements MTFormUI {
 
   private void customTextCheckboxActionPerformed(final ActionEvent e) {
     enableDisableCustomTitle(isUseCustomTitle());
+  }
+
+  private void useProjectFrameCheckboxActionPerformed(final ActionEvent e) {
+    enableDisableProjectFrameOptions(useProjectFrameCheckbox.isSelected());
+
   }
   //endregion
 
@@ -1106,7 +1118,7 @@ public class MTForm implements MTFormUI {
     showIconCheckbox = new JCheckBox();
     customTextCheckbox = new JCheckBox();
     customTextField = new JTextField();
-    customTextHint = compFactory.createLabel("");
+    customTextHint = new JTextPane();
     otherTweaksPanel = new JPanel();
     tweaksDesc = compFactory.createLabel(bundle.getString("MTForm.tweaksDesc.textWithMnemonic"));
     codeAdditionsCheckBox = new JCheckBox();
@@ -1337,8 +1349,8 @@ public class MTForm implements MTFormUI {
           isCompactMenusCheckbox.setToolTipText(bundle.getString("MTForm.isCompactMenusCheckbox.toolTipText"));
           compactPanel.add(isCompactMenusCheckbox, "cell 0 4");
         }
-        tabbedPane1.addTab(bundle.getString("MTForm.compactPanel.tab.title"), null, compactPanel, bundle.getString("MTForm.compactPanel" +
-          ".tab.toolTipText"));
+        tabbedPane1.addTab(bundle.getString("MTForm.compactPanel.tab.title"), null, compactPanel, bundle.getString(
+          "MTForm.compactPanel.tab.toolTipText"));
 
         //======== projectViewPanel ========
         {
@@ -1440,8 +1452,8 @@ public class MTForm implements MTFormUI {
           fontSizeSpinner.setToolTipText(bundle.getString("MTForm.fontSizeSpinner.toolTipText"));
           projectViewPanel.add(fontSizeSpinner, "cell 1 6,align right center,grow 0 0,width 80:80:80");
         }
-        tabbedPane1.addTab(bundle.getString("MTForm.projectViewPanel.tab.title"), null, projectViewPanel, bundle.getString("MTForm" +
-          ".projectViewPanel.tab.toolTipText"));
+        tabbedPane1.addTab(bundle.getString("MTForm.projectViewPanel.tab.title"), null, projectViewPanel, bundle.getString(
+          "MTForm.projectViewPanel.tab.toolTipText"));
 
         //======== componentsPanel ========
         {
@@ -1592,7 +1604,7 @@ public class MTForm implements MTFormUI {
               "[]" +
               "[]" +
               "[]0" +
-              "[]"));
+              "[49,fill]"));
 
           //---- projectFrameDesc ----
           projectFrameDesc.setForeground(UIManager.getColor("Label.disabledForeground"));
@@ -1602,6 +1614,7 @@ public class MTForm implements MTFormUI {
           //---- useProjectFrameCheckbox ----
           useProjectFrameCheckbox.setText(bundle.getString("MTForm.useProjectFrameCheckbox.text"));
           useProjectFrameCheckbox.setToolTipText(bundle.getString("MTForm.useProjectFrameCheckbox.toolTipText"));
+          useProjectFrameCheckbox.addActionListener(e -> useProjectFrameCheckboxActionPerformed(e));
           projectFramePanel.add(useProjectFrameCheckbox, "cell 0 1,align left center,grow 0 0");
 
           //---- projectTitleCheckbox ----
@@ -1622,9 +1635,10 @@ public class MTForm implements MTFormUI {
           projectFramePanel.add(customTextField, "cell 1 4,alignx right,growx 0,width 150:150:150");
 
           //---- customTextHint ----
-          customTextHint.setForeground(UIManager.getColor("Label.disabledForeground"));
           customTextHint.setText(bundle.getString("MTForm.customTextHint.text"));
-          projectFramePanel.add(customTextHint, "cell 0 5,gapx 16");
+          customTextHint.setFont(customTextHint.getFont().deriveFont(customTextHint.getFont().getSize() - 1f));
+          customTextHint.setForeground(UIManager.getColor("Label.disabledForeground"));
+          projectFramePanel.add(customTextHint, "cell 0 5");
         }
         tabbedPane1.addTab(bundle.getString("MTForm.projectFramePanel.tab.title"), projectFramePanel);
 

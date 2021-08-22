@@ -553,7 +553,7 @@ new FormModel {
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 					"$layoutConstraints": "fillx,hidemode 3,align left top"
 					"$columnConstraints": "[left][right]"
-					"$rowConstraints": "[][][][][]0[]"
+					"$rowConstraints": "[][][][][]0[49,fill]"
 				} ) {
 					name: "projectFramePanel"
 					"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
@@ -569,6 +569,7 @@ new FormModel {
 						name: "useProjectFrameCheckbox"
 						"text": new FormMessage( null, "MTForm.useProjectFrameCheckbox.text" )
 						"toolTipText": new FormMessage( null, "MTForm.useProjectFrameCheckbox.toolTipText" )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "useProjectFrameCheckboxActionPerformed", true ) )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 0 1,align left center,grow 0 0"
 					} )
@@ -599,12 +600,13 @@ new FormModel {
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 1 4,alignx right,growx 0,width 150:150:150"
 					} )
-					add( new FormComponent( "com.jformdesigner.designer.wrapper.JGoodiesFormsLabel" ) {
+					add( new FormComponent( "javax.swing.JTextPane" ) {
 						name: "customTextHint"
-						"foreground": #SwingColor1
 						"text": new FormMessage( null, "MTForm.customTextHint.text" )
+						"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, -1, false )
+						"foreground": new com.jformdesigner.model.SwingColor( "Label.disabledForeground" )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 0 5,gapx 16"
+						"value": "cell 0 5"
 					} )
 				}, new FormLayoutConstraints( null ) {
 					"title": new FormMessage( null, "MTForm.projectFramePanel.tab.title" )
@@ -677,7 +679,7 @@ new FormModel {
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 635, 650 )
+			"size": new java.awt.Dimension( 635, 700 )
 		} )
 	}
 }
