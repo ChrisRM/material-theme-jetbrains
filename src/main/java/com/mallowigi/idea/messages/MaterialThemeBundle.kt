@@ -45,7 +45,7 @@ object MaterialThemeBundle : DynamicBundle(BUNDLE) {
   ): String = messageOrDefault(ResourceBundle.getBundle(BUNDLE), key, defaultValue, *params)
 
   @JvmStatic
-  fun messageWithPrefix(@PropertyKey(resourceBundle = BUNDLE) key: String, prefix: String): String =
+  fun messageWithPrefix(key: String, prefix: String): String =
     message("$prefix.$key")
 
   @JvmStatic

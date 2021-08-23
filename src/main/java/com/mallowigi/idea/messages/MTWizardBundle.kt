@@ -50,7 +50,7 @@ object MTWizardBundle : DynamicBundle(BUNDLE) {
     getMessage(key, *params)
 
   @JvmStatic
-  fun messageWithPrefix(@PropertyKey(resourceBundle = BUNDLE) key: String, prefix: String): String =
+  fun messageWithPrefix(key: String, prefix: String): String =
     message("$prefix.$key")
 
   @JvmStatic

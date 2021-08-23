@@ -49,7 +49,7 @@ object ThemesBundle : DynamicBundle(BUNDLE) {
     getMessage(key, *params)
 
   @JvmStatic
-  fun messageWithPrefix(@PropertyKey(resourceBundle = BUNDLE) key: @NonNls String, prefix: String): String =
+  fun messageWithPrefix(key: @NonNls String, prefix: String): String =
     message("$prefix.$key")
 
   @JvmStatic

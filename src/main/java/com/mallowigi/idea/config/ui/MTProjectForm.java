@@ -480,6 +480,7 @@ public class MTProjectForm implements MTFormUI {
 
   private void setUseProjectFrame(final boolean useProjectFrame) {
     useProjectFrameCheckbox.setSelected(useProjectFrame);
+    enableDisableProjectFrameOptions(useProjectFrame);
   }
   // endregion
 
@@ -556,6 +557,7 @@ public class MTProjectForm implements MTFormUI {
 
   private void enableDisableProjectFrame(final boolean isProjectFrameEnabled) {
     projectFrameColor.setEnabled(isProjectFrameEnabled);
+    enableDisableProjectFrameOptions(isProjectFrameEnabled);
   }
 
   private void enableDisableCustomTitle(final boolean isCustomTitleEnabled) {
@@ -579,6 +581,11 @@ public class MTProjectForm implements MTFormUI {
     enableDisableCustomTitle(useCustomTextCheckbox.isSelected());
   }
 
+  private void enableDisableProjectFrameOptions(final boolean useProjectFrame) {
+    showProjectTitleCheckbox.setEnabled(useProjectFrame);
+    showIconCheckbox.setEnabled(useProjectFrame);
+    useCustomTextCheckbox.setEnabled(useProjectFrame);
+  }
   //endregion
 
   //region Events - Actions Listeners
