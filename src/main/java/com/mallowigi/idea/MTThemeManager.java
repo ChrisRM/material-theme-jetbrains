@@ -61,9 +61,9 @@ import com.mallowigi.idea.themes.MTThemes;
 import com.mallowigi.idea.themes.lists.AccentResources;
 import com.mallowigi.idea.themes.lists.FontResources;
 import com.mallowigi.idea.themes.models.MTThemeable;
-import com.mallowigi.idea.utils.MTChangeLAFAnimator;
 import com.mallowigi.idea.utils.MTUI;
 import com.mallowigi.idea.utils.MTUiUtils;
+import com.mallowigi.idea.utils.animator.MTChangeLafService;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import sun.awt.AppContext;
@@ -398,14 +398,14 @@ public final class MTThemeManager implements Disposable {
     final UIManager.LookAndFeelInfo lafInfo = ContainerUtil.find(lafManager.getInstalledLookAndFeels(),
       lookAndFeelInfo -> lookAndFeelInfo.getName().equals(selectedTheme.getThemeName()));
 
-    MTChangeLAFAnimator.showSnapshot();
+    MTChangeLafService.showSnapshot();
     if (lafInfo != null) {
       lafManager.setCurrentLookAndFeel(lafInfo);
     } else {
       // good ol' shit
       activate(selectedTheme);
     }
-    SwingUtilities.invokeLater(MTChangeLAFAnimator::hideSnapshotWithAnimation);
+    SwingUtilities.invokeLater(MTChangeLafService::hideSnapshotWithAnimation);
 
   }
 

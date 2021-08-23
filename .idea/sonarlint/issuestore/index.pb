@@ -247,8 +247,6 @@ Nsrc/main/java/com/mallowigi/idea/tabs/highlights/DefaultHighlightTabPainter.kt
 Msrc/main/java/com/mallowigi/idea/tabs/highlights/BottomHighlightTabPainter.kt,5/3/53da3d1c70b78d2031fa7a4eed7edbf5d345b115
 w
 Gsrc/main/java/com/mallowigi/idea/tabs/highlights/HighlightTabPainter.kt,d/4/d4f2b8d81f25e07dc7f67a2b2d7d06cb72ffad08
-o
-?src/main/java/com/mallowigi/idea/utils/MTChangeLAFAnimator.java,3/6/36528331280e0ece3e675ab77c214467fa56d42a
 q
 Asrc/main/java/com/mallowigi/idea/tabs/shadow/NoneShadowPainter.kt,3/3/33a1f2b1b4bf7091bc7575bc3ea143e746d1f71d
 m
