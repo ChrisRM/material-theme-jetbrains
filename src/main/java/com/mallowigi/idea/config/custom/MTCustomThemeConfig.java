@@ -36,7 +36,7 @@ import com.intellij.util.xmlb.annotations.Property;
 import com.mallowigi.idea.config.MTBaseConfig;
 import com.mallowigi.idea.config.ui.MTCustomThemeForm;
 import com.mallowigi.idea.config.ui.MTForm;
-import com.mallowigi.idea.listeners.CustomConfigNotifier;
+import com.mallowigi.idea.listeners.MTTopics;
 import com.mallowigi.idea.themes.models.MTBundledTheme;
 import com.mallowigi.idea.themes.models.MTDarkBundledTheme;
 import com.mallowigi.idea.themes.models.MTThemeable;
@@ -173,7 +173,7 @@ public final class MTCustomThemeConfig implements PersistentStateComponent<MTCus
   @Override
   public void fireChanged() {
     ApplicationManager.getApplication().getMessageBus()
-                      .syncPublisher(CustomConfigNotifier.CONFIG_TOPIC)
+                      .syncPublisher(MTTopics.CUSTOM_THEME)
                       .customConfigChanged(this);
   }
 

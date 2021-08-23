@@ -79,7 +79,7 @@ final class MTStatusWidget implements CustomStatusBarWidget {
   public void install(@NotNull final StatusBar statusBar) {
     connect.subscribe(MTTopics.THEMES, theme -> refresh());
     connect.subscribe(MTTopics.ACCENTS, accentColor -> refresh());
-    connect.subscribe(ConfigNotifier.CONFIG_TOPIC, new ConfigNotifier() {
+    connect.subscribe(MTTopics.CONFIG, new ConfigNotifier() {
       @Override
       public void configChanged(final MTConfig mtConfig) {
         refresh();

@@ -42,7 +42,7 @@ import com.mallowigi.idea.config.MTBaseConfig;
 import com.mallowigi.idea.config.enums.IndicatorStyles;
 import com.mallowigi.idea.config.enums.TabHighlightPositions;
 import com.mallowigi.idea.config.ui.MTForm;
-import com.mallowigi.idea.listeners.ConfigNotifier;
+import com.mallowigi.idea.listeners.MTTopics;
 import com.mallowigi.idea.messages.MaterialThemeBundle;
 import com.mallowigi.idea.themes.MTThemeFacade;
 import com.mallowigi.idea.themes.MTThemes;
@@ -302,7 +302,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   @Override
   public void fireBeforeChanged(final MTForm form) {
     ApplicationManager.getApplication().getMessageBus()
-                      .syncPublisher(ConfigNotifier.CONFIG_TOPIC)
+                      .syncPublisher(MTTopics.CONFIG)
                       .beforeConfigChanged(this, form);
   }
 
@@ -312,7 +312,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   @Override
   public void fireChanged() {
     ApplicationManager.getApplication().getMessageBus()
-                      .syncPublisher(ConfigNotifier.CONFIG_TOPIC)
+                      .syncPublisher(MTTopics.CONFIG)
                       .configChanged(this);
   }
 

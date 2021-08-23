@@ -41,7 +41,7 @@ import com.mallowigi.idea.config.application.MTConfig;
 import com.mallowigi.idea.config.ui.MTForm;
 import com.mallowigi.idea.lafs.MTLafInstaller;
 import com.mallowigi.idea.listeners.ConfigNotifier;
-import com.mallowigi.idea.listeners.CustomConfigNotifier;
+import com.mallowigi.idea.listeners.MTTopics;
 import com.mallowigi.idea.messages.MaterialThemeBundle;
 import com.mallowigi.idea.themes.MTThemes;
 import com.mallowigi.idea.ui.MTButtonUI;
@@ -124,7 +124,7 @@ public final class MTLafComponent implements AppLifecycleListener {
 
     // Listen for changes on the settings
     final MessageBusConnection connect = ApplicationManager.getApplication().getMessageBus().connect();
-    connect.subscribe(ConfigNotifier.CONFIG_TOPIC, new ConfigNotifier() {
+    connect.subscribe(MTTopics.CONFIG, new ConfigNotifier() {
       @Override
       public void configChanged(final MTConfig mtConfig) {
         onSettingsChanged();
@@ -135,7 +135,7 @@ public final class MTLafComponent implements AppLifecycleListener {
         onBeforeSettingsChanged(mtConfig, form);
       }
     });
-    connect.subscribe(CustomConfigNotifier.CONFIG_TOPIC, mtCustomThemeConfig -> activateCustomTheme());
+    connect.subscribe(MTTopics.CUSTOM_THEME, mtCustomThemeConfig -> activateCustomTheme());
     connect.subscribe(LafManagerListener.TOPIC, this::lookAndFeelChanged);
 
     patchTree();

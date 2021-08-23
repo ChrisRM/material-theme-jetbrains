@@ -49,6 +49,8 @@ import com.intellij.util.ui.UIUtil;
 import com.mallowigi.idea.config.application.MTConfig;
 import com.mallowigi.idea.config.project.MTProjectConfig;
 import com.mallowigi.idea.listeners.ConfigNotifier;
+import com.mallowigi.idea.listeners.MTTopics;
+import com.mallowigi.idea.listeners.ProjectConfigNotifier;
 import com.mallowigi.idea.utils.MTUiUtils;
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
@@ -97,12 +99,13 @@ public final class MTTabsPainterPatcherComponent implements StartupActivity.Back
         }
       }
     });
-    connect.subscribe(ConfigNotifier.CONFIG_TOPIC, new ConfigNotifier() {
+    connect.subscribe(MTTopics.CONFIG, new ConfigNotifier() {
       @Override
       public void configChanged(final MTConfig mtConfig) {
         ApplicationManager.getApplication().invokeAndWait(() -> resetTabsBoldness(project), ModalityState.NON_MODAL);
       }
-
+    });
+    connect.subscribe(MTTopics.PROJECT_CONFIG, new ProjectConfigNotifier() {
       @Override
       public void projectConfigChanged(final MTProjectConfig mtConfig) {
         ApplicationManager.getApplication().invokeAndWait(() -> resetTabsBoldness(project), ModalityState.NON_MODAL);

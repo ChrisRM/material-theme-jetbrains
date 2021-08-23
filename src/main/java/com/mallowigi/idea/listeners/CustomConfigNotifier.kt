@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,34 +23,10 @@
  *
  *
  */
+package com.mallowigi.idea.listeners
 
-package com.mallowigi.idea.listeners;
+import com.mallowigi.idea.config.MTBaseConfig
 
-import com.mallowigi.idea.config.MTBaseConfig;
-import com.intellij.util.messages.Topic;
-
-/**
- * Configuration Save Events
- */
-@FunctionalInterface
-public interface CustomConfigNotifier {
-  /**
-   * Topic for Material Theme Settings changes
-   */
-  Topic<CustomConfigNotifier> CONFIG_TOPIC = Topic.create("Material Theme Custom Theme Config save", CustomConfigNotifier.class);
-
-  /**
-   * Triggered when the custom theme config is changed
-   */
-  void customConfigChanged(MTBaseConfig mtBaseConfig);
-
-  @SuppressWarnings({"InnerClassOfInterface",
-      "PublicInnerClass"})
-  class Adapter implements CustomConfigNotifier {
-
-    @Override
-    public void customConfigChanged(final MTBaseConfig mtBaseConfig) {
-
-    }
-  }
+fun interface CustomConfigNotifier {
+  fun customConfigChanged(mtBaseConfig: MTBaseConfig<*, *>?): Unit
 }

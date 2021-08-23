@@ -23,52 +23,13 @@
  *
  *
  */
+package com.mallowigi.idea.listeners
 
-package com.mallowigi.idea.listeners;
+import com.mallowigi.idea.config.application.MTConfig
+import com.mallowigi.idea.config.ui.MTForm
 
-import com.intellij.util.messages.Topic;
-import com.mallowigi.idea.config.application.MTConfig;
-import com.mallowigi.idea.config.project.MTProjectConfig;
-import com.mallowigi.idea.config.ui.MTForm;
-import com.mallowigi.idea.config.ui.MTProjectForm;
+interface ConfigNotifier {
+  fun configChanged(mtConfig: MTConfig?): Unit = Unit
 
-/**
- * Configuration Save Events
- */
-public interface ConfigNotifier {
-  /**
-   * Topic for Material Theme Settings changes
-   */
-  Topic<ConfigNotifier> CONFIG_TOPIC = Topic.create("Material Theme Config save", ConfigNotifier.class);
-
-  /**
-   * Called when config is changed
-   *
-   * @param mtConfig configuration
-   */
-  default void configChanged(final MTConfig mtConfig) {
-
-  }
-
-  default void projectConfigChanged(final MTProjectConfig mtConfig) {
-
-  }
-
-  /**
-   * Called before config is changed
-   *
-   * @param mtConfig configuration
-   * @param form     form values
-   */
-  default void beforeConfigChanged(final MTConfig mtConfig, final MTForm form) {
-
-  }
-
-  default void beforeProjectConfigChanged(final MTProjectConfig mtConfig, final MTProjectForm form) {
-  }
-
-  @SuppressWarnings({"InnerClassOfInterface",
-    "PublicInnerClass"})
-  class Adapter implements ConfigNotifier {
-  }
+  fun beforeConfigChanged(mtConfig: MTConfig?, form: MTForm?): Unit = Unit
 }

@@ -42,7 +42,7 @@ import com.mallowigi.idea.config.enums.IndicatorStyles;
 import com.mallowigi.idea.config.enums.TabHighlightPositions;
 import com.mallowigi.idea.config.ui.MTForm;
 import com.mallowigi.idea.config.ui.MTProjectForm;
-import com.mallowigi.idea.listeners.ConfigNotifier;
+import com.mallowigi.idea.listeners.MTTopics;
 import com.mallowigi.idea.utils.MTUiUtils;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
@@ -143,14 +143,14 @@ public final class MTProjectConfig implements PersistentStateComponent<MTProject
   @Override
   public void fireBeforeChanged(final MTProjectForm form) {
     ApplicationManager.getApplication().getMessageBus()
-                      .syncPublisher(ConfigNotifier.CONFIG_TOPIC)
+                      .syncPublisher(MTTopics.PROJECT_CONFIG)
                       .beforeProjectConfigChanged(this, form);
   }
 
   @Override
   public void fireChanged() {
     ApplicationManager.getApplication().getMessageBus()
-                      .syncPublisher(ConfigNotifier.CONFIG_TOPIC)
+                      .syncPublisher(MTTopics.PROJECT_CONFIG)
                       .projectConfigChanged(this);
   }
 

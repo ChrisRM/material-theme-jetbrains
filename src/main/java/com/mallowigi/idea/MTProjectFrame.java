@@ -43,6 +43,8 @@ import com.intellij.util.ui.JBUI;
 import com.mallowigi.idea.config.application.MTConfig;
 import com.mallowigi.idea.config.project.MTProjectConfig;
 import com.mallowigi.idea.listeners.ConfigNotifier;
+import com.mallowigi.idea.listeners.MTTopics;
+import com.mallowigi.idea.listeners.ProjectConfigNotifier;
 import com.mallowigi.idea.utils.MTUI;
 import com.mallowigi.idea.utils.MTUiUtils;
 import org.jetbrains.annotations.NonNls;
@@ -70,12 +72,13 @@ public final class MTProjectFrame extends IdeRootPaneNorthExtension implements D
     myProject = project;
 
     connect = myProject.getMessageBus().connect();
-    connect.subscribe(ConfigNotifier.CONFIG_TOPIC, new ConfigNotifier() {
+    connect.subscribe(MTTopics.CONFIG, new ConfigNotifier() {
       @Override
       public void configChanged(final MTConfig mtConfig) {
         addFrame(shouldShowProjectFrame());
       }
-
+    });
+    connect.subscribe(MTTopics.PROJECT_CONFIG, new ProjectConfigNotifier() {
       @Override
       public void projectConfigChanged(final MTProjectConfig mtConfig) {
         addFrame(shouldShowProjectFrame());

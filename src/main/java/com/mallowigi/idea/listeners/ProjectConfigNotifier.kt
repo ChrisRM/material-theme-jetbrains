@@ -25,38 +25,11 @@
  */
 package com.mallowigi.idea.listeners
 
-import com.intellij.util.messages.Topic
+import com.mallowigi.idea.config.project.MTProjectConfig
+import com.mallowigi.idea.config.ui.MTProjectForm
 
-/**
- * Configuration Save Events
- */
-enum class MTTopics {
-  DEFAULT;
+interface ProjectConfigNotifier {
+  fun projectConfigChanged(mtConfig: MTProjectConfig?): Unit = Unit
 
-  companion object {
-    @Topic.AppLevel
-    @Topic.ProjectLevel
-    @JvmField
-    val CONFIG: Topic<ConfigNotifier> = Topic.create("Material Theme Config save", ConfigNotifier::class.java)
-
-    @Topic.AppLevel
-    @Topic.ProjectLevel
-    @JvmField
-    val PROJECT_CONFIG: Topic<ProjectConfigNotifier> =
-      Topic.create("Material Theme Project Config save", ProjectConfigNotifier::class.java)
-
-
-    @Topic.AppLevel
-    @JvmField
-    val CUSTOM_THEME: Topic<CustomConfigNotifier> =
-      Topic.create("Material Theme Custom Theme Config save", CustomConfigNotifier::class.java)
-
-    @Topic.AppLevel
-    @JvmField
-    val ACCENTS: Topic<AccentsListener> = Topic.create("Accents Changes", AccentsListener::class.java)
-
-    @Topic.AppLevel
-    @JvmField
-    val THEMES: Topic<ThemeListener> = Topic.create("Theme Changes", ThemeListener::class.java)
-  }
+  fun beforeProjectConfigChanged(mtConfig: MTProjectConfig?, form: MTProjectForm?): Unit = Unit
 }
