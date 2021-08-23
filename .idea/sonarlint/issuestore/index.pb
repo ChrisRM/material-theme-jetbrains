@@ -9,8 +9,6 @@ T
 $src/main/resources/colors/Github.xml,4/7/47cd1f49494e942ba7343389685f4284568cf673
 h
 8src/main/java/com/mallowigi/idea/ui/MTOnOffButtonUI.java,e/7/e7828eb36056f75e6d672c682c240b8530568a83
-l
-<src/main/java/com/mallowigi/idea/MTBundledThemesManager.java,b/6/b61b7729e0c06e2d3f2eb2dbb435740d30bc0765
 d
 4src/main/java/com/mallowigi/idea/ui/MTSpinnerUI.java,f/1/f11bcaad2ab41d2935426112cddf462ca6432d2f
 f
@@ -275,8 +273,6 @@ c
 3src/main/java/com/mallowigi/idea/config/MTHome.java,3/5/350196f757983933dfdaf3070e77b9187b69cfa7
 l
 <src/main/java/com/mallowigi/idea/config/ui/MTProjectForm.jfd,0/a/0a2647628da56092a5cf8972c614358fcde12b37
-x
-Hsrc/main/java/com/mallowigi/idea/tabs/MTTabsPainterPatcherComponent.java,2/c/2c4fbb6ff7eeefbb70517aeed5650443a6f8a5f3
 h
 8src/main/java/com/mallowigi/idea/tabs/MTTabsPainter.java,1/1/113aa62ea471d6491b84f0342e909729f023202f
 o

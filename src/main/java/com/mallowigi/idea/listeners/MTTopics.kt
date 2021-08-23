@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,20 +23,23 @@
  *
  *
  */
+package com.mallowigi.idea.listeners
 
-package com.mallowigi.idea.listeners;
-
-import com.intellij.util.messages.Topic;
+import com.intellij.util.messages.Topic
 
 /**
  * Configuration Save Events
  */
-public enum MTTopics {
+enum class MTTopics {
   DEFAULT;
-  /**
-   * Topic for Material Theme Settings changes
-   */
-  public static final Topic<AccentsListener> ACCENTS = Topic.create("Accents Changes", AccentsListener.class);
-  public static final Topic<ThemeListener> THEMES = Topic.create("Theme Changes", ThemeListener.class);
 
+  companion object {
+    @Topic.AppLevel
+    @JvmField
+    val ACCENTS: Topic<AccentsListener> = Topic.create("Accents Changes", AccentsListener::class.java)
+
+    @Topic.AppLevel
+    @JvmField
+    val THEMES: Topic<ThemeListener> = Topic.create("Theme Changes", ThemeListener::class.java)
+  }
 }

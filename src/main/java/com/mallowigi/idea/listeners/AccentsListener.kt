@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,16 +23,11 @@
  *
  *
  */
+package com.mallowigi.idea.listeners
 
-package com.mallowigi.idea.listeners;
+import java.awt.Color
+import java.util.EventListener
 
-import org.jetbrains.annotations.NotNull;
-
-import java.awt.*;
-import java.util.EventListener;
-
-public interface AccentsListener extends EventListener {
-  default void accentChanged(@NotNull final Color accentColor) {
-
-  }
+fun interface AccentsListener : EventListener {
+  fun accentChanged(accentColor: Color)
 }

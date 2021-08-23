@@ -23,42 +23,29 @@
  *
  *
  */
+package com.mallowigi.idea.help
 
-package com.mallowigi.idea.help;
+import com.intellij.openapi.help.WebHelpProvider
+import com.mallowigi.idea.MTAnalytics
+import com.mallowigi.idea.MTAnalytics.Companion.instance
+import com.mallowigi.idea.config.custom.MTCustomThemeConfigurable
+import com.mallowigi.idea.utils.MTUiUtils
+import org.jetbrains.annotations.NonNls
 
-import com.intellij.openapi.help.WebHelpProvider;
-import com.mallowigi.idea.MTAnalytics;
-import com.mallowigi.idea.config.application.MTConfigurable;
-import com.mallowigi.idea.config.custom.MTCustomThemeConfigurable;
-import com.mallowigi.idea.utils.MTUiUtils;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+/**
+ * Redirects help to support site
+ *
+ */
+class MTHelpProvider : WebHelpProvider() {
+  override fun getHelpPageUrl(helpTopicId: @NonNls String): @NonNls String {
+    val unprefixedTopicId = helpTopicId.replace("$helpTopicPrefix.", "")
+    instance.track(MTAnalytics.HELP)
 
-@SuppressWarnings({"MethodWithMultipleReturnPoints",
-  "SwitchStatement"})
-public final class MTHelpProvider extends WebHelpProvider {
-
-  @NonNls
-  @Nullable
-  @Override
-  public String getHelpPageUrl(@NonNls @NotNull final String helpTopicId) {
-    final String unprefixedTopicId = helpTopicId.replace(getHelpTopicPrefix() + ".", "");
-    MTAnalytics.getInstance().track(MTAnalytics.HELP);
-
-    switch (unprefixedTopicId) {
-      case MTConfigurable.HELP_ID:
-        return MTUiUtils.DOCS_URL + "docs/getting-started/";
-      case MTCustomThemeConfigurable.HELP_ID:
-        return MTUiUtils.DOCS_URL + "docs/configuration/custom-themes/";
-      default:
-        return null;
+    return when (unprefixedTopicId) {
+      MTCustomThemeConfigurable.HELP_ID -> "${MTUiUtils.DOCS_URL}docs/configuration/custom-themes/"
+      else -> "${MTUiUtils.DOCS_URL}docs/getting-started/"
     }
   }
 
-  @NotNull
-  @Override
-  public String getHelpTopicPrefix() {
-    return MTUiUtils.HELP_PREFIX;
-  }
+  override fun getHelpTopicPrefix(): String = MTUiUtils.HELP_PREFIX
 }

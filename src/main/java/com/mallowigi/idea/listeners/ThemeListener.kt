@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,16 +23,11 @@
  *
  *
  */
+package com.mallowigi.idea.listeners
 
-package com.mallowigi.idea.listeners;
+import com.mallowigi.idea.themes.MTThemeFacade
+import java.util.EventListener
 
-import com.mallowigi.idea.themes.MTThemeFacade;
-import org.jetbrains.annotations.NotNull;
-
-import java.util.EventListener;
-
-public interface ThemeListener extends EventListener {
-  default void themeChanged(@NotNull final MTThemeFacade theme) {
-
-  }
+fun interface ThemeListener : EventListener {
+  fun themeChanged(theme: MTThemeFacade)
 }

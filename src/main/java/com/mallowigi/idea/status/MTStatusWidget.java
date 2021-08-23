@@ -35,12 +35,9 @@ import com.intellij.ui.ColorUtil;
 import com.intellij.util.messages.MessageBusConnection;
 import com.intellij.util.ui.*;
 import com.mallowigi.idea.config.application.MTConfig;
-import com.mallowigi.idea.listeners.AccentsListener;
 import com.mallowigi.idea.listeners.ConfigNotifier;
 import com.mallowigi.idea.listeners.MTTopics;
-import com.mallowigi.idea.listeners.ThemeListener;
 import com.mallowigi.idea.messages.MaterialThemeBundle;
-import com.mallowigi.idea.themes.MTThemeFacade;
 import com.mallowigi.idea.utils.MTUI;
 import com.mallowigi.idea.utils.MTUiUtils;
 import org.jetbrains.annotations.NonNls;
@@ -80,18 +77,8 @@ final class MTStatusWidget implements CustomStatusBarWidget {
 
   @Override
   public void install(@NotNull final StatusBar statusBar) {
-    connect.subscribe(MTTopics.THEMES, new ThemeListener() {
-      @Override
-      public void themeChanged(@NotNull final MTThemeFacade theme) {
-        refresh();
-      }
-    });
-    connect.subscribe(MTTopics.ACCENTS, new AccentsListener() {
-      @Override
-      public void accentChanged(@NotNull final Color accentColor) {
-        refresh();
-      }
-    });
+    connect.subscribe(MTTopics.THEMES, theme -> refresh());
+    connect.subscribe(MTTopics.ACCENTS, accentColor -> refresh());
     connect.subscribe(ConfigNotifier.CONFIG_TOPIC, new ConfigNotifier() {
       @Override
       public void configChanged(final MTConfig mtConfig) {
