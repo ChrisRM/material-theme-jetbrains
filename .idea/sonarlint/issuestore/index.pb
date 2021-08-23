@@ -297,8 +297,6 @@ c
 3src/main/java/com/mallowigi/idea/MTCloudProvider.kt,6/c/6cd725d1e9b7c199f3d7874fb82f7e9f058b8c0b
 w
 Gsrc/main/java/com/mallowigi/idea/wizard/steps/MTWizardContrastPanel.jfd,0/9/09e3f879fb3bc4550d4bc02655bff5ddc50af8aa
-m
-=src/main/java/com/mallowigi/idea/config/ui/MTProjectForm.java,d/0/d039777e981801cead67cedf577673054fd85b6a
 `
 0src/main/java/com/mallowigi/idea/UIReplacer.java,b/d/bd9386fc3c9ba438824d842299f427cbce957295
 C

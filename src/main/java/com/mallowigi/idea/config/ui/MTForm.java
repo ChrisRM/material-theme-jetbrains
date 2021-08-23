@@ -962,7 +962,7 @@ public class MTForm implements MTFormUI {
   }
 
   private void resetDefaultsButtonActionPerformed(final ActionEvent e) {
-    @NonNls final ResourceBundle bundle = ResourceBundle.getBundle(MaterialThemeBundle.BUNDLE);
+    @NonNls final ResourceBundle bundle = MaterialThemeBundle.getBundle();
 
     final int answer = Messages.showYesNoDialog(bundle.getString("MTForm.dialog.resetDefaults.consent"),
       bundle.getString("MTForm.resetDefaultsButton.text"),

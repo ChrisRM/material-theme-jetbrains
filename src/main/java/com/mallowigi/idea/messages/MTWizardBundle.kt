@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,28 +23,39 @@
  *
  *
  */
+package com.mallowigi.idea.messages
 
-package com.mallowigi.idea.messages;
+import com.intellij.DynamicBundle
+import org.jetbrains.annotations.NonNls
+import org.jetbrains.annotations.PropertyKey
+import java.util.ResourceBundle
+import java.util.function.Supplier
 
-import com.intellij.AbstractBundle;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.PropertyKey;
+@NonNls
+private const val BUNDLE: String = "messages.MTWizardBundle"
 
-/**
- * Messages Bundle for Material Theme
- */
-@SuppressWarnings("DuplicateStringLiteralInspection")
-public final class MTWizardBundle extends AbstractBundle {
-  @NonNls
-  private static final String BUNDLE = "messages.MTWizardBundle";
-  private static final MTWizardBundle INSTANCE = new MTWizardBundle();
+object MTWizardBundle : DynamicBundle(BUNDLE) {
+  @JvmStatic
+  fun getBundle(): ResourceBundle = ResourceBundle.getBundle(BUNDLE)
 
-  private MTWizardBundle() {
-    super(BUNDLE);
-  }
+  override fun messageOrDefault(
+    @PropertyKey(resourceBundle = BUNDLE) key: String,
+    defaultValue: String?,
+    vararg params: Any
+  ): String = messageOrDefault(ResourceBundle.getBundle(BUNDLE), key, defaultValue, *params)
 
-  public static String message(@NotNull @PropertyKey(resourceBundle = BUNDLE) final String key, @NotNull final Object... params) {
-    return INSTANCE.getMessage(key, params);
-  }
+
+  @JvmStatic
+  fun message(@PropertyKey(resourceBundle = BUNDLE) key: String, vararg params: Any): String =
+    getMessage(key, *params)
+
+  @JvmStatic
+  fun messageWithPrefix(@PropertyKey(resourceBundle = BUNDLE) key: String, prefix: String): String =
+    message("$prefix.$key")
+
+  @JvmStatic
+  fun messagePointer(
+    @PropertyKey(resourceBundle = BUNDLE) key: String,
+    vararg params: Any
+  ): Supplier<String> = getLazyMessage(key, *params)
 }

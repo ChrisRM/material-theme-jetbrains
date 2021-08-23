@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,31 +23,38 @@
  *
  *
  */
+package com.mallowigi.idea.messages
 
-package com.mallowigi.idea.messages;
+import com.intellij.DynamicBundle
+import org.jetbrains.annotations.NonNls
+import org.jetbrains.annotations.PropertyKey
+import java.util.ResourceBundle
+import java.util.function.Supplier
 
-import com.intellij.AbstractBundle;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.PropertyKey;
+@NonNls
+private const val BUNDLE: String = "messages.ThemesBundle"
 
-/**
- * Messages Bundle for Material Theme
- */
-public final class ThemesBundle extends AbstractBundle {
-  @NonNls
-  private static final String BUNDLE = "messages.ThemesBundle";
-  private static final ThemesBundle INSTANCE = new ThemesBundle();
+object ThemesBundle : DynamicBundle(BUNDLE) {
+  @JvmStatic
+  fun getBundle(): ResourceBundle = ResourceBundle.getBundle(BUNDLE)
 
-  private ThemesBundle() {
-    super(BUNDLE);
-  }
+  override fun messageOrDefault(
+    @PropertyKey(resourceBundle = BUNDLE) key: String,
+    defaultValue: String?,
+    vararg params: Any
+  ): String = messageOrDefault(ResourceBundle.getBundle(BUNDLE), key, defaultValue, *params)
 
-  private static String message(@NotNull @PropertyKey(resourceBundle = BUNDLE) final String key, @NotNull final Object... params) {
-    return INSTANCE.getMessage(key, params);
-  }
+  @JvmStatic
+  private fun message(@PropertyKey(resourceBundle = BUNDLE) key: String, vararg params: Any): String =
+    getMessage(key, *params)
 
-  public static String messageWithPrefix(@NonNls final String key, final String prefix) {
-    return message(prefix + "." + key);
-  }
+  @JvmStatic
+  fun messageWithPrefix(@PropertyKey(resourceBundle = BUNDLE) key: @NonNls String, prefix: String): String =
+    message("$prefix.$key")
+
+  @JvmStatic
+  fun messagePointer(
+    @PropertyKey(resourceBundle = BUNDLE) key: String,
+    vararg params: Any
+  ): Supplier<String> = getLazyMessage(key, *params)
 }

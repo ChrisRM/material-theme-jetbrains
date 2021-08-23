@@ -23,31 +23,38 @@
  *
  *
  */
+package com.mallowigi.idea.messages
 
-package com.mallowigi.idea.messages;
+import com.intellij.DynamicBundle
+import org.jetbrains.annotations.NonNls
+import org.jetbrains.annotations.PropertyKey
+import java.util.ResourceBundle
+import java.util.function.Supplier
 
-import com.intellij.AbstractBundle;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.PropertyKey;
+@NonNls
+private const val BUNDLE: String = "messages.LanguageAdditionsBundle"
 
-/**
- * Messages Bundle for Material Theme
- */
-public final class LanguageAdditionsBundle extends AbstractBundle {
-  @NonNls
-  private static final String BUNDLE = "messages.LanguageAdditionsBundle";
-  private static final LanguageAdditionsBundle INSTANCE = new LanguageAdditionsBundle();
+object LanguageAdditionsBundle : DynamicBundle(BUNDLE) {
+  @JvmStatic
+  fun getBundle(): ResourceBundle = ResourceBundle.getBundle(BUNDLE)
+  
+  override fun messageOrDefault(
+    @PropertyKey(resourceBundle = BUNDLE) key: String,
+    defaultValue: String?,
+    vararg params: Any
+  ): String = messageOrDefault(ResourceBundle.getBundle(BUNDLE), key, defaultValue, *params)
 
-  private LanguageAdditionsBundle() {
-    super(BUNDLE);
-  }
+  @JvmStatic
+  fun message(@PropertyKey(resourceBundle = BUNDLE) key: String, vararg params: Any): String =
+    getMessage(key, *params)
 
-  public static String message(@NotNull @PropertyKey(resourceBundle = BUNDLE) final String key, @NotNull final Object... params) {
-    return INSTANCE.getMessage(key, params);
-  }
+  @JvmStatic
+  fun messageWithPrefix(@PropertyKey(resourceBundle = BUNDLE) key: String, prefix: String): String =
+    message("$prefix.$key")
 
-  public static String messageWithPrefix(@NonNls final String key, final String prefix) {
-    return message(prefix + "." + key);
-  }
+  @JvmStatic
+  fun messagePointer(
+    @PropertyKey(resourceBundle = BUNDLE) key: String,
+    vararg params: Any
+  ): Supplier<String> = getLazyMessage(key, *params)
 }
