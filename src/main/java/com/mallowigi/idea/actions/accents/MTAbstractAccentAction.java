@@ -35,8 +35,8 @@ import com.mallowigi.idea.MTThemeManager;
 import com.mallowigi.idea.UIReplacer;
 import com.mallowigi.idea.actions.MTToggleAction;
 import com.mallowigi.idea.config.application.MTConfig;
+import com.mallowigi.idea.themes.MTAccents;
 import com.mallowigi.idea.ui.indicators.MTSelectedTreeIndicatorImpl;
-import com.mallowigi.idea.utils.MTAccents;
 import org.jetbrains.annotations.NotNull;
 
 public abstract class MTAbstractAccentAction extends MTToggleAction implements DumbAware {

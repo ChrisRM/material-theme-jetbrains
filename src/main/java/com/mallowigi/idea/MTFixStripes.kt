@@ -23,44 +23,31 @@
  *
  *
  */
+package com.mallowigi.idea
 
-package com.mallowigi.idea;
-
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.project.ProjectManagerListener;
-import com.intellij.openapi.wm.WindowManager;
-import com.intellij.openapi.wm.impl.IdeRootPane;
-import com.intellij.openapi.wm.impl.ToolwindowToolbar;
-import com.intellij.openapi.wm.impl.WindowManagerImpl;
-import com.intellij.util.ui.UIUtil;
-import com.mallowigi.idea.config.application.MTConfig;
-import org.jetbrains.annotations.NotNull;
-
-import javax.swing.*;
-import java.util.List;
+import com.intellij.openapi.project.Project
+import com.intellij.openapi.project.ProjectManagerListener
+import com.intellij.openapi.wm.WindowManager
+import com.intellij.openapi.wm.impl.ToolwindowToolbar
+import com.intellij.openapi.wm.impl.WindowManagerImpl
+import com.intellij.util.ui.UIUtil
+import com.mallowigi.idea.config.application.MTConfig
+import javax.swing.JPanel
 
 /**
  * Temporary fix for the stripes feature to avoid having duplicates
  */
-@SuppressWarnings("UnstableApiUsage")
-public final class MTFixStripes implements ProjectManagerListener {
+class MTFixStripes : ProjectManagerListener {
+  override fun projectClosing(project: Project) {
+    if (!MTConfig.getInstance().isStripedToolWindowsEnabled) return
 
-  @Override
-  public void projectClosing(@NotNull final Project project) {
-    if (!MTConfig.getInstance().isStripedToolWindowsEnabled()) {
-      return;
-    }
-    final IdeRootPane ideRootPane = ((WindowManagerImpl) WindowManager.getInstance()).getProjectFrameRootPane(project);
-    final java.util.List<ToolwindowToolbar> toolbars = UIUtil.findComponentsOfType(ideRootPane, ToolwindowToolbar.class);
-
-    for (final ToolwindowToolbar toolbar : toolbars) {
-      final List<JPanel> panes = UIUtil.findComponentsOfType(toolbar, JPanel.class);
-      for (final JPanel pane : panes) {
-        if (pane.getLayout().toString().contains("VerticalFlowLayout")) {
-          pane.removeAll();
-        }
+    val ideRootPane = (WindowManager.getInstance() as WindowManagerImpl).getProjectFrameRootPane(project)
+    val toolbars = UIUtil.findComponentsOfType(ideRootPane, ToolwindowToolbar::class.java)
+    for (toolbar in toolbars) {
+      val panes = UIUtil.findComponentsOfType(toolbar, JPanel::class.java)
+      for (pane in panes) {
+        if (pane.layout.toString().contains("VerticalFlowLayout")) pane.removeAll()
       }
     }
   }
-
 }

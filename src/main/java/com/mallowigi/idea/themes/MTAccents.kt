@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,62 +23,50 @@
  *
  *
  */
+package com.mallowigi.idea.themes
 
-package com.mallowigi.idea.utils;
+import com.intellij.ui.ColorUtil
+import java.awt.Color
+import javax.swing.plaf.ColorUIResource
 
-import com.intellij.ui.ColorUtil;
-import org.jetbrains.annotations.NonNls;
+enum class MTAccents(private val colorUIResource: ColorUIResource) {
+  ACID_LIME(ColorUIResource(0xc6ff00)),
+  AMETHYST(ColorUIResource(0xab47bc)),
+  AMBER(ColorUIResource(0xFFC107)),
+  AQUAMARINE(ColorUIResource(0x64ffda)),
+  ABYSS(ColorUIResource(0x0F111A)),
+  BREAKING_BAD(ColorUIResource(0x388e3c)),
+  BRICK(ColorUIResource(0xe57373)),
+  CARBON(ColorUIResource(0x424242)),
+  COFFEE(ColorUIResource(0x795548)),
+  CYAN(ColorUIResource(0x00bcd4)),
+  DAISY(ColorUIResource(0xFFEB3B)),
+  DODGER_BLUE(ColorUIResource(0x2979ff)),
+  FUCHSIA(ColorUIResource(0xE91E63)),
+  GRAPHITE(ColorUIResource(0x616161)),
+  INDIGO(ColorUIResource(0x3F51B5)),
+  LAVENDER(ColorUIResource(0x7E57C2)),
+  LIGHT(ColorUIResource(0xFAFAFA)),
+  LIME(ColorUIResource(0x7CB342)),
+  NEON(ColorUIResource(0x1DE9B6)),
+  OCEANIC(ColorUIResource(0x546E7A)),
+  ORANGE(ColorUIResource(0xFF9800)),
+  PALENIGHT(ColorUIResource(0x676E95)),
+  PLANT(ColorUIResource(0x81C784)),
+  POMEGRANATE(ColorUIResource(0xB71C1C)),
+  SILVER(ColorUIResource(0x9E9E9E)),
+  SKY(ColorUIResource(0x84ffff)),
+  SLATE(ColorUIResource(0x607D8B)),
+  STRAWBERRY(ColorUIResource(0xff4081)),
+  TEAL(ColorUIResource(0x009688)),
+  TOMATO(ColorUIResource(0xF44336)),
+  TURQUOISE(ColorUIResource(0x80CBC4)),
+  WATER(ColorUIResource(0x42A5F5)),
+  ATOMIC_PURPLE(ColorUIResource(0x651FFF));
 
-import javax.swing.plaf.*;
-import java.awt.*;
-
-public enum MTAccents {
-  @NonNls
-  ACID_LIME(new ColorUIResource(0xc6ff00)),
-  AMETHYST(new ColorUIResource(0xab47bc)),
-  AMBER(new ColorUIResource(0xFFC107)),
-  AQUAMARINE(new ColorUIResource(0x64ffda)),
-  ABYSS(new ColorUIResource(0x0F111A)),
-  BREAKING_BAD(new ColorUIResource(0x388e3c)),
-  BRICK(new ColorUIResource(0xe57373)),
-  CARBON(new ColorUIResource(0x424242)),
-  COFFEE(new ColorUIResource(0x795548)),
-  CYAN(new ColorUIResource(0x00bcd4)),
-  DAISY(new ColorUIResource(0xFFEB3B)),
-  DODGER_BLUE(new ColorUIResource(0x2979ff)),
-  FUCHSIA(new ColorUIResource(0xE91E63)),
-  GRAPHITE(new ColorUIResource(0x616161)),
-  INDIGO(new ColorUIResource(0x3F51B5)),
-  LAVENDER(new ColorUIResource(0x7E57C2)),
-  LIGHT(new ColorUIResource(0xFAFAFA)),
-  LIME(new ColorUIResource(0x7CB342)),
-  NEON(new ColorUIResource(0x1DE9B6)),
-  OCEANIC(new ColorUIResource(0x546E7A)),
-  ORANGE(new ColorUIResource(0xFF9800)),
-  PALENIGHT(new ColorUIResource(0x676E95)),
-  PLANT(new ColorUIResource(0x81C784)),
-  POMEGRANATE(new ColorUIResource(0xB71C1C)),
-  SILVER(new ColorUIResource(0x9E9E9E)),
-  SKY(new ColorUIResource(0x84ffff)),
-  SLATE(new ColorUIResource(0x607D8B)),
-  STRAWBERRY(new ColorUIResource(0xff4081)),
-  TEAL(new ColorUIResource(0x009688)),
-  TOMATO(new ColorUIResource(0xF44336)),
-  TURQUOISE(new ColorUIResource(0x80CBC4)),
-  WATER(new ColorUIResource(0x42A5F5)),
-  ATOMIC_PURPLE(new ColorUIResource(0x651FFF));
-
-  private final ColorUIResource colorUIResource;
-
-  MTAccents(final ColorUIResource colorUIResource) {
-    this.colorUIResource = colorUIResource;
-  }
-
-  public String getHexColor() {
-    return ColorUtil.toHex(colorUIResource);
-  }
-
-  public Color getColor() {
-    return colorUIResource;
-  }
+  val hexColor: String
+    get() = ColorUtil.toHex(colorUIResource)
+  
+  val color: Color
+    get() = colorUIResource
 }

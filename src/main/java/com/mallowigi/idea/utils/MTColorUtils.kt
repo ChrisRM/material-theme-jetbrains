@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,86 +23,78 @@
  *
  *
  */
+package com.mallowigi.idea.utils
 
-package com.mallowigi.idea.utils;
-
-import com.intellij.ui.ColorUtil;
-import org.jetbrains.annotations.Nullable;
-
-import javax.swing.plaf.ColorUIResource;
-import java.awt.*;
+import com.intellij.ui.ColorUtil
+import java.awt.Color
+import javax.swing.plaf.ColorUIResource
 
 /**
  * Color Utils!
  */
-public enum MTColorUtils {
-  DEFAULT;
+object MTColorUtils {
+  private const val HC_FG_TONES = 4
+  private const val HC_BG_TONES = 2
 
-  private static final int HC_FG_TONES = 4;
-  private static final int HC_BG_TONES = 2;
-
-  @SuppressWarnings({"MethodWithMultipleReturnPoints",
-      "OverlyBroadCatchBlock"})
-  public static ColorUIResource parseColor(@Nullable final String value) {
-    if (value != null && value.length() == 8) {
-      final Color color = ColorUtil.fromHex(value.substring(0, 6));
-
+  @JvmStatic
+  fun parseColor(value: String?): ColorUIResource {
+    if (value != null && value.length == 8) {
+      val color = ColorUtil.fromHex(value.substring(0, 6))
       try {
-        final int alpha = Integer.parseInt(value.substring(6, 8), 16);
-        return new ColorUIResource(new Color(color.getRed(), color.getGreen(), color.getBlue(), alpha));
-      } catch (final Exception ignore) {
+        val alpha = value.substring(6, 8).toInt(16)
+        return ColorUIResource(Color(color.red, color.green, color.blue, alpha))
+      } catch (ignore: Exception) {
+        // ignored
       }
-
-      return new ColorUIResource(new Color(color.getRed(), color.getGreen(), color.getBlue(), 1));
+      return ColorUIResource(Color(color.red, color.green, color.blue, 1))
     }
 
-    final Color color = ColorUtil.fromHex(value, Color.GRAY);
-    return new ColorUIResource(new Color(color.getRed(), color.getGreen(), color.getBlue()));
+    val color = ColorUtil.fromHex(value, Color.GRAY)
+    return ColorUIResource(Color(color!!.red, color.green, color.blue))
   }
 
-  @SuppressWarnings("unused")
-  private static String contrastifyForeground(final boolean dark, final String colorString, final boolean isNotHighContrast) {
-    if (isNotHighContrast) {
-      return colorString;
-    }
+  @JvmStatic
+  private fun contrastifyForeground(dark: Boolean, colorString: String, isNotHighContrast: Boolean): String {
+    if (isNotHighContrast) return colorString
 
-    return dark ?
-           ColorUtil.toHex(ColorUtil.brighter(ColorUtil.fromHex(colorString), HC_FG_TONES)) :
-           ColorUtil.toHex(ColorUtil.darker(ColorUtil.fromHex(colorString), HC_FG_TONES));
+    return when {
+      dark -> ColorUtil.toHex(ColorUtil.brighter(ColorUtil.fromHex(colorString), HC_FG_TONES))
+      else -> ColorUtil.toHex(ColorUtil.darker(ColorUtil.fromHex(colorString), HC_FG_TONES))
+    }
   }
 
-  @SuppressWarnings("unused")
-  public static Color contrastifyForeground(final boolean isDark, final Color color, final boolean isNotHighContrast) {
-    if (isNotHighContrast) {
-      return color;
-    }
-    final int alpha = color.getAlpha() / 255;
+  @JvmStatic
+  fun contrastifyForeground(isDark: Boolean, color: Color, isNotHighContrast: Boolean): Color {
+    if (isNotHighContrast) return color
 
-    return ColorUtil.withAlpha(new ColorUIResource(isDark ?
-                                                   ColorUtil.brighter(color, HC_FG_TONES) :
-                                                   ColorUtil.darker(color, HC_FG_TONES)), alpha);
+    val alpha = color.alpha / 255
+    val contrastColor = when {
+      isDark -> ColorUtil.brighter(color, HC_FG_TONES)
+      else -> ColorUtil.darker(color, HC_FG_TONES)
+    }
+
+    return ColorUtil.withAlpha(ColorUIResource(contrastColor), alpha.toDouble())
   }
 
-  @SuppressWarnings("unused")
-  public static String contrastifyBackground(final boolean isDark, final String colorString, final boolean isNotHighContrast) {
-    if (isNotHighContrast) {
-      return colorString;
+  @JvmStatic
+  fun contrastifyBackground(isDark: Boolean, colorString: String, isNotHighContrast: Boolean): String {
+    if (isNotHighContrast) return colorString
+    val contrastColor = when {
+      isDark -> ColorUtil.toHex(ColorUtil.darker(ColorUtil.fromHex(colorString), HC_BG_TONES))
+      else -> ColorUtil.toHex(ColorUtil.brighter(ColorUtil.fromHex(colorString), HC_BG_TONES))
     }
-
-    return isDark ?
-           ColorUtil.toHex(ColorUtil.darker(ColorUtil.fromHex(colorString), HC_BG_TONES)) :
-           ColorUtil.toHex(ColorUtil.brighter(ColorUtil.fromHex(colorString), HC_BG_TONES));
+    return contrastColor
   }
 
-  @SuppressWarnings("unused")
-  public static Color contrastifyBackground(final boolean isDark, final ColorUIResource color, final boolean isNotHighContrast) {
-    if (isNotHighContrast) {
-      return color;
+  @JvmStatic
+  fun contrastifyBackground(isDark: Boolean, color: ColorUIResource, isNotHighContrast: Boolean): Color {
+    if (isNotHighContrast) return color
+    val alpha = color.alpha / 255
+    val contrastColor = when {
+      isDark -> ColorUtil.darker(color, HC_BG_TONES)
+      else -> ColorUtil.brighter(color, HC_BG_TONES)
     }
-    final int alpha = color.getAlpha() / 255;
 
-    return ColorUtil.withAlpha(new ColorUIResource(isDark ?
-                                                   ColorUtil.darker(color, HC_BG_TONES) :
-                                                   ColorUtil.brighter(color, HC_BG_TONES)), alpha);
+    return ColorUtil.withAlpha(ColorUIResource(contrastColor), alpha.toDouble())
   }
 }

@@ -289,8 +289,6 @@ c
 3src/main/java/com/mallowigi/idea/MTCloudProvider.kt,6/c/6cd725d1e9b7c199f3d7874fb82f7e9f058b8c0b
 w
 Gsrc/main/java/com/mallowigi/idea/wizard/steps/MTWizardContrastPanel.jfd,0/9/09e3f879fb3bc4550d4bc02655bff5ddc50af8aa
-`
-0src/main/java/com/mallowigi/idea/UIReplacer.java,b/d/bd9386fc3c9ba438824d842299f427cbce957295
 C
 docs/CHANGELOG.html,1/b/1b4553bcb50f1e0165501a112abf9d72d18fa46c
 p
@@ -299,5 +297,3 @@ k
 ;src/main/java/com/mallowigi/idea/ui/MTActionButtonLook.java,0/5/05a60f5a3a31abb1485b3a6a5a5250fc64bd6b7b
 x
 Hsrc/main/java/com/mallowigi/idea/wizard/steps/MTWizardContrastPanel.java,8/3/832b582830bf245917e2b6d93e4283616eac6236
-`
-0src/main/java/com/mallowigi/idea/utils/MTUI.java,4/a/4a2c200cc478d86141c03d1080dcf8e341a5d1c0
