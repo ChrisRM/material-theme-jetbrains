@@ -54,6 +54,6 @@ class MTRemoveWallpaperAction : AnAction() {
       MTUiUtils.openAppearanceSettings(project)
     )
 
-    MTAnalytics.getInstance().track(MTAnalytics.REMOVE_WALLPAPER)
+    MTAnalytics.instance.track(MTAnalytics.REMOVE_WALLPAPER)
   }
 }

@@ -23,208 +23,158 @@
  *
  *
  */
+package com.mallowigi.idea
 
-package com.mallowigi.idea;
+import com.intellij.openapi.application.ApplicationInfo
+import com.intellij.openapi.application.ApplicationManager
+import com.intellij.openapi.application.ApplicationNamesInfo
+import com.intellij.util.ObjectUtils
+import com.mallowigi.idea.MTAnalytics
+import com.mallowigi.idea.config.application.MTConfig
+import com.mallowigi.idea.messages.MaterialThemeBundle
+import com.mixpanel.mixpanelapi.ClientDelivery
+import com.mixpanel.mixpanelapi.MessageBuilder
+import com.mixpanel.mixpanelapi.MixpanelAPI
+import org.jetbrains.annotations.NonNls
+import org.json.JSONException
+import org.json.JSONObject
+import java.io.IOException
 
-import com.intellij.openapi.application.ApplicationInfo;
-import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.application.ApplicationNamesInfo;
-import com.intellij.util.ObjectUtils;
-import com.mallowigi.idea.config.application.MTConfig;
-import com.mallowigi.idea.messages.MaterialThemeBundle;
-import com.mixpanel.mixpanelapi.ClientDelivery;
-import com.mixpanel.mixpanelapi.MessageBuilder;
-import com.mixpanel.mixpanelapi.MixpanelAPI;
-import org.jetbrains.annotations.NonNls;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
-
-@SuppressWarnings({"WeakerAccess",
-  "StaticMethodOnlyUsedInOneClass"})
-public final class MTAnalytics {
-  @NonNls
-  public static final String CONFIG = "ConfigV2";
-  @NonNls
-  public static final String UPDATE_NOTIFICATION = "Notification";
-  @NonNls
-  public static final String RECOMMENDED_HEIGHT = "RecommendedTabHeight";
-  @NonNls
-  public static final String CHANGE_WALLPAPER = "ChangeWallpaper";
-  @NonNls
-  public static final String REMOVE_WALLPAPER = "RemoveWallpaper";
-  @NonNls
-  public static final String COMPACT_DROPDOWNS = "CompactDropdowns";
-  @NonNls
-  public static final String COMPACT_SIDEBAR = "CompactSidebar";
-  @NonNls
-  public static final String COMPACT_STATUSBAR = "CompactStatusBar";
-  @NonNls
-  public static final String COMPACT_MENUS = "CompactMenus";
-  @NonNls
-  public static final String SHOW_WIZARD = "ShowWizard";
-  @NonNls
-  public static final String CONTRAST_MODE = "ContrastMode";
-  @NonNls
-  public static final String HIGH_CONTRAST = "HighContrast";
-  @NonNls
-  public static final String MATERIAL_FONTS = "MaterialFonts";
-  @NonNls
-  public static final String OVERRIDE_ACCENT = "OverrideAccent";
-  @NonNls
-  public static final String COLORED_DIRS = "ColoredDirs";
-  @NonNls
-  public static final String LANGUAGE_ADDITIONS = "LanguageAdditions";
-  @NonNls
-  public static final String UPPERCASE_TABS = "UppercaseTabs";
-  @NonNls
-  public static final String ACCENT = "AccentColor";
-  @NonNls
-  public static final String ACCENT_MODE = "AccentMode";
-  @NonNls
-  public static final String INDICATOR_STYLE = "IndicatorStyle";
-  @NonNls
-  public static final String SELECT_THEME = "SelectTheme";
-  @NonNls
-  public static final String HELP = "Help";
-  @NonNls
-  public static final String COMPACT_TABLES = "CompactTables";
-  @NonNls
-  public static final String TAB_HIGHLIGHT_POSITION = "TabHighlightPosition";
-  @NonNls
-  public static final String MATERIAL_WALLPAPERS = "Material Wallpapers";
-  @NonNls
-  public static final String PROJECT_FRAME = "ProjectFrame";
-  @NonNls
-  public static final String STRIPED_TOOL_WINDOWS = "StripedToolWindows";
-  @NonNls
-  private static final String MIXPANEL_KEY = "mixpanelKey";
-  @NonNls
-  public static final String OUTLINE_BUTTONS = "OutlineButtons";
-  @NonNls
-  public static final String OVERLAYS = "Overlays";
-
-  private final MessageBuilder messageBuilder;
-  private final MixpanelAPI mixpanel;
-  private final String userId;
-  private boolean isOffline;
-
-  @SuppressWarnings("CallToSystemGetenv")
-  public MTAnalytics() {
-    messageBuilder = new MessageBuilder(ObjectUtils.notNull(System.getenv(MIXPANEL_KEY), MaterialThemeBundle.message("mixpanel.key")));
-    mixpanel = new MixpanelAPI();
-    userId = MTConfig.getInstance().getUserId();
-    isOffline = false;
-
-    ApplicationManager.getApplication().executeOnPooledThread(this::ping);
-  }
-
-  public static MTAnalytics getInstance() {
-    return ApplicationManager.getApplication().getService(MTAnalytics.class);
-  }
+class MTAnalytics {
+  private val messageBuilder: MessageBuilder =
+    MessageBuilder(ObjectUtils.notNull(System.getenv(MIXPANEL_KEY), MaterialThemeBundle.message("mixpanel.key")))
+  private val mixpanel: MixpanelAPI = MixpanelAPI()
+  private val userId: String = MTConfig.getInstance().userId
+  private var isOffline: Boolean
 
   /**
    * Initialize the MixPanel analytics
    */
-  void initAnalytics() {
-    identify();
+  fun initAnalytics() {
+    identify()
     try {
-      trackWithData(CONFIG, MTConfig.getInstance().asJson());
-    } catch (final JSONException e) {
-      e.printStackTrace();
+      trackWithData(CONFIG, MTConfig.getInstance().asJson())
+    } catch (e: JSONException) {
+      e.printStackTrace()
     }
   }
 
   /**
    * Track a random event
    */
-  public void track(final String event) {
-    if (MTConfig.getInstance().isDisallowDataCollection() || isOffline) {
-      return;
-    }
-
+  fun track(event: String?) {
+    if (MTConfig.getInstance().isDisallowDataCollection || isOffline) return
     try {
-      final JSONObject sentEvent = messageBuilder.event(userId, event, null);
-      final ClientDelivery delivery = new ClientDelivery();
-      delivery.addMessage(sentEvent);
-
-      mixpanel.deliver(delivery);
-
-    } catch (final IOException e) {
-      isOffline = true;
+      val sentEvent = messageBuilder.event(userId, event, null)
+      val delivery = ClientDelivery()
+      delivery.addMessage(sentEvent)
+      mixpanel.deliver(delivery)
+    } catch (e: IOException) {
+      isOffline = true
     }
   }
 
   /**
    * Track an event with data
    */
-  void trackWithData(final String event, final JSONObject props) {
-    if (MTConfig.getInstance().isDisallowDataCollection() || isOffline) {
-      return;
-    }
-
+  private fun trackWithData(event: String?, props: JSONObject?) {
+    if (MTConfig.getInstance().isDisallowDataCollection || isOffline) return
     try {
-      final JSONObject sentEvent = messageBuilder.event(userId, event, props);
-      final ClientDelivery delivery = new ClientDelivery();
-      delivery.addMessage(sentEvent);
-
-      mixpanel.deliver(delivery);
-
-    } catch (final IOException e) {
-      isOffline = true;
+      val sentEvent = messageBuilder.event(userId, event, props)
+      val delivery = ClientDelivery()
+      delivery.addMessage(sentEvent)
+      mixpanel.deliver(delivery)
+    } catch (e: IOException) {
+      isOffline = true
     }
   }
 
   /**
    * Track an event with a single value
    */
-  public void trackValue(final String event, final Object value) {
+  fun trackValue(event: String?, value: Any?) {
     try {
-      final JSONObject props = new JSONObject();
-      props.put(event, value);
-      trackWithData(event, props);
-    } catch (final JSONException e) {
-      isOffline = true;
+      val props = JSONObject()
+      props.put(event, value)
+      trackWithData(event, props)
+    } catch (e: JSONException) {
+      isOffline = true
     }
   }
 
   /**
    * Identify an user
    */
-  @SuppressWarnings({"FeatureEnvy",
-    "DuplicateStringLiteralInspection"})
-  private void identify() {
-    if (MTConfig.getInstance().isDisallowDataCollection() || isOffline) {
-      return;
-    }
+  private fun identify() {
+    if (MTConfig.getInstance().isDisallowDataCollection || isOffline) return
     try {
-      @NonNls final JSONObject props = new JSONObject();
-      props.put("IDE", ApplicationNamesInfo.getInstance().getFullProductName());
-      props.put("IDEVersion", ApplicationInfo.getInstance().getBuild().getBaselineVersion());
-      props.put("version", MTConfig.getInstance().getVersion());
-
-      final JSONObject update = messageBuilder.set(userId, props);
-      mixpanel.sendMessage(update);
-    } catch (final IOException | JSONException e) {
-      isOffline = true;
+      val props = JSONObject()
+      props.put("IDE", ApplicationNamesInfo.getInstance().fullProductName)
+      props.put("IDEVersion", ApplicationInfo.getInstance().build.baselineVersion)
+      props.put("version", MTConfig.getInstance().version)
+      val update = messageBuilder.set(userId, props)
+      mixpanel.sendMessage(update)
+    } catch (e: IOException) {
+      isOffline = true
+    } catch (e: JSONException) {
+      isOffline = true
     }
   }
 
   /**
    * Test connection
    */
-  private void ping() {
-    if (MTConfig.getInstance().isDisallowDataCollection() || isOffline) {
-      return;
-    }
-
+  private fun ping() {
+    if (MTConfig.getInstance().isDisallowDataCollection || isOffline) return
     try {
-      final JSONObject props = new JSONObject();
-      final JSONObject update = messageBuilder.set(userId, props);
-      mixpanel.sendMessage(update);
-    } catch (final IOException e) {
-      isOffline = true;
+      val props = JSONObject()
+      val update = messageBuilder.set(userId, props)
+      mixpanel.sendMessage(update)
+    } catch (e: IOException) {
+      isOffline = true
     }
+  }
+
+  companion object {
+    const val CONFIG: @NonNls String = "ConfigV2"
+    const val UPDATE_NOTIFICATION: @NonNls String = "Notification"
+    private const val MIXPANEL_KEY: @NonNls String = "mixpanelKey"
+
+    const val RECOMMENDED_HEIGHT: @NonNls String = "RecommendedTabHeight"
+    const val CHANGE_WALLPAPER: @NonNls String = "ChangeWallpaper"
+    const val REMOVE_WALLPAPER: @NonNls String = "RemoveWallpaper"
+    const val COMPACT_DROPDOWNS: @NonNls String = "CompactDropdowns"
+    const val COMPACT_SIDEBAR: @NonNls String = "CompactSidebar"
+    const val COMPACT_STATUSBAR: @NonNls String = "CompactStatusBar"
+    const val COMPACT_MENUS: @NonNls String = "CompactMenus"
+    const val SHOW_WIZARD: @NonNls String = "ShowWizard"
+    const val CONTRAST_MODE: @NonNls String = "ContrastMode"
+    const val HIGH_CONTRAST: @NonNls String = "HighContrast"
+    const val MATERIAL_FONTS: @NonNls String = "MaterialFonts"
+    const val OVERRIDE_ACCENT: @NonNls String = "OverrideAccent"
+    const val COLORED_DIRS: @NonNls String = "ColoredDirs"
+    const val LANGUAGE_ADDITIONS: @NonNls String = "LanguageAdditions"
+    const val UPPERCASE_TABS: @NonNls String = "UppercaseTabs"
+    const val ACCENT: @NonNls String = "AccentColor"
+    const val ACCENT_MODE: @NonNls String = "AccentMode"
+    const val INDICATOR_STYLE: @NonNls String = "IndicatorStyle"
+    const val SELECT_THEME: @NonNls String = "SelectTheme"
+    const val HELP: @NonNls String = "Help"
+    const val COMPACT_TABLES: @NonNls String = "CompactTables"
+    const val TAB_HIGHLIGHT_POSITION: @NonNls String = "TabHighlightPosition"
+    const val MATERIAL_WALLPAPERS: @NonNls String = "Material Wallpapers"
+    const val PROJECT_FRAME: @NonNls String = "ProjectFrame"
+    const val STRIPED_TOOL_WINDOWS: @NonNls String = "StripedToolWindows"
+    const val OUTLINE_BUTTONS: @NonNls String = "OutlineButtons"
+    const val OVERLAYS: @NonNls String = "Overlays"
+
+    @JvmStatic
+    val instance: MTAnalytics
+      get() = ApplicationManager.getApplication().getService(MTAnalytics::class.java)
+  }
+
+  init {
+    isOffline = false
+    ApplicationManager.getApplication().executeOnPooledThread { ping() }
   }
 }

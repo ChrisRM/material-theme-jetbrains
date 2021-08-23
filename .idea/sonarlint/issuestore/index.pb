@@ -229,8 +229,6 @@ l
 <src/main/java/com/mallowigi/idea/actions/MTToggleAction.java,5/4/5425c3370c4f4fbc462aebac592eb46d4180fb45
 q
 Asrc/main/java/com/mallowigi/idea/notifications/MTNotifications.kt,d/3/d330d8f0081a3382057ca079eedc99b73e9a9a36
-d
-4src/main/java/com/mallowigi/idea/MTLafComponent.java,1/0/100eb0734c9df86c3af729fc7bf8bb2734bc5dc3
 
 Qsrc/main/java/com/mallowigi/idea/tabs/highlights/BottomlessHighlightTabPainter.kt,2/b/2bc40a55646ff4fe52116497b67f194c0367586e
 €
@@ -271,8 +269,6 @@ l
 <src/main/java/com/mallowigi/idea/tabs/MTEditorUpperTabs.java,b/5/b5b2482307b1031f7ef0f4cfb064dc690e6481de
 o
 ?src/main/java/com/mallowigi/idea/tabs/MTTabsHighlightPainter.kt,f/0/f0fc1981bb18295e106ca750997050647dbae68c
-a
-1src/main/java/com/mallowigi/idea/MTAnalytics.java,2/4/242cc55c88c4ae1d1ce8a211e93bbf1f94a8e421
 m
 =src/main/java/com/mallowigi/idea/config/MTFileColorsPage.java,0/a/0a8107d1e4c37101c14265c320919b96a3714f00
 c
@@ -315,3 +311,13 @@ m
 0src/main/java/com/mallowigi/idea/UIReplacer.java,b/d/bd9386fc3c9ba438824d842299f427cbce957295
 C
 docs/CHANGELOG.html,1/b/1b4553bcb50f1e0165501a112abf9d72d18fa46c
+p
+@src/main/java/com/mallowigi/idea/themes/lists/AccentResources.kt,e/d/ed82e9147ac01f61d0fde4c3996ec8219e78db66
+k
+;src/main/java/com/mallowigi/idea/ui/MTActionButtonLook.java,0/5/05a60f5a3a31abb1485b3a6a5a5250fc64bd6b7b
+x
+Hsrc/main/java/com/mallowigi/idea/wizard/steps/MTWizardContrastPanel.java,8/3/832b582830bf245917e2b6d93e4283616eac6236
+s
+Csrc/main/java/com/mallowigi/idea/themes/themes/MTAbstractTheme.java,b/d/bd16ebe72421cb66b8e2fe5d97540ebc766302eb
+`
+0src/main/java/com/mallowigi/idea/utils/MTUI.java,4/a/4a2c200cc478d86141c03d1080dcf8e341a5d1c0
