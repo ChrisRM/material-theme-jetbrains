@@ -76,6 +76,7 @@ import java.io.IOException;
 import java.lang.reflect.Field;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.security.SecureRandom;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.stream.Stream;
@@ -517,6 +518,18 @@ public enum MTUiUtils {
       hash = charSequence.charAt(i) + ((hash << 5) - hash);
     }
     return hash;
+  }
+
+  public static String createRandomString(final int charCount) {
+    final String charSet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-+*/<>{}";
+    final StringBuilder sb = new StringBuilder(100);
+    final Random randomProvider = new SecureRandom();
+    for (int i = 0; i < charCount; i++) {
+      final char c = charSet.charAt(randomProvider.nextInt(charSet.length()));
+      sb.append(c);
+    }
+    return sb.toString();
+
   }
 
   /**
