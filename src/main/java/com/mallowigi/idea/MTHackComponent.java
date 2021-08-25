@@ -41,8 +41,6 @@ import javassist.expr.MethodCall;
 import javassist.expr.NewExpr;
 import org.jetbrains.annotations.NonNls;
 
-import static com.mallowigi.idea.MTThemeManager.NEW_STRIPES_UI;
-
 @SuppressWarnings({
   "CallToSuspiciousStringMethod",
   "DuplicateStringLiteralInspection",
@@ -344,8 +342,9 @@ public final class MTHackComponent {
       cp.insertClassPath(new ClassClassPath(VcsContentAnnotationConfigurable.class));
       final CtClass experimentalUIClass = cp.get("com.intellij.openapi.util.registry.ExperimentalUI");
 
-      final CtMethod isEnabled = experimentalUIClass.getDeclaredMethod("isNewToolWindowsStripes");
-      isEnabled.setBody("{ return com.intellij.openapi.util.registry.Registry.is(\"" + NEW_STRIPES_UI + "\"); }");
+      final CtMethod isNewToolWindowsStripes = experimentalUIClass.getDeclaredMethod("isNewToolWindowsStripes");
+      isNewToolWindowsStripes.setBody("{ return com.intellij.openapi.util.registry.Registry.is(\"" + MTThemeManager.NEW_STRIPES_UI + "\")" +
+        "; }");
       experimentalUIClass.toClass();
     } catch (final Throwable e) {
       // do nothing

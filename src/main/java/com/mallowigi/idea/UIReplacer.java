@@ -90,7 +90,7 @@ public enum UIReplacer {
         patchLearner();
       }
 
-      if (!"CodeWithMeGuest" .equals(PlatformUtils.getPlatformPrefix())) {
+      if (!"CodeWithMeGuest".equals(PlatformUtils.getPlatformPrefix())) {
         patchLocalHistory();
       }
     } catch (final IllegalAccessException | NoSuchFieldException | ClassNotFoundException e) {
@@ -128,8 +128,8 @@ public enum UIReplacer {
 
   @SuppressWarnings("OverlyLongMethod")
   private static void patchColors() throws NoSuchFieldException, IllegalAccessException {
-    //    StaticPatcher.setFinalStatic(JBColor.class, "red", new JBColor(MTUI.MTColor.RED, MTUI.MTColor.DARK_RED));
-    //    StaticPatcher.setFinalStatic(JBColor.class, "RED", new JBColor(MTUI.MTColor.RED, MTUI.MTColor.DARK_RED));
+    StaticPatcher.setFinalStatic(JBColor.class, "red", new JBColor(MTUI.MTColor.RED, MTUI.MTColor.DARK_RED));
+    StaticPatcher.setFinalStatic(JBColor.class, "RED", new JBColor(MTUI.MTColor.RED, MTUI.MTColor.DARK_RED));
     StaticPatcher.setFinalStatic(JBColor.class, "blue", MTUI.Panel.getAccentColor());
     StaticPatcher.setFinalStatic(JBColor.class, "BLUE", MTUI.Panel.getAccentColor());
     StaticPatcher.setFinalStatic(JBColor.class, "orange", new JBColor(MTUI.MTColor.ORANGE, MTUI.MTColor.DARK_ORANGE));
@@ -166,8 +166,7 @@ public enum UIReplacer {
     StaticPatcher.setFinalStatic(LightColors.class, "GREEN", new JBColor(MTUI.MTColor.GREEN, MTUI.MTColor.DARK_GREEN));
     StaticPatcher.setFinalStatic(LightColors.class, "CYAN", new JBColor(MTUI.MTColor.CYAN, MTUI.MTColor.DARK_CYAN));
 
-    // comment
-    final int abbbb = 10;
+    //    StaticPatcher.setFinalStatic(JBColor.class, "PanelBackground", MTUI.Panel.getAccentColor());
 
   }
 

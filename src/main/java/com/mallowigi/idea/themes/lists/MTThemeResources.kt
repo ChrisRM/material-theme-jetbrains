@@ -39,7 +39,6 @@ object MTThemeResources {
     "ScrollBar.trackColor"
   )
 
-
   /**
    * Get resources using the background color
    */
@@ -400,7 +399,6 @@ object MTThemeResources {
       "WelcomeScreen.Projects.selectionBackground",
       "material.selectionBackground"
     )
-
 
   @JvmStatic
   val selectionTransparentBackgroundResources: Set<String>
@@ -829,7 +827,6 @@ object MTThemeResources {
       "WelcomeScreen.Projects.actions.selectionBackground"
     )
 
-
   /**
    * Get resources using the tree selected row color
    */
@@ -870,7 +867,6 @@ object MTThemeResources {
       "ValidationTooltip.warningBackgroundColor",  // deprecated
       "ValidationTooltip.warningBorderColor"
     )
-
 
   @JvmStatic
   val excludedResources: Set<String>

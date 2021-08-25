@@ -19,8 +19,6 @@ q
 Asrc/main/java/com/mallowigi/idea/config/ui/MTCustomThemeForm.java,2/c/2cf1b8de46a5fa2f4a58550e88b8bd3c56d08b14
 p
 @src/main/java/com/mallowigi/idea/config/ui/MTCustomThemeForm.jfd,2/6/26db82282bc2c1c251b0f9bcfafffb5eb1bfe8e2
-e
-5src/main/java/com/mallowigi/idea/ui/MTRootPaneUI.java,1/2/129fd4eb4ab8bd1b1927d73557b98e3c69062984
 g
 7src/main/java/com/mallowigi/idea/ui/OverlayPainter.java,d/5/d58b0f1921c8681b0213d11051c2b6a94cc2b504
 i
@@ -295,3 +293,17 @@ k
 ;src/main/java/com/mallowigi/idea/ui/MTActionButtonLook.java,0/5/05a60f5a3a31abb1485b3a6a5a5250fc64bd6b7b
 x
 Hsrc/main/java/com/mallowigi/idea/wizard/steps/MTWizardContrastPanel.java,8/3/832b582830bf245917e2b6d93e4283616eac6236
+q
+Asrc/main/java/com/mallowigi/idea/themes/themes/OneLightTheme.java,1/b/1b15fcee3efca47d25cec652d3f4f327b9d3586d
+`
+0src/main/java/com/mallowigi/idea/MTFixStripes.kt,1/a/1a85538c8010a0eade7ee51beb6e713897a07b1e
+h
+8src/main/java/com/mallowigi/idea/MTAccentColorPatcher.kt,c/2/c2d930458edbf61b7a5f025d36a204fdc11659a5
+d
+4src/main/java/com/mallowigi/idea/themes/MTAccents.kt,9/0/90dfb332bcff613b3b86b80c9828174144c7ba23
+f
+6src/main/java/com/mallowigi/idea/utils/MTColorUtils.kt,3/0/30110349b5df4a381ce05acd6fd8600f5c544ba6
+v
+Fsrc/main/java/com/mallowigi/idea/utils/animator/MTChangeLafAnimator.kt,a/3/a3003bc852382690644090bcea69c4227bd1a188
+q
+Asrc/main/java/com/mallowigi/idea/themes/lists/MTThemeResources.kt,8/8/88fd91503db402839dccc353c2eee19d682d8ae1
