@@ -23,27 +23,18 @@
  *
  *
  */
+package com.mallowigi.idea.actions
 
-package com.mallowigi.idea.actions;
+import com.intellij.openapi.actionSystem.AnAction
+import com.intellij.openapi.actionSystem.AnActionEvent
+import com.intellij.openapi.application.ApplicationManager
+import com.mallowigi.idea.notifications.MTWhatsNewAction
+import com.mallowigi.idea.notifications.MTWhatsNewAction.Companion.openWhatsNewFile
 
-import com.intellij.openapi.actionSystem.AnAction;
-import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.application.ApplicationManager;
-import com.mallowigi.idea.notifications.MTWhatsNewAction;
-import org.jetbrains.annotations.NotNull;
-
-import java.util.Objects;
-
-public final class MTShowWhatsNewAction extends AnAction {
-  @Override
-  public void actionPerformed(@NotNull final AnActionEvent e) {
-    ApplicationManager.getApplication().invokeLater(() -> MTWhatsNewAction.openWhatsNewFile(Objects.requireNonNull(e.getProject()),
-      MTWhatsNewAction.WHATS_NEW_URL, null));
+class MTShowWhatsNewAction : AnAction() {
+  override fun actionPerformed(e: AnActionEvent): Unit = ApplicationManager.getApplication().invokeLater {
+    openWhatsNewFile(e.project!!, MTWhatsNewAction.WHATS_NEW_URL, null)
   }
 
-  @Override
-  public boolean isDumbAware() {
-    return true;
-  }
-
+  override fun isDumbAware(): Boolean = true
 }

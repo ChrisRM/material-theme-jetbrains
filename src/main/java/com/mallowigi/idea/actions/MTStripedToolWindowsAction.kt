@@ -23,44 +23,37 @@
  *
  *
  */
+package com.mallowigi.idea.actions
 
-package com.mallowigi.idea.actions;
+import com.intellij.openapi.actionSystem.AnActionEvent
+import com.intellij.openapi.ui.Messages
+import com.mallowigi.idea.MTAnalytics
+import com.mallowigi.idea.MTAnalytics.Companion.instance
+import com.mallowigi.idea.MTThemeManager
+import com.mallowigi.idea.config.application.MTConfig
+import com.mallowigi.idea.messages.MaterialThemeBundle.message
+import com.mallowigi.idea.utils.MTUiUtils
 
-import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.ui.Messages;
-import com.mallowigi.idea.MTAnalytics;
-import com.mallowigi.idea.MTThemeManager;
-import com.mallowigi.idea.config.application.MTConfig;
-import com.mallowigi.idea.messages.MaterialThemeBundle;
-import com.mallowigi.idea.utils.MTUiUtils;
-import org.jetbrains.annotations.NotNull;
+class MTStripedToolWindowsAction : MTToggleAction() {
+  override fun isSelected(e: AnActionEvent): Boolean = MTConfig.getInstance().isStripedToolWindowsEnabled
 
-public final class MTStripedToolWindowsAction extends MTToggleAction {
-  @Override
-  public boolean isSelected(@NotNull final AnActionEvent e) {
-    return MTConfig.getInstance().isStripedToolWindowsEnabled();
-  }
-
-  @Override
-  public void setSelected(@NotNull final AnActionEvent e, final boolean state) {
-    MTThemeManager.toggleStripedToolWindows();
-    MTAnalytics.getInstance().trackValue(MTAnalytics.STRIPED_TOOL_WINDOWS, state);
-    super.setSelected(e, state);
+  override fun setSelected(e: AnActionEvent, state: Boolean) {
+    MTThemeManager.toggleStripedToolWindows()
+    instance.trackValue(MTAnalytics.STRIPED_TOOL_WINDOWS, state)
+    super.setSelected(e, state)
 
     // todo remove this once the layout is fixed
     if (!MTConfig.getInstance().hadStripesEnabled) {
-      final String title = MaterialThemeBundle.message("MTForm.restartDialog.title");
-      final String message = MaterialThemeBundle.message("MTForm.restartDialog.content");
-
-      final int answer = Messages.showYesNoDialog(message, title, Messages.getQuestionIcon());
+      val title = message("MTForm.restartDialog.title")
+      val message = message("MTForm.restartDialog.content")
+      val answer = Messages.showYesNoDialog(message, title, Messages.getQuestionIcon())
       if (answer == Messages.YES) {
-        MTUiUtils.restartIde();
+        MTUiUtils.restartIde()
       }
     }
   }
 
-  @Override
-  protected void checkLicense(final @NotNull AnActionEvent e) {
-    e.getPresentation().setEnabled(true);
+  override fun checkLicense(e: AnActionEvent) {
+    e.presentation.isEnabled = true
   }
 }

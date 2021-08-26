@@ -23,28 +23,20 @@
  *
  *
  */
+package com.mallowigi.idea.actions
 
-package com.mallowigi.idea.actions;
+import com.intellij.openapi.actionSystem.AnAction
+import com.intellij.openapi.actionSystem.AnActionEvent
+import com.mallowigi.idea.MTLicenseChecker
+import com.mallowigi.idea.messages.MaterialThemeBundle.message
 
-import com.intellij.openapi.actionSystem.AnAction;
-import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.mallowigi.idea.MTLicenseChecker;
-import com.mallowigi.idea.messages.MaterialThemeBundle;
-import org.jetbrains.annotations.NotNull;
+class MTActivateLicenseAction : AnAction() {
+  override fun actionPerformed(e: AnActionEvent): Unit =
+    MTLicenseChecker.requestLicense(message("plugin.activateLicense"))
 
-public final class MTActivateLicenseAction extends AnAction {
-  @Override
-  public void actionPerformed(@NotNull final AnActionEvent e) {
-    MTLicenseChecker.requestLicense(MaterialThemeBundle.message("plugin.activateLicense"));
-  }
+  override fun isDumbAware(): Boolean = true
 
-  @Override
-  public boolean isDumbAware() {
-    return true;
-  }
-
-  @Override
-  public void update(@NotNull final AnActionEvent e) {
-    e.getPresentation().setEnabled(!MTLicenseChecker.isLicensed());
+  override fun update(e: AnActionEvent) {
+    e.presentation.isEnabled = !MTLicenseChecker.isLicensed()
   }
 }

@@ -23,8 +23,6 @@ z
 Jsrc/main/java/com/mallowigi/idea/notifications/MTStatisticsNotification.kt,a/3/a32e93e3e6d10ce963e5b90a836e612758afc3df
 p
 @src/main/java/com/mallowigi/idea/wizard/MTWizardStepsProvider.kt,d/9/d94d46fb89eb46cfcd17c06d0376ddcc61d9a6de
-r
-Bsrc/main/java/com/mallowigi/idea/actions/MTConfigWizardAction.java,e/5/e547e73fccb62608302def2a3391b932bab3927c
 u
 Esrc/main/java/com/mallowigi/idea/wizard/steps/MTWizardAccentPanel.jfd,0/f/0f27e12ce2040e408b7ca2643d2a1c2ba0ae43fd
 u
@@ -39,8 +37,6 @@ i
 9src/main/java/com/mallowigi/idea/wizard/MTWizardDialog.kt,3/2/32412edce1ecb3feaf01b96490636ec79b1b9135
 {
 Ksrc/main/java/com/mallowigi/idea/notifications/MTInstallAtomNotification.kt,3/0/304fa8fa3ca08169bce097fa2c2f1e7cc54941de
-s
-Csrc/main/java/com/mallowigi/idea/actions/MTRemoveWallpaperAction.kt,e/9/e9aa9fe0243bb461c6beb0abfa53078bd8718cca
 {
 Ksrc/main/java/com/mallowigi/idea/actions/positions/MTLeftRightPosition.java,7/b/7b4daa86aab2566cc14a552ab23e089284445901
 {
@@ -169,10 +165,6 @@ Isrc/main/java/com/mallowigi/idea/actions/themes/MTMonokaiThemeAction.java,c/6/
 Msrc/main/java/com/mallowigi/idea/actions/accents/MTTurquoiseAccentAction.java,8/e/8e784f449e2905d4a493076266ff3982b1d80f26
 v
 Fsrc/main/java/com/mallowigi/idea/actions/MTCompactStatusBarAction.java,2/5/251f8378c204abf2bcf14fcc2468602adf2355f9
-v
-Fsrc/main/java/com/mallowigi/idea/actions/MTCompactDropdownsAction.java,a/2/a2e52646426ed70e156d445db5649c326e26dcc9
-n
->src/main/java/com/mallowigi/idea/actions/MTContrastAction.java,0/f/0f731db6afdd1edb2c60083e8b92b7966640eaee
 y
 Isrc/main/java/com/mallowigi/idea/actions/MTOverrideAccentColorAction.java,d/7/d7f1f18a0139585e6a94e2c00d0409ea3161e0f8
 s
@@ -185,8 +177,6 @@ z
 Jsrc/main/java/com/mallowigi/idea/actions/MTToggleOutlineButtonsAction.java,2/a/2af5dc7dac2de6c00f07b79de7d488f2bb23d7c2
 t
 Dsrc/main/java/com/mallowigi/idea/actions/MTCompactSidebarAction.java,0/8/085923704f2a49f9b45c879554a6acf3abf3f9f7
-p
-@src/main/java/com/mallowigi/idea/actions/MTAccentModeAction.java,a/1/a15249db06d0d5d01cdaa647ed8b221d18ad74c9
 z
 Jsrc/main/java/com/mallowigi/idea/actions/themes/MTAbstractThemeAction.java,0/b/0b7a251161453b5b4b4f58a4730eed94452579fd
 r
@@ -197,8 +187,6 @@ w
 Gsrc/main/java/com/mallowigi/idea/actions/MTLanguageAdditionsAction.java,e/1/e1914c7717bde14f3544813a0ebb0ab6bf91b1f4
 r
 Bsrc/main/java/com/mallowigi/idea/actions/MTProjectFrameAction.java,d/7/d702bd7a05d613f725ca82ac2f66d89deea14f46
-w
-Gsrc/main/java/com/mallowigi/idea/actions/MTToggleColoredDirsAction.java,b/c/bcc47c1f423fd4e4b79ca982c488dad158a6c640
 t
 Dsrc/main/java/com/mallowigi/idea/actions/MTToggleOverlaysAction.java,8/9/8981a6b2b311dfa1b05e030b9693ab944e5bbc97
 s

@@ -23,25 +23,20 @@
  *
  *
  */
+package com.mallowigi.idea.actions
 
-package com.mallowigi.idea.actions;
+import com.intellij.openapi.actionSystem.AnActionEvent
+import com.mallowigi.idea.MTAnalytics
+import com.mallowigi.idea.MTAnalytics.Companion.instance
+import com.mallowigi.idea.MTThemeManager
+import com.mallowigi.idea.config.application.MTConfig
 
-import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.mallowigi.idea.MTAnalytics;
-import com.mallowigi.idea.MTThemeManager;
-import com.mallowigi.idea.config.application.MTConfig;
-import org.jetbrains.annotations.NotNull;
+class MTToggleOverlaysAction : MTToggleAction() {
+  override fun isSelected(e: AnActionEvent): Boolean = MTConfig.getInstance().isShowOverlays
 
-public final class MTToggleOverlaysAction extends MTToggleAction {
-  @Override
-  public boolean isSelected(@NotNull final AnActionEvent e) {
-    return MTConfig.getInstance().isShowOverlays();
-  }
-
-  @Override
-  public void setSelected(@NotNull final AnActionEvent e, final boolean state) {
-    MTThemeManager.toggleOverlays();
-    MTAnalytics.getInstance().trackValue(MTAnalytics.OVERLAYS, state);
-    super.setSelected(e, state);
+  override fun setSelected(e: AnActionEvent, state: Boolean) {
+    MTThemeManager.toggleOverlays()
+    instance.trackValue(MTAnalytics.OVERLAYS, state)
+    super.setSelected(e, state)
   }
 }

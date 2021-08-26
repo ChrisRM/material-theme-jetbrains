@@ -23,31 +23,24 @@
  *
  *
  */
+package com.mallowigi.idea.actions
 
-package com.mallowigi.idea.actions;
+import com.intellij.openapi.actionSystem.AnActionEvent
+import com.mallowigi.idea.MTAnalytics
+import com.mallowigi.idea.MTAnalytics.Companion.instance
+import com.mallowigi.idea.MTThemeManager
+import com.mallowigi.idea.config.application.MTConfig
 
-import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.mallowigi.idea.MTAnalytics;
-import com.mallowigi.idea.MTThemeManager;
-import com.mallowigi.idea.config.application.MTConfig;
-import org.jetbrains.annotations.NotNull;
+class MTContrastAction : MTToggleAction() {
+  override fun isSelected(e: AnActionEvent): Boolean = MTConfig.getInstance().isContrastMode
 
-public final class MTContrastAction extends MTToggleAction {
-
-  @Override
-  public boolean isSelected(@NotNull final AnActionEvent e) {
-    return MTConfig.getInstance().isContrastMode();
+  override fun setSelected(e: AnActionEvent, state: Boolean) {
+    MTThemeManager.toggleContrast()
+    instance.trackValue(MTAnalytics.CONTRAST_MODE, state)
+    super.setSelected(e, state)
   }
 
-  @Override
-  public void setSelected(@NotNull final AnActionEvent e, final boolean state) {
-    MTThemeManager.toggleContrast();
-    MTAnalytics.getInstance().trackValue(MTAnalytics.CONTRAST_MODE, state);
-    super.setSelected(e, state);
-  }
-
-  @Override
-  protected void checkLicense(final @NotNull AnActionEvent e) {
-    e.getPresentation().setEnabled(true);
+  override fun checkLicense(e: AnActionEvent) {
+    e.presentation.isEnabled = true
   }
 }

@@ -23,32 +23,22 @@
  *
  *
  */
+package com.mallowigi.idea.actions
 
-package com.mallowigi.idea.actions;
+import com.intellij.openapi.actionSystem.AnActionEvent
+import com.mallowigi.idea.MTAnalytics
+import com.mallowigi.idea.MTAnalytics.Companion.instance
+import com.mallowigi.idea.MTThemeManager
+import com.mallowigi.idea.config.application.MTConfig
+import com.mallowigi.idea.config.ui.MTForm
 
-import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.mallowigi.idea.MTAnalytics;
-import com.mallowigi.idea.MTThemeManager;
-import com.mallowigi.idea.config.application.MTConfig;
-import com.mallowigi.idea.config.ui.MTForm;
-import org.jetbrains.annotations.NotNull;
+class MTMaterialFontsAction : MTToggleAction() {
+  override fun isSelected(e: AnActionEvent): Boolean = MTConfig.getInstance().isUseMaterialFont2
 
-public final class MTMaterialFontsAction extends MTToggleAction {
-
-  @Override
-  public boolean isSelected(@NotNull final AnActionEvent e) {
-    return MTConfig.getInstance().isUseMaterialFont2();
-  }
-
-  @Override
-  public void setSelected(@NotNull final AnActionEvent e, final boolean state) {
-
-    if (state) {
-      MTForm.showFontWarningDialog();
-    }
-
-    MTThemeManager.toggleMaterialFonts();
-    MTAnalytics.getInstance().trackValue(MTAnalytics.MATERIAL_FONTS, state);
-    super.setSelected(e, state);
+  override fun setSelected(e: AnActionEvent, state: Boolean) {
+    if (state) MTForm.showFontWarningDialog()
+    MTThemeManager.toggleMaterialFonts()
+    instance.trackValue(MTAnalytics.MATERIAL_FONTS, state)
+    super.setSelected(e, state)
   }
 }

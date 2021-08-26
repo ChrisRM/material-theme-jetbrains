@@ -23,23 +23,22 @@
  *
  *
  */
+package com.mallowigi.idea.actions
 
-package com.mallowigi.idea.actions;
+import com.intellij.openapi.actionSystem.AnAction
+import com.intellij.openapi.actionSystem.AnActionEvent
+import com.intellij.openapi.application.ApplicationManager
+import com.intellij.openapi.project.DumbAware
+import com.mallowigi.idea.MTAnalytics
+import com.mallowigi.idea.MTAnalytics.Companion.instance
+import com.mallowigi.idea.wizard.MTWizardDialog
+import com.mallowigi.idea.wizard.MTWizardStepsProvider
 
-import com.intellij.openapi.actionSystem.AnAction;
-import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.project.DumbAware;
-import com.mallowigi.idea.MTAnalytics;
-import com.mallowigi.idea.wizard.MTWizardDialog;
-import com.mallowigi.idea.wizard.MTWizardStepsProvider;
-import org.jetbrains.annotations.NotNull;
-
-public class MTConfigWizardAction extends AnAction implements DumbAware {
-
-  @Override
-  public final void actionPerformed(@NotNull final AnActionEvent e) {
-    ApplicationManager.getApplication().invokeLater(() -> new MTWizardDialog(new MTWizardStepsProvider(), false).show());
-    MTAnalytics.getInstance().track(MTAnalytics.SHOW_WIZARD);
+class MTConfigWizardAction : AnAction(), DumbAware {
+  override fun actionPerformed(e: AnActionEvent) {
+    ApplicationManager.getApplication().invokeLater {
+      MTWizardDialog(MTWizardStepsProvider(), false).show()
+    }
+    instance.track(MTAnalytics.SHOW_WIZARD)
   }
 }

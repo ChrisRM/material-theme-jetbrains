@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,22 +23,18 @@
  *
  *
  */
+package com.mallowigi.idea.actions
 
-package com.mallowigi.idea.actions;
+import com.intellij.openapi.actionSystem.AnAction
+import com.intellij.openapi.actionSystem.AnActionEvent
+import com.mallowigi.idea.MTAnalytics
+import com.mallowigi.idea.MTAnalytics.Companion.instance
+import com.mallowigi.idea.MTThemeManager
 
-import com.mallowigi.idea.MTAnalytics;
-import com.mallowigi.idea.MTThemeManager;
-import com.intellij.openapi.actionSystem.AnAction;
-import com.intellij.openapi.actionSystem.AnActionEvent;
-import org.jetbrains.annotations.NotNull;
-
-public final class MTBiggerTabsAction extends AnAction {
-
-  private static final int RECOMMENDED_HEIGHT = 42;
-
-  @Override
-  public void actionPerformed(@NotNull final AnActionEvent e) {
-    MTThemeManager.setTabsHeight(RECOMMENDED_HEIGHT);
-    MTAnalytics.getInstance().track(MTAnalytics.RECOMMENDED_HEIGHT);
+class MTBiggerTabsAction : AnAction() {
+  override fun actionPerformed(e: AnActionEvent) {
+    MTThemeManager.setTabsHeight(42)
+    instance.track(MTAnalytics.RECOMMENDED_HEIGHT)
   }
+
 }

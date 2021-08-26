@@ -23,34 +23,25 @@
  *
  *
  */
+package com.mallowigi.idea.actions
 
-package com.mallowigi.idea.actions;
+import com.intellij.openapi.actionSystem.AnActionEvent
+import com.mallowigi.idea.MTAnalytics
+import com.mallowigi.idea.MTAnalytics.Companion.instance
+import com.mallowigi.idea.MTThemeManager
+import com.mallowigi.idea.config.application.MTConfig
 
-import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.mallowigi.idea.MTAnalytics;
-import com.mallowigi.idea.MTThemeManager;
-import com.mallowigi.idea.config.application.MTConfig;
-import org.jetbrains.annotations.NotNull;
+class MTHighContrastAction : MTToggleAction() {
+  override fun isSelected(e: AnActionEvent): Boolean = MTConfig.getInstance().isHighContrast
 
-public final class MTHighContrastAction extends MTToggleAction {
-
-  @Override
-  public boolean isSelected(@NotNull final AnActionEvent e) {
-    return MTConfig.getInstance().isHighContrast();
+  override fun setSelected(e: AnActionEvent, state: Boolean) {
+    MTThemeManager.toggleHighContrast()
+    instance.trackValue(MTAnalytics.HIGH_CONTRAST, state)
+    super.setSelected(e, state)
   }
 
-  @Override
-  public void setSelected(@NotNull final AnActionEvent e, final boolean state) {
-    MTThemeManager.toggleHighContrast();
-    MTAnalytics.getInstance().trackValue(MTAnalytics.HIGH_CONTRAST, state);
-    super.setSelected(e, state);
-  }
-
-  @Override
-  public void update(@NotNull final AnActionEvent e) {
-    super.update(e);
-    if (MTConfig.getInstance().getSelectedTheme().isNative()) {
-      e.getPresentation().setEnabled(false);
-    }
+  override fun update(e: AnActionEvent) {
+    super.update(e)
+    if (MTConfig.getInstance().selectedTheme.isNative) e.presentation.isEnabled = false
   }
 }
