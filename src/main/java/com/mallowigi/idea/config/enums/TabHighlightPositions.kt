@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,12 +23,9 @@
  *
  *
  */
+package com.mallowigi.idea.config.enums
 
-package com.mallowigi.idea.config.enums;
-
-import org.jetbrains.annotations.NonNls;
-
-public enum TabHighlightPositions {
+enum class TabHighlightPositions(private val type: String) {
   DEFAULT("Default"),
   BOTTOM("Bottom"),
   TOP("Top"),
@@ -41,14 +38,5 @@ public enum TabHighlightPositions {
   TOPLESS("Topless"),
   NONE("None");
 
-  private final String type;
-
-  TabHighlightPositions(@NonNls final String type) {
-    this.type = type;
-  }
-
-  @Override
-  public String toString() {
-    return type;
-  }
+  override fun toString(): String = type
 }

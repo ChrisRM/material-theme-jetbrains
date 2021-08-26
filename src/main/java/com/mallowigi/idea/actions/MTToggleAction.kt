@@ -23,96 +23,69 @@
  *
  *
  */
+package com.mallowigi.idea.actions
 
-package com.mallowigi.idea.actions;
+import com.intellij.openapi.actionSystem.AnActionEvent
+import com.intellij.openapi.actionSystem.ToggleAction
+import com.intellij.openapi.actionSystem.Toggleable
+import com.intellij.ui.LayeredIcon
+import com.intellij.util.IconUtil
+import com.intellij.util.ObjectUtils
+import com.intellij.util.ui.GraphicsUtil
+import com.intellij.util.ui.JBUI
+import com.mallowigi.idea.MTLicenseChecker
+import com.mallowigi.idea.messages.MaterialThemeBundle.message
+import com.mallowigi.idea.notifications.MTNotifications.showSimple
+import java.awt.Component
+import java.awt.Graphics
+import java.text.MessageFormat
+import javax.swing.Icon
+import javax.swing.UIManager
 
-import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.actionSystem.Presentation;
-import com.intellij.openapi.actionSystem.ToggleAction;
-import com.intellij.openapi.actionSystem.Toggleable;
-import com.intellij.ui.LayeredIcon;
-import com.intellij.util.IconUtil;
-import com.intellij.util.ObjectUtils;
-import com.intellij.util.ui.GraphicsUtil;
-import com.intellij.util.ui.JBUI;
-import com.mallowigi.idea.MTLicenseChecker;
-import com.mallowigi.idea.messages.MaterialThemeBundle;
-import com.mallowigi.idea.notifications.MTNotifications;
-import org.jetbrains.annotations.NotNull;
+abstract class MTToggleAction : ToggleAction() {
+  override fun update(e: AnActionEvent) {
+    val selected = isSelected(e)
+    val presentation = e.presentation
+    val icon = presentation.icon
 
-import javax.swing.*;
-import java.awt.*;
-import java.text.MessageFormat;
-import java.util.Objects;
-
-@SuppressWarnings({"MagicNumber",
-  "DesignForExtension"})
-public abstract class MTToggleAction extends ToggleAction {
-  @Override
-  public void update(@NotNull final AnActionEvent e) {
-    final boolean selected = isSelected(e);
-    final Presentation presentation = e.getPresentation();
-    final Icon icon = presentation.getIcon();
-    Toggleable.setSelected(presentation, selected);
-
-    final Icon fallbackIcon = selectedFallbackIcon(icon);
-    final Icon actionButtonIcon = ObjectUtils.notNull(UIManager.getIcon("ActionButton.backgroundIcon"), fallbackIcon);
+    Toggleable.setSelected(presentation, selected)
+    val fallbackIcon = selectedFallbackIcon(icon)
+    val actionButtonIcon = ObjectUtils.notNull(UIManager.getIcon("ActionButton.backgroundIcon"), fallbackIcon)
 
     // Recreate the action button look
-    if (selected) {
-      e.getPresentation().setIcon(new LayeredIcon(actionButtonIcon, regularIcon(icon)));
-    } else {
-      e.getPresentation().setIcon(regularIcon(icon));
+    when {
+      selected -> e.presentation.icon = LayeredIcon(actionButtonIcon, regularIcon(icon))
+      else     -> e.presentation.icon = regularIcon(icon)
     }
-    checkLicense(e);
+    checkLicense(e)
   }
 
-  @Override
-  public void setSelected(@NotNull final AnActionEvent e, final boolean state) {
-    final String notificationMessage = e.getPresentation().getText();
-    final String restText = MaterialThemeBundle.message(state ? "action.toggle.enabled" : "action.toggle.disabled");
-    MTNotifications.showSimple(
-      Objects.requireNonNull(e.getProject()),
-      MessageFormat.format("<b>{0}</b> {1}", notificationMessage, restText)
-    );
+  override fun setSelected(e: AnActionEvent, state: Boolean) {
+    val notificationMessage = e.presentation.text
+    val restText = message(if (state) "action.toggle.enabled" else "action.toggle.disabled")
+    showSimple(e.project!!, MessageFormat.format("<b>{0}</b> {1}", notificationMessage, restText))
   }
 
-  protected void checkLicense(final @NotNull AnActionEvent e) {
-    final Presentation presentation = e.getPresentation();
-    presentation.setEnabled(MTLicenseChecker.isLicensed());
+  protected open fun checkLicense(e: AnActionEvent) {
+    e.presentation.isEnabled = MTLicenseChecker.isLicensed()
   }
 
-  @NotNull
-  private static Icon regularIcon(final Icon icon) {
-    return IconUtil.toSize(icon, JBUI.scale(18), JBUI.scale(18));
-  }
+  private fun regularIcon(icon: Icon): Icon = IconUtil.toSize(icon, JBUI.scale(18), JBUI.scale(18))
 
-  @SuppressWarnings("OverlyComplexAnonymousInnerClass")
-  private static Icon selectedFallbackIcon(final Icon icon) {
-    return new Icon() {
-      @SuppressWarnings("ParameterNameDiffersFromOverriddenParameter")
-      @Override
-      public void paintIcon(final Component component, final Graphics g, final int x, final int y) {
-        final Graphics g2d = g.create();
-
-        try {
-          GraphicsUtil.setupAAPainting(g2d);
-          g2d.setColor(JBUI.CurrentTheme.ActionButton.pressedBackground());
-          g2d.fillRoundRect(0, 0, getIconWidth(), getIconHeight(), 4, 4);
-        } finally {
-          g2d.dispose();
-        }
+  private fun selectedFallbackIcon(icon: Icon?): Icon = object : Icon {
+    override fun paintIcon(component: Component, g: Graphics, x: Int, y: Int) {
+      val g2d = g.create()
+      try {
+        GraphicsUtil.setupAAPainting(g2d)
+        g2d.color = JBUI.CurrentTheme.ActionButton.pressedBackground()
+        g2d.fillRoundRect(0, 0, iconWidth, iconHeight, 4, 4)
+      } finally {
+        g2d.dispose()
       }
+    }
 
-      @Override
-      public int getIconWidth() {
-        return icon != null ? icon.getIconWidth() : JBUI.scale(18);
-      }
+    override fun getIconWidth(): Int = icon?.iconWidth ?: JBUI.scale(18)
 
-      @Override
-      public int getIconHeight() {
-        return icon != null ? icon.getIconHeight() : JBUI.scale(18);
-      }
-    };
+    override fun getIconHeight(): Int = icon?.iconHeight ?: JBUI.scale(18)
   }
 }

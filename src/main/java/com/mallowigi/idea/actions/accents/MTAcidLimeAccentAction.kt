@@ -23,15 +23,11 @@
  *
  *
  */
+package com.mallowigi.idea.actions.accents
 
-package com.mallowigi.idea.actions.accents;
+import com.mallowigi.idea.themes.MTAccents
 
-import com.mallowigi.idea.themes.MTAccents;
-
-public class MTAcidLimeAccentAction extends MTAbstractAccentAction {
-
-  @Override
-  public final MTAccents getAccent() {
-    return MTAccents.ACID_LIME;
-  }
+class MTAcidLimeAccentAction : MTAbstractAccentAction() {
+  override val accent: MTAccents
+    get() = MTAccents.ACID_LIME
 }

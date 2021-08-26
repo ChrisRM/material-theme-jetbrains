@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,16 +23,11 @@
  *
  *
  */
+package com.mallowigi.idea.actions.indicators
 
-package com.mallowigi.idea.actions.indicators;
+import com.mallowigi.idea.config.enums.IndicatorStyles
 
-import com.mallowigi.idea.config.enums.IndicatorStyles;
-
-public final class MTNoneIndicators extends MTAbstractIndicatorsAction {
-
-  @SuppressWarnings("MethodReturnAlwaysConstant")
-  @Override
-  protected IndicatorStyles getIndicatorStyle() {
-    return IndicatorStyles.NONE;
-  }
+class MTNoneIndicators : MTAbstractIndicatorsAction() {
+  override val indicatorStyle: IndicatorStyles
+    get() = IndicatorStyles.NONE
 }

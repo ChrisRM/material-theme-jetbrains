@@ -23,58 +23,48 @@
  *
  *
  */
+package com.mallowigi.idea.actions.accents
 
-package com.mallowigi.idea.actions.accents;
+import com.intellij.openapi.actionSystem.AnActionEvent
+import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl
+import com.intellij.openapi.project.DumbAware
+import com.intellij.openapi.util.IconLoader
+import com.mallowigi.idea.MTAnalytics
+import com.mallowigi.idea.MTAnalytics.Companion.instance
+import com.mallowigi.idea.MTThemeManager
+import com.mallowigi.idea.UIReplacer
+import com.mallowigi.idea.actions.MTToggleAction
+import com.mallowigi.idea.config.application.MTConfig
+import com.mallowigi.idea.themes.MTAccents
+import com.mallowigi.idea.ui.indicators.MTSelectedTreeIndicatorImpl
 
-import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl;
-import com.intellij.openapi.project.DumbAware;
-import com.intellij.openapi.util.IconLoader;
-import com.mallowigi.idea.MTAnalytics;
-import com.mallowigi.idea.MTThemeManager;
-import com.mallowigi.idea.UIReplacer;
-import com.mallowigi.idea.actions.MTToggleAction;
-import com.mallowigi.idea.config.application.MTConfig;
-import com.mallowigi.idea.themes.MTAccents;
-import com.mallowigi.idea.ui.indicators.MTSelectedTreeIndicatorImpl;
-import org.jetbrains.annotations.NotNull;
+abstract class MTAbstractAccentAction : MTToggleAction(), DumbAware {
+  override fun setSelected(e: AnActionEvent, state: Boolean) {
+    MTSelectedTreeIndicatorImpl.resetCache()
+    IconLoader.clearCache()
 
-public abstract class MTAbstractAccentAction extends MTToggleAction implements DumbAware {
+    val accentColor = accent.hexColor
+    MTConfig.getInstance().accentColor = accentColor
 
-  @Override
-  public final void setSelected(@NotNull final AnActionEvent e, final boolean state) {
-    MTSelectedTreeIndicatorImpl.resetCache();
-    IconLoader.clearCache();
-
-    final String accentColor = getAccent().getHexColor();
-    MTConfig.getInstance().setAccentColor(accentColor);
-
-    MTThemeManager.applyAccents(true);
-    UIReplacer.patchUI();
-
-    ActionToolbarImpl.updateAllToolbarsImmediately();
-    MTAnalytics.getInstance().trackValue(MTAnalytics.ACCENT, accentColor);
-    super.setSelected(e, state);
+    MTThemeManager.applyAccents(true)
+    UIReplacer.patchUI()
+    ActionToolbarImpl.updateAllToolbarsImmediately()
+    instance.trackValue(MTAnalytics.ACCENT, accentColor)
+    super.setSelected(e, state)
   }
 
-  @SuppressWarnings("CallToSuspiciousStringMethod")
-  @Override
-  public final boolean isSelected(@NotNull final AnActionEvent e) {
-    return MTConfig.getInstance().getAccentColor().equals(getAccent().getHexColor());
-  }
+  override fun isSelected(e: AnActionEvent): Boolean = MTConfig.getInstance().accentColor == accent.hexColor
 
-  @Override
-  public final void update(@NotNull final AnActionEvent e) {
-    e.getPresentation().setEnabled(!MTConfig.getInstance().isOverrideAccentColor());
+  override fun update(e: AnActionEvent) {
+    e.presentation.isEnabled = !MTConfig.getInstance().isOverrideAccentColor
   }
 
   /**
    * The Accent Color String
    */
-  protected abstract MTAccents getAccent();
+  protected abstract val accent: MTAccents
 
-  @Override
-  protected final void checkLicense(final @NotNull AnActionEvent e) {
-    e.getPresentation().setEnabled(true);
+  override fun checkLicense(e: AnActionEvent) {
+    e.presentation.isEnabled = true
   }
 }

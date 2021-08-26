@@ -23,16 +23,12 @@
  *
  *
  */
+package com.mallowigi.idea.actions.accents
 
-package com.mallowigi.idea.actions.accents;
+import com.mallowigi.idea.themes.MTAccents
 
-import com.mallowigi.idea.themes.MTAccents;
-import org.jetbrains.annotations.NotNull;
-
-public class MTTurquoiseAccentAction extends MTAbstractAccentAction {
-  @NotNull
-  @Override
-  public final MTAccents getAccent() {
-    return MTAccents.TURQUOISE;
-  }
+class MTTurquoiseAccentAction : MTAbstractAccentAction() {
+  override val accent: MTAccents
+    get() = MTAccents.TURQUOISE
 }
+

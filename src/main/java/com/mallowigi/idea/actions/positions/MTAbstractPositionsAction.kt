@@ -23,35 +23,28 @@
  *
  *
  */
+package com.mallowigi.idea.actions.positions
 
-package com.mallowigi.idea.actions.positions;
+import com.intellij.openapi.actionSystem.AnActionEvent
+import com.mallowigi.idea.MTAnalytics
+import com.mallowigi.idea.MTAnalytics.Companion.instance
+import com.mallowigi.idea.actions.MTToggleAction
+import com.mallowigi.idea.config.application.MTConfig
+import com.mallowigi.idea.config.enums.TabHighlightPositions
 
-import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.mallowigi.idea.MTAnalytics;
-import com.mallowigi.idea.actions.MTToggleAction;
-import com.mallowigi.idea.config.application.MTConfig;
-import com.mallowigi.idea.config.enums.TabHighlightPositions;
-import org.jetbrains.annotations.NotNull;
+abstract class MTAbstractPositionsAction : MTToggleAction() {
+  private val mtConfig = MTConfig.getInstance()
 
-abstract class MTAbstractPositionsAction extends MTToggleAction {
-  private final MTConfig mtConfig = MTConfig.getInstance();
+  override fun isSelected(e: AnActionEvent): Boolean = mtConfig.tabHighlightPosition == position
 
-  @Override
-  public final boolean isSelected(@NotNull final AnActionEvent e) {
-    return mtConfig.getTabHighlightPosition() == getPosition();
+  override fun setSelected(e: AnActionEvent, state: Boolean) {
+    val position = position
+    mtConfig.tabHighlightPosition = position
+
+    instance.trackValue(MTAnalytics.TAB_HIGHLIGHT_POSITION, position)
+
+    super.setSelected(e, state)
   }
 
-  @Override
-  public final void setSelected(@NotNull final AnActionEvent e, final boolean state) {
-    final TabHighlightPositions position = getPosition();
-    mtConfig.setTabHighlightPosition(position);
-
-    MTAnalytics.getInstance().trackValue(MTAnalytics.TAB_HIGHLIGHT_POSITION, position);
-    super.setSelected(e, state);
-  }
-
-  /**
-   * The arrows style
-   */
-  protected abstract TabHighlightPositions getPosition();
+  protected abstract val position: TabHighlightPositions
 }

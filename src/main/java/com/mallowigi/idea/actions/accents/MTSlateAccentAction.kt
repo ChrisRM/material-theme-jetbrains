@@ -23,15 +23,11 @@
  *
  *
  */
+package com.mallowigi.idea.actions.accents
 
-package com.mallowigi.idea.actions.accents;
+import com.mallowigi.idea.themes.MTAccents
 
-import com.mallowigi.idea.themes.MTAccents;
-
-public class MTSlateAccentAction extends MTAbstractAccentAction {
-  @SuppressWarnings("MethodReturnAlwaysConstant")
-  @Override
-  public final MTAccents getAccent() {
-    return MTAccents.SLATE;
-  }
+class MTSlateAccentAction : MTAbstractAccentAction() {
+  override val accent: MTAccents
+    get() = MTAccents.SLATE
 }

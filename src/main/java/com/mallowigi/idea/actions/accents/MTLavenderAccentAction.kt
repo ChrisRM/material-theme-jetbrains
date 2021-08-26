@@ -23,15 +23,11 @@
  *
  *
  */
+package com.mallowigi.idea.actions.accents
 
-package com.mallowigi.idea.actions.accents;
+import com.mallowigi.idea.themes.MTAccents
 
-import com.mallowigi.idea.themes.MTAccents;
-
-public class MTLavenderAccentAction extends MTAbstractAccentAction {
-
-  @Override
-  public final MTAccents getAccent() {
-    return MTAccents.LAVENDER;
-  }
+class MTLavenderAccentAction : MTAbstractAccentAction() {
+  override val accent: MTAccents
+    get() = MTAccents.LAVENDER
 }

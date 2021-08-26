@@ -378,7 +378,8 @@
                         id="MTDotIndicators"
                         icon="/icons/actions/indicators/dot.svg" />
                 <action class="com.mallowigi.idea.actions.indicators.MTNoneIndicators"
-                        id="MTNoneIndicators" />
+                        id="MTNoneIndicators"
+                        icon="/icons/actions/indicators/none.svg" />
             </group>
             <group id="tabPositions" popup="true">
                 <action class="com.mallowigi.idea.actions.positions.MTDefaultPosition"
@@ -412,7 +413,8 @@
                         id="MTTopLessPosition"
                         icon="/icons/actions/positions/topless.svg" />
                 <action class="com.mallowigi.idea.actions.positions.MTNonePosition"
-                        id="MTNonePosition" />
+                        id="MTNonePosition"
+                        icon="/icons/actions/positions/none.svg" />
             </group>
 
         </group>

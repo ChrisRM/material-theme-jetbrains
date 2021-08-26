@@ -23,37 +23,30 @@
  *
  *
  */
+package com.mallowigi.idea.actions.indicators
 
-package com.mallowigi.idea.actions.indicators;
+import com.intellij.openapi.actionSystem.AnActionEvent
+import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl
+import com.mallowigi.idea.MTAnalytics
+import com.mallowigi.idea.MTAnalytics.Companion.instance
+import com.mallowigi.idea.actions.MTToggleAction
+import com.mallowigi.idea.config.application.MTConfig
+import com.mallowigi.idea.config.enums.IndicatorStyles
 
-import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl;
-import com.mallowigi.idea.MTAnalytics;
-import com.mallowigi.idea.actions.MTToggleAction;
-import com.mallowigi.idea.config.application.MTConfig;
-import com.mallowigi.idea.config.enums.IndicatorStyles;
-import org.jetbrains.annotations.NotNull;
+abstract class MTAbstractIndicatorsAction : MTToggleAction() {
+  private val mtConfig = MTConfig.getInstance()
 
-abstract class MTAbstractIndicatorsAction extends MTToggleAction {
-  private final MTConfig mtConfig = MTConfig.getInstance();
+  override fun isSelected(e: AnActionEvent): Boolean = mtConfig.indicatorStyle == indicatorStyle
 
-  @Override
-  public final boolean isSelected(@NotNull final AnActionEvent e) {
-    return mtConfig.getIndicatorStyle() == getIndicatorStyle();
+  override fun setSelected(e: AnActionEvent, state: Boolean) {
+    val indicatorStyle = indicatorStyle
+    mtConfig.indicatorStyle = indicatorStyle
+
+    ActionToolbarImpl.updateAllToolbarsImmediately()
+
+    instance.trackValue(MTAnalytics.INDICATOR_STYLE, indicatorStyle)
+    super.setSelected(e, state)
   }
 
-  @Override
-  public final void setSelected(@NotNull final AnActionEvent e, final boolean state) {
-    final IndicatorStyles indicatorStyle = getIndicatorStyle();
-    mtConfig.setIndicatorStyle(indicatorStyle);
-
-    ActionToolbarImpl.updateAllToolbarsImmediately();
-    MTAnalytics.getInstance().trackValue(MTAnalytics.INDICATOR_STYLE, indicatorStyle);
-    super.setSelected(e, state);
-  }
-
-  /**
-   * The arrows style
-   */
-  protected abstract IndicatorStyles getIndicatorStyle();
+  protected abstract val indicatorStyle: IndicatorStyles
 }

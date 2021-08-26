@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,14 +23,11 @@
  *
  *
  */
+package com.mallowigi.idea.actions.positions
 
-package com.mallowigi.idea.actions.positions;
+import com.mallowigi.idea.config.enums.TabHighlightPositions
 
-import com.mallowigi.idea.config.enums.TabHighlightPositions;
-
-public final class MTTopBottomPosition extends MTAbstractPositionsAction {
-  @Override
-  protected TabHighlightPositions getPosition() {
-    return TabHighlightPositions.TOP_BOTTOM;
-  }
+class MTTopBottomPosition : MTAbstractPositionsAction() {
+  override val position: TabHighlightPositions
+    get() = TabHighlightPositions.TOP_BOTTOM
 }

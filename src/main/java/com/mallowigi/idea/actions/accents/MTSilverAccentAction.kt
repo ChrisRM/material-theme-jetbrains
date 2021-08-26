@@ -23,15 +23,11 @@
  *
  *
  */
+package com.mallowigi.idea.actions.accents
 
-package com.mallowigi.idea.actions.accents;
+import com.mallowigi.idea.themes.MTAccents
 
-import com.mallowigi.idea.themes.MTAccents;
-
-public class MTSilverAccentAction extends MTAbstractAccentAction {
-
-  @Override
-  public final MTAccents getAccent() {
-    return MTAccents.SILVER;
-  }
+class MTSilverAccentAction : MTAbstractAccentAction() {
+  override val accent: MTAccents
+    get() = MTAccents.SILVER
 }

@@ -23,14 +23,11 @@
  *
  *
  */
+package com.mallowigi.idea.actions.accents
 
-package com.mallowigi.idea.actions.accents;
+import com.mallowigi.idea.themes.MTAccents
 
-import com.mallowigi.idea.themes.MTAccents;
-
-public class MTGraphiteAccentAction extends MTAbstractAccentAction {
-  @Override
-  public final MTAccents getAccent() {
-    return MTAccents.GRAPHITE;
-  }
+class MTGraphiteAccentAction : MTAbstractAccentAction() {
+  override val accent: MTAccents
+    get() = MTAccents.GRAPHITE
 }
