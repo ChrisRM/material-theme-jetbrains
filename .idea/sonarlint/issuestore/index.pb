@@ -227,12 +227,6 @@ r
 Bsrc/main/java/com/mallowigi/idea/tabs/shadow/RightShadowPainter.kt,c/e/cee374a89ed2aa26e069ea65b0925b66a83c47b7
 s
 Csrc/main/java/com/mallowigi/idea/tabs/shadow/BottomShadowPainter.kt,b/9/b932ac4ae2185edfdbc1556b3d0a8795951be2cd
-m
-=src/main/java/com/mallowigi/idea/config/MTFileColorsPage.java,0/a/0a8107d1e4c37101c14265c320919b96a3714f00
-c
-3src/main/java/com/mallowigi/idea/config/MTHome.java,3/5/350196f757983933dfdaf3070e77b9187b69cfa7
-o
-?src/main/java/com/mallowigi/idea/config/MTConfigurableBase.java,5/4/54ff679a13c7fe94499b6fd7d9a709bee9436285
 }
 Msrc/main/java/com/mallowigi/idea/config/custom/MTCustomThemeConfigurable.java,b/9/b964580a04aa391fd7455f06960efd569262898f
 z

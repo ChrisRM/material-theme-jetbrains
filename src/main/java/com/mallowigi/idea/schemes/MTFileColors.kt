@@ -23,135 +23,116 @@
  *
  *
  */
+package com.mallowigi.idea.schemes
 
-package com.mallowigi.idea.schemes;
+import com.intellij.openapi.application.ApplicationManager
+import com.intellij.openapi.editor.colors.ColorKey
+import com.intellij.openapi.editor.colors.EditorColorsListener
+import com.intellij.openapi.editor.colors.EditorColorsManager
+import com.intellij.openapi.editor.colors.EditorColorsScheme
+import com.intellij.openapi.editor.colors.impl.AbstractColorsScheme
+import com.intellij.openapi.project.ProjectManager
+import com.intellij.openapi.vcs.FileStatus
+import com.intellij.openapi.vcs.FileStatusFactory
+import com.intellij.openapi.vcs.FileStatusManager
+import com.intellij.ui.ColorUtil
+import com.mallowigi.idea.config.MTFileColorsPage
+import com.mallowigi.idea.config.application.MTConfig
+import com.mallowigi.idea.messages.MaterialThemeBundle.messageOrDefault
+import org.jetbrains.annotations.NonNls
 
-import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.editor.colors.ColorKey;
-import com.intellij.openapi.editor.colors.EditorColorsManager;
-import com.intellij.openapi.editor.colors.EditorColorsScheme;
-import com.intellij.openapi.editor.colors.impl.AbstractColorsScheme;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.project.ProjectManager;
-import com.intellij.openapi.vcs.FileStatus;
-import com.intellij.openapi.vcs.FileStatusFactory;
-import com.intellij.openapi.vcs.FileStatusManager;
-import com.intellij.ui.ColorUtil;
-import com.mallowigi.idea.config.MTFileColorsPage;
-import com.mallowigi.idea.config.application.MTConfig;
-import com.mallowigi.idea.messages.MaterialThemeBundle;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-
-import java.awt.*;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Objects;
-
-@SuppressWarnings("ContinueStatement")
-public enum MTFileColors {
-  DEFAULT;
+object MTFileColors {
   @NonNls
-  private static final String MT_PREFIX = "MT_FILESTATUS_";
-  private static final HashMap<FileStatus, ColorKey> COLOR_KEYS = new HashMap<>(18);
+  private val MT_PREFIX: String = "MT_FILESTATUS_"
 
-  static {
-    initFileColors();
+  private val COLOR_KEYS = HashMap<FileStatus, ColorKey>(18)
 
-    // Listen for color scheme changes and update the file colors
-    ApplicationManager.getApplication().getMessageBus().connect()
-                      .subscribe(EditorColorsManager.TOPIC, scheme -> apply());
+  private val currentSchemeForCurrentUITheme: EditorColorsScheme
+    get() = EditorColorsManager.getInstance().schemeForCurrentUITheme
 
-    apply();
+  private fun apply() {
+    if (MTConfig.getInstance().isFileStatusColorsEnabled) applyFileStatuses()
+    applyStyleDirectories()
   }
 
-  private static void apply() {
-    if (MTConfig.getInstance().isFileStatusColorsEnabled()) {
-      applyFileStatuses();
-    }
-    applyStyleDirectories();
-  }
+  private fun applyFileStatuses() {
+    val defaultScheme = currentSchemeForCurrentUITheme
+    val allFileStatuses = FileStatusFactory.getInstance().allFileStatuses
 
-  @NotNull
-  private static EditorColorsScheme getCurrentSchemeForCurrentUITheme() {
-    return EditorColorsManager.getInstance().getSchemeForCurrentUITheme();
-  }
-
-  @SuppressWarnings("MethodWithMultipleLoops")
-  private static void applyFileStatuses() {
-    final EditorColorsScheme defaultScheme = getCurrentSchemeForCurrentUITheme();
-    final FileStatus[] allFileStatuses = FileStatusFactory.getInstance().getAllFileStatuses();
-
-    for (final FileStatus fileStatus : allFileStatuses) {
-      final ColorKey mtColorKey = getColorKey(fileStatus);
+    for (fileStatus in allFileStatuses) {
+      val mtColorKey = getColorKey(fileStatus)
       if (mtColorKey != null) {
-        final Color color = defaultScheme.getColor(mtColorKey);
+        val color = defaultScheme.getColor(mtColorKey)
         if (color != null) {
-          defaultScheme.setColor(fileStatus.getColorKey(), color);
+          defaultScheme.setColor(fileStatus.colorKey, color)
         }
       }
     }
-    ((AbstractColorsScheme) defaultScheme).setSaveNeeded(true);
 
-    for (final Project project : ProjectManager.getInstance().getOpenProjects()) {
-      FileStatusManager.getInstance(project).fileStatusesChanged();
+    (defaultScheme as AbstractColorsScheme).setSaveNeeded(true)
+
+    for (project in ProjectManager.getInstance().openProjects) {
+      FileStatusManager.getInstance(project).fileStatusesChanged()
     }
   }
 
-  private static void applyStyleDirectories() {
-    if (!MTConfig.getInstance().isStyledDirectories()) {
-      return;
-    }
+  private fun applyStyleDirectories() {
+    if (!MTConfig.getInstance().isStyledDirectories) return
 
-    final EditorColorsScheme defaultScheme = getCurrentSchemeForCurrentUITheme();
-    final EditorColorsScheme globalScheme = EditorColorsManager.getInstance().getGlobalScheme();
+    val defaultScheme = currentSchemeForCurrentUITheme
+    val globalScheme = EditorColorsManager.getInstance().globalScheme
 
-    defaultScheme.setAttributes(MTFileColorsPage.DIRECTORIES, globalScheme.getAttributes(MTFileColorsPage.DIRECTORIES));
-    ((AbstractColorsScheme) defaultScheme).setSaveNeeded(true);
+    defaultScheme.setAttributes(MTFileColorsPage.DIRECTORIES, globalScheme.getAttributes(MTFileColorsPage.DIRECTORIES))
+    (defaultScheme as AbstractColorsScheme).setSaveNeeded(true)
 
-    for (final Project project : ProjectManager.getInstance().getOpenProjects()) {
-      FileStatusManager.getInstance(project).fileStatusesChanged();
+    for (project in ProjectManager.getInstance().openProjects) {
+      FileStatusManager.getInstance(project).fileStatusesChanged()
     }
   }
 
-  @SuppressWarnings({"DuplicateStringLiteralInspection",
-    "ObjectAllocationInLoop"})
-  public static void initFileColors() {
+  private fun initFileColors() {
     // Load all registered file statuses and read their colors from the properties
-    final FileStatus[] allFileStatuses = FileStatusFactory.getInstance().getAllFileStatuses();
-    for (final FileStatus allFileStatus : allFileStatuses) {
+    val allFileStatuses = FileStatusFactory.getInstance().allFileStatuses
+    for (allFileStatus in allFileStatuses) {
       // 1. Get the original file color
-      final Color originalColor = allFileStatus.getColor();
+      val originalColor = allFileStatus.color
       if (originalColor != null) {
         // 2. if there is an original file color
-        final String originalColorString = ColorUtil.toHex(originalColor);
+        val originalColorString = ColorUtil.toHex(originalColor)
         // 2a. Get custom file color from the bundle, or default to original file color
-        final String property =
-          MaterialThemeBundle.INSTANCE.messageOrDefault("material.file." + allFileStatus.getId().toLowerCase(Locale.ENGLISH),
-            originalColorString);
-        final Color color = ColorUtil.fromHex(property == null ? originalColorString : property);
+        val property = messageOrDefault("material.file." + allFileStatus.id.lowercase(),
+                                        originalColorString)
+        val color = ColorUtil.fromHex(property)
 
         // 2b. Set in the map the custom/default file color
-        COLOR_KEYS.put(allFileStatus, ColorKey.createColorKey(MT_PREFIX + allFileStatus.getId(), color));
+        COLOR_KEYS[allFileStatus] = ColorKey.createColorKey(MT_PREFIX + allFileStatus.id, color)
       } else {
         // 3. If there is no default file color
         // 3a. Get custom file color from the bundle
-        final String property =
-          MaterialThemeBundle.INSTANCE.messageOrDefault("material.file." + allFileStatus.getId().toLowerCase(Locale.ENGLISH), "-1");
+        val property = messageOrDefault("material.file." + allFileStatus.id.lowercase(), "-1")
         // If not found do not add the color to the map
-        if (Objects.equals(property, "-1")) {
-          COLOR_KEYS.put(allFileStatus, ColorKey.createColorKey(MT_PREFIX + allFileStatus.getId()));
-          continue;
+        if (property == "-1") {
+          COLOR_KEYS[allFileStatus] = ColorKey.createColorKey(MT_PREFIX + allFileStatus.id)
+          continue
         }
 
         // 3b. add custom color to the map
-        final Color color = ColorUtil.fromHex(property);
-        COLOR_KEYS.put(allFileStatus, ColorKey.createColorKey(MT_PREFIX + allFileStatus.getId(), color));
+        val color = ColorUtil.fromHex(property)
+        COLOR_KEYS[allFileStatus] = ColorKey.createColorKey(MT_PREFIX + allFileStatus.id, color)
       }
     }
   }
 
-  public static ColorKey getColorKey(final FileStatus status) {
-    return COLOR_KEYS.get(status);
+  @JvmStatic
+  fun getColorKey(status: FileStatus): ColorKey? = COLOR_KEYS[status]
+
+  init {
+    initFileColors()
+
+    // Listen for color scheme changes and update the file colors
+    ApplicationManager.getApplication().messageBus.connect()
+      .subscribe(EditorColorsManager.TOPIC, EditorColorsListener { apply() })
+
+    apply()
   }
 }
