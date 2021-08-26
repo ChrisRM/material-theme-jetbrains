@@ -1,8 +1,6 @@
 
 q
 Asrc/main/java/com/mallowigi/idea/themes/themes/MTNativeTheme.java,8/3/830ba3369acddd8889bff4166feb40189a433058
-i
-9src/main/java/com/mallowigi/idea/lafs/MTLafInstaller.java,a/0/a0cee16f4107eebd4df207c00741c1b383478d39
 [
 +src/main/resources/icons/actions/mt/psi.svg,1/8/18334f455608f0852dc57b8f2b0a229e3c6c2223
 T
@@ -191,8 +189,6 @@ t
 Dsrc/main/java/com/mallowigi/idea/actions/MTToggleOverlaysAction.java,8/9/8981a6b2b311dfa1b05e030b9693ab944e5bbc97
 s
 Csrc/main/java/com/mallowigi/idea/actions/MTUpperCaseTabsAction.java,5/1/5154e22e21a8e04e0bf7df63cfae87a587affed4
-q
-Asrc/main/java/com/mallowigi/idea/notifications/MTNotifications.kt,d/3/d330d8f0081a3382057ca079eedc99b73e9a9a36
 Å
 Qsrc/main/java/com/mallowigi/idea/tabs/highlights/BottomlessHighlightTabPainter.kt,2/b/2bc40a55646ff4fe52116497b67f194c0367586e
 Ä

@@ -23,42 +23,29 @@
  *
  *
  */
+package com.mallowigi.idea.tree
 
-package com.mallowigi.idea.tree;
+import com.intellij.ide.projectView.PresentationData
+import com.intellij.ide.projectView.ProjectViewNode
+import com.intellij.ide.projectView.ProjectViewNodeDecorator
+import com.intellij.openapi.vfs.VirtualFile
+import com.intellij.packageDependencies.ui.PackageDependenciesNode
+import com.intellij.ui.ColoredTreeCellRenderer
+import com.mallowigi.idea.config.MTFileColorsPage
+import com.mallowigi.idea.config.application.MTConfig
 
-import com.intellij.ide.projectView.PresentationData;
-import com.intellij.ide.projectView.ProjectViewNode;
-import com.intellij.ide.projectView.ProjectViewNodeDecorator;
-import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.packageDependencies.ui.PackageDependenciesNode;
-import com.intellij.ui.ColoredTreeCellRenderer;
-import com.mallowigi.idea.config.MTFileColorsPage;
-import com.mallowigi.idea.config.application.MTConfig;
-
-public final class MTColoredFoldersNodeDecorator implements ProjectViewNodeDecorator {
-
-  @Override
-  public void decorate(final PackageDependenciesNode node, final ColoredTreeCellRenderer cellRenderer) {
-
+class MTColoredFoldersNodeDecorator : ProjectViewNodeDecorator {
+  override fun decorate(node: PackageDependenciesNode, cellRenderer: ColoredTreeCellRenderer) {
+    // do nothing
   }
 
-  @SuppressWarnings("FeatureEnvy")
-  @Override
-  public void decorate(final ProjectViewNode node, final PresentationData data) {
-    final VirtualFile file = node.getVirtualFile();
+  override fun decorate(node: ProjectViewNode<*>, data: PresentationData) {
+    val file = node.virtualFile ?: return
 
-    // Color file status
-    if (file != null) {
-      if (MTConfig.getInstance().isStyledDirectories()) {
-        // Color file status
-        applyDirectoriesColor(data, file);
-      }
-    }
+    if (MTConfig.getInstance().isStyledDirectories) applyDirectoriesColor(data, file)
   }
 
-  private static void applyDirectoriesColor(final PresentationData data, final VirtualFile file) {
-    if (file.isDirectory()) {
-      data.setAttributesKey(MTFileColorsPage.DIRECTORIES);
-    }
+  private fun applyDirectoriesColor(data: PresentationData, file: VirtualFile) {
+    if (file.isDirectory) data.setAttributesKey(MTFileColorsPage.DIRECTORIES)
   }
 }
