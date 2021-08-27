@@ -23,7 +23,7 @@
  *
  *
  */
-package com.mallowigi.idea.utils
+package com.mallowigi.idea.utils.animator
 
 import com.intellij.openapi.util.Disposer
 import com.intellij.util.ui.Animator

@@ -138,7 +138,7 @@ public final class OverlayPainter implements AWTEventListener, Disposable {
     final Object source = event == null ? null : event.getSource();
     if (source instanceof Window) {
       // Remove highlights when all windows are closed
-      if (event.getID() == WindowEvent.WINDOW_CLOSED && openedWindowsStack.peek() == source) {
+      if (event.getID() == WindowEvent.WINDOW_CLOSED && openedWindowsStack.contains(source)) {
         openedWindowsStack.pop();
         if (openedWindowsStack.isEmpty()) {
           removeOverlays();

@@ -26,8 +26,6 @@
 
 package com.mallowigi.idea.utils.animator
 
-import com.mallowigi.idea.utils.MTChangeLAFAnimator
-
 /**
  * Service responsible for creating and triggering MTChangeLafAnimators animators
  *
