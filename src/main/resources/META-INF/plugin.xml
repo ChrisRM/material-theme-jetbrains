@@ -234,6 +234,7 @@
 
         <backgroundPostStartupActivity implementation="com.mallowigi.idea.MTUpdatesComponent" />
         <postStartupActivity implementation="com.mallowigi.idea.tabs.MTTabsPainterPatcherComponent" />
+        <pluginReplacement implementation="com.mallowigi.idea.integrations.MTPluginReplacement" />
     </extensions>
 
     <!--suppress PluginXmlValidity -->
