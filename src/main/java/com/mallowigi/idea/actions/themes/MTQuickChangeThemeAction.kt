@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,22 +23,17 @@
  *
  *
  */
-package com.mallowigi.idea.actions.themes;
+package com.mallowigi.idea.actions.themes
 
-import com.intellij.icons.AllIcons;
-import com.intellij.ide.actions.QuickSwitchSchemeAction;
-import com.intellij.openapi.actionSystem.DataContext;
-import com.intellij.openapi.actionSystem.DefaultActionGroup;
-import com.intellij.openapi.project.Project;
-import com.mallowigi.idea.MTBundledThemesManager;
-import org.jetbrains.annotations.NotNull;
+import com.intellij.icons.AllIcons
+import com.intellij.ide.actions.QuickSwitchSchemeAction
+import com.intellij.openapi.actionSystem.DataContext
+import com.intellij.openapi.actionSystem.DefaultActionGroup
+import com.intellij.openapi.project.Project
+import com.mallowigi.idea.MTBundledThemesManager
 
-/**
- * @author max
- */
-public final class MTQuickChangeThemeAction extends QuickSwitchSchemeAction {
-
-  private final MTBundledThemesManager manager = MTBundledThemesManager.getInstance();
+class MTQuickChangeThemeAction : QuickSwitchSchemeAction() {
+  private val manager = MTBundledThemesManager.getInstance()
 
   /**
    * Add external themes in the list
@@ -47,13 +42,8 @@ public final class MTQuickChangeThemeAction extends QuickSwitchSchemeAction {
    * @param group       Quick switch group
    * @param dataContext data context
    */
-  @Override
-  protected void fillActions(final Project project, @NotNull final DefaultActionGroup group, @NotNull final DataContext dataContext) {
-    manager.addBundledThemes(group, AllIcons.Actions.Forward, ourNotCurrentAction);
-  }
+  override fun fillActions(project: Project, group: DefaultActionGroup, dataContext: DataContext): Unit =
+    manager.addBundledThemes(group, AllIcons.Actions.Forward, ourNotCurrentAction)
 
-  @Override
-  protected boolean isEnabled() {
-    return manager.getBundledThemes().size() >= 1;
-  }
+  override fun isEnabled(): Boolean = manager.bundledThemes.isNotEmpty()
 }

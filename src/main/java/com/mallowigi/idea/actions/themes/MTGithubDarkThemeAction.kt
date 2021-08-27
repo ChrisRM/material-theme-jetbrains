@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,17 +23,11 @@
  *
  *
  */
+package com.mallowigi.idea.actions.themes
 
-package com.mallowigi.idea.actions.themes;
+import com.mallowigi.idea.themes.MTThemes
 
-import com.mallowigi.idea.themes.MTThemes;
-import org.jetbrains.annotations.NotNull;
-
-public final class MTGithubDarkThemeAction extends MTAbstractThemeAction {
-  @Override
-  @NotNull
-  public MTThemes getTheme() {
-    return MTThemes.GITHUB_DARK;
-  }
-
+class MTGithubDarkThemeAction : MTAbstractThemeAction() {
+  override val theme: MTThemes
+    get() = MTThemes.GITHUB_DARK
 }

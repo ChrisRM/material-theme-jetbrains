@@ -37,10 +37,6 @@ i
 Ksrc/main/java/com/mallowigi/idea/notifications/MTInstallAtomNotification.kt,3/0/304fa8fa3ca08169bce097fa2c2f1e7cc54941de
 {
 Ksrc/main/java/com/mallowigi/idea/actions/themes/MTMoonlightThemeAction.java,b/1/b17ad811df8f7b0eca946aa3de248e7ac9226640
-y
-Isrc/main/java/com/mallowigi/idea/actions/themes/MTArcDarkThemeAction.java,d/f/dfec4cfab4cb543d0b8b18789b7b7d3cbe7fd3bd
-y
-Isrc/main/java/com/mallowigi/idea/actions/themes/MTOceanicThemeAction.java,0/0/008e1219f78f1bb5fcfe87ac6cc3329fb7114409
 |
 Lsrc/main/java/com/mallowigi/idea/actions/themes/MTGithubDarkThemeAction.java,d/2/d2863f8b80ce59ae64af096a6879e6d34648932d
 x
@@ -71,8 +67,6 @@ Isrc/main/java/com/mallowigi/idea/actions/themes/MTLighterThemeAction.java,0/7/
 Ksrc/main/java/com/mallowigi/idea/actions/themes/MTDeepOceanThemeAction.java,a/7/a727d4b0b03f2a940e34268c4590154834df91cd
 y
 Isrc/main/java/com/mallowigi/idea/actions/themes/MTMonokaiThemeAction.java,c/6/c65ca6168224a6c5a2fce6e488f6d8f14e8af2cf
-z
-Jsrc/main/java/com/mallowigi/idea/actions/themes/MTAbstractThemeAction.java,0/b/0b7a251161453b5b4b4f58a4730eed94452579fd
 Å
 Qsrc/main/java/com/mallowigi/idea/tabs/highlights/BottomlessHighlightTabPainter.kt,2/b/2bc40a55646ff4fe52116497b67f194c0367586e
 Ä

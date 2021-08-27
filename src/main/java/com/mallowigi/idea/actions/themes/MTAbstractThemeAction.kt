@@ -23,54 +23,36 @@
  *
  *
  */
+package com.mallowigi.idea.actions.themes
 
-package com.mallowigi.idea.actions.themes;
+import com.intellij.openapi.actionSystem.AnActionEvent
+import com.intellij.openapi.project.DumbAware
+import com.mallowigi.idea.MTAnalytics
+import com.mallowigi.idea.MTAnalytics.Companion.instance
+import com.mallowigi.idea.MTThemeManager
+import com.mallowigi.idea.actions.MTToggleAction
+import com.mallowigi.idea.config.application.MTConfig
+import com.mallowigi.idea.themes.MTThemeFacade
+import com.mallowigi.idea.ui.MTButtonUI
 
-import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.project.DumbAware;
-import com.mallowigi.idea.MTAnalytics;
-import com.mallowigi.idea.MTThemeManager;
-import com.mallowigi.idea.actions.MTToggleAction;
-import com.mallowigi.idea.config.application.MTConfig;
-import com.mallowigi.idea.themes.MTThemeFacade;
-import com.mallowigi.idea.ui.MTButtonUI;
-import org.jetbrains.annotations.NotNull;
+abstract class MTAbstractThemeAction : MTToggleAction(), DumbAware {
+  override fun setSelected(e: AnActionEvent, state: Boolean) {
+    MTButtonUI.resetCache()
 
-/**
- * Abstract Material Theme switch action
- */
-public abstract class MTAbstractThemeAction extends MTToggleAction implements DumbAware {
+    val selectedTheme = theme
+    MTThemeManager.setLookAndFeel(selectedTheme)
 
-  @Override
-  public final void setSelected(@NotNull final AnActionEvent e, final boolean state) {
-    MTButtonUI.resetCache();
-
-    final MTThemeFacade selectedTheme = getTheme();
-    MTThemeManager.setLookAndFeel(selectedTheme);
-
-    MTAnalytics.getInstance().trackValue(MTAnalytics.SELECT_THEME, selectedTheme);
-    super.setSelected(e, state);
+    instance.trackValue(MTAnalytics.SELECT_THEME, selectedTheme)
+    super.setSelected(e, state)
   }
 
-  @Override
-  public final boolean isSelected(@NotNull final AnActionEvent e) {
-    return MTConfig.getInstance().getSelectedTheme() == getTheme();
-  }
+  override fun isSelected(e: AnActionEvent): Boolean = MTConfig.getInstance().selectedTheme === theme
 
-  /**
-   * Returns the theme to apply
-   *
-   * @return the theme
-   */
-  protected abstract MTThemeFacade getTheme();
+  protected abstract val theme: MTThemeFacade
 
-  @Override
-  protected void checkLicense(final @NotNull AnActionEvent e) {
-    e.getPresentation().setEnabled(true);
-    final boolean selected = isSelected(e);
-
-    if (selected) {
-      e.getPresentation().setEnabled(false);
-    }
+  override fun checkLicense(e: AnActionEvent) {
+    e.presentation.isEnabled = true
+    val selected = isSelected(e)
+    if (selected) e.presentation.isEnabled = false
   }
 }

@@ -23,23 +23,17 @@
  *
  *
  */
+package com.mallowigi.idea.actions.themes
 
-package com.mallowigi.idea.actions.themes;
+import com.intellij.openapi.actionSystem.AnActionEvent
+import com.mallowigi.idea.MTLicenseChecker
+import com.mallowigi.idea.themes.MTThemes
 
-import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.mallowigi.idea.MTLicenseChecker;
-import com.mallowigi.idea.themes.MTThemes;
-import org.jetbrains.annotations.NotNull;
+class MTCustomThemeAction : MTAbstractThemeAction() {
+  override val theme: MTThemes
+    get() = MTThemes.CUSTOM
 
-public final class MTCustomThemeAction extends MTAbstractThemeAction {
-
-  @Override
-  protected MTThemes getTheme() {
-    return MTThemes.CUSTOM;
-  }
-
-  @Override
-  protected void checkLicense(final @NotNull AnActionEvent e) {
-    e.getPresentation().setEnabled(MTLicenseChecker.isLicensed());
+  override fun checkLicense(e: AnActionEvent) {
+    e.presentation.isEnabled = MTLicenseChecker.isLicensed()
   }
 }
