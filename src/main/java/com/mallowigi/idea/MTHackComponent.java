@@ -358,14 +358,15 @@ public final class MTHackComponent {
       final CtClass tagButtonClass = cp.get("com.intellij.execution.ui.TagButton");
 
       final CtMethod getBackgroundColor = tagButtonClass.getDeclaredMethod("getBackgroundColor");
-      getBackgroundColor.instrument(new ExprEditor() {
-        @Override
-        public void edit(final MethodCall m) throws CannotCompileException {
-          if ("hoverBackground".equals(m.getMethodName())) {
-            m.replace("{ $_ = javax.swing.UIManager.getColor(\"Button.startBackground\"); $proceed($$); }");
-          }
-        }
-      });
+      getBackgroundColor.setBody("{ return javax.swing.UIManager.getColor(\"Button.background\"); }");
+      //      getBackgroundColor.instrument(new ExprEditor() {
+      //        @Override
+      //        public void edit(final MethodCall m) throws CannotCompileException {
+      //          if ("hoverBackground".equals(m.getMethodName())) {
+      //            m.replace("{ $_ = javax.swing.UIManager.getColor(\"Button.startBackground\"); $proceed($$); }");
+      //          }
+      //        }
+      //      });
       tagButtonClass.toClass();
     } catch (final Throwable e) {
       // do nothing
