@@ -33,12 +33,12 @@ package com.mallowigi.idea.wizard.steps;
 import com.intellij.ide.customize.AbstractCustomizeWizardStep;
 import com.intellij.openapi.ui.ComboBox;
 import com.intellij.ui.components.JBScrollPane;
-import com.mallowigi.idea.MTLicenseChecker;
 import com.mallowigi.idea.config.application.MTConfig;
 import com.mallowigi.idea.config.enums.IndicatorStyles;
 import com.mallowigi.idea.config.enums.TabHighlightPositions;
 import com.mallowigi.idea.messages.MTWizardBundle;
 import com.mallowigi.idea.utils.MTUiUtils;
+import com.mallowigi.idea.visitors.MTMainProductLicenseChecker;
 import net.miginfocom.swing.MigLayout;
 import org.jetbrains.annotations.NotNull;
 
@@ -82,7 +82,7 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
   }
 
   private void setupComponents() {
-    final boolean isFreeLicense = !MTLicenseChecker.isLicensed();
+    final boolean isFreeLicense = !MTMainProductLicenseChecker.getInstance().isLicensed();
     if (isFreeLicense) {
       disablePremium(highlightSpinner);
       disablePremium(indicatorStyleComboBox);

@@ -37,7 +37,6 @@ import com.intellij.util.ObjectUtils;
 import com.intellij.util.xmlb.XmlSerializerUtil;
 import com.intellij.util.xmlb.annotations.Property;
 import com.intellij.util.xmlb.annotations.Transient;
-import com.mallowigi.idea.MTLicenseChecker;
 import com.mallowigi.idea.config.MTBaseConfig;
 import com.mallowigi.idea.config.enums.IndicatorStyles;
 import com.mallowigi.idea.config.enums.TabHighlightPositions;
@@ -48,6 +47,8 @@ import com.mallowigi.idea.themes.MTAccents;
 import com.mallowigi.idea.themes.MTThemeFacade;
 import com.mallowigi.idea.themes.MTThemes;
 import com.mallowigi.idea.utils.MTUiUtils;
+import com.mallowigi.idea.visitors.MTHCLicenseChecker;
+import com.mallowigi.idea.visitors.MTMainProductLicenseChecker;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
@@ -237,7 +238,8 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
 
   @Transient
   private transient boolean isPremium;
-
+  @Transient
+  private final transient boolean isHcPremium;
   @Transient
   public transient Boolean hadStripesEnabled = null;
 
@@ -248,9 +250,11 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    */
   @SuppressWarnings({
     "ImplicitCallToSuper",
-    "PublicConstructor"})
+    "PublicConstructor"
+  })
   public MTConfig() {
-    isPremium = MTLicenseChecker.isLicensed();
+    isPremium = MTMainProductLicenseChecker.getInstance().isLicensed();
+    isHcPremium = MTHCLicenseChecker.getInstance().isLicensed();
   }
 
   /**
@@ -282,7 +286,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   public MTConfig getState() {
     isPremium = true;
     final MTConfig clone = clone();
-    isPremium = MTLicenseChecker.isLicensed();
+    isPremium = MTMainProductLicenseChecker.getInstance().isLicensed();
     if (hadStripesEnabled == null) {
       hadStripesEnabled = clone.stripedToolWindowsEnabled;
     }
@@ -520,7 +524,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   }
 
   public boolean isHighContrast() {
-    return isPremium && isHighContrast;
+    return hasHighContrast() && isHighContrast;
   }
 
   //endregion
@@ -1620,6 +1624,10 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   //region ----------- Premium -----------
   public boolean isPremium() {
     return isPremium;
+  }
+
+  public boolean hasHighContrast() {
+    return isPremium || isHcPremium;
   }
 
   public void setPremium(final boolean premium) {

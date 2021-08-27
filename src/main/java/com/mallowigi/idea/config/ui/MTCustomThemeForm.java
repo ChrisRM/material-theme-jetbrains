@@ -34,13 +34,13 @@ import com.intellij.ui.ColorPanel;
 import com.intellij.ui.ColorUtil;
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
-import com.mallowigi.idea.MTLicenseChecker;
 import com.mallowigi.idea.config.MTBaseConfig;
 import com.mallowigi.idea.config.custom.MTCustomThemeConfig;
 import com.mallowigi.idea.config.ui.load.MTLoadCustomThemeComboBoxAction;
 import com.mallowigi.idea.messages.MaterialThemeBundle;
 import com.mallowigi.idea.ui.ColorPanelWithOpacity;
 import com.mallowigi.idea.ui.DisabledPanel;
+import com.mallowigi.idea.visitors.MTMainProductLicenseChecker;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
@@ -755,7 +755,7 @@ public final class MTCustomThemeForm implements MTFormUI {
     customThemeForm.add(actionToolbar.getComponent(), "cell 1 1, align right center,grow 0 0");
     disabledPanel = new DisabledPanel(content, MaterialThemeBundle.message("plugin.premiumSimple"));
 
-    final boolean isFreeLicense = !MTLicenseChecker.isLicensed();
+    final boolean isFreeLicense = !MTMainProductLicenseChecker.getInstance().isLicensed();
     if (isFreeLicense) {
       disablePremium(disabledPanel);
     }

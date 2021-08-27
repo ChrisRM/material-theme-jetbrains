@@ -35,13 +35,13 @@ import com.intellij.openapi.ui.ComboBox;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.ui.ColorPanel;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
-import com.mallowigi.idea.MTLicenseChecker;
 import com.mallowigi.idea.config.MTBaseConfig;
 import com.mallowigi.idea.config.application.MTConfig;
 import com.mallowigi.idea.config.enums.TabHighlightPositions;
 import com.mallowigi.idea.config.project.MTProjectConfig;
 import com.mallowigi.idea.messages.MaterialThemeBundle;
 import com.mallowigi.idea.utils.MTUiUtils;
+import com.mallowigi.idea.visitors.MTMainProductLicenseChecker;
 import net.miginfocom.swing.MigLayout;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
@@ -80,7 +80,7 @@ public class MTProjectForm implements MTFormUI {
   }
 
   private void disablePremiumFeatures() {
-    final boolean isFreeLicense = !MTLicenseChecker.isLicensed();
+    final boolean isFreeLicense = !MTMainProductLicenseChecker.getInstance().isLicensed();
     if (isFreeLicense) {
       disablePremium(activeTabHighlightCheckbox);
       disablePremium(activeTabHighlightColor);
@@ -369,7 +369,7 @@ public class MTProjectForm implements MTFormUI {
     setUseProjectIcon(mtConfig.isUseProjectIcon());
     setUseProjectTitle(mtConfig.isUseProjectTitle());
 
-    mtConfig.setPremium(MTLicenseChecker.isLicensed());
+    mtConfig.setPremium(MTMainProductLicenseChecker.getInstance().isLicensed());
 
     afterStateSet();
   }

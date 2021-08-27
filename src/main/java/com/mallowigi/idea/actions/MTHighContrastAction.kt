@@ -43,5 +43,8 @@ class MTHighContrastAction : MTToggleAction() {
   override fun update(e: AnActionEvent) {
     super.update(e)
     if (MTConfig.getInstance().selectedTheme.isNative) e.presentation.isEnabled = false
+
+//    e.getPresentation().setEnabled(!MTMainProductLicenseChecker.getInstance().isLicensed());
+
   }
 }

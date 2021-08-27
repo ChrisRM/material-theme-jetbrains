@@ -24,7 +24,7 @@
  *
  */
 
-package com.mallowigi.idea;
+package com.mallowigi.idea.visitors;
 
 import com.google.gson.Gson;
 import com.google.gson.internal.LinkedTreeMap;
@@ -46,26 +46,31 @@ import java.security.cert.*;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
 
-@SuppressWarnings({
-  "UseOfObsoleteDateTimeApi",
+@SuppressWarnings({"UseOfObsoleteDateTimeApi",
   "HardcodedLineSeparator",
   "StringConcatenation",
   "OverlyBroadCatchBlock",
   "OverlyBroadThrowsClause",
   "ProhibitedExceptionThrown",
   "ProhibitedExceptionDeclared"})
-public final class MTLicenseChecker {
-
-  private static final String PRODUCT_CODE = "PMATERIALUI";
+public abstract class MTLicenseChecker {
+  @NonNls
   private static final String KEY_PREFIX = "key:";
+  @NonNls
   private static final String STAMP_PREFIX = "stamp:";
+  @NonNls
   private static final String EVAL_PREFIX = "eval:";
+  @NonNls
   private static final long SECOND = 1000;
+  @NonNls
   private static final long MINUTE = 60 * SECOND;
+  @NonNls
   private static final long HOUR = 60 * MINUTE;
+  @NonNls
   private static final long TIMESTAMP_VALIDITY_PERIOD_MS = HOUR;
 
   // region CERTIFICATE
+  @NonNls
   private static final String[] ROOT_CERTIFICATES = {
     "-----BEGIN CERTIFICATE-----\n" +
       "MIIFOzCCAyOgAwIBAgIJANJssYOyg3nhMA0GCSqGSIb3DQEBCwUAMBgxFjAUBgNV\n" +
@@ -130,29 +135,24 @@ public final class MTLicenseChecker {
       "-----END CERTIFICATE-----"
   };
   // endregion
-
   /**
    * License Details
    */
-  private static final LicenseDetails licenseDetails = new LicenseDetails();
+  private final LicenseDetails licenseDetails = new LicenseDetails();
 
-  private MTLicenseChecker() {
+  MTLicenseChecker() {
     extractLicenseInformation();
-  }
-
-  public static MTLicenseChecker getInstance() {
-    return ApplicationManager.getApplication().getService(MTLicenseChecker.class);
   }
 
   /**
    * Extract License Information from the server
    */
-  public static void extractLicenseInformation() {
+  public final void extractLicenseInformation() {
     final LicensingFacade facade = LicensingFacade.getInstance();
     if (facade == null) {
       return;
     }
-    final String cstamp = facade.getConfirmationStamp(PRODUCT_CODE);
+    final String cstamp = facade.getConfirmationStamp(getProductCode());
     if (cstamp == null) {
       return;
     }
@@ -167,10 +167,12 @@ public final class MTLicenseChecker {
     }
   }
 
+  abstract String getProductCode();
+
   /**
    * Extract license information from key (the license is obtained via JetBrainsAccount or entered as an activation code)
    */
-  private static void extractFromKey(final String key) {
+  private void extractFromKey(final String key) {
     licenseDetails.setLicenseType(LicenseType.LICENSED);
 
     final String[] licenseParts = key.split("-");
@@ -201,7 +203,7 @@ public final class MTLicenseChecker {
   /**
    * Extract license information from stamp (licensed via ticket obtained from JetBrains Floating License Server)
    */
-  private static void extractFromStamp(final String serverStamp) {
+  private void extractFromStamp(final String serverStamp) {
     licenseDetails.setLicenseType(LicenseType.FLOATING);
     try {
       final String[] parts = serverStamp.split(":");
@@ -220,12 +222,10 @@ public final class MTLicenseChecker {
   /**
    * Extract evaluation information
    */
-  private static void extractFromEval(final String expirationTime) {
+  private void extractFromEval(final String expirationTime) {
     licenseDetails.setLicenseType(LicenseType.EVALUATION);
 
     try {
-      final Date now = new Date();
-      final Date expiration = new Date(Long.parseLong(expirationTime));
       licenseDetails.setPaidUpTo(expirationTime);
     } catch (final NumberFormatException e) {
       licenseDetails.invalidate();
@@ -236,12 +236,12 @@ public final class MTLicenseChecker {
    * Checks if the product is licensed independently of the license info
    */
   @SuppressWarnings("SimplifiableIfStatement")
-  public static boolean isLicensed() {
+  public final boolean isLicensed() {
     final LicensingFacade facade = LicensingFacade.getInstance();
     if (facade == null) {
       return false;
     }
-    final String cstamp = facade.getConfirmationStamp(PRODUCT_CODE);
+    final String cstamp = facade.getConfirmationStamp(getProductCode());
     if (cstamp == null) {
       return false;
     }
@@ -262,7 +262,7 @@ public final class MTLicenseChecker {
   /**
    * Triggers the Register Dialog
    */
-  public static void requestLicense(final String message) {
+  public final void requestLicense(final String message) {
     // ensure the dialog is appeared from UI thread and in a non-modal context
     ApplicationManager.getApplication().invokeLater(() -> showRegisterDialog(message), ModalityState.NON_MODAL);
   }
@@ -271,14 +271,14 @@ public final class MTLicenseChecker {
    * Display License information
    */
   @SuppressWarnings("FeatureEnvy")
-  public static String getLicensedInfo() {
+  public final String getLicensedInfo() {
     final LicensingFacade facade = LicensingFacade.getInstance();
     if (facade == null) {
       return "";
     }
 
     final String licensedToMessage = licenseDetails.getName();
-    final Date licenseExpirationDate = facade.getExpirationDate(PRODUCT_CODE);
+    final Date licenseExpirationDate = facade.getExpirationDate(getProductCode());
     final Date now = new Date();
 
     if (licenseDetails.getLicenseType() == LicenseType.LICENSED || licenseDetails.getLicenseType() == LicenseType.FLOATING) {
@@ -297,7 +297,7 @@ public final class MTLicenseChecker {
   /**
    * Show the register dialog
    */
-  private static void showRegisterDialog(final String message) {
+  private void showRegisterDialog(final String message) {
     final ActionManager actionManager = ActionManager.getInstance();
     // first, assume we are running inside the opensource version
     AnAction registerAction = actionManager.getAction("RegisterPlugins");
@@ -318,7 +318,7 @@ public final class MTLicenseChecker {
   /**
    * Parse the json containing the license info and save in the license Details
    */
-  private static void extractInfo(final byte... licenseBytes) {
+  private void extractInfo(final byte... licenseBytes) {
     final String licenseString = new String(licenseBytes, StandardCharsets.UTF_8);
     final LinkedTreeMap json = new Gson().fromJson(licenseString, LinkedTreeMap.class);
     if (json == null) {
@@ -334,7 +334,7 @@ public final class MTLicenseChecker {
       for (final Object p : products) {
         if (p instanceof LinkedTreeMap) {
           final LinkedTreeMap product = (LinkedTreeMap) p;
-          if (product.get(LicenseDetails.CODE).equals(PRODUCT_CODE)) {
+          if (product.get(LicenseDetails.CODE).equals(getProductCode())) {
             licenseDetails.setPaidUpTo((String) product.get(LicenseDetails.PAID_UP_TO));
           }
         }
@@ -343,7 +343,7 @@ public final class MTLicenseChecker {
   }
 
   private static boolean isKeyValid(final String key) {
-    // Always ask for new information, we cant rely on the static field
+    // Always ask for new information, we cant rely on the  field
     final String[] licenseParts = key.split("-");
     if (licenseParts.length != 4) {
       return false; // invalid format
@@ -371,7 +371,7 @@ public final class MTLicenseChecker {
   }
 
   private static boolean isLicenseServerStampValid(final String serverStamp) {
-    // Always ask for new information, we cant rely on the static field
+    // Always ask for new information, we cant rely on the  field
     try {
       final String[] parts = serverStamp.split(":");
       final Base64.Decoder base64 = Base64.getMimeDecoder();
@@ -406,7 +406,7 @@ public final class MTLicenseChecker {
   }
 
   private static boolean isEvaluationValid(final String expirationTime) {
-    // Always ask for new information, we cant rely on the static field
+    // Always ask for new information, we cant rely on the  field
     try {
       final Date now = new Date();
       final Date expiration = new Date(Long.parseLong(expirationTime));
@@ -423,12 +423,12 @@ public final class MTLicenseChecker {
    * - message: optional message explaining the reason why the dialog has been shown
    */
   @NotNull
-  private static DataContext asDataContext(@Nullable final String message) {
+  private DataContext asDataContext(@Nullable final String message) {
     return dataId -> {
       switch (dataId) {
         // the same code as registered in plugin.xml, 'product-descriptor' tag
         case "register.product-descriptor.code":
-          return PRODUCT_CODE;
+          return getProductCode();
 
         // optional message to be shown in the registration dialog that appears
         case "register.message":
@@ -469,8 +469,8 @@ public final class MTLicenseChecker {
   /**
    * Verify the stamp signature
    */
-  private static @Nullable
-  String verifyStampSignature(final String[] parts, final Base64.Decoder base64) throws Exception {
+  private @Nullable
+  static String verifyStampSignature(final String[] parts, final Base64.Decoder base64) throws Exception {
     final long timeStamp = Long.parseLong(parts[1]);
     final String machineId = parts[2];
     final String signatureType = parts[3];
@@ -547,9 +547,21 @@ public final class MTLicenseChecker {
   }
 
   /**
+   * Types of license
+   */
+  enum LicenseType {
+    LICENSED,
+    FLOATING,
+    EVALUATION,
+    FREE
+  }
+
+  /**
    * Data holding class for license info
    */
-  @SuppressWarnings("StaticMethodOnlyUsedInOneClass")
+  @SuppressWarnings({"StaticMethodOnlyUsedInOneClass",
+    "FieldCanBeLocal",
+    "unused"})
   private static final class LicenseDetails {
     @NonNls
     static final String LICENSE_ID = "licenseId";
@@ -566,7 +578,7 @@ public final class MTLicenseChecker {
     private String name = null;
     private String paidUpTo = null;
     private String machineId = null;
-    private LicenseType licenseType = LicenseType.FREE;
+    private LicenseType licenseType = MTLicenseChecker.LicenseType.FREE;
     private boolean isValid = true;
 
     LicenseDetails() {
@@ -603,15 +615,5 @@ public final class MTLicenseChecker {
     LicenseType getLicenseType() {
       return licenseType;
     }
-  }
-
-  /**
-   * Types of license
-   */
-  enum LicenseType {
-    LICENSED,
-    FLOATING,
-    EVALUATION,
-    FREE
   }
 }
