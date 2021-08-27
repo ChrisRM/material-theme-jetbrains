@@ -23,101 +23,57 @@
  *
  *
  */
+package com.mallowigi.idea.ui
 
-package com.mallowigi.idea.ui;
+import com.intellij.openapi.Disposable
+import com.intellij.openapi.application.ApplicationManager
+import com.intellij.ui.paint.LinePainter2D
+import com.intellij.ui.paint.RectanglePainter
+import com.intellij.util.containers.ContainerUtil
+import com.intellij.util.ui.JBUI
+import com.mallowigi.idea.config.application.MTConfig
+import com.mallowigi.idea.ui.OverlayPainter
+import com.mallowigi.idea.utils.MTUiUtils
+import java.awt.AWTEvent
+import java.awt.AlphaComposite
+import java.awt.Color
+import java.awt.Component
+import java.awt.Container
+import java.awt.Graphics
+import java.awt.Graphics2D
+import java.awt.Insets
+import java.awt.Point
+import java.awt.Rectangle
+import java.awt.Toolkit
+import java.awt.Window
+import java.awt.event.AWTEventListener
+import java.awt.event.WindowEvent
+import java.util.ArrayDeque
+import java.util.Deque
+import javax.swing.JComponent
+import javax.swing.JRootPane
+import javax.swing.SwingUtilities
+import kotlin.math.max
 
-import com.intellij.openapi.Disposable;
-import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.ui.paint.LinePainter2D;
-import com.intellij.ui.paint.RectanglePainter;
-import com.intellij.util.containers.ContainerUtil;
-import com.intellij.util.ui.JBUI;
-import com.mallowigi.idea.config.application.MTConfig;
-import com.mallowigi.idea.utils.MTUiUtils;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.AWTEventListener;
-import java.awt.event.WindowEvent;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Deque;
-
-public final class OverlayPainter implements AWTEventListener, Disposable {
-  /**
-   * Listen to window events
-   */
-  private static final long MASK = AWTEvent.WINDOW_EVENT_MASK | AWTEvent.WINDOW_STATE_EVENT_MASK;
+class OverlayPainter : AWTEventListener, Disposable {
   /**
    * The registered root panes
    */
-  @NotNull
-  private final Collection<Component> rootPanes = new ArrayList<>(2);
+  private val rootPanes: MutableCollection<Component> = ArrayList(2)
+
   /**
    * The currently overlayed root panes
    */
-  @NotNull
-  private final Collection<OverlayComponent> overlaidRootPanes = new ArrayList<>(2);
+  private val overlaidRootPanes: MutableCollection<OverlayComponent> = ArrayList(2)
 
   /**
    * Stack of opened windows
    */
-  private final Deque<Object> openedWindowsStack = new ArrayDeque<>(1);
+  private val openedWindowsStack: Deque<Any> = ArrayDeque(1)
 
-  public static OverlayPainter getInstance() {
-    return ApplicationManager.getApplication().getService(OverlayPainter.class);
-  }
-
-  public OverlayPainter() {
-    Toolkit.getDefaultToolkit().addAWTEventListener(this, MASK);
-  }
-
-  @Override
-  public void dispose() {
-    Toolkit.getDefaultToolkit().removeAWTEventListener(this);
-    removeOverlays();
-  }
-
-  /**
-   * Get the IdeGlassPane of a component
-   *
-   * @param component the component
-   * @return the IdeGlassPane
-   */
-  @Nullable
-  private static JComponent getGlassPane(@NotNull final Component component) {
-    final JRootPane rootPane = SwingUtilities.getRootPane(component);
-    return rootPane == null ? null : (JComponent) rootPane.getGlassPane();
-  }
-
-  @Nullable
-  private static OverlayComponent createOverlay(@NotNull final Component rootPane) {
-    final Rectangle bounds;
-    final JComponent glassPane = getGlassPane(rootPane);
-    if (glassPane == null) {
-      return null;
-    }
-
-    // Get bounds of rootpane
-    final Point pt = SwingUtilities.convertPoint(rootPane, new Point(0, 0), glassPane);
-    bounds = new Rectangle(pt.x, pt.y, rootPane.getWidth(), rootPane.getHeight());
-    if (bounds.width == 0 || bounds.height == 0) {
-      bounds.width = Math.max(bounds.width, 1);
-      bounds.height = Math.max(bounds.height, 1);
-    }
-
-    final Insets insets = rootPane instanceof Container ? ((Container) rootPane).getInsets() : JBUI.emptyInsets();
-    final OverlayComponent overlayComponent = new OverlayComponent(insets);
-    overlayComponent.setBounds(bounds);
-
-    glassPane.add(overlayComponent);
-    glassPane.revalidate();
-    glassPane.repaint();
-
-    return overlayComponent;
+  override fun dispose() {
+    Toolkit.getDefaultToolkit().removeAWTEventListener(this)
+    removeOverlays()
   }
 
   /**
@@ -125,54 +81,50 @@ public final class OverlayPainter implements AWTEventListener, Disposable {
    *
    * @param event the event
    */
-  @Override
-  public void eventDispatched(final AWTEvent event) {
-    if (!MTConfig.getInstance().isShowOverlays()) {
-      if (!openedWindowsStack.isEmpty()) {
-        openedWindowsStack.clear();
-        removeOverlays();
-      }
-      return;
+  override fun eventDispatched(event: AWTEvent) {
+    if (!MTConfig.getInstance().isShowOverlays) {
+      if (openedWindowsStack.isEmpty()) return
+      openedWindowsStack.clear()
+      removeOverlays()
+      return
     }
 
-    final Object source = event == null ? null : event.getSource();
-    if (source instanceof Window) {
-      // Remove highlights when all windows are closed
-      if (event.getID() == WindowEvent.WINDOW_CLOSED && openedWindowsStack.contains(source)) {
-        openedWindowsStack.pop();
-        if (openedWindowsStack.isEmpty()) {
-          removeOverlays();
-        }
+    val source = event.source
+    if (source !is Window) return
+
+    // Remove highlights when all windows are closed
+    when {
+      event.id == WindowEvent.WINDOW_CLOSED && openedWindowsStack.contains(source)         -> {
+        openedWindowsStack.remove(source)
+        if (openedWindowsStack.isEmpty()) removeOverlays()
       }
-      // If a dialog window is opened, show the overlay
-      else if (event.getID() == WindowEvent.WINDOW_OPENED && MTUiUtils.isDialogWindow((Window) source)) {
-        openedWindowsStack.push(source);
-        updateOverlays();
+      event.id == WindowEvent.WINDOW_OPENED && MTUiUtils.isDialogWindow(source as Window?) -> {
+        openedWindowsStack.push(source)
+        updateOverlays()
       }
     }
   }
 
-  private void updateOverlays() {
-    removeOverlays();
-
-    for (final Component rootPane : rootPanes) {
-      ContainerUtil.addIfNotNull(overlaidRootPanes, createOverlay(rootPane));
-    }
+  private fun updateOverlays() {
+    removeOverlays()
+    rootPanes.forEach { rootPane -> ContainerUtil.addIfNotNull(overlaidRootPanes, createOverlay(rootPane)) }
   }
 
   /**
    * Remove all overlays
    */
-  private void removeOverlays() {
-    for (final OverlayComponent overlay : overlaidRootPanes) {
-      final JComponent glassPane = getGlassPane(overlay);
+  private fun removeOverlays() {
+    overlaidRootPanes.forEach { overlay ->
+      val glassPane = getGlassPane(overlay)
       if (glassPane != null) {
-        glassPane.remove(overlay);
-        glassPane.revalidate();
-        glassPane.repaint();
+        with(glassPane) {
+          remove(overlay)
+          revalidate()
+          repaint()
+        }
       }
     }
-    overlaidRootPanes.clear();
+    overlaidRootPanes.clear()
   }
 
   /**
@@ -180,51 +132,99 @@ public final class OverlayPainter implements AWTEventListener, Disposable {
    *
    * @param rootPane the rootpane
    */
-  void addRootPane(final JRootPane rootPane) {
-    rootPanes.add(rootPane);
+  fun addRootPane(rootPane: JRootPane) {
+    rootPanes.add(rootPane)
   }
 
   /**
    * The Overlay itself
    */
-  private static final class OverlayComponent extends JComponent {
-    @NotNull
-    private final Insets myInsets;
+  private class OverlayComponent(private val myInsets: Insets) : JComponent() {
+    override fun paintComponent(g: Graphics) {
+      val g2d = g as Graphics2D
+      val oldColor = g2d.color
+      val oldComposite = g2d.composite
+      g2d.composite = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.2f)
 
-    OverlayComponent(@NotNull final Insets insets) {
-      myInsets = insets;
-    }
+      val r = bounds
+      val myColor = Color.BLACK
+      RectanglePainter.paint(g2d, 0, 0, r.width, r.height, 0, myColor, null)
+      g.paint = myColor.darker()
 
-    @SuppressWarnings("MagicNumber")
-    @Override
-    protected void paintComponent(final Graphics g) {
-      final Graphics2D g2d = (Graphics2D) g;
+      for (i in 0 until myInsets.left) LinePainter2D.paint(g2d,
+                                                           i.toDouble(),
+                                                           myInsets.top.toDouble(),
+                                                           i.toDouble(),
+                                                           (r.height - myInsets.bottom - 1).toDouble())
+      for (i in 0 until myInsets.right) LinePainter2D.paint(g2d,
+                                                            (r.width - i - 1).toDouble(),
+                                                            myInsets.top.toDouble(),
+                                                            (r.width - i - 1).toDouble(),
+                                                            (r.height - myInsets.bottom - 1).toDouble())
+      for (i in 0 until myInsets.top) LinePainter2D.paint(
+        g2d,
+        0.0,
+        i.toDouble(),
+        r.width.toDouble(),
+        i.toDouble()
+      )
+      for (i in 0 until myInsets.bottom) LinePainter2D.paint(
+        g2d,
+        0.0,
+        (r.height - i - 1).toDouble(),
+        r.width.toDouble(),
+        (r.height - i - 1).toDouble()
+      )
 
-      final Color oldColor = g2d.getColor();
-      final Composite oldComposite = g2d.getComposite();
-      g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.2f));
-
-      final Rectangle r = getBounds();
-      final Color myColor = Color.BLACK;
-      RectanglePainter.paint(g2d, 0, 0, r.width, r.height, 0, myColor, null);
-
-      ((Graphics2D) g).setPaint(myColor.darker());
-      for (int i = 0; i < myInsets.left; i++) {
-        LinePainter2D.paint(g2d, i, myInsets.top, i, r.height - myInsets.bottom - 1);
-      }
-      for (int i = 0; i < myInsets.right; i++) {
-        LinePainter2D.paint(g2d, r.width - i - 1, myInsets.top, r.width - i - 1, r.height - myInsets.bottom - 1);
-      }
-      for (int i = 0; i < myInsets.top; i++) {
-        LinePainter2D.paint(g2d, 0, i, r.width, i);
-      }
-      for (int i = 0; i < myInsets.bottom; i++) {
-        LinePainter2D.paint(g2d, 0, r.height - i - 1, r.width, r.height - i - 1);
-      }
-
-      g2d.setComposite(oldComposite);
-      g2d.setColor(oldColor);
+      g2d.composite = oldComposite
+      g2d.color = oldColor
     }
   }
 
+  companion object {
+    /**
+     * Listen to window events
+     */
+    private const val MASK = AWTEvent.WINDOW_EVENT_MASK or AWTEvent.WINDOW_STATE_EVENT_MASK
+
+    @JvmStatic
+    val instance: OverlayPainter
+      get() = ApplicationManager.getApplication().getService(OverlayPainter::class.java)
+
+    /**
+     * Get the IdeGlassPane of a component
+     *
+     * @param component the component
+     * @return the IdeGlassPane
+     */
+    private fun getGlassPane(component: Component): JComponent? {
+      val rootPane = SwingUtilities.getRootPane(component)
+      return if (rootPane == null) null else rootPane.glassPane as JComponent
+    }
+
+    private fun createOverlay(rootPane: Component): OverlayComponent? {
+      val bounds: Rectangle
+      val glassPane = getGlassPane(rootPane) ?: return null
+
+      // Get bounds of rootpane
+      val pt = SwingUtilities.convertPoint(rootPane, Point(0, 0), glassPane)
+      bounds = Rectangle(pt.x, pt.y, rootPane.width, rootPane.height)
+      if (bounds.width == 0 || bounds.height == 0) {
+        bounds.width = max(bounds.width, 1)
+        bounds.height = max(bounds.height, 1)
+      }
+
+      val insets = if (rootPane is Container) rootPane.insets else JBUI.emptyInsets()
+      val overlayComponent = OverlayComponent(insets)
+      overlayComponent.bounds = bounds
+      glassPane.add(overlayComponent)
+      glassPane.revalidate()
+      glassPane.repaint()
+      return overlayComponent
+    }
+  }
+
+  init {
+    Toolkit.getDefaultToolkit().addAWTEventListener(this, MASK)
+  }
 }
