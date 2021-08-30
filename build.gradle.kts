@@ -60,7 +60,6 @@ dependencies {
   implementation("com.thoughtworks.xstream:xstream:1.4.16")
   implementation("org.javassist:javassist:3.27.0-GA")
   implementation("com.mixpanel:mixpanel-java:1.5.0")
-  implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.5.20")
 }
 
 // Configure gradle-intellij-plugin plugin.
