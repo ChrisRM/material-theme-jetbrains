@@ -57,7 +57,7 @@ repositories {
 
 dependencies {
   detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.16.0")
-  implementation("com.thoughtworks.xstream:xstream:1.4.16")
+  implementation("com.thoughtworks.xstream:xstream:1.4.18")
   implementation("org.javassist:javassist:3.27.0-GA")
   implementation("com.mixpanel:mixpanel-java:1.5.0")
   implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.5.20")
