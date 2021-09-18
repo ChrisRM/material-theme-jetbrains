@@ -31,7 +31,7 @@ import com.intellij.openapi.util.IconLoader
 import com.intellij.util.ObjectUtils
 import javax.swing.Icon
 
-object MTIconLookup {
+object MTCheckboxIconLookup {
   private const val ICONS_DIR_PREFIX = "/icons/mt/"
 
   @JvmStatic
@@ -79,7 +79,8 @@ object MTIconLookup {
     }
 
     val path = "${ICONS_DIR_PREFIX}${key}"
-    return ObjectUtils.notNull(IconLoader.findIcon(path, MTIconLookup::class.java, true, true), AllIcons.Actions.Stub)
+    return ObjectUtils.notNull(IconLoader.findIcon(path, MTCheckboxIconLookup::class.java, true, true),
+                               AllIcons.Actions.Stub)
   }
 
   @JvmStatic

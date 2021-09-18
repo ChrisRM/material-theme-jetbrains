@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,93 +23,96 @@
  *
  *
  */
-package com.mallowigi.idea.ui;
+package com.mallowigi.idea.ui
 
-import com.intellij.ide.ui.UISettings;
-import com.intellij.ide.ui.laf.darcula.ui.DarculaCheckBoxUI;
-import com.intellij.ui.scale.JBUIScale;
-import com.intellij.util.ui.*;
-import com.mallowigi.idea.utils.MTIconLookup;
-import com.mallowigi.idea.utils.MTUI;
-import sun.swing.SwingUtilities2;
+import com.intellij.ide.ui.laf.darcula.ui.DarculaCheckBoxUI
+import com.intellij.ui.scale.JBUIScale
+import com.intellij.util.ui.EmptyIcon
+import com.intellij.util.ui.UIUtil
+import com.intellij.util.ui.UIUtilities
+import com.mallowigi.idea.utils.MTCheckboxIconLookup.getIcon
+import com.mallowigi.idea.utils.MTUI
+import java.awt.FontMetrics
+import java.awt.Graphics2D
+import java.awt.Rectangle
+import javax.swing.AbstractButton
+import javax.swing.CellRendererPane
+import javax.swing.Icon
+import javax.swing.JComponent
+import javax.swing.plaf.basic.BasicHTML
+import javax.swing.text.View
 
-import javax.swing.*;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.basic.BasicHTML;
-import javax.swing.text.View;
-import java.awt.*;
+class MTCheckBoxUI : DarculaCheckBoxUI() {
+  private val defaultIcon: Icon = JBUIScale.scaleIcon(EmptyIcon.create(20)).asUIResource()
 
-@SuppressWarnings({
-  "StandardVariableNames",
-  "SynchronizedMethod"})
-public final class MTCheckBoxUI extends DarculaCheckBoxUI {
-  private static final Icon DEFAULT_ICON = JBUIScale.scaleIcon(EmptyIcon.create(20)).asUIResource();
-
-  @SuppressWarnings({"MethodOverridesStaticMethodOfSuperclass",
-    "unused"})
-  public static ComponentUI createUI(final JComponent component) {
-    return new MTCheckBoxUI();
-  }
-
-  private static void paintOvalRing(final Graphics2D g, final int w, final int h) {
-    g.setColor(MTUI.ActionButton.getHoverBackground());
-    g.fillOval(-3, -3, w + 6, h + 6);
-  }
-
-  @Override
-  public void installUI(final JComponent c) {
-    super.installUI(c);
-    c.setBackground(MTUI.Panel.getBackground());
-    c.setForeground(MTUI.Panel.getForeground());
-    if (UIUtil.getParentOfType(CellRendererPane.class, c) != null) {
-      c.setBorder(null);
+  override fun installUI(c: JComponent) {
+    super.installUI(c)
+    c.background = MTUI.Panel.getBackground()
+    c.foreground = MTUI.Panel.getForeground()
+    if (UIUtil.getParentOfType(CellRendererPane::class.java, c) != null) {
+      c.border = null
     }
   }
 
-  @Override
-  protected int textIconGap() {
-    return JBUIScale.scale(4);
-  }
+  override fun textIconGap(): Int = JBUIScale.scale(4)
 
-  @Override
-  public Icon getDefaultIcon() {
-    return DEFAULT_ICON;
-  }
+  override fun getDefaultIcon(): Icon = defaultIcon
 
-  protected void drawCheckIcon(JComponent c, Graphics2D g, AbstractButton b, Rectangle iconRect, boolean selected, boolean enabled) {
-    Graphics2D g2 = (Graphics2D) g.create();
+  override fun drawCheckIcon(
+    c: JComponent,
+    g: Graphics2D,
+    b: AbstractButton,
+    iconRect: Rectangle,
+    selected: Boolean,
+    enabled: Boolean,
+  ) {
+    val g2 = g.create() as Graphics2D
     try {
-      String iconName = isIndeterminate(b) ? "checkBoxIndeterminate" : "checkBox";
-      boolean hasFocus = b.hasFocus();
+      val iconName = if (isIndeterminate(b)) "checkBoxIndeterminate" else "checkBox"
+      val hasFocus = b.hasFocus()
 
       // get the relevant icon
-      Icon icon = MTIconLookup.getIcon("checkboxes/" + iconName, selected || isIndeterminate(b), hasFocus, b.isEnabled());
-      icon.paintIcon(b, g2, iconRect.x, iconRect.y);
-
+      val checkboxIcon = getIcon("checkboxes/$iconName",
+                                 selected || isIndeterminate(b),
+                                 hasFocus,
+                                 b.isEnabled)
+      checkboxIcon.paintIcon(b, g2, iconRect.x, iconRect.y)
     } finally {
-      g2.dispose();
+      g2.dispose()
     }
   }
 
-  @Override
-  protected void drawText(final JComponent c,
-                          final Graphics2D g,
-                          final AbstractButton b,
-                          final FontMetrics fm,
-                          final Rectangle textRect,
-                          final String text) {
+  override fun drawText(
+    c: JComponent,
+    g: Graphics2D,
+    b: AbstractButton,
+    fm: FontMetrics,
+    textRect: Rectangle,
+    text: String?,
+  ) {
     if (text != null) {
-      final View view = (View) c.getClientProperty(BasicHTML.propertyKey);
+      val view = c.getClientProperty(BasicHTML.propertyKey) as View?
       if (view != null) {
-        view.paint(g, textRect);
+        view.paint(g, textRect)
       } else {
-        g.setColor(b.isEnabled() ? b.getForeground() : getDisabledTextColor());
-        SwingUtilities2.drawStringUnderlineCharAt(c, g, text,
-          b.getDisplayedMnemonicIndex(),
-          textRect.x,
-          textRect.y + fm.getAscent());
+        g.color = if (b.isEnabled) b.foreground else getDisabledTextColor()
+        UIUtilities.drawStringUnderlineCharAt(c, g, text,
+                                              b.displayedMnemonicIndex,
+                                              textRect.x,
+                                              textRect.y + fm.ascent)
       }
     }
   }
 
+  @Suppress("unused")
+  private fun paintOvalRing(g: Graphics2D, w: Int, h: Int) {
+    g.color = MTUI.ActionButton.getHoverBackground()
+    g.fillOval(-3, -3, w + 6, h + 6)
+  }
+
+  companion object {
+    @Suppress("UNUSED_PARAMETER")
+    @JvmStatic
+    fun createUI(c: JComponent): MTCheckBoxUI = MTCheckBoxUI()
+  }
 }
