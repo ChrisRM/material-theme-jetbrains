@@ -32,7 +32,7 @@ plugins {
   // Java support
   id("java")
   // Kotlin support
-  id("org.jetbrains.kotlin.jvm") version "1.5.30"
+  id("org.jetbrains.kotlin.jvm") version "1.5.31"
   // gradle-intellij-plugin - read more: https://github.com/JetBrains/gradle-intellij-plugin
   id("org.jetbrains.intellij") version "1.1.6"
   // gradle-changelog-plugin - read more: https://github.com/JetBrains/gradle-changelog-plugin
