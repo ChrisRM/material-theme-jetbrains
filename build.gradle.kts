@@ -24,8 +24,6 @@
  *
  */
 
-import org.jetbrains.changelog.closure
-
 fun properties(key: String) = project.findProperty(key).toString()
 
 plugins {
@@ -86,13 +84,13 @@ intellij {
 // Configure gradle-changelog-plugin plugin.
 // Read more: https://github.com/JetBrains/gradle-changelog-plugin
 changelog {
-  path = "${project.projectDir}/docs/CHANGELOG.md"
-  version = properties("pluginVersion")
-  header = closure { version }
-  itemPrefix = "-"
-  keepUnreleasedSection = true
-  unreleasedTerm = "Changelog"
-  groups = listOf("Features", "Fixes", "Removals", "Other")
+  path.set("${project.projectDir}/docs/CHANGELOG.md")
+  version.set(properties("pluginVersion"))
+  header.set(provider { version.get() })
+  itemPrefix.set("-")
+  keepUnreleasedSection.set(true)
+  unreleasedTerm.set("Changelog")
+  groups.set(listOf("Features", "Fixes", "Removals", "Other"))
 }
 
 // Configure detekt plugin.
@@ -140,9 +138,7 @@ tasks {
     untilBuild.set(properties("pluginUntilBuild"))
 
     // Get the latest available change notes from the changelog file
-    changeNotes.set(
-      changelog.getLatest().toHTML()
-    )
+    changeNotes.set(changelog.getLatest().toHTML())
   }
 
   runPluginVerifier {
@@ -154,7 +150,19 @@ tasks {
   }
 
   publishPlugin {
-//    dependsOn("patchChangelog")
-    token.set(file("./publishToken").readText())
+    //    dependsOn("patchChangelog")
+    token.set(System.getenv("INTELLIJ_PUBLISH_TOKEN"))
+  }
+
+  register("bumpPluginVersion") {
+    doLast {
+      val newPluginVersion = properties("newPluginVersion").dropWhile(Char::isLetter)
+      val gradleProperties = file("gradle.properties")
+      val updatedText =
+          gradleProperties.readLines().joinToString("\n") { line ->
+            if (line.startsWith("pluginVersion")) "pluginVersion=$newPluginVersion" else line
+          }
+      gradleProperties.writeText(updatedText)
+    }
   }
 }
