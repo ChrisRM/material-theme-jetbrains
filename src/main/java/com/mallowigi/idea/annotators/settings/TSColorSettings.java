@@ -122,7 +122,7 @@ public final class TSColorSettings extends JSColorSettings {
 
   @NotNull
   @Override
-  public AttributesDescriptor @NotNull [] getAttributeDescriptors() {
+  public AttributesDescriptor[] getAttributeDescriptors() {
     return TS_ATTRIBUTES;
   }
 

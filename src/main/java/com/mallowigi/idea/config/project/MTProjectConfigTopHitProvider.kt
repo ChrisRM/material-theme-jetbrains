@@ -31,12 +31,11 @@ import com.intellij.ide.ui.search.BooleanOptionDescription
 import com.intellij.ide.ui.search.OptionDescription
 import com.intellij.openapi.project.Project
 import com.mallowigi.idea.messages.MaterialThemeBundle
-import org.jetbrains.annotations.NonNls
 import java.util.Collections
 import java.util.function.Supplier
 
 class MTProjectConfigTopHitProvider : ProjectLevelProvider {
-  override fun getId(): @NonNls String = "mtProjectConfig"
+  override fun getId(): String = "mtProjectConfig"
 
   override fun getOptions(project: Project): Collection<OptionDescription> {
     return Collections.unmodifiableCollection(
@@ -91,9 +90,9 @@ class MTProjectConfigTopHitProvider : ProjectLevelProvider {
   companion object {
     private fun option(
       project: Project,
-      option: @NonNls String?,
+      option: String?,
       getter: String,
-      setter: String
+      setter: String,
     ): BooleanOptionDescription {
       return object : PublicMethodBasedOptionDescription(MaterialThemeBundle.message("option.prefix.project") + option,
                                                          MTProjectConfigurable.ID,

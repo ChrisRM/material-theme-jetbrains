@@ -30,17 +30,16 @@ import com.intellij.ide.ui.PublicMethodBasedOptionDescription
 import com.intellij.ide.ui.search.BooleanOptionDescription
 import com.intellij.ide.ui.search.OptionDescription
 import com.mallowigi.idea.messages.MaterialThemeBundle
-import org.jetbrains.annotations.NonNls
 import java.util.Collections
 import java.util.function.Supplier
 
 class MTConfigTopHitProvider : ApplicationLevelProvider {
-  override fun getId(): @NonNls String = "mtconfig"
+  override fun getId(): String = "mtconfig"
 
   override fun getOptions(): Collection<OptionDescription> = OPTION_DESCRIPTIONS!!
 
   companion object {
-    private val OPTION_DESCRIPTIONS: @NonNls Collection<OptionDescription>? = Collections.unmodifiableCollection(
+    private val OPTION_DESCRIPTIONS: Collection<OptionDescription>? = Collections.unmodifiableCollection(
       listOf(
         option(
           MaterialThemeBundle.message("MTForm.accentModeCheckbox.text"),
@@ -220,7 +219,7 @@ class MTConfigTopHitProvider : ApplicationLevelProvider {
       )
     )
 
-    private fun option(option: @NonNls String?, getter: String, setter: String): BooleanOptionDescription {
+    private fun option(option: String?, getter: String, setter: String): BooleanOptionDescription {
       return object : PublicMethodBasedOptionDescription(MaterialThemeBundle.message("option.prefix") + option,
                                                          MTConfigurable.ID,
                                                          getter,

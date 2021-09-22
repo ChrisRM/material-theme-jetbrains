@@ -31,7 +31,6 @@ import com.intellij.notification.NotificationType
 import com.mallowigi.idea.config.application.MTConfig
 import com.mallowigi.idea.messages.MaterialThemeBundle
 import com.mallowigi.idea.utils.MTUiUtils
-import org.jetbrains.annotations.NonNls
 import javax.swing.event.HyperlinkEvent
 
 class MTStatisticsNotification : Notification(
@@ -41,7 +40,7 @@ class MTStatisticsNotification : Notification(
   NotificationType.INFORMATION
 ) {
   companion object {
-    const val SHOW_STATISTICS_AGREEMENT: @NonNls String = "mt.showStatisticsAgreement"
+    const val SHOW_STATISTICS_AGREEMENT: String = "mt.showStatisticsAgreement"
   }
 
   init {

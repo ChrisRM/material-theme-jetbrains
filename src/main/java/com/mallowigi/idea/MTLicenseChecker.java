@@ -449,7 +449,7 @@ public final class MTLicenseChecker {
    * @return the license in bytes
    * @throws Exception if the decoding fails
    */
-  private static byte @Nullable [] verifySignature(final String licensePartBase64, final String signatureBase64, final String certBase64)
+  private static byte[] verifySignature(final String licensePartBase64, final String signatureBase64, final String certBase64)
     throws Exception {
     final Signature sig = Signature.getInstance("SHA1withRSA");
     // the last parameter of 'createCertificate()' set to 'false' switches off certificate expiration checks.

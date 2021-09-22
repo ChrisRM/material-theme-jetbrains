@@ -147,13 +147,13 @@ public final class PHPColorSettings extends BaseColorSettings {
 
   @NotNull
   @Override
-  public AttributesDescriptor @NotNull [] getAttributeDescriptors() {
+  public AttributesDescriptor[] getAttributeDescriptors() {
     return PHP_ATTRIBUTES;
   }
 
   @NotNull
   @Override
-  public ColorDescriptor @NotNull [] getColorDescriptors() {
+  public ColorDescriptor[] getColorDescriptors() {
     return ColorDescriptor.EMPTY_ARRAY;
   }
 

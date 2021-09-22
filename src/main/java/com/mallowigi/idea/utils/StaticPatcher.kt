@@ -25,7 +25,6 @@
  */
 package com.mallowigi.idea.utils
 
-import org.jetbrains.annotations.NonNls
 import java.lang.reflect.Field
 import java.lang.reflect.Modifier
 
@@ -45,7 +44,7 @@ object StaticPatcher {
    */
   @Throws(NoSuchFieldException::class, IllegalAccessException::class)
   @JvmStatic
-  fun setFinalStatic(cls: Class<*>, fieldName: @NonNls String?, newValue: Any?) {
+  fun setFinalStatic(cls: Class<*>, fieldName: String?, newValue: Any?) {
     val fields = cls.declaredFields
     for (field in fields) {
       if (field.name == fieldName) {

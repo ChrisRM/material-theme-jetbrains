@@ -35,7 +35,6 @@ import com.mallowigi.idea.messages.MaterialThemeBundle
 import com.mixpanel.mixpanelapi.ClientDelivery
 import com.mixpanel.mixpanelapi.MessageBuilder
 import com.mixpanel.mixpanelapi.MixpanelAPI
-import org.jetbrains.annotations.NonNls
 import org.json.JSONException
 import org.json.JSONObject
 import java.io.IOException
@@ -136,37 +135,37 @@ class MTAnalytics {
   }
 
   companion object {
-    const val CONFIG: @NonNls String = "ConfigV2"
-    const val UPDATE_NOTIFICATION: @NonNls String = "Notification"
-    private const val MIXPANEL_KEY: @NonNls String = "mixpanelKey"
+    const val CONFIG: String = "ConfigV2"
+    const val UPDATE_NOTIFICATION: String = "Notification"
+    private const val MIXPANEL_KEY: String = "mixpanelKey"
 
-    const val RECOMMENDED_HEIGHT: @NonNls String = "RecommendedTabHeight"
-    const val CHANGE_WALLPAPER: @NonNls String = "ChangeWallpaper"
-    const val REMOVE_WALLPAPER: @NonNls String = "RemoveWallpaper"
-    const val COMPACT_DROPDOWNS: @NonNls String = "CompactDropdowns"
-    const val COMPACT_SIDEBAR: @NonNls String = "CompactSidebar"
-    const val COMPACT_STATUSBAR: @NonNls String = "CompactStatusBar"
-    const val COMPACT_MENUS: @NonNls String = "CompactMenus"
-    const val SHOW_WIZARD: @NonNls String = "ShowWizard"
-    const val CONTRAST_MODE: @NonNls String = "ContrastMode"
-    const val HIGH_CONTRAST: @NonNls String = "HighContrast"
-    const val MATERIAL_FONTS: @NonNls String = "MaterialFonts"
-    const val OVERRIDE_ACCENT: @NonNls String = "OverrideAccent"
-    const val COLORED_DIRS: @NonNls String = "ColoredDirs"
-    const val LANGUAGE_ADDITIONS: @NonNls String = "LanguageAdditions"
-    const val UPPERCASE_TABS: @NonNls String = "UppercaseTabs"
-    const val ACCENT: @NonNls String = "AccentColor"
-    const val ACCENT_MODE: @NonNls String = "AccentMode"
-    const val INDICATOR_STYLE: @NonNls String = "IndicatorStyle"
-    const val SELECT_THEME: @NonNls String = "SelectTheme"
-    const val HELP: @NonNls String = "Help"
-    const val COMPACT_TABLES: @NonNls String = "CompactTables"
-    const val TAB_HIGHLIGHT_POSITION: @NonNls String = "TabHighlightPosition"
-    const val MATERIAL_WALLPAPERS: @NonNls String = "Material Wallpapers"
-    const val PROJECT_FRAME: @NonNls String = "ProjectFrame"
-    const val STRIPED_TOOL_WINDOWS: @NonNls String = "StripedToolWindows"
-    const val OUTLINE_BUTTONS: @NonNls String = "OutlineButtons"
-    const val OVERLAYS: @NonNls String = "Overlays"
+    const val RECOMMENDED_HEIGHT: String = "RecommendedTabHeight"
+    const val CHANGE_WALLPAPER: String = "ChangeWallpaper"
+    const val REMOVE_WALLPAPER: String = "RemoveWallpaper"
+    const val COMPACT_DROPDOWNS: String = "CompactDropdowns"
+    const val COMPACT_SIDEBAR: String = "CompactSidebar"
+    const val COMPACT_STATUSBAR: String = "CompactStatusBar"
+    const val COMPACT_MENUS: String = "CompactMenus"
+    const val SHOW_WIZARD: String = "ShowWizard"
+    const val CONTRAST_MODE: String = "ContrastMode"
+    const val HIGH_CONTRAST: String = "HighContrast"
+    const val MATERIAL_FONTS: String = "MaterialFonts"
+    const val OVERRIDE_ACCENT: String = "OverrideAccent"
+    const val COLORED_DIRS: String = "ColoredDirs"
+    const val LANGUAGE_ADDITIONS: String = "LanguageAdditions"
+    const val UPPERCASE_TABS: String = "UppercaseTabs"
+    const val ACCENT: String = "AccentColor"
+    const val ACCENT_MODE: String = "AccentMode"
+    const val INDICATOR_STYLE: String = "IndicatorStyle"
+    const val SELECT_THEME: String = "SelectTheme"
+    const val HELP: String = "Help"
+    const val COMPACT_TABLES: String = "CompactTables"
+    const val TAB_HIGHLIGHT_POSITION: String = "TabHighlightPosition"
+    const val MATERIAL_WALLPAPERS: String = "Material Wallpapers"
+    const val PROJECT_FRAME: String = "ProjectFrame"
+    const val STRIPED_TOOL_WINDOWS: String = "StripedToolWindows"
+    const val OUTLINE_BUTTONS: String = "OutlineButtons"
+    const val OVERLAYS: String = "Overlays"
 
     @JvmStatic
     val instance: MTAnalytics

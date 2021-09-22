@@ -31,7 +31,6 @@ import com.intellij.notification.NotificationType
 import com.intellij.openapi.updateSettings.impl.pluginsAdvertisement.installAndEnable
 import com.mallowigi.idea.messages.MaterialThemeBundle
 import com.mallowigi.idea.utils.MTUiUtils
-import org.jetbrains.annotations.NonNls
 import javax.swing.event.HyperlinkEvent
 
 @Suppress("DialogTitleCapitalization")
@@ -42,14 +41,16 @@ class MTInstallAtomNotification : Notification(
   NotificationType.INFORMATION
 ) {
   companion object {
-    const val SHOW_INSTALL_ATOM: @NonNls String = "mt.showInstallAtom"
+    const val SHOW_INSTALL_ATOM: String = "mt.showInstallAtom"
   }
 
   init {
     setListener { notification1: Notification, event: HyperlinkEvent ->
       when (event.description) {
         "decline" -> closeNotification(notification1)
-        else -> installAndEnable(null, setOf(MTUiUtils.getAtomPluginId()), true) { closeNotification(notification1) }
+        else      -> installAndEnable(null,
+                                      setOf(MTUiUtils.getAtomPluginId()),
+                                      true) { closeNotification(notification1) }
       }
     }
   }

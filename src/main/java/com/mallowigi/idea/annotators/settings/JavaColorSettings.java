@@ -161,7 +161,8 @@ public final class JavaColorSettings extends BaseColorSettings {
   }
 
   @Override
-  public @NotNull Icon getIcon() {
+  public @NotNull
+  Icon getIcon() {
     return AllIcons.FileTypes.Java;
   }
 
@@ -187,13 +188,13 @@ public final class JavaColorSettings extends BaseColorSettings {
 
   @NotNull
   @Override
-  public AttributesDescriptor @NotNull [] getAttributeDescriptors() {
+  public AttributesDescriptor[] getAttributeDescriptors() {
     return JAVA_ATTRIBUTES;
   }
 
   @NotNull
   @Override
-  public ColorDescriptor @NotNull [] getColorDescriptors() {
+  public ColorDescriptor[] getColorDescriptors() {
     return ColorDescriptor.EMPTY_ARRAY;
   }
 

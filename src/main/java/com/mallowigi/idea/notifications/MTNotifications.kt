@@ -25,7 +25,11 @@
  */
 package com.mallowigi.idea.notifications
 
-import com.intellij.notification.*
+import com.intellij.notification.Notification
+import com.intellij.notification.NotificationGroupManager
+import com.intellij.notification.NotificationListener
+import com.intellij.notification.NotificationType
+import com.intellij.notification.Notifications
 import com.intellij.notification.impl.NotificationsManagerImpl
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.ui.popup.Balloon
@@ -35,12 +39,11 @@ import com.intellij.ui.awt.RelativePoint
 import com.mallowigi.idea.MTThemeManager
 import com.mallowigi.idea.messages.MaterialThemeBundle
 import com.mallowigi.idea.utils.MTUiUtils
-import org.jetbrains.annotations.NonNls
 import java.awt.Point
 import java.util.Objects
 
 object MTNotifications {
-  const val CHANNEL: @NonNls String = "Material Theme Notifications"
+  const val CHANNEL: String = "Material Theme Notifications"
 
   /**
    * Show the update notification
@@ -78,7 +81,7 @@ object MTNotifications {
     title: String,
     content: String,
     type: NotificationType,
-    listener: NotificationListener?
+    listener: NotificationListener?,
   ) {
     val notification = createNotification(title, content, type, listener)
     Notifications.Bus.notify(notification, project)
@@ -95,7 +98,7 @@ object MTNotifications {
   private fun createNotification(
     title: String,
     content: String,
-    type: NotificationType
+    type: NotificationType,
   ): Notification {
     val group = NotificationGroupManager.getInstance().getNotificationGroup(CHANNEL)
     return group.createNotification(title, content, type)
@@ -114,7 +117,7 @@ object MTNotifications {
     title: String,
     content: String,
     type: NotificationType,
-    listener: NotificationListener?
+    listener: NotificationListener?,
   ): Notification {
     assert(listener != null)
     return createNotification(title, content, type).setListener(listener!!)

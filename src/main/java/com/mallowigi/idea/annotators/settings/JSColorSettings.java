@@ -170,13 +170,13 @@ public class JSColorSettings extends BaseColorSettings {
 
   @NotNull
   @Override
-  public AttributesDescriptor @NotNull [] getAttributeDescriptors() {
+  public AttributesDescriptor[] getAttributeDescriptors() {
     return JS_ATTRIBUTES;
   }
 
   @NotNull
   @Override
-  public final ColorDescriptor @NotNull [] getColorDescriptors() {
+  public final ColorDescriptor[] getColorDescriptors() {
     return ColorDescriptor.EMPTY_ARRAY;
   }
 

@@ -41,7 +41,7 @@ object ThemesBundle : DynamicBundle(BUNDLE) {
   override fun messageOrDefault(
     @PropertyKey(resourceBundle = BUNDLE) key: String,
     defaultValue: String?,
-    vararg params: Any
+    vararg params: Any,
   ): String = messageOrDefault(ResourceBundle.getBundle(BUNDLE), key, defaultValue, *params)
 
   @JvmStatic
@@ -49,12 +49,12 @@ object ThemesBundle : DynamicBundle(BUNDLE) {
     getMessage(key, *params)
 
   @JvmStatic
-  fun messageWithPrefix(key: @NonNls String, prefix: String): String =
+  fun messageWithPrefix(key: String, prefix: String): String =
     message("$prefix.$key")
 
   @JvmStatic
   fun messagePointer(
     @PropertyKey(resourceBundle = BUNDLE) key: String,
-    vararg params: Any
+    vararg params: Any,
   ): Supplier<String> = getLazyMessage(key, *params)
 }

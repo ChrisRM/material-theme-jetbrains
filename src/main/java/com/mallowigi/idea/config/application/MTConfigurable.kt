@@ -31,16 +31,14 @@ import com.mallowigi.idea.config.MTConfigurableBase
 import com.mallowigi.idea.config.ui.MTForm
 import com.mallowigi.idea.messages.MaterialThemeBundle
 import com.mallowigi.idea.utils.MTUiUtils
-import org.jetbrains.annotations.Nls
-import org.jetbrains.annotations.NonNls
 
 /**
  * Service used to load and save settings from MTConfig
  */
 class MTConfigurable : MTConfigurableBase<MTForm?, MTConfig?>(), SearchableConfigurable {
-  override fun getDisplayName(): @Nls String? = MaterialThemeBundle.message("mt.settings.titles.materialTheme")
+  override fun getDisplayName(): String = MaterialThemeBundle.message("mt.settings.titles.materialTheme")
 
-  override fun getHelpTopic(): @NonNls String = "${MTUiUtils.HELP_PREFIX}.$HELP_ID"
+  override fun getHelpTopic(): String = "${MTUiUtils.HELP_PREFIX}.$HELP_ID"
 
   override fun getId(): String = ID
 
@@ -59,7 +57,7 @@ class MTConfigurable : MTConfigurableBase<MTForm?, MTConfig?>(), SearchableConfi
   companion object {
     const val ID: String = "MTConfigurable"
 
-    const val HELP_ID: @NonNls String = "MTConfig"
+    const val HELP_ID: String = "MTConfig"
   }
 
 }

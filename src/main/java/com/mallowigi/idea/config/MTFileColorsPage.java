@@ -71,13 +71,13 @@ public final class MTFileColorsPage implements ColorSettingsPage, DisplayPriorit
 
   @Override
   @NotNull
-  public AttributesDescriptor @NotNull [] getAttributeDescriptors() {
+  public AttributesDescriptor[] getAttributeDescriptors() {
     return ATTRIBUTES_DESCRIPTORS.clone();
   }
 
   @NotNull
   @Override
-  public ColorDescriptor @NotNull [] getColorDescriptors() {
+  public ColorDescriptor[] getColorDescriptors() {
     return DESCRIPTORS;
   }
 

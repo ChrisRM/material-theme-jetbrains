@@ -30,20 +30,19 @@ import com.mallowigi.idea.MTAnalytics
 import com.mallowigi.idea.MTAnalytics.Companion.instance
 import com.mallowigi.idea.config.custom.MTCustomThemeConfigurable
 import com.mallowigi.idea.utils.MTUiUtils
-import org.jetbrains.annotations.NonNls
 
 /**
  * Redirects help to support site
  *
  */
 class MTHelpProvider : WebHelpProvider() {
-  override fun getHelpPageUrl(helpTopicId: @NonNls String): @NonNls String {
+  override fun getHelpPageUrl(helpTopicId: String): String {
     val unprefixedTopicId = helpTopicId.replace("$helpTopicPrefix.", "")
     instance.track(MTAnalytics.HELP)
 
     return when (unprefixedTopicId) {
       MTCustomThemeConfigurable.HELP_ID -> "${MTUiUtils.DOCS_URL}docs/configuration/custom-themes/"
-      else -> "${MTUiUtils.DOCS_URL}docs/getting-started/"
+      else                              -> "${MTUiUtils.DOCS_URL}docs/getting-started/"
     }
   }
 
