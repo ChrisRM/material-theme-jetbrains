@@ -78,7 +78,7 @@ object MTCheckboxIconLookup {
       !enabled -> key += "Disabled"
     }
 
-    val path = "${ICONS_DIR_PREFIX}${key}"
+    val path = "${ICONS_DIR_PREFIX}${key}.svg"
     return ObjectUtils.notNull(IconLoader.findIcon(path, MTCheckboxIconLookup::class.java, true, true),
                                AllIcons.Actions.Stub)
   }

@@ -30,7 +30,7 @@ import com.intellij.ui.scale.JBUIScale
 import com.intellij.util.ui.EmptyIcon
 import com.intellij.util.ui.UIUtil
 import com.intellij.util.ui.UIUtilities
-import com.mallowigi.idea.utils.MTCheckboxIconLookup.getIcon
+import com.mallowigi.idea.utils.MTCheckboxIconLookup
 import com.mallowigi.idea.utils.MTUI
 import java.awt.FontMetrics
 import java.awt.Graphics2D
@@ -72,10 +72,10 @@ class MTCheckBoxUI : DarculaCheckBoxUI() {
       val hasFocus = b.hasFocus()
 
       // get the relevant icon
-      val checkboxIcon = getIcon("checkboxes/$iconName",
-                                 selected || isIndeterminate(b),
-                                 hasFocus,
-                                 b.isEnabled)
+      val checkboxIcon = MTCheckboxIconLookup.getIcon("checkboxes/$iconName",
+                                                      selected || isIndeterminate(b),
+                                                      hasFocus,
+                                                      b.isEnabled)
       checkboxIcon.paintIcon(b, g2, iconRect.x, iconRect.y)
     } finally {
       g2.dispose()
@@ -102,12 +102,6 @@ class MTCheckBoxUI : DarculaCheckBoxUI() {
                                               textRect.y + fm.ascent)
       }
     }
-  }
-
-  @Suppress("unused")
-  private fun paintOvalRing(g: Graphics2D, w: Int, h: Int) {
-    g.color = MTUI.ActionButton.getHoverBackground()
-    g.fillOval(-3, -3, w + 6, h + 6)
   }
 
   companion object {

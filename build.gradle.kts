@@ -159,9 +159,9 @@ tasks {
       val newPluginVersion = properties("newPluginVersion").dropWhile(Char::isLetter)
       val gradleProperties = file("gradle.properties")
       val updatedText =
-          gradleProperties.readLines().joinToString("\n") { line ->
-            if (line.startsWith("pluginVersion")) "pluginVersion=$newPluginVersion" else line
-          }
+        gradleProperties.readLines().joinToString("\n") { line ->
+          if (line.startsWith("pluginVersion")) "pluginVersion=$newPluginVersion" else line
+        }
       gradleProperties.writeText(updatedText)
     }
   }
