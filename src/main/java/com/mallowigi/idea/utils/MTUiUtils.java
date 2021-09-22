@@ -29,6 +29,7 @@ package com.mallowigi.idea.utils;
 import com.intellij.codeInsight.hint.HintManager;
 import com.intellij.codeInsight.hint.HintUtil;
 import com.intellij.ide.actions.BigPopupUI;
+import com.intellij.ide.actions.Switcher;
 import com.intellij.ide.plugins.IdeaPluginDescriptor;
 import com.intellij.ide.plugins.PluginManager;
 import com.intellij.ide.plugins.PluginManagerCore;
@@ -51,6 +52,7 @@ import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.openapi.wm.impl.IdeBackgroundUtil;
 import com.intellij.ui.ColorUtil;
+import com.intellij.ui.EngravedLabel;
 import com.intellij.ui.JBColor;
 import com.intellij.ui.LightweightHint;
 import com.intellij.ui.awt.RelativePoint;
@@ -111,7 +113,8 @@ public enum MTUiUtils {
 
   @SuppressWarnings("HardcodedFileSeparator")
   @NonNls
-  public static final @Nullable Icon LINK_ICON = IconLoader.findIcon("icons/mt/link2.svg");
+  public static final @Nullable
+  Icon LINK_ICON = IconLoader.findIcon("icons/mt/link2.svg");
 
   private static final RenderingHints RENDERING_HINTS;
   @NonNls
@@ -535,7 +538,8 @@ public enum MTUiUtils {
   /**
    * Alias for getting the current color scheme
    */
-  public static @NotNull EditorColorsScheme getCurrentColorScheme() {
+  public static @NotNull
+  EditorColorsScheme getCurrentColorScheme() {
     return EditorColorsManager.getInstance().getGlobalScheme();
   }
 
@@ -545,7 +549,8 @@ public enum MTUiUtils {
    * @param project the project
    * @return the config if enabled, null otherwise
    */
-  public static @Nullable MTProjectConfig getProjectConfigIfEnabled(final Project project) {
+  public static @Nullable
+  MTProjectConfig getProjectConfigIfEnabled(final Project project) {
     if (project != null && !project.isDisposed()) {
       final MTProjectConfig projectConfig = MTProjectConfig.getInstance(project);
       if (projectConfig.isActive()) {
@@ -626,7 +631,12 @@ public enum MTUiUtils {
   public static boolean isPopup(final Window window) {
     if (window instanceof JWindow) {
       final JLayeredPane layeredPane = ((RootPaneContainer) window).getLayeredPane();
-      return hasComponentOfTypes(layeredPane, BigPopupUI.class, NewItemSimplePopupPanel.class);
+      return
+        hasComponentOfTypes(layeredPane,
+          BigPopupUI.class,
+          NewItemSimplePopupPanel.class,
+          EngravedLabel.class,
+          Switcher.SwitcherPanel.class);
     }
     return false;
   }
@@ -660,7 +670,8 @@ public enum MTUiUtils {
   /**
    * Gets a window or popup's title
    */
-  private static @Nullable String getWindowTitle(final Window window) {
+  private static @Nullable
+  String getWindowTitle(final Window window) {
     if (window instanceof JDialog) {
       return ((Dialog) window).getTitle();
     } else if (window instanceof JFrame) {

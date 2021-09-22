@@ -133,6 +133,7 @@
     <!--    <depends optional="true" config-file="withAppCode.xml">com.intellij.modules.cidr.lang</depends>-->
     <depends optional="true" config-file="withJba.xml">com.intellij.CloudConfig</depends>
     <depends optional="true" config-file="withXPathView.xml">XPathView</depends>
+    <depends>com.mallowigi</depends>
 
     <resource-bundle>messages.MaterialThemeBundle</resource-bundle>
 
