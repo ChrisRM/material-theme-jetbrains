@@ -26,11 +26,14 @@
 
 package com.mallowigi.idea;
 
+import com.intellij.openapi.Disposable;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import com.intellij.openapi.application.ApplicationBundle;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.WriteAction;
+import com.intellij.openapi.extensions.ExtensionPointListener;
+import com.intellij.openapi.extensions.PluginDescriptor;
 import com.intellij.openapi.fileChooser.FileChooserFactory;
 import com.intellij.openapi.fileChooser.FileSaverDescriptor;
 import com.intellij.openapi.fileChooser.FileSaverDialog;
@@ -69,7 +72,12 @@ import java.util.Objects;
 /**
  * Manages the Bundled themes (external themes)
  */
-public final class MTBundledThemesManager {
+@SuppressWarnings("WeakerAccess")
+public final class MTBundledThemesManager implements Disposable {
+  MTBundledThemesManager() {
+    BundledThemeEP.EP_NAME.addExtensionPointListener(new BundledThemeEPExtensionPointListener(), this);
+  }
+
   private final Map<String, MTBundledTheme> bundledThemes = new HashMap<>(10);
 
   public static MTBundledThemesManager getInstance() {
@@ -85,6 +93,11 @@ public final class MTBundledThemesManager {
     return Collections.unmodifiableMap(bundledThemes);
   }
 
+  @Override
+  public void dispose() {
+    // do nothing
+  }
+
   /**
    * Load external themes defined in other plugins' plugin.xml <bundledTheme> extension point
    *
@@ -92,12 +105,23 @@ public final class MTBundledThemesManager {
    */
   void loadBundledThemes() throws IOException {
     for (final BundledThemeEP ep : BundledThemeEP.EP_NAME.getExtensions()) {
-      final MTBundledTheme mtBundledTheme = loadBundledTheme(ep.path + ".xml", ep);
+      installBundledTheme(ep);
+    }
+  }
 
-      Objects.requireNonNull(mtBundledTheme).setName(ep.name);
-      bundledThemes.put(mtBundledTheme.getThemeId(), mtBundledTheme);
+  void installBundledTheme(final BundledThemeEP ep) throws IOException {
+    final MTBundledTheme mtBundledTheme = loadBundledTheme(ep.path + ".xml", ep);
 
-      MTThemes.installTheme(mtBundledTheme);
+    Objects.requireNonNull(mtBundledTheme).setName(ep.name);
+    bundledThemes.put(mtBundledTheme.getThemeId(), mtBundledTheme);
+
+    MTThemes.installTheme(mtBundledTheme);
+  }
+
+  void removeBundledTheme(final BundledThemeEP ep) throws IOException {
+    final MTBundledTheme mtBundledTheme = loadBundledTheme(ep.path + ".xml", ep);
+    if (mtBundledTheme != null) {
+      bundledThemes.remove(mtBundledTheme.getThemeId());
     }
   }
 
@@ -131,6 +155,7 @@ public final class MTBundledThemesManager {
     return loadFromXml(url, null);
   }
 
+  @SuppressWarnings("MethodWithMultipleReturnPoints")
   @Nullable
   private static MTBundledTheme loadFromXml(@Nullable final URL url, @Nullable final File file) {
     @NonNls final XStream xStream = configureXStream();
@@ -215,7 +240,6 @@ public final class MTBundledThemesManager {
     XStream.setupDefaultSecurity(xStream);
     xStream.allowTypesByWildcard(new String[]{"com.mallowigi.idea.themes.models.*"});
     xStream.alias("mtTheme", MTBundledTheme.class);
-    //    xStream.alias("mtTheme", MTDarkBundledTheme.class);
     xStream.alias("color", MTThemeColor.class);
 
     xStream.useAttributeFor(MTThemeColor.class, "id");
@@ -315,6 +339,29 @@ public final class MTBundledThemesManager {
     @Override
     public boolean canConvert(final Class type) {
       return MTBundledTheme.class.isAssignableFrom(type);
+    }
+  }
+
+  private class BundledThemeEPExtensionPointListener implements ExtensionPointListener<BundledThemeEP> {
+    BundledThemeEPExtensionPointListener() {
+    }
+
+    @Override
+    public final void extensionAdded(@NotNull final BundledThemeEP theme, @NotNull final PluginDescriptor pluginDescriptor) {
+      try {
+        installBundledTheme(theme);
+      } catch (final IOException e) {
+        e.printStackTrace();
+      }
+    }
+
+    @Override
+    public final void extensionRemoved(@NotNull final BundledThemeEP theme, @NotNull final PluginDescriptor pluginDescriptor) {
+      try {
+        removeBundledTheme(theme);
+      } catch (final IOException e) {
+        e.printStackTrace();
+      }
     }
   }
 }

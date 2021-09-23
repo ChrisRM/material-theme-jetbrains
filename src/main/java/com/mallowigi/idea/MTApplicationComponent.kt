@@ -23,71 +23,52 @@
  *
  *
  */
+package com.mallowigi.idea
 
-package com.mallowigi.idea;
-
-import com.intellij.ide.AppLifecycleListener;
-import com.intellij.openapi.application.ApplicationManager;
-import com.mallowigi.idea.config.application.MTConfig;
-import com.mallowigi.idea.wizard.MTWizardDialog;
-import com.mallowigi.idea.wizard.MTWizardStepsProvider;
+import com.intellij.ide.AppLifecycleListener
+import com.intellij.openapi.application.ApplicationManager
+import com.mallowigi.idea.config.application.MTConfig
+import com.mallowigi.idea.wizard.MTWizardDialog
+import com.mallowigi.idea.wizard.MTWizardStepsProvider
 
 /**
  * Component for Material Theme plugin initializations
  */
-public final class MTApplicationComponent implements AppLifecycleListener {
+class MTApplicationComponent : AppLifecycleListener {
+  override fun welcomeScreenDisplayed(): Unit = initComponent()
+
+  override fun appClosing(): Unit = disposeComponent()
 
   /**
    * Initializes the MTAnalytics
    */
-  private static void initAnalytics() {
-    ApplicationManager.getApplication().invokeLater(() -> MTAnalytics.getInstance().initAnalytics());
-  }
+  private fun initAnalytics() =
+    ApplicationManager.getApplication().invokeLater { MTAnalytics.instance.initAnalytics() }
 
   /**
    * Display wizard for new users
    */
-  @SuppressWarnings("FeatureEnvy")
-  private static void initWizard() {
-    final boolean firstRun = !MTConfig.getInstance().isWizardShown();
+  private fun initWizard() {
+    val firstRun = !MTConfig.getInstance().isWizardShown
     if (firstRun) {
-      ApplicationManager.getApplication().invokeLater(() -> new MTWizardDialog(new MTWizardStepsProvider(), true).show());
-      MTConfig.getInstance().setIsWizardShown(true);
+      ApplicationManager.getApplication().invokeLater { MTWizardDialog(MTWizardStepsProvider(), true).show() }
+      MTConfig.getInstance().setIsWizardShown(true)
     }
   }
 
-  /**
-   * Returns this component
-   *
-   * @return the MTApplicationComponent
-   */
-  public static MTApplicationComponent getInstance() {
-    return ApplicationManager.getApplication().getComponent(MTApplicationComponent.class);
-  }
+  val instance: MTApplicationComponent
+    get() = ApplicationManager.getApplication().getComponent(MTApplicationComponent::class.java)
 
-  private static void initComponent() {
+  private fun initComponent() {
     // Show the wizard
-    initWizard();
+    initWizard()
 
     // Init analytics
-    initAnalytics();
+    initAnalytics()
   }
 
-  @Override
-  public void welcomeScreenDisplayed() {
-    initComponent();
-  }
+  private fun disposeComponent() = cleanRegistry()
 
-  @Override
-  public void appClosing() {
-    disposeComponent();
-  }
+  private fun cleanRegistry() = MTThemeManager.cleanRegistry()
 
-  private static void disposeComponent() {
-    cleanRegistry();
-  }
-
-  private static void cleanRegistry() {
-    MTThemeManager.cleanRegistry();
-  }
 }

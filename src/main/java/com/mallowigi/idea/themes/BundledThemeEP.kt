@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,28 +23,49 @@
  *
  *
  */
+package com.mallowigi.idea.themes
 
-package com.mallowigi.idea.themes;
+import com.intellij.openapi.extensions.ExtensionPointName
+import com.intellij.openapi.extensions.PluginAware
+import com.intellij.openapi.extensions.PluginDescriptor
+import com.intellij.openapi.extensions.RequiredElement
+import com.intellij.util.KeyedLazyInstance
+import com.intellij.util.xmlb.annotations.Attribute
 
-import com.intellij.openapi.extensions.AbstractExtensionPointBean;
-import com.intellij.openapi.extensions.ExtensionPointName;
-import com.intellij.util.xmlb.annotations.Attribute;
-import org.jetbrains.annotations.NonNls;
+class BundledThemeEP : PluginAware, KeyedLazyInstance<BundledThemeEP> {
 
-@SuppressWarnings("StaticMethodOnlyUsedInOneClass")
-public class BundledThemeEP extends AbstractExtensionPointBean {
-  public static final ExtensionPointName<BundledThemeEP> EP_NAME =
-    ExtensionPointName.create("com.chrisrm.idea.MaterialThemeUI.bundledTheme");
+  private var pluginDescriptor: PluginDescriptor? = null
 
-  @NonNls
+  val loaderForClass: ClassLoader
+    get() = if (pluginDescriptor == null) javaClass.classLoader else pluginDescriptor!!.pluginClassLoader
+
+  @JvmField
   @Attribute("path")
-  public String path = null;
+  @RequiredElement
+  var path: String = ""
 
-  @NonNls
+  @JvmField
   @Attribute("name")
-  public String name = null;
+  @RequiredElement
+  var name: String = ""
 
-  @NonNls
+  @JvmField
   @Attribute("icon")
-  public String icon = null;
+  var icon: String? = null
+
+  fun getPluginDescriptor(): PluginDescriptor? = this.pluginDescriptor
+
+  override fun setPluginDescriptor(pluginDescriptor: PluginDescriptor) {
+    this.pluginDescriptor = pluginDescriptor
+  }
+
+  companion object {
+    @JvmField
+    val EP_NAME: ExtensionPointName<BundledThemeEP> =
+      ExtensionPointName<BundledThemeEP>("com.chrisrm.idea.MaterialThemeUI.bundledTheme")
+  }
+
+  override fun getKey(): String = name
+
+  override fun getInstance(): BundledThemeEP = this
 }

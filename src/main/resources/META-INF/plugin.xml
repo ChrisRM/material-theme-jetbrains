@@ -138,8 +138,7 @@
     <resource-bundle>messages.MaterialThemeBundle</resource-bundle>
 
     <extensionPoints>
-        <!--suppress PluginXmlDynamicPlugin -->
-        <extensionPoint beanClass="com.mallowigi.idea.themes.BundledThemeEP" name="bundledTheme" />
+        <extensionPoint beanClass="com.mallowigi.idea.themes.BundledThemeEP" name="bundledTheme" dynamic="true" />
     </extensionPoints>
 
     <!--suppress PluginXmlDynamicPlugin -->
