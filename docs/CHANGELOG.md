@@ -1,6 +1,20 @@
 ## Changelog
 ----
 
+## 6.9.0
+
+### Features
+- Make **External Themes** as a dynamic extension point
+- Add more popups showing an **overlay**:
+  - Recent Files
+  - Quick Switchers
+  - Branch Chooser
+  - and others
+
+### Fixes
+- Fix issue where checkboxes were invisible
+- Fix issue where local history information was unreadable
+
 ## 6.8.2
 
 ### Features

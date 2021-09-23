@@ -76,7 +76,7 @@ intellij {
       "java",
       "training",
       "com.intellij.CloudConfig",
-      "com.mallowigi:41.1.0",
+//      "com.mallowigi:41.1.0",
       "XPathView",
     )
   )

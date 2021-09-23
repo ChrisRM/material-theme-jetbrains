@@ -76,7 +76,7 @@ public final class MTTabsPainterPatcherComponent implements StartupActivity.Back
 
   @SuppressWarnings("OverlyComplexAnonymousInnerClass")
   public void initComponent(final JBEditorTabs editorTabs,
-                            final @NotNull Project project) {
+                            @NotNull final Project project) {
     config = MTConfig.getInstance();
 
     if (editorTabs != null) {
@@ -130,7 +130,7 @@ public final class MTTabsPainterPatcherComponent implements StartupActivity.Back
   /**
    * Patch tabsPainter
    */
-  void patchPainter(final JBEditorTabs component, final @NotNull Project project) {
+  void patchPainter(final JBEditorTabs component, @NotNull final Project project) {
     final MTTabsPainter tabsPainter = new MTTabsPainter(component, project);
     final JBTabPainter proxy = (JBTabPainter) Enhancer.create(MTTabsPainter.class, new TabPainterInterceptor(tabsPainter));
 
@@ -143,7 +143,7 @@ public final class MTTabsPainterPatcherComponent implements StartupActivity.Back
   }
 
   private void applyCustomFontSize(final JBEditorTabs component,
-                                   final @NotNull Project project) {
+                                   @NotNull final Project project) {
     if (config.isTabFontSizeEnabled()) {
       final float tabFontSize = config.getTabFontSize();
       final Map<TabInfo, TabLabel> myInfo2Label = component.myInfo2Label;
@@ -156,7 +156,7 @@ public final class MTTabsPainterPatcherComponent implements StartupActivity.Back
   }
 
   private void applyBoldTabs(final JBEditorTabs component,
-                             final @NotNull Project project) {
+                             @NotNull final Project project) {
     if (isActiveBoldTab(project)) {
       final TabInfo selectedInfo = component.getSelectedInfo();
       final Map<TabInfo, TabLabel> myInfo2Label = component.myInfo2Label;
@@ -171,7 +171,7 @@ public final class MTTabsPainterPatcherComponent implements StartupActivity.Back
     }
   }
 
-  private boolean isActiveBoldTab(final @NotNull Project project) {
+  private boolean isActiveBoldTab(@NotNull final Project project) {
     final MTProjectConfig projectConfig = MTUiUtils.getProjectConfigIfEnabled(project);
     if (projectConfig != null) {
       return projectConfig.isActiveBoldTab();
@@ -179,7 +179,7 @@ public final class MTTabsPainterPatcherComponent implements StartupActivity.Back
     return config.isActiveBoldTab();
   }
 
-  void resetTabsBoldness(final @NotNull Project project) {
+  void resetTabsBoldness(@NotNull final Project project) {
     final FileEditorManagerEx manager = FileEditorManagerEx.getInstanceEx(project);
     final EditorWindow[] windows = manager.getWindows();
     for (final EditorWindow editorWindow : windows) {
