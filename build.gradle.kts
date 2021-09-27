@@ -152,7 +152,7 @@ tasks {
 
   publishPlugin {
     //    dependsOn("patchChangelog")
-    token.set(System.getenv("INTELLIJ_PUBLISH_TOKEN"))
+    token.set(System.getenv("INTELLIJ_PUBLISH_TOKEN") ?: file("./publishToken").readText())
   }
 
   register("bumpPluginVersion") {
