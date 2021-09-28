@@ -166,4 +166,11 @@ tasks {
       gradleProperties.writeText(updatedText)
     }
   }
+
+  register("markdownToHtml") {
+    val input = File("./docs/CHANGELOG.md")
+    File("./docs/CHANGELOG.html").run {
+      writeText(markdownToHTML(input.readText()))
+    }
+  }
 }
