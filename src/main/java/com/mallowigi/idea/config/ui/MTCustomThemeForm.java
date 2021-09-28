@@ -37,10 +37,10 @@ import com.intellij.uiDesigner.core.GridLayoutManager;
 import com.mallowigi.idea.config.MTBaseConfig;
 import com.mallowigi.idea.config.custom.MTCustomThemeConfig;
 import com.mallowigi.idea.config.ui.load.MTLoadCustomThemeComboBoxAction;
+import com.mallowigi.idea.license.MTMainProductLicenseChecker;
 import com.mallowigi.idea.messages.MaterialThemeBundle;
 import com.mallowigi.idea.ui.ColorPanelWithOpacity;
 import com.mallowigi.idea.ui.DisabledPanel;
-import com.mallowigi.idea.visitors.MTMainProductLicenseChecker;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;

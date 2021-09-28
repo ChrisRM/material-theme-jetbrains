@@ -34,9 +34,9 @@ import com.intellij.ide.customize.AbstractCustomizeWizardStep;
 import com.intellij.ui.components.JBScrollPane;
 import com.mallowigi.idea.MTThemeManager;
 import com.mallowigi.idea.config.application.MTConfig;
+import com.mallowigi.idea.license.MTHCLicenseChecker;
+import com.mallowigi.idea.license.MTMainProductLicenseChecker;
 import com.mallowigi.idea.messages.MTWizardBundle;
-import com.mallowigi.idea.visitors.MTHCLicenseChecker;
-import com.mallowigi.idea.visitors.MTMainProductLicenseChecker;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;

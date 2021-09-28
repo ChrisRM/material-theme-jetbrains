@@ -36,9 +36,9 @@ import com.intellij.ui.components.JBScrollPane;
 import com.mallowigi.idea.config.application.MTConfig;
 import com.mallowigi.idea.config.enums.IndicatorStyles;
 import com.mallowigi.idea.config.enums.TabHighlightPositions;
+import com.mallowigi.idea.license.MTMainProductLicenseChecker;
 import com.mallowigi.idea.messages.MTWizardBundle;
 import com.mallowigi.idea.utils.MTUiUtils;
-import com.mallowigi.idea.visitors.MTMainProductLicenseChecker;
 import net.miginfocom.swing.MigLayout;
 import org.jetbrains.annotations.NotNull;
 

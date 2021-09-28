@@ -26,9 +26,9 @@
 
 package com.mallowigi.idea.themes;
 
+import com.mallowigi.idea.license.MTMainProductLicenseChecker;
 import com.mallowigi.idea.themes.models.MTThemeable;
 import com.mallowigi.idea.themes.themes.*;
-import com.mallowigi.idea.visitors.MTMainProductLicenseChecker;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 

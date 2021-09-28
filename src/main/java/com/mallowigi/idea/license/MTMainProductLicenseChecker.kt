@@ -23,20 +23,16 @@
  *
  *
  */
+package com.mallowigi.idea.license
 
-package com.mallowigi.idea.visitors;
+import com.intellij.openapi.application.ApplicationManager
 
-import com.intellij.openapi.application.ApplicationManager;
+class MTMainProductLicenseChecker : MTLicenseChecker() {
+  public override fun getProductCode(): String = "PMATERIALUI"
 
-public final class MTMainProductLicenseChecker extends MTLicenseChecker {
-
-  @Override
-  public String getProductCode() {
-    return "PMATERIALUI";
+  companion object {
+    @JvmStatic
+    val instance: MTMainProductLicenseChecker
+      get() = ApplicationManager.getApplication().getService(MTMainProductLicenseChecker::class.java)
   }
-
-  public static MTMainProductLicenseChecker getInstance() {
-    return ApplicationManager.getApplication().getService(MTMainProductLicenseChecker.class);
-  }
-
 }

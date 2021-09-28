@@ -24,7 +24,7 @@
  *
  */
 
-package com.mallowigi.idea.visitors;
+package com.mallowigi.idea.license;
 
 import com.google.gson.Gson;
 import com.google.gson.internal.LinkedTreeMap;
@@ -469,8 +469,7 @@ public abstract class MTLicenseChecker {
   /**
    * Verify the stamp signature
    */
-  private @Nullable
-  static String verifyStampSignature(final String[] parts, final Base64.Decoder base64) throws Exception {
+  private static @Nullable String verifyStampSignature(final String[] parts, final Base64.Decoder base64) throws Exception {
     final long timeStamp = Long.parseLong(parts[1]);
     final String machineId = parts[2];
     final String signatureType = parts[3];

@@ -33,7 +33,7 @@ import com.intellij.util.IconUtil
 import com.intellij.util.ObjectUtils
 import com.intellij.util.ui.GraphicsUtil
 import com.intellij.util.ui.JBUI
-import com.mallowigi.idea.MTLicenseChecker
+import com.mallowigi.idea.license.MTMainProductLicenseChecker
 import com.mallowigi.idea.messages.MaterialThemeBundle.message
 import com.mallowigi.idea.notifications.MTNotifications.showSimple
 import java.awt.Component
@@ -67,7 +67,7 @@ abstract class MTToggleAction : ToggleAction() {
   }
 
   protected open fun checkLicense(e: AnActionEvent) {
-    e.presentation.isEnabled = MTLicenseChecker.isLicensed()
+    e.presentation.isEnabled = MTMainProductLicenseChecker.instance.isLicensed
   }
 
   private fun regularIcon(icon: Icon): Icon = IconUtil.toSize(icon, JBUI.scale(18), JBUI.scale(18))

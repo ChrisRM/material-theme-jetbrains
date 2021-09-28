@@ -27,16 +27,16 @@ package com.mallowigi.idea.actions
 
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
-import com.mallowigi.idea.MTLicenseChecker
+import com.mallowigi.idea.license.MTMainProductLicenseChecker
 import com.mallowigi.idea.messages.MaterialThemeBundle.message
 
 class MTActivateLicenseAction : AnAction() {
   override fun actionPerformed(e: AnActionEvent): Unit =
-    MTLicenseChecker.requestLicense(message("plugin.activateLicense"))
+    MTMainProductLicenseChecker.instance.requestLicense(message("plugin.activateLicense"))
 
   override fun isDumbAware(): Boolean = true
 
   override fun update(e: AnActionEvent) {
-    e.presentation.isEnabled = !MTLicenseChecker.isLicensed()
+    e.presentation.isEnabled = !MTMainProductLicenseChecker.instance.isLicensed
   }
 }

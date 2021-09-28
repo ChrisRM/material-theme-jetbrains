@@ -151,9 +151,9 @@
     <extensions defaultExtensionNs="com.intellij">
         <applicationService serviceImplementation="com.mallowigi.idea.ui.OverlayPainter"
                             id="OverlayPainter" />
-        <applicationService serviceImplementation="com.mallowigi.idea.visitors.MTMainProductLicenseChecker"
+        <applicationService serviceImplementation="com.mallowigi.idea.license.MTMainProductLicenseChecker"
                             id="MTMainProductLicenseChecker" />
-        <applicationService serviceImplementation="com.mallowigi.idea.visitors.MTHCLicenseChecker"
+        <applicationService serviceImplementation="com.mallowigi.idea.license.MTHCLicenseChecker"
                             id="MTHCLicenseChecker" />
         <applicationService serviceImplementation="com.mallowigi.idea.config.application.MTConfig"
                             id="MTConfig" />

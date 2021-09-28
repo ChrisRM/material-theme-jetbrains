@@ -26,7 +26,7 @@
 package com.mallowigi.idea.actions.themes
 
 import com.intellij.openapi.actionSystem.AnActionEvent
-import com.mallowigi.idea.MTLicenseChecker
+import com.mallowigi.idea.license.MTMainProductLicenseChecker
 import com.mallowigi.idea.themes.MTThemes
 
 class MTLightCustomThemeAction : MTAbstractThemeAction() {
@@ -34,6 +34,6 @@ class MTLightCustomThemeAction : MTAbstractThemeAction() {
     get() = MTThemes.LIGHT_CUSTOM
 
   override fun checkLicense(e: AnActionEvent) {
-    e.presentation.isEnabled = MTLicenseChecker.isLicensed()
+    e.presentation.isEnabled = MTMainProductLicenseChecker.instance.isLicensed
   }
 }

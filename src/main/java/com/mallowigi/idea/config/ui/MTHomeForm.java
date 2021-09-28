@@ -35,8 +35,8 @@ import com.intellij.openapi.extensions.PluginId;
 import com.intellij.ui.components.labels.LinkLabel;
 import com.mallowigi.idea.config.MTBaseConfig;
 import com.mallowigi.idea.config.application.MTConfig;
+import com.mallowigi.idea.license.MTMainProductLicenseChecker;
 import com.mallowigi.idea.messages.MaterialThemeBundle;
-import com.mallowigi.idea.visitors.MTMainProductLicenseChecker;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
