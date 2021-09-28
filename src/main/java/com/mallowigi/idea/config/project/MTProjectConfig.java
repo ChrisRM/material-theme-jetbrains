@@ -35,7 +35,6 @@ import com.intellij.ui.ColorUtil;
 import com.intellij.util.xmlb.XmlSerializerUtil;
 import com.intellij.util.xmlb.annotations.Property;
 import com.intellij.util.xmlb.annotations.Transient;
-import com.mallowigi.idea.MTLicenseChecker;
 import com.mallowigi.idea.config.MTBaseConfig;
 import com.mallowigi.idea.config.application.MTConfig;
 import com.mallowigi.idea.config.enums.IndicatorStyles;
@@ -44,6 +43,7 @@ import com.mallowigi.idea.config.ui.MTForm;
 import com.mallowigi.idea.config.ui.MTProjectForm;
 import com.mallowigi.idea.listeners.MTTopics;
 import com.mallowigi.idea.utils.MTUiUtils;
+import com.mallowigi.idea.visitors.MTMainProductLicenseChecker;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -114,7 +114,7 @@ public final class MTProjectConfig implements PersistentStateComponent<MTProject
     "ImplicitCallToSuper",
     "PublicConstructor"})
   public MTProjectConfig() {
-    isPremium = MTLicenseChecker.isLicensed();
+    isPremium = MTMainProductLicenseChecker.getInstance().isLicensed();
   }
 
   public static MTProjectConfig getInstance(final Project project) {
@@ -131,7 +131,7 @@ public final class MTProjectConfig implements PersistentStateComponent<MTProject
   public @Nullable MTProjectConfig getState() {
     isPremium = true;
     final MTProjectConfig clone = clone();
-    isPremium = MTLicenseChecker.isLicensed();
+    isPremium = MTMainProductLicenseChecker.getInstance().isLicensed();
     return clone;
   }
 

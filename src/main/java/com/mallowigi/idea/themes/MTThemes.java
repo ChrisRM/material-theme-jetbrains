@@ -26,9 +26,9 @@
 
 package com.mallowigi.idea.themes;
 
-import com.mallowigi.idea.MTLicenseChecker;
 import com.mallowigi.idea.themes.models.MTThemeable;
 import com.mallowigi.idea.themes.themes.*;
+import com.mallowigi.idea.visitors.MTMainProductLicenseChecker;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
@@ -213,7 +213,7 @@ public enum MTThemes implements MTThemeFacade {
    */
   @SuppressWarnings("UseOfObsoleteCollectionType")
   public static Vector<MTThemeFacade> getAllThemes() {
-    final boolean isPremium = MTLicenseChecker.isLicensed();
+    final boolean isPremium = MTMainProductLicenseChecker.getInstance().isLicensed();
     return THEMES_MAP.values()
                      .stream()
                      .filter(mtThemeFacade -> isPremium || !mtThemeFacade.isPremium())

@@ -23,28 +23,20 @@
  *
  *
  */
-package com.mallowigi.idea.actions
 
-import com.intellij.openapi.actionSystem.AnActionEvent
-import com.mallowigi.idea.MTAnalytics
-import com.mallowigi.idea.MTAnalytics.Companion.instance
-import com.mallowigi.idea.MTThemeManager
-import com.mallowigi.idea.config.application.MTConfig
+package com.mallowigi.idea.visitors;
 
-class MTHighContrastAction : MTToggleAction() {
-  override fun isSelected(e: AnActionEvent): Boolean = MTConfig.getInstance().isHighContrast
+import com.intellij.openapi.application.ApplicationManager;
 
-  override fun setSelected(e: AnActionEvent, state: Boolean) {
-    MTThemeManager.toggleHighContrast()
-    instance.trackValue(MTAnalytics.HIGH_CONTRAST, state)
-    super.setSelected(e, state)
+public final class MTMainProductLicenseChecker extends MTLicenseChecker {
+
+  @Override
+  public String getProductCode() {
+    return "PMATERIALUI";
   }
 
-  override fun update(e: AnActionEvent) {
-    super.update(e)
-    if (MTConfig.getInstance().selectedTheme.isNative) e.presentation.isEnabled = false
-
-//    e.getPresentation().setEnabled(!MTMainProductLicenseChecker.getInstance().isLicensed());
-
+  public static MTMainProductLicenseChecker getInstance() {
+    return ApplicationManager.getApplication().getService(MTMainProductLicenseChecker.class);
   }
+
 }

@@ -33,10 +33,10 @@ package com.mallowigi.idea.config.ui;
 import com.intellij.ide.plugins.PluginManagerCore;
 import com.intellij.openapi.extensions.PluginId;
 import com.intellij.ui.components.labels.LinkLabel;
-import com.mallowigi.idea.MTLicenseChecker;
 import com.mallowigi.idea.config.MTBaseConfig;
 import com.mallowigi.idea.config.application.MTConfig;
 import com.mallowigi.idea.messages.MaterialThemeBundle;
+import com.mallowigi.idea.visitors.MTMainProductLicenseChecker;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
@@ -59,13 +59,17 @@ import java.util.ResourceBundle;
   "unused",
   "ClassWithTooManyFields"})
 public final class MTHomeForm implements MTFormUI {
+
+  private final MTMainProductLicenseChecker productLicenseChecker;
+
   public MTHomeForm() {
+    productLicenseChecker = MTMainProductLicenseChecker.getInstance();
     init();
   }
 
   @Override
   public void init() {
-    MTLicenseChecker.extractLicenseInformation();
+    productLicenseChecker.extractLicenseInformation();
     initComponents();
     setupComponents();
   }
@@ -82,9 +86,9 @@ public final class MTHomeForm implements MTFormUI {
 
   @Override
   public void setupComponents() {
-    final boolean isPremium = MTLicenseChecker.isLicensed();
+    final boolean isPremium = productLicenseChecker.isLicensed();
     if (isPremium) {
-      licensedLabel.setText(MTLicenseChecker.getLicensedInfo());
+      licensedLabel.setText(productLicenseChecker.getLicensedInfo());
       content.remove(buyLicenseButton);
       content.remove(activateLicenseButton);
       content.remove(activateLicenseLabel);
@@ -97,7 +101,7 @@ public final class MTHomeForm implements MTFormUI {
   }
 
   private void activateLicenseButtonActionPerformed(final ActionEvent e) {
-    MTLicenseChecker.requestLicense("Activate License");
+    productLicenseChecker.requestLicense("Activate License");
     activateLicenseButton.setText(MaterialThemeBundle.message("activateLicense.afterSaveButton"));
     activateLicenseButton.setEnabled(false);
     activateLicenseLabel.setVisible(true);
@@ -245,6 +249,7 @@ public final class MTHomeForm implements MTFormUI {
   // JFormDesigner - End of variables declaration  //GEN-END:variables
 
   public void setFormState(final MTConfig config) {
+    // nothing to do
   }
 
   @SuppressWarnings("StaticMethodOnlyUsedInOneClass")
