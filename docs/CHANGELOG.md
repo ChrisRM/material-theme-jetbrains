@@ -1,6 +1,11 @@
 ## Changelog
 ----
 
+# 6.9.1
+
+### Fixes
+- Fix the JGoodies issue in PHPStorm
+
 ## 6.9.0
 
 ### Features
