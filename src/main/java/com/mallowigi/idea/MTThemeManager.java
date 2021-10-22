@@ -90,13 +90,6 @@ public final class MTThemeManager implements Disposable {
   private static final MTConfig CONFIG = MTConfig.getInstance();
 
   @NonNls
-  public static final String DEFAULT_FONT = "Roboto";
-  private static final int DEFAULT_SIDEBAR_HEIGHT = 28;
-  private static final int DEFAULT_INDENT = 6;
-  private static final int DEFAULT_FONT_SIZE = JBUI.scale(13);
-  @NonNls
-  private static final String DEFAULT_MONO_FONT = "Fira Code";
-  @NonNls
   private static final String RETINA = "@2x.css";
   @NonNls
   private static final String NON_RETINA = ".css";
@@ -522,7 +515,7 @@ public final class MTThemeManager implements Disposable {
     final FontUIResource font = UIUtil.getFontWithFallback(fontFace, Font.PLAIN, fontSize);
 
     final String editorFontName = AppEditorFontOptions.getInstance().getFontPreferences().getFontFamily();
-    final String monospaceFont = ObjectUtils.notNull(editorFontName, DEFAULT_MONO_FONT);
+    final String monospaceFont = ObjectUtils.notNull(editorFontName, MTConfig.DEFAULT_MONO_FONT);
     final FontUIResource monoFont = new FontUIResource(monospaceFont, Font.PLAIN, fontSize);
 
     // Keep old style and size
@@ -547,17 +540,17 @@ public final class MTThemeManager implements Disposable {
         Locale.JAPANESE.getLanguage().equals(language) ||
         Locale.KOREAN.getLanguage().equals(language));
 
-    FontUIResource font = UIUtil.getFontWithFallback(DEFAULT_FONT, Font.PLAIN, DEFAULT_FONT_SIZE);
+    FontUIResource font = UIUtil.getFontWithFallback(MTConfig.DEFAULT_FONT, Font.PLAIN, MTConfig.DEFAULT_FONT_SIZE);
     if (cjkLocale) {
-      font = UIUtil.getFontWithFallback(MTUiUtils.NOTO_SANS, Font.PLAIN, DEFAULT_FONT_SIZE);
+      font = UIUtil.getFontWithFallback(MTUiUtils.NOTO_SANS, Font.PLAIN, MTConfig.DEFAULT_FONT_SIZE);
     }
 
     final FontUIResource uiFont = font;
     final FontUIResource textFont = font;
 
     final String editorFontName = AppEditorFontOptions.getInstance().getFontPreferences().getFontFamily();
-    final String monospaceFont = ObjectUtils.notNull(editorFontName, DEFAULT_MONO_FONT);
-    final FontUIResource monoFont = new FontUIResource(monospaceFont, Font.PLAIN, DEFAULT_FONT_SIZE);
+    final String monospaceFont = ObjectUtils.notNull(editorFontName, MTConfig.DEFAULT_MONO_FONT);
+    final FontUIResource monoFont = new FontUIResource(monospaceFont, Font.PLAIN, MTConfig.DEFAULT_FONT_SIZE);
 
     // Keep old style and size
     for (final String fontResource : FontResources.FONT_RESOURCES) {
@@ -632,8 +625,8 @@ public final class MTThemeManager implements Disposable {
       UIManager.put("Tree.leftChildIndent", CONFIG.getLeftTreeIndent());
       UIManager.put("Tree.rightChildIndent", CONFIG.getRightTreeIndent());
     } else {
-      UIManager.put("Tree.leftChildIndent", (DEFAULT_INDENT / 2) + JBUI.scale(7));
-      UIManager.put("Tree.rightChildIndent", (DEFAULT_INDENT / 2) + JBUI.scale(4));
+      UIManager.put("Tree.leftChildIndent", (MTConfig.DEFAULT_INDENT / 2) + JBUI.scale(7));
+      UIManager.put("Tree.rightChildIndent", (MTConfig.DEFAULT_INDENT / 2) + JBUI.scale(4));
     }
   }
   //endregion
@@ -677,7 +670,7 @@ public final class MTThemeManager implements Disposable {
   private static void applyCompactSidebar(final boolean reloadUI) {
     final boolean isCustomSidebarHeight = CONFIG.isCompactSidebar();
     final int customSidebarHeight = CONFIG.getCustomSidebarHeight();
-    final int rowHeight = isCustomSidebarHeight ? JBUI.scale(customSidebarHeight) : JBUI.scale(DEFAULT_SIDEBAR_HEIGHT);
+    final int rowHeight = isCustomSidebarHeight ? JBUI.scale(customSidebarHeight) : JBUI.scale(MTConfig.DEFAULT_SIDEBAR_HEIGHT);
     UIManager.put("Tree.rowHeight", rowHeight);
 
     if (reloadUI) {

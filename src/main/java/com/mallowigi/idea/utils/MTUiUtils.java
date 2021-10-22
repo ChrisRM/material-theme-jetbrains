@@ -60,7 +60,6 @@ import com.intellij.util.ObjectUtils;
 import com.intellij.util.containers.ContainerUtil;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
-import com.mallowigi.idea.MTThemeManager;
 import com.mallowigi.idea.config.application.MTConfig;
 import com.mallowigi.idea.config.project.MTProjectConfig;
 import com.mallowigi.idea.messages.MaterialThemeBundle;
@@ -94,8 +93,6 @@ import java.util.stream.Stream;
 public enum MTUiUtils {
   DEFAULT;
 
-  @NonNls
-  public static final String MATERIAL_FONT = MTThemeManager.DEFAULT_FONT;
   @NonNls
   public static final String HELP_PREFIX = "com.mallowigi.idea.help";
   @NonNls

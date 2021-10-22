@@ -135,7 +135,7 @@ final class MTStatusWidget implements CustomStatusBarWidget {
       final GraphicsEnvironment e = GraphicsEnvironment.getLocalGraphicsEnvironment();
       final Font[] fonts = e.getAllFonts();
       for (final Font font : fonts) {
-        if (Objects.equals(font.getFontName(), MTUiUtils.MATERIAL_FONT)) {
+        if (Objects.equals(font.getFontName(), MTConfig.DEFAULT_FONT)) {
           final Map<TextAttribute, Object> attributes = new HashMap<>(10);
 
           attributes.put(TextAttribute.WEIGHT, TextAttribute.WEIGHT_BOLD);

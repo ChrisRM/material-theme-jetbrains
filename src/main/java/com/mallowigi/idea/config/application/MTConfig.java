@@ -34,6 +34,7 @@ import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
 import com.intellij.ui.ColorUtil;
 import com.intellij.util.ObjectUtils;
+import com.intellij.util.ui.JBUI;
 import com.intellij.util.xmlb.XmlSerializerUtil;
 import com.intellij.util.xmlb.annotations.Property;
 import com.intellij.util.xmlb.annotations.Transient;
@@ -101,7 +102,14 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   static final String SECOND_ACCENT_COLOR = MTAccents.TURQUOISE.getHexColor();
   @NonNls
   public static final String DEFAULT_TITLE = "{project}";
-  //endregion
+
+  public static final int DEFAULT_SIDEBAR_HEIGHT = 28;
+  public static final int DEFAULT_INDENT = 6;
+  public static final int DEFAULT_FONT_SIZE = JBUI.scale(13);
+  @NonNls
+  public static final String DEFAULT_FONT = "Roboto";
+  @NonNls
+  public static final String DEFAULT_MONO_FONT = "Fira Code";
   @Property
   boolean accentMode = false;
   @Property
