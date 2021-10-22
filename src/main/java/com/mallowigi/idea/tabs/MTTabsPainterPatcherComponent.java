@@ -135,21 +135,22 @@ public final class MTTabsPainterPatcherComponent implements StartupActivity.Back
     final JBTabPainter proxy = (JBTabPainter) Enhancer.create(MTTabsPainter.class, new TabPainterInterceptor(tabsPainter));
 
     ApplicationManager.getApplication().invokeLater(() -> {
-      applyCustomFontSize(component, project);
+      applyCustomFontSize(component);
       applyBoldTabs(component, project);
     });
 
     ReflectionUtil.setField(JBEditorTabs.class, component, JBTabPainter.class, "myTabPainter", proxy);
   }
 
-  private void applyCustomFontSize(final JBEditorTabs component,
-                                   @NotNull final Project project) {
+  @SuppressWarnings("FeatureEnvy")
+  private void applyCustomFontSize(final JBEditorTabs component) {
     if (config.isTabFontSizeEnabled()) {
       final float tabFontSize = config.getTabFontSize();
+      final String fontName = config.getTabFont();
       final Map<TabInfo, TabLabel> myInfo2Label = component.myInfo2Label;
 
       for (final TabLabel value : myInfo2Label.values()) {
-        final Font font = value.getLabelComponent().getFont().deriveFont(tabFontSize);
+        final Font font = new Font(fontName, Font.PLAIN, (int) tabFontSize);
         value.getLabelComponent().setFont(font);
       }
     }

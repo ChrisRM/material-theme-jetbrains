@@ -102,7 +102,7 @@ class MTConfigTopHitProvider : ApplicationLevelProvider {
           "setFileStatusColorsEnabled"
         ),
         option(
-          MaterialThemeBundle.message("MTForm.fontSizeCheckbox.text"),
+          MaterialThemeBundle.message("MTForm.tabFontSizeCheckbox.text"),
           "isTabFontSizeEnabled",
           "setTabFontSize"
         ),

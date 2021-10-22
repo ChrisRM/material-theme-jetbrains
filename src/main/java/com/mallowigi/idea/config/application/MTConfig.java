@@ -231,6 +231,8 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   @Property
   String version = "6.8.1";
   @Property
+  String tabFont = DEFAULT_FONT;
+  @Property
   TabHighlightPositions tabHighlightPosition = TabHighlightPositions.DEFAULT;
   @Property
   private boolean codeAdditionsEnabled = true;
@@ -380,6 +382,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     setStyledDirectories(form.isStyledDirectories());
     setTabFontSize(form.getTabFontSize());
     setTabFontSizeEnabled(form.isTabFontSizeEnabled());
+    setTabFont(form.getTabFont());
     setTabHighlightPosition(form.getTabHighlightPosition());
     setTabsHeight(form.getTabsHeight());
     setThemedScrollbars(form.isThemedScrollbars());
@@ -440,6 +443,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     showWhatsNew = true;
     statusBarTheme = true;
     stripedToolWindowsEnabled = false;
+    tabFont = DEFAULT_FONT;
     tabFontSize = DEFAULT_TAB_FONT_SIZE;
     tabFontSizeEnabled = false;
     tabHighlightPosition = TabHighlightPositions.DEFAULT;
@@ -698,7 +702,35 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   }
   //endregion
 
-  // region ----------- Tab Font Size -----------
+  // region ----------- Tab Font -----------
+
+  /**
+   * Returns the tab font of this MTConfig object.
+   *
+   * @return the tab font of this MTConfig object.
+   */
+  public String getTabFont() {
+    return tabFont;
+  }
+
+  /**
+   * Sets the tab font of this MTConfig object.
+   *
+   * @param tabFont the tabFont of this MTConfig object.
+   */
+  public void setTabFont(final String tabFont) {
+    this.tabFont = tabFont;
+  }
+
+  /**
+   * ...
+   *
+   * @param tabFont of type String
+   * @return boolean
+   */
+  public boolean isTabFontChanged(final String tabFont) {
+    return this.tabFont != tabFont;
+  }
 
   /**
    * Sets the tabFontSize of this MTConfig object.
