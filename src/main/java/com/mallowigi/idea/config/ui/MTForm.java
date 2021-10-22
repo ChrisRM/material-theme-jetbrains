@@ -149,6 +149,7 @@ public class MTForm implements MTFormUI {
   private JCheckBox styledDirectoriesCheckbox;
   private LinkLabel directoriesColorLink;
   private JCheckBox fontSizeCheckbox;
+  private FontComboBox treeFontChooser;
   private JSpinner fontSizeSpinner;
   private JPanel componentsPanel;
   private JLabel componentDesc;
@@ -241,7 +242,6 @@ public class MTForm implements MTFormUI {
     setIsInvertedSelectionColor(mtConfig.isInvertedSelectionColor());
     setIsOverrideAccents(mtConfig.isOverrideAccentColor());
     setIsStyledDirectories(mtConfig.isStyledDirectories());
-    setTabFont(mtConfig.getTabFont());
     setIsTabFontSizeEnabled(mtConfig.isTabFontSizeEnabled());
     setIsTabsShadow(mtConfig.isTabsShadow());
     setIsThemedScrollbars(mtConfig.isThemedScrollbars());
@@ -254,9 +254,11 @@ public class MTForm implements MTFormUI {
     setSelectedTabIndex(mtConfig.getSettingsSelectedTab());
     setShowOverlays(mtConfig.isShowOverlays());
     setShowWhatsNew(mtConfig.isShowWhatsNew());
+    setTabFont(mtConfig.getTabFont());
     setTabFontSize(mtConfig.getTabFontSize());
     setTabsHeight(mtConfig.getTabsHeight());
     setTheme(mtConfig.getSelectedTheme());
+    setTreeFont(mtConfig.getTreeFont());
     setTreeFontSize(mtConfig.getTreeFontSize());
     setUseColoredDirectories(mtConfig.isUseColoredDirectories());
     setUseCustomTitle(mtConfig.isUseCustomTitle());
@@ -318,6 +320,7 @@ public class MTForm implements MTFormUI {
     modified = modified || mtConfig.isTabsHeightChanged(getTabsHeight());
     modified = modified || mtConfig.isTabsShadowChanged(isTabsShadow());
     modified = modified || mtConfig.isThemedScrollbarsChanged(isThemedScrollbars());
+    modified = modified || mtConfig.isTreeFontChanged(getTreeFont());
     modified = modified || mtConfig.isTreeFontSizeChanged(getTreeFontSize());
     modified = modified || mtConfig.isTreeFontSizeEnabledChanged(isTreeFontSizeEnabled());
     modified = modified || mtConfig.isUpperCaseButtonsChanged(isUpperCaseButtons());
@@ -620,6 +623,14 @@ public class MTForm implements MTFormUI {
   //endregion
 
   //region Tree Font Size
+  public final String getTreeFont() {
+    return treeFontChooser.getFontName();
+  }
+
+  private void setTreeFont(final String treeFont) {
+    treeFontChooser.setFontName(treeFont);
+  }
+
   public final Integer getTreeFontSize() {
     return (Integer) treeFontSizeModel.getValue();
   }
@@ -634,7 +645,7 @@ public class MTForm implements MTFormUI {
 
   private void setIsTreeFontSizeEnabled(final boolean isTreeFontSizeEnabled) {
     fontSizeCheckbox.setSelected(isTreeFontSizeEnabled);
-    enableDisableTreeFontSize(isTreeFontSizeEnabled);
+    enableDisableTreeFont(isTreeFontSizeEnabled);
   }
   //endregion
 
@@ -918,8 +929,9 @@ public class MTForm implements MTFormUI {
     customSidebarSpinner.setEnabled(isCustomSidebarHeight);
   }
 
-  private void enableDisableTreeFontSize(final boolean isTreeFontSize) {
-    fontSizeSpinner.setEnabled(isTreeFontSize);
+  private void enableDisableTreeFont(final boolean enabled) {
+    fontSizeSpinner.setEnabled(enabled);
+    treeFontChooser.setEnabled(enabled);
   }
 
   private void enableDisableTabFont(final boolean enabled) {
@@ -972,7 +984,7 @@ public class MTForm implements MTFormUI {
   }
 
   private void fontSizeCheckboxActionPerformed(final ActionEvent e) {
-    enableDisableTreeFontSize(fontSizeCheckbox.isSelected());
+    enableDisableTreeFont(fontSizeCheckbox.isSelected());
   }
 
   private void resetDefaultsButtonActionPerformed(final ActionEvent e) {
@@ -1105,6 +1117,7 @@ public class MTForm implements MTFormUI {
     styledDirectoriesCheckbox = new JCheckBox();
     directoriesColorLink = new LinkLabel();
     fontSizeCheckbox = new JCheckBox();
+    treeFontChooser = new FontComboBox();
     fontSizeSpinner = new JSpinner();
     componentsPanel = new JPanel();
     componentDesc = compFactory.createLabel(bundle.getString("MTForm.componentDesc.textWithMnemonic"));
@@ -1316,7 +1329,7 @@ public class MTForm implements MTFormUI {
             tabFontSizeCheckboxActionPerformed(e);
           });
           tabPanel.add(tabFontSizeCheckbox, "cell 0 8");
-          tabPanel.add(tabFontChooser, "cell 1 8");
+          tabPanel.add(tabFontChooser, "cell 1 8,width 150:150");
 
           //---- tabFontSizeSpinner ----
           tabFontSizeSpinner.setToolTipText(bundle.getString("MTForm.tabFontSizeSpinner.toolTipText"));
@@ -1365,8 +1378,8 @@ public class MTForm implements MTFormUI {
           isCompactMenusCheckbox.setToolTipText(bundle.getString("MTForm.isCompactMenusCheckbox.toolTipText"));
           compactPanel.add(isCompactMenusCheckbox, "cell 0 4");
         }
-        tabbedPane1.addTab(bundle.getString("MTForm.compactPanel.tab.title"), null, compactPanel, bundle.getString("MTForm.compactPanel" +
-          ".tab.toolTipText"));
+        tabbedPane1.addTab(bundle.getString("MTForm.compactPanel.tab.title"), null, compactPanel, bundle.getString(
+          "MTForm.compactPanel.tab.toolTipText"));
 
         //======== projectViewPanel ========
         {
@@ -1378,7 +1391,6 @@ public class MTForm implements MTFormUI {
               "[right]",
             // rows
             "[]" +
-              "[]" +
               "[]" +
               "[]" +
               "[]" +
@@ -1463,13 +1475,14 @@ public class MTForm implements MTFormUI {
           fontSizeCheckbox.setToolTipText(bundle.getString("MTForm.fontSizeCheckbox.toolTipText"));
           fontSizeCheckbox.addActionListener(e -> fontSizeCheckboxActionPerformed(e));
           projectViewPanel.add(fontSizeCheckbox, "cell 0 6");
+          projectViewPanel.add(treeFontChooser, "cell 1 6,width 150:150");
 
           //---- fontSizeSpinner ----
           fontSizeSpinner.setToolTipText(bundle.getString("MTForm.fontSizeSpinner.toolTipText"));
           projectViewPanel.add(fontSizeSpinner, "cell 1 6,align right center,grow 0 0,width 80:80:80");
         }
-        tabbedPane1.addTab(bundle.getString("MTForm.projectViewPanel.tab.title"), null, projectViewPanel, bundle.getString("MTForm" +
-          ".projectViewPanel.tab.toolTipText"));
+        tabbedPane1.addTab(bundle.getString("MTForm.projectViewPanel.tab.title"), null, projectViewPanel, bundle.getString(
+          "MTForm.projectViewPanel.tab.toolTipText"));
 
         //======== componentsPanel ========
         {

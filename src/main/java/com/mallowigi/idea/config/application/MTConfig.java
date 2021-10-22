@@ -70,7 +70,10 @@ import java.util.Objects;
   "PublicMethodNotExposedInInterface",
   "StaticMethodOnlyUsedInOneClass",
   "ParameterHidesMemberVariable",
-  "TransientFieldInNonSerializableClass"})
+  "TransientFieldInNonSerializableClass",
+  "ParameterHidesField",
+  "java:S1820"
+})
 @State(
   name = "MaterialThemeConfig", //NON-NLS
   storages = @Storage("material_theme.xml") //NON-NLS
@@ -99,7 +102,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   public static final int DEFAULT_RIGHT_INDENT = 10;
   public static final int DEFAULT_TAB_HEIGHT = 32;
   public static final String ACCENT_COLOR = MTAccents.FUCHSIA.getHexColor();
-  static final String SECOND_ACCENT_COLOR = MTAccents.TURQUOISE.getHexColor();
+  public static final String SECOND_ACCENT_COLOR = MTAccents.TURQUOISE.getHexColor();
   @NonNls
   public static final String DEFAULT_TITLE = "{project}";
 
@@ -174,13 +177,6 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   boolean upperCaseButtons = true;
   @Property
   boolean upperCaseTabs = false;
-  /**
-   * @deprecated Use useMaterialFont2 instead
-   */
-  @SuppressWarnings("Since15")
-  @Property
-  @Deprecated(since = "2.7")
-  boolean useMaterialFont = true;
   @Property
   boolean useMaterialFont2 = false;
   @Property
@@ -229,9 +225,11 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   @Property
   String userId = new UID().toString();
   @Property
-  String version = "6.8.1";
+  String version = "6.10.0";
   @Property
   String tabFont = DEFAULT_FONT;
+  @Property
+  String treeFont = DEFAULT_FONT;
   @Property
   TabHighlightPositions tabHighlightPosition = TabHighlightPositions.DEFAULT;
   @Property
@@ -338,7 +336,8 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   @Override
   @SuppressWarnings({"CallToSimpleSetterFromWithinClass",
     "FeatureEnvy",
-    "Duplicates"})
+    "Duplicates",
+    "OverlyLongMethod"})
   public void applySettings(final MTForm form) {
     // First fire before change
     fireBeforeChanged(form);
@@ -386,6 +385,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     setTabHighlightPosition(form.getTabHighlightPosition());
     setTabsHeight(form.getTabsHeight());
     setThemedScrollbars(form.isThemedScrollbars());
+    setTreeFont(form.getTreeFont());
     setTreeFontSize(form.getTreeFontSize());
     setTreeFontSizeEnabled(form.isTreeFontSizeEnabled());
     setUpperCaseButtons(form.isUpperCaseButtons());
@@ -433,10 +433,10 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     isMaterialTheme = true;
     isStyledDirectories = false;
     isTabsShadow = true;
-    leftTreeIndent = 6;
+    leftTreeIndent = DEFAULT_LEFT_INDENT;
     overrideAccentColor = true;
     pristineConfig = true;
-    rightTreeIndent = 6;
+    rightTreeIndent = DEFAULT_RIGHT_INDENT;
     secondAccentColor = SECOND_ACCENT_COLOR;
     selectedTheme = MTThemes.OCEANIC.getName();
     showOverlays = true;
@@ -450,13 +450,13 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     tabOpacity = DEFAULT_TAB_OPACITY;
     tabsHeight = DEFAULT_TAB_HEIGHT;
     themedScrollbars = true;
+    treeFont = DEFAULT_FONT;
     treeFontSize = DEFAULT_TREE_FONT_SIZE;
     treeFontSizeEnabled = false;
     upperCaseButtons = true;
     upperCaseTabs = false;
     useColoredDirectories = true;
     useCustomTitle = false;
-    useMaterialFont = true;
     useMaterialFont2 = false;
     useMaterialWallpapers = false;
     useProjectFrame = false;
@@ -469,7 +469,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   public boolean needsRestart(final MTForm form) {
     boolean modified = isTreeFontSizeEnabledChanged(form.isTreeFontSizeEnabled());
     modified = modified || isTreeFontSizeChanged(form.getTreeFontSize());
-
+    modified = modified || isTreeFontChanged(form.getTreeFont());
     if (!hadStripesEnabled) {
       modified = modified || isStripedToolWindowsChanged(form.isStripedToolWindowsEnabled());
     }
@@ -636,7 +636,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   }
 
   public int getHighlightThickness() {
-    return isPremium ? highlightThickness : 2;
+    return isPremium ? highlightThickness : DEFAULT_THICKNESS;
   }
   // endregion
 
@@ -729,7 +729,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    * @return boolean
    */
   public boolean isTabFontChanged(final String tabFont) {
-    return this.tabFont != tabFont;
+    return !Objects.equals(this.tabFont, tabFont);
   }
 
   /**
@@ -1145,7 +1145,26 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
 
   //endregion
 
-  // region ----------- Tree Font Size -----------
+  // region ----------- Tree Font -----------
+
+  /**
+   * Sets the treeFontSize of this MTConfig object.
+   *
+   * @param treeFont the treeFont of this MTConfig object.
+   */
+  public void setTreeFont(final String treeFont) {
+    this.treeFont = treeFont;
+  }
+
+  /**
+   * ...
+   *
+   * @param treeFont tree font
+   * @return boolean
+   */
+  public boolean isTreeFontChanged(final String treeFont) {
+    return !Objects.equals(this.treeFont, treeFont);
+  }
 
   /**
    * Sets the treeFontSize of this MTConfig object.
@@ -1201,6 +1220,15 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    */
   public int getTreeFontSize() {
     return treeFontSize;
+  }
+
+  /**
+   * Returns the treeFont of this MTConfig object.
+   *
+   * @return the treeFont of this MTConfig object.
+   */
+  public String getTreeFont() {
+    return treeFont;
   }
 
   // endregion
@@ -1703,7 +1731,6 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    * @return the nativePropertiesAsJson (type JSONObject) of this MTConfig object.
    * @throws JSONException when
    */
-  @SuppressWarnings("DuplicateStringLiteralInspection")
   private JSONObject getNativePropertiesAsJson() throws JSONException {
     @NonNls final JSONObject hashMap = new JSONObject();
     hashMap.put("IDE", ApplicationNamesInfo.getInstance().getFullProductName());
@@ -1744,12 +1771,14 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     hashMap.put("showWhatsNew", showWhatsNew);
     hashMap.put("statusBarTheme", statusBarTheme);
     hashMap.put("stripedToolWindowsEnabled", stripedToolWindowsEnabled);
+    hashMap.put("tabFont", tabFont);
     hashMap.put("tabFontSize", tabFontSize);
     hashMap.put("tabFontSizeEnabled", tabFontSizeEnabled);
     hashMap.put("tabHighlightPosition", tabHighlightPosition);
     hashMap.put("tabOpacity", tabOpacity);
     hashMap.put("tabsHeight", tabsHeight);
     hashMap.put("themedScrollbars", themedScrollbars);
+    hashMap.put("treeFont", treeFont);
     hashMap.put("treeFontSize", treeFontSize);
     hashMap.put("treeFontSizeEnabled", treeFontSizeEnabled);
     hashMap.put("upperCaseButtons", upperCaseButtons);

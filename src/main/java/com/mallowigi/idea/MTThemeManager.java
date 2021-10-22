@@ -85,7 +85,8 @@ import java.util.Locale;
   "UtilityClass",
   "UnstableApiUsage",
   "FeatureEnvy",
-  "OverlyComplexClass"})
+  "OverlyComplexClass",
+  "java:S1200"})
 public final class MTThemeManager implements Disposable {
   private static final MTConfig CONFIG = MTConfig.getInstance();
 
@@ -572,6 +573,7 @@ public final class MTThemeManager implements Disposable {
     final UISettings uiSettings = UISettings.getInstance();
     @NonNls final UIDefaults lookAndFeelDefaults = UIManager.getLookAndFeelDefaults();
     final int treeFontSize = JBUI.scale(CONFIG.getTreeFontSize());
+    final String treeFont = CONFIG.getTreeFont();
 
     final boolean useMaterialFont = CONFIG.isUseMaterialFont2();
 
@@ -586,9 +588,8 @@ public final class MTThemeManager implements Disposable {
     }
 
     if (CONFIG.isTreeFontSizeEnabled()) {
-      // Tree font size
       final Font font = lookAndFeelDefaults.getFont("Tree.font");
-      lookAndFeelDefaults.put("Tree.font", font.deriveFont((float) treeFontSize));
+      lookAndFeelDefaults.put("Tree.font", new Font(treeFont, font.getStyle(), treeFontSize));
       LafManager.getInstance().updateUI();
     }
   }
@@ -652,7 +653,8 @@ public final class MTThemeManager implements Disposable {
   /**
    * Apply custom tree indent
    */
-  @SuppressWarnings("MagicNumber")
+  @SuppressWarnings({"MagicNumber",
+    "java:S109"})
   private static void applyDropdownLists() {
     if (CONFIG.isCompactDropdowns()) {
       UIManager.put("ActionsList.cellBorderInsets", JBUI.insets(1, 10, 1, 15));
@@ -685,7 +687,10 @@ public final class MTThemeManager implements Disposable {
   /**
    * Override patch style editor kit for custom accent support
    */
-  @SuppressWarnings("OverlyBroadCatchBlock")
+  @SuppressWarnings({"OverlyBroadCatchBlock",
+    "java:S2221",
+    "java:S1166",
+    "java:S108"})
   private static void patchStyledEditorKit() {
     @NonNls final UIDefaults defaults = UIManager.getLookAndFeelDefaults();
     final MTThemeable selectedTheme = CONFIG.getSelectedTheme().getTheme();
@@ -764,6 +769,6 @@ public final class MTThemeManager implements Disposable {
 
   @Override
   public void dispose() {
-
+    //do nothing
   }
 }
