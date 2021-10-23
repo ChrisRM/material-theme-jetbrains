@@ -37,7 +37,7 @@ class BundledThemeEP : PluginAware, KeyedLazyInstance<BundledThemeEP> {
   private var pluginDescriptor: PluginDescriptor? = null
 
   val loaderForClass: ClassLoader
-    get() = if (pluginDescriptor == null) javaClass.classLoader else pluginDescriptor!!.pluginClassLoader
+    get() = if (pluginDescriptor == null) javaClass.classLoader else pluginDescriptor!!.pluginClassLoader!!
 
   @JvmField
   @Attribute("path")

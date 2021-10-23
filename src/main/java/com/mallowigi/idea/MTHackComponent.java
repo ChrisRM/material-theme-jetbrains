@@ -61,6 +61,7 @@ public final class MTHackComponent {
     hackEapAgreement();
     hackExperimentalUI();
     hackTagButton();
+    hackWelcomeScreen();
   }
 
   private MTHackComponent() {
@@ -171,15 +172,14 @@ public final class MTHackComponent {
 
   private static void hackScrollbars() {
     try {
-      final ClassPool cp = new ClassPool(true);
-      cp.insertClassPath(new ClassClassPath(MultiColumnList.class));
-      final CtClass scrollBarThumbClass = cp.get("com.intellij.ui.components.ScrollBarPainter$Thumb");
-
-      final CtMethod paint = scrollBarThumbClass.getDeclaredMethod("paint");
       if (SystemInfoRt.isMac) {
         return;
       }
+      final ClassPool cp = new ClassPool(true);
+      cp.insertClassPath(new ClassClassPath(MultiColumnList.class));
 
+      final CtClass scrollBarThumbClass = cp.get("com.intellij.ui.components.ScrollBarPainter$Thumb");
+      final CtMethod paint = scrollBarThumbClass.getDeclaredMethod("paint");
       paint.instrument(new ExprEditor() {
         @Override
         public void edit(final MethodCall m) throws CannotCompileException {
@@ -372,4 +372,40 @@ public final class MTHackComponent {
       // do nothing
     }
   }
+
+  private static void hackWelcomeScreen() {
+    try {
+      @NonNls final ClassPool cp = new ClassPool(true);
+      cp.insertClassPath(new ClassClassPath(CaptionPanel.class));
+      final CtClass ctClass = cp.get("com.intellij.openapi.wm.impl.welcomeScreen.TabbedWelcomeScreen");
+
+      final CtConstructor declaredConstructor = ctClass.getDeclaredConstructors()[0];
+      declaredConstructor.instrument(new ExprEditor() {
+        @Override
+        public void edit(final MethodCall m) throws CannotCompileException {
+          final String methodName = m.getMethodName();
+          if ("setBorder".equals(methodName) && "javax.swing.JTree".equals(m.getClassName())) {
+            m.replace("{ $1 = com.intellij.util.ui.JBUI.Borders.emptyLeft(1); $_ = $proceed($$); }");
+          }
+        }
+      });
+
+      final CtClass ctClass2 = cp.get("com.intellij.openapi.wm.impl.welcomeScreen.TabbedWelcomeScreen$MyCellRenderer");
+      final CtMethod getTreeCellRendererComponent = ctClass2.getDeclaredMethod("getTreeCellRendererComponent");
+      getTreeCellRendererComponent.instrument(new ExprEditor() {
+        @Override
+        public void edit(final MethodCall m) throws CannotCompileException {
+          if ("setBackgroundRecursively".equals(m.getMethodName())) {
+            m.replace("{ $2 = com.intellij.ui.Gray.TRANSPARENT; $proceed($$); }");
+          }
+        }
+      });
+
+      ctClass.toClass();
+      ctClass2.toClass();
+    } catch (final Throwable e) {
+      e.printStackTrace();
+    }
+  }
+
 }
