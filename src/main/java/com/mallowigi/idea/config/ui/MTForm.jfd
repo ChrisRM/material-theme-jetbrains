@@ -212,13 +212,13 @@ new FormModel {
 					add( new FormComponent( "com.intellij.ui.FontComboBox" ) {
 						name: "tabFontChooser"
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 1 8,width 150:150"
+						"value": "cell 1 8,aligny bottom,growy 0,width 150:150"
 					} )
 					add( new FormComponent( "javax.swing.JSpinner" ) {
 						name: "tabFontSizeSpinner"
 						"toolTipText": new FormMessage( null, "MTForm.tabFontSizeSpinner.toolTipText" )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 1 8,align right center,grow 0 0,width 80:80:80"
+						"value": "cell 1 8,align right bottom,grow 0 0,width 80:80:80,gapx 10"
 					} )
 				}, new FormLayoutConstraints( null ) {
 					"title": new FormMessage( null, "MTForm.tabPanel.tab.title" )
@@ -394,13 +394,13 @@ new FormModel {
 					add( new FormComponent( "com.intellij.ui.FontComboBox" ) {
 						name: "treeFontChooser"
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 1 6,width 150:150"
+						"value": "cell 1 6,aligny bottom,growy 0,width 150:150"
 					} )
 					add( new FormComponent( "javax.swing.JSpinner" ) {
 						name: "fontSizeSpinner"
 						"toolTipText": new FormMessage( null, "MTForm.fontSizeSpinner.toolTipText" )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 1 6,align right center,grow 0 0,width 80:80:80"
+						"value": "cell 1 6,align right bottom,grow 0 0,width 80:80:80,gapx 10"
 					} )
 				}, new FormLayoutConstraints( null ) {
 					"title": new FormMessage( null, "MTForm.projectViewPanel.tab.title" )

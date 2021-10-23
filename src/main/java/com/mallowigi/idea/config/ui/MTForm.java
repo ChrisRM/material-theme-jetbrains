@@ -1065,8 +1065,8 @@ public class MTForm implements MTFormUI {
   public final void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
-    final ResourceBundle bundle = ResourceBundle.getBundle("messages.MaterialThemeBundle");
-    final DefaultComponentFactory compFactory = DefaultComponentFactory.getInstance();
+    ResourceBundle bundle = ResourceBundle.getBundle("messages.MaterialThemeBundle");
+    DefaultComponentFactory compFactory = DefaultComponentFactory.getInstance();
     content = new JPanel();
     settingsSep = compFactory.createSeparator(bundle.getString("MTForm.settingsSep.text"));
     mainSettingsPanel = new JPanel();
@@ -1329,14 +1329,13 @@ public class MTForm implements MTFormUI {
             tabFontSizeCheckboxActionPerformed(e);
           });
           tabPanel.add(tabFontSizeCheckbox, "cell 0 8");
-          tabPanel.add(tabFontChooser, "cell 1 8,width 150:150");
+          tabPanel.add(tabFontChooser, "cell 1 8,aligny bottom,growy 0,width 150:150");
 
           //---- tabFontSizeSpinner ----
           tabFontSizeSpinner.setToolTipText(bundle.getString("MTForm.tabFontSizeSpinner.toolTipText"));
-          tabPanel.add(tabFontSizeSpinner, "cell 1 8,align right center,grow 0 0,width 80:80:80");
+          tabPanel.add(tabFontSizeSpinner, "cell 1 8,align right bottom,grow 0 0,width 80:80:80,gapx 10");
         }
-        tabbedPane1.addTab(bundle.getString("MTForm.tabPanel.tab.title"), null, tabPanel, bundle.getString("MTForm.tabPanel.tab" +
-          ".toolTipText"));
+        tabbedPane1.addTab(bundle.getString("MTForm.tabPanel.tab.title"), null, tabPanel, bundle.getString("MTForm.tabPanel.tab.toolTipText"));
 
         //======== compactPanel ========
         {
@@ -1475,11 +1474,11 @@ public class MTForm implements MTFormUI {
           fontSizeCheckbox.setToolTipText(bundle.getString("MTForm.fontSizeCheckbox.toolTipText"));
           fontSizeCheckbox.addActionListener(e -> fontSizeCheckboxActionPerformed(e));
           projectViewPanel.add(fontSizeCheckbox, "cell 0 6");
-          projectViewPanel.add(treeFontChooser, "cell 1 6,width 150:150");
+          projectViewPanel.add(treeFontChooser, "cell 1 6,aligny bottom,growy 0,width 150:150");
 
           //---- fontSizeSpinner ----
           fontSizeSpinner.setToolTipText(bundle.getString("MTForm.fontSizeSpinner.toolTipText"));
-          projectViewPanel.add(fontSizeSpinner, "cell 1 6,align right center,grow 0 0,width 80:80:80");
+          projectViewPanel.add(fontSizeSpinner, "cell 1 6,align right bottom,grow 0 0,width 80:80:80,gapx 10");
         }
         tabbedPane1.addTab(bundle.getString("MTForm.projectViewPanel.tab.title"), null, projectViewPanel, bundle.getString(
           "MTForm.projectViewPanel.tab.toolTipText"));
@@ -1716,8 +1715,7 @@ public class MTForm implements MTFormUI {
           showWhatsNewCheckbox.setToolTipText(bundle.getString("MTForm.showWhatsNewCheckbox.toolTipText"));
           otherTweaksPanel.add(showWhatsNewCheckbox, "cell 0 3,align left center,grow 0 0");
         }
-        tabbedPane1.addTab(bundle.getString("MTForm.otherTweaksPanel.tab.title"), null, otherTweaksPanel, bundle.getString("MTForm" +
-          ".otherTweaksPanel.tab.toolTipText"));
+        tabbedPane1.addTab(bundle.getString("MTForm.otherTweaksPanel.tab.title"), null, otherTweaksPanel, bundle.getString("MTForm.otherTweaksPanel.tab.toolTipText"));
       }
       content.add(tabbedPane1, "pad 0,cell 0 3,growx,gapx 10 10,gapy 10 10");
 
