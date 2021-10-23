@@ -624,6 +624,9 @@
             <action id="MTRemoveWallpaperAction"
                     class="com.mallowigi.idea.actions.MTRemoveWallpaperAction"
                     icon="/icons/actions/mt/removeWallpaper.svg" />
+            <action id="MTResetColorScheme"
+                    class="com.mallowigi.idea.actions.MTResetColorScheme"
+                    icon="/icons/actions/mt/removeWallpaper.svg" />
         </group>
 
         <group id="MaterialTheme.Menu"
