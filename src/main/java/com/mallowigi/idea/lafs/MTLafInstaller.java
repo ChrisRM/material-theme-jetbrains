@@ -59,6 +59,7 @@ import java.util.Objects;
   "DuplicateStringLiteralInspection",
   "OverlyCoupledClass",
   "MagicNumber",
+  "java:S109",
   "StandardVariableNames"})
 public class MTLafInstaller {
   /**
@@ -182,6 +183,7 @@ public class MTLafInstaller {
     defaults.put("TextArea.caretBlinkRate", 500);
     defaults.put("Tree.border", "1,1,1,1");
     defaults.put("Tree.paintLines", false);
+    defaults.put("Button.ToolWindow.arc", 0);
     defaults.put("ValidationTooltip.maxWidth", 384);
     defaults.put("Window.border", "1,1,1,1,000000");
     defaults.put(JBScrollBar.class.getName(), JBScrollBar.class);

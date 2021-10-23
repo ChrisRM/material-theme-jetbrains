@@ -31,6 +31,7 @@ import com.intellij.openapi.editor.toolbar.floating.DefaultFloatingToolbarProvid
 import com.intellij.openapi.util.SystemInfoRt;
 import com.intellij.openapi.vcs.configurable.VcsContentAnnotationConfigurable;
 import com.intellij.openapi.wm.impl.IdeBackgroundUtil;
+import com.intellij.openapi.wm.impl.SquareStripeButtonLook;
 import com.intellij.openapi.wm.impl.welcomeScreen.FlatWelcomeFrameProvider;
 import com.intellij.ui.CaptionPanel;
 import com.intellij.ui.components.MultiColumnList;
@@ -62,6 +63,7 @@ public final class MTHackComponent {
     hackExperimentalUI();
     hackTagButton();
     hackWelcomeScreen();
+    hackLargeStripeLooks();
   }
 
   private MTHackComponent() {
@@ -403,6 +405,44 @@ public final class MTHackComponent {
 
       ctClass.toClass();
       ctClass2.toClass();
+    } catch (final Throwable e) {
+      e.printStackTrace();
+    }
+  }
+
+  @SuppressWarnings({"DuplicatedCode",
+    "LocalVariableNamingConvention"})
+  private static void hackLargeStripeLooks() {
+    try {
+      @NonNls final ClassPool cp = new ClassPool(true);
+      cp.insertClassPath(new ClassClassPath(SquareStripeButtonLook.class));
+      final CtClass squareStripeButton = cp.get("com.intellij.openapi.wm.impl.SquareStripeButton");
+
+      final CtConstructor squareStripeButtonDeclaredConstructor = squareStripeButton.getDeclaredConstructors()[0];
+      squareStripeButtonDeclaredConstructor.instrument(new ExprEditor() {
+        @Override
+        public void edit(final MethodCall m) throws CannotCompileException {
+          final String methodName = m.getMethodName();
+          if ("setLook".equals(methodName)) {
+            m.replace("{  }");
+          }
+        }
+      });
+      squareStripeButton.toClass();
+
+      final CtClass moreButton = cp.get("com.intellij.openapi.wm.impl.MoreSquareStripeButton");
+
+      final CtConstructor moreButtonDeclaredConstructor = moreButton.getDeclaredConstructors()[0];
+      moreButtonDeclaredConstructor.instrument(new ExprEditor() {
+        @Override
+        public void edit(final MethodCall m) throws CannotCompileException {
+          final String methodName = m.getMethodName();
+          if ("setLook".equals(methodName)) {
+            m.replace("{  }");
+          }
+        }
+      });
+      moreButton.toClass();
     } catch (final Throwable e) {
       e.printStackTrace();
     }
