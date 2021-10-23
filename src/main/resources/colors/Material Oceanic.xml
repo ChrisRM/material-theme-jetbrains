@@ -1452,6 +1452,12 @@
             </value>
         </option>
         <option name="JSP_DIRECTIVE_NAME" baseAttributes="DEFAULT_KEYWORD" />
+        <option name="JUPYTER.SAUSAGE_BUTTON_APPEARANCE">
+            <value>
+                <option name="FOREGROUND" value="B0BEC5" />
+                <option name="BACKGROUND" value="2E3C43" />
+            </value>
+        </option>
         <option name="JUPYTER_SELECTED_CELL">
             <value>
                 <option name="BACKGROUND" value="32424a" />
@@ -3286,6 +3292,7 @@
                 <option name="FOREGROUND" value="89ddff" />
             </value>
         </option>
+        <option name="RMARKDOWN_CHUNK" baseAttributes="TEXT" />
         <option name="ROUND_BRACKETS_RAINBOW_COLOR0">
             <value>
                 <option name="FOREGROUND" value="ffcb6b" />
@@ -3443,6 +3450,11 @@
                 <option name="EFFECT_COLOR" value="ff5370" />
                 <option name="ERROR_STRIPE_COLOR" value="ff5370" />
                 <option name="EFFECT_TYPE" value="2" />
+            </value>
+        </option>
+        <option name="R_NAMED_ARGUMENT">
+            <value>
+                <option name="FOREGROUND" value="f78c6c" />
             </value>
         </option>
         <option name="ReSharper.ASP_NET_ATTRIBUTE_NAME">

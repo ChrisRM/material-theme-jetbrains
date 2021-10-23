@@ -1716,6 +1716,12 @@
                 <option name="FOREGROUND" value="d33682" />
             </value>
         </option>
+        <option name="JUPYTER.SAUSAGE_BUTTON_APPEARANCE">
+            <value>
+                <option name="FOREGROUND" value="839496" />
+                <option name="BACKGROUND" value="073642" />
+            </value>
+        </option>
         <option name="JSP_DIRECTIVE_NAME" baseAttributes="DEFAULT_KEYWORD" />
         <option name="JUPYTER_SELECTED_CELL">
             <value>
@@ -3789,6 +3795,10 @@
             <value>
                 <option name="FOREGROUND" value="d33682" />
             </value>
+        </option>
+        <option name="RMARKDOWN_CHUNK" baseAttributes="TEXT" />
+        <option name="R_NAMED_ARGUMENT">
+            <value />
         </option>
         <option name="ReSharper.ASP_NET_ATTRIBUTE_NAME">
             <value>

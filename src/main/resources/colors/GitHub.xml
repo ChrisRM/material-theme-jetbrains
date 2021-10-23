@@ -1413,6 +1413,12 @@
                 <option name="FOREGROUND" value="5cc5" />
             </value>
         </option>
+        <option name="JUPYTER.SAUSAGE_BUTTON_APPEARANCE">
+            <value>
+                <option name="FOREGROUND" value="5B6168" />
+                <option name="BACKGROUND" value="edf1f5" />
+            </value>
+        </option>
         <option name="JSP_DIRECTIVE_NAME" baseAttributes="DEFAULT_KEYWORD" />
         <option name="JSP_SCRIPTING_BACKGROUND">
             <value />
@@ -3390,6 +3396,12 @@
                 <option name="EFFECT_COLOR" value="c30000" />
                 <option name="ERROR_STRIPE_COLOR" value="c30000" />
                 <option name="EFFECT_TYPE" value="2" />
+            </value>
+        </option>
+        <option name="RMARKDOWN_CHUNK" baseAttributes="TEXT" />
+        <option name="R_NAMED_ARGUMENT">
+            <value>
+                <option name="FOREGROUND" value="e36209" />
             </value>
         </option>
         <option name="ReSharper.ASP_NET_ATTRIBUTE_NAME">
