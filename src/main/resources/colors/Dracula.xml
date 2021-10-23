@@ -124,6 +124,16 @@
         <option name="INLINE_REFACTORING_SETTINGS_DEFAULT" value="282a36" />
         <option name="INLINE_REFACTORING_SETTINGS_FOCUSED" value="666b87" />
         <option name="INLINE_REFACTORING_SETTINGS_HOVERED" value="44475a" />
+
+        <option name="JUPYTER.CELL_UNDER_CARET_COMMAND_MODE_STRIPE_COLOR" value="FF79C5" />
+        <option name="JUPYTER.CELL_UNDER_CARET_EDITOR_MODE_STRIPE_COLOR" value="44475a" />
+        <option name="JUPYTER.CODE_CELL_BACKGROUND" value="282A36" />
+        <option name="JUPYTER.GUTTER_INPUT_EXECUTION_COUNT" value="f89580" />
+        <option name="JUPYTER.GUTTER_OUTPUT_EXECUTION_COUNT" value="feff80" />
+        <option name="JUPYTER.PROGRESS_STATUS_RUNNING_COLOR" value="FF79C5" />
+        <option name="JUPYTER.SAUSAGE_BUTTON_BORDER_COLOR" value="21222C" />
+        <option name="JUPYTER.SAUSAGE_BUTTON_SHORTCUT_COLOR" value="6272A4" />
+
         <option name="LINE_NUMBERS_COLOR" value="666879" />
         <option name="METHOD_SEPARATORS_COLOR" value="424450" />
         <option name="MODIFIED_LINES_COLOR" value="80ffea" />

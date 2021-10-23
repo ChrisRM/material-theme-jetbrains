@@ -120,6 +120,16 @@
         <option name="GUTTER_BACKGROUND" value="fafafa" />
         <option name="INDENT_GUIDE" value="b0bec5" />
         <option name="INFORMATION_HINT" value="f3f5f6" />
+
+        <option name="JUPYTER.CELL_UNDER_CARET_COMMAND_MODE_STRIPE_COLOR" value="00BCD4" />
+        <option name="JUPYTER.CELL_UNDER_CARET_EDITOR_MODE_STRIPE_COLOR" value="E7E7E8" />
+        <option name="JUPYTER.CODE_CELL_BACKGROUND" value="FFFFFF" />
+        <option name="JUPYTER.GUTTER_INPUT_EXECUTION_COUNT" value="f76d47" />
+        <option name="JUPYTER.GUTTER_OUTPUT_EXECUTION_COUNT" value="39adb5" />
+        <option name="JUPYTER.PROGRESS_STATUS_RUNNING_COLOR" value="00BCD4" />
+        <option name="JUPYTER.SAUSAGE_BUTTON_BORDER_COLOR" value="d3e1e8" />
+        <option name="JUPYTER.SAUSAGE_BUTTON_SHORTCUT_COLOR" value="94A7B0" />
+
         <option name="LINE_NUMBERS_COLOR" value="cfd8dc" />
         <option name="LINE_NUMBER_ON_CARET_ROW_COLOR" value="a7adb0" />
         <option name="BookmarkIcon.background" value="80cbc4" />
