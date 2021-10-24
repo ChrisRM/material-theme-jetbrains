@@ -60,7 +60,7 @@ plugins {
   // Kotlin support
   id("org.jetbrains.kotlin.jvm") version "1.5.31"
   // gradle-intellij-plugin - read more: https://github.com/JetBrains/gradle-intellij-plugin
-  id("org.jetbrains.intellij") version "1.1.6"
+  id("org.jetbrains.intellij") version "1.2.0"
   // gradle-changelog-plugin - read more: https://github.com/JetBrains/gradle-changelog-plugin
   id("org.jetbrains.changelog") version "1.3.1"
   // detekt linter - read more: https://detekt.github.io/detekt/gradle.html
@@ -83,7 +83,7 @@ repositories {
 
 dependencies {
   detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.18.1")
-  implementation("com.jgoodies:jgoodies-forms:1.6.0")
+  implementation("com.jgoodies:jgoodies-forms:1.9.0")
   implementation("com.thoughtworks.xstream:xstream:1.4.18")
   implementation("org.javassist:javassist:3.28.0-GA")
   implementation("com.mixpanel:mixpanel-java:1.5.0")

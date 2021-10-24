@@ -26,6 +26,7 @@
 
 package com.mallowigi.idea.tabs;
 
+import com.intellij.ide.ui.UISettings;
 import com.intellij.openapi.Disposable;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ModalityState;
@@ -69,7 +70,8 @@ import java.util.Objects;
  *
  * @author Dennis.Ushakov
  */
-@SuppressWarnings("WeakerAccess")
+@SuppressWarnings({"WeakerAccess",
+  "java:S1200"})
 public final class MTTabsPainterPatcherComponent implements StartupActivity.Background, Disposable {
   private MTConfig config = null;
   private final MessageBusConnection connect = ApplicationManagerEx.getApplicationEx().getMessageBus().connect();
@@ -144,16 +146,39 @@ public final class MTTabsPainterPatcherComponent implements StartupActivity.Back
 
   @SuppressWarnings("FeatureEnvy")
   private void applyCustomFontSize(final JBEditorTabs component) {
-    if (config.isTabFontSizeEnabled()) {
-      final float tabFontSize = config.getTabFontSize();
-      final String fontName = config.getTabFont();
-      final Map<TabInfo, TabLabel> myInfo2Label = component.myInfo2Label;
+    final boolean tabFontEnabled = config.isTabFontSizeEnabled();
+    final float tabFontSize = config.getTabFontSize();
+    final String fontName = config.getTabFont();
+    final Map<TabInfo, TabLabel> myInfo2Label = component.myInfo2Label;
 
-      for (final TabLabel value : myInfo2Label.values()) {
-        final Font font = new Font(fontName, Font.PLAIN, (int) tabFontSize);
-        value.getLabelComponent().setFont(font);
+    for (final TabLabel value : myInfo2Label.values()) {
+      final Font font;
+      if (tabFontEnabled) {
+        font = new Font(fontName, Font.PLAIN, (int) tabFontSize);
+      } else {
+        font = getRelevantFont();
+
       }
+
+      value.getLabelComponent().setFont(font);
     }
+
+  }
+
+  @SuppressWarnings("FeatureEnvy")
+  private static Font getRelevantFont() {
+    final UISettings uiSettings = UISettings.getInstance();
+    final MTConfig mtConfig = MTConfig.getInstance();
+    final boolean useMaterialFont = mtConfig.isUseMaterialFont2();
+
+    if (uiSettings.getOverrideLafFonts()) {
+      return new Font(uiSettings.getFontFace(), Font.PLAIN, uiSettings.getFontSize());
+    } else if (!useMaterialFont) {
+      return UIUtil.getLabelFont();
+    } else {
+      return UIUtil.getFontWithFallback(MTConfig.DEFAULT_FONT, Font.PLAIN, MTConfig.DEFAULT_FONT_SIZE);
+    }
+
   }
 
   private void applyBoldTabs(final JBEditorTabs component,
