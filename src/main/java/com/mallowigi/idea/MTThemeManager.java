@@ -218,6 +218,22 @@ public final class MTThemeManager implements Disposable {
     reloadUI();
   }
 
+  @SuppressWarnings("BooleanVariableAlwaysNegated")
+  public static void toggleCustomTabFont() {
+    final boolean tabFontSizeEnabled = CONFIG.isTabFontSizeEnabled();
+    CONFIG.setTabFontSizeEnabled(!tabFontSizeEnabled);
+
+    reloadUI();
+  }
+
+  @SuppressWarnings("BooleanVariableAlwaysNegated")
+  public static void toggleCustomTreeFont() {
+    final boolean treeFontSizeEnabled = CONFIG.isTreeFontSizeEnabled();
+    CONFIG.setTreeFontSizeEnabled(!treeFontSizeEnabled);
+
+    reloadUI();
+  }
+
   /**
    * Toggle material fonts.
    */

@@ -166,6 +166,8 @@ class MTAnalytics {
     const val STRIPED_TOOL_WINDOWS: String = "StripedToolWindows"
     const val OUTLINE_BUTTONS: String = "OutlineButtons"
     const val OVERLAYS: String = "Overlays"
+    const val CUSTOM_TAB_FONT: String = "CustomTabFont"
+    const val CUSTOM_TREE_FONT: String = "CustomTreeFont"
 
     @JvmStatic
     val instance: MTAnalytics

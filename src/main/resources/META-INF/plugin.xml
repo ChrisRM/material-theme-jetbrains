@@ -372,7 +372,7 @@
                     icon="/icons/actions/mt/uppercaseTabs.svg" />
             <action id="MTTabCustomFontAction"
                     class="com.mallowigi.idea.actions.MTTabCustomFontAction"
-                    icon="/icons/actions/mt/uppercaseTabs.svg" />
+                    icon="/icons/actions/mt/customTabFont.svg" />
             <action id="MTBiggerTabs"
                     class="com.mallowigi.idea.actions.MTBiggerTabsAction"
                     icon="/icons/actions/mt/bigTabs.svg" />
@@ -596,7 +596,8 @@
 
             <action id="MTTreeCustomFontAction"
                     class="com.mallowigi.idea.actions.MTTreeCustomFontAction"
-                    icon="/icons/actions/mt/uppercaseTabs.svg" />
+                    text="Toggle Custom Tree Font" description="Toggle Custom Tree Font"
+                    icon="/icons/actions/mt/customTreeFont.svg" />
             <action id="MTMaterialFontsAction"
                     class="com.mallowigi.idea.actions.MTMaterialFontsAction"
                     icon="/icons/actions/mt/materialFonts.svg" />
