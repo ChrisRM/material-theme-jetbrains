@@ -41,6 +41,7 @@ import com.intellij.openapi.startup.StartupActivity;
 import com.intellij.openapi.wm.WindowManager;
 import com.intellij.ui.SimpleTextAttributes;
 import com.intellij.ui.tabs.JBTabPainter;
+import com.intellij.ui.tabs.JBTabs;
 import com.intellij.ui.tabs.TabInfo;
 import com.intellij.ui.tabs.impl.JBEditorTabs;
 import com.intellij.ui.tabs.impl.TabLabel;
@@ -104,13 +105,13 @@ public final class MTTabsPainterPatcherComponent implements StartupActivity.Back
     connect.subscribe(MTTopics.CONFIG, new ConfigNotifier() {
       @Override
       public void configChanged(final MTConfig mtConfig) {
-        ApplicationManager.getApplication().invokeAndWait(() -> resetTabsBoldness(project), ModalityState.NON_MODAL);
+        ApplicationManager.getApplication().invokeAndWait(() -> resetTabs(project), ModalityState.NON_MODAL);
       }
     });
     connect.subscribe(MTTopics.PROJECT_CONFIG, new ProjectConfigNotifier() {
       @Override
       public void projectConfigChanged(final MTProjectConfig mtConfig) {
-        ApplicationManager.getApplication().invokeAndWait(() -> resetTabsBoldness(project), ModalityState.NON_MODAL);
+        ApplicationManager.getApplication().invokeAndWait(() -> resetTabs(project), ModalityState.NON_MODAL);
       }
 
     });
@@ -144,25 +145,28 @@ public final class MTTabsPainterPatcherComponent implements StartupActivity.Back
     ReflectionUtil.setField(JBEditorTabs.class, component, JBTabPainter.class, "myTabPainter", proxy);
   }
 
-  @SuppressWarnings("FeatureEnvy")
   private void applyCustomFontSize(final JBEditorTabs component) {
+    final Map<TabInfo, TabLabel> myInfo2Label = component.myInfo2Label;
+
+    for (final TabLabel label : myInfo2Label.values()) {
+      setTabLabelFont(label);
+    }
+
+  }
+
+  @SuppressWarnings("FeatureEnvy")
+  private void setTabLabelFont(final TabLabel label) {
     final boolean tabFontEnabled = config.isTabFontSizeEnabled();
     final float tabFontSize = config.getTabFontSize();
     final String fontName = config.getTabFont();
-    final Map<TabInfo, TabLabel> myInfo2Label = component.myInfo2Label;
-
-    for (final TabLabel value : myInfo2Label.values()) {
-      final Font font;
-      if (tabFontEnabled) {
-        font = new Font(fontName, Font.PLAIN, (int) tabFontSize);
-      } else {
-        font = getRelevantFont();
-
-      }
-
-      value.getLabelComponent().setFont(font);
+    final Font font;
+    if (tabFontEnabled) {
+      font = new Font(fontName, Font.PLAIN, (int) tabFontSize);
+    } else {
+      font = getRelevantFont();
     }
 
+    label.getLabelComponent().setFont(font);
   }
 
   @SuppressWarnings("FeatureEnvy")
@@ -205,14 +209,20 @@ public final class MTTabsPainterPatcherComponent implements StartupActivity.Back
     return config.isActiveBoldTab();
   }
 
-  void resetTabsBoldness(@NotNull final Project project) {
+  void resetTabs(@NotNull final Project project) {
     final FileEditorManagerEx manager = FileEditorManagerEx.getInstanceEx(project);
     final EditorWindow[] windows = manager.getWindows();
     for (final EditorWindow editorWindow : windows) {
-      final TabInfo selectedInfo = editorWindow.getTabbedPane().getTabs().getSelectedInfo();
-      final List<TabInfo> tabs = editorWindow.getTabbedPane().getTabs().getTabs();
+      final JBTabs editorTabs = editorWindow.getTabbedPane().getTabs();
+      final TabInfo selectedInfo = editorTabs.getSelectedInfo();
+      final List<TabInfo> tabs = editorTabs.getTabs();
 
       for (final TabInfo tab : tabs) {
+        // reset font
+        final TabLabel tabLabel = (TabLabel) editorTabs.getTabLabel(tab);
+        setTabLabelFont(tabLabel);
+
+        // reset boldness
         if (tab == selectedInfo) {
           final int style = isActiveBoldTab(project) ? SimpleTextAttributes.STYLE_BOLD : SimpleTextAttributes.STYLE_PLAIN;
           tab.setDefaultStyle(style);
