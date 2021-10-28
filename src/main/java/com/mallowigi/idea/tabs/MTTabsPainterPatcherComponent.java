@@ -210,6 +210,10 @@ public final class MTTabsPainterPatcherComponent implements StartupActivity.Back
   }
 
   void resetTabs(@NotNull final Project project) {
+    if (project.isDisposed()) {
+      return;
+    }
+
     final FileEditorManagerEx manager = FileEditorManagerEx.getInstanceEx(project);
     final EditorWindow[] windows = manager.getWindows();
     for (final EditorWindow editorWindow : windows) {
