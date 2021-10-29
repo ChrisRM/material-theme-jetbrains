@@ -50,7 +50,6 @@ import com.mallowigi.idea.utils.MTUiUtils;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
-import java.io.IOException;
 import java.util.List;
 
 /**
@@ -111,11 +110,11 @@ public final class MTLafComponent implements AppLifecycleListener {
    */
   private void initComponent() {
     // Load bundled themes
-    try {
-      MTBundledThemesManager.getInstance().loadBundledThemes();
-    } catch (final IOException e) {
-      e.printStackTrace();
-    }
+    //    try {
+    //      MTBundledThemesManager.getInstance().loadBundledThemes();
+    //    } catch (final IOException e) {
+    //      e.printStackTrace();
+    //    }
 
     activeLookAndFeel = LafManager.getInstance().getCurrentLookAndFeel();
 

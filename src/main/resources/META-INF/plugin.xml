@@ -137,9 +137,9 @@
 
     <resource-bundle>messages.MaterialThemeBundle</resource-bundle>
 
-    <extensionPoints>
-        <extensionPoint beanClass="com.mallowigi.idea.themes.BundledThemeEP" name="bundledTheme" dynamic="true" />
-    </extensionPoints>
+    <!--    <extensionPoints>-->
+    <!--        <extensionPoint beanClass="com.mallowigi.idea.themes.BundledThemeEP" name="bundledTheme" dynamic="true" />-->
+    <!--    </extensionPoints>-->
 
     <!--suppress PluginXmlDynamicPlugin -->
     <application-components>
@@ -330,11 +330,11 @@
                     class="com.mallowigi.idea.actions.themes.MTLightCustomThemeAction"
                     icon="/icons/actions/themes/light_custom.svg">
             </action>
-            <action id="ChangeThemeGroup"
-                    class="com.mallowigi.idea.actions.themes.MTQuickChangeThemeAction"
-                    popup="true"
-                    icon="/icons/actions/mt/themeSwitch.svg">
-            </action>
+            <!--            <action id="ChangeThemeGroup"-->
+            <!--                    class="com.mallowigi.idea.actions.themes.MTQuickChangeThemeAction"-->
+            <!--                    popup="true"-->
+            <!--                    icon="/icons/actions/mt/themeSwitch.svg">-->
+            <!--            </action>-->
         </group>
 
         <group id="MaterialTheme.Panels" popup="true"
@@ -596,7 +596,6 @@
 
             <action id="MTTreeCustomFontAction"
                     class="com.mallowigi.idea.actions.MTTreeCustomFontAction"
-                    text="Toggle Custom Tree Font" description="Toggle Custom Tree Font"
                     icon="/icons/actions/mt/customTreeFont.svg" />
             <action id="MTMaterialFontsAction"
                     class="com.mallowigi.idea.actions.MTMaterialFontsAction"
@@ -640,7 +639,7 @@
             <separator />
             <reference id="MaterialTheme.Components" />
 
-            <reference id="ChangeThemeGroup" />
+            <!--            <reference id="ChangeThemeGroup" />-->
             <add-to-group group-id="NewToolbarActions" />
             <add-to-group group-id="ToolsMenu" />
             <add-to-group group-id="ChangeScheme" anchor="after" relative-to-action="MaterialTheme.Menu" />
