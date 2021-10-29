@@ -676,4 +676,8 @@ public enum MTUiUtils {
     }
     return null;
   }
+
+  public static ColorUIResource namedColor(final String resource, final Color fallback) {
+    return new ColorUIResource(JBColor.namedColor(resource, fallback));
+  }
 }

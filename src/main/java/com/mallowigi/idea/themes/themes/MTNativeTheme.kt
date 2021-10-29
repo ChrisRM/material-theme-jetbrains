@@ -23,181 +23,122 @@
  *
  *
  */
+package com.mallowigi.idea.themes.themes
 
-package com.mallowigi.idea.themes.themes;
+import com.intellij.ide.ui.LafManager
+import com.intellij.ide.ui.laf.UIThemeBasedLookAndFeelInfo
+import com.intellij.ide.ui.laf.darcula.DarculaLookAndFeelInfo
+import com.intellij.ui.ColorUtil
+import com.mallowigi.idea.config.application.MTConfig
+import com.mallowigi.idea.lafs.MTDarculaLaf
+import com.mallowigi.idea.lafs.MTNativeLaf
+import com.mallowigi.idea.themes.MTAccentMode
+import com.mallowigi.idea.themes.MTAccentMode.selectionColor
+import com.mallowigi.idea.themes.lists.ContrastResources
+import com.mallowigi.idea.utils.MTColorUtils.contrastifyBackground
+import com.mallowigi.idea.utils.MTUI
+import com.mallowigi.idea.utils.MTUiUtils
+import javax.swing.UIManager
+import javax.swing.UnsupportedLookAndFeelException
+import javax.swing.plaf.ColorUIResource
 
-import com.intellij.ide.ui.LafManager;
-import com.intellij.ide.ui.laf.UIThemeBasedLookAndFeelInfo;
-import com.intellij.ide.ui.laf.darcula.DarculaLookAndFeelInfo;
-import com.intellij.ui.ColorUtil;
-import com.mallowigi.idea.config.application.MTConfig;
-import com.mallowigi.idea.lafs.MTDarculaLaf;
-import com.mallowigi.idea.lafs.MTNativeLaf;
-import com.mallowigi.idea.themes.MTAccentMode;
-import com.mallowigi.idea.themes.lists.ContrastResources;
-import com.mallowigi.idea.utils.MTColorUtils;
-import com.mallowigi.idea.utils.MTUI;
-import com.mallowigi.idea.utils.MTUiUtils;
-import org.jetbrains.annotations.Nullable;
+class MTNativeTheme : MTAbstractTheme() {
+  override fun getBackgroundColorResource(): ColorUIResource =
+    MTUiUtils.namedColor("material.background", MTUI.Panel.getBackground())
 
-import javax.swing.*;
-import javax.swing.plaf.ColorUIResource;
-import java.awt.*;
+  override fun getForegroundColorResource(): ColorUIResource =
+    MTUiUtils.namedColor("material.foreground", MTUI.Panel.getForeground())
 
-@SuppressWarnings("DesignForExtension")
-public class MTNativeTheme extends MTAbstractTheme {
+  override fun getTextColorResource(): ColorUIResource =
+    MTUiUtils.namedColor("material.primaryColor", MTUI.Panel.getPrimaryForeground())
 
-  @Override
-  public final ColorUIResource getBackgroundColorResource() {
-    return new ColorUIResource(MTUI.Panel.getBackground());
-  }
+  override fun getSelectionBackgroundColorResource(): ColorUIResource =
+    MTUiUtils.namedColor("material.selectionBackground", MTUI.Panel.getSelectionBackground())
 
-  @Override
-  public final ColorUIResource getForegroundColorResource() {
-    return new ColorUIResource(MTUI.Panel.getForeground());
-  }
+  override fun getSelectionForegroundColorResource(): ColorUIResource =
+    MTUiUtils.namedColor("material.selectionForeground", MTUI.Panel.getSelectionForeground())
 
-  @Override
-  public final ColorUIResource getTextColorResource() {
-    return new ColorUIResource(MTUI.Panel.getPrimaryForeground());
-  }
+  override fun getButtonColorResource(): ColorUIResource =
+    MTUiUtils.namedColor("material.button", MTUI.Button.getBackgroundColor())
 
-  @Override
-  public final ColorUIResource getSelectionBackgroundColorResource() {
-    return new ColorUIResource(MTUI.Panel.getSelectionBackground());
-  }
+  override fun getSecondaryBackgroundColorResource(): ColorUIResource =
+    MTUiUtils.namedColor("material.second", MTUI.Panel.getSecondaryBackground())
 
-  @Override
-  public final ColorUIResource getSelectionForegroundColorResource() {
-    return new ColorUIResource(MTUI.Panel.getSelectionForeground());
-  }
+  override fun getDisabledColorResource(): ColorUIResource =
+    MTUiUtils.namedColor("material.disabled", MTUI.Button.getDisabledColor())
 
-  @Override
-  public final ColorUIResource getButtonColorResource() {
-    return new ColorUIResource(MTUI.Button.getBackgroundColor());
-  }
+  override fun getContrastColorResource(): ColorUIResource =
+    MTUiUtils.namedColor("material.contrast", MTUI.Panel.getContrastBackground())
 
-  @Override
-  public final ColorUIResource getSecondaryBackgroundColorResource() {
-    return new ColorUIResource(MTUI.Panel.getSecondaryBackground());
-  }
+  override fun getTableSelectedColorResource(): ColorUIResource =
+    MTUiUtils.namedColor("material.active", MTUI.Table.getHighlightOuterColor())
 
-  @Override
-  public final ColorUIResource getDisabledColorResource() {
-    return new ColorUIResource(MTUI.Button.getDisabledColor());
-  }
+  override fun getSecondBorderColorResource(): ColorUIResource =
+    MTUiUtils.namedColor("material.border", MTUI.Separator.getSeparatorColor())
 
-  @Override
-  public final ColorUIResource getContrastColorResource() {
-    return new ColorUIResource(MTUI.Panel.getContrastBackground());
-  }
+  override fun getHighlightColorResource(): ColorUIResource =
+    MTUiUtils.namedColor("material.highlight", MTUI.Panel.getHighlightBackground())
 
-  @Override
-  public final ColorUIResource getTableSelectedColorResource() {
-    return new ColorUIResource(MTUI.Table.getHighlightOuterColor());
-  }
+  override fun getTreeSelectionColorResource(): ColorUIResource =
+    MTUiUtils.namedColor("material.tree", MTUI.Tree.getSelectionBackground())
 
-  @Override
-  public final ColorUIResource getSecondBorderColorResource() {
-    return new ColorUIResource(MTUI.Separator.getSeparatorColor());
-  }
+  override fun getNotificationsColorResource(): ColorUIResource =
+    MTUiUtils.namedColor("material.notifications", MTUI.Notification.getBackgroundColor())
 
-  @Override
-  public final ColorUIResource getHighlightColorResource() {
-    return new ColorUIResource(MTUI.Panel.getHighlightBackground());
-  }
+  override fun getAccentColorResource(): ColorUIResource =
+    MTUiUtils.namedColor("material.accent", ColorUtil.brighter(MTUI.Button.getPrimaryBackgroundColor(), 2))
 
-  @Override
-  public final ColorUIResource getTreeSelectionColorResource() {
-    return new ColorUIResource(MTUI.Tree.getSelectionBackground());
-  }
+  override fun getExcludedColorResource(): ColorUIResource =
+    MTUiUtils.namedColor("material.excluded", MTUI.Panel.getExcludedBackground())
 
-  @Override
-  public final ColorUIResource getNotificationsColorResource() {
-    return new ColorUIResource(MTUI.Notification.getBackgroundColor());
-  }
+  override fun getThemeId(): String = "external"
 
-  @Override
-  public final ColorUIResource getAccentColorResource() {
-    return new ColorUIResource(ColorUtil.brighter(MTUI.Button.getPrimaryBackgroundColor(), 2));
-  }
-
-  @Override
-  public final ColorUIResource getExcludedColorResource() {
-    return new ColorUIResource(MTUI.Panel.getExcludedBackground());
-  }
-
-  @Override
-  public final String getThemeId() {
-    return "external";
-  }
-
-  @Override
-  public final void setLookAndFeel() throws UnsupportedLookAndFeelException {
-    final UIManager.LookAndFeelInfo currentLookAndFeel = LafManager.getInstance().getCurrentLookAndFeel();
+  @Throws(UnsupportedLookAndFeelException::class)
+  public override fun setLookAndFeel() {
+    val currentLookAndFeel = LafManager.getInstance().currentLookAndFeel
     if (currentLookAndFeel == null) {
-      super.setLookAndFeel();
-      return;
+      super.setLookAndFeel()
+      return
     }
-
-    if (currentLookAndFeel instanceof UIThemeBasedLookAndFeelInfo) {
-      UIManager.setLookAndFeel(new MTNativeLaf(this, currentLookAndFeel));
-    } else if (DarculaLookAndFeelInfo.CLASS_NAME.equals(currentLookAndFeel.getClassName())) {
-      UIManager.setLookAndFeel(new MTDarculaLaf(this));
+    if (currentLookAndFeel is UIThemeBasedLookAndFeelInfo) {
+      UIManager.setLookAndFeel(MTNativeLaf(this, currentLookAndFeel))
+    } else if (DarculaLookAndFeelInfo.CLASS_NAME == currentLookAndFeel.className) {
+      UIManager.setLookAndFeel(MTDarculaLaf(this))
     }
-
   }
 
-  @Override
-  protected void buildAllResources() {
+  override fun buildAllResources(): Unit = Unit
 
-  }
-
-  @Override
-  public void applyContrast(final boolean apply) {
-    final boolean dark = isDark();
-    for (final String resource : ContrastResources.CONTRASTED_RESOURCES) {
-      final Color color = UIManager.getLookAndFeelDefaults().getColor(resource);
-
+  override fun applyContrast(apply: Boolean) {
+    val dark = isDark
+    for (resource in ContrastResources.CONTRASTED_RESOURCES) {
+      val color = UIManager.getLookAndFeelDefaults().getColor(resource)
       if (color != null) {
-        UIManager.put(resource, apply ?
-                                MTColorUtils.contrastifyBackground(dark, new ColorUIResource(color), false) :
-                                color);
+        UIManager.put(resource, if (apply) contrastifyBackground(dark, ColorUIResource(color), false) else color)
       } else {
-        UIManager.put(resource, apply ?
-                                MTUI.Panel.getContrastBackground() :
-                                MTUI.Panel.getBackground());
+        UIManager.put(resource, if (apply) MTUI.Panel.getContrastBackground() else MTUI.Panel.getBackground())
       }
     }
   }
 
-  @Override
-  public boolean isNative() {
-    return true;
-  }
+  override fun isNative(): Boolean = true
 
-  @Override
-  protected @Nullable
-  String getBackgroundImage() {
-    return null;
-  }
+  override fun getBackgroundImage(): String? = null
 
-  @Override
-  public void applyAccentMode() {
-    final MTConfig mtConfig = MTConfig.getInstance();
-    final Color accentColor = ColorUtil.fromHex(mtConfig.getAccentColor());
-    final Color darkerAccentColor = ColorUtil.darker(accentColor, 2);
-    final Color accentColorTransparent = ColorUtil.withAlpha(accentColor, 0.5);
-    final Color secondAccentColor = ColorUtil.fromHex(mtConfig.getSecondAccentColor());
-    final boolean accentMode = mtConfig.isAccentMode();
+  override fun applyAccentMode() {
+    val mtConfig = MTConfig.getInstance()
+    val accentColor = ColorUtil.fromHex(mtConfig.accentColor)
+    val darkerAccentColor = ColorUtil.darker(accentColor, 2)
+    val accentColorTransparent = ColorUtil.withAlpha(accentColor, 0.5)
+    val secondAccentColor = ColorUtil.fromHex(mtConfig.secondAccentColor)
+    val accentMode = mtConfig.isAccentMode
 
     // Add accent resources
-    MTUiUtils.buildAccentResources(MTAccentMode.ACCENT_EXTRA_RESOURCES, accentColor, accentMode);
-    MTUiUtils.buildAccentResources(MTAccentMode.DARKER_ACCENT_RESOURCES, darkerAccentColor, accentMode);
-    MTUiUtils.buildAccentResources(MTAccentMode.ACCENT_TRANSPARENT_EXTRA_RESOURCES, accentColorTransparent, accentMode);
+    MTUiUtils.buildAccentResources(MTAccentMode.ACCENT_EXTRA_RESOURCES, accentColor, accentMode)
+    MTUiUtils.buildAccentResources(MTAccentMode.DARKER_ACCENT_RESOURCES, darkerAccentColor, accentMode)
+    MTUiUtils.buildAccentResources(MTAccentMode.ACCENT_TRANSPARENT_EXTRA_RESOURCES, accentColorTransparent, accentMode)
     // Add new selection color resources
-    MTUiUtils.buildAccentResources(MTAccentMode.SELECTION_RESOURCES, MTAccentMode.getSelectionColor(), accentMode);
-    MTUiUtils.buildAccentResources(MTAccentMode.SECOND_ACCENT_RESOURCES, secondAccentColor, accentMode);
-
+    MTUiUtils.buildAccentResources(MTAccentMode.SELECTION_RESOURCES, selectionColor, accentMode)
+    MTUiUtils.buildAccentResources(MTAccentMode.SECOND_ACCENT_RESOURCES, secondAccentColor, accentMode)
   }
 }
