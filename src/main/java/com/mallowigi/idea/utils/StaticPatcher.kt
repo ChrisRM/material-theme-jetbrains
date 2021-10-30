@@ -44,7 +44,7 @@ object StaticPatcher {
    */
   @Throws(NoSuchFieldException::class, IllegalAccessException::class)
   @JvmStatic
-  fun setFinalStatic(cls: Class<*>, fieldName: String?, newValue: Any?) {
+  fun setFinalStatic(cls: Class<*>, fieldName: String, newValue: Any) {
     val fields = cls.declaredFields
     for (field in fields) {
       if (field.name == fieldName) {
@@ -62,7 +62,7 @@ object StaticPatcher {
    */
   @JvmStatic
   @Throws(NoSuchFieldException::class, IllegalAccessException::class)
-  fun setFinalStatic(field: Field, newValue: Any?) {
+  fun setFinalStatic(field: Field, newValue: Any) {
     field.isAccessible = true
     val modifiersField = Field::class.java.getDeclaredField("modifiers")
     modifiersField.isAccessible = true
@@ -77,7 +77,7 @@ object StaticPatcher {
 
   @JvmStatic
   @Throws(NoSuchFieldException::class, IllegalAccessException::class)
-  fun setFinal(instance: Any?, field: Field?, newValue: Any?) {
+  fun setFinal(instance: Any, field: Field, newValue: Any) {
     if (field == null) return
 
     field.isAccessible = true

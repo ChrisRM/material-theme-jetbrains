@@ -23,62 +23,42 @@
  *
  *
  */
+package com.mallowigi.idea.actions
 
-package com.mallowigi.idea.actions;
+import com.intellij.application.options.colors.ColorAndFontOptions
+import com.intellij.openapi.actionSystem.AnAction
+import com.intellij.openapi.actionSystem.AnActionEvent
+import com.intellij.openapi.editor.colors.EditorColorsManager
+import com.intellij.openapi.ui.Messages
+import com.mallowigi.idea.messages.MaterialThemeBundle.message
+import java.lang.reflect.InvocationTargetException
 
-import com.intellij.application.options.colors.ColorAndFontOptions;
-import com.intellij.openapi.actionSystem.AnAction;
-import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.actionSystem.DataContext;
-import com.intellij.openapi.editor.colors.EditorColorsManager;
-import com.intellij.openapi.editor.colors.EditorColorsScheme;
-import com.intellij.openapi.options.ex.Settings;
-import com.intellij.openapi.ui.Messages;
-import com.mallowigi.idea.messages.MaterialThemeBundle;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-
-public class MTResetColorScheme extends AnAction {
-  @Override
-  public void actionPerformed(@NotNull final AnActionEvent e) {
-    final DataContext dataContext = e.getDataContext();
-
+class MTResetColorScheme : AnAction() {
+  override fun actionPerformed(e: AnActionEvent) {
     if (Messages.showOkCancelDialog(
-      MaterialThemeBundle.message("action.MTResetColorScheme.explanation"),
-      MaterialThemeBundle.message("action.MTResetColorScheme.text"),
-      MaterialThemeBundle.message("common.ok"),
-      MaterialThemeBundle.message("common.cancel"),
-      Messages.getQuestionIcon()
-    ) == Messages.OK) {
-      final EditorColorsScheme scheme = EditorColorsManager.getInstance().getSchemeForCurrentUITheme();
-      final ColorAndFontOptions options = getOptions(dataContext);
-      if (options == null) {
-        return;
-      }
+        message("action.MTResetColorScheme.explanation"),
+        message("action.MTResetColorScheme.text"),
+        message("common.ok"),
+        message("common.cancel"),
+        Messages.getQuestionIcon()
+      ) == Messages.OK
+    ) {
+      val scheme = EditorColorsManager.getInstance().globalScheme
+      val options = ColorAndFontOptions()
+      options.reset()
+      options.selectScheme(scheme.name)
 
       try {
-        final Method method = ColorAndFontOptions.class.getDeclaredMethod("resetSchemeToOriginal", String.class);
-        method.setAccessible(true);
-        method.invoke(options, scheme.getName());
-      } catch (final NoSuchMethodException ex) {
-        ex.printStackTrace();
-      } catch (final InvocationTargetException ex) {
-        ex.printStackTrace();
-      } catch (final IllegalAccessException ex) {
-        ex.printStackTrace();
+        val method = ColorAndFontOptions::class.java.getDeclaredMethod("resetSchemeToOriginal", String::class.java)
+        method.isAccessible = true
+        method.invoke(options, scheme.name)
+      } catch (ex: NoSuchMethodException) {
+        ex.printStackTrace()
+      } catch (ex: InvocationTargetException) {
+        ex.printStackTrace()
+      } catch (ex: IllegalAccessException) {
+        ex.printStackTrace()
       }
     }
   }
-
-  private @Nullable ColorAndFontOptions getOptions(final DataContext context) {
-    final Settings settings = Settings.KEY.getData(context);
-    if (settings == null) {
-      return null;
-    }
-    return settings.find(ColorAndFontOptions.class);
-  }
-
 }
