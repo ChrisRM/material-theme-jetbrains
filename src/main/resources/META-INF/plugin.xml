@@ -626,7 +626,7 @@
                     icon="/icons/actions/mt/removeWallpaper.svg" />
             <action id="MTResetColorScheme"
                     class="com.mallowigi.idea.actions.MTResetColorScheme"
-                    icon="/icons/actions/mt/removeWallpaper.svg" />
+                    icon="/icons/actions/mt/resetColorScheme.svg" />
         </group>
 
         <group id="MaterialTheme.Menu"
