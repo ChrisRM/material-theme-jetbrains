@@ -23,59 +23,31 @@
  *
  *
  */
+package com.mallowigi.idea.status
 
-package com.mallowigi.idea.status;
+import com.intellij.openapi.project.Project
+import com.intellij.openapi.wm.StatusBar
+import com.intellij.openapi.wm.StatusBarWidget
+import com.intellij.openapi.wm.StatusBarWidgetFactory
+import com.mallowigi.idea.messages.MaterialThemeBundle.message
+import org.jetbrains.annotations.Nls
 
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.wm.StatusBar;
-import com.intellij.openapi.wm.StatusBarWidget;
-import com.intellij.openapi.wm.StatusBarWidgetFactory;
-import com.mallowigi.idea.messages.MaterialThemeBundle;
-import org.jetbrains.annotations.Nls;
-import org.jetbrains.annotations.NotNull;
+class MTStatusBarFactory : StatusBarWidgetFactory {
+  override fun getId(): String = "mtStatusBar"
 
-public final class MTStatusBarFactory implements StatusBarWidgetFactory {
-  @NotNull
-  @Override
-  public String getId() {
-    return "mtStatusBar";
+  override fun getDisplayName(): @Nls String = message("mt.settings.statusbar")
+
+  override fun isAvailable(project: Project): Boolean = true
+
+  override fun createWidget(project: Project): StatusBarWidget = MTStatusWidget()
+
+  override fun disposeWidget(widget: StatusBarWidget) {
+    // nothing
   }
 
-  @Nls
-  @NotNull
-  @Override
-  public String getDisplayName() {
-    return MaterialThemeBundle.message("mt.settings.statusbar");
-  }
+  override fun canBeEnabledOn(statusBar: StatusBar): Boolean = true
 
-  @Override
-  public boolean isAvailable(@NotNull final Project project) {
-    return true;
-  }
+  override fun isEnabledByDefault(): Boolean = true
 
-  @NotNull
-  @Override
-  public StatusBarWidget createWidget(@NotNull final Project project) {
-    return new MTStatusWidget();
-  }
-
-  @Override
-  public void disposeWidget(@NotNull final StatusBarWidget widget) {
-
-  }
-
-  @Override
-  public boolean canBeEnabledOn(@NotNull final StatusBar statusBar) {
-    return true;
-  }
-
-  @Override
-  public boolean isEnabledByDefault() {
-    return true;
-  }
-
-  @Override
-  public boolean isConfigurable() {
-    return true;
-  }
+  override fun isConfigurable(): Boolean = true
 }

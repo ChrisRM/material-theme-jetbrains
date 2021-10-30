@@ -23,219 +23,193 @@
  *
  *
  */
+package com.mallowigi.idea.status
 
-package com.mallowigi.idea.status;
+import com.intellij.openapi.Disposable
+import com.intellij.openapi.application.ApplicationManager
+import com.intellij.openapi.options.ShowSettingsUtil
+import com.intellij.openapi.ui.popup.Balloon
+import com.intellij.openapi.util.Disposer
+import com.intellij.openapi.wm.CustomStatusBarWidget
+import com.intellij.openapi.wm.StatusBar
+import com.intellij.ui.ColorUtil
+import com.intellij.ui.GotItTooltip
+import com.intellij.util.ui.BaseButtonBehavior
+import com.intellij.util.ui.ImageUtil
+import com.intellij.util.ui.JBUI
+import com.intellij.util.ui.StartupUiUtil
+import com.intellij.util.ui.TimedDeadzone
+import com.intellij.util.ui.UIUtil
+import com.mallowigi.idea.config.application.MTConfig
+import com.mallowigi.idea.listeners.AccentsListener
+import com.mallowigi.idea.listeners.ConfigNotifier
+import com.mallowigi.idea.listeners.MTTopics
+import com.mallowigi.idea.listeners.ThemeListener
+import com.mallowigi.idea.messages.MaterialThemeBundle.message
+import com.mallowigi.idea.utils.MTUI
+import com.mallowigi.idea.utils.MTUiUtils
+import org.jetbrains.annotations.NonNls
+import java.awt.Dimension
+import java.awt.Font
+import java.awt.Graphics
+import java.awt.Graphics2D
+import java.awt.GraphicsEnvironment
+import java.awt.Image
+import java.awt.event.MouseEvent
+import java.awt.font.TextAttribute
+import java.awt.image.BufferedImage
+import java.lang.Boolean
+import java.text.AttributedString
+import javax.swing.JButton
+import javax.swing.JComponent
+import kotlin.Any
+import kotlin.String
+import kotlin.also
 
-import com.intellij.openapi.Disposable;
-import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.options.ShowSettingsUtil;
-import com.intellij.openapi.ui.popup.Balloon;
-import com.intellij.openapi.util.Disposer;
-import com.intellij.openapi.wm.CustomStatusBarWidget;
-import com.intellij.openapi.wm.StatusBar;
-import com.intellij.ui.ColorUtil;
-import com.intellij.ui.GotItTooltip;
-import com.intellij.util.messages.MessageBusConnection;
-import com.intellij.util.ui.*;
-import com.mallowigi.idea.config.application.MTConfig;
-import com.mallowigi.idea.listeners.ConfigNotifier;
-import com.mallowigi.idea.listeners.MTTopics;
-import com.mallowigi.idea.messages.MaterialThemeBundle;
-import com.mallowigi.idea.utils.MTUI;
-import com.mallowigi.idea.utils.MTUiUtils;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+internal class MTStatusWidget : CustomStatusBarWidget {
+  private val mtWidget: MTWidget = MTWidget()
+  private val connect = ApplicationManager.getApplication().messageBus.connect(this)
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.font.TextAttribute;
-import java.awt.image.BufferedImage;
-import java.text.AttributedString;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+  override fun ID(): @NonNls String = "MTStatusBarWidget"
 
-@SuppressWarnings({"SyntheticAccessorCall",
-  "AssignmentToStaticFieldFromInstanceMethod"})
-final class MTStatusWidget implements CustomStatusBarWidget {
-
-  private static final String MT_SETTINGS_PAGE = MaterialThemeBundle.message("mt.settings.titles.materialTheme");
-  private final MTWidget mtWidget;
-  @Nullable
-  private static Image myBufferedImage = null;
-  private final MessageBusConnection connect = ApplicationManager.getApplication().getMessageBus().connect(this);
-
-  MTStatusWidget() {
-    mtWidget = new MTWidget();
+  override fun install(statusBar: StatusBar) {
+    connect.subscribe(MTTopics.THEMES, ThemeListener { refresh() })
+    connect.subscribe(MTTopics.ACCENTS, AccentsListener { refresh() })
+    connect.subscribe(MTTopics.CONFIG, object : ConfigNotifier {
+      override fun configChanged(mtConfig: MTConfig?) = refresh()
+    })
   }
 
-  @NonNls
-  @NotNull
-  @Override
-  public String ID() {
-    return "MTStatusBarWidget";
+  override fun dispose() {
+    Disposer.dispose(this)
+    myBufferedImage = null
+    connect.disconnect()
   }
 
-  @Override
-  public void install(@NotNull final StatusBar statusBar) {
-    connect.subscribe(MTTopics.THEMES, theme -> refresh());
-    connect.subscribe(MTTopics.ACCENTS, accentColor -> refresh());
-    connect.subscribe(MTTopics.CONFIG, new ConfigNotifier() {
-      @Override
-      public void configChanged(final MTConfig mtConfig) {
-        refresh();
-      }
-    });
+  private fun refresh() {
+    myBufferedImage = null
+    mtWidget.isVisible = true
+    mtWidget.repaint()
+    mtWidget.updateUI()
+    mtWidget.toolTipText = MTConfig.getInstance().tooltip
   }
 
-  @Override
-  public void dispose() {
-    Disposer.dispose(this);
-    myBufferedImage = null;
-    connect.disconnect();
-  }
+  override fun getComponent(): JComponent = mtWidget
 
-  private void refresh() {
-    myBufferedImage = null;
-    mtWidget.setVisible(true);
-    mtWidget.repaint();
-    mtWidget.updateUI();
-    mtWidget.setToolTipText(MTConfig.getInstance().getTooltip());
-  }
+  private class MTWidget : JButton(), Disposable {
+    private val mtConfig: MTConfig = MTConfig.getInstance()
+    private val widgetFont = getWidgetFont()
 
-  @Override
-  public JComponent getComponent() {
-    return mtWidget;
-  }
-
-  @SuppressWarnings({"MagicNumber",
-    "InnerClassTooDeeplyNested"})
-  private static final class MTWidget extends JButton implements Disposable {
-    private static final int DEFAULT_FONT_SIZE = JBUI.scale(11);
-    private static final int STATUS_PADDING = 4;
-    private static final int STATUS_HEIGHT = 16;
-    private final MTConfig mtConfig;
-    private final Font widgetFont = getWidgetFont();
-
-    MTWidget() {
-      mtConfig = MTConfig.getInstance();
-
-      new BaseButtonBehavior(this, TimedDeadzone.NULL) {
-        @Override
-        protected void execute(final MouseEvent e) {
-          ShowSettingsUtil.getInstance().showSettingsDialog(null, MT_SETTINGS_PAGE);
+    init {
+      object : BaseButtonBehavior(this, TimedDeadzone.NULL) {
+        override fun execute(e: MouseEvent) {
+          ShowSettingsUtil.getInstance().showSettingsDialog(null, MT_SETTINGS_PAGE)
         }
-      }
-        .setActionTrigger(MouseEvent.MOUSE_PRESSED);
-
-      setFont(widgetFont);
-      putClientProperty(MTUI.Button.NO_BORDER, Boolean.TRUE);
-      showGotItTooltip();
+      }.setActionTrigger(MouseEvent.MOUSE_PRESSED)
+      font = widgetFont
+      putClientProperty(MTUI.Button.NO_BORDER, Boolean.TRUE)
+      showGotItTooltip()
     }
 
-    @Override
-    public void dispose() {
+    override fun dispose() {
       // do nothing
     }
 
-    @SuppressWarnings("FeatureEnvy")
-    private void showGotItTooltip() {
-      final GotItTooltip gotIt = new GotItTooltip("NewFeaturesWidget",
-        MaterialThemeBundle.message("gotIt.newFeatures.widget"),
-        this)
-        .withHeader(MaterialThemeBundle.message("gotIt.newFeatures.title"))
+    private fun showGotItTooltip() {
+      val gotIt = GotItTooltip("NewFeaturesWidget",
+                               message("gotIt.newFeatures.widget"),
+                               this)
+        .withHeader(message("gotIt.newFeatures.title"))
         .withPosition(Balloon.Position.above)
-        .withLink("Show me!", () -> ShowSettingsUtil.getInstance().showSettingsDialog(null, MT_SETTINGS_PAGE));
-
+        .withLink("Show me!", Runnable { ShowSettingsUtil.getInstance().showSettingsDialog(null, MT_SETTINGS_PAGE) })
       if (gotIt.canShow()) {
-        ApplicationManager.getApplication().invokeLater(() -> gotIt.show(this, GotItTooltip.TOP_MIDDLE));
+        ApplicationManager.getApplication().invokeLater { gotIt.show(this, GotItTooltip.TOP_MIDDLE) }
       }
     }
 
-    private static Font getWidgetFont() {
-      final GraphicsEnvironment e = GraphicsEnvironment.getLocalGraphicsEnvironment();
-      final Font[] fonts = e.getAllFonts();
-      for (final Font font : fonts) {
-        if (Objects.equals(font.getFontName(), MTConfig.DEFAULT_FONT)) {
-          final Map<TextAttribute, Object> attributes = new HashMap<>(10);
-
-          attributes.put(TextAttribute.WEIGHT, TextAttribute.WEIGHT_BOLD);
-          attributes.put(TextAttribute.SIZE, JBUI.scale(DEFAULT_FONT_SIZE));
-
-          return font.deriveFont(attributes);
-        }
-      }
-      return JBUI.Fonts.create(Font.DIALOG, 12);
-    }
-
-    @Override
-    @SuppressWarnings("FeatureEnvy")
-    public void paintComponent(final Graphics g) {
-      final String themeName = mtConfig.getSelectedTheme().getTheme().getName();
+    public override fun paintComponent(g: Graphics) {
+      val themeName = mtConfig.selectedTheme.theme.name
       if (themeName.isEmpty()) {
-        return;
+        return
       }
 
-      final Color accentColor = ColorUtil.fromHex(mtConfig.getAccentColor());
-      final int accentDiameter = JBUI.scale(STATUS_HEIGHT - 2);
+      val accentColor = ColorUtil.fromHex(mtConfig.accentColor)
+      val accentDiameter = JBUI.scale(STATUS_HEIGHT - 2)
 
       if (myBufferedImage == null) {
-        final Dimension size = getSize();
-        final Dimension arcs = new Dimension(8, 8);
+        val size = size
+        val arcs = Dimension(8, 8)
+        myBufferedImage = ImageUtil.createImage(size.width, size.height, BufferedImage.TYPE_INT_ARGB)
+        val g2 = myBufferedImage!!.graphics.create() as Graphics2D
+        val fontMetrics = g.fontMetrics
 
-        myBufferedImage = ImageUtil.createImage(size.width, size.height, BufferedImage.TYPE_INT_ARGB);
-        final Graphics2D g2 = (Graphics2D) myBufferedImage.getGraphics().create();
-        final FontMetrics fontMetrics = g.getFontMetrics();
-
-        g2.setRenderingHints(MTUiUtils.getHints());
-
-        final int nameWidth = fontMetrics.charsWidth(themeName.toCharArray(), 0, themeName.length());
-        final int nameHeight = fontMetrics.getAscent();
-
-        final AttributedString as = new AttributedString(themeName);
-        as.addAttribute(TextAttribute.FAMILY, getFont().getFamily());
-        as.addAttribute(TextAttribute.WEIGHT, TextAttribute.WEIGHT_BOLD);
-        as.addAttribute(TextAttribute.SIZE, DEFAULT_FONT_SIZE);
+        g2.setRenderingHints(MTUiUtils.getHints())
+        val nameWidth = fontMetrics.charsWidth(themeName.toCharArray(), 0, themeName.length)
+        val nameHeight = fontMetrics.ascent
+        val attributedString = AttributedString(themeName).also {
+          it.addAttribute(TextAttribute.FAMILY, font.family)
+          it.addAttribute(TextAttribute.WEIGHT, TextAttribute.WEIGHT_BOLD)
+          it.addAttribute(TextAttribute.SIZE, DEFAULT_FONT_SIZE)
+        }
 
         // background
-        g2.setColor(mtConfig.getSelectedTheme().getTheme().getContrastColor());
-        g2.fillRoundRect(0, 0, size.width + accentDiameter - JBUI.scale(arcs.width), JBUI.scale(STATUS_HEIGHT), arcs.width, arcs.height);
+        g2.color = mtConfig.selectedTheme.theme.contrastColor
+        g2.fillRoundRect(0,
+                         0,
+                         size.width + accentDiameter - JBUI.scale(arcs.width),
+                         JBUI.scale(STATUS_HEIGHT),
+                         arcs.width,
+                         arcs.height)
 
         // label
-        g2.setColor(UIUtil.getLabelForeground());
-        g2.setFont(getFont());
-        g2.drawString(as.getIterator(), (size.width - accentDiameter - nameWidth) / 2,
-          nameHeight + (size.height - nameHeight) / 2 - JBUI.scale(1));
+        g2.color = UIUtil.getLabelForeground()
+        g2.font = font
+        g2.drawString(attributedString.iterator, (size.width - accentDiameter - nameWidth) / 2,
+                      nameHeight + (size.height - nameHeight) / 2 - JBUI.scale(1))
 
         // Accent
-        g2.setColor(accentColor);
-        g2.fillOval(size.width - JBUI.scale(STATUS_HEIGHT), JBUI.scale(1), accentDiameter, accentDiameter);
-        g2.dispose();
+        g2.color = accentColor
+        g2.fillOval(size.width - JBUI.scale(STATUS_HEIGHT), JBUI.scale(1), accentDiameter, accentDiameter)
+        g2.dispose()
       }
-
-      StartupUiUtil.drawImage(g, myBufferedImage, 0, 0, null);
+      StartupUiUtil.drawImage(g, myBufferedImage!!, 0, 0, null)
     }
 
-    @Override
-    public Dimension getPreferredSize() {
-      final String themeName = mtConfig.getSelectedTheme().getThemeName();
-      assert themeName != null;
-      final int width = getFontMetrics(widgetFont).charsWidth(themeName.toCharArray(), 0,
-        themeName.length()) + 2 * STATUS_PADDING;
-      final int accentDiameter = JBUI.scale(STATUS_HEIGHT);
-      return new Dimension(width + accentDiameter, accentDiameter);
+    override fun getPreferredSize(): Dimension {
+      val themeName = mtConfig.selectedTheme.themeName!!
+      val width = getFontMetrics(widgetFont).charsWidth(themeName.toCharArray(), 0,
+                                                        themeName.length) + 2 * STATUS_PADDING
+      val accentDiameter = JBUI.scale(STATUS_HEIGHT)
+      return Dimension(width + accentDiameter, accentDiameter)
     }
 
-    @Override
-    public Dimension getMinimumSize() {
-      return getPreferredSize();
-    }
+    override fun getMinimumSize(): Dimension = preferredSize
 
-    @Override
-    public Dimension getMaximumSize() {
-      return getPreferredSize();
+    override fun getMaximumSize(): Dimension = preferredSize
+
+    companion object {
+      private val DEFAULT_FONT_SIZE = JBUI.scale(11)
+      private const val STATUS_PADDING = 4
+      private const val STATUS_HEIGHT = 16
+
+      private fun getWidgetFont(): Font {
+        val e = GraphicsEnvironment.getLocalGraphicsEnvironment()
+        val fonts = e.allFonts
+        for (font in fonts) {
+          if (font.fontName == MTConfig.DEFAULT_FONT) {
+            val attributes: MutableMap<TextAttribute, Any?> = HashMap(10)
+            attributes[TextAttribute.WEIGHT] = TextAttribute.WEIGHT_BOLD
+            attributes[TextAttribute.SIZE] = JBUI.scale(DEFAULT_FONT_SIZE)
+            return font.deriveFont(attributes)
+          }
+        }
+        return JBUI.Fonts.create(Font.DIALOG, 12)
+      }
     }
+  }
+
+  companion object {
+    private val MT_SETTINGS_PAGE = message("mt.settings.titles.materialTheme")
+    private var myBufferedImage: Image? = null
   }
 }
