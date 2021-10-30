@@ -28,6 +28,7 @@ package com.mallowigi.idea.config.ui;
 
 import com.intellij.CommonBundle;
 import com.intellij.application.options.colors.ColorAndFontOptions;
+import com.intellij.application.options.editor.fonts.AppEditorFontConfigurable;
 import com.intellij.ide.DataManager;
 import com.intellij.openapi.options.SearchableConfigurable;
 import com.intellij.openapi.options.ex.Settings;
@@ -163,6 +164,8 @@ public class MTForm implements MTFormUI {
   private JPanel featuresPanel;
   private JLabel featuresDesc;
   private JCheckBox useMaterialFontCheckbox;
+  private JCheckBox useGlobalFontCheckbox;
+  private LinkLabel globalFontLink;
   private JCheckBox fileColorsCheckbox;
   private LinkLabel fileStatusColorsLink;
   private JCheckBox accentModeCheckbox;
@@ -262,6 +265,7 @@ public class MTForm implements MTFormUI {
     setTreeFontSize(mtConfig.getTreeFontSize());
     setUseColoredDirectories(mtConfig.isUseColoredDirectories());
     setUseCustomTitle(mtConfig.isUseCustomTitle());
+    setUseGlobalFont(mtConfig.isUseGlobalFont());
     setUseMaterialFont(mtConfig.isUseMaterialFont2());
     setUseMaterialWallpapers(mtConfig.isUseMaterialWallpapers());
     setUseProjectFrame(mtConfig.isUseProjectFrame());
@@ -327,6 +331,7 @@ public class MTForm implements MTFormUI {
     modified = modified || mtConfig.isUpperCaseTabsChanged(isUpperCaseTabs());
     modified = modified || mtConfig.isUseColoredDirectoriesChanged(isUseColoredDirectories());
     modified = modified || mtConfig.isUseCustomTitleChanged(isUseCustomTitle());
+    modified = modified || mtConfig.isUseGlobalFontChanged(isUseGlobalFont());
     modified = modified || mtConfig.isUseMaterialFontChanged(isUseMaterialFonts());
     modified = modified || mtConfig.isUseMaterialWallpapersChanged(isUseMaterialWallpapers());
     modified = modified || mtConfig.isUseProjectFrameChanged(isUseProjectFrame());
@@ -727,6 +732,16 @@ public class MTForm implements MTFormUI {
 
   private void setUseMaterialFont(final boolean isUseMaterialFont) {
     useMaterialFontCheckbox.setSelected(isUseMaterialFont);
+  }
+  //endregion
+
+  //region Use Global Font
+  public final boolean isUseGlobalFont() {
+    return useGlobalFontCheckbox.isSelected();
+  }
+
+  private void setUseGlobalFont(final boolean isUseGlobalFont) {
+    useGlobalFontCheckbox.setSelected(isUseGlobalFont);
   }
   //endregion
 
@@ -1131,6 +1146,8 @@ public class MTForm implements MTFormUI {
     featuresPanel = new JPanel();
     featuresDesc = compFactory.createLabel(bundle.getString("MTForm.featuresDesc.textWithMnemonic"));
     useMaterialFontCheckbox = new JCheckBox();
+    useGlobalFontCheckbox = new JCheckBox();
+    globalFontLink = new LinkLabel();
     fileColorsCheckbox = new JCheckBox();
     fileStatusColorsLink = new LinkLabel();
     accentModeCheckbox = new JCheckBox();
@@ -1378,8 +1395,8 @@ public class MTForm implements MTFormUI {
           isCompactMenusCheckbox.setToolTipText(bundle.getString("MTForm.isCompactMenusCheckbox.toolTipText"));
           compactPanel.add(isCompactMenusCheckbox, "cell 0 4");
         }
-        tabbedPane1.addTab(bundle.getString("MTForm.compactPanel.tab.title"), null, compactPanel, bundle.getString(
-          "MTForm.compactPanel.tab.toolTipText"));
+        tabbedPane1.addTab(bundle.getString("MTForm.compactPanel.tab.title"), null, compactPanel, bundle.getString("MTForm.compactPanel" +
+          ".tab.toolTipText"));
 
         //======== projectViewPanel ========
         {
@@ -1481,8 +1498,8 @@ public class MTForm implements MTFormUI {
           fontSizeSpinner.setToolTipText(bundle.getString("MTForm.fontSizeSpinner.toolTipText"));
           projectViewPanel.add(fontSizeSpinner, "cell 1 6,align right bottom,grow 0 0,width 80:80:80,gapx 10");
         }
-        tabbedPane1.addTab(bundle.getString("MTForm.projectViewPanel.tab.title"), null, projectViewPanel, bundle.getString(
-          "MTForm.projectViewPanel.tab.toolTipText"));
+        tabbedPane1.addTab(bundle.getString("MTForm.projectViewPanel.tab.title"), null, projectViewPanel, bundle.getString("MTForm" +
+          ".projectViewPanel.tab.toolTipText"));
 
         //======== componentsPanel ========
         {
@@ -1561,6 +1578,7 @@ public class MTForm implements MTFormUI {
               "[]" +
               "[]" +
               "[]" +
+              "[]" +
               "[]"));
 
           //---- featuresDesc ----
@@ -1573,48 +1591,59 @@ public class MTForm implements MTFormUI {
           useMaterialFontCheckbox.addActionListener(e -> useMaterialFontCheckboxActionPerformed(e));
           featuresPanel.add(useMaterialFontCheckbox, "cell 0 1,align left center,grow 0 0");
 
+          //---- useGlobalFontCheckbox ----
+          useGlobalFontCheckbox.setText(bundle.getString("MTForm.useGlobalFontCheckbox.text"));
+          useGlobalFontCheckbox.setToolTipText(bundle.getString("MTForm.useGlobalFontCheckbox.toolTipText"));
+          featuresPanel.add(useGlobalFontCheckbox, "cell 0 2,align left center,grow 0 0");
+
+          //---- globalFontLink ----
+          globalFontLink.setText(bundle.getString("MTForm.globalFontLink.text"));
+          globalFontLink.setForeground(UIManager.getColor("Link.activeForeground"));
+          globalFontLink.setToolTipText(bundle.getString("MTForm.globalFontLink.toolTipText"));
+          featuresPanel.add(globalFontLink, "cell 1 2");
+
           //---- fileColorsCheckbox ----
           fileColorsCheckbox.setText(bundle.getString("MTForm.fileColorsCheckbox.text"));
           fileColorsCheckbox.setToolTipText(bundle.getString("MTForm.fileColorsCheckbox.toolTipText"));
-          featuresPanel.add(fileColorsCheckbox, "cell 0 2");
+          featuresPanel.add(fileColorsCheckbox, "cell 0 3");
 
           //---- fileStatusColorsLink ----
           fileStatusColorsLink.setText(bundle.getString("MTForm.fileStatusColorsLink.text"));
           fileStatusColorsLink.setForeground(UIManager.getColor("Link.activeForeground"));
           fileStatusColorsLink.setToolTipText(bundle.getString("MTForm.fileStatusColorsLink.toolTipText"));
-          featuresPanel.add(fileStatusColorsLink, "cell 1 2");
+          featuresPanel.add(fileStatusColorsLink, "cell 1 3");
 
           //---- accentModeCheckbox ----
           accentModeCheckbox.setText(bundle.getString("MTForm.accentModeCheckbox.text"));
           accentModeCheckbox.setToolTipText(bundle.getString("MTForm.accentModeCheckbox.toolTipText"));
           accentModeCheckbox.addActionListener(e -> accentModeCheckboxActionPerformed(e));
-          featuresPanel.add(accentModeCheckbox, "cell 0 5");
+          featuresPanel.add(accentModeCheckbox, "cell 0 6");
 
           //---- secondAccentLabel ----
           secondAccentLabel.setText(bundle.getString("MTForm.secondAccentLabel.text"));
           secondAccentLabel.setToolTipText(bundle.getString("MTForm.secondAccentLabel.toolTipText"));
-          featuresPanel.add(secondAccentLabel, "cell 1 5");
+          featuresPanel.add(secondAccentLabel, "cell 1 6");
 
           //---- secondAccentColorChooser ----
           secondAccentColorChooser.setMinimumSize(new Dimension(10, 18));
           secondAccentColorChooser.setPreferredSize(new Dimension(61, 26));
-          featuresPanel.add(secondAccentColorChooser, "cell 1 5");
+          featuresPanel.add(secondAccentColorChooser, "cell 1 6");
 
           //---- useMaterialWallpapersCheckbox ----
           useMaterialWallpapersCheckbox.setText(bundle.getString("MTForm.useMaterialWallpapersCheckbox.text"));
           useMaterialWallpapersCheckbox.setToolTipText(bundle.getString("MTForm.useMaterialWallpapersCheckbox.toolTipText"));
           useMaterialWallpapersCheckbox.addActionListener(e -> useMaterialWallpapersCheckboxActionPerformed(e));
-          featuresPanel.add(useMaterialWallpapersCheckbox, "cell 0 3,align left center,grow 0 0");
+          featuresPanel.add(useMaterialWallpapersCheckbox, "cell 0 4,align left center,grow 0 0");
 
           //---- showOverlaysCheckbox ----
           showOverlaysCheckbox.setText(bundle.getString("MTForm.showOverlaysCheckbox.text"));
           showOverlaysCheckbox.setToolTipText(bundle.getString("MTForm.showOverlaysCheckbox.toolTipText"));
-          featuresPanel.add(showOverlaysCheckbox, "cell 0 4,align left center,grow 0 0");
+          featuresPanel.add(showOverlaysCheckbox, "cell 0 5,align left center,grow 0 0");
 
           //---- toolWindowStripeCheckbox ----
           toolWindowStripeCheckbox.setText(bundle.getString("MTForm.toolWindowStripeCheckbox.text"));
           toolWindowStripeCheckbox.setToolTipText(bundle.getString("MTForm.toolWindowStripeCheckbox.toolTipText"));
-          featuresPanel.add(toolWindowStripeCheckbox, "cell 0 6");
+          featuresPanel.add(toolWindowStripeCheckbox, "cell 0 7");
         }
         tabbedPane1.addTab(bundle.getString("MTForm.featuresPanel.tab.title"), null, featuresPanel, bundle.getString("MTForm" +
           ".featuresPanel.tab.toolTipText"));
@@ -1853,6 +1882,16 @@ public class MTForm implements MTFormUI {
         }
       }
     }, null);
+    globalFontLink.setListener((aSource, aLinkData) -> {
+      final Settings settings = Settings.KEY.getData(DataManager.getInstance().getDataContext(content));
+
+      if (settings != null) {
+        final SearchableConfigurable editorFontConfigurable = settings.find(AppEditorFontConfigurable.class);
+        if (editorFontConfigurable != null) {
+          settings.select(editorFontConfigurable);
+        }
+      }
+    }, null);
     directoriesColorLink.setListener((aSource, aLinkData) -> {
       final Settings settings = Settings.KEY.getData(DataManager.getInstance().getDataContext(content));
 
@@ -1908,6 +1947,7 @@ public class MTForm implements MTFormUI {
       disablePremium(tabShadowCheckbox);
       disablePremium(thicknessLabel);
       disablePremium(useMaterialFontCheckbox);
+      disablePremium(useGlobalFontCheckbox);
       disablePremium(useMaterialWallpapersCheckbox);
       disablePremium(useProjectFrameCheckbox);
     }
@@ -1921,13 +1961,6 @@ public class MTForm implements MTFormUI {
     Messages.showWarningDialog(
       MaterialThemeBundle.message("MTForm.useMaterialFonts.warning.message"),
       MaterialThemeBundle.message("MTForm.useMaterialFonts.warning.title")
-    );
-  }
-
-  private static void showTitleBarDialog() {
-    Messages.showWarningDialog(
-      MaterialThemeBundle.message("MTForm.themedTitleBar.warning.message"),
-      MaterialThemeBundle.message("MTForm.themedTitleBar.warning.title")
     );
   }
 

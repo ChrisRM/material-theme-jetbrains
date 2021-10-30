@@ -125,6 +125,8 @@ class MTNativeTheme : MTAbstractTheme() {
 
   override fun getBackgroundImage(): String? = null
 
+  override fun isThemeDark(): Boolean = true
+
   override fun applyAccentMode() {
     val mtConfig = MTConfig.getInstance()
     val accentColor = ColorUtil.fromHex(mtConfig.accentColor)

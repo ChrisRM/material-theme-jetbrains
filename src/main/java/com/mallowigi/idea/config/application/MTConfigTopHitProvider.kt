@@ -207,6 +207,11 @@ class MTConfigTopHitProvider : ApplicationLevelProvider {
           "setUseMaterialFont2"
         ),
         option(
+          MaterialThemeBundle.message("MTForm.useGlobalFontCheckbox.text"),
+          "isUseGlobalFont",
+          "setUseGlobalFont"
+        ),
+        option(
           MaterialThemeBundle.message("MTForm.useMaterialWallpapersCheckbox.text"),
           "isUseMaterialWallpapers",
           "setUseMaterialWallpapers"

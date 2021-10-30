@@ -37,8 +37,10 @@ import com.intellij.openapi.Disposable;
 import com.intellij.openapi.application.Application;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ModalityState;
+import com.intellij.openapi.editor.EditorFactory;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.openapi.editor.colors.EditorColorsScheme;
+import com.intellij.openapi.editor.colors.FontPreferences;
 import com.intellij.openapi.editor.colors.impl.AppEditorFontOptions;
 import com.intellij.openapi.editor.colors.impl.EditorColorsManagerImpl;
 import com.intellij.openapi.fileTypes.ex.FileTypeManagerEx;
@@ -608,6 +610,18 @@ public final class MTThemeManager implements Disposable {
       lookAndFeelDefaults.put("Tree.font", new Font(treeFont, font.getStyle(), treeFontSize));
       LafManager.getInstance().updateUI();
     }
+
+    if (CONFIG.isUseGlobalFont()) {
+      EditorColorsManager.getInstance().getGlobalScheme().setUseAppFontPreferencesInEditor();
+    } else {
+      EditorColorsManager.getInstance().getGlobalScheme().setFontPreferences(getFontPreferences());
+    }
+    EditorFactory.getInstance().refreshAllEditors();
+  }
+
+  @NotNull
+  private static FontPreferences getFontPreferences() {
+    return EditorColorsManager.getInstance().getGlobalScheme().getFontPreferences();
   }
   //endregion
 

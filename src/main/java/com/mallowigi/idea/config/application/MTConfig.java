@@ -180,6 +180,8 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   @Property
   boolean useMaterialFont2 = false;
   @Property
+  boolean useGlobalFont = false;
+  @Property
   boolean useMaterialWallpapers = false;
   @Property
   boolean useColoredDirectories = true;
@@ -393,6 +395,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     setUseColoredDirectories(form.isUseColoredDirectories());
     setUseCustomTitle(form.isUseCustomTitle());
     setUseMaterialFont2(form.isUseMaterialFonts());
+    setUseGlobalFont(form.isUseGlobalFont());
     setUseMaterialWallpapers(form.isUseMaterialWallpapers());
     setUseProjectFrame(form.isUseProjectFrame());
     setUseProjectIcon(form.isUseProjectIcon());
@@ -458,6 +461,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     useColoredDirectories = true;
     useCustomTitle = false;
     useMaterialFont2 = false;
+    useGlobalFont = false;
     useMaterialWallpapers = false;
     useProjectFrame = false;
     useProjectIcon = true;
@@ -1407,6 +1411,37 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    */
   public boolean isUseMaterialFont2() {
     return isPremium && useMaterialFont2;
+  }
+
+  //endregion
+
+  // region ----------- Global font -----------
+
+  /**
+   * Sets the useGlobalFont of this MTConfig object.
+   *
+   * @param useGlobalFont the useMaterialFont of this MTConfig object.
+   */
+  public void setUseGlobalFont(final boolean useGlobalFont) {
+    this.useGlobalFont = useGlobalFont;
+  }
+
+  /**
+   * ...
+   *
+   * @return boolean
+   */
+  public boolean isUseGlobalFontChanged(final boolean useGlobalFont) {
+    return this.useGlobalFont != useGlobalFont;
+  }
+
+  /**
+   * Returns the useGlobalFont of this MTConfig object.
+   *
+   * @return the useGlobalFont (type boolean) of this MTConfig object.
+   */
+  public boolean isUseGlobalFont() {
+    return isPremium && useGlobalFont;
   }
 
   //endregion
