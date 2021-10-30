@@ -26,6 +26,7 @@
 
 package com.mallowigi.idea.lafs;
 
+import com.intellij.icons.AllIcons;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaMenuBarBorder;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaMenuItemBorder;
 import com.intellij.openapi.application.ApplicationManager;
@@ -183,6 +184,10 @@ public class MTLafInstaller {
     defaults.put("TextArea.caretBlinkRate", 500);
     defaults.put("Tree.border", "1,1,1,1");
     defaults.put("Tree.paintLines", false);
+    defaults.put("Tree.expandedIcon", "/com/intellij/ide/ui/laf/icons/darcula/treeExpanded.svg");
+    defaults.put("Tree.expandedSelectedIcon", "/com/intellij/ide/ui/laf/icons/darcula/treeExpandedSelected.svg");
+    defaults.put("Tree.collapsedIcon", "/com/intellij/ide/ui/laf/icons/darcula/treeCollapsed.svg");
+    defaults.put("Tree.collapsedSelectedIcon", "/com/intellij/ide/ui/laf/icons/darcula/treeCollapsedSelected.svg");
     defaults.put("Button.ToolWindow.arc", 0);
     defaults.put("ValidationTooltip.maxWidth", 384);
     defaults.put("Window.border", "1,1,1,1,000000");
