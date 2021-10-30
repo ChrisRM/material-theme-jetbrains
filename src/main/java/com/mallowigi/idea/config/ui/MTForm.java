@@ -218,7 +218,6 @@ public class MTForm implements MTFormUI {
     final MTConfig mtConfig = (MTConfig) config;
 
     mtConfig.setPremium(true);
-    setIsActiveBoldTab(mtConfig.isActiveBoldTab());
     setCodeAdditionsEnabled(mtConfig.isCodeAdditionsEnabled());
     setCustomAccentColor(ColorUtil.fromHex(mtConfig.getAccentColor()));
     setCustomSidebarHeight(mtConfig.getCustomSidebarHeight());
@@ -232,6 +231,7 @@ public class MTForm implements MTFormUI {
     setIndicatorThickness(mtConfig.getIndicatorThickness());
     setIsAccentMode(mtConfig.isAccentMode());
     setIsAccentScrollbars(mtConfig.isAccentScrollbars());
+    setIsActiveBoldTab(mtConfig.isActiveBoldTab());
     setIsBorderedButtons(mtConfig.isBorderedButtons());
     setIsCompactDropdowns(mtConfig.isCompactDropdowns());
     setIsCompactMenus(mtConfig.isCompactMenus());
@@ -266,7 +266,7 @@ public class MTForm implements MTFormUI {
     setUseColoredDirectories(mtConfig.isUseColoredDirectories());
     setUseCustomTitle(mtConfig.isUseCustomTitle());
     setUseGlobalFont(mtConfig.isUseGlobalFont());
-    setUseMaterialFont(mtConfig.isUseMaterialFont2());
+    setUseMaterialFont(mtConfig.isUseMaterialFont());
     setUseMaterialWallpapers(mtConfig.isUseMaterialWallpapers());
     setUseProjectFrame(mtConfig.isUseProjectFrame());
     setUseProjectIcon(mtConfig.isUseProjectIcon());
@@ -1015,6 +1015,12 @@ public class MTForm implements MTFormUI {
     }
   }
 
+  private void useGlobalFontCheckboxActionPerformed(final ActionEvent e) {
+    if (useGlobalFontCheckbox.isSelected()) {
+      showUseGlobalFontWarningDialog();
+    }
+  }
+
   private void useMaterialFontCheckboxActionPerformed(final ActionEvent e) {
     if (useMaterialFontCheckbox.isSelected()) {
       showFontWarningDialog();
@@ -1594,6 +1600,7 @@ public class MTForm implements MTFormUI {
           //---- useGlobalFontCheckbox ----
           useGlobalFontCheckbox.setText(bundle.getString("MTForm.useGlobalFontCheckbox.text"));
           useGlobalFontCheckbox.setToolTipText(bundle.getString("MTForm.useGlobalFontCheckbox.toolTipText"));
+          useGlobalFontCheckbox.addActionListener(e -> useGlobalFontCheckboxActionPerformed(e));
           featuresPanel.add(useGlobalFontCheckbox, "cell 0 2,align left center,grow 0 0");
 
           //---- globalFontLink ----
@@ -1913,8 +1920,8 @@ public class MTForm implements MTFormUI {
     final boolean isFreeLicense = !MTMainProductLicenseChecker.getInstance().isLicensed();
     final boolean lacksHCPlugin = !MTHCLicenseChecker.getInstance().isLicensed();
     if (isFreeLicense) {
-      disablePremium(activeTabBoldCheckbox);
       disablePremium(accentModeCheckbox);
+      disablePremium(activeTabBoldCheckbox);
       disablePremium(activeTabHighlightCheckbox);
       disablePremium(activeTabHighlightColor);
       disablePremium(borderedButtonsCheckbox);
@@ -1946,8 +1953,8 @@ public class MTForm implements MTFormUI {
       disablePremium(tabHighlightPositionComboBox);
       disablePremium(tabShadowCheckbox);
       disablePremium(thicknessLabel);
-      disablePremium(useMaterialFontCheckbox);
       disablePremium(useGlobalFontCheckbox);
+      disablePremium(useMaterialFontCheckbox);
       disablePremium(useMaterialWallpapersCheckbox);
       disablePremium(useProjectFrameCheckbox);
     }
@@ -1960,6 +1967,13 @@ public class MTForm implements MTFormUI {
   public static void showFontWarningDialog() {
     Messages.showWarningDialog(
       MaterialThemeBundle.message("MTForm.useMaterialFonts.warning.message"),
+      MaterialThemeBundle.message("MTForm.useMaterialFonts.warning.title")
+    );
+  }
+
+  public static void showUseGlobalFontWarningDialog() {
+    Messages.showWarningDialog(
+      MaterialThemeBundle.message("MTForm.useGlobalFonts.warning.message"),
       MaterialThemeBundle.message("MTForm.useMaterialFonts.warning.title")
     );
   }

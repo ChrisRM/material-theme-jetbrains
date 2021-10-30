@@ -241,8 +241,8 @@ public final class MTThemeManager implements Disposable {
    */
   @SuppressWarnings("BooleanVariableAlwaysNegated")
   public static void toggleMaterialFonts() {
-    final boolean useMaterialFonts = CONFIG.isUseMaterialFont2();
-    CONFIG.setUseMaterialFont2(!useMaterialFonts);
+    final boolean useMaterialFonts = CONFIG.isUseMaterialFont();
+    CONFIG.setUseMaterialFont(!useMaterialFonts);
 
     applyFonts();
   }
@@ -590,10 +590,7 @@ public final class MTThemeManager implements Disposable {
   private static void applyFonts() {
     final UISettings uiSettings = UISettings.getInstance();
     @NonNls final UIDefaults lookAndFeelDefaults = UIManager.getLookAndFeelDefaults();
-    final int treeFontSize = JBUI.scale(CONFIG.getTreeFontSize());
-    final String treeFont = CONFIG.getTreeFont();
-
-    final boolean useMaterialFont = CONFIG.isUseMaterialFont2();
+    final boolean useMaterialFont = CONFIG.isUseMaterialFont();
 
     if (uiSettings.getOverrideLafFonts()) {
       applySettingsFont(lookAndFeelDefaults, uiSettings.getFontFace(), uiSettings.getFontSize());
@@ -605,23 +602,35 @@ public final class MTThemeManager implements Disposable {
       }
     }
 
+    applyCustomTreeFont(lookAndFeelDefaults);
+
+    applyGlobalFontSettings();
+  }
+
+  private static void applyCustomTreeFont(final @NonNls UIDefaults lookAndFeelDefaults) {
+    final int treeFontSize = JBUI.scale(CONFIG.getTreeFontSize());
+    final String treeFont = CONFIG.getTreeFont();
+
     if (CONFIG.isTreeFontSizeEnabled()) {
       final Font font = lookAndFeelDefaults.getFont("Tree.font");
       lookAndFeelDefaults.put("Tree.font", new Font(treeFont, font.getStyle(), treeFontSize));
       LafManager.getInstance().updateUI();
     }
+  }
 
+  private static void applyGlobalFontSettings() {
+    final EditorColorsScheme currentScheme = MTUiUtils.getCurrentScheme();
     if (CONFIG.isUseGlobalFont()) {
-      EditorColorsManager.getInstance().getGlobalScheme().setUseAppFontPreferencesInEditor();
+      currentScheme.setUseAppFontPreferencesInEditor();
     } else {
-      EditorColorsManager.getInstance().getGlobalScheme().setFontPreferences(getFontPreferences());
+      currentScheme.setFontPreferences(getFontPreferences());
     }
     EditorFactory.getInstance().refreshAllEditors();
   }
 
   @NotNull
   private static FontPreferences getFontPreferences() {
-    return EditorColorsManager.getInstance().getGlobalScheme().getFontPreferences();
+    return MTUiUtils.getCurrentScheme().getFontPreferences();
   }
   //endregion
 

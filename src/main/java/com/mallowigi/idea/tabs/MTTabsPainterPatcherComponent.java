@@ -173,7 +173,7 @@ public final class MTTabsPainterPatcherComponent implements StartupActivity.Back
   private static Font getRelevantFont() {
     final UISettings uiSettings = UISettings.getInstance();
     final MTConfig mtConfig = MTConfig.getInstance();
-    final boolean useMaterialFont = mtConfig.isUseMaterialFont2();
+    final boolean useMaterialFont = mtConfig.isUseMaterialFont();
 
     if (uiSettings.getOverrideLafFonts()) {
       return new Font(uiSettings.getFontFace(), Font.PLAIN, uiSettings.getFontSize());

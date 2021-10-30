@@ -135,7 +135,7 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
     projectFrameCheckbox.setSelected(config.isUseProjectFrame());
 
     // material fonts
-    materialFontsCheckBox.setSelected(config.isUseMaterialFont2());
+    materialFontsCheckBox.setSelected(config.isUseMaterialFont());
 
     // show overlays
     overlayCheckbox.setSelected(config.isShowOverlays());
@@ -244,7 +244,7 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
   }
 
   private void materialFontsChanged(final ActionEvent e) {
-    config.setUseMaterialFont2(materialFontsCheckBox.isSelected());
+    config.setUseMaterialFont(materialFontsCheckBox.isSelected());
   }
 
   private void projectFrameCheckboxActionPerformed(final ActionEvent e) {

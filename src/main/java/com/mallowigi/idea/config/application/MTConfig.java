@@ -394,7 +394,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     setUpperCaseTabs(form.isUpperCaseTabs());
     setUseColoredDirectories(form.isUseColoredDirectories());
     setUseCustomTitle(form.isUseCustomTitle());
-    setUseMaterialFont2(form.isUseMaterialFonts());
+    setUseMaterialFont(form.isUseMaterialFonts());
     setUseGlobalFont(form.isUseGlobalFont());
     setUseMaterialWallpapers(form.isUseMaterialWallpapers());
     setUseProjectFrame(form.isUseProjectFrame());
@@ -1390,7 +1390,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    *
    * @param useMaterialFont the useMaterialFont of this MTConfig object.
    */
-  public void setUseMaterialFont2(final boolean useMaterialFont) {
+  public void setUseMaterialFont(final boolean useMaterialFont) {
     useMaterialFont2 = useMaterialFont;
   }
 
@@ -1409,7 +1409,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    *
    * @return the useMaterialFont (type boolean) of this MTConfig object.
    */
-  public boolean isUseMaterialFont2() {
+  public boolean isUseMaterialFont() {
     return isPremium && useMaterialFont2;
   }
 

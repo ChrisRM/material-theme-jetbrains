@@ -680,4 +680,9 @@ public enum MTUiUtils {
   public static ColorUIResource namedColor(final String resource, final Color fallback) {
     return new ColorUIResource(JBColor.namedColor(resource, fallback));
   }
+
+  @NotNull
+  public static EditorColorsScheme getCurrentScheme() {
+    return EditorColorsManager.getInstance().getGlobalScheme();
+  }
 }

@@ -33,7 +33,7 @@ import com.mallowigi.idea.config.application.MTConfig
 import com.mallowigi.idea.config.ui.MTForm
 
 class MTMaterialFontsAction : MTToggleAction() {
-  override fun isSelected(e: AnActionEvent): Boolean = MTConfig.getInstance().isUseMaterialFont2
+  override fun isSelected(e: AnActionEvent): Boolean = MTConfig.getInstance().isUseMaterialFont
 
   override fun setSelected(e: AnActionEvent, state: Boolean) {
     if (state) MTForm.showFontWarningDialog()
