@@ -26,12 +26,15 @@
 
 package com.mallowigi.idea.status;
 
+import com.intellij.openapi.Disposable;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.options.ShowSettingsUtil;
+import com.intellij.openapi.ui.popup.Balloon;
 import com.intellij.openapi.util.Disposer;
 import com.intellij.openapi.wm.CustomStatusBarWidget;
 import com.intellij.openapi.wm.StatusBar;
 import com.intellij.ui.ColorUtil;
+import com.intellij.ui.GotItTooltip;
 import com.intellij.util.messages.MessageBusConnection;
 import com.intellij.util.ui.*;
 import com.mallowigi.idea.config.application.MTConfig;
@@ -58,7 +61,7 @@ import java.util.Objects;
   "AssignmentToStaticFieldFromInstanceMethod"})
 final class MTStatusWidget implements CustomStatusBarWidget {
 
-  private static final String MT_SETTINGS_PAGE = MaterialThemeBundle.message("mt.settings.titles.mtHome");
+  private static final String MT_SETTINGS_PAGE = MaterialThemeBundle.message("mt.settings.titles.materialTheme");
   private final MTWidget mtWidget;
   @Nullable
   private static Image myBufferedImage = null;
@@ -109,7 +112,7 @@ final class MTStatusWidget implements CustomStatusBarWidget {
 
   @SuppressWarnings({"MagicNumber",
     "InnerClassTooDeeplyNested"})
-  static final class MTWidget extends JButton {
+  private static final class MTWidget extends JButton implements Disposable {
     private static final int DEFAULT_FONT_SIZE = JBUI.scale(11);
     private static final int STATUS_PADDING = 4;
     private static final int STATUS_HEIGHT = 16;
@@ -129,6 +132,26 @@ final class MTStatusWidget implements CustomStatusBarWidget {
 
       setFont(widgetFont);
       putClientProperty(MTUI.Button.NO_BORDER, Boolean.TRUE);
+      showGotItTooltip();
+    }
+
+    @Override
+    public void dispose() {
+      // do nothing
+    }
+
+    @SuppressWarnings("FeatureEnvy")
+    private void showGotItTooltip() {
+      final GotItTooltip gotIt = new GotItTooltip("NewFeaturesWidget",
+        MaterialThemeBundle.message("gotIt.newFeatures.widget"),
+        this)
+        .withHeader(MaterialThemeBundle.message("gotIt.newFeatures.title"))
+        .withPosition(Balloon.Position.above)
+        .withLink("Show me!", () -> ShowSettingsUtil.getInstance().showSettingsDialog(null, MT_SETTINGS_PAGE));
+
+      if (gotIt.canShow()) {
+        ApplicationManager.getApplication().invokeLater(() -> gotIt.show(this, GotItTooltip.TOP_MIDDLE));
+      }
     }
 
     private static Font getWidgetFont() {

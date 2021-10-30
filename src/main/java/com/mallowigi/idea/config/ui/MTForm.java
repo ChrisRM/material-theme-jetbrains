@@ -30,14 +30,13 @@ import com.intellij.CommonBundle;
 import com.intellij.application.options.colors.ColorAndFontOptions;
 import com.intellij.application.options.editor.fonts.AppEditorFontConfigurable;
 import com.intellij.ide.DataManager;
+import com.intellij.openapi.Disposable;
 import com.intellij.openapi.options.SearchableConfigurable;
 import com.intellij.openapi.options.ex.Settings;
 import com.intellij.openapi.ui.ComboBox;
 import com.intellij.openapi.ui.Messages;
-import com.intellij.ui.ColorPanel;
-import com.intellij.ui.ColorUtil;
-import com.intellij.ui.FontComboBox;
-import com.intellij.ui.ListCellRendererWrapper;
+import com.intellij.openapi.ui.popup.Balloon;
+import com.intellij.ui.*;
 import com.intellij.ui.components.OnOffButton;
 import com.intellij.ui.components.labels.LinkLabel;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
@@ -88,7 +87,7 @@ import static com.mallowigi.idea.utils.MTUiUtils.disablePremium;
   "unchecked",
   "MethodWithMoreThanThreeNegations",
   "OverlyLongMethod"})
-public class MTForm implements MTFormUI {
+public class MTForm implements MTFormUI, Disposable {
   private SpinnerModel highlightSpinnerModel;
   private SpinnerModel tabsHeightSpinnerModel;
   private SpinnerModel leftTreeIndentModel;
@@ -1776,6 +1775,8 @@ public class MTForm implements MTFormUI {
     initComboboxes();
 
     configureLinks();
+
+    showGotItTooltip();
   }
 
   /**
@@ -1910,6 +1911,17 @@ public class MTForm implements MTFormUI {
         }
       }
     }, null);
+  }
+
+  private void showGotItTooltip() {
+    final GotItTooltip gotIt = new GotItTooltip("NewFeaturesSettings",
+      MaterialThemeBundle.message("gotIt.newFeatures.description"),
+      this)
+      .withPosition(Balloon.Position.above);
+
+    if (gotIt.canShow()) {
+      gotIt.show(tabbedPane1, GotItTooltip.BOTTOM_MIDDLE);
+    }
   }
 
   /**

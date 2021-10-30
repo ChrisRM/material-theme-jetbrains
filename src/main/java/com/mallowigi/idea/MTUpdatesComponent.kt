@@ -49,9 +49,9 @@ class MTUpdatesComponent : StartupActivity.Background {
   private fun projectOpened(project: Project) {
     // Show new version notification
     val pluginVersion = MTUiUtils.getVersion()
-    val updated = pluginVersion != config!!.getVersion()
+    val updated = pluginVersion != config!!.version
     val showWhatsNew = config!!.isShowWhatsNew
-    config!!.setVersion(pluginVersion)
+    config!!.version = pluginVersion
 
     // Show notification update
     if (updated && showWhatsNew) {
@@ -77,7 +77,6 @@ class MTUpdatesComponent : StartupActivity.Background {
       MTNotifications.showUpdate(project)
     }
   }
-
 
   /**
    * Create a stats notification.
