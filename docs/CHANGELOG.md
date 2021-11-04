@@ -1,6 +1,22 @@
 ## Changelog
 ----
 
+# 6.10.0
+
+### Features
+- **Custom Tab Font**: Customize the tabs font
+- **Custom Tree Font**: Customize Project View and other trees' font
+- **Override Editor font with Default Font**: Automatically change the color schemes font to use the default font
+- Reset color scheme action
+- Support for DataSpell
+
+### Fixes
+- Fix weird key icon on Windows
+
+### Other
+- Add support for `material.` properties in JSON Themes
+- Deprecation of thee _External Themes_ feature
+
 # 6.9.1
 
 ### Fixes
