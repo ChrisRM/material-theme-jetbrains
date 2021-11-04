@@ -58,13 +58,9 @@ import java.awt.Image
 import java.awt.event.MouseEvent
 import java.awt.font.TextAttribute
 import java.awt.image.BufferedImage
-import java.lang.Boolean
 import java.text.AttributedString
 import javax.swing.JButton
 import javax.swing.JComponent
-import kotlin.Any
-import kotlin.String
-import kotlin.also
 
 internal class MTStatusWidget : CustomStatusBarWidget {
   private val mtWidget: MTWidget = MTWidget()
@@ -107,7 +103,7 @@ internal class MTStatusWidget : CustomStatusBarWidget {
         }
       }.setActionTrigger(MouseEvent.MOUSE_PRESSED)
       font = widgetFont
-      putClientProperty(MTUI.Button.NO_BORDER, Boolean.TRUE)
+      putClientProperty(MTUI.Button.NO_BORDER, true)
       showGotItTooltip()
     }
 

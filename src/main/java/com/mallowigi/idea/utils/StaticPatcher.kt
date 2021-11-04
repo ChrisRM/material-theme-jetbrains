@@ -78,8 +78,6 @@ object StaticPatcher {
   @JvmStatic
   @Throws(NoSuchFieldException::class, IllegalAccessException::class)
   fun setFinal(instance: Any, field: Field, newValue: Any) {
-    if (field == null) return
-
     field.isAccessible = true
     val modifiersField = Field::class.java.getDeclaredField("modifiers")
     modifiersField.isAccessible = true
