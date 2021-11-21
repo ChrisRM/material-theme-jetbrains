@@ -103,7 +103,7 @@ class MTNativeTheme : MTAbstractTheme() {
     if (currentLookAndFeel is UIThemeBasedLookAndFeelInfo) {
       UIManager.setLookAndFeel(MTNativeLaf(this, currentLookAndFeel))
     } else if (DarculaLookAndFeelInfo.CLASS_NAME == currentLookAndFeel.className) {
-      UIManager.setLookAndFeel(MTDarculaLaf(this))
+      UIManager.setLookAndFeel(MTDarculaLaf())
     }
   }
 

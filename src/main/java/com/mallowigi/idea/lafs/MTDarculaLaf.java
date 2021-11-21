@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,20 +26,16 @@
 
 package com.mallowigi.idea.lafs;
 
+import com.intellij.ide.ui.UITheme;
 import com.intellij.ide.ui.laf.darcula.DarculaLaf;
-import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.util.ui.UIUtil;
-import com.mallowigi.idea.themes.models.MTThemeable;
 import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import javax.swing.plaf.ColorUIResource;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Properties;
+import java.util.function.Function;
 
 /**
  * Look and Feel class for Dark Material Themes
@@ -52,16 +48,6 @@ import java.util.Properties;
   "StringConcatenation",
   "DuplicateStringLiteralInspection"})
 public final class MTDarculaLaf extends DarculaLaf {
-
-  private static final Object SYSTEM = new Object();
-
-  /**
-   * Represents a Material Dark Look And Feel
-   *
-   * @param theme of type MTThemeable
-   */
-  public MTDarculaLaf(@NotNull final MTThemeable theme) {
-  }
 
   /**
    * Install additional Darcula defaults
@@ -96,54 +82,14 @@ public final class MTDarculaLaf extends DarculaLaf {
     return defaults;
   }
 
-  @SuppressWarnings({"MethodWithMultipleLoops",
-    "OverlyComplexMethod",
-    "MagicCharacter"})
+  @SuppressWarnings("MethodWithMultipleLoops")
   @Override
   protected void loadDefaults(final UIDefaults defaults) {
-    final Properties properties = new Properties();
     try {
-      try (@NonNls final InputStream stream = DarculaLaf.class.getResourceAsStream(getPrefix() + ".properties")) {
-        properties.load(stream);
-      }
-
-      final String systemPrefix = getSystemPrefix();
-      if (StringUtil.isNotEmpty(systemPrefix)) {
-        try (@NonNls final InputStream stream = DarculaLaf.class.getResourceAsStream(systemPrefix + ".properties")) {
-          properties.load(stream);
-        }
-      }
-
-      final Map<String, Object> darculaGlobalSettings = new HashMap<>(100);
-      @NonNls String prefix = getPrefix();
-      prefix = prefix.substring(prefix.lastIndexOf('/') + 1) + ".";
-
-      for (final String key : properties.stringPropertyNames()) {
-        if (key.startsWith(prefix)) {
-          final Object value = parseValue(key, properties.getProperty(key));
-          final String darculaKey = key.substring(prefix.length());
-          if (value == SYSTEM) {
-            darculaGlobalSettings.remove(darculaKey);
-          } else {
-            darculaGlobalSettings.put(darculaKey, value);
-          }
-        }
-      }
-
-      for (final Object key : defaults.keySet()) {
-        if (key instanceof String && ((String) key).contains(".")) {
-          final String s = (String) key;
-          final String darculaKey = s.substring(s.lastIndexOf('.') + 1);
-          if (darculaGlobalSettings.containsKey(darculaKey)) {
-            UIManager.getDefaults().remove(key); // MultiUIDefaults misses correct property merging
-            defaults.put(key, darculaGlobalSettings.get(darculaKey));
-          }
-        }
-      }
-
-      for (final String key : properties.stringPropertyNames()) {
-        UIManager.getDefaults().remove(key); // MultiUIDefaults misses correct property merging
-        defaults.put(key, parseValue(key, properties.getProperty(key)));
+      try (@NonNls final InputStream stream = DarculaLaf.class.getResourceAsStream(getPrefix() + ".theme.json")) {
+        assert stream != null;
+        final UITheme theme = UITheme.loadFromJson(stream, "Darcula", getClass().getClassLoader(), Function.identity());
+        theme.applyProperties(defaults);
       }
     } catch (final IOException e) {
       log(e);
