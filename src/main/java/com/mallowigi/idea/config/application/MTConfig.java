@@ -247,25 +247,13 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   private transient boolean isReset = false;
 
   @Transient
-  private transient boolean isPremium;
+  private static transient boolean isPremium = false;
   @Transient
-  private final transient boolean isHcPremium;
+  private static transient boolean isHcPremium = false;
   @Transient
   public transient Boolean hadStripesEnabled = null;
 
   //endregion
-
-  /**
-   * Represents an instance of the configuration
-   */
-  @SuppressWarnings({
-    "ImplicitCallToSuper",
-    "PublicConstructor"
-  })
-  public MTConfig() {
-    isPremium = MTMainProductLicenseChecker.getInstance().isLicensed();
-    isHcPremium = MTHCLicenseChecker.getInstance().isLicensed();
-  }
 
   /**
    * Get instance of the config from the ServiceManager
@@ -273,6 +261,8 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    * @return the MTConfig instance
    */
   public static MTConfig getInstance() {
+    isPremium = MTMainProductLicenseChecker.getInstance().isLicensed();
+    isHcPremium = MTHCLicenseChecker.getInstance().isLicensed();
     return ApplicationManager.getApplication().getService(MTConfig.class);
   }
 
@@ -1723,11 +1713,6 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     this.isWizardShown = isWizardShown;
   }
   //endregion
-
-  //region ----------- Premium -----------
-  public boolean isPremium() {
-    return isPremium;
-  }
 
   public boolean hasHighContrast() {
     return isPremium || isHcPremium;
