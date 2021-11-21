@@ -58,8 +58,7 @@ import java.util.regex.Pattern;
 
 import static com.mallowigi.idea.utils.MTUiUtils.stringToARGB;
 
-@SuppressWarnings({"SyntheticAccessorCall",
-  "MethodOnlyUsedFromInnerClass"})
+@SuppressWarnings("SyntheticAccessorCall")
 public final class MTProjectFrame extends IdeRootPaneNorthExtension implements Disposable {
   private final Project myProject;
   private final MessageBusConnection connect;
@@ -199,11 +198,11 @@ public final class MTProjectFrame extends IdeRootPaneNorthExtension implements D
       // Draw icon
       if (shouldPaintIcon()) {
         final RecentProjectsManagerBase recentProjectsManage = RecentProjectsManagerBase.getInstanceEx();
-        final Icon recentIcon = recentProjectsManage.getProjectIcon(Objects.requireNonNull(myProject.getBasePath()), false, false);
+        final Icon recentIcon = recentProjectsManage.getProjectIcon(Objects.requireNonNull(myProject.getBasePath()), false);
         recentIcon.paintIcon(this,
           g,
           x - recentIcon.getIconWidth() - padding * 2,
-          padding / 2);
+          JBUI.scale(padding) / 2);
       }
 
       if (shouldDrawText()) {
