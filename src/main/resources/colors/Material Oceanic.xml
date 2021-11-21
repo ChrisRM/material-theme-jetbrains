@@ -151,30 +151,30 @@
         <option name="QUESTION_HINT" value="263238" />
         <option name="RECENT_LOCATIONS_SELECTION" value="1b2529" />
         <option name="RIGHT_MARGIN_COLOR" value="37474f" />
-        <option name="SELECTED_INDENT_GUIDE" value="9688" />
-        <option name="SELECTED_TEARLINE_COLOR" value="9688" />
+        <option name="SELECTED_INDENT_GUIDE" value="009688" />
+        <option name="SELECTED_TEARLINE_COLOR" value="009688" />
         <option name="SELECTION_BACKGROUND" value="314549" />
         <option name="SELECTION_FOREGROUND" value="fffbf7" />
         <option name="SEPARATOR_BELOW_COLOR" value="3b4950" />
         <option name="SOFT_WRAP_SIGN_COLOR" value="4f6269" />
-        <option name="ScrollBar.Mac.Transparent.hoverThumbColor" value="009688c0" />
+        <option name="ScrollBar.Mac.Transparent.hoverThumbColor" value="009688" />
         <option name="ScrollBar.Mac.Transparent.hoverTrackColor" value="263238" />
-        <option name="ScrollBar.Mac.Transparent.thumbColor" value="00968880" />
+        <option name="ScrollBar.Mac.Transparent.thumbColor" value="10968880" />
         <option name="ScrollBar.Mac.Transparent.trackColor" value="263238" />
-        <option name="ScrollBar.Mac.hoverThumbColor" value="00968880" />
+        <option name="ScrollBar.Mac.hoverThumbColor" value="009688" />
         <option name="ScrollBar.Mac.hoverTrackColor" value="263238" />
-        <option name="ScrollBar.Mac.thumbColor" value="009688c0" />
+        <option name="ScrollBar.Mac.thumbColor" value="109688c0" />
         <option name="ScrollBar.Mac.trackColor" value="263238" />
-        <option name="ScrollBar.Transparent.hoverThumbColor" value="009688c0" />
+        <option name="ScrollBar.Transparent.hoverThumbColor" value="009688" />
         <option name="ScrollBar.Transparent.hoverTrackColor" value="263238" />
-        <option name="ScrollBar.Transparent.thumbColor" value="00968880" />
+        <option name="ScrollBar.Transparent.thumbColor" value="10968880" />
         <option name="ScrollBar.Transparent.trackColor" value="263238" />
-        <option name="ScrollBar.hoverThumbColor" value="00968880" />
+        <option name="ScrollBar.hoverThumbColor" value="009688" />
         <option name="ScrollBar.hoverTrackColor" value="263238" />
-        <option name="ScrollBar.thumbColor" value="009688c0" />
+        <option name="ScrollBar.thumbColor" value="109688c0" />
         <option name="ScrollBar.trackColor" value="263238" />
-        <option name="TAB_UNDERLINE" value="9688" />
-        <option name="TAB_UNDERLINE_INACTIVE" value="9688" />
+        <option name="TAB_UNDERLINE" value="009688" />
+        <option name="TAB_UNDERLINE_INACTIVE" value="109688c0" />
         <option name="TEARLINE_COLOR" value="3b4950" />
         <option name="TOOLTIP" value="32424a" />
         <option name="VCS_ANNOTATIONS_COLOR_1" value="546e7a" />
