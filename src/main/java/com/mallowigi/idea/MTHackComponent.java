@@ -342,7 +342,7 @@ public final class MTHackComponent {
     try {
       @NonNls final ClassPool cp = new ClassPool(true);
       cp.insertClassPath(new ClassClassPath(VcsContentAnnotationConfigurable.class));
-      final CtClass experimentalUIClass = cp.get("com.intellij.openapi.util.registry.ExperimentalUI");
+      final CtClass experimentalUIClass = cp.get("com.intellij.ui.ExperimentalUI");
 
       final CtMethod isNewToolWindowsStripes = experimentalUIClass.getDeclaredMethod("isNewToolWindowsStripes");
       isNewToolWindowsStripes.setBody("{ return com.intellij.openapi.util.registry.Registry.is(\"" + MTThemeManager.NEW_STRIPES_UI + "\")" +
