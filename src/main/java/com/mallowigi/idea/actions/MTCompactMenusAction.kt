@@ -35,7 +35,7 @@ class MTCompactMenusAction : MTToggleAction() {
   override fun isSelected(e: AnActionEvent): Boolean = MTConfig.getInstance().isCompactMenus
 
   override fun setSelected(e: AnActionEvent, state: Boolean) {
-    MTThemeManager.toggleCompactMenus()
+    MTThemeManager.instance.toggleCompactMenus()
     instance.trackValue(MTAnalytics.COMPACT_MENUS, state)
     super.setSelected(e, state)
   }

@@ -35,7 +35,7 @@ class MTCompactTablesAction : MTToggleAction() {
   override fun isSelected(e: AnActionEvent): Boolean = MTConfig.getInstance().isCompactTables
 
   override fun setSelected(e: AnActionEvent, state: Boolean) {
-    MTThemeManager.toggleCompactTableCells()
+    MTThemeManager.instance.toggleCompactTableCells()
     instance.trackValue(MTAnalytics.COMPACT_TABLES, state)
     super.setSelected(e, state)
   }

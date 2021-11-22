@@ -46,7 +46,7 @@ abstract class MTAbstractAccentAction : MTToggleAction(), DumbAware {
     val accentColor = accent.hexColor
     MTConfig.getInstance().accentColor = accentColor
 
-    MTThemeManager.applyAccents(true)
+    MTThemeManager.instance.applyAccents(true)
     UIReplacer.patchUI()
     ActionToolbarImpl.updateAllToolbarsImmediately()
     instance.trackValue(MTAnalytics.ACCENT, accentColor)

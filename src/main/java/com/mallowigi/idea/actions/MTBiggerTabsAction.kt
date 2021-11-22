@@ -35,7 +35,7 @@ import com.mallowigi.idea.notifications.MTNotifications.showSimple
 
 class MTBiggerTabsAction : AnAction() {
   override fun actionPerformed(e: AnActionEvent) {
-    MTThemeManager.setTabsHeight(42)
+    MTThemeManager.instance.setTabsHeight(42)
     instance.track(MTAnalytics.RECOMMENDED_HEIGHT)
     showSimple(e.project!!, message("MTBiggerTabsAction.notification"))
   }

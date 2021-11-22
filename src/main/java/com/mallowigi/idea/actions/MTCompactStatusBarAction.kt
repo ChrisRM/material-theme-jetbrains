@@ -35,7 +35,7 @@ class MTCompactStatusBarAction : MTToggleAction() {
   override fun isSelected(e: AnActionEvent): Boolean = MTConfig.getInstance().isCompactStatusBar
 
   override fun setSelected(e: AnActionEvent, state: Boolean) {
-    MTThemeManager.toggleCompactStatusBar()
+    MTThemeManager.instance.toggleCompactStatusBar()
     instance.trackValue(MTAnalytics.COMPACT_STATUSBAR, state)
     super.setSelected(e, state)
   }

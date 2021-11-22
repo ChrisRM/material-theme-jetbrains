@@ -35,7 +35,7 @@ class MTContrastAction : MTToggleAction() {
   override fun isSelected(e: AnActionEvent): Boolean = MTConfig.getInstance().isContrastMode
 
   override fun setSelected(e: AnActionEvent, state: Boolean) {
-    MTThemeManager.toggleContrast()
+    MTThemeManager.instance.toggleContrast()
     instance.trackValue(MTAnalytics.CONTRAST_MODE, state)
     super.setSelected(e, state)
   }

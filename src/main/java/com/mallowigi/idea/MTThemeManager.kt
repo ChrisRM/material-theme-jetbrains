@@ -23,291 +23,247 @@
  *
  *
  */
+package com.mallowigi.idea
 
-package com.mallowigi.idea;
+import com.intellij.ide.ui.LafManager
+import com.intellij.ide.ui.UISettings
+import com.intellij.ide.ui.UITheme
+import com.intellij.ide.ui.laf.LafManagerImpl
+import com.intellij.ide.ui.laf.UIThemeBasedLookAndFeelInfo
+import com.intellij.ide.ui.laf.darcula.DarculaInstaller
+import com.intellij.openapi.Disposable
+import com.intellij.openapi.application.ApplicationManager
+import com.intellij.openapi.application.ModalityState
+import com.intellij.openapi.editor.EditorFactory
+import com.intellij.openapi.editor.colors.EditorColorsManager
+import com.intellij.openapi.editor.colors.FontPreferences
+import com.intellij.openapi.editor.colors.impl.AppEditorFontOptions
+import com.intellij.openapi.editor.colors.impl.EditorColorsManagerImpl
+import com.intellij.openapi.fileTypes.ex.FileTypeManagerEx
+import com.intellij.openapi.util.Couple
+import com.intellij.openapi.util.IconLoader
+import com.intellij.openapi.util.SystemInfo
+import com.intellij.openapi.util.registry.Registry
+import com.intellij.ui.ColorUtil
+import com.intellij.util.ModalityUiUtil
+import com.intellij.util.ObjectUtils
+import com.intellij.util.SVGLoader
+import com.intellij.util.containers.ContainerUtil
+import com.intellij.util.ui.JBUI
+import com.intellij.util.ui.UIUtil
+import com.mallowigi.idea.config.application.MTConfig
+import com.mallowigi.idea.listeners.MTTopics
+import com.mallowigi.idea.themes.MTThemeFacade
+import com.mallowigi.idea.themes.MTThemes
+import com.mallowigi.idea.themes.lists.AccentResources
+import com.mallowigi.idea.themes.lists.FontResources
+import com.mallowigi.idea.utils.MTUI
+import com.mallowigi.idea.utils.MTUiUtils
+import com.mallowigi.idea.utils.animator.MTChangeLafService.hideSnapshotWithAnimation
+import com.mallowigi.idea.utils.animator.MTChangeLafService.showSnapshot
+import org.jetbrains.annotations.NonNls
+import java.awt.Color
+import java.awt.Font
+import java.util.Locale
+import javax.swing.SwingUtilities
+import javax.swing.UIDefaults
+import javax.swing.UIManager
+import javax.swing.plaf.FontUIResource
 
-import com.intellij.ide.ui.LafManager;
-import com.intellij.ide.ui.UISettings;
-import com.intellij.ide.ui.UITheme;
-import com.intellij.ide.ui.laf.LafManagerImpl;
-import com.intellij.ide.ui.laf.UIThemeBasedLookAndFeelInfo;
-import com.intellij.ide.ui.laf.darcula.DarculaInstaller;
-import com.intellij.ide.ui.laf.darcula.DarculaLaf;
-import com.intellij.openapi.Disposable;
-import com.intellij.openapi.application.Application;
-import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.application.ModalityState;
-import com.intellij.openapi.editor.EditorFactory;
-import com.intellij.openapi.editor.colors.EditorColorsManager;
-import com.intellij.openapi.editor.colors.EditorColorsScheme;
-import com.intellij.openapi.editor.colors.FontPreferences;
-import com.intellij.openapi.editor.colors.impl.AppEditorFontOptions;
-import com.intellij.openapi.editor.colors.impl.EditorColorsManagerImpl;
-import com.intellij.openapi.fileTypes.ex.FileTypeManagerEx;
-import com.intellij.openapi.util.Couple;
-import com.intellij.openapi.util.IconLoader;
-import com.intellij.openapi.util.SystemInfo;
-import com.intellij.openapi.util.registry.Registry;
-import com.intellij.ui.ColorUtil;
-import com.intellij.ui.scale.JBUIScale;
-import com.intellij.util.ModalityUiUtil;
-import com.intellij.util.ObjectUtils;
-import com.intellij.util.SVGLoader;
-import com.intellij.util.containers.ContainerUtil;
-import com.intellij.util.ui.JBUI;
-import com.intellij.util.ui.UIUtil;
-import com.mallowigi.idea.config.application.MTConfig;
-import com.mallowigi.idea.listeners.MTTopics;
-import com.mallowigi.idea.themes.MTThemeFacade;
-import com.mallowigi.idea.themes.MTThemes;
-import com.mallowigi.idea.themes.lists.AccentResources;
-import com.mallowigi.idea.themes.lists.FontResources;
-import com.mallowigi.idea.themes.models.MTThemeable;
-import com.mallowigi.idea.utils.MTUI;
-import com.mallowigi.idea.utils.MTUiUtils;
-import com.mallowigi.idea.utils.animator.MTChangeLafService;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import sun.awt.AppContext;
-
-import javax.swing.*;
-import javax.swing.plaf.FontUIResource;
-import javax.swing.text.html.HTMLEditorKit;
-import javax.swing.text.html.StyleSheet;
-import java.awt.*;
-import java.lang.reflect.Field;
-import java.net.URL;
-import java.util.Locale;
-
-/**
- * Manages appearance settings
- */
-@SuppressWarnings({"ClassWithTooManyMethods",
-  "DuplicateStringLiteralInspection",
-  "UtilityClass",
-  "UnstableApiUsage",
-  "FeatureEnvy",
-  "OverlyComplexClass",
-  "java:S1200"})
-public final class MTThemeManager implements Disposable {
-  private static final MTConfig CONFIG = MTConfig.getInstance();
-
-  @NonNls
-  private static final String RETINA = "@2x.css";
-  @NonNls
-  private static final String NON_RETINA = ".css";
-  @NonNls
-  private static final String DARCULA = "darcula";
-  @NonNls
-  static final String NEW_STRIPES_UI = "ide.experimental.ui.toolwindow.stripes";
-  @NonNls
-  private static final String TOOL_WINDOW_TAB_VERTICAL_PADDING = "ToolWindow.tab.verticalPadding";
-
-  /**
-   * Instantiates a new Mt theme manager.
-   */
-  private MTThemeManager() {
-  }
-
-  /**
-   * Gets instance.
-   *
-   * @return the instance
-   */
-  public static MTThemeManager getInstance() {
-    return ApplicationManager.getApplication().getService(MTThemeManager.class);
-  }
+class MTThemeManager private constructor() : Disposable {
+  override fun dispose(): Unit = Unit
 
   //region Action Toggles
 
-  public static void toggleColoredDirs() {
-    CONFIG.setUseColoredDirectories(!CONFIG.isUseColoredDirectories());
-    updateFileIcons();
+  /**
+   * Toggle colored dirs
+   *
+   */
+  fun toggleColoredDirs() {
+    CONFIG.isUseColoredDirectories = !CONFIG.isUseColoredDirectories
+    updateFileIcons()
   }
 
-  public static void toggleCodeAdditions() {
-    CONFIG.setCodeAdditionsEnabled(!CONFIG.isCodeAdditionsEnabled());
-    refreshColorScheme();
+  /**
+   * Toggle code additions
+   *
+   */
+  fun toggleCodeAdditions() {
+    CONFIG.isCodeAdditionsEnabled = !CONFIG.isCodeAdditionsEnabled
+    refreshColorScheme()
   }
 
   /**
    * Set contrast and reactivate theme
    */
-  public static void toggleContrast() {
-    CONFIG.setContrastMode(!CONFIG.isContrastMode());
-
-    applyContrast(true);
+  fun toggleContrast() {
+    CONFIG.isContrastMode = !CONFIG.isContrastMode
+    applyContrast(true)
   }
 
   /**
    * Toggle high contrast.
    */
-  public static void toggleHighContrast() {
-    CONFIG.setHighContrast(!CONFIG.isHighContrast());
-    activate();
+  fun toggleHighContrast() {
+    CONFIG.isHighContrast = !CONFIG.isHighContrast
+    activate()
   }
 
-  public static void toggleOverlays() {
-    CONFIG.setShowOverlays(!CONFIG.isShowOverlays());
+  /**
+   * Toggle overlays
+   *
+   */
+  fun toggleOverlays() {
+    CONFIG.isShowOverlays = !CONFIG.isShowOverlays
   }
 
   /**
    * Toggle compact status bar.
    */
-  @SuppressWarnings("BooleanVariableAlwaysNegated")
-  public static void toggleCompactStatusBar() {
-    final boolean compactStatusBar = CONFIG.isCompactStatusBar();
-    CONFIG.setCompactStatusBar(!compactStatusBar);
-
-    applyCompactToolWindowHeaders();
-  }
-
-  private static void applyCompactToolWindowHeaders() {
-    if (CONFIG.isCompactStatusBar()) {
-      UIManager.put(TOOL_WINDOW_TAB_VERTICAL_PADDING, JBUI.scale(0));
-    } else {
-      UIManager.put(TOOL_WINDOW_TAB_VERTICAL_PADDING, JBUI.scale(5));
-    }
-  }
-
-  private static void applyStripedToolWindows() {
-    Registry.get(NEW_STRIPES_UI).setValue(CONFIG.isStripedToolWindowsEnabled());
+  fun toggleCompactStatusBar() {
+    val compactStatusBar = CONFIG.isCompactStatusBar
+    CONFIG.isCompactStatusBar = !compactStatusBar
+    applyCompactToolWindowHeaders()
   }
 
   /**
    * Toggle compact sidebar.
    */
-  @SuppressWarnings("BooleanVariableAlwaysNegated")
-  public static void toggleCompactSidebar() {
-    final boolean isCompactSidebar = CONFIG.isCompactSidebar();
-    CONFIG.setCompactSidebar(!isCompactSidebar);
-
-    applyCompactSidebar(true);
+  fun toggleCompactSidebar() {
+    val isCompactSidebar = CONFIG.isCompactSidebar
+    CONFIG.isCompactSidebar = !isCompactSidebar
+    applyCompactSidebar(true)
   }
 
   /**
    * Toggle compact dropdowns.
    */
-  @SuppressWarnings("BooleanVariableAlwaysNegated")
-  public static void toggleCompactDropdowns() {
-    final boolean isCompactDropdowns = CONFIG.isCompactDropdowns();
-    CONFIG.setCompactDropdowns(!isCompactDropdowns);
-
-    applyDropdownLists();
-    UIReplacer.patchUI();
+  fun toggleCompactDropdowns() {
+    val isCompactDropdowns = CONFIG.isCompactDropdowns
+    CONFIG.isCompactDropdowns = !isCompactDropdowns
+    applyDropdownLists()
+    UIReplacer.patchUI()
   }
 
   /**
    * Toggle compact menus.
    */
-  @SuppressWarnings("BooleanVariableAlwaysNegated")
-  public static void toggleCompactMenus() {
-    final boolean isCompact = CONFIG.isCompactMenus();
-    CONFIG.setCompactMenus(!isCompact);
-
-    applyMenusHeight();
-    UIReplacer.patchUI();
+  fun toggleCompactMenus() {
+    val isCompact = CONFIG.isCompactMenus
+    CONFIG.isCompactMenus = !isCompact
+    applyMenusHeight()
+    UIReplacer.patchUI()
   }
 
   /**
-   * Compact table cells
+   * Toggle Compact table cells
    */
-  @SuppressWarnings("BooleanVariableAlwaysNegated")
-  public static void toggleCompactTableCells() {
-    final boolean isCompact = CONFIG.isCompactTables();
-    CONFIG.setCompactTables(!isCompact);
-
-    reloadUI();
-  }
-
-  @SuppressWarnings("BooleanVariableAlwaysNegated")
-  public static void toggleCustomTabFont() {
-    final boolean tabFontSizeEnabled = CONFIG.isTabFontSizeEnabled();
-    CONFIG.setTabFontSizeEnabled(!tabFontSizeEnabled);
-
-    reloadUI();
-  }
-
-  @SuppressWarnings("BooleanVariableAlwaysNegated")
-  public static void toggleCustomTreeFont() {
-    final boolean treeFontSizeEnabled = CONFIG.isTreeFontSizeEnabled();
-    CONFIG.setTreeFontSizeEnabled(!treeFontSizeEnabled);
-
-    reloadUI();
+  fun toggleCompactTableCells() {
+    val isCompact = CONFIG.isCompactTables
+    CONFIG.isCompactTables = !isCompact
+    reloadUI()
   }
 
   /**
-   * Toggle material fonts.
+   * Toggle custom tab font
+   *
    */
-  @SuppressWarnings("BooleanVariableAlwaysNegated")
-  public static void toggleMaterialFonts() {
-    final boolean useMaterialFonts = CONFIG.isUseMaterialFont();
-    CONFIG.setUseMaterialFont(!useMaterialFonts);
-
-    applyFonts();
+  fun toggleCustomTabFont() {
+    val tabFontSizeEnabled = CONFIG.isTabFontSizeEnabled
+    CONFIG.isTabFontSizeEnabled = !tabFontSizeEnabled
+    reloadUI()
   }
 
   /**
-   * Toggle material fonts.
+   * Toggle custom tree font
+   *
    */
-  @SuppressWarnings("FeatureEnvy")
-  public static void toggleMaterialWallpapers() {
-    CONFIG.setUseMaterialWallpapers(!CONFIG.isUseMaterialWallpapers());
-    CONFIG.fireChanged();
+  fun toggleCustomTreeFont() {
+    val treeFontSizeEnabled = CONFIG.isTreeFontSizeEnabled
+    CONFIG.isTreeFontSizeEnabled = !treeFontSizeEnabled
+    reloadUI()
+  }
+
+  /**
+   * Toggle material fonts (Roboto).
+   */
+  fun toggleMaterialFonts() {
+    val useMaterialFonts = CONFIG.isUseMaterialFont
+    CONFIG.isUseMaterialFont = !useMaterialFonts
+    applyFonts()
+  }
+
+  /**
+   * Toggle material wallpapers.
+   */
+  fun toggleMaterialWallpapers() {
+    CONFIG.isUseMaterialWallpapers = !CONFIG.isUseMaterialWallpapers
+    CONFIG.fireChanged()
   }
 
   /**
    * Toggle upper case tabs.
    */
-  @SuppressWarnings("FeatureEnvy")
-  public static void toggleUpperCaseTabs() {
-    CONFIG.setUpperCaseTabs(!CONFIG.isUpperCaseTabs());
-    CONFIG.fireChanged();
+  fun toggleUpperCaseTabs() {
+    CONFIG.isUpperCaseTabs = !CONFIG.isUpperCaseTabs
+    CONFIG.fireChanged()
   }
 
   /**
    * Toggle override accent color
    */
-  @SuppressWarnings("FeatureEnvy")
-  public static void toggleOverrideAccent() {
-    CONFIG.setOverrideAccentColor(!CONFIG.isOverrideAccentColor());
-    CONFIG.fireChanged();
+  fun toggleOverrideAccent() {
+    CONFIG.isOverrideAccentColor = !CONFIG.isOverrideAccentColor
+    CONFIG.fireChanged()
   }
 
   /**
    * Toggle project frame
    */
-  @SuppressWarnings("FeatureEnvy")
-  public static void toggleProjectFrame() {
-    CONFIG.setUseProjectFrame(!CONFIG.isUseProjectFrame());
-    CONFIG.fireChanged();
+  fun toggleProjectFrame() {
+    CONFIG.isUseProjectFrame = !CONFIG.isUseProjectFrame
+    CONFIG.fireChanged()
   }
 
-  @SuppressWarnings("FeatureEnvy")
-  public static void toggleOutlinedButtons() {
-    CONFIG.setBorderedButtons(!CONFIG.isBorderedButtons());
-    CONFIG.fireChanged();
+  /**
+   * Toggle outlined buttons
+   *
+   */
+  fun toggleOutlinedButtons() {
+    CONFIG.isBorderedButtons = !CONFIG.isBorderedButtons
+    CONFIG.fireChanged()
   }
 
   /**
    * Toggle striped tool windows
    */
-  public static void toggleStripedToolWindows() {
-    CONFIG.setStripedToolWindowsEnabled(!CONFIG.isStripedToolWindowsEnabled());
-    applyStripedToolWindows();
+  fun toggleStripedToolWindows() {
+    CONFIG.isStripedToolWindowsEnabled = !CONFIG.isStripedToolWindowsEnabled
+    applyStripedToolWindows()
   }
-  //endregion
-
-  //region File Icons support
 
   /**
-   * Update file icons.
+   * Apply compact tool window headers
+   *
    */
-  private static void updateFileIcons() {
-    ModalityUiUtil.invokeLaterIfNeeded(ModalityState.NON_MODAL, () -> {
-      final Application app = ApplicationManager.getApplication();
-      app.runWriteAction(() -> FileTypeManagerEx.getInstanceEx().fireFileTypesChanged());
-    });
+  private fun applyCompactToolWindowHeaders() {
+    val vPad = if (CONFIG.isCompactStatusBar) JBUI.scale(0) else JBUI.scale(5)
+    UIManager.put(MTUI.Panel.TOOL_WINDOW_TAB_VERTICAL_PADDING, vPad)
+  }
+
+  /**
+   * Apply striped tool windows in the Registry
+   *
+   */
+  private fun applyStripedToolWindows() = Registry.get(NEW_STRIPES_UI).setValue(CONFIG.isStripedToolWindowsEnabled)
+
+  /**
+   * Refresh trees
+   */
+  private fun updateFileIcons() {
+    ModalityUiUtil.invokeLaterIfNeeded(ModalityState.NON_MODAL) {
+      ApplicationManager.getApplication().runWriteAction { FileTypeManagerEx.getInstanceEx().fireFileTypesChanged() }
+    }
   }
   //endregion
 
@@ -316,9 +272,9 @@ public final class MTThemeManager implements Disposable {
   /**
    * Activate selected theme or deactivate current
    */
-  public static void activate() {
-    final MTThemeFacade mtTheme = CONFIG.getSelectedTheme();
-    activate(mtTheme);
+  fun activate() {
+    val mtTheme = CONFIG.selectedTheme
+    activate(mtTheme)
   }
 
   /**
@@ -328,199 +284,194 @@ public final class MTThemeManager implements Disposable {
    * @param isDark  dark
    * @param name    name
    */
-  static void activateLAF(@NonNls final String themeId, final boolean isDark, @NonNls final String name) {
-    final MTThemeFacade themeFor = MTThemes.getThemeFor(themeId);
+  fun activateLAF(themeId: String, isDark: Boolean, name: String) {
+    val themeFor = MTThemes.getThemeFor(themeId)
     if (themeFor != null) {
-      activate(themeFor);
+      activate(themeFor)
     } else {
-      final MTThemeFacade mtTheme = MTThemes.NATIVE;
-      mtTheme.setIsDark(isDark);
-      mtTheme.setThemeName(name);
-      activate(mtTheme);
+      val mtTheme: MTThemeFacade = MTThemes.NATIVE
+      mtTheme.setIsDark(isDark)
+      mtTheme.themeName = name
+      activate(mtTheme)
     }
   }
 
-  public static boolean isMaterialTheme(@NonNls final UIManager.LookAndFeelInfo theme) {
-    return theme instanceof UIThemeBasedLookAndFeelInfo &&
-      MTThemes.getThemeFor(((UIThemeBasedLookAndFeelInfo) theme).getTheme().getId()) != null;
-  }
+  /**
+   * Checks whether Look and feel is material theme
+   *
+   * @param theme
+   * @return
+   */
+  fun isMaterialTheme(theme: @NonNls UIManager.LookAndFeelInfo?): Boolean =
+    theme is UIThemeBasedLookAndFeelInfo && MTThemes.getThemeFor(theme.theme.id) != null
 
   /**
    * Activate a Look and Feel
    *
    * @param theme UITheme
    */
-  static void activateLAF(final UITheme theme) {
-    activateLAF(theme.getId(), theme.isDark(), theme.getName());
-  }
+  fun activateLAF(theme: UITheme): Unit = activateLAF(theme.id, theme.isDark, theme.name)
 
   /**
    * Activate theme and switch color scheme
    *
    * @param mtTheme the mt theme
    */
-  public static void activate(final MTThemeFacade mtTheme) {
-    MTThemeFacade newTheme = mtTheme;
+  fun activate(mtTheme: MTThemeFacade?) {
+    var newTheme = mtTheme
     if (newTheme == null) {
-      newTheme = MTThemes.OCEANIC;
+      newTheme = MTThemes.OCEANIC
     }
-
-    CONFIG.setSelectedTheme(newTheme);
-
-    newTheme.getTheme().activate();
+    CONFIG.selectedTheme = newTheme
+    newTheme.theme.activate()
 
     // Save a reference to the theme
-    IconLoader.clearCache();
+    IconLoader.clearCache()
 
     // apply different settings
-    applyContrast(false);
-    applyCompactSidebar(false);
-    applyCustomTreeIndent();
-    applyMenusHeight();
-    applyDropdownLists();
-    applyAccents(false);
-    applyFonts();
-    applyCompactToolWindowHeaders();
-    applyStripedToolWindows();
+    applyContrast(false)
+    applyCompactSidebar(false)
+    applyCustomTreeIndent()
+    applyMenusHeight()
+    applyDropdownLists()
+    applyAccents(false)
+    applyFonts()
+    applyCompactToolWindowHeaders()
+    applyStripedToolWindows()
 
     // Documentation styles
-    patchStyledEditorKit();
+    patchStyledEditorKit()
 
     // Monochrome filter and co
-    LafManager.getInstance().updateUI();
+    LafManager.getInstance().updateUI()
     // Custom UI Patches
-    UIReplacer.patchUI();
-
-    fireThemeChanged(newTheme);
+    UIReplacer.patchUI()
+    fireThemeChanged(newTheme)
   }
 
-  private static void refreshColorScheme() {
-    ApplicationManager.getApplication().invokeLater(() -> ((EditorColorsManagerImpl) EditorColorsManager.getInstance()).schemeChangedOrSwitched(null),
-      ModalityState.NON_MODAL);
+  /**
+   * Refresh color scheme
+   *
+   */
+  private fun refreshColorScheme() {
+    ApplicationManager.getApplication()
+      .invokeLater({ (EditorColorsManager.getInstance() as EditorColorsManagerImpl).schemeChangedOrSwitched(null) },
+                   ModalityState.NON_MODAL)
   }
 
   /**
    * New way of switching themes
    */
-  @SuppressWarnings("CallToSuspiciousStringMethod")
-  public static void setLookAndFeel(final MTThemeFacade selectedTheme) {
+  fun setLookAndFeel(selectedTheme: MTThemeFacade) {
     // Find LAF theme and trigger a theme change
-    final LafManager lafManager = LafManager.getInstance();
-    final UIManager.LookAndFeelInfo lafInfo = ContainerUtil.find(lafManager.getInstalledLookAndFeels(),
-      lookAndFeelInfo -> lookAndFeelInfo.getName().equals(selectedTheme.getThemeName()));
+    val lafManager = LafManager.getInstance()
+    val lafInfo = ContainerUtil.find(lafManager.installedLookAndFeels) {
+      it.name == selectedTheme.themeName
+    }
 
-    MTChangeLafService.showSnapshot();
+    showSnapshot()
+
     if (lafInfo != null) {
-      lafManager.setCurrentLookAndFeel(lafInfo);
+      lafManager.currentLookAndFeel = lafInfo
     } else {
-      // good ol' shit
-      activate(selectedTheme);
+      activate(selectedTheme)
     }
-    SwingUtilities.invokeLater(MTChangeLafService::hideSnapshotWithAnimation);
 
-  }
-
-  /**
-   * Switch the color scheme to the current theme's
-   *
-   * @param mtTheme           the current theme
-   * @param switchColorScheme whether to switch color scheme
-   */
-  @SuppressWarnings("unused")
-  private static void switchScheme(final MTThemeFacade mtTheme, final boolean switchColorScheme) {
-    final EditorColorsManager editorColorsManager = EditorColorsManager.getInstance();
-    if (switchColorScheme) {
-      final EditorColorsScheme themeScheme = editorColorsManager.getScheme(mtTheme.getThemeColorScheme());
-      if (themeScheme != null) {
-        editorColorsManager.setGlobalScheme(themeScheme);
-      }
-    }
-    // Need to trigger a change otherwise the ui will get stuck. Yes this sucks
-    final EditorColorsScheme globalScheme = editorColorsManager.getGlobalScheme();
-    editorColorsManager.setGlobalScheme(editorColorsManager.getScheme(MTUiUtils.DARCULA));
-    editorColorsManager.setGlobalScheme(globalScheme);
+    SwingUtilities.invokeLater { hideSnapshotWithAnimation() }
   }
 
   /**
    * Apply accents.
    */
-  @SuppressWarnings({"MethodWithMultipleLoops",
-    "java:S2301"})
-  public static void applyAccents(final boolean fireEvent) {
-    final Color accentColor = ColorUtil.fromHex(CONFIG.getAccentColor());
-    final Color transparentAccentColor = ColorUtil.toAlpha(accentColor, 70);
+  fun applyAccents(fireEvent: Boolean) {
+    val accentColor = ColorUtil.fromHex(CONFIG.accentColor)
+    val transparentAccentColor = ColorUtil.toAlpha(accentColor, 70)
 
-    for (final String resource : AccentResources.ACCENT_RESOURCES) {
-      UIManager.put(resource, accentColor);
-    }
+    AccentResources.ACCENT_RESOURCES.forEach { UIManager.put(it, accentColor) }
 
-    for (final String resource : AccentResources.ACCENT_TRANSPARENT_RESOURCES) {
-      UIManager.put(resource, transparentAccentColor);
-    }
+    AccentResources.ACCENT_TRANSPARENT_RESOURCES.forEach { UIManager.put(it, transparentAccentColor) }
 
     // Accent mode
-    CONFIG.getSelectedTheme().applyAccentMode();
-
+    CONFIG.selectedTheme.applyAccentMode()
     // Scrollbars management
-    applyScrollbars(accentColor);
-
-    patchStyledEditorKit();
-    addAccentColorTint();
+    applyScrollbars(accentColor)
+    // Documentation
+    patchStyledEditorKit()
+    // Icons
+    addAccentColorTint()
 
     if (fireEvent) {
-      fireAccentChanged(accentColor);
+      fireAccentChanged(accentColor)
     }
   }
 
-  @SuppressWarnings("MethodWithMultipleLoops")
-  private static void applyScrollbars(final Color accentColor) {
-    final Couple<Color> scrollbarColors = getScrollbarColors(accentColor);
-    final Color scrollbarColor = scrollbarColors.getFirst();
-    final Color scrollbarHoverColor = scrollbarColors.getSecond();
+  /**
+   * Apply scrollbars accent color
+   *
+   * @param accentColor
+   */
+  private fun applyScrollbars(accentColor: Color) {
+    val scrollbarColors = getScrollbarColors(accentColor)
+    val scrollbarColor = scrollbarColors.getFirst()
+    val scrollbarHoverColor = scrollbarColors.getSecond()
 
-    for (final String resource : AccentResources.SCROLLBAR_RESOURCES) {
-      UIManager.put(resource, scrollbarColor);
-    }
-    for (final String resource : AccentResources.SCROLLBAR_HOVER_RESOURCES) {
-      UIManager.put(resource, scrollbarHoverColor);
-    }
-    reloadUI();
+    AccentResources.SCROLLBAR_RESOURCES.forEach { UIManager.put(it, scrollbarColor) }
+
+    AccentResources.SCROLLBAR_HOVER_RESOURCES.forEach { UIManager.put(it, scrollbarHoverColor) }
+
+    reloadUI()
   }
 
-  private static @NotNull Couple<Color> getScrollbarColors(final Color accentColor) {
-    final Color transAccentColor = ColorUtil.toAlpha(accentColor, 50);
-    final Color hoverAccentColor = ColorUtil.toAlpha(accentColor, 75);
-    final Color themedColor = MTUI.Label.getLabelForeground();
-    final Color transThemedColor = ColorUtil.toAlpha(themedColor, 50);
-    final Color hoverThemedColor = ColorUtil.toAlpha(themedColor, 75);
+  /**
+   * Get scrollbar colors
+   *
+   * @param accentColor
+   * @return
+   */
+  private fun getScrollbarColors(accentColor: Color): Couple<Color> {
+    val transAccentColor = ColorUtil.toAlpha(accentColor, 50)
+    val hoverAccentColor = ColorUtil.toAlpha(accentColor, 75)
+    val themedColor = MTUI.Label.getLabelForeground()
+    val transThemedColor = ColorUtil.toAlpha(themedColor, 50)
+    val hoverThemedColor = ColorUtil.toAlpha(themedColor, 75)
 
-    if (CONFIG.isAccentScrollbars()) {
-      return CONFIG.isThemedScrollbars() ?
-             new Couple<>(transAccentColor, hoverAccentColor) :
-             new Couple<>(hoverAccentColor, accentColor);
-    } else {
-      return CONFIG.isThemedScrollbars() ?
-             new Couple<>(transThemedColor, hoverThemedColor) :
-             new Couple<>(hoverThemedColor, themedColor);
+    return when {
+      CONFIG.isAccentScrollbars -> when {
+        CONFIG.isThemedScrollbars -> Couple(transAccentColor, hoverAccentColor)
+        else                      -> Couple(hoverAccentColor, accentColor)
+      }
+      else                      -> when {
+        CONFIG.isThemedScrollbars -> Couple(transThemedColor, hoverThemedColor)
+        else                      -> Couple(hoverThemedColor, themedColor)
+      }
     }
   }
 
-  private static void fireThemeChanged(final MTThemeFacade newTheme) {
-    ApplicationManager.getApplication().getMessageBus()
-                      .syncPublisher(MTTopics.THEMES)
-                      .themeChanged(newTheme);
+  /**
+   * Fire theme changed
+   *
+   * @param newTheme
+   */
+  private fun fireThemeChanged(newTheme: MTThemeFacade) {
+    ApplicationManager.getApplication().messageBus
+      .syncPublisher(MTTopics.THEMES)
+      .themeChanged(newTheme)
   }
 
-  private static void fireAccentChanged(final Color accentColorColor) {
-    ApplicationManager.getApplication().getMessageBus()
-                      .syncPublisher(MTTopics.ACCENTS)
-                      .accentChanged(accentColorColor);
+  /**
+   * Fire accent changed
+   *
+   * @param accentColorColor
+   */
+  private fun fireAccentChanged(accentColorColor: Color) {
+    ApplicationManager.getApplication().messageBus
+      .syncPublisher(MTTopics.ACCENTS)
+      .accentChanged(accentColorColor)
   }
 
   //endregion
 
   // region Fonts
-
   /**
    * Apply custom fonts
    *
@@ -528,280 +479,256 @@ public final class MTThemeManager implements Disposable {
    * @param fontFace   the font face
    * @param fontSize   the font size
    */
-  @SuppressWarnings("Duplicates")
-  private static void applySettingsFont(@NonNls final UIDefaults uiDefaults, final String fontFace, final int fontSize) {
-    uiDefaults.put("Tree.ancestorInputMap", null);
-    final FontUIResource font = UIUtil.getFontWithFallback(fontFace, Font.PLAIN, fontSize);
+  private fun applySettingsFont(uiDefaults: @NonNls UIDefaults?, fontFace: String?, fontSize: Int) {
+    uiDefaults!!["Tree.ancestorInputMap"] = null
 
-    final String editorFontName = AppEditorFontOptions.getInstance().getFontPreferences().getFontFamily();
-    final String monospaceFont = ObjectUtils.notNull(editorFontName, MTConfig.DEFAULT_MONO_FONT);
-    final FontUIResource monoFont = new FontUIResource(monospaceFont, Font.PLAIN, fontSize);
+    val font = UIUtil.getFontWithFallback(fontFace, Font.PLAIN, fontSize)
+    val editorFontName = AppEditorFontOptions.getInstance().fontPreferences.fontFamily
+    val monospaceFont = ObjectUtils.notNull(editorFontName, MTConfig.DEFAULT_MONO_FONT)
+    val monoFont = FontUIResource(monospaceFont, Font.PLAIN, fontSize)
 
     // Keep old style and size
-    for (final String fontResource : FontResources.FONT_RESOURCES) {
-      final Font curFont = ObjectUtils.notNull(uiDefaults.getFont(fontResource), font);
-      uiDefaults.put(fontResource, font.deriveFont(curFont.getStyle(), curFont.getSize()));
+    FontResources.FONT_RESOURCES.forEach {
+      val curFont = ObjectUtils.notNull(uiDefaults.getFont(it), font)
+      uiDefaults[it] = font.deriveFont(curFont.style, curFont.size.toFloat())
     }
 
-    uiDefaults.put("PasswordField.font", monoFont);
-    uiDefaults.put("TextArea.font", monoFont);
-    uiDefaults.put("TextPane.font", font);
-    uiDefaults.put("EditorPane.font", font);
+    uiDefaults["PasswordField.font"] = monoFont
+    uiDefaults["TextArea.font"] = monoFont
+    uiDefaults["TextPane.font"] = font
+    uiDefaults["EditorPane.font"] = font
   }
 
-  @SuppressWarnings("Duplicates")
-  private static void applyMaterialFonts(@NonNls final UIDefaults uiDefaults) {
-    uiDefaults.put("Tree.ancestorInputMap", null);
+  /**
+   * Apply material fonts
+   *
+   * @param uiDefaults
+   */
+  private fun applyMaterialFonts(uiDefaults: @NonNls UIDefaults?) {
+    uiDefaults!!["Tree.ancestorInputMap"] = null
 
-    @NonNls final String language = Locale.getDefault().getLanguage();
-    final boolean cjkLocale =
-      (Locale.CHINESE.getLanguage().equals(language) ||
-        Locale.JAPANESE.getLanguage().equals(language) ||
-        Locale.KOREAN.getLanguage().equals(language));
+    val language = Locale.getDefault().language
+    val cjkLocale =
+      Locale.CHINESE.language == language || Locale.JAPANESE.language == language || Locale.KOREAN.language == language
+    var font = UIUtil.getFontWithFallback(MTConfig.DEFAULT_FONT, Font.PLAIN, MTConfig.DEFAULT_FONT_SIZE)
 
-    FontUIResource font = UIUtil.getFontWithFallback(MTConfig.DEFAULT_FONT, Font.PLAIN, MTConfig.DEFAULT_FONT_SIZE);
     if (cjkLocale) {
-      font = UIUtil.getFontWithFallback(MTUiUtils.NOTO_SANS, Font.PLAIN, MTConfig.DEFAULT_FONT_SIZE);
+      font = UIUtil.getFontWithFallback(MTUiUtils.NOTO_SANS, Font.PLAIN, MTConfig.DEFAULT_FONT_SIZE)
     }
 
-    final FontUIResource uiFont = font;
-    final FontUIResource textFont = font;
-
-    final String editorFontName = AppEditorFontOptions.getInstance().getFontPreferences().getFontFamily();
-    final String monospaceFont = ObjectUtils.notNull(editorFontName, MTConfig.DEFAULT_MONO_FONT);
-    final FontUIResource monoFont = new FontUIResource(monospaceFont, Font.PLAIN, MTConfig.DEFAULT_FONT_SIZE);
+    val uiFont = font
+    val textFont = font
+    val editorFontName = AppEditorFontOptions.getInstance().fontPreferences.fontFamily
+    val monospaceFont = ObjectUtils.notNull(editorFontName, MTConfig.DEFAULT_MONO_FONT)
+    val monoFont = FontUIResource(monospaceFont, Font.PLAIN, MTConfig.DEFAULT_FONT_SIZE)
 
     // Keep old style and size
-    for (final String fontResource : FontResources.FONT_RESOURCES) {
-      final Font curFont = ObjectUtils.notNull(uiDefaults.getFont(fontResource), uiFont);
-      uiDefaults.put(fontResource, uiFont.deriveFont(curFont.getStyle(), curFont.getSize()));
+    FontResources.FONT_RESOURCES.forEach {
+      val curFont = ObjectUtils.notNull(uiDefaults.getFont(it), uiFont)
+      uiDefaults[it] = uiFont.deriveFont(curFont.style, curFont.size.toFloat())
     }
 
-    uiDefaults.put("PasswordField.font", monoFont);
-    uiDefaults.put("TextArea.font", monoFont);
-    uiDefaults.put("TextPane.font", textFont);
-    uiDefaults.put("EditorPane.font", textFont);
+    uiDefaults["PasswordField.font"] = monoFont
+    uiDefaults["TextArea.font"] = monoFont
+    uiDefaults["TextPane.font"] = textFont
+    uiDefaults["EditorPane.font"] = textFont
   }
 
   /**
    * Apply fonts according to settings
    */
-  @SuppressWarnings("FeatureEnvy")
-  private static void applyFonts() {
-    final UISettings uiSettings = UISettings.getInstance();
-    @NonNls final UIDefaults lookAndFeelDefaults = UIManager.getLookAndFeelDefaults();
-    final boolean useMaterialFont = CONFIG.isUseMaterialFont();
+  private fun applyFonts() {
+    val uiSettings: UISettings = UISettings.instance
+    val lookAndFeelDefaults = UIManager.getLookAndFeelDefaults()
+    val useMaterialFont = CONFIG.isUseMaterialFont
 
-    if (uiSettings.getOverrideLafFonts()) {
-      applySettingsFont(lookAndFeelDefaults, uiSettings.getFontFace(), uiSettings.getFontSize());
+    if (uiSettings.overrideLafFonts) {
+      applySettingsFont(lookAndFeelDefaults, uiSettings.fontFace, uiSettings.fontSize)
     } else if (useMaterialFont) {
-      applyMaterialFonts(lookAndFeelDefaults);
+      applyMaterialFonts(lookAndFeelDefaults)
     } else {
       if (SystemInfo.isMacOSYosemite) {
-        LafManagerImpl.installMacOSXFonts(lookAndFeelDefaults);
+        LafManagerImpl.installMacOSXFonts(lookAndFeelDefaults)
       }
     }
 
-    applyCustomTreeFont(lookAndFeelDefaults);
-
-    applyGlobalFontSettings();
+    applyCustomTreeFont(lookAndFeelDefaults)
+    applyGlobalFontSettings()
   }
 
-  private static void applyCustomTreeFont(final @NonNls UIDefaults lookAndFeelDefaults) {
-    final int treeFontSize = JBUI.scale(CONFIG.getTreeFontSize());
-    final String treeFont = CONFIG.getTreeFont();
+  /**
+   * Apply custom tree font
+   *
+   * @param lookAndFeelDefaults
+   */
+  private fun applyCustomTreeFont(lookAndFeelDefaults: @NonNls UIDefaults?) {
+    val treeFontSize = JBUI.scale(CONFIG.treeFontSize)
+    val treeFont = CONFIG.treeFont
 
-    if (CONFIG.isTreeFontSizeEnabled()) {
-      final Font font = lookAndFeelDefaults.getFont("Tree.font");
-      lookAndFeelDefaults.put("Tree.font", new Font(treeFont, font.getStyle(), treeFontSize));
-      LafManager.getInstance().updateUI();
+    if (CONFIG.isTreeFontSizeEnabled) {
+      val font = lookAndFeelDefaults!!.getFont("Tree.font")
+      lookAndFeelDefaults["Tree.font"] = Font(treeFont, font.style, treeFontSize)
+      LafManager.getInstance().updateUI()
     }
   }
 
-  private static void applyGlobalFontSettings() {
-    final EditorColorsScheme currentScheme = MTUiUtils.getCurrentScheme();
-    if (CONFIG.isUseGlobalFont()) {
-      currentScheme.setUseAppFontPreferencesInEditor();
+  /**
+   * Apply global font settings
+   *
+   */
+  private fun applyGlobalFontSettings() {
+    val currentScheme = MTUiUtils.getCurrentScheme()
+    if (CONFIG.isUseGlobalFont) {
+      currentScheme.setUseAppFontPreferencesInEditor()
     }
-    EditorFactory.getInstance().refreshAllEditors();
+    EditorFactory.getInstance().refreshAllEditors()
   }
 
-  @NotNull
-  private static FontPreferences getFontPreferences() {
-    return MTUiUtils.getCurrentScheme().getFontPreferences();
-  }
+  private val fontPreferences: FontPreferences
+    get() = MTUiUtils.getCurrentScheme().fontPreferences
   //endregion
 
   //region Contrast support
-
   /**
    * Apply contrast
    *
    * @param reloadUI if true, reload the ui
    */
-  private static void applyContrast(final boolean reloadUI) {
-    final boolean apply = CONFIG.isContrastMode();
-    final MTThemeable mtTheme = CONFIG.getSelectedTheme().getTheme();
-    mtTheme.applyContrast(apply);
-
+  private fun applyContrast(reloadUI: Boolean) {
+    val apply = CONFIG.isContrastMode
+    val mtTheme = CONFIG.selectedTheme.theme
+    mtTheme.applyContrast(apply)
     if (reloadUI) {
-      reloadUI();
+      reloadUI()
     }
   }
-
   //endregion
 
   //region Custom tree indents support
-
   /**
    * Apply custom tree indent
    */
-  @SuppressWarnings("FeatureEnvy")
-  private static void applyCustomTreeIndent() {
-
-    if (CONFIG.isCustomTreeIndentEnabled()) {
-      UIManager.put("Tree.leftChildIndent", CONFIG.getLeftTreeIndent());
-      UIManager.put("Tree.rightChildIndent", CONFIG.getRightTreeIndent());
+  private fun applyCustomTreeIndent() {
+    if (CONFIG.isCustomTreeIndentEnabled) {
+      UIManager.put("Tree.leftChildIndent", CONFIG.leftTreeIndent)
+      UIManager.put("Tree.rightChildIndent", CONFIG.rightTreeIndent)
     } else {
-      UIManager.put("Tree.leftChildIndent", (MTConfig.DEFAULT_INDENT / 2) + JBUI.scale(7));
-      UIManager.put("Tree.rightChildIndent", (MTConfig.DEFAULT_INDENT / 2) + JBUI.scale(4));
+      UIManager.put("Tree.leftChildIndent", MTConfig.DEFAULT_INDENT / 2 + JBUI.scale(7))
+      UIManager.put("Tree.rightChildIndent", MTConfig.DEFAULT_INDENT / 2 + JBUI.scale(4))
     }
   }
   //endregion
 
   //region Compact Menus support
-
   /**
    * Apply custom tree indent
    */
-  private static void applyMenusHeight() {
-    if (CONFIG.isCompactMenus()) {
-      UIManager.put("PopupMenuSeparator.height", 3);
-      UIManager.put("PopupMenuSeparator.stripeIndent", 1);
+  private fun applyMenusHeight() {
+    if (CONFIG.isCompactMenus) {
+      UIManager.put("PopupMenuSeparator.height", 3)
+      UIManager.put("PopupMenuSeparator.stripeIndent", 1)
     } else {
-      UIManager.put("PopupMenuSeparator.height", 10);
-      UIManager.put("PopupMenuSeparator.stripeIndent", 5);
+      UIManager.put("PopupMenuSeparator.height", 10)
+      UIManager.put("PopupMenuSeparator.stripeIndent", 5)
     }
   }
   //endregion
 
   //region Compact Dropdowns support
-
   /**
    * Apply custom tree indent
    */
-  @SuppressWarnings({"MagicNumber",
-    "java:S109"})
-  private static void applyDropdownLists() {
-    if (CONFIG.isCompactDropdowns()) {
-      UIManager.put("ActionsList.cellBorderInsets", JBUI.insets(1, 10, 1, 15));
+  private fun applyDropdownLists() {
+    if (CONFIG.isCompactDropdowns) {
+      UIManager.put("ActionsList.cellBorderInsets", JBUI.insets(1, 10, 1, 15))
     } else {
-      UIManager.put("ActionsList.cellBorderInsets", JBUI.insets(5, 10, 5, 15));
+      UIManager.put("ActionsList.cellBorderInsets", JBUI.insets(5, 10, 5, 15))
     }
   }
   //endregion
 
   //region Compact Sidebar support
-
   /**
    * Use compact sidebar option
    */
-  private static void applyCompactSidebar(final boolean reloadUI) {
-    final boolean isCustomSidebarHeight = CONFIG.isCompactSidebar();
-    final int customSidebarHeight = CONFIG.getCustomSidebarHeight();
-    final int rowHeight = isCustomSidebarHeight ? JBUI.scale(customSidebarHeight) : JBUI.scale(MTConfig.DEFAULT_SIDEBAR_HEIGHT);
-    UIManager.put("Tree.rowHeight", rowHeight);
+  private fun applyCompactSidebar(reloadUI: Boolean) {
+    val isCustomSidebarHeight = CONFIG.isCompactSidebar
+    val customSidebarHeight = CONFIG.customSidebarHeight
+    val rowHeight =
+      if (isCustomSidebarHeight) JBUI.scale(customSidebarHeight) else JBUI.scale(MTConfig.DEFAULT_SIDEBAR_HEIGHT)
 
+    UIManager.put("Tree.rowHeight", rowHeight)
     if (reloadUI) {
-      reloadUI();
+      reloadUI()
     }
   }
-
   //endregion
 
   //region Accents supports
-
   /**
    * Override patch style editor kit for custom accent support
    */
-  @SuppressWarnings({"OverlyBroadCatchBlock",
-    "java:S2221",
-    "java:S1166",
-    "java:S108"})
-  private static void patchStyledEditorKit() {
-    @NonNls final UIDefaults defaults = UIManager.getLookAndFeelDefaults();
-    final MTThemeable selectedTheme = CONFIG.getSelectedTheme().getTheme();
-
-    // Load css
-    final URL url = selectedTheme.getClass().getResource(selectedTheme.getId() + (JBUIScale.isUsrHiDPI() ? RETINA : NON_RETINA));
-    StyleSheet styleSheet = UIUtil.loadStyleSheet(url);
-    if (styleSheet == null) {
-      final URL fallbackUrl = DarculaLaf.class.getResource(DARCULA + (JBUIScale.isUsrHiDPI() ? RETINA : NON_RETINA));
-      styleSheet = UIUtil.loadStyleSheet(fallbackUrl);
-    }
-
-    // Add custom accent color
-    assert styleSheet != null;
-    final String accentColor = ColorUtil.toHex(MTUI.Panel.getLinkForeground());
-
-    @NonNls final String css = "a, address, b { color: #%s; }";
-    styleSheet.addRule(String.format(css, accentColor));
-    UIManager.put("StyledEditorKit.JBDefaultStyle", styleSheet);
-    defaults.put("StyledEditorKit.JBDefaultStyle", styleSheet);
-
-    try {
-      final Field keyField = HTMLEditorKit.class.getDeclaredField("DEFAULT_STYLES_KEY");
-      keyField.setAccessible(true);
-      AppContext.getAppContext().put(keyField.get(null), styleSheet);
-    } catch (final Exception ignored) {
-    }
+  private fun patchStyledEditorKit() {
+    MTStyledKitPatcher.patchStyledEditorKit()
   }
 
-  private static void addAccentColorTint() {
-    SVGLoader.setColorPatcherProvider(new MTAccentColorPatcher());
-  }
+  /**
+   * Add accent color tint
+   *
+   */
+  private fun addAccentColorTint() = SVGLoader.setColorPatcherProvider(MTAccentColorPatcher())
 
   /**
    * Toggle accent mode
    */
-  @SuppressWarnings("FeatureEnvy")
-  public static void toggleAccentMode() {
-    CONFIG.setAccentMode(!CONFIG.isAccentMode());
-    CONFIG.fireChanged();
+  fun toggleAccentMode() {
+    CONFIG.isAccentMode = !CONFIG.isAccentMode
+    CONFIG.fireChanged()
   }
   //endregion
 
   //region Tabs Height support
-
   /**
    * Sets tabs height.
    *
    * @param newTabsHeight the new tabs height
    */
-  public static void setTabsHeight(final int newTabsHeight) {
-    CONFIG.setTabsHeight(newTabsHeight);
+  fun setTabsHeight(newTabsHeight: Int) {
+    CONFIG.tabsHeight = newTabsHeight
   }
   //endregion
 
   /**
    * Trigger a reloadUI event
    */
-  private static void reloadUI() {
-    applyFonts();
+  private fun reloadUI() {
+    applyFonts()
+    DarculaInstaller.uninstall()
 
-    DarculaInstaller.uninstall();
     if (UIUtil.isUnderDarcula()) {
-      DarculaInstaller.install();
+      DarculaInstaller.install()
     }
-    LafManager.getInstance().updateUI();
+
+    LafManager.getInstance().updateUI()
   }
 
-  static void cleanRegistry() {
-    Registry.get(NEW_STRIPES_UI).resetToDefault();
+  /**
+   * Clean registry
+   *
+   */
+  fun cleanRegistry() {
+    Registry.get(NEW_STRIPES_UI).resetToDefault()
   }
 
-  @Override
-  public void dispose() {
-    //do nothing
+  companion object {
+    private val CONFIG = MTConfig.getInstance()
+    const val RETINA: String = "@2x.css"
+    const val NON_RETINA: String = ".css"
+    private const val DARCULA: String = "darcula"
+
+    const val NEW_STRIPES_UI: String = "ide.experimental.ui.toolwindow.stripes"
+
+    val instance: MTThemeManager
+      get() = ApplicationManager.getApplication().getService(MTThemeManager::class.java)
   }
 }

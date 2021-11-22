@@ -143,7 +143,7 @@ object MTNotifications {
           true,
           true,
           BalloonLayoutData.fullContent(),
-          MTThemeManager.getInstance()
+          MTThemeManager.instance
         )
         // Display the balloon at the top right
         balloon.show(target, Balloon.Position.atLeft)

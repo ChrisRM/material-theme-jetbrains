@@ -35,7 +35,7 @@ class MTHighContrastAction : MTToggleAction() {
   override fun isSelected(e: AnActionEvent): Boolean = MTConfig.getInstance().isHighContrast
 
   override fun setSelected(e: AnActionEvent, state: Boolean) {
-    MTThemeManager.toggleHighContrast()
+    MTThemeManager.instance.toggleHighContrast()
     instance.trackValue(MTAnalytics.HIGH_CONTRAST, state)
     super.setSelected(e, state)
   }

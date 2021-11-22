@@ -97,11 +97,11 @@ public final class MTLafComponent implements AppLifecycleListener {
 
     if (currentLookAndFeel instanceof UIThemeBasedLookAndFeelInfo) {
       final UIThemeBasedLookAndFeelInfo lookAndFeel = (UIThemeBasedLookAndFeelInfo) currentLookAndFeel;
-      MTThemeManager.activateLAF(lookAndFeel.getTheme());
+      MTThemeManager.Companion.getInstance().activateLAF(lookAndFeel.getTheme());
     } else if (activeLookAndFeel instanceof DarculaLookAndFeelInfo) {
-      MTThemeManager.activateLAF("darcula", true, MTUiUtils.DARCULA);
+      MTThemeManager.Companion.getInstance().activateLAF("darcula", true, MTUiUtils.DARCULA);
     } else if (activeLookAndFeel instanceof IntelliJLookAndFeelInfo) {
-      MTThemeManager.activateLAF("default", false, "Light");
+      MTThemeManager.Companion.getInstance().activateLAF("default", false, "Light");
     }
   }
 
@@ -162,7 +162,7 @@ public final class MTLafComponent implements AppLifecycleListener {
 
   @SuppressWarnings("WeakerAccess")
   static void activateTheme() {
-    MTThemeManager.activate();
+    MTThemeManager.Companion.getInstance().activate();
   }
 
   private static void patchTree() {
@@ -212,7 +212,7 @@ public final class MTLafComponent implements AppLifecycleListener {
     final UIManager.LookAndFeelInfo currentLookAndFeel = LafManager.getInstance().getCurrentLookAndFeel();
 
     if (shouldChangeTheme) {
-      MTThemeManager.setLookAndFeel(MTConfig.getInstance().getSelectedTheme());
+      MTThemeManager.Companion.getInstance().setLookAndFeel(MTConfig.getInstance().getSelectedTheme());
     }
 
     // if theme hasnt changed, force reactivation

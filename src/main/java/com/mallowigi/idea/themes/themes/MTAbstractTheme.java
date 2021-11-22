@@ -118,7 +118,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
       // Apply theme accent color if said so
       if (config.isOverrideAccentColor()) {
         config.setAccentColor(ColorUtil.toHex(getAccentColorResource()));
-        MTThemeManager.applyAccents(true);
+        MTThemeManager.Companion.getInstance().applyAccents(true);
       }
 
       installBackgroundImage();

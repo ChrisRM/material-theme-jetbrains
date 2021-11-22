@@ -35,7 +35,7 @@ class MTProjectFrameAction : MTToggleAction() {
   override fun isSelected(e: AnActionEvent): Boolean = MTConfig.getInstance().isUseProjectFrame
 
   override fun setSelected(e: AnActionEvent, state: Boolean) {
-    MTThemeManager.toggleProjectFrame()
+    MTThemeManager.instance.toggleProjectFrame()
     instance.trackValue(MTAnalytics.PROJECT_FRAME, state)
     super.setSelected(e, state)
   }

@@ -687,7 +687,9 @@ public enum MTUI {
     public static final String LINK_FOREGROUND = "link.foreground";
     public static final Font FONT = UIManager.getFont("Panel.Font");
     @NonNls
-    private static final String COUNTER_BACKGROUND = "Counter.background";
+    public static final String COUNTER_BACKGROUND = "Counter.background";
+    @NonNls
+    public static final String TOOL_WINDOW_TAB_VERTICAL_PADDING = "ToolWindow.tab.verticalPadding";
 
     public static Color getBackground() {
       return JBColor.namedColor(PANEL_BACKGROUND, UIUtil.getPanelBackground());
@@ -747,6 +749,10 @@ public enum MTUI {
 
     public static Font getFont() {
       return FONT;
+    }
+
+    public static int getToolWindowPadding() {
+      return UIManager.getInt(TOOL_WINDOW_TAB_VERTICAL_PADDING);
     }
 
     public static Color getAccentColor() {

@@ -92,12 +92,12 @@ public final class MTWizardContrastPanel extends AbstractCustomizeWizardStep {
   }
 
   private void contrastCheckboxActionPerformed(final ActionEvent e) {
-    MTThemeManager.toggleContrast();
+    MTThemeManager.Companion.getInstance().toggleContrast();
     config.setContrastMode(contrastCheckbox.isSelected());
   }
 
   private void highContrastCheckboxActionPerformed(final ActionEvent e) {
-    MTThemeManager.toggleHighContrast();
+    MTThemeManager.Companion.getInstance().toggleHighContrast();
     config.setHighContrast(highContrastCheckbox.isSelected());
   }
 

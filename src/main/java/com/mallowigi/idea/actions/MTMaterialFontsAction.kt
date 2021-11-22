@@ -37,7 +37,7 @@ class MTMaterialFontsAction : MTToggleAction() {
 
   override fun setSelected(e: AnActionEvent, state: Boolean) {
     if (state) MTForm.showFontWarningDialog()
-    MTThemeManager.toggleMaterialFonts()
+    MTThemeManager.instance.toggleMaterialFonts()
     instance.trackValue(MTAnalytics.MATERIAL_FONTS, state)
     super.setSelected(e, state)
   }

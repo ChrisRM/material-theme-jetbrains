@@ -38,7 +38,7 @@ class MTStripedToolWindowsAction : MTToggleAction() {
   override fun isSelected(e: AnActionEvent): Boolean = MTConfig.getInstance().isStripedToolWindowsEnabled
 
   override fun setSelected(e: AnActionEvent, state: Boolean) {
-    MTThemeManager.toggleStripedToolWindows()
+    MTThemeManager.instance.toggleStripedToolWindows()
     instance.trackValue(MTAnalytics.STRIPED_TOOL_WINDOWS, state)
     super.setSelected(e, state)
 

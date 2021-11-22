@@ -35,7 +35,7 @@ class MTAccentModeAction : MTToggleAction() {
   override fun isSelected(e: AnActionEvent): Boolean = MTConfig.getInstance().isAccentMode
 
   override fun setSelected(e: AnActionEvent, state: Boolean) {
-    MTThemeManager.toggleAccentMode()
+    MTThemeManager.instance.toggleAccentMode()
     instance.trackValue(MTAnalytics.ACCENT_MODE, state)
     super.setSelected(e, state)
   }

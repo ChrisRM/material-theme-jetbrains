@@ -35,7 +35,7 @@ class MTCompactDropdownsAction : MTToggleAction() {
   override fun isSelected(e: AnActionEvent): Boolean = MTConfig.getInstance().isCompactDropdowns
 
   override fun setSelected(e: AnActionEvent, state: Boolean) {
-    MTThemeManager.toggleCompactDropdowns()
+    MTThemeManager.instance.toggleCompactDropdowns()
     instance.trackValue(MTAnalytics.COMPACT_DROPDOWNS, state)
     super.setSelected(e, state)
   }

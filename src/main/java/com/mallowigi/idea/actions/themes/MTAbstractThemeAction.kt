@@ -40,7 +40,7 @@ abstract class MTAbstractThemeAction : MTToggleAction(), DumbAware {
     MTButtonUI.resetCache()
 
     val selectedTheme = theme
-    MTThemeManager.setLookAndFeel(selectedTheme)
+    MTThemeManager.instance.setLookAndFeel(selectedTheme)
 
     instance.trackValue(MTAnalytics.SELECT_THEME, selectedTheme)
     super.setSelected(e, state)

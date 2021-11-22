@@ -35,7 +35,7 @@ class MTToggleOutlineButtonsAction : MTToggleAction() {
   override fun isSelected(e: AnActionEvent): Boolean = MTConfig.getInstance().isBorderedButtons
 
   override fun setSelected(e: AnActionEvent, state: Boolean) {
-    MTThemeManager.toggleOutlinedButtons()
+    MTThemeManager.instance.toggleOutlinedButtons()
     instance.trackValue(MTAnalytics.OUTLINE_BUTTONS, state)
     super.setSelected(e, state)
   }

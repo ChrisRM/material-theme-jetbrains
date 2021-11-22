@@ -297,7 +297,7 @@ public final class MTBundledThemesManager implements Disposable {
         //         Install theme if not installed
         final MTThemeFacade externalTheme = MTThemes.installTheme(theme);
 
-        MTThemeManager.activate(externalTheme);
+        MTThemeManager.Companion.getInstance().activate(externalTheme);
         MTAnalytics.getInstance().trackValue(MTAnalytics.SELECT_THEME, externalTheme);
       }
     });

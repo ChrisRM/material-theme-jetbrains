@@ -35,7 +35,7 @@ class MTToggleOverlaysAction : MTToggleAction() {
   override fun isSelected(e: AnActionEvent): Boolean = MTConfig.getInstance().isShowOverlays
 
   override fun setSelected(e: AnActionEvent, state: Boolean) {
-    MTThemeManager.toggleOverlays()
+    MTThemeManager.instance.toggleOverlays()
     instance.trackValue(MTAnalytics.OVERLAYS, state)
     super.setSelected(e, state)
   }

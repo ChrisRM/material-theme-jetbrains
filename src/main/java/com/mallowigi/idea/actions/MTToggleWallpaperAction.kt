@@ -35,7 +35,7 @@ class MTToggleWallpaperAction : MTToggleAction() {
   override fun isSelected(e: AnActionEvent): Boolean = MTConfig.getInstance().isUseMaterialWallpapers
 
   override fun setSelected(e: AnActionEvent, state: Boolean) {
-    MTThemeManager.toggleMaterialWallpapers()
+    MTThemeManager.instance.toggleMaterialWallpapers()
     instance.trackValue(MTAnalytics.MATERIAL_WALLPAPERS, state)
     super.setSelected(e, state)
   }

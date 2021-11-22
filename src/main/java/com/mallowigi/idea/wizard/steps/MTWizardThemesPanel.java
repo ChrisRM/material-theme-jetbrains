@@ -97,7 +97,7 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
   }
 
   private static void selectTheme(final MTThemeFacade theme) {
-    MTThemeManager.setLookAndFeel(theme);
+    MTThemeManager.Companion.getInstance().setLookAndFeel(theme);
   }
 
   private void oceanicButtonActionPerformed(final ActionEvent e) {

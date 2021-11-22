@@ -34,7 +34,7 @@ class MTTreeCustomFontAction : MTToggleAction() {
   override fun isSelected(e: AnActionEvent): Boolean = MTConfig.getInstance().isTreeFontSizeEnabled
 
   override fun setSelected(e: AnActionEvent, state: Boolean) {
-    MTThemeManager.toggleCustomTreeFont()
+    MTThemeManager.instance.toggleCustomTreeFont()
     MTAnalytics.instance.trackValue(MTAnalytics.CUSTOM_TREE_FONT, state)
     super.setSelected(e, state)
   }

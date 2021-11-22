@@ -35,7 +35,7 @@ class MTLanguageAdditionsAction : MTToggleAction() {
   override fun isSelected(e: AnActionEvent): Boolean = MTConfig.getInstance().isCodeAdditionsEnabled
 
   override fun setSelected(e: AnActionEvent, state: Boolean) {
-    MTThemeManager.toggleCodeAdditions()
+    MTThemeManager.instance.toggleCodeAdditions()
     instance.trackValue(MTAnalytics.LANGUAGE_ADDITIONS, state)
     super.setSelected(e, state)
   }

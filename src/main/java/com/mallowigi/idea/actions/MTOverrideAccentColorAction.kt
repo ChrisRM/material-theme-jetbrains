@@ -35,7 +35,7 @@ class MTOverrideAccentColorAction : MTToggleAction() {
   override fun isSelected(e: AnActionEvent): Boolean = MTConfig.getInstance().isOverrideAccentColor
 
   override fun setSelected(e: AnActionEvent, state: Boolean) {
-    MTThemeManager.toggleOverrideAccent()
+    MTThemeManager.instance.toggleOverrideAccent()
     instance.trackValue(MTAnalytics.OVERRIDE_ACCENT, state)
     super.setSelected(e, state)
   }

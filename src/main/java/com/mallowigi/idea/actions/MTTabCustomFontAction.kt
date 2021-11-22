@@ -34,7 +34,7 @@ class MTTabCustomFontAction : MTToggleAction() {
   override fun isSelected(e: AnActionEvent): Boolean = MTConfig.getInstance().isTabFontSizeEnabled
 
   override fun setSelected(e: AnActionEvent, state: Boolean) {
-    MTThemeManager.toggleCustomTabFont()
+    MTThemeManager.instance.toggleCustomTabFont()
     MTAnalytics.instance.trackValue(MTAnalytics.CUSTOM_TAB_FONT, state)
     super.setSelected(e, state)
   }

@@ -35,7 +35,7 @@ class MTUpperCaseTabsAction : MTToggleAction() {
   override fun isSelected(e: AnActionEvent): Boolean = MTConfig.getInstance().isUpperCaseTabs
 
   override fun setSelected(e: AnActionEvent, state: Boolean) {
-    MTThemeManager.toggleUpperCaseTabs()
+    MTThemeManager.instance.toggleUpperCaseTabs()
     instance.trackValue(MTAnalytics.UPPERCASE_TABS, state)
     super.setSelected(e, state)
   }

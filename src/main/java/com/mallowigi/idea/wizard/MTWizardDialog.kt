@@ -42,7 +42,7 @@ import javax.swing.JComponent
  */
 class MTWizardDialog(
   stepsProvider: CustomizeIDEWizardStepsProvider?,
-  firstRun: Boolean
+  firstRun: Boolean,
 ) : CustomizeIDEWizardDialog(stepsProvider!!) {
   private val configCopy: MTConfig
 
@@ -52,8 +52,8 @@ class MTWizardDialog(
     configCopy = MTConfig.getInstance().clone()
     setSize(1200, 800)
     if (firstRun) {
-      MTThemeManager.setLookAndFeel(MTThemes.OCEANIC)
-      MTThemeManager.activate()
+      MTThemeManager.instance.setLookAndFeel(MTThemes.OCEANIC)
+      MTThemeManager.instance.activate()
     }
 
     initCurrentStep()
@@ -75,7 +75,7 @@ class MTWizardDialog(
   override fun doCancelAction() {
     super.doCancelAction()
     MTConfig.getInstance().loadState(configCopy)
-    MTThemeManager.activate()
+    MTThemeManager.instance.activate()
   }
 
   private fun initCurrentStep() {

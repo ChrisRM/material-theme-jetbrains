@@ -35,7 +35,7 @@ class MTToggleColoredDirsAction : MTToggleAction() {
   override fun isSelected(e: AnActionEvent): Boolean = MTConfig.getInstance().isUseColoredDirectories
 
   override fun setSelected(e: AnActionEvent, state: Boolean) {
-    MTThemeManager.toggleColoredDirs()
+    MTThemeManager.instance.toggleColoredDirs()
     instance.trackValue(MTAnalytics.COLORED_DIRS, state)
     super.setSelected(e, state)
   }

@@ -48,7 +48,7 @@ class XPathListener : LafManagerListener, StartupActivity {
   private fun installXPathSearchColors() {
     val currentLookAndFeel = LafManager.getInstance().currentLookAndFeel
     val xpathConfig = XPathAppComponent.getInstance().config
-    if (MTThemeManager.isMaterialTheme(currentLookAndFeel)) {
+    if (MTThemeManager.instance.isMaterialTheme(currentLookAndFeel)) {
       val schemeForCurrentUITheme = EditorColorsManager.getInstance().schemeForCurrentUITheme
       // install themed search results text attributes.
       val textSearchResultAttributes = schemeForCurrentUITheme.getAttributes(EditorColors.TEXT_SEARCH_RESULT_ATTRIBUTES)
