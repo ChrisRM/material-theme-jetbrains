@@ -23,96 +23,59 @@
  *
  *
  */
+package com.mallowigi.idea.config
 
-package com.mallowigi.idea.config;
+import com.intellij.openapi.editor.HighlighterColors
+import com.intellij.openapi.editor.colors.TextAttributesKey
+import com.intellij.openapi.fileTypes.PlainSyntaxHighlighter
+import com.intellij.openapi.fileTypes.SyntaxHighlighter
+import com.intellij.openapi.options.colors.AttributesDescriptor
+import com.intellij.openapi.options.colors.ColorDescriptor
+import com.intellij.openapi.options.colors.ColorSettingsPage
+import com.intellij.openapi.vcs.FileStatusFactory
+import com.intellij.psi.codeStyle.DisplayPriority
+import com.intellij.psi.codeStyle.DisplayPrioritySortable
+import com.intellij.util.ArrayUtil
+import com.mallowigi.idea.messages.MaterialThemeBundle.message
+import com.mallowigi.idea.schemes.MTFileColors.getColorKey
+import javax.swing.Icon
 
-import com.intellij.openapi.editor.HighlighterColors;
-import com.intellij.openapi.editor.colors.TextAttributesKey;
-import com.intellij.openapi.fileTypes.PlainSyntaxHighlighter;
-import com.intellij.openapi.fileTypes.SyntaxHighlighter;
-import com.intellij.openapi.options.colors.AttributesDescriptor;
-import com.intellij.openapi.options.colors.ColorDescriptor;
-import com.intellij.openapi.options.colors.ColorSettingsPage;
-import com.intellij.openapi.vcs.FileStatus;
-import com.intellij.openapi.vcs.FileStatusFactory;
-import com.intellij.psi.codeStyle.DisplayPriority;
-import com.intellij.psi.codeStyle.DisplayPrioritySortable;
-import com.intellij.util.ArrayUtil;
-import com.mallowigi.idea.messages.MaterialThemeBundle;
-import com.mallowigi.idea.schemes.MTFileColors;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+class MTFileColorsPage : ColorSettingsPage, DisplayPrioritySortable {
+  override fun getAttributeDescriptors(): Array<AttributesDescriptor> = ATTRIBUTES_DESCRIPTORS.clone()
 
-import javax.swing.*;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Map;
+  override fun getColorDescriptors(): Array<ColorDescriptor> = DESCRIPTORS
 
-@SuppressWarnings("ObjectAllocationInLoop")
-public final class MTFileColorsPage implements ColorSettingsPage, DisplayPrioritySortable {
-  public static final TextAttributesKey DIRECTORIES = TextAttributesKey.createTextAttributesKey("MT_DIRECTORIES", HighlighterColors.TEXT);
-  private static final ColorDescriptor[] DESCRIPTORS;
-  private static final AttributesDescriptor[] ATTRIBUTES_DESCRIPTORS = {
-    new AttributesDescriptor(MaterialThemeBundle.message("material.file.directories"), DIRECTORIES)
-  };
+  override fun getDisplayName(): String = message("MTFileColors.colors.page.name")
 
-  static {
-    final FileStatus[] allFileStatuses = FileStatusFactory.getInstance().getAllFileStatuses();
-    final Collection<ColorDescriptor> colorDescriptors = new ArrayList<>(allFileStatuses.length);
+  override fun getPriority(): DisplayPriority = DisplayPriority.COMMON_SETTINGS
 
-    for (final FileStatus allFileStatus : allFileStatuses) {
-      // mt color descriptors
-      colorDescriptors.add(new ColorDescriptor(allFileStatus.getText(),
-        MTFileColors.getColorKey(allFileStatus),
-        ColorDescriptor.Kind.FOREGROUND));
+  override fun getIcon(): Icon? = null
+
+  override fun getHighlighter(): SyntaxHighlighter = PlainSyntaxHighlighter()
+
+  override fun getDemoText(): String = " "
+
+  override fun getAdditionalHighlightingTagToDescriptorMap(): Map<String, TextAttributesKey>? = null
+
+  companion object {
+    val DIRECTORIES: TextAttributesKey =
+      TextAttributesKey.createTextAttributesKey("MT_DIRECTORIES", HighlighterColors.TEXT)
+
+    private val DESCRIPTORS: Array<ColorDescriptor>
+
+    private val ATTRIBUTES_DESCRIPTORS =
+      arrayOf(AttributesDescriptor(message("material.file.directories"), DIRECTORIES))
+
+    init {
+      val allFileStatuses = FileStatusFactory.getInstance().allFileStatuses
+      val colorDescriptors: MutableSet<ColorDescriptor> = mutableSetOf()
+      allFileStatuses.forEach {
+        colorDescriptors.add(ColorDescriptor(it.text,
+                                             getColorKey(it)!!,
+                                             ColorDescriptor.Kind.FOREGROUND))
+      }
+
+      DESCRIPTORS = ArrayUtil.toObjectArray(colorDescriptors, ColorDescriptor::class.java)
     }
-    DESCRIPTORS = ArrayUtil.toObjectArray(colorDescriptors, ColorDescriptor.class);
-  }
-
-  @Override
-  @NotNull
-  public AttributesDescriptor[] getAttributeDescriptors() {
-    return ATTRIBUTES_DESCRIPTORS.clone();
-  }
-
-  @NotNull
-  @Override
-  public ColorDescriptor[] getColorDescriptors() {
-    return DESCRIPTORS;
-  }
-
-  @NotNull
-  @Override
-  public String getDisplayName() {
-    return MaterialThemeBundle.message("MTFileColors.colors.page.name");
-  }
-
-  @Override
-  public DisplayPriority getPriority() {
-    return DisplayPriority.COMMON_SETTINGS;
-  }
-
-  @Nullable
-  @Override
-  public Icon getIcon() {
-    return null;
-  }
-
-  @NotNull
-  @Override
-  public SyntaxHighlighter getHighlighter() {
-    return new PlainSyntaxHighlighter();
-  }
-
-  @NotNull
-  @Override
-  public String getDemoText() {
-    return " ";
-  }
-
-  @Nullable
-  @Override
-  public Map<String, TextAttributesKey> getAdditionalHighlightingTagToDescriptorMap() {
-    return null;
   }
 }
