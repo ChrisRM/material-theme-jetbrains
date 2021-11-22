@@ -116,6 +116,8 @@ public enum MTUiUtils {
   private static final RenderingHints RENDERING_HINTS;
   @NonNls
   public static final String NOTO_SANS = "Noto Sans";
+  @NonNls
+  public static final boolean SHOW_GOT_IT_TOOLTIP = false;
 
   static {
     RENDERING_HINTS = new RenderingHints(RenderingHints.KEY_ALPHA_INTERPOLATION, RenderingHints.VALUE_ALPHA_INTERPOLATION_SPEED);
@@ -226,6 +228,11 @@ public enum MTUiUtils {
     } else {
       application.restart();
     }
+  }
+
+  public static boolean isUpdated() {
+    final @NonNls String version = getVersion();
+    return !version.equals(MTConfig.getInstance().getVersion());
   }
 
   /**

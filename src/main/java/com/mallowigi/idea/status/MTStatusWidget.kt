@@ -104,7 +104,10 @@ internal class MTStatusWidget : CustomStatusBarWidget {
       }.setActionTrigger(MouseEvent.MOUSE_PRESSED)
       font = widgetFont
       putClientProperty(MTUI.Button.NO_BORDER, true)
-      showGotItTooltip()
+
+      if (MTUiUtils.SHOW_GOT_IT_TOOLTIP) {
+        showGotItTooltip()
+      }
     }
 
     override fun dispose() {

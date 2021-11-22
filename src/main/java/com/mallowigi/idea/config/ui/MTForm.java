@@ -1776,7 +1776,9 @@ public class MTForm implements MTFormUI, Disposable {
 
     configureLinks();
 
-    showGotItTooltip();
+    if (MTUiUtils.SHOW_GOT_IT_TOOLTIP) {
+      showGotItTooltip();
+    }
   }
 
   /**
