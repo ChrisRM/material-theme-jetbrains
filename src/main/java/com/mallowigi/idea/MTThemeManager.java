@@ -304,10 +304,10 @@ public final class MTThemeManager implements Disposable {
    * Update file icons.
    */
   private static void updateFileIcons() {
-    ModalityUiUtil.invokeLaterIfNeeded(() -> {
+    ModalityUiUtil.invokeLaterIfNeeded(ModalityState.NON_MODAL, () -> {
       final Application app = ApplicationManager.getApplication();
       app.runWriteAction(() -> FileTypeManagerEx.getInstanceEx().fireFileTypesChanged());
-    }, ModalityState.NON_MODAL);
+    });
   }
   //endregion
 
@@ -388,7 +388,6 @@ public final class MTThemeManager implements Disposable {
 
     // Monochrome filter and co
     LafManager.getInstance().updateUI();
-    //    refreshColorScheme();
     // Custom UI Patches
     UIReplacer.patchUI();
 
@@ -445,7 +444,8 @@ public final class MTThemeManager implements Disposable {
   /**
    * Apply accents.
    */
-  @SuppressWarnings("MethodWithMultipleLoops")
+  @SuppressWarnings({"MethodWithMultipleLoops",
+    "java:S2301"})
   public static void applyAccents(final boolean fireEvent) {
     final Color accentColor = ColorUtil.fromHex(CONFIG.getAccentColor());
     final Color transparentAccentColor = ColorUtil.toAlpha(accentColor, 70);
@@ -622,8 +622,6 @@ public final class MTThemeManager implements Disposable {
     final EditorColorsScheme currentScheme = MTUiUtils.getCurrentScheme();
     if (CONFIG.isUseGlobalFont()) {
       currentScheme.setUseAppFontPreferencesInEditor();
-    } else {
-      currentScheme.setFontPreferences(getFontPreferences());
     }
     EditorFactory.getInstance().refreshAllEditors();
   }
@@ -800,10 +798,6 @@ public final class MTThemeManager implements Disposable {
 
   static void cleanRegistry() {
     Registry.get(NEW_STRIPES_UI).resetToDefault();
-  }
-
-  static boolean hasStripesEnabled() {
-    return Registry.get(NEW_STRIPES_UI).asBoolean();
   }
 
   @Override
