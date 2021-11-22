@@ -23,113 +23,68 @@
  *
  *
  */
+package com.mallowigi.idea.config
 
-package com.mallowigi.idea.config;
+import com.google.common.collect.Sets
+import com.intellij.openapi.editor.colors.ColorKey
+import com.intellij.openapi.editor.colors.TextAttributesKey
+import com.intellij.openapi.fileTypes.PlainSyntaxHighlighter
+import com.intellij.openapi.fileTypes.SyntaxHighlighter
+import com.intellij.openapi.options.colors.AttributesDescriptor
+import com.intellij.openapi.options.colors.ColorDescriptor
+import com.intellij.openapi.options.colors.ColorSettingsPage
+import com.intellij.openapi.util.SystemInfoRt
+import com.intellij.psi.codeStyle.DisplayPriority
+import com.intellij.psi.codeStyle.DisplayPrioritySortable
+import com.intellij.util.ArrayUtil
+import com.mallowigi.idea.messages.MaterialThemeBundle.message
+import com.mallowigi.idea.themes.lists.AccentResources.SCROLLBAR_HOVER_RESOURCES
+import com.mallowigi.idea.themes.lists.AccentResources.SCROLLBAR_RESOURCES
+import com.mallowigi.idea.themes.lists.MTThemeResources
+import org.jetbrains.annotations.NonNls
+import javax.swing.Icon
 
-import com.google.common.collect.Sets;
-import com.intellij.openapi.editor.colors.ColorKey;
-import com.intellij.openapi.editor.colors.TextAttributesKey;
-import com.intellij.openapi.fileTypes.PlainSyntaxHighlighter;
-import com.intellij.openapi.fileTypes.SyntaxHighlighter;
-import com.intellij.openapi.options.colors.AttributesDescriptor;
-import com.intellij.openapi.options.colors.ColorDescriptor;
-import com.intellij.openapi.options.colors.ColorSettingsPage;
-import com.intellij.openapi.util.SystemInfoRt;
-import com.intellij.psi.codeStyle.DisplayPriority;
-import com.intellij.psi.codeStyle.DisplayPrioritySortable;
-import com.intellij.util.ArrayUtil;
-import com.mallowigi.idea.messages.MaterialThemeBundle;
-import com.mallowigi.idea.themes.lists.AccentResources;
-import com.mallowigi.idea.themes.lists.MTThemeResources;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+class MTScrollbarsPage : ColorSettingsPage, DisplayPrioritySortable {
+  override fun getAttributeDescriptors(): Array<AttributesDescriptor?> = arrayOfNulls(0)
 
-import javax.swing.*;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Map;
+  override fun getColorDescriptors(): Array<ColorDescriptor> = DESCRIPTORS
 
-@SuppressWarnings("ObjectAllocationInLoop")
-public final class MTScrollbarsPage implements ColorSettingsPage, DisplayPrioritySortable {
-  private static final ColorDescriptor[] DESCRIPTORS;
+  override fun getDisplayName(): @NonNls String = message("MTScrollbars.title")
 
-  static {
-    final Collection<ColorDescriptor> colorDescriptors = new ArrayList<>(8);
+  override fun getPriority(): DisplayPriority = DisplayPriority.COMMON_SETTINGS
 
-    final Sets.SetView<String> thumbSets = Sets.union(
-      AccentResources.SCROLLBAR_HOVER_RESOURCES,
-      AccentResources.SCROLLBAR_RESOURCES);
+  override fun getIcon(): Icon? = null
 
-    final Sets.SetView<String> allSets = Sets.union(
-      thumbSets,
-      MTThemeResources.SCROLLBAR_RESOURCES);
+  override fun getHighlighter(): SyntaxHighlighter = PlainSyntaxHighlighter()
 
-    for (@NonNls final String resource : allSets) {
-      if (resource.contains("Mac.")) {
-        if (SystemInfoRt.isMac) {
-          colorDescriptors.add(new ColorDescriptor(
-            MaterialThemeBundle.message("mac.material.scrollbars." + resource),
-            ColorKey.find(resource),
-            ColorDescriptor.Kind.BACKGROUND));
-        }
+  override fun getDemoText(): String = " "
+
+  override fun getAdditionalHighlightingTagToDescriptorMap(): Map<String, TextAttributesKey>? = null
+
+  companion object {
+    private val DESCRIPTORS: Array<ColorDescriptor>
+
+    init {
+      val colorDescriptors: MutableSet<ColorDescriptor> = mutableSetOf()
+      val thumbnailResources = Sets.union(SCROLLBAR_HOVER_RESOURCES, SCROLLBAR_RESOURCES)
+      val allResources = Sets.union(thumbnailResources, MTThemeResources.SCROLLBAR_RESOURCES)
+      val (macResources, nonMacResources) = allResources.partition { it.contains("Mac.") }
+
+      if (SystemInfoRt.isMac) {
+        macResources.forEach { addColorDescriptor(colorDescriptors, it) }
       } else {
-        if (!SystemInfoRt.isMac) {
-          colorDescriptors.add(new ColorDescriptor(
-            MaterialThemeBundle.message("material.scrollbars." + resource),
-            ColorKey.find(resource),
-            ColorDescriptor.Kind.BACKGROUND));
-        }
+        nonMacResources.forEach { addColorDescriptor(colorDescriptors, it) }
       }
+
+
+      DESCRIPTORS = ArrayUtil.toObjectArray(colorDescriptors, ColorDescriptor::class.java)
     }
-    DESCRIPTORS = ArrayUtil.toObjectArray(colorDescriptors, ColorDescriptor.class);
-  }
 
-  @NotNull
-  @Override
-  public AttributesDescriptor[] getAttributeDescriptors() {
-    return new AttributesDescriptor[0];
-  }
-
-  @NotNull
-  @Override
-  public ColorDescriptor[] getColorDescriptors() {
-    return DESCRIPTORS;
-  }
-
-  @NonNls
-  @NotNull
-  @Override
-  public String getDisplayName() {
-    return MaterialThemeBundle.message("MTScrollbars.title");
-  }
-
-  @Override
-  public DisplayPriority getPriority() {
-    return DisplayPriority.COMMON_SETTINGS;
-  }
-
-  @Nullable
-  @Override
-  public Icon getIcon() {
-    return null;
-  }
-
-  @NotNull
-  @Override
-  public SyntaxHighlighter getHighlighter() {
-    return new PlainSyntaxHighlighter();
-  }
-
-  @NotNull
-  @Override
-  public String getDemoText() {
-    return " ";
-  }
-
-  @Nullable
-  @Override
-  public Map<String, TextAttributesKey> getAdditionalHighlightingTagToDescriptorMap() {
-    return null;
+    private fun addColorDescriptor(colorDescriptors: MutableSet<ColorDescriptor>, resourceKey: String) {
+      colorDescriptors.add(ColorDescriptor(
+        message(resourceKey),
+        ColorKey.find(resourceKey),
+        ColorDescriptor.Kind.BACKGROUND))
+    }
   }
 }
