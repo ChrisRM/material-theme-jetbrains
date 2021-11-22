@@ -330,11 +330,6 @@
                     class="com.mallowigi.idea.actions.themes.MTLightCustomThemeAction"
                     icon="/icons/actions/themes/light_custom.svg">
             </action>
-            <!--            <action id="ChangeThemeGroup"-->
-            <!--                    class="com.mallowigi.idea.actions.themes.MTQuickChangeThemeAction"-->
-            <!--                    popup="true"-->
-            <!--                    icon="/icons/actions/mt/themeSwitch.svg">-->
-            <!--            </action>-->
         </group>
 
         <group id="MaterialTheme.Panels" popup="true"
@@ -621,12 +616,16 @@
             <action id="MTStripedToolWindowsAction"
                     class="com.mallowigi.idea.actions.MTStripedToolWindowsAction"
                     icon="/icons/actions/mt/stripedToolWindows.svg" />
+            <separator />
             <action id="MTRemoveWallpaperAction"
                     class="com.mallowigi.idea.actions.MTRemoveWallpaperAction"
                     icon="/icons/actions/mt/removeWallpaper.svg" />
             <action id="MTResetColorScheme"
                     class="com.mallowigi.idea.actions.MTResetColorScheme"
                     icon="/icons/actions/mt/resetColorScheme.svg" />
+            <action id="MTCleanOverlay"
+                    class="com.mallowigi.idea.actions.MTCleanOverlay"
+                    icon="/icons/actions/mt/cleanOverlay.svg" />
         </group>
 
         <group id="MaterialTheme.Menu"
@@ -642,7 +641,6 @@
             <separator />
             <reference id="MaterialTheme.Components" />
 
-            <!--            <reference id="ChangeThemeGroup" />-->
             <add-to-group group-id="NewToolbarActions" />
             <add-to-group group-id="ToolsMenu" />
             <add-to-group group-id="ChangeScheme" anchor="after" relative-to-action="MaterialTheme.Menu" />

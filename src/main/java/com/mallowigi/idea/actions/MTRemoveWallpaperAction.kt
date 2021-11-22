@@ -56,4 +56,6 @@ class MTRemoveWallpaperAction : AnAction() {
 
     MTAnalytics.instance.track(MTAnalytics.REMOVE_WALLPAPER)
   }
+
+  override fun isDumbAware(): Boolean = true
 }

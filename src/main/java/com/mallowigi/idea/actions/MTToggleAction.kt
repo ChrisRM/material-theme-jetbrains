@@ -88,4 +88,6 @@ abstract class MTToggleAction : ToggleAction() {
 
     override fun getIconHeight(): Int = icon?.iconHeight ?: JBUI.scale(18)
   }
+
+  override fun isDumbAware(): Boolean = true
 }

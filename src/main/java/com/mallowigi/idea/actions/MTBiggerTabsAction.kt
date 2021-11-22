@@ -30,11 +30,15 @@ import com.intellij.openapi.actionSystem.AnActionEvent
 import com.mallowigi.idea.MTAnalytics
 import com.mallowigi.idea.MTAnalytics.Companion.instance
 import com.mallowigi.idea.MTThemeManager
+import com.mallowigi.idea.messages.MaterialThemeBundle.message
+import com.mallowigi.idea.notifications.MTNotifications.showSimple
 
 class MTBiggerTabsAction : AnAction() {
   override fun actionPerformed(e: AnActionEvent) {
     MTThemeManager.setTabsHeight(42)
     instance.track(MTAnalytics.RECOMMENDED_HEIGHT)
+    showSimple(e.project!!, message("MTBiggerTabsAction.notification"))
   }
 
+  override fun isDumbAware(): Boolean = true
 }

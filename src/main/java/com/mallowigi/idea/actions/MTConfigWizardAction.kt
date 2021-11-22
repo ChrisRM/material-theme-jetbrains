@@ -36,9 +36,9 @@ import com.mallowigi.idea.wizard.MTWizardStepsProvider
 
 class MTConfigWizardAction : AnAction(), DumbAware {
   override fun actionPerformed(e: AnActionEvent) {
-    ApplicationManager.getApplication().invokeLater {
-      MTWizardDialog(MTWizardStepsProvider(), false).show()
-    }
+    ApplicationManager.getApplication().invokeLater { MTWizardDialog(MTWizardStepsProvider(), false).show() }
     instance.track(MTAnalytics.SHOW_WIZARD)
   }
+
+  override fun isDumbAware(): Boolean = true
 }

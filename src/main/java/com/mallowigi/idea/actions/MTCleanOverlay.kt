@@ -25,46 +25,18 @@
  */
 package com.mallowigi.idea.actions
 
-import com.intellij.application.options.colors.ColorAndFontOptions
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
-import com.intellij.openapi.editor.colors.EditorColorsManager
-import com.intellij.openapi.ui.Messages
 import com.mallowigi.idea.MTAnalytics
-import com.mallowigi.idea.messages.MaterialThemeBundle.message
+import com.mallowigi.idea.messages.MaterialThemeBundle
 import com.mallowigi.idea.notifications.MTNotifications
-import java.lang.reflect.InvocationTargetException
+import com.mallowigi.idea.ui.OverlayPainter
 
-class MTResetColorScheme : AnAction() {
+class MTCleanOverlay : AnAction() {
   override fun actionPerformed(e: AnActionEvent) {
-    if (Messages.showOkCancelDialog(
-        message("action.MTResetColorScheme.explanation"),
-        message("action.MTResetColorScheme.text"),
-        message("common.ok"),
-        message("common.cancel"),
-        Messages.getQuestionIcon()
-      ) == Messages.OK
-    ) {
-      val scheme = EditorColorsManager.getInstance().globalScheme
-      val options = ColorAndFontOptions()
-      options.reset()
-      options.selectScheme(scheme.name)
-
-      try {
-        val method = ColorAndFontOptions::class.java.getDeclaredMethod("resetSchemeToOriginal", String::class.java)
-        method.isAccessible = true
-        method.invoke(options, scheme.name)
-      } catch (ex: NoSuchMethodException) {
-        ex.printStackTrace()
-      } catch (ex: InvocationTargetException) {
-        ex.printStackTrace()
-      } catch (ex: IllegalAccessException) {
-        ex.printStackTrace()
-      }
-
-      MTAnalytics.instance.track(MTAnalytics.RESET_COLOR_SCHEME)
-      MTNotifications.showSimple(e.project!!, message("MTResetColorScheme.notification"))
-    }
+    OverlayPainter.instance.cleanOverlays()
+    MTAnalytics.instance.track(MTAnalytics.CLEAN_OVERLAYS)
+    MTNotifications.showSimple(e.project!!, MaterialThemeBundle.message("MTCleanOverlay.notification"))
   }
 
   override fun isDumbAware(): Boolean = true

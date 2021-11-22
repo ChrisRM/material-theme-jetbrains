@@ -168,6 +168,8 @@ class MTAnalytics {
     const val OVERLAYS: String = "Overlays"
     const val CUSTOM_TAB_FONT: String = "CustomTabFont"
     const val CUSTOM_TREE_FONT: String = "CustomTreeFont"
+    const val RESET_COLOR_SCHEME: String = "ResetColorScheme"
+    const val CLEAN_OVERLAYS: String = "CleanOverlays"
 
     @JvmStatic
     val instance: MTAnalytics

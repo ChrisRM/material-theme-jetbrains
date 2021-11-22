@@ -136,6 +136,8 @@ class OverlayPainter : AWTEventListener, Disposable {
     rootPanes.add(rootPane)
   }
 
+  fun cleanOverlays(): Unit = removeOverlays()
+
   /**
    * The Overlay itself
    */
