@@ -29,7 +29,7 @@ import com.mallowigi.idea.config.application.MTConfig
 import com.mallowigi.idea.config.ui.MTForm
 
 interface ConfigNotifier {
-  fun configChanged(mtConfig: MTConfig?): Unit = Unit
+  fun configChanged(mtConfig: MTConfig): Unit = Unit
 
-  fun beforeConfigChanged(mtConfig: MTConfig?, form: MTForm?): Unit = Unit
+  fun beforeConfigChanged(mtConfig: MTConfig, form: MTForm): Unit = Unit
 }

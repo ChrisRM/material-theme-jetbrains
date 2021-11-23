@@ -72,7 +72,7 @@ internal class MTStatusWidget : CustomStatusBarWidget {
     connect.subscribe(MTTopics.THEMES, ThemeListener { refresh() })
     connect.subscribe(MTTopics.ACCENTS, AccentsListener { refresh() })
     connect.subscribe(MTTopics.CONFIG, object : ConfigNotifier {
-      override fun configChanged(mtConfig: MTConfig?) = refresh()
+      override fun configChanged(mtConfig: MTConfig) = refresh()
     })
   }
 

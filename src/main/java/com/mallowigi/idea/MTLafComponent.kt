@@ -23,150 +23,101 @@
  *
  *
  */
+package com.mallowigi.idea
 
-package com.mallowigi.idea;
-
-import com.intellij.ide.AppLifecycleListener;
-import com.intellij.ide.ui.LafManager;
-import com.intellij.ide.ui.LafManagerListener;
-import com.intellij.ide.ui.laf.IntelliJLookAndFeelInfo;
-import com.intellij.ide.ui.laf.UIThemeBasedLookAndFeelInfo;
-import com.intellij.ide.ui.laf.darcula.DarculaLookAndFeelInfo;
-import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.application.ModalityState;
-import com.intellij.openapi.ui.Messages;
-import com.intellij.util.messages.MessageBusConnection;
-import com.mallowigi.idea.config.MTBaseConfig;
-import com.mallowigi.idea.config.application.MTConfig;
-import com.mallowigi.idea.config.ui.MTForm;
-import com.mallowigi.idea.lafs.MTLafInstaller;
-import com.mallowigi.idea.listeners.ConfigNotifier;
-import com.mallowigi.idea.listeners.MTTopics;
-import com.mallowigi.idea.messages.MaterialThemeBundle;
-import com.mallowigi.idea.themes.MTThemes;
-import com.mallowigi.idea.ui.MTButtonUI;
-import com.mallowigi.idea.ui.indicators.MTSelectedTreeIndicatorImpl;
-import com.mallowigi.idea.utils.MTUiUtils;
-import org.jetbrains.annotations.NotNull;
-
-import javax.swing.*;
-import java.util.List;
+import com.intellij.ide.AppLifecycleListener
+import com.intellij.ide.ui.LafManager
+import com.intellij.ide.ui.LafManagerListener
+import com.intellij.ide.ui.laf.IntelliJLookAndFeelInfo
+import com.intellij.ide.ui.laf.UIThemeBasedLookAndFeelInfo
+import com.intellij.ide.ui.laf.darcula.DarculaLookAndFeelInfo
+import com.intellij.openapi.application.ApplicationManager
+import com.intellij.openapi.application.ModalityState
+import com.intellij.openapi.ui.Messages
+import com.mallowigi.idea.config.MTBaseConfig
+import com.mallowigi.idea.config.application.MTConfig
+import com.mallowigi.idea.config.ui.MTForm
+import com.mallowigi.idea.lafs.MTLafInstaller
+import com.mallowigi.idea.listeners.ConfigNotifier
+import com.mallowigi.idea.listeners.CustomConfigNotifier
+import com.mallowigi.idea.listeners.MTTopics
+import com.mallowigi.idea.messages.MaterialThemeBundle.message
+import com.mallowigi.idea.themes.MTThemes
+import com.mallowigi.idea.ui.MTButtonUI
+import com.mallowigi.idea.ui.indicators.MTSelectedTreeIndicatorImpl
+import com.mallowigi.idea.utils.MTUiUtils
+import javax.swing.UIManager
 
 /**
  * Component for working on the Material Look And Feel
  */
-@SuppressWarnings("DuplicateStringLiteralInspection")
-public final class MTLafComponent implements AppLifecycleListener {
+class MTLafComponent : AppLifecycleListener {
+  private var activeLookAndFeel: UIManager.LookAndFeelInfo? = null
+  private var willRestartIde = false
+  private var shouldChangeTheme = false
+
+  override fun appFrameCreated(commandLineArgs: List<String>): Unit = initComponent()
 
   /**
-   * Keep instance of the current LAF
+   * Activate theme when Look and feel changed
+   *
+   * @param source the source look and feel
    */
-  private UIManager.LookAndFeelInfo activeLookAndFeel = null;
-  /**
-   * Whether to restart the ide
-   */
-  private boolean willRestartIde = false;
-  private boolean shouldChangeTheme = false;
-
-  @Override
-  public void appFrameCreated(@NotNull final List<String> commandLineArgs) {
-    initComponent();
-  }
-
-  private void lookAndFeelChanged(final LafManager source) {
-    final UIManager.LookAndFeelInfo currentLookAndFeel = source.getCurrentLookAndFeel();
-    patchTree();
+  private fun lookAndFeelChanged(source: LafManager) {
+    val currentLookAndFeel = source.currentLookAndFeel
+    patchTree()
     // Prevent infinite loop
-    if (currentLookAndFeel == activeLookAndFeel) {
-      return;
-    }
+    if (currentLookAndFeel === activeLookAndFeel) return
     // Save instance of current laf
-    activeLookAndFeel = currentLookAndFeel;
-
-    activateLaf(currentLookAndFeel);
+    activeLookAndFeel = currentLookAndFeel
+    activateLaf(currentLookAndFeel)
   }
 
-  @SuppressWarnings({"ChainOfInstanceofChecks",
-    "FeatureEnvy"})
-  private void activateLaf(final UIManager.LookAndFeelInfo currentLookAndFeel) {
-    final UIManager.LookAndFeelInfo oldLaf = LafManager.getInstance().getCurrentLookAndFeel();
-
-    if (oldLaf instanceof UIThemeBasedLookAndFeelInfo) {
-      ((UIThemeBasedLookAndFeelInfo) oldLaf).dispose();
+  /**
+   * Activate the relevant look and feel (theme, darcula or light)
+   *
+   * @param currentLookAndFeel
+   */
+  private fun activateLaf(currentLookAndFeel: UIManager.LookAndFeelInfo?) {
+    val oldLaf = LafManager.getInstance().currentLookAndFeel
+    if (oldLaf is UIThemeBasedLookAndFeelInfo) {
+      oldLaf.dispose()
     }
 
-    if (currentLookAndFeel instanceof UIThemeBasedLookAndFeelInfo) {
-      final UIThemeBasedLookAndFeelInfo lookAndFeel = (UIThemeBasedLookAndFeelInfo) currentLookAndFeel;
-      MTThemeManager.Companion.getInstance().activateLAF(lookAndFeel.getTheme());
-    } else if (activeLookAndFeel instanceof DarculaLookAndFeelInfo) {
-      MTThemeManager.Companion.getInstance().activateLAF("darcula", true, MTUiUtils.DARCULA);
-    } else if (activeLookAndFeel instanceof IntelliJLookAndFeelInfo) {
-      MTThemeManager.Companion.getInstance().activateLAF("default", false, "Light");
+    val mtThemeManager = MTThemeManager.instance
+    when {
+      currentLookAndFeel is UIThemeBasedLookAndFeelInfo -> mtThemeManager.activateLAF(currentLookAndFeel.theme)
+      activeLookAndFeel is DarculaLookAndFeelInfo       -> mtThemeManager.activateLAF(themeId = "darcula",
+                                                                                      isDark = true,
+                                                                                      name = MTUiUtils.DARCULA)
+      activeLookAndFeel is IntelliJLookAndFeelInfo      -> mtThemeManager.activateLAF(themeId = "default",
+                                                                                      isDark = false,
+                                                                                      name = "Light")
     }
   }
 
   /**
    * Listen for settings change to reload the theme and trigger restart if necessary
    */
-  private void initComponent() {
-    // Load bundled themes
-    //    try {
-    //      MTBundledThemesManager.getInstance().loadBundledThemes();
-    //    } catch (final IOException e) {
-    //      e.printStackTrace();
-    //    }
-
-    activeLookAndFeel = LafManager.getInstance().getCurrentLookAndFeel();
+  private fun initComponent() {
+    activeLookAndFeel = LafManager.getInstance().currentLookAndFeel
 
     // Activate the theme
-    ApplicationManager.getApplication().invokeAndWait(() -> activateLaf(activeLookAndFeel), ModalityState.NON_MODAL);
+    ApplicationManager.getApplication().invokeAndWait({ activateLaf(activeLookAndFeel) }, ModalityState.NON_MODAL)
 
     // Listen for changes on the settings
-    final MessageBusConnection connect = ApplicationManager.getApplication().getMessageBus().connect();
-    connect.subscribe(MTTopics.CONFIG, new ConfigNotifier() {
-      @Override
-      public void configChanged(final MTConfig mtConfig) {
-        onSettingsChanged();
-      }
+    val connect = ApplicationManager.getApplication().messageBus.connect()
 
-      @Override
-      public void beforeConfigChanged(final MTConfig mtConfig, final MTForm form) {
-        onBeforeSettingsChanged(mtConfig, form);
-      }
-    });
-    connect.subscribe(MTTopics.CUSTOM_THEME, mtCustomThemeConfig -> activateCustomTheme());
-    connect.subscribe(LafManagerListener.TOPIC, this::lookAndFeelChanged);
+    connect.subscribe(MTTopics.CONFIG, object : ConfigNotifier {
+      override fun configChanged(mtConfig: MTConfig) = onSettingsChanged()
 
-    patchTree();
-  }
+      override fun beforeConfigChanged(mtConfig: MTConfig, form: MTForm) = onBeforeSettingsChanged(mtConfig, form)
+    })
 
-  @SuppressWarnings({"NegativelyNamedBooleanVariable",
-    "FeatureEnvy"})
-  private static void activateCustomTheme() {
-    final MTConfig mtConfig = MTConfig.getInstance();
-    final boolean isNotCustom = !mtConfig.getSelectedTheme().isCustom();
-    if (isNotCustom) {
-      final int okCancelDialog = Messages.showOkCancelDialog(
-        MaterialThemeBundle.message("MTThemes.activate.custom.theme"),
-        MaterialThemeBundle.message("MTThemesComponent.activate.custom.theme"),
-        MaterialThemeBundle.message("common.ok"),
-        MaterialThemeBundle.message("common.cancel"),
-        Messages.getQuestionIcon()
-      );
-      if (okCancelDialog == Messages.OK) {
-        mtConfig.setSelectedTheme(MTThemes.CUSTOM);
-      }
-    }
-    activateTheme();
-  }
+    connect.subscribe(MTTopics.CUSTOM_THEME, CustomConfigNotifier { activateCustomTheme() })
+    connect.subscribe(LafManagerListener.TOPIC, LafManagerListener(::lookAndFeelChanged))
 
-  @SuppressWarnings("WeakerAccess")
-  static void activateTheme() {
-    MTThemeManager.Companion.getInstance().activate();
-  }
-
-  private static void patchTree() {
-    ApplicationManager.getApplication().invokeLater(() -> MTLafInstaller.replaceTree(UIManager.getLookAndFeelDefaults()));
+    patchTree()
   }
 
   /**
@@ -175,11 +126,10 @@ public final class MTLafComponent implements AppLifecycleListener {
    * @param mtConfig of type MTConfig
    * @param form     of type MTForm
    */
-  @SuppressWarnings("WeakerAccess")
-  void onBeforeSettingsChanged(final MTConfig mtConfig, final MTForm form) {
-    shouldChangeTheme = MTConfig.getInstance().isSelectedThemeChanged(form.getTheme());
+  fun onBeforeSettingsChanged(mtConfig: MTConfig, form: MTForm) {
+    shouldChangeTheme = MTConfig.getInstance().isSelectedThemeChanged(form.theme)
     // Force restart if material design is switched
-    restartIdeIfNecessary(mtConfig, form);
+    restartIdeIfNecessary(mtConfig, form)
   }
 
   /**
@@ -188,16 +138,14 @@ public final class MTLafComponent implements AppLifecycleListener {
    * @param mtConfig of type MTConfig
    * @param form     of type MTForm
    */
-  @SuppressWarnings("Duplicates")
-  private void restartIdeIfNecessary(final MTBaseConfig<MTForm, MTConfig> mtConfig, final MTForm form) {
+  private fun restartIdeIfNecessary(mtConfig: MTBaseConfig<MTForm, MTConfig>, form: MTForm) {
     // Restart the IDE if changed
     if (mtConfig.needsRestart(form)) {
-      final String title = MaterialThemeBundle.message("MTForm.restartDialog.title");
-      final String message = MaterialThemeBundle.message("MTForm.restartDialog.content");
-
-      final int answer = Messages.showYesNoDialog(message, title, Messages.getQuestionIcon());
+      val title = message("MTForm.restartDialog.title")
+      val message = message("MTForm.restartDialog.content")
+      val answer = Messages.showYesNoDialog(message, title, Messages.getQuestionIcon())
       if (answer == Messages.YES) {
-        willRestartIde = true;
+        willRestartIde = true
       }
     }
   }
@@ -205,25 +153,60 @@ public final class MTLafComponent implements AppLifecycleListener {
   /**
    * Called when Material Theme settings are changed
    */
-  @SuppressWarnings("WeakerAccess")
-  void onSettingsChanged() {
-    MTSelectedTreeIndicatorImpl.resetCache();
-    MTButtonUI.resetCache();
-    final UIManager.LookAndFeelInfo currentLookAndFeel = LafManager.getInstance().getCurrentLookAndFeel();
+  fun onSettingsChanged() {
+    MTSelectedTreeIndicatorImpl.resetCache()
+    MTButtonUI.resetCache()
 
+    val currentLookAndFeel = LafManager.getInstance().currentLookAndFeel
     if (shouldChangeTheme) {
-      MTThemeManager.Companion.getInstance().setLookAndFeel(MTConfig.getInstance().getSelectedTheme());
+      MTThemeManager.instance.setLookAndFeel(MTConfig.getInstance().selectedTheme)
     }
 
     // if theme hasnt changed, force reactivation
-    if (currentLookAndFeel == activeLookAndFeel) {
-      activateTheme();
+    if (currentLookAndFeel === activeLookAndFeel) {
+      activateTheme()
     }
 
-    ApplicationManager.getApplication().invokeAndWait(UIReplacer::patchUI, ModalityState.NON_MODAL);
+    ApplicationManager.getApplication().invokeAndWait({ UIReplacer.patchUI() }, ModalityState.NON_MODAL)
 
     if (willRestartIde) {
-      MTUiUtils.restartIde();
+      MTUiUtils.restartIde()
     }
   }
+
+  /**
+   * Activate custom theme
+   *
+   */
+  private fun activateCustomTheme() {
+    val mtConfig = MTConfig.getInstance()
+    val isNotCustom = !mtConfig.selectedTheme.isCustom
+    if (isNotCustom) {
+      val okCancelDialog = Messages.showOkCancelDialog(
+        message("MTThemes.activate.custom.theme"),
+        message("MTThemesComponent.activate.custom.theme"),
+        message("common.ok"),
+        message("common.cancel"),
+        Messages.getQuestionIcon()
+      )
+      if (okCancelDialog == Messages.OK) {
+        mtConfig.selectedTheme = MTThemes.CUSTOM
+      }
+    }
+    activateTheme()
+  }
+
+  /**
+   * Activate current theme
+   *
+   */
+  fun activateTheme(): Unit = MTThemeManager.instance.activate()
+
+  /**
+   * Patch trees
+   *
+   */
+  private fun patchTree() =
+    ApplicationManager.getApplication().invokeLater { MTLafInstaller.replaceTree(UIManager.getLookAndFeelDefaults()) }
+
 }
