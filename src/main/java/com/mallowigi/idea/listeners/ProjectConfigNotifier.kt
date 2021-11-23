@@ -29,7 +29,7 @@ import com.mallowigi.idea.config.project.MTProjectConfig
 import com.mallowigi.idea.config.ui.MTProjectForm
 
 interface ProjectConfigNotifier {
-  fun projectConfigChanged(mtConfig: MTProjectConfig?): Unit = Unit
+  fun projectConfigChanged(mtConfig: MTProjectConfig): Unit = Unit
 
-  fun beforeProjectConfigChanged(mtConfig: MTProjectConfig?, form: MTProjectForm?): Unit = Unit
+  fun beforeProjectConfigChanged(mtConfig: MTProjectConfig, form: MTProjectForm): Unit = Unit
 }

@@ -23,23 +23,18 @@
  *
  *
  */
+package com.mallowigi.idea.projectframe
 
-package com.mallowigi.idea.projectframe;
+import com.intellij.util.ui.JBSwingUtilities
+import java.awt.Graphics
+import java.awt.LayoutManager
+import javax.swing.JPanel
 
-import com.intellij.util.ui.JBSwingUtilities;
-
-import javax.swing.*;
-import java.awt.*;
-
-final class MTProjectFrameWrapperPanel extends JPanel {
-  @SuppressWarnings("HardCodedStringLiteral")
-  MTProjectFrameWrapperPanel(final LayoutManager layout) {
-    super(layout);
-    setName("mtRootPane");
+internal class MTProjectFrameWrapperPanel(layout: LayoutManager?) : JPanel(layout) {
+  init {
+    name = "mtRootPane"
   }
 
-  @Override
-  protected Graphics getComponentGraphics(final Graphics g) {
-    return JBSwingUtilities.runGlobalCGTransform(this, super.getComponentGraphics(g));
-  }
+  override fun getComponentGraphics(g: Graphics): Graphics =
+    JBSwingUtilities.runGlobalCGTransform(this, super.getComponentGraphics(g))
 }
