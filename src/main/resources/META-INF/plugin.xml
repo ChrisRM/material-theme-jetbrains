@@ -227,7 +227,7 @@
                 id="MTProjectConfigTopHitProvider" />
 
         <!--suppress PluginXmlValidity -->
-        <ideRootPaneNorth implementation="com.mallowigi.idea.MTProjectFrame" order="first" />
+        <ideRootPaneNorth implementation="com.mallowigi.idea.projectframe.MTProjectFrame" order="first" />
 
         <colorSettingsPage implementation="com.mallowigi.idea.config.MTScrollbarsPage" id="MTScrollbarPage" />
         <colorSettingsPage implementation="com.mallowigi.idea.config.MTFileColorsPage" id="MTFileColorsPage" />
@@ -243,7 +243,8 @@
     <applicationListeners>
         <listener class="com.mallowigi.idea.MTLafComponent" topic="com.intellij.ide.AppLifecycleListener" />
         <listener class="com.mallowigi.idea.MTApplicationComponent" topic="com.intellij.ide.AppLifecycleListener" />
-        <listener class="com.mallowigi.idea.MTFixStripes" topic="com.intellij.openapi.project.ProjectManagerListener" />
+        <listener class="com.mallowigi.idea.utils.MTFixStripes"
+                  topic="com.intellij.openapi.project.ProjectManagerListener" />
     </applicationListeners>
 
     <actions>
