@@ -24,15 +24,15 @@
  *
  */
 
-package com.mallowigi.idea;
+package com.mallowigi.idea.utils;
 
 import com.intellij.ide.ui.laf.darcula.DarculaLaf;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.scale.JBUIScale;
 import com.intellij.util.ui.UIUtil;
+import com.mallowigi.idea.MTThemeManager;
 import com.mallowigi.idea.config.application.MTConfig;
 import com.mallowigi.idea.themes.models.MTThemeable;
-import com.mallowigi.idea.utils.MTUI;
 import org.jetbrains.annotations.NonNls;
 import sun.awt.AppContext;
 
@@ -44,25 +44,29 @@ import java.net.URL;
 
 import static com.mallowigi.idea.utils.MTUiUtils.DARCULA;
 
-public final class MTStyledKitPatcher {
-  private MTStyledKitPatcher() {
-  }
+// Note: cannot convert to kotlin
+public enum MTStyledKitPatcher {
+  ;
 
-  @SuppressWarnings({"OverlyBroadCatchBlock",
-    "java:S2221",
-    "java:S1166",
-    "java:S108"})
+  public static final String STYLED_EDITOR_KIT = "StyledEditorKit.JBDefaultStyle";
+
+  /**
+   * Patch the Styled Editor Kit for the doc comments
+   */
   public static void patchStyledEditorKit() {
-    @NonNls final UIDefaults defaults = UIManager.getLookAndFeelDefaults();
     final MTThemeable selectedTheme = MTConfig.getInstance().getSelectedTheme().getTheme();
+    final String retinaSuffix = JBUIScale.isUsrHiDPI() ? MTThemeManager.RETINA : MTThemeManager.NON_RETINA;
 
     // Load css
-    final URL url = selectedTheme.getClass().getResource(selectedTheme.getId() + (JBUIScale.isUsrHiDPI() ? MTThemeManager.RETINA :
-                                                                                  MTThemeManager.NON_RETINA));
+    final URL url = selectedTheme.getClass().getResource(selectedTheme.getId() + retinaSuffix);
+    if (url == null) {
+      return;
+    }
+
+    final UIDefaults defaults = UIManager.getLookAndFeelDefaults();
     StyleSheet styleSheet = UIUtil.loadStyleSheet(url);
     if (styleSheet == null) {
-      final URL fallbackUrl = DarculaLaf.class.getResource(DARCULA + (JBUIScale.isUsrHiDPI() ? MTThemeManager.RETINA :
-                                                                      MTThemeManager.NON_RETINA));
+      final URL fallbackUrl = DarculaLaf.class.getResource(DARCULA + retinaSuffix);
       styleSheet = UIUtil.loadStyleSheet(fallbackUrl);
     }
 
@@ -72,14 +76,15 @@ public final class MTStyledKitPatcher {
 
     @NonNls final String css = "a, address, b { color: #%s; }";
     styleSheet.addRule(String.format(css, accentColor));
-    UIManager.put("StyledEditorKit.JBDefaultStyle", styleSheet);
-    defaults.put("StyledEditorKit.JBDefaultStyle", styleSheet);
+    UIManager.put(STYLED_EDITOR_KIT, styleSheet);
+    defaults.put(STYLED_EDITOR_KIT, styleSheet);
 
     try {
       final Field keyField = HTMLEditorKit.class.getDeclaredField("DEFAULT_STYLES_KEY");
       keyField.setAccessible(true);
       AppContext.getAppContext().put(keyField.get(null), styleSheet);
-    } catch (final Exception ignored) {
+    } catch (final IllegalAccessException | NoSuchFieldException e) {
+      // do nothing
     }
   }
 }

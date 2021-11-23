@@ -57,6 +57,7 @@ import com.mallowigi.idea.themes.MTThemeFacade
 import com.mallowigi.idea.themes.MTThemes
 import com.mallowigi.idea.themes.lists.AccentResources
 import com.mallowigi.idea.themes.lists.FontResources
+import com.mallowigi.idea.utils.MTStyledKitPatcher
 import com.mallowigi.idea.utils.MTUI
 import com.mallowigi.idea.utils.MTUiUtils
 import com.mallowigi.idea.utils.animator.MTChangeLafService.hideSnapshotWithAnimation
