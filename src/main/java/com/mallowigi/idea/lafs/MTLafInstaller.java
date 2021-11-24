@@ -26,7 +26,6 @@
 
 package com.mallowigi.idea.lafs;
 
-import com.intellij.icons.AllIcons;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaMenuBarBorder;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaMenuItemBorder;
 import com.intellij.openapi.application.ApplicationManager;
@@ -305,8 +304,8 @@ public class MTLafInstaller {
    */
   private static void replaceSelectedIndicator(@NonNls final UIDefaults defaults) {
     final MTSelectedTreePainter painter = new MTSelectedTreePainter();
-    defaults.put(MTUI.List.LIST_SELECTION_BACKGROUND_PAINTER, painter);
-    defaults.put(MTUI.List.LIST_FOCUSED_SELECTION_BACKGROUND_PAINTER, painter);
+    defaults.put(MTUI.List.getListSelectionPainterKey(), painter);
+    defaults.put(MTUI.List.getListFocusedSelectionPainterKey(), painter);
   }
 
   /**
@@ -341,7 +340,7 @@ public class MTLafInstaller {
   private static void replaceStatusBar(@NonNls final UIDefaults defaults) {
     defaults.put("IdeStatusBarUI", MTStatusBarUI.class.getName());
     defaults.put(MTStatusBarUI.class.getName(), MTStatusBarUI.class);
-    defaults.put(MTUI.StatusBar.IDE_STATUS_BAR_BORDER, new MTStatusBarBorder());
+    defaults.put(MTUI.StatusBar.getStatusBarBorderKey(), new MTStatusBarBorder());
 
     defaults.put("SeparatorUI", MTSeparatorUI.class.getName());
     defaults.put(MTSeparatorUI.class.getName(), MTSeparatorUI.class);

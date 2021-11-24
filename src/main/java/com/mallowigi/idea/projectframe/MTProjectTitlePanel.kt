@@ -71,9 +71,9 @@ internal class MTProjectTitlePanel(private val myProject: Project) : JPanel(Bord
     }
 
     if (shouldDrawText()) {
-      g.color = MTUI.Panel.getBackground()
+      g.color = MTUI.Panel.background
       g.fillRoundRect(x - padding, padding, textWidth + padding * 2, rect.height - padding * 2, padding, padding)
-      g.color = MTUI.Panel.getForeground()
+      g.color = MTUI.Panel.foreground
       g.drawString(projectText, x, y)
       g.clip = oldClip
     }
@@ -95,7 +95,7 @@ internal class MTProjectTitlePanel(private val myProject: Project) : JPanel(Bord
       val headerRectangle = Rectangle(0, 0, width, JBUI.insetsTop(24).top)
       graphics.color = stripeColor
       graphics.fill(headerRectangle)
-      graphics.font = MTUI.Panel.getFont()
+      graphics.font = MTUI.Panel.font
 
       // Draw the text according to the settings
       drawProjectTextAndIcon(graphics, headerRectangle, projectFrameText)

@@ -84,7 +84,7 @@ public final class MTDarculaButtonUI extends DarculaButtonUI {
                                    final FontMetrics metrics) {
     final String textToPrint = MTConfig.getInstance().isUpperCaseButtons() ? text.toUpperCase(Locale.ENGLISH) : text;
     final int x = (c.getWidth() - getTextShiftOffset() - metrics.stringWidth(textToPrint)) / 2;
-    g.setColor(UIManager.getColor(MTUI.Button.BUTTON_DISABLED_TEXT));
+    g.setColor(MTUI.Button.getDisabledColor());
     SwingUtilities2.drawStringUnderlineCharAt(c, g, textToPrint, -1, x + 1, textRect.y + metrics.getAscent() + 1);
   }
 

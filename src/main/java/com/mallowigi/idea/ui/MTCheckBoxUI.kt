@@ -47,8 +47,8 @@ class MTCheckBoxUI : DarculaCheckBoxUI() {
 
   override fun installUI(c: JComponent) {
     super.installUI(c)
-    c.background = MTUI.Panel.getBackground()
-    c.foreground = MTUI.Panel.getForeground()
+    c.background = MTUI.Panel.background
+    c.foreground = MTUI.Panel.foreground
     if (UIUtil.getParentOfType(CellRendererPane::class.java, c) != null) {
       c.border = null
     }

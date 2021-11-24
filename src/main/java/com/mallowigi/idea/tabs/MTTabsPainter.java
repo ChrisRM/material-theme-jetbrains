@@ -164,8 +164,8 @@ public class MTTabsPainter extends JBDefaultTabPainter {
 
     final EditorColorsManager editorColorsManager = EditorColorsManager.getInstance();
     final EditorColorsScheme currentScheme = editorColorsManager.getGlobalScheme();
-    final Color tabUnderline = currentScheme.getColor(ColorKey.find(MTUI.Tabs.TAB_UNDERLINE));
-    final Color tabUnderlineInactive = currentScheme.getColor(ColorKey.find(MTUI.Tabs.TAB_UNDERLINE_INACTIVE));
+    final Color tabUnderline = currentScheme.getColor(ColorKey.find(MTUI.Tabs.getTabUnderlineKey()));
+    final Color tabUnderlineInactive = currentScheme.getColor(ColorKey.find(MTUI.Tabs.getTabUnderlineInactiveKey()));
 
     if (active && tabUnderline != null) {
       return tabUnderline;

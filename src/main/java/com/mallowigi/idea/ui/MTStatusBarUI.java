@@ -46,7 +46,7 @@ public final class MTStatusBarUI extends StatusBarUI {
   @Override
   public void installUI(final JComponent c) {
     super.installUI(c);
-    final Border border = UIManager.getBorder(MTUI.StatusBar.IDE_STATUS_BAR_BORDER);
+    final Border border = MTUI.StatusBar.getStatusBarBorder();
     if (border != null) {
       c.setBorder(border);
     }

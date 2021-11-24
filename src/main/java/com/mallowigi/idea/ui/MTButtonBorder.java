@@ -46,7 +46,7 @@ public final class MTButtonBorder extends DarculaButtonPainter {
   @Override
   public void paintBorder(final Component c, final Graphics g, final int x, final int y, final int width, final int height) {
     if (MTConfig.getInstance().isBorderedButtons()) {
-      if (((JComponent) c).getClientProperty(MTUI.Button.NO_BORDER) == Boolean.TRUE) {
+      if (((JComponent) c).getClientProperty(MTUI.Button.getNoBorder()) == Boolean.TRUE) {
         return;
       }
       paintOutlinedBorder(c, g, x, y, width, height);

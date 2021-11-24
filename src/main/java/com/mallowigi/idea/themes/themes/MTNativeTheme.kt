@@ -44,52 +44,52 @@ import javax.swing.plaf.ColorUIResource
 
 class MTNativeTheme : MTAbstractTheme() {
   override fun getBackgroundColorResource(): ColorUIResource =
-    MTUiUtils.namedColor("material.background", MTUI.Panel.getBackground())
+    MTUiUtils.namedColor("material.background", MTUI.Panel.background)
 
   override fun getForegroundColorResource(): ColorUIResource =
-    MTUiUtils.namedColor("material.foreground", MTUI.Panel.getForeground())
+    MTUiUtils.namedColor("material.foreground", MTUI.Panel.foreground)
 
   override fun getTextColorResource(): ColorUIResource =
-    MTUiUtils.namedColor("material.primaryColor", MTUI.Panel.getPrimaryForeground())
+    MTUiUtils.namedColor("material.primaryColor", MTUI.Panel.primaryForeground)
 
   override fun getSelectionBackgroundColorResource(): ColorUIResource =
-    MTUiUtils.namedColor("material.selectionBackground", MTUI.Panel.getSelectionBackground())
+    MTUiUtils.namedColor("material.selectionBackground", MTUI.Panel.selectionBackground)
 
   override fun getSelectionForegroundColorResource(): ColorUIResource =
-    MTUiUtils.namedColor("material.selectionForeground", MTUI.Panel.getSelectionForeground())
+    MTUiUtils.namedColor("material.selectionForeground", MTUI.Panel.selectionForeground)
 
   override fun getButtonColorResource(): ColorUIResource =
-    MTUiUtils.namedColor("material.button", MTUI.Button.getBackgroundColor())
+    MTUiUtils.namedColor("material.button", MTUI.Button.backgroundColor)
 
   override fun getSecondaryBackgroundColorResource(): ColorUIResource =
-    MTUiUtils.namedColor("material.second", MTUI.Panel.getSecondaryBackground())
+    MTUiUtils.namedColor("material.second", MTUI.Panel.secondaryBackground)
 
   override fun getDisabledColorResource(): ColorUIResource =
-    MTUiUtils.namedColor("material.disabled", MTUI.Button.getDisabledColor())
+    MTUiUtils.namedColor("material.disabled", MTUI.Button.disabledColor)
 
   override fun getContrastColorResource(): ColorUIResource =
-    MTUiUtils.namedColor("material.contrast", MTUI.Panel.getContrastBackground())
+    MTUiUtils.namedColor("material.contrast", MTUI.Panel.contrastBackground)
 
   override fun getTableSelectedColorResource(): ColorUIResource =
-    MTUiUtils.namedColor("material.active", MTUI.Table.getHighlightOuterColor())
+    MTUiUtils.namedColor("material.active", MTUI.Table.highlightOuterColor)
 
   override fun getSecondBorderColorResource(): ColorUIResource =
-    MTUiUtils.namedColor("material.border", MTUI.Separator.getSeparatorColor())
+    MTUiUtils.namedColor("material.border", MTUI.Separator.separatorColor)
 
   override fun getHighlightColorResource(): ColorUIResource =
-    MTUiUtils.namedColor("material.highlight", MTUI.Panel.getHighlightBackground())
+    MTUiUtils.namedColor("material.highlight", MTUI.Panel.highlightBackground)
 
   override fun getTreeSelectionColorResource(): ColorUIResource =
-    MTUiUtils.namedColor("material.tree", MTUI.Tree.getSelectionBackground())
+    MTUiUtils.namedColor("material.tree", MTUI.Tree.selectionBackground)
 
   override fun getNotificationsColorResource(): ColorUIResource =
-    MTUiUtils.namedColor("material.notifications", MTUI.Notification.getBackgroundColor())
+    MTUiUtils.namedColor("material.notifications", MTUI.Notification.backgroundColor)
 
   override fun getAccentColorResource(): ColorUIResource =
-    MTUiUtils.namedColor("material.accent", ColorUtil.brighter(MTUI.Button.getPrimaryBackgroundColor(), 2))
+    MTUiUtils.namedColor("material.accent", ColorUtil.brighter(MTUI.Button.primaryBackgroundColor, 2))
 
   override fun getExcludedColorResource(): ColorUIResource =
-    MTUiUtils.namedColor("material.excluded", MTUI.Panel.getExcludedBackground())
+    MTUiUtils.namedColor("material.excluded", MTUI.Panel.excludedBackground)
 
   override fun getThemeId(): String = "external"
 
@@ -116,7 +116,7 @@ class MTNativeTheme : MTAbstractTheme() {
       if (color != null) {
         UIManager.put(resource, if (apply) contrastifyBackground(dark, ColorUIResource(color), false) else color)
       } else {
-        UIManager.put(resource, if (apply) MTUI.Panel.getContrastBackground() else MTUI.Panel.getBackground())
+        UIManager.put(resource, if (apply) MTUI.Panel.contrastBackground else MTUI.Panel.background)
       }
     }
   }

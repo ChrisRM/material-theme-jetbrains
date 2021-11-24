@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,12 +25,11 @@
  */
 package com.mallowigi.idea.ui;
 
-import com.mallowigi.idea.utils.MTUI;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaSpinnerBorder;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.MacUIUtil;
+import com.mallowigi.idea.utils.MTUI;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
 
@@ -45,7 +44,7 @@ public final class MTSpinnerBorder extends DarculaSpinnerBorder {
     try {
       g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
       g2.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL,
-          MacUIUtil.USE_QUARTZ ? RenderingHints.VALUE_STROKE_PURE : RenderingHints.VALUE_STROKE_NORMALIZE);
+        MacUIUtil.USE_QUARTZ ? RenderingHints.VALUE_STROKE_PURE : RenderingHints.VALUE_STROKE_NORMALIZE);
 
       if (isFocused(c)) {
         g.setColor(getSelectedBorderColor());
@@ -53,7 +52,7 @@ public final class MTSpinnerBorder extends DarculaSpinnerBorder {
       } else if (!c.isEnabled()) {
         g.setColor(getBorderColor(c.isEnabled()));
         g2.setStroke(new BasicStroke(1, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, 0, new float[]{1,
-            2}, 0));
+          2}, 0));
         g2.draw(new Rectangle2D.Double(JBUI.scale(1), height - JBUI.scale(1), width - JBUI.scale(2), JBUI.scale(2)));
       } else {
         g.setColor(getBorderColor(c.isEnabled()));
@@ -65,7 +64,7 @@ public final class MTSpinnerBorder extends DarculaSpinnerBorder {
   }
 
   private static Color getBorderColor(final boolean enabled) {
-    return enabled ? MTUI.TextField.getBorderColor(true) : UIManager.getColor(MTUI.TextField.TEXT_FIELD_SEPARATOR_COLOR_DISABLED);
+    return MTUI.TextField.getBorderColor(enabled);
   }
 
   @Override

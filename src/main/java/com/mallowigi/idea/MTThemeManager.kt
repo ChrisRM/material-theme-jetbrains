@@ -249,7 +249,7 @@ class MTThemeManager private constructor() : Disposable {
    */
   private fun applyCompactToolWindowHeaders() {
     val vPad = if (CONFIG.isCompactStatusBar) JBUI.scale(0) else JBUI.scale(5)
-    UIManager.put(MTUI.Panel.TOOL_WINDOW_TAB_VERTICAL_PADDING, vPad)
+    UIManager.put(MTUI.Panel.toolWindowPaddingKey, vPad)
   }
 
   /**
@@ -432,7 +432,7 @@ class MTThemeManager private constructor() : Disposable {
   private fun getScrollbarColors(accentColor: Color): Couple<Color> {
     val transAccentColor = ColorUtil.toAlpha(accentColor, 50)
     val hoverAccentColor = ColorUtil.toAlpha(accentColor, 75)
-    val themedColor = MTUI.Label.getLabelForeground()
+    val themedColor = MTUI.Label.labelForeground
     val transThemedColor = ColorUtil.toAlpha(themedColor, 50)
     val hoverThemedColor = ColorUtil.toAlpha(themedColor, 75)
 
