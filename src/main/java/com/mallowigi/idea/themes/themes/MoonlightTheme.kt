@@ -101,5 +101,4 @@ class MoonlightTheme : MTAbstractTheme() {
 
   override val excludedColorResource: ColorUIResource
     get() = ColorUIResource(0x2f334d)
-
 }

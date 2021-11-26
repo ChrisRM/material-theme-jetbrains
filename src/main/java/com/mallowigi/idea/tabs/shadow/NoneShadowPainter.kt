@@ -28,6 +28,11 @@ package com.mallowigi.idea.tabs.shadow
 import java.awt.Graphics2D
 import java.awt.Point
 
+/**
+ * None shadow painter
+ *
+ * @constructor Create empty None shadow painter
+ */
 class NoneShadowPainter : ShadowPainter() {
   override fun drawShadow(g2d: Graphics2D, from: Point?, to: Point): Unit = Unit
 }

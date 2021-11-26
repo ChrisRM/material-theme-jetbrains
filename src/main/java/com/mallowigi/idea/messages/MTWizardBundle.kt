@@ -34,27 +34,64 @@ import java.util.function.Supplier
 @NonNls
 private const val BUNDLE: String = "messages.MTWizardBundle"
 
+/**
+ * Get strings for the Wizard Resource Bundle
+ *
+ */
 object MTWizardBundle : DynamicBundle(BUNDLE) {
+  /**
+   * The bundle
+   *
+   * @return
+   */
   @JvmStatic
   fun getBundle(): ResourceBundle = ResourceBundle.getBundle(BUNDLE)
 
+  /**
+   * Get the message of a key in the bundle, or returns default
+   *
+   * @param key
+   * @param params
+   * @return
+   */
   override fun messageOrDefault(
     @PropertyKey(resourceBundle = BUNDLE) key: String,
     defaultValue: String?,
-    vararg params: Any
+    vararg params: Any,
   ): String = messageOrDefault(ResourceBundle.getBundle(BUNDLE), key, defaultValue, *params)
 
+  /**
+   * Get the message of a key in the bundle
+   *
+   * @param key
+   * @param params
+   * @return
+   */
   @JvmStatic
   fun message(@PropertyKey(resourceBundle = BUNDLE) key: String, vararg params: Any): String =
     getMessage(key, *params)
 
+  /**
+   * Get the message of a key in the LanguagesAdditionsBundle, with prefix
+   *
+   * @param key
+   * @param params
+   * @return
+   */
   @JvmStatic
   fun messageWithPrefix(key: String, prefix: String): String =
     message("$prefix.$key")
 
+  /**
+   * Get message pointer of a key
+   *
+   * @param key
+   * @param params
+   * @return
+   */
   @JvmStatic
   fun messagePointer(
     @PropertyKey(resourceBundle = BUNDLE) key: String,
-    vararg params: Any
+    vararg params: Any,
   ): Supplier<String> = getLazyMessage(key, *params)
 }

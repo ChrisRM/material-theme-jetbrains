@@ -101,5 +101,4 @@ class MTOceanicTheme : MTAbstractTheme() {
 
   override val excludedColorResource: ColorUIResource
     get() = ColorUIResource(0x2E3C43)
-
 }

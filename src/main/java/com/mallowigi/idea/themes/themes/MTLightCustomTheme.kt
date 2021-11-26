@@ -106,5 +106,4 @@ class MTLightCustomTheme : MTAbstractTheme() {
 
   override val excludedColorResource: ColorUIResource
     get() = config.excludedColorString
-
 }

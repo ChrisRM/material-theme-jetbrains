@@ -34,27 +34,65 @@ import java.util.function.Supplier
 @NonNls
 private const val BUNDLE: String = "messages.MaterialThemeBundle"
 
+/**
+ * Get strings of the Material Theme Resource Bundle
+ *
+ * @constructor Create empty Material theme bundle
+ */
 object MaterialThemeBundle : DynamicBundle(BUNDLE) {
+  /**
+   * The bundle
+   *
+   * @return
+   */
   @JvmStatic
   fun getBundle(): ResourceBundle = ResourceBundle.getBundle(BUNDLE)
 
+  /**
+   * Get the message of a key in the MaterialThemeBundle, or returns default
+   *
+   * @param key
+   * @param params
+   * @return
+   */
   override fun messageOrDefault(
     @PropertyKey(resourceBundle = BUNDLE) key: String,
     defaultValue: String?,
-    vararg params: Any
+    vararg params: Any,
   ): String = messageOrDefault(ResourceBundle.getBundle(BUNDLE), key, defaultValue, *params)
 
+  /**
+   * Get the message of a key in the MaterialThemeBundle, with prefix
+   *
+   * @param key
+   * @param params
+   * @return
+   */
   @JvmStatic
   fun messageWithPrefix(key: String, prefix: String): String =
     message("$prefix.$key")
 
+  /**
+   * Get the message of a key in the LanguagesAdditionsBundle
+   *
+   * @param key
+   * @param params
+   * @return
+   */
   @JvmStatic
   fun message(@PropertyKey(resourceBundle = BUNDLE) key: String, vararg params: Any): String =
     getMessage(key, *params)
 
+  /**
+   * Get message pointer of a key
+   *
+   * @param key
+   * @param params
+   * @return
+   */
   @JvmStatic
   fun messagePointer(
     @PropertyKey(resourceBundle = BUNDLE) key: String,
-    vararg params: Any
+    vararg params: Any,
   ): Supplier<String> = getLazyMessage(key, *params)
 }

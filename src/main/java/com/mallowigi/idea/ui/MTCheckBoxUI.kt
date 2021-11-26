@@ -99,7 +99,9 @@ class MTCheckBoxUI : DarculaCheckBoxUI() {
       } else {
         g.color = if (b.isEnabled) b.foreground else getDisabledTextColor()
         UIUtilities.drawStringUnderlineCharAt(
-          c, g, text,
+          c,
+          g,
+          text,
           b.displayedMnemonicIndex,
           textRect.x,
           textRect.y + fm.ascent

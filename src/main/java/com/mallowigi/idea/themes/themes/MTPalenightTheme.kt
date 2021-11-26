@@ -101,5 +101,4 @@ class MTPalenightTheme : MTAbstractTheme() {
 
   override val excludedColorResource: ColorUIResource
     get() = ColorUIResource(0x2f2e43)
-
 }

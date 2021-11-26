@@ -30,6 +30,11 @@ import java.awt.Color
 import java.awt.Graphics2D
 import java.awt.Point
 
+/**
+ * Top shadow painter
+ *
+ * @constructor Create empty Top shadow painter
+ */
 class TopShadowPainter : ShadowPainter() {
   override fun drawShadow(g2d: Graphics2D, from: Point?, to: Point) {
     val w = to.getX().toInt()

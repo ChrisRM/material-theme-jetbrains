@@ -101,5 +101,4 @@ class SolarizedLightTheme : MTAbstractTheme() {
 
   override val excludedColorResource: ColorUIResource
     get() = ColorUIResource(0xE3DCC9)
-
 }

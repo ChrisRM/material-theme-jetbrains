@@ -171,7 +171,8 @@ internal class MTStatusWidget : CustomStatusBarWidget {
         g2.color = UIUtil.getLabelForeground()
         g2.font = font
         g2.drawString(
-          attributedString.iterator, (size.width - accentDiameter - nameWidth) / 2,
+          attributedString.iterator,
+          (size.width - accentDiameter - nameWidth) / 2,
           nameHeight + (size.height - nameHeight) / 2 - JBUI.scale(1)
         )
 
@@ -186,7 +187,8 @@ internal class MTStatusWidget : CustomStatusBarWidget {
     override fun getPreferredSize(): Dimension {
       val themeName = mtConfig.selectedTheme.themeName!!
       val width = getFontMetrics(widgetFont).charsWidth(
-        themeName.toCharArray(), 0,
+        themeName.toCharArray(),
+        0,
         themeName.length
       ) + 2 * STATUS_PADDING
       val accentDiameter = JBUI.scale(STATUS_HEIGHT)

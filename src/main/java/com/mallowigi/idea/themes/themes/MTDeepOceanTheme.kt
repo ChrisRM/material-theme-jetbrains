@@ -101,5 +101,4 @@ class MTDeepOceanTheme : MTAbstractTheme() {
 
   override val excludedColorResource: ColorUIResource
     get() = ColorUIResource(0x292D3E)
-
 }

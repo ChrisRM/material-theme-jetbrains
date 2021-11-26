@@ -30,11 +30,25 @@ import java.awt.Color
 import java.awt.Graphics2D
 import java.awt.Point
 
+/**
+ * Shadow painter
+ *
+ * @constructor Create empty Shadow painter
+ */
 abstract class ShadowPainter {
+  /**
+   * Draw shadow
+   *
+   * @param g2d
+   * @param from
+   * @param to
+   */
   abstract fun drawShadow(g2d: Graphics2D, from: Point?, to: Point)
 
-  companion object {
-    val shadowColor: Color
-      get() = JBColor(Color.darkGray, Color.black)
-  }
+  /**
+   * Shadow color
+   */
+  val shadowColor: Color
+    get() = JBColor(Color.darkGray, Color.black)
+
 }

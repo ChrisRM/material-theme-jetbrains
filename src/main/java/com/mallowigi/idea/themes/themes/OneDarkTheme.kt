@@ -101,5 +101,4 @@ class OneDarkTheme : MTAbstractTheme() {
 
   override val excludedColorResource: ColorUIResource
     get() = ColorUIResource(0x3c4150)
-
 }

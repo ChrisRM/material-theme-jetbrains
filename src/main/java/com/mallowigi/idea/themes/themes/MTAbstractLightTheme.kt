@@ -94,5 +94,4 @@ abstract class MTAbstractLightTheme : MTAbstractTheme() {
     MTUiUtils.buildResources(selectionForegroundResources, selectionForegroundColorResource)
     MTUiUtils.buildResources(secondSelectionForegroundResources, secondSelectionForegroundColorResource)
   }
-
 }
