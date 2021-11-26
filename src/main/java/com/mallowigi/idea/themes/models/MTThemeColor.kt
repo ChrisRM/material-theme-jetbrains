@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,42 +23,24 @@
  *
  *
  */
+package com.mallowigi.idea.themes.models
 
-package com.mallowigi.idea.themes.models;
-
-import com.intellij.util.xmlb.annotations.Property;
-
-import java.io.Serializable;
+import com.intellij.util.xmlb.annotations.Property
+import java.io.Serializable
 
 /**
  * Represents a color
  */
-public final class MTThemeColor implements Serializable {
-
-  @Property
-  private String id = null;
-  @Property
-  private String value = null;
-
+class MTThemeColor : Serializable {
   /**
    * Color id
    */
-  public String getId() {
-    return id;
-  }
+  @Property
+  var id: String? = null
 
   /**
    * Color value
    */
-  public String getValue() {
-    return value;
-  }
-
-  public void setId(final String id) {
-    this.id = id;
-  }
-
-  public void setValue(final String value) {
-    this.value = value;
-  }
+  @Property
+  var value: String? = null
 }

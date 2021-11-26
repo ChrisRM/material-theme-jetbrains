@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,119 +23,98 @@
  *
  *
  */
+package com.mallowigi.idea.themes.models
 
-package com.mallowigi.idea.themes.models;
-
-import org.jetbrains.annotations.NonNls;
-
-import javax.swing.plaf.ColorUIResource;
+import javax.swing.plaf.ColorUIResource
 
 /**
  * Interface for themes serializable from xml
  */
-public interface MTSerializedTheme {
+interface MTSerializedTheme {
   /**
    * Get the hex code for the background color
    */
-  @NonNls
-  ColorUIResource getBackgroundColorResource();
+  val backgroundColorResource: ColorUIResource
 
   /**
    * Get the hex code for the foreground color
    */
-  @NonNls
-  ColorUIResource getForegroundColorResource();
+  val foregroundColorResource: ColorUIResource
 
   /**
    * Get the hex code for the text color
    */
-  @NonNls
-  ColorUIResource getTextColorResource();
+  val textColorResource: ColorUIResource
 
   /**
    * Get the hex code for the selection background color
    */
-  @NonNls
-  ColorUIResource getSelectionBackgroundColorResource();
+  val selectionBackgroundColorResource: ColorUIResource
 
   /**
    * Get the hex code for the selection foreground color
    */
-  @NonNls
-  ColorUIResource getSelectionForegroundColorResource();
+  val selectionForegroundColorResource: ColorUIResource
 
   /**
    * Allow themes to specify a second selection foreground
    * Default primary selection foreground
    */
-  @NonNls
-  default ColorUIResource getSecondSelectionForegroundColorResource() {
-    return getSelectionForegroundColorResource();
-  }
+  val secondSelectionForegroundColorResource: ColorUIResource
+    get() = selectionForegroundColorResource
 
   /**
    * Get the hex code for the button color
    */
-  @NonNls
-  ColorUIResource getButtonColorResource();
+  val buttonColorResource: ColorUIResource
 
   /**
    * Get the hex code for the secondary background color
    */
-  @NonNls
-  ColorUIResource getSecondaryBackgroundColorResource();
+  val secondaryBackgroundColorResource: ColorUIResource
 
   /**
    * Get the hex code for the disabled color
    */
-  @NonNls
-  ColorUIResource getDisabledColorResource();
+  val disabledColorResource: ColorUIResource
 
   /**
    * Get the hex code for the contrast color
    */
-  @NonNls
-  ColorUIResource getContrastColorResource();
+  val contrastColorResource: ColorUIResource
 
   /**
    * Get the hex code for the table selected color
    */
-  @NonNls
-  ColorUIResource getTableSelectedColorResource();
+  val tableSelectedColorResource: ColorUIResource
 
   /**
    * Get the hex code for the second border color
    */
-  @NonNls
-  ColorUIResource getSecondBorderColorResource();
+  val secondBorderColorResource: ColorUIResource
 
   /**
    * Get the hex code for the highlight color
    */
-  @NonNls
-  ColorUIResource getHighlightColorResource();
+  val highlightColorResource: ColorUIResource
 
   /**
    * Get the hex code for the tree selection color
    */
-  @NonNls
-  ColorUIResource getTreeSelectionColorResource();
+  val treeSelectionColorResource: ColorUIResource
 
   /**
    * Get the hex code for the notifications color
    */
-  @NonNls
-  ColorUIResource getNotificationsColorResource();
+  val notificationsColorResource: ColorUIResource
 
   /**
    * The accent color string
    */
-  @NonNls
-  ColorUIResource getAccentColorResource();
+  val accentColorResource: ColorUIResource
 
   /**
    * The excluded files color string
    */
-  @NonNls
-  ColorUIResource getExcludedColorResource();
+  val excludedColorResource: ColorUIResource
 }

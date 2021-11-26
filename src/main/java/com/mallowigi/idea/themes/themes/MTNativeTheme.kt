@@ -72,53 +72,54 @@ class MTNativeTheme : MTAbstractTheme() {
   override val isNative: Boolean
     get() = true
 
-  override fun getBackgroundColorResource(): ColorUIResource =
-    MTUiUtils.namedColor("material.background", MTUI.Panel.background)
+  override val backgroundColorResource: ColorUIResource
+    get() = MTUiUtils.namedColor("material.background", MTUI.Panel.background)
 
-  override fun getForegroundColorResource(): ColorUIResource =
-    MTUiUtils.namedColor("material.foreground", MTUI.Panel.foreground)
+  override val foregroundColorResource: ColorUIResource
+    get() = MTUiUtils.namedColor("material.foreground", MTUI.Panel.foreground)
 
-  override fun getTextColorResource(): ColorUIResource =
-    MTUiUtils.namedColor("material.primaryColor", MTUI.Panel.primaryForeground)
+  override val textColorResource: ColorUIResource
+    get() = MTUiUtils.namedColor("material.primaryColor", MTUI.Panel.primaryForeground)
 
-  override fun getSelectionBackgroundColorResource(): ColorUIResource =
-    MTUiUtils.namedColor("material.selectionBackground", MTUI.Panel.selectionBackground)
+  override val selectionBackgroundColorResource: ColorUIResource
+    get() = MTUiUtils.namedColor("material.selectionBackground", MTUI.Panel.selectionBackground)
 
-  override fun getSelectionForegroundColorResource(): ColorUIResource =
-    MTUiUtils.namedColor("material.selectionForeground", MTUI.Panel.selectionForeground)
+  override val selectionForegroundColorResource: ColorUIResource
+    get() = MTUiUtils.namedColor("material.selectionForeground", MTUI.Panel.selectionForeground)
 
-  override fun getButtonColorResource(): ColorUIResource =
-    MTUiUtils.namedColor("material.button", MTUI.Button.backgroundColor)
+  override val buttonColorResource: ColorUIResource
+    get() =
+      MTUiUtils.namedColor("material.button", MTUI.Button.backgroundColor)
 
-  override fun getSecondaryBackgroundColorResource(): ColorUIResource =
-    MTUiUtils.namedColor("material.second", MTUI.Panel.secondaryBackground)
+  override val secondaryBackgroundColorResource: ColorUIResource
+    get() = MTUiUtils.namedColor("material.second", MTUI.Panel.secondaryBackground)
 
-  override fun getDisabledColorResource(): ColorUIResource =
-    MTUiUtils.namedColor("material.disabled", MTUI.Button.disabledColor)
+  override val disabledColorResource: ColorUIResource
+    get() = MTUiUtils.namedColor("material.disabled", MTUI.Button.disabledColor)
 
-  override fun getContrastColorResource(): ColorUIResource =
-    MTUiUtils.namedColor("material.contrast", MTUI.Panel.contrastBackground)
+  override val contrastColorResource: ColorUIResource
+    get() = MTUiUtils.namedColor("material.contrast", MTUI.Panel.contrastBackground)
 
-  override fun getTableSelectedColorResource(): ColorUIResource =
-    MTUiUtils.namedColor("material.active", MTUI.Table.highlightOuterColor)
+  override val tableSelectedColorResource: ColorUIResource
+    get() = MTUiUtils.namedColor("material.active", MTUI.Table.highlightOuterColor)
 
-  override fun getSecondBorderColorResource(): ColorUIResource =
-    MTUiUtils.namedColor("material.border", MTUI.Separator.separatorColor)
+  override val secondBorderColorResource: ColorUIResource
+    get() = MTUiUtils.namedColor("material.border", MTUI.Separator.separatorColor)
 
-  override fun getHighlightColorResource(): ColorUIResource =
-    MTUiUtils.namedColor("material.highlight", MTUI.Panel.highlightBackground)
+  override val highlightColorResource: ColorUIResource
+    get() = MTUiUtils.namedColor("material.highlight", MTUI.Panel.highlightBackground)
 
-  override fun getTreeSelectionColorResource(): ColorUIResource =
-    MTUiUtils.namedColor("material.tree", MTUI.Tree.selectionBackground)
+  override val treeSelectionColorResource: ColorUIResource
+    get() = MTUiUtils.namedColor("material.tree", MTUI.Tree.selectionBackground)
 
-  override fun getNotificationsColorResource(): ColorUIResource =
-    MTUiUtils.namedColor("material.notifications", MTUI.Notification.backgroundColor)
+  override val notificationsColorResource: ColorUIResource
+    get() = MTUiUtils.namedColor("material.notifications", MTUI.Notification.backgroundColor)
 
-  override fun getAccentColorResource(): ColorUIResource =
-    MTUiUtils.namedColor("material.accent", ColorUtil.brighter(MTUI.Button.primaryBackgroundColor, 2))
+  override val accentColorResource: ColorUIResource
+    get() = MTUiUtils.namedColor("material.accent", ColorUtil.brighter(MTUI.Button.primaryBackgroundColor, 2))
 
-  override fun getExcludedColorResource(): ColorUIResource =
-    MTUiUtils.namedColor("material.excluded", MTUI.Panel.excludedBackground)
+  override val excludedColorResource: ColorUIResource
+    get() = MTUiUtils.namedColor("material.excluded", MTUI.Panel.excludedBackground)
 
   @Throws(UnsupportedLookAndFeelException::class)
   public override fun setLookAndFeel() {

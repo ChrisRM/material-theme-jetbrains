@@ -54,37 +54,54 @@ class GithubTheme : MTAbstractLightTheme() {
   override val order: Int
     get() = 5
 
-  override fun getBackgroundColorResource(): ColorUIResource = ColorUIResource(0xF7F8FA)
+  override val backgroundColorResource: ColorUIResource
+    get() = ColorUIResource(0xF7F8FA)
 
-  override fun getForegroundColorResource(): ColorUIResource = ColorUIResource(0x5B6168)
+  override val foregroundColorResource: ColorUIResource
+    get() = ColorUIResource(0x5B6168)
 
-  override fun getTextColorResource(): ColorUIResource = ColorUIResource(0x292D31)
+  override val textColorResource: ColorUIResource
+    get() = ColorUIResource(0x292D31)
 
-  override fun getSelectionBackgroundColorResource(): ColorUIResource = ColorUIResource(0xc6e5ff)
+  override val selectionBackgroundColorResource: ColorUIResource
+    get() = ColorUIResource(0xc6e5ff)
 
-  override fun getSelectionForegroundColorResource(): ColorUIResource = ColorUIResource(0x111111)
+  override val selectionForegroundColorResource: ColorUIResource
+    get() = ColorUIResource(0x111111)
 
-  override fun getButtonColorResource(): ColorUIResource = ColorUIResource(0xedf1f5)
+  override val buttonColorResource: ColorUIResource
+    get() = ColorUIResource(0xedf1f5)
 
-  override fun getSecondaryBackgroundColorResource(): ColorUIResource = ColorUIResource(0xf3f3f3)
+  override val secondaryBackgroundColorResource: ColorUIResource
+    get() = ColorUIResource(0xf3f3f3)
 
-  override fun getDisabledColorResource(): ColorUIResource = ColorUIResource(0x9ba0a3)
+  override val disabledColorResource: ColorUIResource
+    get() = ColorUIResource(0x9ba0a3)
 
-  override fun getContrastColorResource(): ColorUIResource = ColorUIResource(0xfafbfc)
+  override val contrastColorResource: ColorUIResource
+    get() = ColorUIResource(0xfafbfc)
 
-  override fun getTableSelectedColorResource(): ColorUIResource = ColorUIResource(0xcce5ff)
+  override val tableSelectedColorResource: ColorUIResource
+    get() = ColorUIResource(0xcce5ff)
 
-  override fun getSecondBorderColorResource(): ColorUIResource = ColorUIResource(0xDFE1E4)
+  override val secondBorderColorResource: ColorUIResource
+    get() = ColorUIResource(0xDFE1E4)
 
-  override fun getHighlightColorResource(): ColorUIResource = ColorUIResource(0xCCE5FF)
+  override val highlightColorResource: ColorUIResource
+    get() = ColorUIResource(0xCCE5FF)
 
-  override fun getTreeSelectionColorResource(): ColorUIResource = ColorUIResource(0xe1e4e8)
+  override val treeSelectionColorResource: ColorUIResource
+    get() = ColorUIResource(0xe1e4e8)
 
-  override fun getNotificationsColorResource(): ColorUIResource = ColorUIResource(0xDFECFE)
+  override val notificationsColorResource: ColorUIResource
+    get() = ColorUIResource(0xDFECFE)
 
-  override fun getAccentColorResource(): ColorUIResource = ColorUIResource(0x79CB60)
+  override val accentColorResource: ColorUIResource
+    get() = ColorUIResource(0x79CB60)
 
-  override fun getExcludedColorResource(): ColorUIResource = ColorUIResource(0xdcdcdc)
+  override val excludedColorResource: ColorUIResource
+    get() = ColorUIResource(0xdcdcdc)
 
-  override fun getSecondSelectionForegroundColorResource(): ColorUIResource = ColorUIResource(0x111111)
+  override val secondSelectionForegroundColorResource: ColorUIResource
+    get() = ColorUIResource(0x111111)
 }

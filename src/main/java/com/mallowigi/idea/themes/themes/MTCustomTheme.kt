@@ -60,36 +60,52 @@ class MTCustomTheme : MTAbstractTheme() {
   override val themeIcon: String
     get() = iconPrefix("custom")
 
-  override fun getBackgroundColorResource(): ColorUIResource = customThemeConfig.backgroundColorString
+  override val backgroundColorResource: ColorUIResource
+    get() = customThemeConfig.backgroundColorString
 
-  override fun getForegroundColorResource(): ColorUIResource = customThemeConfig.foregroundColorString
+  override val foregroundColorResource: ColorUIResource
+    get() = customThemeConfig.foregroundColorString
 
-  override fun getTextColorResource(): ColorUIResource = customThemeConfig.textColorString
+  override val textColorResource: ColorUIResource
+    get() = customThemeConfig.textColorString
 
-  override fun getSelectionBackgroundColorResource(): ColorUIResource = customThemeConfig.selectionBackgroundColorString
+  override val selectionBackgroundColorResource: ColorUIResource
+    get() = customThemeConfig.selectionBackgroundColorString
 
-  override fun getSelectionForegroundColorResource(): ColorUIResource = customThemeConfig.selectionForegroundColorString
+  override val selectionForegroundColorResource: ColorUIResource
+    get() = customThemeConfig.selectionForegroundColorString
 
-  override fun getButtonColorResource(): ColorUIResource = customThemeConfig.buttonColorString
+  override val buttonColorResource: ColorUIResource
+    get() = customThemeConfig.buttonColorString
 
-  override fun getSecondaryBackgroundColorResource(): ColorUIResource = customThemeConfig.secondaryBackgroundColorString
+  override val secondaryBackgroundColorResource: ColorUIResource
+    get() = customThemeConfig.secondaryBackgroundColorString
 
-  override fun getDisabledColorResource(): ColorUIResource = customThemeConfig.disabledColorString
+  override val disabledColorResource: ColorUIResource
+    get() = customThemeConfig.disabledColorString
 
-  override fun getContrastColorResource(): ColorUIResource = customThemeConfig.contrastColorString
+  override val contrastColorResource: ColorUIResource
+    get() = customThemeConfig.contrastColorString
 
-  override fun getTableSelectedColorResource(): ColorUIResource = customThemeConfig.tableSelectedColorString
+  override val tableSelectedColorResource: ColorUIResource
+    get() = customThemeConfig.tableSelectedColorString
 
-  override fun getSecondBorderColorResource(): ColorUIResource = customThemeConfig.secondBorderColorString
+  override val secondBorderColorResource: ColorUIResource
+    get() = customThemeConfig.secondBorderColorString
 
-  override fun getHighlightColorResource(): ColorUIResource = customThemeConfig.highlightColorString
+  override val highlightColorResource: ColorUIResource
+    get() = customThemeConfig.highlightColorString
 
-  override fun getTreeSelectionColorResource(): ColorUIResource = customThemeConfig.treeSelectionColorString
+  override val treeSelectionColorResource: ColorUIResource
+    get() = customThemeConfig.treeSelectionColorString
 
-  override fun getNotificationsColorResource(): ColorUIResource = customThemeConfig.notificationsColorString
+  override val notificationsColorResource: ColorUIResource
+    get() = customThemeConfig.notificationsColorString
 
-  override fun getAccentColorResource(): ColorUIResource = customThemeConfig.accentColorString
+  override val accentColorResource: ColorUIResource
+    get() = customThemeConfig.accentColorString
 
-  override fun getExcludedColorResource(): ColorUIResource = customThemeConfig.excludedColorString
+  override val excludedColorResource: ColorUIResource
+    get() = customThemeConfig.excludedColorString
 
 }

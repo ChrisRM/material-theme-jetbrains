@@ -59,36 +59,52 @@ class MTLightCustomTheme : MTAbstractTheme() {
 
   private val config = MTCustomThemeConfig.getInstance()
 
-  override fun getBackgroundColorResource(): ColorUIResource = config.backgroundColorString
+  override val backgroundColorResource: ColorUIResource
+    get() = config.backgroundColorString
 
-  override fun getForegroundColorResource(): ColorUIResource = config.foregroundColorString
+  override val foregroundColorResource: ColorUIResource
+    get() = config.foregroundColorString
 
-  override fun getTextColorResource(): ColorUIResource = config.textColorString
+  override val textColorResource: ColorUIResource
+    get() = config.textColorString
 
-  override fun getSelectionBackgroundColorResource(): ColorUIResource = config.selectionBackgroundColorString
+  override val selectionBackgroundColorResource: ColorUIResource
+    get() = config.selectionBackgroundColorString
 
-  override fun getSelectionForegroundColorResource(): ColorUIResource = config.selectionForegroundColorString
+  override val selectionForegroundColorResource: ColorUIResource
+    get() = config.selectionForegroundColorString
 
-  override fun getButtonColorResource(): ColorUIResource = config.buttonColorString
+  override val buttonColorResource: ColorUIResource
+    get() = config.buttonColorString
 
-  override fun getSecondaryBackgroundColorResource(): ColorUIResource = config.secondaryBackgroundColorString
+  override val secondaryBackgroundColorResource: ColorUIResource
+    get() = config.secondaryBackgroundColorString
 
-  override fun getDisabledColorResource(): ColorUIResource = config.disabledColorString
+  override val disabledColorResource: ColorUIResource
+    get() = config.disabledColorString
 
-  override fun getContrastColorResource(): ColorUIResource = config.contrastColorString
+  override val contrastColorResource: ColorUIResource
+    get() = config.contrastColorString
 
-  override fun getTableSelectedColorResource(): ColorUIResource = config.tableSelectedColorString
+  override val tableSelectedColorResource: ColorUIResource
+    get() = config.tableSelectedColorString
 
-  override fun getSecondBorderColorResource(): ColorUIResource = config.secondBorderColorString
+  override val secondBorderColorResource: ColorUIResource
+    get() = config.secondBorderColorString
 
-  override fun getHighlightColorResource(): ColorUIResource = config.highlightColorString
+  override val highlightColorResource: ColorUIResource
+    get() = config.highlightColorString
 
-  override fun getTreeSelectionColorResource(): ColorUIResource = config.treeSelectionColorString
+  override val treeSelectionColorResource: ColorUIResource
+    get() = config.treeSelectionColorString
 
-  override fun getNotificationsColorResource(): ColorUIResource = config.notificationsColorString
+  override val notificationsColorResource: ColorUIResource
+    get() = config.notificationsColorString
 
-  override fun getAccentColorResource(): ColorUIResource = config.accentColorString
+  override val accentColorResource: ColorUIResource
+    get() = config.accentColorString
 
-  override fun getExcludedColorResource(): ColorUIResource = config.excludedColorString
+  override val excludedColorResource: ColorUIResource
+    get() = config.excludedColorString
 
 }
