@@ -2,21 +2,42 @@
 # https://github.com/detekt/detekt/blob/master/detekt-core/src/main/resources/default-detekt-config.yml
 
 exceptions:
+  InstanceOfCheckForException:
+    active: true
+  NotImplementedDeclaration:
+    active: true
   TooGenericExceptionCaught:
     active: false
   SwallowedException:
     active: false
 
 formatting:
+  AnnotationOnSeparateLine:
+    active: true
+  AnnotationSpacing:
+    active: true
+  ArgumentListWrapping:
+    active: true
+    maxLineLength: 160
   Indentation:
     active: true
     autoCorrect: true
     indentSize: 2
     continuationIndentSize: 2
+  MultiLineIfElse:
+    active: true
+  NoEmptyFirstLineInMethodBlock:
+    active: true
+  PackageName:
+    active: true
   ParameterListWrapping:
     active: true
     autoCorrect: true
     indentSize: 2
+  SpacingBetweenDeclarationsWithAnnotations:
+    active: true
+  SpacingBetweenDeclarationsWithComments:
+    active: true
   MaximumLineLength:
     maxLineLength: 160
 
@@ -27,12 +48,21 @@ performance:
 style:
   ClassOrdering:
     active: true
-    autoCorrect: true
   CollapsibleIfStatements:
     active: true
   DataClassContainsFunctions:
     active: true
   DataClassShouldBeImmutable:
+    active: true
+  EqualsOnSignatureLine:
+    active: true
+  ExplicitCollectionElementAccessMethod:
+    active: true
+  ExplicitItLambdaParameter:
+    active: true
+  ExpressionBodySyntax:
+    active: true
+  ForbiddenVoid:
     active: true
   ForbiddenComment:
     active: true
@@ -44,21 +74,13 @@ style:
     ignoreRanges: true
     ignoreEnums: true
     excludes: [ '**/*Theme*' ]
-  EqualsOnSignatureLine:
-    active: true
-  ExplicitCollectionElementAccessMethod:
-    active: true
-  ExplicitItLambdaParameter:
-    active: true
-  ExpressionBodySyntax:
-    active: true
-  ForbiddenVoid:
-    active: true
   MandatoryBracesIfStatements:
     active: true
   MandatoryBracesLoops:
     active: true
   MultilineLambdaItParameter:
+    active: true
+  NoTabs:
     active: true
   ObjectLiteralToLambda:
     active: true
@@ -70,6 +92,11 @@ style:
     active: true
   RedundantHigherOrderMapUsage:
     active: true
+  RedundantVisibilityModifierRule:
+    active: true
+  ReturnCount:
+    max: 3
+    excludeGuardClauses: true
   SpacingBetweenPackageAndImports:
     active: true
   TrailingWhitespace:
@@ -87,6 +114,10 @@ style:
   UntilInsteadOfRangeTo:
     active: true
   UnusedImports:
+    active: true
+  UseAnyOrNoneInsteadOfFind:
+    active: true
+  UseArrayLiteralsInAnnotations:
     active: true
   UseCheckNotNull:
     active: true
@@ -108,13 +139,13 @@ style:
     active: true
   UseRequireNotNull:
     active: true
-  ReturnCount:
-    max: 3
 
 comments:
   AbsentOrWrongFileLicense:
     active: true
   DeprecatedBlockTag:
+    active: true
+  OutdatedDocumentation:
     active: true
   UndocumentedPublicClass:
     active: true
@@ -133,19 +164,45 @@ complexity:
     ignoreOverridden: true
 
 naming:
+  InvalidPackageDeclaration:
+    active: true
+  LambdaParameterNaming:
+    active: true
   NoNameShadowing:
     active: true
   NonBooleanPropertyPrefixedWithIs:
     active: true
+  FunctionMaxLength:
+    active: true
+    maximumFunctionNameLength: 36
+  FunctionMinLength:
+    active: true
+  VariableMaxLength:
+    active: true
+
 
 potential-bugs:
+  AvoidReferentialEquality:
+    active: true
+  CastToNullableType:
+    active: true
+  Deprecation:
+    active: true
   DontDowncastCollectionTypes:
     active: true
   DoubleMutabilityForCollection:
     active: true
   HasPlatformType:
     active: true
+  ImplicitUnitReturnType:
+    active: true
   MapGetWithNotNullAssertionOperator:
+    active: true
+  MissingPackageDeclaration:
+    active: true
+  MissingWhenCase:
+    active: true
+  NullableToStringCall:
     active: true
   UnreachableCatchBlock:
     active: true

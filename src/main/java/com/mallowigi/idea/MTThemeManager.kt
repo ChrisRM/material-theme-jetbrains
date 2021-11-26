@@ -60,8 +60,7 @@ import com.mallowigi.idea.themes.lists.FontResources
 import com.mallowigi.idea.utils.MTStyledKitPatcher
 import com.mallowigi.idea.utils.MTUI
 import com.mallowigi.idea.utils.MTUiUtils
-import com.mallowigi.idea.utils.animator.MTChangeLafService.hideSnapshotWithAnimation
-import com.mallowigi.idea.utils.animator.MTChangeLafService.showSnapshot
+import com.mallowigi.idea.utils.animator.MTChangeLafService
 import org.jetbrains.annotations.NonNls
 import java.awt.Color
 import java.awt.Font
@@ -71,6 +70,10 @@ import javax.swing.UIDefaults
 import javax.swing.UIManager
 import javax.swing.plaf.FontUIResource
 
+/**
+ * Service for applying themes and settings
+ *
+ */
 class MTThemeManager private constructor() : Disposable {
   override fun dispose(): Unit = Unit
 
@@ -372,7 +375,7 @@ class MTThemeManager private constructor() : Disposable {
       it.name == selectedTheme.themeName
     }
 
-    showSnapshot()
+    MTChangeLafService.showSnapshot()
 
     if (lafInfo != null) {
       lafManager.currentLookAndFeel = lafInfo
@@ -380,7 +383,7 @@ class MTThemeManager private constructor() : Disposable {
       activate(selectedTheme)
     }
 
-    SwingUtilities.invokeLater { hideSnapshotWithAnimation() }
+    SwingUtilities.invokeLater { MTChangeLafService.hideSnapshotWithAnimation() }
   }
 
   /**

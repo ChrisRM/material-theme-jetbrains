@@ -40,6 +40,10 @@ import javax.swing.JComponent
 import javax.swing.JLayeredPane
 import javax.swing.RootPaneContainer
 
+/**
+ * Change LAF Animation
+ *
+ */
 class MTChangeLAFAnimator {
   // The current alpha, changed by the fade in animator
   private var myAlpha = 1f
@@ -49,18 +53,6 @@ class MTChangeLAFAnimator {
 
   // The animator
   internal val fadeInAnimator: Animator = FadeInAnimator()
-
-  /**
-   * Paint our images on each opened window
-   */
-  private fun doPaint() {
-    for ((window, image) in windowLayers) {
-      if (window.isShowing) {
-        image.revalidate()
-        image.repaint()
-      }
-    }
-  }
 
   init {
     // When this constructor is invoked (e.g. during showSnapshot), we gather all open windows
@@ -101,6 +93,18 @@ class MTChangeLAFAnimator {
     }
 
     doPaint()
+  }
+
+  /**
+   * Paint our images on each opened window
+   */
+  private fun doPaint() {
+    for ((window, image) in windowLayers) {
+      if (window.isShowing) {
+        image.revalidate()
+        image.repaint()
+      }
+    }
   }
 
   /**
