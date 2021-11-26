@@ -28,7 +28,7 @@ package com.mallowigi.idea.license
 import com.intellij.openapi.application.ApplicationManager
 
 class MTHCLicenseChecker : MTLicenseChecker() {
-  public override fun getProductCode(): String = "PMATERIALUIHC"
+  public override fun getProductCode(): String = "PMATERIALHC"
 
   companion object {
     @JvmStatic
