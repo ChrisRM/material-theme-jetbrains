@@ -25,17 +25,76 @@
  */
 package com.mallowigi.idea.config.enums
 
+/**
+ * Tab highlight positions
+ *
+ * @property type
+ */
 enum class TabHighlightPositions(private val type: String) {
+  /**
+   * Default: on the bottom
+   *
+   */
   DEFAULT("Default"),
+
+  /**
+   * Bottom only
+   *
+   */
   BOTTOM("Bottom"),
+
+  /**
+   * Top only
+   *
+   */
   TOP("Top"),
+
+  /**
+   * Left only
+   *
+   */
   LEFT("Left"),
+
+  /**
+   * Right Only
+   *
+   */
   RIGHT("Right"),
+
+  /**
+   * Top and Bottom
+   *
+   */
   TOP_BOTTOM("Top-Bottom"),
+
+  /**
+   * Left and Right
+   *
+   */
   LEFT_RIGHT("Left-Right"),
+
+  /**
+   * All direction
+   *
+   */
   FULL("Full"),
+
+  /**
+   * Left, Top and Right
+   *
+   */
   BOTTOMLESS("Bottomless"),
+
+  /**
+   * Left, Bottom and Right
+   *
+   */
   TOPLESS("Topless"),
+
+  /**
+   * None
+   *
+   */
   NONE("None");
 
   override fun toString(): String = type

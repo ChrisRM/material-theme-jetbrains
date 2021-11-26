@@ -34,6 +34,10 @@ import com.mallowigi.idea.messages.MaterialThemeBundle
 import java.util.Collections
 import java.util.function.Supplier
 
+/**
+ * Provider for actions for Material Theme Project Config
+ *
+ */
 class MTProjectConfigTopHitProvider : ProjectLevelProvider {
   override fun getId(): String = "mtProjectConfig"
 

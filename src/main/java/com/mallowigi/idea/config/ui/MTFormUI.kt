@@ -27,10 +27,37 @@ package com.mallowigi.idea.config.ui
 
 import javax.swing.JComponent
 
+/**
+ * Interface for forms
+ *
+ */
 interface MTFormUI {
+  /**
+   * Initializes the form
+   *
+   */
   fun init()
+
+  /**
+   * Initializes the form components
+   *
+   */
   fun initComponents()
+
+  /**
+   * After initialization, setup components (disable, hide, add links...)
+   *
+   */
   fun setupComponents()
+
+  /**
+   * The main component
+   */
   val content: JComponent?
+
+  /**
+   * Disposes the form
+   *
+   */
   fun dispose()
 }

@@ -33,30 +33,68 @@ import com.mallowigi.idea.messages.MaterialThemeBundle
 import com.mallowigi.idea.utils.MTUiUtils
 
 /**
- * Service used to load and save settings from MTConfig
+ * Configurable for the MTConfig
  */
 class MTConfigurable : MTConfigurableBase<MTForm?, MTConfig?>(), SearchableConfigurable {
+  /**
+   * Name of the configurable
+   *
+   */
   override fun getDisplayName(): String = MaterialThemeBundle.message("mt.settings.titles.materialTheme")
 
+  /**
+   * Help topic
+   *
+   */
   override fun getHelpTopic(): String = "${MTUiUtils.HELP_PREFIX}.$HELP_ID"
 
+  /**
+   * ID of the configurable
+   *
+   */
   override fun getId(): String = ID
 
+  /**
+   * Set form state from the config
+   *
+   */
   override fun setFormState(form: MTForm?, config: MTConfig): Unit = form!!.setFormState(config)
 
+  /**
+   * Gets the config
+   *
+   */
   override fun getConfig(): MTConfig = MTConfig.getInstance()
 
+  /**
+   * Creates the form
+   *
+   */
   override fun createForm(): MTForm = MTForm()
 
+  /**
+   * Apply settings from the form
+   *
+   */
   override fun doApply(form: MTForm?, config: MTConfig?): Unit = config!!.applySettings(form)
 
+  /**
+   * Check whether the form is modified
+   *
+   */
   override fun checkModified(form: MTForm?, config: MTConfig?): Boolean = checkFormModified(config)
 
   private fun checkFormModified(config: MTBaseConfig<MTForm, MTConfig>?): Boolean = form!!.isModified(config)
 
   companion object {
+    /**
+     * Configurable ID
+     */
     const val ID: String = "MTConfigurable"
 
+    /**
+     * Help topic ID
+     */
     const val HELP_ID: String = "MTConfig"
   }
 }

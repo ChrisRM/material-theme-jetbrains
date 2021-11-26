@@ -74,6 +74,7 @@ import javax.swing.plaf.FontUIResource
  * Service for applying themes and settings
  *
  */
+@Suppress("TooManyFunctions")
 class MTThemeManager private constructor() : Disposable {
   override fun dispose(): Unit = Unit
 
@@ -359,10 +360,7 @@ class MTThemeManager private constructor() : Disposable {
    */
   private fun refreshColorScheme() {
     ApplicationManager.getApplication()
-      .invokeLater(
-        { (EditorColorsManager.getInstance() as EditorColorsManagerImpl).schemeChangedOrSwitched(null) },
-        ModalityState.NON_MODAL
-      )
+      .invokeLater { (EditorColorsManager.getInstance() as EditorColorsManagerImpl).schemeChangedOrSwitched(null) }
   }
 
   /**
@@ -734,7 +732,6 @@ class MTThemeManager private constructor() : Disposable {
     private val mtConfig = MTConfig.getInstance()
     const val RETINA: String = "@2x.css"
     const val NON_RETINA: String = ".css"
-    private const val DARCULA: String = "darcula"
 
     const val NEW_STRIPES_UI: String = "ide.experimental.ui.toolwindow.stripes"
 

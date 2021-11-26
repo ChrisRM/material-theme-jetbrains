@@ -33,11 +33,16 @@ import org.jetbrains.annotations.ApiStatus
 import org.w3c.dom.Element
 import javax.swing.plaf.ColorUIResource
 
+/**
+ * Patch icons with accent color
+ *
+ */
 class MTAccentColorPatcher internal constructor() : SvgElementColorPatcherProvider {
   init {
     refreshColors()
   }
 
+  @Suppress("StringLiteralDuplication")
   @ApiStatus.Internal
   override fun forPath(path: String?): SvgElementColorPatcher {
     return object : SvgElementColorPatcher {
@@ -50,9 +55,9 @@ class MTAccentColorPatcher internal constructor() : SvgElementColorPatcherProvid
 
         when {
           "true" == accentProp || "fill" == accentProp -> svg.setAttribute("fill", "#$accentHexColor")
-          "stroke" == accentProp -> svg.setAttribute("stroke", "#$accentHexColor")
-          "true" == themeProp || "fill" == themeProp -> svg.setAttribute("fill", "#$themeHexColor")
-          "stroke" == themeProp -> svg.setAttribute("stroke", "#$themeHexColor")
+          "stroke" == accentProp                       -> svg.setAttribute("stroke", "#$accentHexColor")
+          "true" == themeProp || "fill" == themeProp   -> svg.setAttribute("fill", "#$themeHexColor")
+          "stroke" == themeProp                        -> svg.setAttribute("stroke", "#$themeHexColor")
         }
 
         val nodes = svg.childNodes

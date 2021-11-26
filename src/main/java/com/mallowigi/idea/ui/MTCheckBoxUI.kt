@@ -121,6 +121,7 @@ class MTCheckBoxUI : DarculaCheckBoxUI() {
    * @param textRect rect where to draw the text
    * @param text the text to draw
    */
+  @Suppress("CastToNullableType")
   override fun drawText(
     c: JComponent,
     g: Graphics2D,

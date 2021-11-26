@@ -30,11 +30,8 @@ import com.mallowigi.idea.config.ui.MTForm
 import com.mallowigi.idea.config.ui.MTFormUI
 
 /**
- * base config
+ * Base class for configuration classes.
  *
- * @param FORM
- * @param CONFIG
- * @constructor Create empty M t base config
  */
 interface MTBaseConfig<FORM : MTFormUI?, CONFIG : PersistentStateComponent<*>?> {
   /**

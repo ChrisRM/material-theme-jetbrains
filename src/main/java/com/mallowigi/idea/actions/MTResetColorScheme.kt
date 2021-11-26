@@ -28,6 +28,7 @@ package com.mallowigi.idea.actions
 import com.intellij.application.options.colors.ColorAndFontOptions
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
+import com.intellij.openapi.diagnostic.thisLogger
 import com.intellij.openapi.editor.colors.EditorColorsManager
 import com.intellij.openapi.ui.Messages
 import com.mallowigi.idea.MTAnalytics
@@ -35,6 +36,10 @@ import com.mallowigi.idea.messages.MaterialThemeBundle.message
 import com.mallowigi.idea.notifications.MTNotifications
 import java.lang.reflect.InvocationTargetException
 
+/**
+ * Resets the color scheme
+ *
+ */
 class MTResetColorScheme : AnAction() {
   override fun actionPerformed(e: AnActionEvent) {
     if (Messages.showOkCancelDialog(
@@ -55,11 +60,11 @@ class MTResetColorScheme : AnAction() {
         method.isAccessible = true
         method.invoke(options, scheme.name)
       } catch (ex: NoSuchMethodException) {
-        ex.printStackTrace()
+        thisLogger().error(e)
       } catch (ex: InvocationTargetException) {
-        ex.printStackTrace()
+        thisLogger().error(e)
       } catch (ex: IllegalAccessException) {
-        ex.printStackTrace()
+        thisLogger().error(e)
       }
 
       MTAnalytics.instance.track(MTAnalytics.RESET_COLOR_SCHEME)

@@ -41,6 +41,10 @@ import com.mallowigi.idea.config.application.MTConfig
 import com.mallowigi.idea.messages.MaterialThemeBundle.messageOrDefault
 import org.jetbrains.annotations.NonNls
 
+/**
+ * Service for loading and managing file colors
+ *
+ */
 object MTFileColors {
   @NonNls
   private val MT_PREFIX: String = "MT_FILESTATUS_"
@@ -50,11 +54,19 @@ object MTFileColors {
   private val currentSchemeForCurrentUITheme: EditorColorsScheme
     get() = EditorColorsManager.getInstance().schemeForCurrentUITheme
 
+  /**
+   * Apply file colors and styled directories
+   *
+   */
   private fun apply() {
     if (MTConfig.getInstance().isFileStatusColorsEnabled) applyFileStatuses()
     applyStyleDirectories()
   }
 
+  /**
+   * Apply file statuses to the current color scheme
+   *
+   */
   private fun applyFileStatuses() {
     val defaultScheme = currentSchemeForCurrentUITheme
     val allFileStatuses = FileStatusFactory.getInstance().allFileStatuses
@@ -76,6 +88,10 @@ object MTFileColors {
     }
   }
 
+  /**
+   * Apply styled directories to the current color scheme
+   *
+   */
   private fun applyStyleDirectories() {
     if (!MTConfig.getInstance().isStyledDirectories) return
 
@@ -90,6 +106,10 @@ object MTFileColors {
     }
   }
 
+  /**
+   * Load all possible file statuses into a service for easier management through color scheme setting page
+   *
+   */
   private fun initFileColors() {
     // Load all registered file statuses and read their colors from the properties
     val allFileStatuses = FileStatusFactory.getInstance().allFileStatuses
@@ -125,6 +145,12 @@ object MTFileColors {
     }
   }
 
+  /**
+   * Get a registered color key from a file status
+   *
+   * @param status the file status
+   * @return
+   */
   @JvmStatic
   fun getColorKey(status: FileStatus): ColorKey? = COLOR_KEYS[status]
 

@@ -44,21 +44,56 @@ import com.mallowigi.idea.themes.lists.MTThemeResources
 import org.jetbrains.annotations.NonNls
 import javax.swing.Icon
 
+/**
+ * Color Scheme page for Scrollbars
+ *
+ */
 class MTScrollbarsPage : ColorSettingsPage, DisplayPrioritySortable {
+  /**
+   * No attribute descriptors
+   *
+   */
   override fun getAttributeDescriptors(): Array<AttributesDescriptor?> = arrayOfNulls(0)
 
+  /**
+   * Color descriptors: the scrollbar properties
+   *
+   */
   override fun getColorDescriptors(): Array<ColorDescriptor> = DESCRIPTORS
 
+  /**
+   * Page name
+   *
+   */
   override fun getDisplayName(): @NonNls String = message("MTScrollbars.title")
 
+  /**
+   * Put it with the common settings
+   *
+   */
   override fun getPriority(): DisplayPriority = DisplayPriority.COMMON_SETTINGS
 
+  /**
+   * No icon
+   *
+   */
   override fun getIcon(): Icon? = null
 
+  /**
+   * No syntax highlighter
+   */
   override fun getHighlighter(): SyntaxHighlighter = PlainSyntaxHighlighter()
 
+  /**
+   * No demo text
+   *
+   */
   override fun getDemoText(): String = " "
 
+  /**
+   * No additional highlightings
+   *
+   */
   override fun getAdditionalHighlightingTagToDescriptorMap(): Map<String, TextAttributesKey>? = null
 
   companion object {

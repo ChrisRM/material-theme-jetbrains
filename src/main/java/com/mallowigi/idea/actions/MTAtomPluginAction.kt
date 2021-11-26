@@ -28,19 +28,24 @@ package com.mallowigi.idea.actions
 
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
+import com.intellij.openapi.diagnostic.thisLogger
 import com.mallowigi.idea.messages.MaterialThemeBundle.message
 import java.awt.Desktop
 import java.io.IOException
 import java.net.URI
 import java.net.URISyntaxException
 
+/**
+ * Notification for installing the Atom Material Plugin
+ *
+ */
 class MTAtomPluginAction : AnAction() {
   override fun actionPerformed(e: AnActionEvent): Unit = try {
     Desktop.getDesktop().browse(URI(message("atom.plugin.url")))
   } catch (ioException: IOException) {
-    ioException.printStackTrace()
+    thisLogger().error(e)
   } catch (ioException: URISyntaxException) {
-    ioException.printStackTrace()
+    thisLogger().error(e)
   }
 
   override fun isDumbAware(): Boolean = true

@@ -40,24 +40,63 @@ import com.mallowigi.idea.messages.MaterialThemeBundle.message
 import com.mallowigi.idea.schemes.MTFileColors.getColorKey
 import javax.swing.Icon
 
+/**
+ * Color Scheme page for File Status colors
+ *
+ */
 class MTFileColorsPage : ColorSettingsPage, DisplayPrioritySortable {
+  /**
+   * Custom attribute descriptors (ex: Directories)
+   *
+   */
   override fun getAttributeDescriptors(): Array<AttributesDescriptor> = ATTRIBUTES_DESCRIPTORS.clone()
 
+  /**
+   * Color Descriptors: the file statuses
+   *
+   */
   override fun getColorDescriptors(): Array<ColorDescriptor> = DESCRIPTORS
 
+  /**
+   * Page name
+   *
+   */
   override fun getDisplayName(): String = message("MTFileColors.colors.page.name")
 
+  /**
+   * Put it with the common settings
+   *
+   */
   override fun getPriority(): DisplayPriority = DisplayPriority.COMMON_SETTINGS
 
+  /**
+   * No icon
+   *
+   */
   override fun getIcon(): Icon? = null
 
+  /**
+   * No syntax highlighter
+   *
+   */
   override fun getHighlighter(): SyntaxHighlighter = PlainSyntaxHighlighter()
 
+  /**
+   * No demo text
+   *
+   */
   override fun getDemoText(): String = " "
 
+  /**
+   * No additional highlightings
+   *
+   */
   override fun getAdditionalHighlightingTagToDescriptorMap(): Map<String, TextAttributesKey>? = null
 
   companion object {
+    /**
+     * Directories key
+     */
     val DIRECTORIES: TextAttributesKey =
       TextAttributesKey.createTextAttributesKey("MT_DIRECTORIES", HighlighterColors.TEXT)
 
@@ -70,13 +109,7 @@ class MTFileColorsPage : ColorSettingsPage, DisplayPrioritySortable {
       val allFileStatuses = FileStatusFactory.getInstance().allFileStatuses
       val colorDescriptors: MutableSet<ColorDescriptor> = mutableSetOf()
       allFileStatuses.forEach {
-        colorDescriptors.add(
-          ColorDescriptor(
-            it.text,
-            getColorKey(it)!!,
-            ColorDescriptor.Kind.FOREGROUND
-          )
-        )
+        colorDescriptors.add(ColorDescriptor(it.text, getColorKey(it)!!, ColorDescriptor.Kind.FOREGROUND))
       }
 
       DESCRIPTORS = ArrayUtil.toObjectArray(colorDescriptors, ColorDescriptor::class.java)

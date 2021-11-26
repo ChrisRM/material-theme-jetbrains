@@ -32,6 +32,10 @@ import com.mallowigi.idea.config.custom.MTCustomThemeConfig
 import com.mallowigi.idea.config.project.MTProjectConfig
 import com.mallowigi.idea.messages.MaterialThemeBundle
 
+/**
+ * Service for synchronizing settings to the cloud
+ *
+ */
 class MTCloudProvider : CloudConfigAppender {
   override fun appendClassesToStream(): List<Class<*>> {
     return ContainerUtil.newArrayList<Class<*>>(

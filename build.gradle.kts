@@ -104,12 +104,6 @@ detekt {
   config = files("./detekt-config.yml")
   buildUponDefaultConfig = true
   autoCorrect = true
-
-  reports {
-    html.enabled = false
-    xml.enabled = false
-    txt.enabled = false
-  }
 }
 
 tasks {
@@ -125,6 +119,7 @@ tasks {
 
   withType<io.gitlab.arturbosch.detekt.Detekt> {
     jvmTarget = "1.8"
+    reports.xml.required.set(true)
   }
 
   withType<Copy> {

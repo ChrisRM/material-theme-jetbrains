@@ -31,6 +31,7 @@ import com.intellij.openapi.util.IconLoader
 import com.intellij.util.ObjectUtils
 import javax.swing.Icon
 
+@Suppress("LongParameterList")
 object MTCheckboxIconLookup {
   private const val ICONS_DIR_PREFIX = "/icons/mt/"
 

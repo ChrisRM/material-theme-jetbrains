@@ -42,7 +42,22 @@ import java.text.MessageFormat
 import javax.swing.Icon
 import javax.swing.UIManager
 
+/**
+ * Main class for toggle actions that set icons, check licenses and show notification among others.
+ *
+ */
 abstract class MTToggleAction : ToggleAction() {
+  /**
+   * Whether the action is toggled
+   *
+   */
+  abstract override fun isSelected(e: AnActionEvent): Boolean
+
+  /**
+   * Update the action preentation according to config, license, etc
+   *
+   * @param e event data
+   */
   override fun update(e: AnActionEvent) {
     val selected = isSelected(e)
     val presentation = e.presentation
@@ -60,12 +75,22 @@ abstract class MTToggleAction : ToggleAction() {
     checkLicense(e)
   }
 
+  /**
+   * Show a notification once toggled
+   *
+   * @param e the event data
+   * @param state selected state
+   */
   override fun setSelected(e: AnActionEvent, state: Boolean) {
     val notificationMessage = e.presentation.text
     val restText = message(if (state) "action.toggle.enabled" else "action.toggle.disabled")
     showSimple(e.project!!, MessageFormat.format("<b>{0}</b> {1}", notificationMessage, restText))
   }
 
+  /**
+   * Check license(s) and disable accordingly
+   *
+   */
   protected open fun checkLicense(e: AnActionEvent) {
     e.presentation.isEnabled = MTMainProductLicenseChecker.instance.isLicensed
   }
@@ -89,5 +114,9 @@ abstract class MTToggleAction : ToggleAction() {
     override fun getIconHeight(): Int = icon?.iconHeight ?: JBUI.scale(18)
   }
 
+  /**
+   * Make actions dumb aware
+   *
+   */
   override fun isDumbAware(): Boolean = true
 }

@@ -33,9 +33,21 @@ import com.mallowigi.idea.messages.MaterialThemeBundle
 import java.util.Collections
 import java.util.function.Supplier
 
+/**
+ * Allows to get/set Material Theme settings from the command palette
+ *
+ */
 class MTConfigTopHitProvider : ApplicationLevelProvider {
+  /**
+   * Id
+   *
+   */
   override fun getId(): String = "mtconfig"
 
+  /**
+   * The list of options available
+   *
+   */
   override fun getOptions(): Collection<OptionDescription> = OPTION_DESCRIPTIONS!!
 
   companion object {
@@ -224,9 +236,17 @@ class MTConfigTopHitProvider : ApplicationLevelProvider {
       )
     )
 
-    private fun option(option: String?, getter: String, setter: String): BooleanOptionDescription {
+    /**
+     * Creates an option description
+     *
+     * @param text the text of the option
+     * @param getter getter for the option
+     * @param setter setter for the option
+     * @return the option description
+     */
+    private fun option(text: String, getter: String, setter: String): BooleanOptionDescription {
       return object : PublicMethodBasedOptionDescription(
-        MaterialThemeBundle.message("option.prefix") + option,
+        MaterialThemeBundle.message("option.prefix") + text,
         MTConfigurable.ID,
         getter,
         setter,

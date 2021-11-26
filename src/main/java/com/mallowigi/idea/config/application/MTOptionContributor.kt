@@ -29,18 +29,23 @@ import com.intellij.ide.ui.search.SearchableOptionContributor
 import com.intellij.ide.ui.search.SearchableOptionProcessor
 import com.intellij.openapi.options.Configurable
 import com.mallowigi.idea.messages.MaterialThemeBundle
-import java.util.Collections
 
 /**
  * Provider for Searchable options
  */
 class MTOptionContributor : SearchableOptionContributor() {
+  /**
+   * Assign keywords to their relevant form component
+   *
+   * @param processor
+   */
+  @Suppress("LongMethod")
   override fun processOptions(processor: SearchableOptionProcessor) {
     val configurable: Configurable = MTConfigurable()
     val displayName = configurable.displayName
-    val strings = Collections.unmodifiableList(
+
+    val strings =
       listOf(
-        //region List of Strings
         MaterialThemeBundle.message("MTForm.accentModeCheckbox.text"),
         MaterialThemeBundle.message("MTForm.accentScrollbarsCheckbox.text"),
         MaterialThemeBundle.message("MTForm.activeTabBoldCheckbox.text"),
@@ -103,11 +108,10 @@ class MTOptionContributor : SearchableOptionContributor() {
         MaterialThemeBundle.message("MTForm.useGlobalFontCheckbox.text"),
         MaterialThemeBundle.message("MTForm.useMaterialWallpapersCheckbox.text"),
         MaterialThemeBundle.message("MTForm.useProjectFrameCheckbox.text")
-        //endregion
       )
-    )
-    for (s in strings) {
-      processor.addOptions(s ?: return, null, displayName, MTConfigurable.ID, displayName, true)
+
+    strings.forEach {
+      processor.addOptions(it, null, displayName, MTConfigurable.ID, displayName, true)
     }
   }
 }

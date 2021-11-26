@@ -28,6 +28,7 @@ package com.mallowigi.idea
 import com.intellij.openapi.application.ApplicationInfo
 import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.application.ApplicationNamesInfo
+import com.intellij.openapi.diagnostic.thisLogger
 import com.intellij.util.ObjectUtils
 import com.mallowigi.idea.config.application.MTConfig
 import com.mallowigi.idea.messages.MaterialThemeBundle
@@ -38,12 +39,21 @@ import org.json.JSONException
 import org.json.JSONObject
 import java.io.IOException
 
+/**
+ * MixPanel analytics service
+ *
+ */
 class MTAnalytics {
   private val messageBuilder: MessageBuilder =
     MessageBuilder(ObjectUtils.notNull(System.getenv(MIXPANEL_KEY), MaterialThemeBundle.message("mixpanel.key")))
   private val mixpanel: MixpanelAPI = MixpanelAPI()
   private val userId: String = MTConfig.getInstance().userId
   private var isOffline: Boolean
+
+  init {
+    isOffline = false
+    ApplicationManager.getApplication().executeOnPooledThread { ping() }
+  }
 
   /**
    * Initialize the MixPanel analytics
@@ -53,7 +63,7 @@ class MTAnalytics {
     try {
       trackWithData(CONFIG, MTConfig.getInstance().asJson())
     } catch (e: JSONException) {
-      e.printStackTrace()
+      thisLogger().error("Could not init analytics", e)
     }
   }
 
@@ -175,8 +185,4 @@ class MTAnalytics {
       get() = ApplicationManager.getApplication().getService(MTAnalytics::class.java)
   }
 
-  init {
-    isOffline = false
-    ApplicationManager.getApplication().executeOnPooledThread { ping() }
-  }
 }

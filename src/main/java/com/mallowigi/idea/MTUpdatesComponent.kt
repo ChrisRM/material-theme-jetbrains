@@ -38,6 +38,10 @@ import com.mallowigi.idea.notifications.MTStatisticsNotification
 import com.mallowigi.idea.notifications.MTWhatsNewAction
 import com.mallowigi.idea.utils.MTUiUtils
 
+/**
+ * Services taking care of updates: show notifications, what's new, etc
+ *
+ */
 class MTUpdatesComponent : StartupActivity.Background {
   private var config: MTConfig? = MTConfig.getInstance()
 

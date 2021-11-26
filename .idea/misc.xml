@@ -24,6 +24,9 @@
     <file type="web" url="file://$PROJECT_DIR$" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
+  <component name="ProjectResources">
+    <resource url="https://json.schemastore.org/detekt" location="$PROJECT_DIR$/detekt-config.yml" />
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_9" project-jdk-name="14" project-jdk-type="JavaSDK" />
   <component name="SuppressKotlinCodeStyleNotification">
     <option name="disableForAll" value="true" />

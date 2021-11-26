@@ -31,11 +31,11 @@ package com.mallowigi.idea.utils.animator
  *
  */
 object MTChangeLafService {
-  private var mtChangeLAFAnimator: MTChangeLAFAnimator? = null
+  private var mtChangeLAFAnimator: MTChangeLafAnimator? = null
 
   @JvmStatic
   fun showSnapshot() {
-    mtChangeLAFAnimator = MTChangeLAFAnimator()
+    mtChangeLAFAnimator = MTChangeLafAnimator()
   }
 
   @JvmStatic

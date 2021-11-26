@@ -25,9 +25,28 @@
  */
 package com.mallowigi.idea.config.enums
 
+/**
+ * Selected Indicator styles
+ *
+ * @property type
+ */
 enum class IndicatorStyles(private val type: String) {
+  /**
+   * Add a left border
+   *
+   */
   BORDER("Border"),
+
+  /**
+   * Add a dot
+   *
+   */
   DOT("Dot"),
+
+  /**
+   * Remove all indicators
+   *
+   */
   NONE("None");
 
   override fun toString(): String = type

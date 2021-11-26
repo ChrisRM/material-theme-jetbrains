@@ -34,6 +34,10 @@ import com.intellij.ui.ColoredTreeCellRenderer
 import com.mallowigi.idea.config.MTFileColorsPage
 import com.mallowigi.idea.config.application.MTConfig
 
+/**
+ * Colored folders node decorator
+ *
+ */
 class MTColoredFoldersNodeDecorator : ProjectViewNodeDecorator {
   override fun decorate(node: PackageDependenciesNode, cellRenderer: ColoredTreeCellRenderer) {
     // do nothing

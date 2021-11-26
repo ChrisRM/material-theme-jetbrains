@@ -44,7 +44,7 @@ import javax.swing.RootPaneContainer
  * Change LAF Animation
  *
  */
-class MTChangeLAFAnimator {
+class MTChangeLafAnimator {
   // The current alpha, changed by the fade in animator
   private var myAlpha = 1f
 

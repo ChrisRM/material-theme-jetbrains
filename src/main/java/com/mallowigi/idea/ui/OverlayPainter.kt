@@ -74,6 +74,10 @@ class OverlayPainter : AWTEventListener, Disposable {
    */
   private val openedWindowsStack: Deque<Any> = ArrayDeque(1)
 
+  init {
+    Toolkit.getDefaultToolkit().addAWTEventListener(this, MASK)
+  }
+
   /**
    * Dispose and remove overlays
    *
@@ -88,6 +92,7 @@ class OverlayPainter : AWTEventListener, Disposable {
    *
    * @param event the event
    */
+  @Suppress("CastToNullableType")
   override fun eventDispatched(event: AWTEvent) {
     if (!MTConfig.getInstance().isShowOverlays) {
       if (openedWindowsStack.isEmpty()) return
@@ -244,7 +249,4 @@ class OverlayPainter : AWTEventListener, Disposable {
     }
   }
 
-  init {
-    Toolkit.getDefaultToolkit().addAWTEventListener(this, MASK)
-  }
 }

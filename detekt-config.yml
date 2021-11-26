@@ -21,18 +21,18 @@ formatting:
     maxLineLength: 160
   Indentation:
     active: true
-    autoCorrect: true
     indentSize: 2
     continuationIndentSize: 2
   MultiLineIfElse:
     active: true
   NoEmptyFirstLineInMethodBlock:
     active: true
+  NoWildcardImports:
+    excludes: [ '**/*Steps*' ]
   PackageName:
     active: true
   ParameterListWrapping:
     active: true
-    autoCorrect: true
     indentSize: 2
   SpacingBetweenDeclarationsWithAnnotations:
     active: true
@@ -115,8 +115,8 @@ style:
     active: true
   UnusedImports:
     active: true
-  UseAnyOrNoneInsteadOfFind:
-    active: true
+  #  UseAnyOrNoneInsteadOfFind:
+  #    active: true
   UseArrayLiteralsInAnnotations:
     active: true
   UseCheckNotNull:
@@ -145,16 +145,19 @@ comments:
     active: true
   DeprecatedBlockTag:
     active: true
-  OutdatedDocumentation:
-    active: true
+  #  OutdatedDocumentation:
+  #    active: true
   UndocumentedPublicClass:
     active: false
-    excludes: [ '**/*Bundle*' ]
+    excludes: [ '**/*Bundle*', '**/actions/**' ]
   UndocumentedPublicFunction:
-    active: true
-    excludes: [ '**/*Bundle*' ]
+    active: false
+    excludes: [ '**/*Bundle*', '**/actions/**' ]
 
 complexity:
+  LargeClass:
+    active: true
+    excludes: [ '**/*Resources*' ]
   NamedArguments:
     active: true
   ReplaceSafeCallChainWithRun:
@@ -168,8 +171,8 @@ complexity:
 naming:
   InvalidPackageDeclaration:
     active: true
-  LambdaParameterNaming:
-    active: true
+  #  LambdaParameterNaming:
+  #    active: true
   NoNameShadowing:
     active: true
   NonBooleanPropertyPrefixedWithIs:
@@ -200,8 +203,8 @@ potential-bugs:
     active: true
   MapGetWithNotNullAssertionOperator:
     active: true
-  MissingPackageDeclaration:
-    active: true
+  #  MissingPackageDeclaration:
+  #    active: true
   MissingWhenCase:
     active: true
   NullableToStringCall:
