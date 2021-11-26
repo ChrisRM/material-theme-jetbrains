@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,121 +23,93 @@
  *
  *
  */
+package com.mallowigi.idea.themes
 
-package com.mallowigi.idea.themes;
-
-import com.mallowigi.idea.themes.models.MTThemeable;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
-import javax.swing.*;
+import com.mallowigi.idea.themes.models.MTThemeable
+import javax.swing.Icon
 
 /**
  * Interface Facade for themes.
  *
- * <p>
  * Not to be confused with MTThemeable. MTThemeable is an interface to design themes by defining their resources, such as
  * getBackgroundColor, getSelectionColor, activate, etc, whereas MTThemeFacade represents themes that can be serialized, containing
  * methods such as getThemeId, getThemeIsDark, getAuthor etc.
- * </p>
- * <p>
+ *
  * A MTConfig contains a MTThemeFacade which contains itself a MTThemeable.
- * </p>
+ *
  */
-public interface MTThemeFacade {
+interface MTThemeFacade {
   /**
    * The internal theme's color scheme
    *
    * @return The color scheme
    */
-  @NotNull
-  String getThemeColorScheme();
+  val themeColorScheme: String
 
   /**
    * The internal theme
    *
    * @return the themeable
    */
-  @NotNull
-  MTThemeable getTheme();
+  val theme: MTThemeable
 
   /**
    * Whether a theme is dark
    *
    * @return if the theme is dark
    */
-  boolean isDark();
+  val isDark: Boolean
 
   /**
    * The theme name
    *
    * @return the theme name
    */
-  @NotNull
-  String getName();
+  val name: String
 
   /**
    * The internal theme name, e.g. the name to display in dropdowns
    *
    * @return the internal theme name
    */
-  @Nullable
-  String getThemeName();
+  val themeName: String?
 
   /**
    * The internal theme id (OCEANIC, DARKER, PALENIGHT...)
    *
    * @return the unique identifier for themes
    */
-  @NotNull
-  String getThemeId();
+  val themeId: String
 
   /**
    * The theme icon
    *
    * @return the theme's icon
    */
-  Icon getIcon();
+  val icon: Icon?
 
   /**
    * The order in the list
    *
    * @return the order
    */
-  int getOrder();
+  val order: Int
 
   /**
    * If the theme is a premium theme
    *
    * @return true if premium
    */
-  boolean isPremium();
+  val isPremium: Boolean
 
   /**
    * Is the theme custom
    */
-  boolean isCustom();
-
-  /**
-   * Set Name
-   *
-   * @param name theme name
-   */
-  void setThemeName(String name);
-
-  /**
-   * Set dark mode
-   *
-   * @param isDark is dark
-   */
-  void setIsDark(boolean isDark);
+  val isCustom: Boolean
 
   /**
    * whether its' a native theme
    */
-  default boolean isNative() {
-    return false;
-  }
-
-  void applyAccentMode();
+  val isNative: Boolean
+    get() = false
 }

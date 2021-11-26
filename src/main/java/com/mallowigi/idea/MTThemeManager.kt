@@ -81,7 +81,7 @@ class MTThemeManager private constructor() : Disposable {
    *
    */
   fun toggleColoredDirs() {
-    CONFIG.isUseColoredDirectories = !CONFIG.isUseColoredDirectories
+    mtConfig.isUseColoredDirectories = !mtConfig.isUseColoredDirectories
     updateFileIcons()
   }
 
@@ -90,7 +90,7 @@ class MTThemeManager private constructor() : Disposable {
    *
    */
   fun toggleCodeAdditions() {
-    CONFIG.isCodeAdditionsEnabled = !CONFIG.isCodeAdditionsEnabled
+    mtConfig.isCodeAdditionsEnabled = !mtConfig.isCodeAdditionsEnabled
     refreshColorScheme()
   }
 
@@ -98,7 +98,7 @@ class MTThemeManager private constructor() : Disposable {
    * Set contrast and reactivate theme
    */
   fun toggleContrast() {
-    CONFIG.isContrastMode = !CONFIG.isContrastMode
+    mtConfig.isContrastMode = !mtConfig.isContrastMode
     applyContrast(true)
   }
 
@@ -106,7 +106,7 @@ class MTThemeManager private constructor() : Disposable {
    * Toggle high contrast.
    */
   fun toggleHighContrast() {
-    CONFIG.isHighContrast = !CONFIG.isHighContrast
+    mtConfig.isHighContrast = !mtConfig.isHighContrast
     activate()
   }
 
@@ -115,15 +115,15 @@ class MTThemeManager private constructor() : Disposable {
    *
    */
   fun toggleOverlays() {
-    CONFIG.isShowOverlays = !CONFIG.isShowOverlays
+    mtConfig.isShowOverlays = !mtConfig.isShowOverlays
   }
 
   /**
    * Toggle compact status bar.
    */
   fun toggleCompactStatusBar() {
-    val compactStatusBar = CONFIG.isCompactStatusBar
-    CONFIG.isCompactStatusBar = !compactStatusBar
+    val compactStatusBar = mtConfig.isCompactStatusBar
+    mtConfig.isCompactStatusBar = !compactStatusBar
     applyCompactToolWindowHeaders()
   }
 
@@ -131,8 +131,8 @@ class MTThemeManager private constructor() : Disposable {
    * Toggle compact sidebar.
    */
   fun toggleCompactSidebar() {
-    val isCompactSidebar = CONFIG.isCompactSidebar
-    CONFIG.isCompactSidebar = !isCompactSidebar
+    val isCompactSidebar = mtConfig.isCompactSidebar
+    mtConfig.isCompactSidebar = !isCompactSidebar
     applyCompactSidebar(true)
   }
 
@@ -140,8 +140,8 @@ class MTThemeManager private constructor() : Disposable {
    * Toggle compact dropdowns.
    */
   fun toggleCompactDropdowns() {
-    val isCompactDropdowns = CONFIG.isCompactDropdowns
-    CONFIG.isCompactDropdowns = !isCompactDropdowns
+    val isCompactDropdowns = mtConfig.isCompactDropdowns
+    mtConfig.isCompactDropdowns = !isCompactDropdowns
     applyDropdownLists()
     UIReplacer.patchUI()
   }
@@ -150,8 +150,8 @@ class MTThemeManager private constructor() : Disposable {
    * Toggle compact menus.
    */
   fun toggleCompactMenus() {
-    val isCompact = CONFIG.isCompactMenus
-    CONFIG.isCompactMenus = !isCompact
+    val isCompact = mtConfig.isCompactMenus
+    mtConfig.isCompactMenus = !isCompact
     applyMenusHeight()
     UIReplacer.patchUI()
   }
@@ -160,8 +160,8 @@ class MTThemeManager private constructor() : Disposable {
    * Toggle Compact table cells
    */
   fun toggleCompactTableCells() {
-    val isCompact = CONFIG.isCompactTables
-    CONFIG.isCompactTables = !isCompact
+    val isCompact = mtConfig.isCompactTables
+    mtConfig.isCompactTables = !isCompact
     reloadUI()
   }
 
@@ -170,8 +170,8 @@ class MTThemeManager private constructor() : Disposable {
    *
    */
   fun toggleCustomTabFont() {
-    val tabFontSizeEnabled = CONFIG.isTabFontSizeEnabled
-    CONFIG.isTabFontSizeEnabled = !tabFontSizeEnabled
+    val tabFontSizeEnabled = mtConfig.isTabFontSizeEnabled
+    mtConfig.isTabFontSizeEnabled = !tabFontSizeEnabled
     reloadUI()
   }
 
@@ -180,8 +180,8 @@ class MTThemeManager private constructor() : Disposable {
    *
    */
   fun toggleCustomTreeFont() {
-    val treeFontSizeEnabled = CONFIG.isTreeFontSizeEnabled
-    CONFIG.isTreeFontSizeEnabled = !treeFontSizeEnabled
+    val treeFontSizeEnabled = mtConfig.isTreeFontSizeEnabled
+    mtConfig.isTreeFontSizeEnabled = !treeFontSizeEnabled
     reloadUI()
   }
 
@@ -189,8 +189,8 @@ class MTThemeManager private constructor() : Disposable {
    * Toggle material fonts (Roboto).
    */
   fun toggleMaterialFonts() {
-    val useMaterialFonts = CONFIG.isUseMaterialFont
-    CONFIG.isUseMaterialFont = !useMaterialFonts
+    val useMaterialFonts = mtConfig.isUseMaterialFont
+    mtConfig.isUseMaterialFont = !useMaterialFonts
     applyFonts()
   }
 
@@ -198,32 +198,32 @@ class MTThemeManager private constructor() : Disposable {
    * Toggle material wallpapers.
    */
   fun toggleMaterialWallpapers() {
-    CONFIG.isUseMaterialWallpapers = !CONFIG.isUseMaterialWallpapers
-    CONFIG.fireChanged()
+    mtConfig.isUseMaterialWallpapers = !mtConfig.isUseMaterialWallpapers
+    mtConfig.fireChanged()
   }
 
   /**
    * Toggle upper case tabs.
    */
   fun toggleUpperCaseTabs() {
-    CONFIG.isUpperCaseTabs = !CONFIG.isUpperCaseTabs
-    CONFIG.fireChanged()
+    mtConfig.isUpperCaseTabs = !mtConfig.isUpperCaseTabs
+    mtConfig.fireChanged()
   }
 
   /**
    * Toggle override accent color
    */
   fun toggleOverrideAccent() {
-    CONFIG.isOverrideAccentColor = !CONFIG.isOverrideAccentColor
-    CONFIG.fireChanged()
+    mtConfig.isOverrideAccentColor = !mtConfig.isOverrideAccentColor
+    mtConfig.fireChanged()
   }
 
   /**
    * Toggle project frame
    */
   fun toggleProjectFrame() {
-    CONFIG.isUseProjectFrame = !CONFIG.isUseProjectFrame
-    CONFIG.fireChanged()
+    mtConfig.isUseProjectFrame = !mtConfig.isUseProjectFrame
+    mtConfig.fireChanged()
   }
 
   /**
@@ -231,15 +231,15 @@ class MTThemeManager private constructor() : Disposable {
    *
    */
   fun toggleOutlinedButtons() {
-    CONFIG.isBorderedButtons = !CONFIG.isBorderedButtons
-    CONFIG.fireChanged()
+    mtConfig.isBorderedButtons = !mtConfig.isBorderedButtons
+    mtConfig.fireChanged()
   }
 
   /**
    * Toggle striped tool windows
    */
   fun toggleStripedToolWindows() {
-    CONFIG.isStripedToolWindowsEnabled = !CONFIG.isStripedToolWindowsEnabled
+    mtConfig.isStripedToolWindowsEnabled = !mtConfig.isStripedToolWindowsEnabled
     applyStripedToolWindows()
   }
 
@@ -248,7 +248,7 @@ class MTThemeManager private constructor() : Disposable {
    *
    */
   private fun applyCompactToolWindowHeaders() {
-    val vPad = if (CONFIG.isCompactStatusBar) JBUI.scale(0) else JBUI.scale(5)
+    val vPad = if (mtConfig.isCompactStatusBar) JBUI.scale(0) else JBUI.scale(5)
     UIManager.put(MTUI.Panel.toolWindowPaddingKey, vPad)
   }
 
@@ -256,7 +256,7 @@ class MTThemeManager private constructor() : Disposable {
    * Apply striped tool windows in the Registry
    *
    */
-  private fun applyStripedToolWindows() = Registry.get(NEW_STRIPES_UI).setValue(CONFIG.isStripedToolWindowsEnabled)
+  private fun applyStripedToolWindows() = Registry.get(NEW_STRIPES_UI).setValue(mtConfig.isStripedToolWindowsEnabled)
 
   /**
    * Refresh trees
@@ -274,7 +274,7 @@ class MTThemeManager private constructor() : Disposable {
    * Activate selected theme or deactivate current
    */
   fun activate() {
-    val mtTheme = CONFIG.selectedTheme
+    val mtTheme = mtConfig.selectedTheme
     activate(mtTheme)
   }
 
@@ -291,8 +291,8 @@ class MTThemeManager private constructor() : Disposable {
       activate(themeFor)
     } else {
       val mtTheme: MTThemeFacade = MTThemes.NATIVE
-      mtTheme.setIsDark(isDark)
-      mtTheme.themeName = name
+      mtTheme.theme.setIsDark(isDark)
+      mtTheme.theme.name = name
       activate(mtTheme)
     }
   }
@@ -323,7 +323,7 @@ class MTThemeManager private constructor() : Disposable {
     if (newTheme == null) {
       newTheme = MTThemes.OCEANIC
     }
-    CONFIG.selectedTheme = newTheme
+    mtConfig.selectedTheme = newTheme
     newTheme.theme.activate()
 
     // Save a reference to the theme
@@ -385,7 +385,7 @@ class MTThemeManager private constructor() : Disposable {
    * Apply accents.
    */
   fun applyAccents(fireEvent: Boolean) {
-    val accentColor = ColorUtil.fromHex(CONFIG.accentColor)
+    val accentColor = ColorUtil.fromHex(mtConfig.accentColor)
     val transparentAccentColor = ColorUtil.toAlpha(accentColor, 70)
 
     AccentResources.ACCENT_RESOURCES.forEach { UIManager.put(it, accentColor) }
@@ -393,7 +393,7 @@ class MTThemeManager private constructor() : Disposable {
     AccentResources.ACCENT_TRANSPARENT_RESOURCES.forEach { UIManager.put(it, transparentAccentColor) }
 
     // Accent mode
-    CONFIG.selectedTheme.applyAccentMode()
+    applyAccentMode()
     // Scrollbars management
     applyScrollbars(accentColor)
     // Documentation
@@ -404,6 +404,10 @@ class MTThemeManager private constructor() : Disposable {
     if (fireEvent) {
       fireAccentChanged(accentColor)
     }
+  }
+
+  private fun applyAccentMode() {
+    mtConfig.selectedTheme.theme.applyAccentMode()
   }
 
   /**
@@ -437,13 +441,13 @@ class MTThemeManager private constructor() : Disposable {
     val hoverThemedColor = ColorUtil.toAlpha(themedColor, 75)
 
     return when {
-      CONFIG.isAccentScrollbars -> when {
-        CONFIG.isThemedScrollbars -> Couple(transAccentColor, hoverAccentColor)
-        else                      -> Couple(hoverAccentColor, accentColor)
+      mtConfig.isAccentScrollbars -> when {
+        mtConfig.isThemedScrollbars -> Couple(transAccentColor, hoverAccentColor)
+        else                        -> Couple(hoverAccentColor, accentColor)
       }
-      else                      -> when {
-        CONFIG.isThemedScrollbars -> Couple(transThemedColor, hoverThemedColor)
-        else                      -> Couple(hoverThemedColor, themedColor)
+      else                        -> when {
+        mtConfig.isThemedScrollbars -> Couple(transThemedColor, hoverThemedColor)
+        else                        -> Couple(hoverThemedColor, themedColor)
       }
     }
   }
@@ -541,7 +545,7 @@ class MTThemeManager private constructor() : Disposable {
   private fun applyFonts() {
     val uiSettings: UISettings = UISettings.instance
     val lookAndFeelDefaults = UIManager.getLookAndFeelDefaults()
-    val useMaterialFont = CONFIG.isUseMaterialFont
+    val useMaterialFont = mtConfig.isUseMaterialFont
 
     if (uiSettings.overrideLafFonts) {
       applySettingsFont(lookAndFeelDefaults, uiSettings.fontFace, uiSettings.fontSize)
@@ -563,10 +567,10 @@ class MTThemeManager private constructor() : Disposable {
    * @param lookAndFeelDefaults
    */
   private fun applyCustomTreeFont(lookAndFeelDefaults: @NonNls UIDefaults?) {
-    val treeFontSize = JBUI.scale(CONFIG.treeFontSize)
-    val treeFont = CONFIG.treeFont
+    val treeFontSize = JBUI.scale(mtConfig.treeFontSize)
+    val treeFont = mtConfig.treeFont
 
-    if (CONFIG.isTreeFontSizeEnabled) {
+    if (mtConfig.isTreeFontSizeEnabled) {
       val font = lookAndFeelDefaults!!.getFont("Tree.font")
       lookAndFeelDefaults["Tree.font"] = Font(treeFont, font.style, treeFontSize)
       LafManager.getInstance().updateUI()
@@ -579,7 +583,7 @@ class MTThemeManager private constructor() : Disposable {
    */
   private fun applyGlobalFontSettings() {
     val currentScheme = MTUiUtils.getCurrentScheme()
-    if (CONFIG.isUseGlobalFont) {
+    if (mtConfig.isUseGlobalFont) {
       currentScheme.setUseAppFontPreferencesInEditor()
     }
     EditorFactory.getInstance().refreshAllEditors()
@@ -596,8 +600,8 @@ class MTThemeManager private constructor() : Disposable {
    * @param reloadUI if true, reload the ui
    */
   private fun applyContrast(reloadUI: Boolean) {
-    val apply = CONFIG.isContrastMode
-    val mtTheme = CONFIG.selectedTheme.theme
+    val apply = mtConfig.isContrastMode
+    val mtTheme = mtConfig.selectedTheme.theme
     mtTheme.applyContrast(apply)
     if (reloadUI) {
       reloadUI()
@@ -610,9 +614,9 @@ class MTThemeManager private constructor() : Disposable {
    * Apply custom tree indent
    */
   private fun applyCustomTreeIndent() {
-    if (CONFIG.isCustomTreeIndentEnabled) {
-      UIManager.put("Tree.leftChildIndent", CONFIG.leftTreeIndent)
-      UIManager.put("Tree.rightChildIndent", CONFIG.rightTreeIndent)
+    if (mtConfig.isCustomTreeIndentEnabled) {
+      UIManager.put("Tree.leftChildIndent", mtConfig.leftTreeIndent)
+      UIManager.put("Tree.rightChildIndent", mtConfig.rightTreeIndent)
     } else {
       UIManager.put("Tree.leftChildIndent", MTConfig.DEFAULT_INDENT / 2 + JBUI.scale(7))
       UIManager.put("Tree.rightChildIndent", MTConfig.DEFAULT_INDENT / 2 + JBUI.scale(4))
@@ -625,7 +629,7 @@ class MTThemeManager private constructor() : Disposable {
    * Apply custom tree indent
    */
   private fun applyMenusHeight() {
-    if (CONFIG.isCompactMenus) {
+    if (mtConfig.isCompactMenus) {
       UIManager.put("PopupMenuSeparator.height", 3)
       UIManager.put("PopupMenuSeparator.stripeIndent", 1)
     } else {
@@ -640,7 +644,7 @@ class MTThemeManager private constructor() : Disposable {
    * Apply custom tree indent
    */
   private fun applyDropdownLists() {
-    if (CONFIG.isCompactDropdowns) {
+    if (mtConfig.isCompactDropdowns) {
       UIManager.put("ActionsList.cellBorderInsets", JBUI.insets(1, 10, 1, 15))
     } else {
       UIManager.put("ActionsList.cellBorderInsets", JBUI.insets(5, 10, 5, 15))
@@ -653,8 +657,8 @@ class MTThemeManager private constructor() : Disposable {
    * Use compact sidebar option
    */
   private fun applyCompactSidebar(reloadUI: Boolean) {
-    val isCustomSidebarHeight = CONFIG.isCompactSidebar
-    val customSidebarHeight = CONFIG.customSidebarHeight
+    val isCustomSidebarHeight = mtConfig.isCompactSidebar
+    val customSidebarHeight = mtConfig.customSidebarHeight
     val rowHeight =
       if (isCustomSidebarHeight) JBUI.scale(customSidebarHeight) else JBUI.scale(MTConfig.DEFAULT_SIDEBAR_HEIGHT)
 
@@ -683,8 +687,8 @@ class MTThemeManager private constructor() : Disposable {
    * Toggle accent mode
    */
   fun toggleAccentMode() {
-    CONFIG.isAccentMode = !CONFIG.isAccentMode
-    CONFIG.fireChanged()
+    mtConfig.isAccentMode = !mtConfig.isAccentMode
+    mtConfig.fireChanged()
   }
   //endregion
 
@@ -695,7 +699,7 @@ class MTThemeManager private constructor() : Disposable {
    * @param newTabsHeight the new tabs height
    */
   fun setTabsHeight(newTabsHeight: Int) {
-    CONFIG.tabsHeight = newTabsHeight
+    mtConfig.tabsHeight = newTabsHeight
   }
   //endregion
 
@@ -722,7 +726,7 @@ class MTThemeManager private constructor() : Disposable {
   }
 
   companion object {
-    private val CONFIG = MTConfig.getInstance()
+    private val mtConfig = MTConfig.getInstance()
     const val RETINA: String = "@2x.css"
     const val NON_RETINA: String = ".css"
     private const val DARCULA: String = "darcula"

@@ -161,24 +161,19 @@ public enum MTThemes implements MTThemeFacade {
     return mtTheme.isCustom();
   }
 
-  @Override
-  public void setThemeName(final String name) {
-    mtTheme.setThemeName(name);
-  }
-
-  @Override
-  public void setIsDark(final boolean isDark) {
-    mtTheme.setIsDark(isDark);
-  }
+  //  @Override
+  //  public void setThemeName(final String name) {
+  //    mtTheme.setThemeName(name);
+  //  }
+  //
+  //  @Override
+  //  public void setDark(final boolean isDark) {
+  //    mtTheme.setIsDark(isDark);
+  //  }
 
   @Override
   public boolean isNative() {
     return mtTheme.isNative();
-  }
-
-  @Override
-  public void applyAccentMode() {
-    mtTheme.applyAccentMode();
   }
 
   /**
@@ -285,20 +280,16 @@ public enum MTThemes implements MTThemeFacade {
         return false;
       }
 
-      @Override
-      public void setThemeName(final String name) {
-        theme.setName(name);
-      }
+      //      @Override
+      //      public void setThemeName(final String themeName) {
+      //        theme.setName(themeName);
+      //      }
+      //
+      //      @Override
+      //      public void setDark(final boolean isDark) {
+      //        theme.setIsDark(isDark);
+      //      }
 
-      @Override
-      public void setIsDark(final boolean isDark) {
-        theme.setIsDark(isDark);
-      }
-
-      @Override
-      public void applyAccentMode() {
-        theme.applyAccentMode();
-      }
     };
   }
 

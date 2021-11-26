@@ -66,12 +66,12 @@ import java.util.Set;
   "NegativelyNamedBooleanVariable",
   "DesignForExtension"})
 public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSerializedTheme {
-
   private String id = null;
   private String editorColorsScheme = null;
   private boolean dark = false;
   private String name = null;
   private String icon = null;
+
   @SuppressWarnings("TransientFieldNotInitialized")
   private transient boolean isNotHighContrast = false;
 
