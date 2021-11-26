@@ -83,7 +83,7 @@ public final class MTCustomThemeForm implements MTFormUI {
   private ColorPanel labelColor;
   private JPanel panel4;
   private JLabel selectionBackgroundColorLabel;
-  private ColorPanelWithOpacity selectionBackgroundColor;
+  private ColorPanel selectionBackgroundColor;
   private JPanel panel5;
   private JLabel selectionForegroundColorLabel;
   private ColorPanel selectionForegroundColor;
@@ -92,7 +92,7 @@ public final class MTCustomThemeForm implements MTFormUI {
   private ColorPanelWithOpacity buttonColor;
   private JPanel panel7;
   private JLabel listBackgroundColorLabel;
-  private ColorPanelWithOpacity listBackgroundColor;
+  private ColorPanel listBackgroundColor;
   private JPanel panel8;
   private JLabel disabledColorLabel;
   private ColorPanel disabledColor;
@@ -104,7 +104,7 @@ public final class MTCustomThemeForm implements MTFormUI {
   private ColorPanelWithOpacity tableSelectionColor;
   private JPanel panel11;
   private JLabel miscColorLabel;
-  private ColorPanelWithOpacity miscColor1;
+  private ColorPanel miscColor1;
   private JPanel panel12;
   private JLabel miscColorLabel2;
   private ColorPanelWithOpacity miscColor2;
@@ -341,7 +341,7 @@ public final class MTCustomThemeForm implements MTFormUI {
     labelColor = new ColorPanel();
     panel4 = new JPanel();
     selectionBackgroundColorLabel = new JLabel();
-    selectionBackgroundColor = new ColorPanelWithOpacity();
+    selectionBackgroundColor = new ColorPanel();
     panel5 = new JPanel();
     selectionForegroundColorLabel = new JLabel();
     selectionForegroundColor = new ColorPanel();
@@ -350,7 +350,7 @@ public final class MTCustomThemeForm implements MTFormUI {
     buttonColor = new ColorPanelWithOpacity();
     panel7 = new JPanel();
     listBackgroundColorLabel = new JLabel();
-    listBackgroundColor = new ColorPanelWithOpacity();
+    listBackgroundColor = new ColorPanel();
     panel8 = new JPanel();
     disabledColorLabel = new JLabel();
     disabledColor = new ColorPanel();
@@ -362,7 +362,7 @@ public final class MTCustomThemeForm implements MTFormUI {
     tableSelectionColor = new ColorPanelWithOpacity();
     panel11 = new JPanel();
     miscColorLabel = new JLabel();
-    miscColor1 = new ColorPanelWithOpacity();
+    miscColor1 = new ColorPanel();
     panel12 = new JPanel();
     miscColorLabel2 = new JLabel();
     miscColor2 = new ColorPanelWithOpacity();

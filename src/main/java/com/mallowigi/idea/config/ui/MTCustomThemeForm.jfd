@@ -1,4 +1,4 @@
-JFDML JFormDesigner: "7.0.3.0.337" Java: "11.0.10" encoding: "UTF-8"
+JFDML JFormDesigner: "7.0.4.0.360" Java: "11.0.13" encoding: "UTF-8"
 
 new FormModel {
 	"i18n.bundlePackage": "messages"
@@ -130,7 +130,7 @@ new FormModel {
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 0 0,align left center,grow 0 0"
 					} )
-					add( new FormComponent( "com.mallowigi.idea.ui.ColorPanelWithOpacity" ) {
+					add( new FormComponent( "com.intellij.ui.ColorPanel" ) {
 						name: "selectionBackgroundColor"
 						"background": new java.awt.Color( 34, 37, 51, 255 )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
@@ -195,7 +195,7 @@ new FormModel {
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 0 0,align left center,grow 0 0"
 					} )
-					add( new FormComponent( "com.mallowigi.idea.ui.ColorPanelWithOpacity" ) {
+					add( new FormComponent( "com.intellij.ui.ColorPanel" ) {
 						name: "listBackgroundColor"
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 1 0,align right center,grow 0 0"
@@ -281,7 +281,7 @@ new FormModel {
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 0 0,align left center,grow 0 0"
 					} )
-					add( new FormComponent( "com.mallowigi.idea.ui.ColorPanelWithOpacity" ) {
+					add( new FormComponent( "com.intellij.ui.ColorPanel" ) {
 						name: "miscColor1"
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 1 0,align right center,grow 0 0"
