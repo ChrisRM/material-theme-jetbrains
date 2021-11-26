@@ -43,12 +43,11 @@ abstract class ShadowPainter {
    * @param from
    * @param to
    */
-  abstract fun drawShadow(g2d: Graphics2D, from: Point?, to: Point)
+  abstract fun drawShadow(g2d: Graphics2D, from: Point, to: Point)
 
   /**
    * Shadow color
    */
   val shadowColor: Color
     get() = JBColor(Color.darkGray, Color.black)
-
 }

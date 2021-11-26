@@ -29,30 +29,35 @@ import java.awt.Graphics2D
 import java.awt.Rectangle
 import javax.swing.SwingConstants
 
+/**
+ * Topless highlight tab painter
+ *
+ * @constructor Create empty Topless highlight tab painter
+ */
 class ToplessHighlightTabPainter : HighlightTabPainter() {
-  override fun paintBottom(borderThickness: Int, g2d: Graphics2D?, rect: Rectangle?, width: Int) {
+  override fun paintBottom(borderThickness: Int, g2d: Graphics2D, rect: Rectangle) {
     val positionFromPlacement = editorTabPlacement
     // if tabs at bottom, do not paint (becomes bottomless)
     if (positionFromPlacement != SwingConstants.BOTTOM) {
-      paintOnBottom(borderThickness, g2d!!, rect!!, width)
+      paintOnBottom(borderThickness, g2d, rect)
     }
     // do nothing
   }
 
-  override fun paintTop(borderThickness: Int, g2d: Graphics2D?, rect: Rectangle?, width: Int) {
+  override fun paintTop(borderThickness: Int, g2d: Graphics2D, rect: Rectangle) {
     val positionFromPlacement = editorTabPlacement
     // Paint top anyway on bottom tabs
     if (positionFromPlacement == SwingConstants.BOTTOM) {
-      paintOnTop(borderThickness, g2d!!, rect!!)
+      paintOnTop(borderThickness, g2d, rect)
     }
     // do nothing
   }
 
-  override fun paintLeft(borderThickness: Int, g2d: Graphics2D?, rect: Rectangle?, width: Int) {
-    paintOnLeft(borderThickness, g2d!!, rect!!)
+  override fun paintLeft(borderThickness: Int, g2d: Graphics2D, rect: Rectangle) {
+    paintOnLeft(borderThickness, g2d, rect)
   }
 
-  override fun paintRight(borderThickness: Int, g2d: Graphics2D?, rect: Rectangle?, width: Int) {
-    paintOnRight(borderThickness, g2d!!, rect!!)
+  override fun paintRight(borderThickness: Int, g2d: Graphics2D, rect: Rectangle) {
+    paintOnRight(borderThickness, g2d, rect)
   }
 }

@@ -28,14 +28,19 @@ package com.mallowigi.idea.tabs.highlights
 import java.awt.Graphics2D
 import java.awt.Rectangle
 
+/**
+ * Left right highlight tab painter
+ *
+ * @constructor Create empty Left right highlight tab painter
+ */
 class LeftRightHighlightTabPainter : HighlightTabPainter() {
-  override fun paintBottom(borderThickness: Int, g2d: Graphics2D?, rect: Rectangle?, width: Int): Unit = Unit
+  override fun paintBottom(borderThickness: Int, g2d: Graphics2D, rect: Rectangle): Unit = Unit
 
-  override fun paintTop(borderThickness: Int, g2d: Graphics2D?, rect: Rectangle?, width: Int): Unit = Unit
+  override fun paintTop(borderThickness: Int, g2d: Graphics2D, rect: Rectangle): Unit = Unit
 
-  override fun paintLeft(borderThickness: Int, g2d: Graphics2D?, rect: Rectangle?, width: Int): Unit =
-    paintOnLeft(borderThickness, g2d!!, rect!!)
+  override fun paintLeft(borderThickness: Int, g2d: Graphics2D, rect: Rectangle): Unit =
+    paintOnLeft(borderThickness, g2d, rect)
 
-  override fun paintRight(borderThickness: Int, g2d: Graphics2D?, rect: Rectangle?, width: Int): Unit =
-    paintOnRight(borderThickness, g2d!!, rect!!)
+  override fun paintRight(borderThickness: Int, g2d: Graphics2D, rect: Rectangle): Unit =
+    paintOnRight(borderThickness, g2d, rect)
 }

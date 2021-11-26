@@ -42,9 +42,18 @@ import javax.swing.JComponent
 import javax.swing.plaf.basic.BasicHTML
 import javax.swing.text.View
 
+/**
+ * Material Checkboxes
+ *
+ */
 class MTCheckBoxUI : DarculaCheckBoxUI() {
   private val defaultIcon: Icon = JBUIScale.scaleIcon(EmptyIcon.create(20)).asUIResource()
 
+  /**
+   * Sets the checkbox background and foreground when installing UI
+   *
+   * @param c original component
+   */
   override fun installUI(c: JComponent) {
     super.installUI(c)
     c.background = MTUI.Panel.background
@@ -54,10 +63,28 @@ class MTCheckBoxUI : DarculaCheckBoxUI() {
     }
   }
 
+  /**
+   * Gap between the box and the text
+   *
+   */
   override fun textIconGap(): Int = JBUIScale.scale(4)
 
+  /**
+   * Get default icon for the checkbox
+   *
+   */
   override fun getDefaultIcon(): Icon = defaultIcon
 
+  /**
+   * Draw the relevant check icon (checked/indeterminate)
+   *
+   * @param c component
+   * @param g graphics
+   * @param b checkbox button
+   * @param iconRect rectangle where the component is painted
+   * @param selected selected state
+   * @param enabled enabled state
+   */
   override fun drawCheckIcon(
     c: JComponent,
     g: Graphics2D,
@@ -84,6 +111,16 @@ class MTCheckBoxUI : DarculaCheckBoxUI() {
     }
   }
 
+  /**
+   * Draw the text
+   *
+   * @param c component
+   * @param g graphics
+   * @param b component button
+   * @param fm font metrics
+   * @param textRect rect where to draw the text
+   * @param text the text to draw
+   */
   override fun drawText(
     c: JComponent,
     g: Graphics2D,
@@ -111,6 +148,11 @@ class MTCheckBoxUI : DarculaCheckBoxUI() {
   }
 
   companion object {
+    /**
+     * Create a new Material Checkbox
+     *
+     * @param c original component
+     */
     @Suppress("UNUSED_PARAMETER")
     @JvmStatic
     fun createUI(c: JComponent): MTCheckBoxUI = MTCheckBoxUI()

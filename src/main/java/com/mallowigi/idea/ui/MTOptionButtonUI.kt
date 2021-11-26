@@ -28,44 +28,32 @@ package com.mallowigi.idea.ui
 
 import com.intellij.ide.ui.laf.darcula.ui.DarculaOptionButtonUI
 import java.awt.Graphics2D
-import java.awt.event.MouseAdapter
-import java.awt.event.MouseEvent
-import java.awt.event.MouseListener
 import javax.swing.JComponent
 
+/**
+ * Material Option Button
+ *
+ */
 open class MTOptionButtonUI : DarculaOptionButtonUI() {
+  /**
+   * Clip x offset
+   */
   override val clipXOffset: Int
     get() = 0
 
+  /**
+   * Paint separator
+   *
+   */
   override fun paintSeparator(g: Graphics2D, c: JComponent) {
     // do not paint
   }
 
-  private var mouseListener: MouseListener? = null
-
-  override fun installListeners() {
-    super.installListeners()
-    mouseListener = createMouseListener()?.apply(optionButton::addMouseListener)
-  }
-
-  override fun uninstallListeners() {
-    super.uninstallListeners()
-    mouseListener = null
-  }
-
-  protected open fun createMouseListener(): MouseListener? = object : MouseAdapter() {
-    override fun mouseEntered(e: MouseEvent?) {
-      super.mouseEntered(e)
-      println("entered")
-    }
-
-    override fun mouseExited(e: MouseEvent?) {
-      super.mouseExited(e)
-      println("exited")
-    }
-  }
-
   companion object {
+    /**
+     * Create a new MTOptionButtonUI
+     *
+     */
     @Suppress("UNUSED_PARAMETER")
     @JvmStatic
     fun createUI(c: JComponent): MTOptionButtonUI = MTOptionButtonUI()

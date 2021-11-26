@@ -36,7 +36,7 @@ import java.awt.Point
  * @constructor Create empty Right shadow painter
  */
 class RightShadowPainter : ShadowPainter() {
-  override fun drawShadow(g2d: Graphics2D, from: Point?, to: Point) {
+  override fun drawShadow(g2d: Graphics2D, from: Point, to: Point) {
     val w = to.getX().toInt()
     val h = to.getY().toInt()
     if (h == 0) return

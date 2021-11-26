@@ -28,12 +28,17 @@ package com.mallowigi.idea.tabs.highlights
 import java.awt.Graphics2D
 import java.awt.Rectangle
 
+/**
+ * None highlight tab painter
+ *
+ * @constructor Create empty None highlight tab painter
+ */
 class NoneHighlightTabPainter : HighlightTabPainter() {
-  override fun paintBottom(borderThickness: Int, g2d: Graphics2D?, rect: Rectangle?, width: Int): Unit = Unit
+  override fun paintBottom(borderThickness: Int, g2d: Graphics2D, rect: Rectangle): Unit = Unit
 
-  override fun paintTop(borderThickness: Int, g2d: Graphics2D?, rect: Rectangle?, width: Int): Unit = Unit
+  override fun paintTop(borderThickness: Int, g2d: Graphics2D, rect: Rectangle): Unit = Unit
 
-  override fun paintLeft(borderThickness: Int, g2d: Graphics2D?, rect: Rectangle?, width: Int): Unit = Unit
+  override fun paintLeft(borderThickness: Int, g2d: Graphics2D, rect: Rectangle): Unit = Unit
 
-  override fun paintRight(borderThickness: Int, g2d: Graphics2D?, rect: Rectangle?, width: Int): Unit = Unit
+  override fun paintRight(borderThickness: Int, g2d: Graphics2D, rect: Rectangle): Unit = Unit
 }

@@ -148,9 +148,11 @@ comments:
   OutdatedDocumentation:
     active: true
   UndocumentedPublicClass:
-    active: true
+    active: false
+    excludes: [ '**/*Bundle*' ]
   UndocumentedPublicFunction:
     active: true
+    excludes: [ '**/*Bundle*' ]
 
 complexity:
   NamedArguments:

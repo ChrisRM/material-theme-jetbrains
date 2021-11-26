@@ -29,20 +29,25 @@ import java.awt.Graphics2D
 import java.awt.Rectangle
 import javax.swing.SwingConstants
 
+/**
+ * Left highlight tab painter
+ *
+ * @constructor Create empty Left highlight tab painter
+ */
 class LeftHighlightTabPainter : HighlightTabPainter() {
-  override fun paintBottom(borderThickness: Int, g2d: Graphics2D?, rect: Rectangle?, width: Int): Unit = Unit
+  override fun paintBottom(borderThickness: Int, g2d: Graphics2D, rect: Rectangle): Unit = Unit
 
-  override fun paintTop(borderThickness: Int, g2d: Graphics2D?, rect: Rectangle?, width: Int): Unit = Unit
+  override fun paintTop(borderThickness: Int, g2d: Graphics2D, rect: Rectangle): Unit = Unit
 
-  override fun paintLeft(borderThickness: Int, g2d: Graphics2D?, rect: Rectangle?, width: Int) {
+  override fun paintLeft(borderThickness: Int, g2d: Graphics2D, rect: Rectangle) {
     val positionFromPlacement = editorTabPlacement
     // Paint on right if tabs at right, otherwise paint on left
     if (positionFromPlacement == SwingConstants.RIGHT) {
-      paintOnRight(borderThickness, g2d!!, rect!!)
+      paintOnRight(borderThickness, g2d, rect)
     } else {
-      paintOnLeft(borderThickness, g2d!!, rect!!)
+      paintOnLeft(borderThickness, g2d, rect)
     }
   }
 
-  override fun paintRight(borderThickness: Int, g2d: Graphics2D?, rect: Rectangle?, width: Int): Unit = Unit
+  override fun paintRight(borderThickness: Int, g2d: Graphics2D, rect: Rectangle): Unit = Unit
 }

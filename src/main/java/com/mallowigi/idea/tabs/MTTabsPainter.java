@@ -38,6 +38,7 @@ import com.intellij.ui.tabs.impl.JBDefaultTabPainter;
 import com.intellij.ui.tabs.impl.JBEditorTabs;
 import com.mallowigi.idea.config.application.MTConfig;
 import com.mallowigi.idea.config.project.MTProjectConfig;
+import com.mallowigi.idea.tabs.highlights.MTTabsHighlightPainter;
 import com.mallowigi.idea.tabs.shadow.*;
 import com.mallowigi.idea.utils.MTUI;
 import com.mallowigi.idea.utils.MTUiUtils;

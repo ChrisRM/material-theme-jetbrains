@@ -30,11 +30,46 @@ import com.mallowigi.idea.config.enums.TabHighlightPositions
 import java.awt.Graphics2D
 import java.awt.Rectangle
 
+/**
+ * Abstract class for Highlight tab painters
+ *
+ */
 abstract class HighlightTabPainter {
-  abstract fun paintBottom(borderThickness: Int, g2d: Graphics2D?, rect: Rectangle?, width: Int)
-  abstract fun paintTop(borderThickness: Int, g2d: Graphics2D?, rect: Rectangle?, width: Int)
-  abstract fun paintLeft(borderThickness: Int, g2d: Graphics2D?, rect: Rectangle?, width: Int)
-  abstract fun paintRight(borderThickness: Int, g2d: Graphics2D?, rect: Rectangle?, width: Int)
+  /**
+   * Decides or not to paint at the bottom
+   *
+   * @param borderThickness
+   * @param g2d
+   * @param rect
+   */
+  abstract fun paintBottom(borderThickness: Int, g2d: Graphics2D, rect: Rectangle)
+
+  /**
+   * Decides or not to paint at the top
+   *
+   * @param borderThickness
+   * @param g2d
+   * @param rect
+   */
+  abstract fun paintTop(borderThickness: Int, g2d: Graphics2D, rect: Rectangle)
+
+  /**
+   * Decides or not to paint at the left
+   *
+   * @param borderThickness
+   * @param g2d
+   * @param rect
+   */
+  abstract fun paintLeft(borderThickness: Int, g2d: Graphics2D, rect: Rectangle)
+
+  /**
+   * Decides or not to paint at the right
+   *
+   * @param borderThickness
+   * @param g2d
+   * @param rect
+   */
+  abstract fun paintRight(borderThickness: Int, g2d: Graphics2D, rect: Rectangle)
 
   companion object {
     /**
@@ -46,43 +81,70 @@ abstract class HighlightTabPainter {
     @JvmStatic
     fun getHighlightTabPainter(tabHighlightPosition: TabHighlightPositions?): HighlightTabPainter {
       return when (tabHighlightPosition) {
-        TabHighlightPositions.TOP -> TopHighlightTabPainter()
-        TabHighlightPositions.FULL -> FullHighlightTabPainter()
-        TabHighlightPositions.LEFT -> LeftHighlightTabPainter()
-        TabHighlightPositions.NONE -> NoneHighlightTabPainter()
-        TabHighlightPositions.RIGHT -> RightHighlightTabPainter()
-        TabHighlightPositions.BOTTOM -> BottomHighlightTabPainter()
-        TabHighlightPositions.TOPLESS -> ToplessHighlightTabPainter()
+        TabHighlightPositions.TOP        -> TopHighlightTabPainter()
+        TabHighlightPositions.FULL       -> FullHighlightTabPainter()
+        TabHighlightPositions.LEFT       -> LeftHighlightTabPainter()
+        TabHighlightPositions.NONE       -> NoneHighlightTabPainter()
+        TabHighlightPositions.RIGHT      -> RightHighlightTabPainter()
+        TabHighlightPositions.BOTTOM     -> BottomHighlightTabPainter()
+        TabHighlightPositions.TOPLESS    -> ToplessHighlightTabPainter()
         TabHighlightPositions.BOTTOMLESS -> BottomlessHighlightTabPainter()
         TabHighlightPositions.LEFT_RIGHT -> LeftRightHighlightTabPainter()
         TabHighlightPositions.TOP_BOTTOM -> TopBottomHighlightTabPainter()
-        TabHighlightPositions.DEFAULT -> DefaultHighlightTabPainter()
-        else -> DefaultHighlightTabPainter()
+        TabHighlightPositions.DEFAULT    -> DefaultHighlightTabPainter()
+        else                             -> DefaultHighlightTabPainter()
       }
     }
 
+    /**
+     * Gets the UISettings current tab placement
+     */
     @JvmStatic
     val editorTabPlacement: Int
       get() = UISettings.instance.editorTabPlacement
 
+    /**
+     * Paint the rectangle on right with given border thickness
+     *
+     * @param borderThickness
+     * @param g2d
+     * @param rect
+     */
     @JvmStatic
-    fun paintOnRight(borderThickness: Int, g2d: Graphics2D, rect: Rectangle) {
+    fun paintOnRight(borderThickness: Int, g2d: Graphics2D, rect: Rectangle): Unit =
       g2d.fillRect(rect.x + rect.width - borderThickness + 1, rect.y, borderThickness, rect.height)
-    }
 
+    /**
+     * Paint the rectangle on left with given border thickness
+     *
+     * @param borderThickness
+     * @param g2d
+     * @param rect
+     */
     @JvmStatic
-    fun paintOnLeft(borderThickness: Int, g2d: Graphics2D, rect: Rectangle) {
+    fun paintOnLeft(borderThickness: Int, g2d: Graphics2D, rect: Rectangle): Unit =
       g2d.fillRect(rect.x, rect.y, borderThickness, rect.height)
-    }
 
+    /**
+     * Paint the rectangle on bottom with given border thickness
+     *
+     * @param borderThickness
+     * @param g2d
+     * @param rect
+     */
     @JvmStatic
-    fun paintOnBottom(borderThickness: Int, g2d: Graphics2D, rect: Rectangle, w: Int) {
-      g2d.fillRect(rect.x, rect.y + rect.height - borderThickness + 1, w, borderThickness)
-    }
+    fun paintOnBottom(borderThickness: Int, g2d: Graphics2D, rect: Rectangle): Unit =
+      g2d.fillRect(rect.x, rect.y + rect.height - borderThickness + 1, rect.width, borderThickness)
 
+    /**
+     * Paint the rectangle on top with given border thickness
+     *
+     * @param borderThickness
+     * @param g2d
+     * @param rect
+     */
     @JvmStatic
-    fun paintOnTop(borderThickness: Int, g2d: Graphics2D, rect: Rectangle) {
+    fun paintOnTop(borderThickness: Int, g2d: Graphics2D, rect: Rectangle): Unit =
       g2d.fillRect(rect.x, rect.y - 1, rect.width, borderThickness)
-    }
   }
 }

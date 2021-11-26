@@ -23,7 +23,7 @@
  *
  *
  */
-package com.mallowigi.idea.tabs
+package com.mallowigi.idea.tabs.highlights
 
 import com.intellij.openapi.project.Project
 import com.mallowigi.idea.config.application.MTConfig
@@ -32,9 +32,21 @@ import com.mallowigi.idea.utils.MTUiUtils
 import java.awt.Graphics2D
 import java.awt.Rectangle
 
+/**
+ * The tabs highlight painter
+ *
+ */
 object MTTabsHighlightPainter {
+  /**
+   * Paint highlight
+   *
+   * @param project
+   * @param borderThickness
+   * @param g2d
+   * @param rect
+   */
   @JvmStatic
-  fun paintHighlight(project: Project?, borderThickness: Int, g2d: Graphics2D?, rect: Rectangle) {
+  fun paintHighlight(project: Project, borderThickness: Int, g2d: Graphics2D, rect: Rectangle) {
     var tabHighlightPosition = MTConfig.getInstance().tabHighlightPosition
 
     // Check if per project enabled
@@ -42,10 +54,13 @@ object MTTabsHighlightPainter {
     if (projectConfig != null) {
       tabHighlightPosition = projectConfig.tabHighlightPosition
     }
+
     val tabPainter = getHighlightTabPainter(tabHighlightPosition)
-    tabPainter.paintBottom(borderThickness, g2d, rect, rect.width)
-    tabPainter.paintTop(borderThickness, g2d, rect, rect.width)
-    tabPainter.paintLeft(borderThickness, g2d, rect, rect.width)
-    tabPainter.paintRight(borderThickness, g2d, rect, rect.width)
+    with(tabPainter) {
+      paintBottom(borderThickness, g2d, rect)
+      paintTop(borderThickness, g2d, rect)
+      paintLeft(borderThickness, g2d, rect)
+      paintRight(borderThickness, g2d, rect)
+    }
   }
 }

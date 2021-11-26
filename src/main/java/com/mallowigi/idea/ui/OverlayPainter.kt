@@ -54,6 +54,10 @@ import javax.swing.JRootPane
 import javax.swing.SwingUtilities
 import kotlin.math.max
 
+/**
+ * Overlay painter
+ *
+ */
 class OverlayPainter : AWTEventListener, Disposable {
   /**
    * The registered root panes
@@ -70,6 +74,10 @@ class OverlayPainter : AWTEventListener, Disposable {
    */
   private val openedWindowsStack: Deque<Any> = ArrayDeque(1)
 
+  /**
+   * Dispose and remove overlays
+   *
+   */
   override fun dispose() {
     Toolkit.getDefaultToolkit().removeAWTEventListener(this)
     removeOverlays()
@@ -135,6 +143,10 @@ class OverlayPainter : AWTEventListener, Disposable {
     rootPanes.add(rootPane)
   }
 
+  /**
+   * Clean overlays
+   *
+   */
   fun cleanOverlays(): Unit = removeOverlays()
 
   /**
@@ -192,6 +204,9 @@ class OverlayPainter : AWTEventListener, Disposable {
      */
     private const val MASK = AWTEvent.WINDOW_EVENT_MASK or AWTEvent.WINDOW_STATE_EVENT_MASK
 
+    /**
+     * Service for managing overlays
+     */
     @JvmStatic
     val instance: OverlayPainter
       get() = ApplicationManager.getApplication().getService(OverlayPainter::class.java)

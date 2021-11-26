@@ -28,14 +28,19 @@ package com.mallowigi.idea.tabs.highlights
 import java.awt.Graphics2D
 import java.awt.Rectangle
 
+/**
+ * Top bottom highlight tab painter
+ *
+ * @constructor Create empty Top bottom highlight tab painter
+ */
 class TopBottomHighlightTabPainter : HighlightTabPainter() {
-  override fun paintBottom(borderThickness: Int, g2d: Graphics2D?, rect: Rectangle?, width: Int): Unit =
-    paintOnBottom(borderThickness, g2d!!, rect!!, width)
+  override fun paintBottom(borderThickness: Int, g2d: Graphics2D, rect: Rectangle): Unit =
+    paintOnBottom(borderThickness, g2d, rect)
 
-  override fun paintTop(borderThickness: Int, g2d: Graphics2D?, rect: Rectangle?, width: Int): Unit =
-    paintOnTop(borderThickness, g2d!!, rect!!)
+  override fun paintTop(borderThickness: Int, g2d: Graphics2D, rect: Rectangle): Unit =
+    paintOnTop(borderThickness, g2d, rect)
 
-  override fun paintLeft(borderThickness: Int, g2d: Graphics2D?, rect: Rectangle?, width: Int): Unit = Unit
+  override fun paintLeft(borderThickness: Int, g2d: Graphics2D, rect: Rectangle): Unit = Unit
 
-  override fun paintRight(borderThickness: Int, g2d: Graphics2D?, rect: Rectangle?, width: Int): Unit = Unit
+  override fun paintRight(borderThickness: Int, g2d: Graphics2D, rect: Rectangle): Unit = Unit
 }

@@ -34,5 +34,5 @@ import java.awt.Point
  * @constructor Create empty None shadow painter
  */
 class NoneShadowPainter : ShadowPainter() {
-  override fun drawShadow(g2d: Graphics2D, from: Point?, to: Point): Unit = Unit
+  override fun drawShadow(g2d: Graphics2D, from: Point, to: Point): Unit = Unit
 }
