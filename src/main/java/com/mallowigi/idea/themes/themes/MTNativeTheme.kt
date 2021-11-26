@@ -31,6 +31,7 @@ import com.intellij.ide.ui.laf.darcula.DarculaLookAndFeelInfo
 import com.intellij.ui.ColorUtil
 import com.mallowigi.idea.config.application.MTConfig
 import com.mallowigi.idea.lafs.MTDarculaLaf
+import com.mallowigi.idea.lafs.MTLightLaf
 import com.mallowigi.idea.lafs.MTNativeLaf
 import com.mallowigi.idea.themes.MTAccentMode
 import com.mallowigi.idea.themes.MTAccentMode.selectionColor
@@ -42,7 +43,35 @@ import javax.swing.UIManager
 import javax.swing.UnsupportedLookAndFeelException
 import javax.swing.plaf.ColorUIResource
 
+/**
+ * Support for native themes
+ *
+ */
 class MTNativeTheme : MTAbstractTheme() {
+  override val themeName: String
+    get() = "External"
+
+  override val themeIcon: String
+    get() = iconPrefix("external")
+
+  override val themeId: String
+    get() = "external" // todo import from abstract?
+
+  override val isThemeDark: Boolean
+    get() = true
+
+  override val order: Int
+    get() = 200 // todo import from abstract?
+
+  override val backgroundImage: String?
+    get() = null // todo import from abstract?
+
+  override val themeColorScheme: String?
+    get() = null // todo import from abstract?
+
+  override val isNative: Boolean
+    get() = true
+
   override fun getBackgroundColorResource(): ColorUIResource =
     MTUiUtils.namedColor("material.background", MTUI.Panel.background)
 
@@ -91,8 +120,6 @@ class MTNativeTheme : MTAbstractTheme() {
   override fun getExcludedColorResource(): ColorUIResource =
     MTUiUtils.namedColor("material.excluded", MTUI.Panel.excludedBackground)
 
-  override fun getThemeId(): String = "external"
-
   @Throws(UnsupportedLookAndFeelException::class)
   public override fun setLookAndFeel() {
     val currentLookAndFeel = LafManager.getInstance().currentLookAndFeel
@@ -100,11 +127,13 @@ class MTNativeTheme : MTAbstractTheme() {
       super.setLookAndFeel()
       return
     }
-    if (currentLookAndFeel is UIThemeBasedLookAndFeelInfo) {
-      UIManager.setLookAndFeel(MTNativeLaf(this, currentLookAndFeel))
-    } else if (DarculaLookAndFeelInfo.CLASS_NAME == currentLookAndFeel.className) {
-      UIManager.setLookAndFeel(MTDarculaLaf())
+
+    val newLookAndFeel = when {
+      currentLookAndFeel is UIThemeBasedLookAndFeelInfo                 -> MTNativeLaf(this, currentLookAndFeel)
+      DarculaLookAndFeelInfo.CLASS_NAME == currentLookAndFeel.className -> MTDarculaLaf()
+      else                                                              -> MTLightLaf(this)
     }
+    UIManager.setLookAndFeel(newLookAndFeel)
   }
 
   override fun buildAllResources(): Unit = Unit
@@ -120,13 +149,6 @@ class MTNativeTheme : MTAbstractTheme() {
       }
     }
   }
-
-  override fun isNative(): Boolean = true
-
-  override val backgroundImage: String?
-    get() = null
-
-  override fun isThemeDark(): Boolean = true
 
   override fun applyAccentMode() {
     val mtConfig = MTConfig.getInstance()

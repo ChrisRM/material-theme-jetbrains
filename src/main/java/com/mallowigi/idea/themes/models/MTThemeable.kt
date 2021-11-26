@@ -31,6 +31,7 @@ import javax.swing.Icon
 /**
  * Interface for MTThemes and MTBundledThemes
  */
+@Suppress("ClassOrdering")
 interface MTThemeable {
   val themeId: String
 
@@ -62,7 +63,7 @@ interface MTThemeable {
   /**
    * Set the editor color scheme
    */
-  fun setEditorColorScheme(editorColorsScheme: String): MTThemeable
+  fun setEditorColorScheme(editorColorsScheme: String?): MTThemeable
 
   /**
    * The theme's unique ID

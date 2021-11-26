@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,11 +26,12 @@
 
 package com.mallowigi.idea.themes.models;
 
+import com.intellij.util.xmlb.annotations.Transient;
 import com.mallowigi.idea.themes.models.parsers.MTBundledThemeParser;
 import com.mallowigi.idea.themes.models.parsers.MTDarkBundledThemeParser;
-import com.intellij.util.xmlb.annotations.Transient;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * Represents a Dark theme parsed from XML
@@ -39,6 +40,23 @@ public class MTDarkBundledTheme extends MTBundledTheme {
   @SuppressWarnings("ThisEscapedInObjectConstruction")
   @Transient
   private transient MTBundledThemeParser themeParser = new MTDarkBundledThemeParser(this);
+
+  @Nullable
+  @Override
+  public String getThemeIcon() {
+    return null;
+  }
+
+  @Nullable
+  @Override
+  public String getThemeColorScheme() {
+    return null;
+  }
+
+  @Override
+  public boolean isThemeDark() {
+    return true;
+  }
 
   protected final Object readResolve() {
     themeParser = new MTDarkBundledThemeParser(this);
