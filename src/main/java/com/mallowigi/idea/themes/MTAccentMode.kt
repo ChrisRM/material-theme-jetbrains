@@ -33,9 +33,9 @@ object MTAccentMode {
   @JvmField
   val SECOND_ACCENT_RESOURCES: Set<String> = setOf(
     "CompletionPopup.matchForeground",
-    "CompletionPopup.matchSelectedForeground",  // deprecated
+    "CompletionPopup.matchSelectedForeground", // deprecated
     "CompletionPopup.matchSelectionForeground",
-    "EditorTabs.active.underlineColor",  // deprecated
+    "EditorTabs.active.underlineColor", // deprecated
     "EditorTabs.inactiveUnderlineColor",
     "EditorTabs.underlineColor",
     "link.foreground",
@@ -45,8 +45,8 @@ object MTAccentMode {
     "Link.pressedForeground",
     "Link.visitedForeground",
     "Notification.MoreButton.foreground",
-    "Notification.linkForeground",  // deprecated
-    "Notification.Link.foreground",  //deprecated
+    "Notification.linkForeground", // deprecated
+    "Notification.Link.foreground", // deprecated
     "TabbedPane.underlineColor"
 
   )
@@ -54,7 +54,7 @@ object MTAccentMode {
   @JvmField
   val SELECTION_RESOURCES: Set<String> = setOf(
     "DefaultTabs.underlinedTabForeground",
-    "EditorTabs.active.foreground",  // deprecated
+    "EditorTabs.active.foreground", // deprecated
     "EditorTabs.selectedForeground",
     "EditorTabs.underlinedTabForeground",
     "Notification.foreground",
@@ -62,7 +62,6 @@ object MTAccentMode {
     "UIDesigner.motion.CSPanel.SelectedFocusBackground",
     "WelcomeScreen.Projects.actions.selectionBackground"
   )
-
 
   @JvmField
   val ACCENT_EXTRA_RESOURCES: Set<String> = setOf(
@@ -73,17 +72,17 @@ object MTAccentMode {
     "DefaultTabs.hoverBackground",
     "DefaultTabs.underlinedTabBackground",
     "Dialog.titleColor",
-    "EditorTabs.active.background",  // deprecated
+    "EditorTabs.active.background", // deprecated
     "EditorTabs.hoverColor",
     "EditorTabs.hoverMaskColor",
     "EditorTabs.selectedBackground",
     "EditorTabs.underlinedTabBackground",
     "Github.List.tallRow.selectionBackground",
-    "Outline.focusedColor",  // deprecated
+    "Outline.focusedColor", // deprecated
     "Plugins.Button.installFillBackground",
     "Table.focusCellBackground",
     "Table.highlightOuter",
-    "Table.lightSelectionBackground",  // deprecated
+    "Table.lightSelectionBackground", // deprecated
     "Table.selectionBackground",
     "WelcomeScreen.Projects.selectionBackground"
 
@@ -98,7 +97,6 @@ object MTAccentMode {
     "Tree.selectionBackground",
     "Toolbar.Floating.background"
   )
-
 
   @JvmField
   val DARKER_ACCENT_RESOURCES: Set<String> = setOf(
@@ -118,4 +116,3 @@ object MTAccentMode {
   val selectionColor: Color
     get() = JBColor(0x111111, 0xFFFFFF)
 }
-

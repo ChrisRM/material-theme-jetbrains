@@ -35,12 +35,14 @@ object MTCheckboxIconLookup {
   private const val ICONS_DIR_PREFIX = "/icons/mt/"
 
   @JvmStatic
-  fun getIcon(name: String?): Icon = getIcon(name,
-                                             selected = false,
-                                             focused = false,
-                                             enabled = true,
-                                             editable = false,
-                                             pressed = false)
+  fun getIcon(name: String?): Icon = getIcon(
+    name,
+    selected = false,
+    focused = false,
+    enabled = true,
+    editable = false,
+    pressed = false
+  )
 
   @JvmStatic
   fun getIcon(name: String?, selected: Boolean, focused: Boolean, enabled: Boolean): Icon =
@@ -78,24 +80,30 @@ object MTCheckboxIconLookup {
       !enabled -> key += "Disabled"
     }
 
-    val path = "${ICONS_DIR_PREFIX}${key}.svg"
-    return ObjectUtils.notNull(IconLoader.findIcon(path, MTCheckboxIconLookup::class.java, true, true),
-                               AllIcons.Actions.Stub)
+    val path = "${ICONS_DIR_PREFIX}$key.svg"
+    return ObjectUtils.notNull(
+      IconLoader.findIcon(path, MTCheckboxIconLookup::class.java, true, true),
+      AllIcons.Actions.Stub
+    )
   }
 
   @JvmStatic
-  fun getDisabledIcon(name: String?): Icon = getIcon(name,
-                                                     selected = false,
-                                                     focused = false,
-                                                     enabled = false,
-                                                     editable = false,
-                                                     pressed = false)
+  fun getDisabledIcon(name: String?): Icon = getIcon(
+    name,
+    selected = false,
+    focused = false,
+    enabled = false,
+    editable = false,
+    pressed = false
+  )
 
   @JvmStatic
-  fun getSelectedIcon(name: String?): Icon = getIcon(name,
-                                                     selected = true,
-                                                     focused = false,
-                                                     enabled = false,
-                                                     editable = true,
-                                                     pressed = false)
+  fun getSelectedIcon(name: String?): Icon = getIcon(
+    name,
+    selected = true,
+    focused = false,
+    enabled = false,
+    editable = true,
+    pressed = false
+  )
 }

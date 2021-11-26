@@ -66,7 +66,7 @@ enum class MTAccents(private val colorUIResource: ColorUIResource) {
 
   val hexColor: String
     get() = ColorUtil.toHex(colorUIResource)
-  
+
   val color: Color
     get() = colorUIResource
 }

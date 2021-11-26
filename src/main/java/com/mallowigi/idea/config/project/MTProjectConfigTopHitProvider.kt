@@ -94,11 +94,13 @@ class MTProjectConfigTopHitProvider : ProjectLevelProvider {
       getter: String,
       setter: String,
     ): BooleanOptionDescription {
-      return object : PublicMethodBasedOptionDescription(MaterialThemeBundle.message("option.prefix.project") + option,
-                                                         MTProjectConfigurable.ID,
-                                                         getter,
-                                                         setter,
-                                                         Supplier { MTProjectConfig.getInstance(project) }) {
+      return object : PublicMethodBasedOptionDescription(
+        MaterialThemeBundle.message("option.prefix.project") + option,
+        MTProjectConfigurable.ID,
+        getter,
+        setter,
+        Supplier { MTProjectConfig.getInstance(project) }
+      ) {
         override fun getInstance(): MTProjectConfig = MTProjectConfig.getInstance(project)
 
         override fun fireUpdated() = MTProjectConfig.getInstance(project).fireChanged()

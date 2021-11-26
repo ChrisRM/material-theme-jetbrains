@@ -76,15 +76,17 @@ class MTScrollbarsPage : ColorSettingsPage, DisplayPrioritySortable {
         nonMacResources.forEach { addColorDescriptor(colorDescriptors, it) }
       }
 
-
       DESCRIPTORS = ArrayUtil.toObjectArray(colorDescriptors, ColorDescriptor::class.java)
     }
 
     private fun addColorDescriptor(colorDescriptors: MutableSet<ColorDescriptor>, resourceKey: String) {
-      colorDescriptors.add(ColorDescriptor(
-        message(resourceKey),
-        ColorKey.find(resourceKey),
-        ColorDescriptor.Kind.BACKGROUND))
+      colorDescriptors.add(
+        ColorDescriptor(
+          message(resourceKey),
+          ColorKey.find(resourceKey),
+          ColorDescriptor.Kind.BACKGROUND
+        )
+      )
     }
   }
 }

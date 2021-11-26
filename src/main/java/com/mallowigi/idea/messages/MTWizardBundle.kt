@@ -44,7 +44,6 @@ object MTWizardBundle : DynamicBundle(BUNDLE) {
     vararg params: Any
   ): String = messageOrDefault(ResourceBundle.getBundle(BUNDLE), key, defaultValue, *params)
 
-
   @JvmStatic
   fun message(@PropertyKey(resourceBundle = BUNDLE) key: String, vararg params: Any): String =
     getMessage(key, *params)

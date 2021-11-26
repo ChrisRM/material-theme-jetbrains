@@ -70,9 +70,13 @@ class MTFileColorsPage : ColorSettingsPage, DisplayPrioritySortable {
       val allFileStatuses = FileStatusFactory.getInstance().allFileStatuses
       val colorDescriptors: MutableSet<ColorDescriptor> = mutableSetOf()
       allFileStatuses.forEach {
-        colorDescriptors.add(ColorDescriptor(it.text,
-                                             getColorKey(it)!!,
-                                             ColorDescriptor.Kind.FOREGROUND))
+        colorDescriptors.add(
+          ColorDescriptor(
+            it.text,
+            getColorKey(it)!!,
+            ColorDescriptor.Kind.FOREGROUND
+          )
+        )
       }
 
       DESCRIPTORS = ArrayUtil.toObjectArray(colorDescriptors, ColorDescriptor::class.java)

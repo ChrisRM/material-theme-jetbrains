@@ -31,12 +31,12 @@ object AccentResources {
     "ActionButton.pressedBackground",
     "ActionButton.pressedBorderColor",
     "BookmarkIcon.background",
-    "Button.darcula.defaultFocusedOutlineColor",  // deprecated
-    "Button.darcula.focusedOutlineColor",  // deprecated
-    "Button.darcula.outlineDefaultEndColor",  // deprecated
-    "Button.darcula.outlineDefaultStartColor",  // deprecated
-    "Button.darcula.outlineEndColor",  // deprecated
-    "Button.darcula.outlineStartColor",  // deprecated
+    "Button.darcula.defaultFocusedOutlineColor", // deprecated
+    "Button.darcula.focusedOutlineColor", // deprecated
+    "Button.darcula.outlineDefaultEndColor", // deprecated
+    "Button.darcula.outlineDefaultStartColor", // deprecated
+    "Button.darcula.outlineEndColor", // deprecated
+    "Button.darcula.outlineStartColor", // deprecated
     "Button.default.endBorderColor",
     "Button.default.focusColor",
     "Button.default.focusedBorderColor",
@@ -59,10 +59,10 @@ object AccentResources {
     "Checkbox.Focus.Wide.Selected",
     "Checkbox.Focus.Wide.Selected.Dark",
     "CodeWithMe.AccessEnabled.accessDot",
-    "ComboBox.darcula.hoveredArrowButtonForeground",  // deprecated
+    "ComboBox.darcula.hoveredArrowButtonForeground", // deprecated
     "ComboBox.modifiedItemForeground",
     "CompletionPopup.matchForeground",
-    "CompletionPopup.matchSelectedForeground",  // deprecated
+    "CompletionPopup.matchSelectedForeground", // deprecated
     "CompletionPopup.matchSelectionForeground",
     "Component.focusColor",
     "Component.focusedBorderColor",
@@ -78,30 +78,30 @@ object AccentResources {
     "EditorGroupsTabs.inactiveUnderlineColor",
     "EditorGroupsTabs.underlineColor",
     "EditorPane.caretForeground",
-    "EditorTabs.active.underlineColor",  // deprecated
+    "EditorTabs.active.underlineColor", // deprecated
     "EditorTabs.inactiveUnderlineColor",
     "EditorTabs.underlineColor",
-    "Focus.defaultButtonBorderColor",  // deprecated
+    "Focus.defaultButtonBorderColor", // deprecated
     "FormattedTextField.caretForeground",
-    "Git.Log.Ref.LocalBranch",  // deprecated
+    "Git.Log.Ref.LocalBranch", // deprecated
     "GotItTooltip.linkForeground",
-    "Hg.Log.Ref.Branch",  //deprecated
-    "Hyperlink.linkColor",  // deprecated
+    "Hg.Log.Ref.Branch", // deprecated
+    "Hyperlink.linkColor", // deprecated
     "Label.errorForeground",
     "Link.activeForeground",
     "Link.hoverForeground",
     "Link.pressedForeground",
     "Link.visitedForeground",
     "LiveIndicator.color",
-    "NavBar.selectedColor",  // deprecated
+    "NavBar.selectedColor", // deprecated
     "NewPSD.warning",
-    "Notification.Error.foreground",  // deprecated
-    "Notification.Link.foreground",  //deprecated
+    "Notification.Error.foreground", // deprecated
+    "Notification.Link.foreground", // deprecated
     "Notification.errorForeground",
-    "Notification.linkForeground",  // deprecated
+    "Notification.linkForeground", // deprecated
     "Outline.focusedColor",
     "ParameterInfo.currentParameterForeground",
-    "ParameterInfo.highlightedColor",  //deprecated
+    "ParameterInfo.highlightedColor", // deprecated
     "PasswordField.caretForeground",
     "Plugins.Button.updateBackground",
     "Plugins.tagForeground",
@@ -110,31 +110,31 @@ object AccentResources {
     "ProgressBar.indeterminateStartColor",
     "ProgressBar.progressColor",
     "PsiViewer.referenceHighlightColor",
-    "RadioButton.darcula.selectionDisabledShadowColor",  // deprecated
-    "RadioButton.darcula.selectionEnabledColor",  // deprecated
-    "RadioButton.darcula.selectionEnabledShadowColor",  // deprecated
-    "RadioButton.focusColor",  // deprecated
-    "RadioButton.selectionDisabledShadowColor",  // deprecated
-    "RadioButton.selectionEnabledColor",  // deprecated
-    "RadioButton.selectionEnabledShadowColor",  // deprecated
-    "ScrollBar.Thumb.Hovered.background",  // deprecated
-    "ScrollBar.Thumb.NonOpaque.Hovered.background",  // deprecated
+    "RadioButton.darcula.selectionDisabledShadowColor", // deprecated
+    "RadioButton.darcula.selectionEnabledColor", // deprecated
+    "RadioButton.darcula.selectionEnabledShadowColor", // deprecated
+    "RadioButton.focusColor", // deprecated
+    "RadioButton.selectionDisabledShadowColor", // deprecated
+    "RadioButton.selectionEnabledColor", // deprecated
+    "RadioButton.selectionEnabledShadowColor", // deprecated
+    "ScrollBar.Thumb.Hovered.background", // deprecated
+    "ScrollBar.Thumb.NonOpaque.Hovered.background", // deprecated
     "SearchMatch.endBackground",
-    "SearchMatch.endColor",  // deprecated
+    "SearchMatch.endColor", // deprecated
     "SearchMatch.startBackground",
-    "SearchMatch.startColor",  // deprecated
+    "SearchMatch.startColor", // deprecated
     "Settings.Spotlight.borderColor",
     "Slider.buttonBorderColor",
     "Slider.buttonColor",
     "Slider.thumb",
-    "TabbedPane.selectedColor",  // deprecated
+    "TabbedPane.selectedColor", // deprecated
     "TabbedPane.underlineColor",
     "TextArea.caretForeground",
     "TextField.caretForeground",
-    "TextField.selectedSeparatorColor",  // deprecated
+    "TextField.selectedSeparatorColor", // deprecated
     "TextPane.caretForeground",
-    "ToggleButton.on.background",  // deprecated
-    "ToggleButton.on.foreground",  // deprecated
+    "ToggleButton.on.background", // deprecated
+    "ToggleButton.on.foreground", // deprecated
     "ToggleButton.onBackground",
     "ToggleButton.onForeground",
     "ToolWindow.HeaderTab.inactiveUnderlineColor",
@@ -154,10 +154,10 @@ object AccentResources {
     "VersionControl.HgLog.branchIconColor",
     "dropArea.base",
     "link",
-    "link.foreground",  // deprecated
-    "link.hover.foreground",  // deprecated
-    "link.pressed.foreground",  // deprecated
-    "link.visited.foreground",  // deprecated
+    "link.foreground", // deprecated
+    "link.hover.foreground", // deprecated
+    "link.pressed.foreground", // deprecated
+    "link.visited.foreground", // deprecated
     "material.tab.borderColor"
 
   )
@@ -168,8 +168,8 @@ object AccentResources {
     "ActionButton.hoverBackground",
     "ActionButton.hoverBorderColor",
     "DragAndDrop.rowBackground",
-    "Focus.Color",  // deprecated
-    "Focus.borderColor",  // deprecated
+    "Focus.Color", // deprecated
+    "Focus.borderColor", // deprecated
     "Focus.color" // deprecated
 
   )

@@ -45,7 +45,6 @@ enum class MTTopics {
     val PROJECT_CONFIG: Topic<ProjectConfigNotifier> =
       Topic.create("Material Theme Project Config save", ProjectConfigNotifier::class.java)
 
-
     @Topic.AppLevel
     @JvmField
     val CUSTOM_THEME: Topic<CustomConfigNotifier> =

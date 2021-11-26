@@ -87,12 +87,16 @@ class MTLafComponent : AppLifecycleListener {
     val mtThemeManager = MTThemeManager.instance
     when {
       currentLookAndFeel is UIThemeBasedLookAndFeelInfo -> mtThemeManager.activateLAF(currentLookAndFeel.theme)
-      activeLookAndFeel is DarculaLookAndFeelInfo       -> mtThemeManager.activateLAF(themeId = "darcula",
-                                                                                      isDark = true,
-                                                                                      name = MTUiUtils.DARCULA)
-      activeLookAndFeel is IntelliJLookAndFeelInfo      -> mtThemeManager.activateLAF(themeId = "default",
-                                                                                      isDark = false,
-                                                                                      name = "Light")
+      activeLookAndFeel is DarculaLookAndFeelInfo       -> mtThemeManager.activateLAF(
+        themeId = "darcula",
+        isDark = true,
+        name = MTUiUtils.DARCULA
+      )
+      activeLookAndFeel is IntelliJLookAndFeelInfo      -> mtThemeManager.activateLAF(
+        themeId = "default",
+        isDark = false,
+        name = "Light"
+      )
     }
   }
 
@@ -108,11 +112,14 @@ class MTLafComponent : AppLifecycleListener {
     // Listen for changes on the settings
     val connect = ApplicationManager.getApplication().messageBus.connect()
 
-    connect.subscribe(MTTopics.CONFIG, object : ConfigNotifier {
-      override fun configChanged(mtConfig: MTConfig) = onSettingsChanged()
+    connect.subscribe(
+      MTTopics.CONFIG,
+      object : ConfigNotifier {
+        override fun configChanged(mtConfig: MTConfig) = onSettingsChanged()
 
-      override fun beforeConfigChanged(mtConfig: MTConfig, form: MTForm) = onBeforeSettingsChanged(mtConfig, form)
-    })
+        override fun beforeConfigChanged(mtConfig: MTConfig, form: MTForm) = onBeforeSettingsChanged(mtConfig, form)
+      }
+    )
 
     connect.subscribe(MTTopics.CUSTOM_THEME, CustomConfigNotifier { activateCustomTheme() })
     connect.subscribe(LafManagerListener.TOPIC, LafManagerListener(::lookAndFeelChanged))
@@ -208,5 +215,4 @@ class MTLafComponent : AppLifecycleListener {
    */
   private fun patchTree() =
     ApplicationManager.getApplication().invokeLater { MTLafInstaller.replaceTree(UIManager.getLookAndFeelDefaults()) }
-
 }

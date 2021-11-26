@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,88 +23,76 @@
  *
  *
  */
+package com.mallowigi.idea.themes.themes
 
-package com.mallowigi.idea.themes.themes;
+import com.mallowigi.idea.utils.MTUiUtils
 
-import com.google.common.collect.Sets;
+/**
+ * Abstract theme for light themes
+ *
+ */
+abstract class MTAbstractLightTheme : MTAbstractTheme() {
+  private val selectionForegroundResources: Set<String>
+    get() = setOf(
+      "Button.highlight",
+      "Button.mt.selectedForeground",
+      "CompletionPopup.selectedForeground",
+      "CompletionPopup.selectionForeground",
+      "CompletionPopup.selectedGrayedForeground",
+      "CompletionPopup.selectionGrayForeground",
+      "CompletionPopup.selectionInfoForeground",
+      "Counter.foreground",
+      "Github.List.tallRow.selectionForeground",
+      "Github.List.tallRow.selectionForeground.unfocused",
+      "List.selectionForeground",
+      "Menu.acceleratorSelectionForeground",
+      "Menu.selectionForeground",
+      "MenuItem.acceleratorSelectionForeground",
+      "MenuItem.selectionForeground",
+      "Plugins.selectionForeground",
+      "SearchEverywhere.Tab.active.foreground",
+      "SearchEverywhere.Tab.selectedForeground",
+      "SearchEverywhere.Tab.selected.foreground",
+      "Tree.selectionForeground",
+      "Tree.selectionInactiveForeground",
+      "material.selectionForeground"
+    )
 
-import java.util.Collections;
-import java.util.Set;
+  private val secondSelectionForegroundResources: Set<String>
+    get() = setOf(
+      "Button.darcula.selectedButtonForeground",
+      "Button.default.foreground",
+      "CheckBox.darcula.borderColor1",
+      "CheckBox.foreground",
+      "CheckBoxMenuItem.foreground",
+      "CheckBoxMenuItem.selectionForeground",
+      "ComboBox.selectionForeground",
+      "EditorPane.selectionForeground",
+      "FormattedTextField.selectionForeground",
+      "Label.selectedForeground",
+      "List.selectionInactiveForeground",
+      "PasswordField.selectionForeground",
+      "Plugins.Tab.active.foreground",
+      "Plugins.Tab.selectedForeground",
+      "Spinner.selectionForeground",
+      "TabbedPane.selectedForeground",
+      "Table.focusCellForeground",
+      "Table.lightSelectionForeground",
+      "Table.selectionForeground",
+      "TableHeader.focusCellForeground",
+      "TextArea.selectionForeground",
+      "TextField.selectionForeground",
+      "TextPane.selectionForeground",
+      "ToolWindow.Button.selectedForeground",
+      "VersionControl.Ref.foreground",
+      "VersionControl.RefLabel.foreground",
+      "VersionControl.HgLog.bookmarkIconColor"
+    )
 
-import static com.mallowigi.idea.utils.MTUiUtils.buildResources;
-
-@SuppressWarnings({"HardCodedStringLiteral",
-  "DuplicateStringLiteralInspection"})
-abstract class MTAbstractLightTheme extends MTAbstractTheme {
-  @Override
-  public void buildAllResources() {
-    super.buildAllResources();
-    buildResources(getSelectionForegroundResources(), getSelectionForegroundColorResource());
-    buildResources(getSecondSelectionForegroundResources(), getSecondSelectionForegroundColorResource());
+  public override fun buildAllResources() {
+    super.buildAllResources()
+    MTUiUtils.buildResources(selectionForegroundResources, selectionForegroundColorResource)
+    MTUiUtils.buildResources(secondSelectionForegroundResources, secondSelectionForegroundColorResource)
   }
 
-  private static Set<String> getSelectionForegroundResources() {
-    return Collections.unmodifiableSet(
-      Sets.newHashSet(
-        "Button.highlight",
-        "Button.mt.selectedForeground",
-        "CompletionPopup.selectedForeground", //deprecated
-        "CompletionPopup.selectionForeground",
-        "CompletionPopup.selectedGrayedForeground", //deprecated
-        "CompletionPopup.selectionGrayForeground", // deprecated
-        "CompletionPopup.selectionInfoForeground",
-        "Counter.foreground",
-        "Github.List.tallRow.selectionForeground", // deprecated
-        "Github.List.tallRow.selectionForeground.unfocused", //deprecated
-        "List.selectionForeground",
-        "Menu.acceleratorSelectionForeground",
-        "Menu.selectionForeground",
-        "MenuItem.acceleratorSelectionForeground",
-        "MenuItem.selectionForeground",
-        "Plugins.selectionForeground", // deprecated
-        "SearchEverywhere.Tab.active.foreground", // deprecated
-        "SearchEverywhere.Tab.selectedForeground",
-        "SearchEverywhere.Tab.selected.foreground", // deprecated
-        "Tree.selectionForeground",
-        "Tree.selectionInactiveForeground",
-        "material.selectionForeground"
-      ));
-
-  }
-
-  private static Set<String> getSecondSelectionForegroundResources() {
-    return Collections.unmodifiableSet(
-      Sets.newHashSet(
-        "Button.darcula.selectedButtonForeground", // deprecated
-        "Button.default.foreground",
-        "CheckBox.darcula.borderColor1", // deprecated
-        "CheckBox.foreground",
-        "CheckBoxMenuItem.foreground",
-        "CheckBoxMenuItem.selectionForeground",
-        "ComboBox.selectionForeground",
-        "EditorPane.selectionForeground",
-        "FormattedTextField.selectionForeground",
-        "Label.selectedForeground",
-        "List.selectionInactiveForeground",
-        "PasswordField.selectionForeground",
-        "Plugins.Tab.active.foreground", // deprecated
-        "Plugins.Tab.selectedForeground",
-        "Spinner.selectionForeground",
-        "TabbedPane.selectedForeground", // deprecated
-        "Table.focusCellForeground",
-        "Table.lightSelectionForeground",
-        "Table.selectionForeground",
-        "TableHeader.focusCellForeground",
-        "TextArea.selectionForeground",
-        "TextField.selectionForeground",
-        "TextPane.selectionForeground",
-        "ToolWindow.Button.selectedForeground",
-        "VersionControl.Ref.foreground", //deprecated
-        "VersionControl.RefLabel.foreground",
-        "VersionControl.HgLog.bookmarkIconColor"
-      ));
-  }
-
-  @Override
-  protected abstract String getBackgroundImage();
 }

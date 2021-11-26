@@ -23,104 +23,67 @@
  *
  *
  */
+package com.mallowigi.idea.themes.themes
 
-package com.mallowigi.idea.themes.themes;
+import java.awt.Color
+import javax.swing.plaf.ColorUIResource
 
-import org.jetbrains.annotations.NotNull;
+/**
+ * Material lighter theme
+ *
+ */
+class MTLighterTheme : MTAbstractTheme() {
+  override val themeId: String
+    get() = "mt.lighter"
 
-import javax.swing.plaf.ColorUIResource;
-import java.awt.*;
+  override val isThemeDark: Boolean
+    get() = false
 
-@SuppressWarnings("MagicNumber")
-public final class MTLighterTheme extends MTAbstractTheme {
-  @NotNull
-  @Override
-  public String getThemeId() {
-    return "mt.lighter";
-  }
+  override val order: Int
+    get() = 3
 
-  @Override
-  public ColorUIResource getBackgroundColorResource() {
-    return new ColorUIResource(0xFAFAFA);
-  }
+  override val themeName: String
+    get() = "Material Lighter"
 
-  @Override
-  public ColorUIResource getForegroundColorResource() {
-    return new ColorUIResource(0x546E7A);
-  }
+  override val themeIcon: String?
+    get() = iconPrefix("lighter")
 
-  @Override
-  public ColorUIResource getTextColorResource() {
-    return new ColorUIResource(0x94A7B0);
-  }
+  override val backgroundImage: String
+    get() = "walls/lighter.svg"
 
-  @Override
-  public ColorUIResource getSelectionBackgroundColorResource() {
-    return new ColorUIResource(0xCCD7DA);
-  }
+  override val themeColorScheme: String?
+    get() = "Material Lighter"
 
-  @Override
-  public ColorUIResource getSelectionForegroundColorResource() {
-    return new ColorUIResource(0x546e7a);
-  }
+  override fun getBackgroundColorResource(): ColorUIResource = ColorUIResource(0xFAFAFA)
 
-  @Override
-  public ColorUIResource getButtonColorResource() {
-    return new ColorUIResource(0xF3F4F5);
-  }
+  override fun getForegroundColorResource(): ColorUIResource = ColorUIResource(0x546E7A)
 
-  @Override
-  public ColorUIResource getSecondaryBackgroundColorResource() {
-    return new ColorUIResource(0xFFFFFF);
-  }
+  override fun getTextColorResource(): ColorUIResource = ColorUIResource(0x94A7B0)
 
-  @Override
-  public ColorUIResource getDisabledColorResource() {
-    return new ColorUIResource(0xD2D4D5);
-  }
+  override fun getSelectionBackgroundColorResource(): ColorUIResource = ColorUIResource(0xCCD7DA)
 
-  @Override
-  public ColorUIResource getContrastColorResource() {
-    return new ColorUIResource(0xEEEEEE);
-  }
+  override fun getSelectionForegroundColorResource(): ColorUIResource = ColorUIResource(0x546e7a)
 
-  @Override
-  public ColorUIResource getTableSelectedColorResource() {
-    return new ColorUIResource(0xE7E7E8);
-  }
+  override fun getButtonColorResource(): ColorUIResource = ColorUIResource(0xF3F4F5)
 
-  @Override
-  public ColorUIResource getSecondBorderColorResource() {
-    return new ColorUIResource(0xd3e1e8);
-  }
+  override fun getSecondaryBackgroundColorResource(): ColorUIResource = ColorUIResource(0xFFFFFF)
 
-  @Override
-  public ColorUIResource getHighlightColorResource() {
-    return new ColorUIResource(0xE7E7E8);
-  }
+  override fun getDisabledColorResource(): ColorUIResource = ColorUIResource(0xD2D4D5)
 
-  @Override
-  public ColorUIResource getTreeSelectionColorResource() {
-    return new ColorUIResource(new Color(0x4080CBC4, true));
-  }
+  override fun getContrastColorResource(): ColorUIResource = ColorUIResource(0xEEEEEE)
 
-  @Override
-  public ColorUIResource getNotificationsColorResource() {
-    return new ColorUIResource(0xeae8e8);
-  }
+  override fun getTableSelectedColorResource(): ColorUIResource = ColorUIResource(0xE7E7E8)
 
-  @Override
-  public ColorUIResource getAccentColorResource() {
-    return new ColorUIResource(0x00BCD4);
-  }
+  override fun getSecondBorderColorResource(): ColorUIResource = ColorUIResource(0xd3e1e8)
 
-  @Override
-  public ColorUIResource getExcludedColorResource() {
-    return new ColorUIResource(0xd3e1e8);
-  }
+  override fun getHighlightColorResource(): ColorUIResource = ColorUIResource(0xE7E7E8)
 
-  @Override
-  protected String getBackgroundImage() {
-    return "walls/lighter.svg";
-  }
+  override fun getTreeSelectionColorResource(): ColorUIResource = ColorUIResource(Color(0x4080CBC4, true))
+
+  override fun getNotificationsColorResource(): ColorUIResource = ColorUIResource(0xeae8e8)
+
+  override fun getAccentColorResource(): ColorUIResource = ColorUIResource(0x00BCD4)
+
+  override fun getExcludedColorResource(): ColorUIResource = ColorUIResource(0xd3e1e8)
+
 }

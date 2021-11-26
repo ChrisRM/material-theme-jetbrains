@@ -31,5 +31,4 @@ enum class IndicatorStyles(private val type: String) {
   NONE("None");
 
   override fun toString(): String = type
-
 }

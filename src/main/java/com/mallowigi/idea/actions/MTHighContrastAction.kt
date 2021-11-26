@@ -49,6 +49,6 @@ class MTHighContrastAction : MTToggleAction() {
 
   override fun checkLicense(e: AnActionEvent) {
     e.presentation.isEnabled = MTMainProductLicenseChecker.instance.isLicensed ||
-        MTHCLicenseChecker.instance.isLicensed
+      MTHCLicenseChecker.instance.isLicensed
   }
 }

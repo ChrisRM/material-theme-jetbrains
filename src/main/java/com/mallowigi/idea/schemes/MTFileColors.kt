@@ -100,8 +100,10 @@ object MTFileColors {
         // 2. if there is an original file color
         val originalColorString = ColorUtil.toHex(originalColor)
         // 2a. Get custom file color from the bundle, or default to original file color
-        val property = messageOrDefault("material.file." + allFileStatus.id.lowercase(),
-                                        originalColorString)
+        val property = messageOrDefault(
+          "material.file." + allFileStatus.id.lowercase(),
+          originalColorString
+        )
         val color = ColorUtil.fromHex(property)
 
         // 2b. Set in the map the custom/default file color

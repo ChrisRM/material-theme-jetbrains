@@ -59,5 +59,4 @@ class MTConfigurable : MTConfigurableBase<MTForm?, MTConfig?>(), SearchableConfi
 
     const val HELP_ID: String = "MTConfig"
   }
-
 }

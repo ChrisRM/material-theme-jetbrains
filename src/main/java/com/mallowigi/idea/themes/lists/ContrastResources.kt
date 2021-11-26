@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -28,26 +28,26 @@ package com.mallowigi.idea.themes.lists
 object ContrastResources {
   @JvmField
   val CONTRASTED_RESOURCES: Set<String> = setOf(
-    "ActionToolbar.background",  // deprecated
-    "activeCaption",  // deprecated
-    "ComboBox.darcula.arrowButtonBackground",  // deprecated
-    "ComboBox.darcula.editable.arrowButtonBackground",  // deprecated
-    "ComboBox.arrowFillColor",  // deprecated
+    "ActionToolbar.background", // deprecated
+    "activeCaption", // deprecated
+    "ComboBox.darcula.arrowButtonBackground", // deprecated
+    "ComboBox.darcula.editable.arrowButtonBackground", // deprecated
+    "ComboBox.arrowFillColor", // deprecated
     "ComboBox.background",
     "ComboBox.ArrowButton.nonEditableBackground",
-    "desktop",  // deprecated
+    "desktop", // deprecated
     "Editor.background",
     "EditorPane.background",
     "FormattedTextField.background",
-    "MenuBar.background",  // deprecated
+    "MenuBar.background", // deprecated
     "MenuBar.shadow",
     "PasswordField.background",
     "Plugins.SearchField.background",
     "SidePanel.background",
     "SplitPane.highlight",
-    "TabbedPane.borderColor",  // deprecated
-    "TabbedPane.darkShadow",  // deprecated
-    "TabbedPane.mt.tab.background",  // deprecated
+    "TabbedPane.borderColor", // deprecated
+    "TabbedPane.darkShadow", // deprecated
+    "TabbedPane.mt.tab.background", // deprecated
     "TabbedPane.shadow",
     "TextArea.background",
     "TextField.background",

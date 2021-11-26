@@ -23,101 +23,67 @@
  *
  *
  */
+package com.mallowigi.idea.themes.themes
 
-package com.mallowigi.idea.themes.themes;
+import java.awt.Color
+import javax.swing.plaf.ColorUIResource
 
-import javax.swing.plaf.ColorUIResource;
-import java.awt.*;
+/**
+ * Solarized light theme
+ *
+ */
+class SolarizedLightTheme : MTAbstractTheme() {
+  override val themeId: String
+    get() = "solarized.light"
 
-@SuppressWarnings("MagicNumber")
-public final class SolarizedLightTheme extends MTAbstractTheme {
-  @Override
-  public String getThemeId() {
-    return "solarized.light";
-  }
+  override val isThemeDark: Boolean
+    get() = false
 
-  @Override
-  public ColorUIResource getBackgroundColorResource() {
-    return new ColorUIResource(0xfdf6e3);
-  }
+  override val order: Int
+    get() = 10
 
-  @Override
-  public ColorUIResource getForegroundColorResource() {
-    return new ColorUIResource(0x586e75);
-  }
+  override val themeName: String
+    get() = "Solarized Light (Material)"
 
-  @Override
-  public ColorUIResource getTextColorResource() {
-    return new ColorUIResource(0x93a1a1);
-  }
+  override val themeIcon: String?
+    get() = iconPrefix("solarized_light")
 
-  @Override
-  public ColorUIResource getSelectionBackgroundColorResource() {
-    return new ColorUIResource(0xe8dcb6);
-  }
+  override val backgroundImage: String
+    get() = "walls/solarlight.svg"
 
-  @Override
-  public ColorUIResource getSelectionForegroundColorResource() {
-    return new ColorUIResource(0x002b36);
-  }
+  override val themeColorScheme: String
+    get() = "Solarized Light (Material)"
 
-  @Override
-  public ColorUIResource getButtonColorResource() {
-    return new ColorUIResource(0xd8d4c4);
-  }
+  override fun getBackgroundColorResource(): ColorUIResource = ColorUIResource(0xfdf6e3)
 
-  @Override
-  public ColorUIResource getSecondaryBackgroundColorResource() {
-    return new ColorUIResource(0xF6F0DE);
-  }
+  override fun getForegroundColorResource(): ColorUIResource = ColorUIResource(0x586e75)
 
-  @Override
-  public ColorUIResource getDisabledColorResource() {
-    return new ColorUIResource(0xC9CCC3);
-  }
+  override fun getTextColorResource(): ColorUIResource = ColorUIResource(0x93a1a1)
 
-  @Override
-  public ColorUIResource getContrastColorResource() {
-    return new ColorUIResource(0xeee8d5);
-  }
+  override fun getSelectionBackgroundColorResource(): ColorUIResource = ColorUIResource(0xe8dcb6)
 
-  @Override
-  public ColorUIResource getTableSelectedColorResource() {
-    return new ColorUIResource(0xd1cbb8);
-  }
+  override fun getSelectionForegroundColorResource(): ColorUIResource = ColorUIResource(0x002b36)
 
-  @Override
-  public ColorUIResource getSecondBorderColorResource() {
-    return new ColorUIResource(0xedead9);
-  }
+  override fun getButtonColorResource(): ColorUIResource = ColorUIResource(0xd8d4c4)
 
-  @Override
-  public ColorUIResource getHighlightColorResource() {
-    return new ColorUIResource(0xd1cbb8);
-  }
+  override fun getSecondaryBackgroundColorResource(): ColorUIResource = ColorUIResource(0xF6F0DE)
 
-  @Override
-  public ColorUIResource getTreeSelectionColorResource() {
-    return new ColorUIResource(new Color(0xb0e8dcb6, true));
-  }
+  override fun getDisabledColorResource(): ColorUIResource = ColorUIResource(0xC9CCC3)
 
-  @Override
-  public ColorUIResource getNotificationsColorResource() {
-    return new ColorUIResource(0xEDE8D4);
-  }
+  override fun getContrastColorResource(): ColorUIResource = ColorUIResource(0xeee8d5)
 
-  @Override
-  public ColorUIResource getAccentColorResource() {
-    return new ColorUIResource(0xd33682);
-  }
+  override fun getTableSelectedColorResource(): ColorUIResource = ColorUIResource(0xd1cbb8)
 
-  @Override
-  public ColorUIResource getExcludedColorResource() {
-    return new ColorUIResource(0xE3DCC9);
-  }
+  override fun getSecondBorderColorResource(): ColorUIResource = ColorUIResource(0xedead9)
 
-  @Override
-  protected String getBackgroundImage() {
-    return "walls/solarlight.svg";
-  }
+  override fun getHighlightColorResource(): ColorUIResource = ColorUIResource(0xd1cbb8)
+
+  override fun getTreeSelectionColorResource(): ColorUIResource = ColorUIResource(Color(-0x4f17234a, true))
+
+  override fun getNotificationsColorResource(): ColorUIResource = ColorUIResource(0xEDE8D4)
+
+  override fun getAccentColorResource(): ColorUIResource = ColorUIResource(0xd33682)
+
+  override fun getExcludedColorResource(): ColorUIResource = ColorUIResource(0xE3DCC9)
+
 }

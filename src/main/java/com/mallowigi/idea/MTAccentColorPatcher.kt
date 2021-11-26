@@ -81,5 +81,4 @@ class MTAccentColorPatcher internal constructor() : SvgElementColorPatcherProvid
       themeColor = getThemeColor()
     }
   }
-
 }

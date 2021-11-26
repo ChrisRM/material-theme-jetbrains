@@ -57,5 +57,4 @@ object MaterialThemeBundle : DynamicBundle(BUNDLE) {
     @PropertyKey(resourceBundle = BUNDLE) key: String,
     vararg params: Any
   ): Supplier<String> = getLazyMessage(key, *params)
-
 }

@@ -72,10 +72,12 @@ class MTCheckBoxUI : DarculaCheckBoxUI() {
       val hasFocus = b.hasFocus()
 
       // get the relevant icon
-      val checkboxIcon = MTCheckboxIconLookup.getIcon("checkboxes/$iconName",
-                                                      selected || isIndeterminate(b),
-                                                      hasFocus,
-                                                      b.isEnabled)
+      val checkboxIcon = MTCheckboxIconLookup.getIcon(
+        "checkboxes/$iconName",
+        selected || isIndeterminate(b),
+        hasFocus,
+        b.isEnabled
+      )
       checkboxIcon.paintIcon(b, g2, iconRect.x, iconRect.y)
     } finally {
       g2.dispose()
@@ -96,10 +98,12 @@ class MTCheckBoxUI : DarculaCheckBoxUI() {
         view.paint(g, textRect)
       } else {
         g.color = if (b.isEnabled) b.foreground else getDisabledTextColor()
-        UIUtilities.drawStringUnderlineCharAt(c, g, text,
-                                              b.displayedMnemonicIndex,
-                                              textRect.x,
-                                              textRect.y + fm.ascent)
+        UIUtilities.drawStringUnderlineCharAt(
+          c, g, text,
+          b.displayedMnemonicIndex,
+          textRect.x,
+          textRect.y + fm.ascent
+        )
       }
     }
   }

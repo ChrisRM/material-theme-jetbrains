@@ -50,7 +50,7 @@ class TopShadowPainter : ShadowPainter() {
     g2d.color = mid2
     g2d.drawLine(0, h - 3, w, h - 3)
     g2d.drawLine(0, h - 4, w, h - 4)
-    
+
     val edge = ColorUtil.toAlpha(bg, 25)
     g2d.color = edge
     g2d.drawLine(0, h - 5, w, h - 5)

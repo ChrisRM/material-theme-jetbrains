@@ -70,5 +70,4 @@ class MTApplicationComponent : AppLifecycleListener {
   private fun disposeComponent() = cleanRegistry()
 
   private fun cleanRegistry() = MTThemeManager.instance.cleanRegistry()
-
 }

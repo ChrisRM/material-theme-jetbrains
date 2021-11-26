@@ -29,7 +29,6 @@ import com.intellij.openapi.application.ApplicationInfo
 import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.application.ApplicationNamesInfo
 import com.intellij.util.ObjectUtils
-import com.mallowigi.idea.MTAnalytics
 import com.mallowigi.idea.config.application.MTConfig
 import com.mallowigi.idea.messages.MaterialThemeBundle
 import com.mixpanel.mixpanelapi.ClientDelivery

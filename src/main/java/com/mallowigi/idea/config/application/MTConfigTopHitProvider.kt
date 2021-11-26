@@ -225,11 +225,12 @@ class MTConfigTopHitProvider : ApplicationLevelProvider {
     )
 
     private fun option(option: String?, getter: String, setter: String): BooleanOptionDescription {
-      return object : PublicMethodBasedOptionDescription(MaterialThemeBundle.message("option.prefix") + option,
-                                                         MTConfigurable.ID,
-                                                         getter,
-                                                         setter,
-                                                         Supplier { MTConfig.getInstance() }
+      return object : PublicMethodBasedOptionDescription(
+        MaterialThemeBundle.message("option.prefix") + option,
+        MTConfigurable.ID,
+        getter,
+        setter,
+        Supplier { MTConfig.getInstance() }
       ) {
         override fun getInstance(): MTConfig = MTConfig.getInstance()
 

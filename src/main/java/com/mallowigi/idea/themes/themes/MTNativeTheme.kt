@@ -123,7 +123,8 @@ class MTNativeTheme : MTAbstractTheme() {
 
   override fun isNative(): Boolean = true
 
-  override fun getBackgroundImage(): String? = null
+  override val backgroundImage: String?
+    get() = null
 
   override fun isThemeDark(): Boolean = true
 

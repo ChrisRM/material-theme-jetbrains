@@ -23,241 +23,212 @@
  *
  *
  */
+package com.mallowigi.idea.themes.models
 
-package com.mallowigi.idea.themes.models;
-
-import com.mallowigi.idea.messages.ThemesBundle;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Color
+import javax.swing.Icon
 
 /**
  * Interface for MTThemes and MTBundledThemes
  */
-@SuppressWarnings("ClassWithTooManyMethods")
-public interface MTThemeable {
-
-  @NonNls
-  String getThemeId();
+interface MTThemeable {
+  val themeId: String
 
   /**
    * Whether this is a custom theme
    */
-  boolean isCustom();
+  val isCustom: Boolean
 
   /**
    * Activate the theme
    */
-  void activate();
+  fun activate()
 
   /**
    * Return the theme's name
    */
-  @NotNull
-  String getName();
+  val name: String
 
   /**
    * Set the theme name
    */
-  MTThemeable setName(String name);
+  fun setName(name: String): MTThemeable
 
   /**
    * The theme's inherent color scheme
    */
-  String getEditorColorsScheme();
+  val editorColorsScheme: String?
 
   /**
    * Set the editor color scheme
    */
-  MTThemeable setEditorColorScheme(String editorColorsScheme);
+  fun setEditorColorScheme(editorColorsScheme: String): MTThemeable
 
   /**
    * The theme's unique ID
    */
-  @NotNull
-  String getId();
+  val id: String
 
   /**
    * Set the theme id
    */
-  MTThemeable setId(String id);
+  fun setId(id: String): MTThemeable
 
   /**
    * Whether the theme is a dark theme
    */
-  boolean isDark();
+  val isDark: Boolean
 
   /**
    * Set the theme dark state
    */
-  MTThemeable setIsDark(boolean dark);
+  fun setIsDark(dark: Boolean): MTThemeable
 
   /**
    * The theme icon
    */
-  Icon getIcon();
+  val icon: Icon?
 
   /**
    * Set the theme icon
    */
-  MTThemeable setIcon(String icon);
+  fun setIcon(icon: String?): MTThemeable
 
   /**
    * The theme's background color
    */
-  @NotNull
-  Color getBackgroundColor();
+  val backgroundColor: Color
 
   /**
    * The theme's foreground color
    */
-  @NotNull
-  Color getForegroundColor();
+  val foregroundColor: Color
 
   /**
    * The theme's primary color (when not foreground color)
    */
-  @NotNull
-  Color getPrimaryColor();
+  val primaryColor: Color
 
   /**
    * Get the text color
    */
-  @NotNull
-  Color getTextColor();
+  val textColor: Color
 
   /**
    * The theme's selection background color
    */
-  @NotNull
-  Color getSelectionBackgroundColor();
+  val selectionBackgroundColor: Color
 
   /**
    * The theme's selection foreground color
    */
-  @NotNull
-  Color getSelectionForegroundColor();
+  val selectionForegroundColor: Color
 
   /**
    * Get the button color
    */
-  @NotNull
-  Color getButtonColor();
+  val buttonColor: Color
 
   /**
    * Get Secondary background color
    */
-  @NotNull
-  Color getSecondaryBackgroundColor();
+  val secondaryBackgroundColor: Color
 
   /**
    * Get disabled color
    */
-  @NotNull
-  Color getDisabledColor();
+  val disabledColor: Color
 
   /**
    * The theme's contrast color
    */
-  @NotNull
-  Color getContrastColor();
+  val contrastColor: Color
 
   /**
    * Get the table selected color
    */
-  @NotNull
-  Color getTableSelectedColor();
+  val tableSelectedColor: Color
 
   /**
    * Get second border color
    */
-  @NotNull
-  Color getSecondBorderColor();
+  val secondBorderColor: Color
 
   /**
    * Get the highlight color
    */
-  @NotNull
-  Color getHighlightColor();
+  val highlightColor: Color
 
   /**
    * Get the tree selection color
    */
-  @NotNull
-  Color getTreeSelectionColor();
+  val treeSelectionColor: Color
 
   /**
    * Get the notifications color
    */
-  @NotNull
-  Color getNotificationsColor();
+  val notificationsColor: Color
 
   /**
    * Get the default accent color
    */
-  @Nullable
-  Color getAccentColor();
+  val accentColor: Color
 
   /**
    * Get the excluded files color
    */
-  @Nullable
-  Color getExcludedColor();
+  val excludedColor: Color
 
-  @NonNls
-  default String getThemeName() {
-    return ThemesBundle.messageWithPrefix("name", getThemeId());
-  }
+  /**
+   * Theme name
+   */
+  val themeName: String
 
-  @NonNls
-  default String getThemeIcon() {
-    return "/icons/actions/themes/" + ThemesBundle.messageWithPrefix("icon", getThemeId()) + ".svg";
-  }
+  /**
+   * Theme icon (optional)
+   */
+  val themeIcon: String?
 
-  @NonNls
-  default String getThemeColorScheme() {
-    return ThemesBundle.messageWithPrefix("scheme", getThemeId());
-  }
+  /**
+   * Theme color scheme (optional)
+   */
+  val themeColorScheme: String?
 
-  @NonNls
-  default boolean isThemeDark() {
-    return Boolean.parseBoolean(ThemesBundle.messageWithPrefix("dark", getThemeId()));
-  }
+  /**
+   * Is theme dark?
+   */
+  val isThemeDark: Boolean
 
-  @NonNls
-  default int getOrder() {
-    return Integer.parseInt(ThemesBundle.messageWithPrefix("order", getThemeId()));
-  }
+  /**
+   * Theme Order in the dropdown
+   */
+  val order: Int
 
   /**
    * Clean up all irrelevant properties
    */
-  void setPristine();
+  fun setPristine()
 
   /**
    * Apply contrast
    *
    * @param apply apply
    */
-  void applyContrast(boolean apply);
-
-  /**
-   * Change the theme name
-   *
-   * @param name name
-   */
-  void setThemeName(String name);
+  fun applyContrast(apply: Boolean)
 
   /**
    * Whether theme is native
    */
-  boolean isNative();
+  val isNative: Boolean
 
   /**
    * Apply accent mode for the theme
    */
-  void applyAccentMode();
+  fun applyAccentMode()
+
+  /**
+   * Theme background image
+   *
+   */
+  val backgroundImage: String?
 }

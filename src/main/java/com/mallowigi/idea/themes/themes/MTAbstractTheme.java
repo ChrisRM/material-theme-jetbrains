@@ -81,6 +81,10 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
     init();
   }
 
+  @NonNls String iconPrefix(final @NonNls String iconName) {
+    return String.format("/icons/actions/themes/%s.svg", iconName);
+  }
+
   /**
    * Theme Builder
    */
@@ -521,11 +525,6 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
   }
 
   @Override
-  public final void setThemeName(final String name) {
-    setName(name);
-  }
-
-  @Override
   public boolean isNative() {
     return false;
   }
@@ -583,8 +582,6 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
     ApplicationManager.getApplication().invokeLater(IdeBackgroundUtil::repaintAllWindows);
   }
 
-  @NonNls
-  protected abstract String getBackgroundImage();
   //endregion
 
   @SuppressWarnings("FeatureEnvy")

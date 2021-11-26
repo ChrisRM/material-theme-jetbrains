@@ -71,9 +71,12 @@ internal class MTStatusWidget : CustomStatusBarWidget {
   override fun install(statusBar: StatusBar) {
     connect.subscribe(MTTopics.THEMES, ThemeListener { refresh() })
     connect.subscribe(MTTopics.ACCENTS, AccentsListener { refresh() })
-    connect.subscribe(MTTopics.CONFIG, object : ConfigNotifier {
-      override fun configChanged(mtConfig: MTConfig) = refresh()
-    })
+    connect.subscribe(
+      MTTopics.CONFIG,
+      object : ConfigNotifier {
+        override fun configChanged(mtConfig: MTConfig) = refresh()
+      }
+    )
   }
 
   override fun dispose() {
@@ -115,9 +118,11 @@ internal class MTStatusWidget : CustomStatusBarWidget {
     }
 
     private fun showGotItTooltip() {
-      val gotIt = GotItTooltip("NewFeaturesWidget",
-                               message("gotIt.newFeatures.widget"),
-                               this)
+      val gotIt = GotItTooltip(
+        "NewFeaturesWidget",
+        message("gotIt.newFeatures.widget"),
+        this
+      )
         .withHeader(message("gotIt.newFeatures.title"))
         .withPosition(Balloon.Position.above)
         .withLink("Show me!", Runnable { ShowSettingsUtil.getInstance().showSettingsDialog(null, MT_SETTINGS_PAGE) })
@@ -153,18 +158,22 @@ internal class MTStatusWidget : CustomStatusBarWidget {
 
         // background
         g2.color = mtConfig.selectedTheme.theme.contrastColor
-        g2.fillRoundRect(0,
-                         0,
-                         size.width + accentDiameter - JBUI.scale(arcs.width),
-                         JBUI.scale(STATUS_HEIGHT),
-                         arcs.width,
-                         arcs.height)
+        g2.fillRoundRect(
+          0,
+          0,
+          size.width + accentDiameter - JBUI.scale(arcs.width),
+          JBUI.scale(STATUS_HEIGHT),
+          arcs.width,
+          arcs.height
+        )
 
         // label
         g2.color = UIUtil.getLabelForeground()
         g2.font = font
-        g2.drawString(attributedString.iterator, (size.width - accentDiameter - nameWidth) / 2,
-                      nameHeight + (size.height - nameHeight) / 2 - JBUI.scale(1))
+        g2.drawString(
+          attributedString.iterator, (size.width - accentDiameter - nameWidth) / 2,
+          nameHeight + (size.height - nameHeight) / 2 - JBUI.scale(1)
+        )
 
         // Accent
         g2.color = accentColor
@@ -176,8 +185,10 @@ internal class MTStatusWidget : CustomStatusBarWidget {
 
     override fun getPreferredSize(): Dimension {
       val themeName = mtConfig.selectedTheme.themeName!!
-      val width = getFontMetrics(widgetFont).charsWidth(themeName.toCharArray(), 0,
-                                                        themeName.length) + 2 * STATUS_PADDING
+      val width = getFontMetrics(widgetFont).charsWidth(
+        themeName.toCharArray(), 0,
+        themeName.length
+      ) + 2 * STATUS_PADDING
       val accentDiameter = JBUI.scale(STATUS_HEIGHT)
       return Dimension(width + accentDiameter, accentDiameter)
     }

@@ -356,8 +356,10 @@ class MTThemeManager private constructor() : Disposable {
    */
   private fun refreshColorScheme() {
     ApplicationManager.getApplication()
-      .invokeLater({ (EditorColorsManager.getInstance() as EditorColorsManagerImpl).schemeChangedOrSwitched(null) },
-                   ModalityState.NON_MODAL)
+      .invokeLater(
+        { (EditorColorsManager.getInstance() as EditorColorsManagerImpl).schemeChangedOrSwitched(null) },
+        ModalityState.NON_MODAL
+      )
   }
 
   /**

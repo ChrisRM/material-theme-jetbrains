@@ -48,9 +48,11 @@ class MTInstallAtomNotification : Notification(
     setListener { notification1: Notification, event: HyperlinkEvent ->
       when (event.description) {
         "decline" -> closeNotification(notification1)
-        else      -> installAndEnable(null,
-                                      setOf(MTUiUtils.getAtomPluginId()),
-                                      true) { closeNotification(notification1) }
+        else      -> installAndEnable(
+          null,
+          setOf(MTUiUtils.getAtomPluginId()),
+          true
+        ) { closeNotification(notification1) }
       }
     }
   }
@@ -59,5 +61,4 @@ class MTInstallAtomNotification : Notification(
     PropertiesComponent.getInstance().setValue(SHOW_INSTALL_ATOM, true)
     notification1.expire()
   }
-
 }

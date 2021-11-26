@@ -37,7 +37,7 @@ private const val BUNDLE: String = "messages.LanguageAdditionsBundle"
 object LanguageAdditionsBundle : DynamicBundle(BUNDLE) {
   @JvmStatic
   fun getBundle(): ResourceBundle = ResourceBundle.getBundle(BUNDLE)
-  
+
   override fun messageOrDefault(
     @PropertyKey(resourceBundle = BUNDLE) key: String,
     defaultValue: String?,

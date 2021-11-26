@@ -23,110 +23,72 @@
  *
  *
  */
+package com.mallowigi.idea.themes.themes
 
-package com.mallowigi.idea.themes.themes;
+import com.mallowigi.idea.config.custom.MTCustomThemeConfig
+import javax.swing.plaf.ColorUIResource
 
-import com.mallowigi.idea.config.custom.MTCustomThemeConfig;
-import org.jetbrains.annotations.NotNull;
+/**
+ * Material Light Custom theme
+ *
+ */
+class MTLightCustomTheme : MTAbstractTheme() {
+  override val themeId: String
+    get() = "mt.light_custom"
 
-import javax.swing.plaf.ColorUIResource;
+  override val isThemeDark: Boolean
+    get() = false
 
-@SuppressWarnings("DesignForExtension")
-public class MTLightCustomTheme extends MTAbstractTheme {
-  @NotNull
-  @Override
-  public String getThemeId() {
-    return "mt.light_custom";
-  }
+  override val order: Int
+    get() = 101
 
-  @Override
-  public ColorUIResource getBackgroundColorResource() {
-    return MTCustomThemeConfig.getInstance().getBackgroundColorString();
-  }
+  override val themeName: String
+    get() = "Light Custom Theme (Material)"
 
-  @Override
-  public ColorUIResource getForegroundColorResource() {
-    return MTCustomThemeConfig.getInstance().getForegroundColorString();
-  }
+  override val backgroundImage: String?
+    get() = null
 
-  @Override
-  public ColorUIResource getTextColorResource() {
-    return MTCustomThemeConfig.getInstance().getTextColorString();
-  }
+  override val themeColorScheme: String?
+    get() = null
 
-  @Override
-  public ColorUIResource getSelectionBackgroundColorResource() {
-    return MTCustomThemeConfig.getInstance().getSelectionBackgroundColorString();
-  }
+  override val isCustom: Boolean
+    get() = true
 
-  @Override
-  public ColorUIResource getSelectionForegroundColorResource() {
-    return MTCustomThemeConfig.getInstance().getSelectionForegroundColorString();
-  }
+  override val themeIcon: String?
+    get() = iconPrefix("light_custom")
 
-  @Override
-  public ColorUIResource getButtonColorResource() {
-    return MTCustomThemeConfig.getInstance().getButtonColorString();
-  }
+  private val config = MTCustomThemeConfig.getInstance()
 
-  @Override
-  public ColorUIResource getSecondaryBackgroundColorResource() {
-    return MTCustomThemeConfig.getInstance().getSecondaryBackgroundColorString();
-  }
+  override fun getBackgroundColorResource(): ColorUIResource = config.backgroundColorString
 
-  @Override
-  public ColorUIResource getDisabledColorResource() {
-    return MTCustomThemeConfig.getInstance().getDisabledColorString();
-  }
+  override fun getForegroundColorResource(): ColorUIResource = config.foregroundColorString
 
-  @Override
-  public ColorUIResource getContrastColorResource() {
-    return MTCustomThemeConfig.getInstance().getContrastColorString();
-  }
+  override fun getTextColorResource(): ColorUIResource = config.textColorString
 
-  @Override
-  public ColorUIResource getTableSelectedColorResource() {
-    return MTCustomThemeConfig.getInstance().getTableSelectedColorString();
-  }
+  override fun getSelectionBackgroundColorResource(): ColorUIResource = config.selectionBackgroundColorString
 
-  @Override
-  public ColorUIResource getSecondBorderColorResource() {
-    return MTCustomThemeConfig.getInstance().getSecondBorderColorString();
-  }
+  override fun getSelectionForegroundColorResource(): ColorUIResource = config.selectionForegroundColorString
 
-  @Override
-  public ColorUIResource getHighlightColorResource() {
-    return MTCustomThemeConfig.getInstance().getHighlightColorString();
-  }
+  override fun getButtonColorResource(): ColorUIResource = config.buttonColorString
 
-  @Override
-  public ColorUIResource getTreeSelectionColorResource() {
-    return MTCustomThemeConfig.getInstance().getTreeSelectionColorString();
-  }
+  override fun getSecondaryBackgroundColorResource(): ColorUIResource = config.secondaryBackgroundColorString
 
-  @Override
-  public ColorUIResource getNotificationsColorResource() {
-    return MTCustomThemeConfig.getInstance().getNotificationsColorString();
-  }
+  override fun getDisabledColorResource(): ColorUIResource = config.disabledColorString
 
-  @Override
-  public ColorUIResource getAccentColorResource() {
-    return MTCustomThemeConfig.getInstance().getAccentColorString();
-  }
+  override fun getContrastColorResource(): ColorUIResource = config.contrastColorString
 
-  @Override
-  public ColorUIResource getExcludedColorResource() {
-    return MTCustomThemeConfig.getInstance().getExcludedColorString();
-  }
+  override fun getTableSelectedColorResource(): ColorUIResource = config.tableSelectedColorString
 
-  @Override
-  protected String getBackgroundImage() {
-    return null;
-  }
+  override fun getSecondBorderColorResource(): ColorUIResource = config.secondBorderColorString
 
-  @SuppressWarnings("MethodReturnAlwaysConstant")
-  @Override
-  public boolean isCustom() {
-    return true;
-  }
+  override fun getHighlightColorResource(): ColorUIResource = config.highlightColorString
+
+  override fun getTreeSelectionColorResource(): ColorUIResource = config.treeSelectionColorString
+
+  override fun getNotificationsColorResource(): ColorUIResource = config.notificationsColorString
+
+  override fun getAccentColorResource(): ColorUIResource = config.accentColorString
+
+  override fun getExcludedColorResource(): ColorUIResource = config.excludedColorString
+
 }

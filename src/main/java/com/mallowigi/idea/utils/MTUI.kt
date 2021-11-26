@@ -250,7 +250,6 @@ object MTUI {
     @JvmStatic
     val shadowColor: Color
       get() = JBColor.namedColor(TABBED_PANE_SHADOW, JBColor(0xdae4ed, 0x3d4b5c))
-
   }
 
   object Slider {
@@ -452,8 +451,10 @@ object MTUI {
 
     @JvmStatic
     val highlightColor: Color
-      get() = ColorUtil.withAlpha(JBColor.namedColor(NAVBAR_HIGHLIGHT_COLOR, UIUtil.getListSelectionBackground(true)),
-                                  0.5)
+      get() = ColorUtil.withAlpha(
+        JBColor.namedColor(NAVBAR_HIGHLIGHT_COLOR, UIUtil.getListSelectionBackground(true)),
+        0.5
+      )
 
     @JvmStatic
     val decorationOffset: Int
@@ -532,10 +533,12 @@ object MTUI {
 
     @JvmStatic
     val inactiveFillColor: Color
-      get() = getColor(shortPropertyName = "Background",
-                       defaultValue = JBColor(Gray._240.withAlpha(180), Gray._110.withAlpha(180)),
-                       selected = false,
-                       disabled = true)
+      get() = getColor(
+        shortPropertyName = "Background",
+        defaultValue = JBColor(Gray._240.withAlpha(180), Gray._110.withAlpha(180)),
+        selected = false,
+        disabled = true
+      )
 
     @JvmStatic
     fun getBorderColor(enabled: Boolean, selected: Boolean): Color = when {
@@ -652,8 +655,10 @@ object MTUI {
 
     @JvmStatic
     val transparentSelectionBackground: Color
-      get() = ColorUtil.withAlpha(JBColor.namedColor(SELECTION_BACKGROUND, UIUtil.getListSelectionBackground(true)),
-                                  0.6)
+      get() = ColorUtil.withAlpha(
+        JBColor.namedColor(SELECTION_BACKGROUND, UIUtil.getListSelectionBackground(true)),
+        0.6
+      )
 
     @JvmStatic
     val transparentBackground: Color
@@ -726,5 +731,4 @@ object MTUI {
     val selectionInactiveBackground: Color
       get() = JBUI.CurrentTheme.EditorTabs.inactiveColoredFileBackground()
   }
-
 }

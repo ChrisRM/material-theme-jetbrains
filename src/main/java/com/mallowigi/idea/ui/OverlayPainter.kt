@@ -32,7 +32,6 @@ import com.intellij.ui.paint.RectanglePainter
 import com.intellij.util.containers.ContainerUtil
 import com.intellij.util.ui.JBUI
 import com.mallowigi.idea.config.application.MTConfig
-import com.mallowigi.idea.ui.OverlayPainter
 import com.mallowigi.idea.utils.MTUiUtils
 import java.awt.AWTEvent
 import java.awt.AlphaComposite
@@ -153,16 +152,20 @@ class OverlayPainter : AWTEventListener, Disposable {
       RectanglePainter.paint(g2d, 0, 0, r.width, r.height, 0, myColor, null)
       g.paint = myColor.darker()
 
-      for (i in 0 until myInsets.left) LinePainter2D.paint(g2d,
-                                                           i.toDouble(),
-                                                           myInsets.top.toDouble(),
-                                                           i.toDouble(),
-                                                           (r.height - myInsets.bottom - 1).toDouble())
-      for (i in 0 until myInsets.right) LinePainter2D.paint(g2d,
-                                                            (r.width - i - 1).toDouble(),
-                                                            myInsets.top.toDouble(),
-                                                            (r.width - i - 1).toDouble(),
-                                                            (r.height - myInsets.bottom - 1).toDouble())
+      for (i in 0 until myInsets.left) LinePainter2D.paint(
+        g2d,
+        i.toDouble(),
+        myInsets.top.toDouble(),
+        i.toDouble(),
+        (r.height - myInsets.bottom - 1).toDouble()
+      )
+      for (i in 0 until myInsets.right) LinePainter2D.paint(
+        g2d,
+        (r.width - i - 1).toDouble(),
+        myInsets.top.toDouble(),
+        (r.width - i - 1).toDouble(),
+        (r.height - myInsets.bottom - 1).toDouble()
+      )
       for (i in 0 until myInsets.top) LinePainter2D.paint(
         g2d,
         0.0,

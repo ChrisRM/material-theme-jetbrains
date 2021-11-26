@@ -23,101 +23,67 @@
  *
  *
  */
+package com.mallowigi.idea.themes.themes
 
-package com.mallowigi.idea.themes.themes;
+import java.awt.Color
+import javax.swing.plaf.ColorUIResource
 
-import javax.swing.plaf.ColorUIResource;
-import java.awt.*;
+/**
+ * Material palenight theme
+ *
+ */
+class MTPalenightTheme : MTAbstractTheme() {
+  override val themeId: String
+    get() = "mt.palenight"
 
-@SuppressWarnings("MagicNumber")
-public final class MTPalenightTheme extends MTAbstractTheme {
-  @Override
-  public String getThemeId() {
-    return "mt.palenight";
-  }
+  override val isThemeDark: Boolean
+    get() = true
 
-  @Override
-  public ColorUIResource getBackgroundColorResource() {
-    return new ColorUIResource(0x292D3E);
-  }
+  override val order: Int
+    get() = 2
 
-  @Override
-  public ColorUIResource getForegroundColorResource() {
-    return new ColorUIResource(0xA6ACCD);
-  }
+  override val themeName: String
+    get() = "Material Palenight"
 
-  @Override
-  public ColorUIResource getTextColorResource() {
-    return new ColorUIResource(0x676E95);
-  }
+  override val themeIcon: String?
+    get() = iconPrefix("palenight")
 
-  @Override
-  public ColorUIResource getSelectionBackgroundColorResource() {
-    return new ColorUIResource(0x444267);
-  }
+  override val backgroundImage: String
+    get() = "walls/palenight.svg"
 
-  @Override
-  public ColorUIResource getSelectionForegroundColorResource() {
-    return new ColorUIResource(0xFFFFFF);
-  }
+  override val themeColorScheme: String
+    get() = "Material Palenight"
 
-  @Override
-  public ColorUIResource getButtonColorResource() {
-    return new ColorUIResource(0x303348);
-  }
+  override fun getBackgroundColorResource(): ColorUIResource = ColorUIResource(0x292D3E)
 
-  @Override
-  public ColorUIResource getSecondaryBackgroundColorResource() {
-    return new ColorUIResource(0x34324a);
-  }
+  override fun getForegroundColorResource(): ColorUIResource = ColorUIResource(0xA6ACCD)
 
-  @Override
-  public ColorUIResource getDisabledColorResource() {
-    return new ColorUIResource(0x515772);
-  }
+  override fun getTextColorResource(): ColorUIResource = ColorUIResource(0x676E95)
 
-  @Override
-  public ColorUIResource getContrastColorResource() {
-    return new ColorUIResource(0x202331);
-  }
+  override fun getSelectionBackgroundColorResource(): ColorUIResource = ColorUIResource(0x444267)
 
-  @Override
-  public ColorUIResource getTableSelectedColorResource() {
-    return new ColorUIResource(0x414863);
-  }
+  override fun getSelectionForegroundColorResource(): ColorUIResource = ColorUIResource(0xFFFFFF)
 
-  @Override
-  public ColorUIResource getSecondBorderColorResource() {
-    return new ColorUIResource(0x2b2a3e);
-  }
+  override fun getButtonColorResource(): ColorUIResource = ColorUIResource(0x303348)
 
-  @Override
-  public ColorUIResource getHighlightColorResource() {
-    return new ColorUIResource(0x444267);
-  }
+  override fun getSecondaryBackgroundColorResource(): ColorUIResource = ColorUIResource(0x34324a)
 
-  @Override
-  public ColorUIResource getTreeSelectionColorResource() {
-    return new ColorUIResource(new Color(0x50676E95, true));
-  }
+  override fun getDisabledColorResource(): ColorUIResource = ColorUIResource(0x515772)
 
-  @Override
-  public ColorUIResource getNotificationsColorResource() {
-    return new ColorUIResource(0x202331);
-  }
+  override fun getContrastColorResource(): ColorUIResource = ColorUIResource(0x202331)
 
-  @Override
-  public ColorUIResource getAccentColorResource() {
-    return new ColorUIResource(0xab47bc);
-  }
+  override fun getTableSelectedColorResource(): ColorUIResource = ColorUIResource(0x414863)
 
-  @Override
-  public ColorUIResource getExcludedColorResource() {
-    return new ColorUIResource(0x2f2e43);
-  }
+  override fun getSecondBorderColorResource(): ColorUIResource = ColorUIResource(0x2b2a3e)
 
-  @Override
-  protected String getBackgroundImage() {
-    return "walls/palenight.svg";
-  }
+  override fun getHighlightColorResource(): ColorUIResource = ColorUIResource(0x444267)
+
+  override fun getTreeSelectionColorResource(): ColorUIResource = ColorUIResource(Color(0x50676E95, true))
+
+  override fun getNotificationsColorResource(): ColorUIResource = ColorUIResource(0x202331)
+
+  override fun getAccentColorResource(): ColorUIResource = ColorUIResource(0xab47bc)
+
+  override fun getExcludedColorResource(): ColorUIResource = ColorUIResource(0x2f2e43)
+
 }

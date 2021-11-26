@@ -50,12 +50,18 @@ class MTProjectFrame private constructor(private val myProject: Project) : IdeRo
   private var myProjectFramePanel: JPanel? = null
 
   init {
-    connect.subscribe(MTTopics.CONFIG, object : ConfigNotifier {
-      override fun configChanged(mtConfig: MTConfig) = addFrame(shouldShowProjectFrame())
-    })
-    connect.subscribe(MTTopics.PROJECT_CONFIG, object : ProjectConfigNotifier {
-      override fun projectConfigChanged(mtConfig: MTProjectConfig) = addFrame(shouldShowProjectFrame())
-    })
+    connect.subscribe(
+      MTTopics.CONFIG,
+      object : ConfigNotifier {
+        override fun configChanged(mtConfig: MTConfig) = addFrame(shouldShowProjectFrame())
+      }
+    )
+    connect.subscribe(
+      MTTopics.PROJECT_CONFIG,
+      object : ProjectConfigNotifier {
+        override fun projectConfigChanged(mtConfig: MTProjectConfig) = addFrame(shouldShowProjectFrame())
+      }
+    )
   }
 
   /**
@@ -144,5 +150,4 @@ class MTProjectFrame private constructor(private val myProject: Project) : IdeRo
 
     return !uiSettings.presentationMode && useProjectFrame
   }
-
 }
