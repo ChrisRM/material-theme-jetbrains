@@ -23,152 +23,182 @@
  *
  *
  */
+package com.mallowigi.idea.config.ui.load
 
-package com.mallowigi.idea.config.ui.load;
+import com.intellij.icons.AllIcons
+import com.intellij.ide.util.PropertiesComponent
+import com.intellij.openapi.actionSystem.AnAction
+import com.intellij.openapi.actionSystem.AnActionEvent
+import com.intellij.openapi.actionSystem.DefaultActionGroup
+import com.intellij.openapi.actionSystem.Presentation
+import com.intellij.openapi.actionSystem.ex.ComboBoxAction
+import com.intellij.openapi.fileChooser.FileChooser
+import com.intellij.openapi.fileChooser.FileChooserDescriptor
+import com.intellij.openapi.ui.Messages
+import com.intellij.openapi.util.io.FileUtil
+import com.intellij.openapi.vfs.VfsUtil
+import com.intellij.openapi.vfs.VirtualFile
+import com.intellij.ui.components.panels.NonOpaquePanel
+import com.intellij.util.ui.JBUI
+import com.mallowigi.idea.MTBundledThemesManager
+import com.mallowigi.idea.config.custom.MTCustomThemeConfig
+import com.mallowigi.idea.config.ui.MTCustomThemeForm
+import com.mallowigi.idea.messages.MaterialThemeBundle.message
+import com.mallowigi.idea.themes.MTThemeFacade
+import com.mallowigi.idea.themes.MTThemes
+import java.awt.BorderLayout
+import java.io.File
+import javax.swing.JComponent
+import javax.swing.border.Border
 
-import com.intellij.icons.AllIcons;
-import com.intellij.ide.util.PropertiesComponent;
-import com.intellij.openapi.actionSystem.*;
-import com.intellij.openapi.actionSystem.ex.ComboBoxAction;
-import com.intellij.openapi.fileChooser.FileChooser;
-import com.intellij.openapi.fileChooser.FileChooserDescriptor;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.ui.Messages;
-import com.intellij.openapi.util.io.FileUtil;
-import com.intellij.openapi.vfs.VfsUtil;
-import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.ui.components.panels.NonOpaquePanel;
-import com.intellij.util.ui.JBUI;
-import com.mallowigi.idea.MTBundledThemesManager;
-import com.mallowigi.idea.config.custom.MTCustomThemeConfig;
-import com.mallowigi.idea.config.ui.MTCustomThemeForm;
-import com.mallowigi.idea.messages.MaterialThemeBundle;
-import com.mallowigi.idea.themes.MTThemeFacade;
-import com.mallowigi.idea.themes.MTThemes;
-import com.mallowigi.idea.themes.models.MTBundledTheme;
-import org.jetbrains.annotations.NotNull;
+/**
+ * Action to load custom themes from XML
+ *
+ * @property mtCustomThemeForm the custom theme form
+ */
+class MTLoadCustomThemeComboBoxAction(private val mtCustomThemeForm: MTCustomThemeForm) : ComboBoxAction() {
+  private val customThemeConfig: MTCustomThemeConfig = MTCustomThemeConfig.getInstance().clone()
 
-import javax.swing.*;
-import javax.swing.border.Border;
-import java.awt.*;
-import java.io.File;
-import java.util.Objects;
-
-@SuppressWarnings("SyntheticAccessorCall")
-public final class MTLoadCustomThemeComboBoxAction extends ComboBoxAction {
-  private final MTCustomThemeForm mtCustomThemeForm;
-  private final MTCustomThemeConfig customThemeConfig;
-
-  public MTLoadCustomThemeComboBoxAction(final MTCustomThemeForm mtCustomThemeForm) {
-    this.mtCustomThemeForm = mtCustomThemeForm;
-    customThemeConfig = MTCustomThemeConfig.getInstance().clone();
+  /**
+   * Add Gear icon
+   *
+   */
+  override fun update(e: AnActionEvent) {
+    super.update(e)
+    e.presentation.icon = AllIcons.General.GearPlain
   }
 
-  @Override
-  public void update(@NotNull final AnActionEvent e) {
-    super.update(e);
-    e.getPresentation().setIcon(AllIcons.General.GearPlain);
+  override fun getMinHeight(): Int = 40
+
+  /**
+   * Create the action custom component: a dropdown menu
+   *
+   * @param presentation action presentation
+   * @param place action placement
+   * @return the component wrapping the action
+   */
+  override fun createCustomComponent(presentation: Presentation, place: String): JComponent {
+    val comboBoxButton = ComboBoxButton(presentation)
+    val panel = NonOpaquePanel(BorderLayout())
+    val border: Border = JBUI.Borders.empty()
+
+    panel.border = border
+    panel.add(comboBoxButton)
+
+    return panel
   }
 
-  @NotNull
-  @Override
-  public JComponent createCustomComponent(@NotNull final Presentation presentation) {
-    return createCustomComponent(presentation, ActionPlaces.STATUS_BAR_PLACE);
+  /**
+   * Create popup action group
+   *
+   * @param button action button
+   * @return the action group
+   */
+  override fun createPopupActionGroup(button: JComponent): DefaultActionGroup {
+    val group = DefaultActionGroup(/* shortName = */ null, /* popup = */ true)
+    group.addSeparator(message("MTCustomThemeForm.loadFromButton.loadFrom"))
+
+    // Add the bundled themes
+    MTThemes.getAllThemes()
+      .filterNot { it.isCustom || it.isNative }
+      .forEach { group.add(ImportBundledThemeAction(it)) }
+
+    group.addSeparator(message("MTCustomThemeForm.loadFromButton.loadFromDisk"))
+    group.add(LoadFromXmlAction())
+    group.addSeparator(message("MTCustomThemeForm.loadFromButton.save"))
+    group.add(SaveToXmlAction())
+
+    return group
   }
 
-  @NotNull
-  @Override
-  public JComponent createCustomComponent(@NotNull final Presentation presentation, @NotNull final String place) {
-    final ComboBoxButton comboBoxButton = new ComboBoxButton(presentation);
-    final NonOpaquePanel panel = new NonOpaquePanel(new BorderLayout());
-    final Border border = JBUI.Borders.empty();
-
-    panel.setBorder(border);
-    panel.add(comboBoxButton);
-    return panel;
-  }
-
-  @SuppressWarnings({"FeatureEnvy",
-    "ObjectAllocationInLoop",
-    "ContinueStatement",
-    "OverlyComplexAnonymousInnerClass"})
-  @NotNull
-  @Override
-  protected DefaultActionGroup createPopupActionGroup(final JComponent button) {
-    final DefaultActionGroup group = new DefaultActionGroup(null, true);
-    group.addSeparator(MaterialThemeBundle.message("MTCustomThemeForm.loadFromButton.loadFrom"));
-    for (final MTThemeFacade theme : MTThemes.getAllThemes()) {
-      if (theme.isCustom()) {
-        continue;
-      }
-      group.add(new AnAction(theme.getThemeName(), theme.getThemeName(), theme.getIcon()) {
-        @Override
-        public void actionPerformed(@NotNull final AnActionEvent e) {
-          customThemeConfig.importFrom(theme.getTheme());
-          mtCustomThemeForm.setFormState(customThemeConfig);
-        }
-      });
+  /**
+   * Import bundled theme action
+   *
+   * @property mtThemeFacade original theme
+   */
+  inner class ImportBundledThemeAction(private val mtThemeFacade: MTThemeFacade) :
+    AnAction(mtThemeFacade.themeName, mtThemeFacade.themeName, mtThemeFacade.icon) {
+    override fun actionPerformed(e: AnActionEvent) {
+      customThemeConfig.importFrom(mtThemeFacade.theme)
+      mtCustomThemeForm.setFormState(customThemeConfig)
     }
-    group.addSeparator(MaterialThemeBundle.message("MTCustomThemeForm.loadFromButton.loadFromDisk"));
-    group.add(new AnAction(MaterialThemeBundle.message("MTCustomThemeForm.loadFromButton.fromDisk"),
-      MaterialThemeBundle.message("load.an.external.theme.into.your.custom.theme.colors"),
-      AllIcons.Actions.Install) {
-      @Override
-      public void actionPerformed(@NotNull final AnActionEvent e) {
-        final FileChooserDescriptor descriptor = new MyFileChooserDescriptor();
-        descriptor.setTitle(MaterialThemeBundle.message("MTCustomThemeForm.importButton.selectFile"));
-
-        final String oldPath = PropertiesComponent.getInstance().getValue("plugins.preselection.path");
-        final VirtualFile toSelect = oldPath == null ? null :
-                                     VfsUtil.findFileByIoFile(new File(FileUtil.toSystemDependentName(oldPath)), false);
-
-        FileChooser.chooseFile(descriptor, null, null, toSelect, this::loadTheme);
-      }
-
-      private void loadTheme(final VirtualFile virtualFile) {
-        final MTBundledTheme theme = MTBundledThemesManager.loadBundledTheme(virtualFile);
-        if (theme == null) {
-          Messages.showErrorDialog(MaterialThemeBundle.message("error.parsing.xml.file.make.sure.that.this.is.a.valid.external.theme" +
-            ".file"), MaterialThemeBundle.message("error"));
-          return;
-        }
-
-        customThemeConfig.importFrom(theme);
-        mtCustomThemeForm.setFormState(customThemeConfig);
-        Messages.showDialog((Project) null,
-          String.format(MaterialThemeBundle.message("MTCustomThemeForm.loadFromButton.success"), virtualFile.getName()),
-          MaterialThemeBundle.message("MTCustomThemeForm.loadFromButton.importSuccess"),
-          new String[]{MaterialThemeBundle.message("common.ok")},
-          0,
-          Messages.getInformationIcon());
-      }
-    });
-    group.addSeparator(MaterialThemeBundle.message("MTCustomThemeForm.loadFromButton.save"));
-    group.add(new AnAction(MaterialThemeBundle.message("MTCustomThemeForm.loadFromButton.saveAs"),
-      MaterialThemeBundle.message("save.your.custom.theme.as.an.external.theme"),
-      AllIcons.Actions.Menu_saveall) {
-      @Override
-      public void actionPerformed(@NotNull final AnActionEvent e) {
-        new MTSaveCustomThemeDialog(mtCustomThemeForm).show();
-      }
-    });
-    return group;
   }
 
-  @SuppressWarnings("MagicNumber")
-  @Override
-  protected int getMinHeight() {
-    return 40;
-  }
+  /**
+   * Load from xml action
+   *
+   */
+  inner class LoadFromXmlAction : AnAction(
+    /* text = */ message("MTCustomThemeForm.loadFromButton.fromDisk"),
+    /* description = */ message("MTCustomThemeForm.loadFromButton.fromDisk.description"),
+    /* icon = */ AllIcons.Actions.Install
+  ) {
+    override fun actionPerformed(e: AnActionEvent) {
+      val descriptor: FileChooserDescriptor = MyFileChooserDescriptor()
+      descriptor.title = message("MTCustomThemeForm.importButton.selectFile")
 
-  private static final class MyFileChooserDescriptor extends FileChooserDescriptor {
-    MyFileChooserDescriptor() {
-      super(true, false, false, false, false, false);
+      // Search in plugins folder
+      val oldPath = PropertiesComponent.getInstance().getValue("plugins.preselection.path") ?: return
+
+      // Open the file chooser at the old path location
+      val toSelect = VfsUtil.findFileByIoFile(File(FileUtil.toSystemDependentName(oldPath)), false)
+
+      // Once selected, call loadTheme
+      FileChooser.chooseFile(descriptor, null, null, toSelect, ::loadTheme)
     }
 
-    @Override
-    public boolean isFileSelectable(final VirtualFile file) {
-      return Objects.equals(file.getExtension(), "xml");
+    /**
+     * Load theme from XML and put it in the MTBundledThemesManager
+     *
+     * @param virtualFile the file to load
+     */
+    private fun loadTheme(virtualFile: VirtualFile) {
+      val theme = MTBundledThemesManager.loadBundledTheme(virtualFile)
+
+      if (theme == null) {
+        Messages.showErrorDialog(message("error.parsing.xml"), message("error"))
+        return
+      }
+
+      customThemeConfig.importFrom(theme)
+      mtCustomThemeForm.setFormState(customThemeConfig)
+      Messages.showDialog(
+        /* project = */ null,
+        /* message = */ String.format(message("MTCustomThemeForm.loadFromButton.success"), virtualFile.name),
+        /* title = */ message("MTCustomThemeForm.loadFromButton.importSuccess"),
+        /* options = */ arrayOf(message("common.ok")),
+        /* defaultOptionIndex = */ 0,
+        /* icon = */ Messages.getInformationIcon()
+      )
     }
+  }
+
+  /**
+   * Save to xml action
+   *
+   */
+  inner class SaveToXmlAction : AnAction(
+    /* text = */ message("MTCustomThemeForm.loadFromButton.saveAs"),
+    /* description = */ message("MTCustomThemeForm.loadFromButton.saveAs.description"),
+    /* icon = */ AllIcons.Actions.MenuSaveall
+  ) {
+    override fun actionPerformed(e: AnActionEvent): Unit = MTSaveCustomThemeDialog(mtCustomThemeForm).show()
+  }
+
+  /**
+   * File chooser for xml files
+   *
+   */
+  private class MyFileChooserDescriptor :
+    FileChooserDescriptor(
+      /* chooseFiles = */ true,
+      /* chooseFolders = */ false,
+      /* chooseJars = */ false,
+      /* chooseJarsAsFiles = */ false,
+      /* chooseJarContents = */ false,
+      /* chooseMultiple = */ false
+    ) {
+
+    override fun isFileSelectable(file: VirtualFile?): Boolean = file!!.extension == "xml"
   }
 }
