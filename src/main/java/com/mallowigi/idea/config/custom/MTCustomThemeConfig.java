@@ -469,68 +469,68 @@ public final class MTCustomThemeConfig implements PersistentStateComponent<MTCus
     return MTColorUtils.parseColor(backgroundColor);
   }
 
-  public boolean isBackgroundColorChanged(final Color backgroundColor) {
-    return !Objects.equals(MTColorUtils.parseColor(this.backgroundColor), backgroundColor);
+  public boolean isBackgroundColorChanged(final Color newBackgroundColor) {
+    return !Objects.equals(MTColorUtils.parseColor(backgroundColor), newBackgroundColor);
   }
 
-  public boolean isForegroundColorChanged(final Color foregroundColor) {
-    return !Objects.equals(MTColorUtils.parseColor(this.foregroundColor), foregroundColor);
+  public boolean isForegroundColorChanged(final Color newForegroundColor) {
+    return !Objects.equals(MTColorUtils.parseColor(foregroundColor), newForegroundColor);
   }
 
-  public boolean isTextColorChanged(final Color textColor) {
-    return !Objects.equals(MTColorUtils.parseColor(this.textColor), textColor);
+  public boolean isTextColorChanged(final Color newTextColor) {
+    return !Objects.equals(MTColorUtils.parseColor(textColor), newTextColor);
   }
 
-  public boolean isSelectionBackgroundColorChanged(final Color selectionBackgroundColor) {
-    return !Objects.equals(MTColorUtils.parseColor(this.selectionBackgroundColor), selectionBackgroundColor);
+  public boolean isSelectionBackgroundColorChanged(final Color newSelectionBackgroundColor) {
+    return !Objects.equals(MTColorUtils.parseColor(selectionBackgroundColor), newSelectionBackgroundColor);
   }
 
-  public boolean isSelectionForegroundColorChanged(final Color selectionForegroundColor) {
-    return !Objects.equals(MTColorUtils.parseColor(this.selectionForegroundColor), selectionForegroundColor);
+  public boolean isSelectionForegroundColorChanged(final Color newSelectionForegroundColor) {
+    return !Objects.equals(MTColorUtils.parseColor(selectionForegroundColor), newSelectionForegroundColor);
   }
 
-  public boolean isButtonColorChanged(final Color buttonColor) {
-    return !Objects.equals(MTColorUtils.parseColor(this.buttonColor), buttonColor);
+  public boolean isButtonColorChanged(final Color newButtonColor) {
+    return !Objects.equals(MTColorUtils.parseColor(buttonColor), newButtonColor);
   }
 
-  public boolean isSecondaryBackgroundColorChanged(final Color secondaryBackgroundColor) {
-    return !Objects.equals(MTColorUtils.parseColor(this.secondaryBackgroundColor), secondaryBackgroundColor);
+  public boolean isSecondaryBackgroundColorChanged(final Color newSecondaryBackgroundColor) {
+    return !Objects.equals(MTColorUtils.parseColor(secondaryBackgroundColor), newSecondaryBackgroundColor);
   }
 
-  public boolean isDisabledColorChanged(final Color disabledColor) {
-    return !Objects.equals(MTColorUtils.parseColor(this.disabledColor), disabledColor);
+  public boolean isDisabledColorChanged(final Color newDisabledColor) {
+    return !Objects.equals(MTColorUtils.parseColor(disabledColor), newDisabledColor);
   }
 
-  public boolean isContrastColorChanged(final Color contrastColor) {
-    return !Objects.equals(MTColorUtils.parseColor(this.contrastColor), contrastColor);
+  public boolean isContrastColorChanged(final Color newContrastColor) {
+    return !Objects.equals(MTColorUtils.parseColor(contrastColor), newContrastColor);
   }
 
-  public boolean isTableSelectionColorChanged(final Color tableSelectedColor) {
-    return !Objects.equals(MTColorUtils.parseColor(this.tableSelectedColor), tableSelectedColor);
+  public boolean isTableSelectionColorChanged(final Color newTableSelectedColor) {
+    return !Objects.equals(MTColorUtils.parseColor(tableSelectedColor), newTableSelectedColor);
   }
 
-  public boolean isSecondBorderColorChanged(final Color secondBorderColor) {
-    return !Objects.equals(MTColorUtils.parseColor(this.secondBorderColor), secondBorderColor);
+  public boolean isSecondBorderColorChanged(final Color newSecondBorderColor) {
+    return !Objects.equals(MTColorUtils.parseColor(secondBorderColor), newSecondBorderColor);
   }
 
-  public boolean isHighlightColorChanged(final Color highlightColor) {
-    return !Objects.equals(MTColorUtils.parseColor(this.highlightColor), highlightColor);
+  public boolean isHighlightColorChanged(final Color newHighlightColor) {
+    return !Objects.equals(MTColorUtils.parseColor(highlightColor), newHighlightColor);
   }
 
-  public boolean isTreeSelectionColorChanged(final Color treeSelectionColor) {
-    return !Objects.equals(MTColorUtils.parseColor(this.treeSelectionColor), treeSelectionColor);
+  public boolean isTreeSelectionColorChanged(final Color newTreeSelectionColor) {
+    return !Objects.equals(MTColorUtils.parseColor(treeSelectionColor), newTreeSelectionColor);
   }
 
-  public boolean isNotificationsColorChanged(final Color notificationsColor) {
-    return !Objects.equals(MTColorUtils.parseColor(this.notificationsColor), notificationsColor);
+  public boolean isNotificationsColorChanged(final Color newNotificationsColor) {
+    return !Objects.equals(MTColorUtils.parseColor(notificationsColor), newNotificationsColor);
   }
 
-  public boolean isAccentColorChanged(final Color accentColor) {
-    return !Objects.equals(MTColorUtils.parseColor(this.accentColor), accentColor);
+  public boolean isAccentColorChanged(final Color newAccentColor) {
+    return !Objects.equals(MTColorUtils.parseColor(accentColor), newAccentColor);
   }
 
-  public boolean isExcludedColorChanged(final Color excludedColor) {
-    return !Objects.equals(MTColorUtils.parseColor(this.excludedColor), excludedColor);
+  public boolean isExcludedColorChanged(final Color newExcludedColor) {
+    return !Objects.equals(MTColorUtils.parseColor(excludedColor), newExcludedColor);
   }
 
   @SuppressWarnings("FeatureEnvy")
@@ -551,11 +551,7 @@ public final class MTCustomThemeConfig implements PersistentStateComponent<MTCus
     setHighlightColor(theme.getHighlightColor());
     setTreeSelectionColor(theme.getTreeSelectionColor());
     setNotificationsColor(theme.getNotificationsColor());
-    if (theme.getAccentColor() != null) {
-      setAccentColor(theme.getAccentColor());
-    }
-    if (theme.getExcludedColor() != null) {
-      setExcludedColor(theme.getExcludedColor());
-    }
+    setAccentColor(theme.getAccentColor());
+    setExcludedColor(theme.getExcludedColor());
   }
 }

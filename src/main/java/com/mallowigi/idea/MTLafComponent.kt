@@ -198,6 +198,7 @@ class MTLafComponent : AppLifecycleListener {
       )
       if (okCancelDialog == Messages.OK) {
         mtConfig.selectedTheme = MTThemes.CUSTOM
+        MTThemeManager.instance.setLookAndFeel(MTThemes.CUSTOM)
       }
     }
     activateTheme()
@@ -207,7 +208,7 @@ class MTLafComponent : AppLifecycleListener {
    * Activate current theme
    *
    */
-  fun activateTheme(): Unit = MTThemeManager.instance.activate()
+  private fun activateTheme(): Unit = MTThemeManager.instance.activate()
 
   /**
    * Patch trees

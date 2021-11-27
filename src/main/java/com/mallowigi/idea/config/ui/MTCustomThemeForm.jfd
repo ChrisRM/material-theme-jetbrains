@@ -260,7 +260,7 @@ new FormModel {
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 0 0,align left center,grow 0 0"
 					} )
-					add( new FormComponent( "com.mallowigi.idea.ui.ColorPanelWithOpacity" ) {
+					add( new FormComponent( "com.intellij.ui.ColorPanel" ) {
 						name: "tableSelectionColor"
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 1 0,align right center,grow 0 0"
@@ -303,7 +303,7 @@ new FormModel {
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 0 0,align left center,grow 0 0"
 					} )
-					add( new FormComponent( "com.mallowigi.idea.ui.ColorPanelWithOpacity" ) {
+					add( new FormComponent( "com.intellij.ui.ColorPanel" ) {
 						name: "miscColor2"
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 1 0,align right center,grow 0 0"
