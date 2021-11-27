@@ -129,8 +129,6 @@ style:
     active: true
   UseIfEmptyOrIfBlank:
     active: true
-  UseIfInsteadOfWhen:
-    active: true
   UseIsNullOrEmpty:
     active: true
   UseOrEmpty:
@@ -180,8 +178,10 @@ naming:
   FunctionMaxLength:
     active: true
     maximumFunctionNameLength: 36
+    excludes: [ '**/*Page*' ]
   FunctionMinLength:
     active: true
+    minimumFunctionNameLength: 2
   VariableMaxLength:
     active: true
 
