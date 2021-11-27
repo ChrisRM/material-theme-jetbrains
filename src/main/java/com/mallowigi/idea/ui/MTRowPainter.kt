@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,149 +23,185 @@
  *
  *
  */
+package com.mallowigi.idea.ui
 
-package com.mallowigi.idea.ui;
+import com.intellij.ide.ui.UISettings
+import com.intellij.ui.paint.LinePainter2D
+import com.intellij.ui.paint.PaintUtil
+import com.intellij.ui.scale.JBUIScale
+import com.intellij.ui.tree.ui.Control
+import com.mallowigi.idea.utils.MTUI.List.listFocusedSelectionPainter
+import com.mallowigi.idea.utils.MTUI.Tree.selectionBackground
+import java.awt.Component
+import java.awt.Graphics
+import java.awt.Graphics2D
+import java.awt.RenderingHints
+import javax.swing.UIManager
+import kotlin.math.max
 
-import com.intellij.ide.ui.UISettings;
-import com.intellij.ui.paint.LinePainter2D;
-import com.intellij.ui.paint.PaintUtil;
-import com.intellij.ui.scale.JBUIScale;
-import com.intellij.ui.tree.ui.Control;
-import com.mallowigi.idea.utils.MTUI;
-import org.jetbrains.annotations.NotNull;
+/**
+ * Painter for the selected row with indent support and indicator
+ *
+ */
+class MTRowPainter : Control.Painter {
+  /**
+   * Indent for leaves. We don't use that.
+   */
+  private val leafIndent: Int
+    get() = -1
 
-import javax.swing.*;
-import javax.swing.border.Border;
-import java.awt.*;
+  /**
+   * Right indent taken from the settings
+   */
+  private val rightIndent: Int
+    get() = max(0, UIManager.getInt("Tree.rightChildIndent"))
 
-@SuppressWarnings({"DuplicateStringLiteralInspection",
-  "StandardVariableNames",
-  "OverlyComplexBooleanExpression"})
-public class MTRowPainter implements Control.Painter {
-
-  @Override
-  public final int getRendererOffset(@NotNull final Control control, final int depth, final boolean leaf) {
+  /**
+   * Gets the renderer offset
+   *
+   * @param control the tree
+   * @param depth the depth of the tree row
+   * @param leaf whether it's a leaf
+   * @return the offset (indent)
+   */
+  override fun getRendererOffset(control: Control, depth: Int, leaf: Boolean): Int {
     if (depth < 0) {
-      return -1; // do not paint row
+      // do not paint row
+      return -1
     }
     if (depth == 0) {
-      return 0;
+      return 0
     }
-    final int controlWidth = control.getWidth();
-    final int left = getLeftIndent(controlWidth / 2);
-    final int right = getRightIndent();
-    int offset = getLeafIndent();
+
+    val controlWidth = control.width
+    val left = getLeftIndent(controlWidth / 2)
+    val right = rightIndent
+    var offset = leafIndent
 
     if (offset < 0) {
-      offset = Math.max(controlWidth + left - controlWidth / 2 + JBUIScale.scale(2), left + right);
+      offset = max(controlWidth + left - controlWidth / 2 + JBUIScale.scale(2), left + right)
     }
-    return depth > 1 ? (depth - 1) * (left + right) + offset : offset;
+    return if (depth > 1) (depth - 1) * (left + right) + offset else offset
   }
 
-  private static int getLeafIndent() {
-    return -1;
-  }
-
-  private static int getRightIndent() {
-    return Math.max(0, UIManager.getInt("Tree.rightChildIndent"));
-  }
-
-  private static int getLeftIndent(final int min) {
-    return Math.max(min, UIManager.getInt("Tree.leftChildIndent"));
-  }
-
-  @Override
-  public final int getControlOffset(@NotNull final Control control, final int depth, final boolean leaf) {
+  /**
+   * Get control offset
+   *
+   * @param control the tree
+   * @param depth the depth of the tree row
+   * @param leaf whether it's a leaf
+   * @return the control offset
+   */
+  override fun getControlOffset(control: Control, depth: Int, leaf: Boolean): Int {
     if (depth <= 0 || leaf) {
-      return -1; // do not paint control
+      // do not paint control
+      return -1
     }
-    final int controlWidth = control.getWidth();
-    final int left = getLeftIndent(controlWidth / 2);
-    final int offset = left - controlWidth / 2;
-    return depth > 1 ? (depth - 1) * (left + getRightIndent()) + offset : offset;
+    val controlWidth = control.width
+    val left = getLeftIndent(controlWidth / 2)
+    val offset = left - controlWidth / 2
+
+    return if (depth > 1) (depth - 1) * (left + rightIndent) + offset else offset
   }
 
-  @SuppressWarnings({"ValueOfIncrementOrDecrementUsed",
-    "MethodWithMoreThanThreeNegations",
-    "OverlyComplexMethod"})
-  @Override
-  public final void paint(@NotNull final Component c,
-                          @NotNull final Graphics g,
-                          final int x,
-                          final int y,
-                          final int width,
-                          final int height,
-                          @NotNull final Control control,
-                          final int depth,
-                          final boolean leaf,
-                          final boolean expanded,
-                          final boolean selected) {
+  /**
+   * Paint component
+   *
+   */
+  @Suppress("kotlin:S3776")
+  override fun paint(
+    c: Component,
+    g: Graphics,
+    x: Int,
+    y: Int,
+    width: Int,
+    height: Int,
+    control: Control,
+    depth: Int,
+    leaf: Boolean,
+    expanded: Boolean,
+    selected: Boolean,
+  ) {
     // List indicators
     if (selected) {
-      final Border listFocusedSelectionPainter = MTUI.List.getListFocusedSelectionPainter();
-      if (listFocusedSelectionPainter != null) {
-        listFocusedSelectionPainter.paintBorder(c, g, x, y, width, height);
-      }
+      val listFocusedSelectionPainter = listFocusedSelectionPainter
+      listFocusedSelectionPainter.paintBorder(c, g, x, y, width, height)
     }
-
     if (depth <= 0) {
-      return; // do not paint
+      return
     }
 
     // Should we paint indent lines?
-    final boolean paintLines = shouldPaintLines();
+    val paintLines = shouldPaintLines()
     if (!paintLines && leaf) {
-      return; // nothing to paint
+      return
     }
 
     // Compute the position of the paint lines
-    final int controlWidth = control.getWidth();
-    final int left = getLeftIndent(controlWidth / 2);
-    final int indent = left + getRightIndent();
-    int lineX = x + left - controlWidth / 2;
-    final int controlX = !leaf && depth > 1 ? (depth - 1) * indent + lineX : lineX;
-    int d = depth;
+    val controlWidth = control.width
+    val left = getLeftIndent(controlWidth / 2)
+    val indent = left + rightIndent
+    var lineX = x + left - controlWidth / 2
+    val controlX = if (!leaf && depth > 1) (depth - 1) * indent + lineX else lineX
+    var d = depth
 
     // paint the lines
-    if (paintLines && (depth > 1 || (!leaf && expanded))) {
-      g.setColor(MTUI.Tree.getSelectionBackground());
+    if (paintLines && (depth > 1 || !leaf && expanded)) {
+      g.color = selectionBackground
       while (--d > 0) {
-        paintLine(g, lineX, y, controlWidth, height);
-        lineX += indent;
+        paintLine(g, lineX, y, controlWidth, height)
+        lineX += indent
       }
       if (!leaf && expanded) {
-        final int offset = (height - control.getHeight()) / 2;
+        val offset = (height - control.height) / 2
         if (offset > 0) {
-          paintLine(g, lineX, y + height - offset, controlWidth, offset);
+          paintLine(g, lineX, y + height - offset, controlWidth, offset)
         }
       }
     }
-
     if (leaf) {
-      return; // do not paint control for a leaf node
+      // do not paint control for a leaf node
+      return
     }
-    control.paint(c, g, controlX, y, controlWidth, height, expanded, selected);
+    control.paint(c, g, controlX, y, controlWidth, height, expanded, selected)
   }
+
+  /**
+   * Returns the coerced left indent from the left indent settings and a minumum
+   *
+   * @param min minimum indent
+   * @return the left indent
+   */
+  private fun getLeftIndent(min: Int): Int = max(min, UIManager.getInt("Tree.leftChildIndent"))
 
   /**
    * Paint indent line
    */
-  private static void paintLine(@NotNull final Graphics g, final int x, final int y, final int width, final int height) {
-    if (g instanceof Graphics2D) {
-      final Graphics2D g2d = (Graphics2D) g;
-      final double dx = x + width / 2.0 - PaintUtil.devPixel(g2d);
-      LinePainter2D.paint(g2d, dx, y, dx, y + height, LinePainter2D.StrokeType.CENTERED, 1, RenderingHints.VALUE_ANTIALIAS_ON);
+  private fun paintLine(g: Graphics, x: Int, y: Int, width: Int, height: Int) {
+    if (g is Graphics2D) {
+      val dx = x + width / 2.0 - PaintUtil.devPixel(g)
+
+      LinePainter2D.paint(
+        g,
+        dx,
+        y.toDouble(),
+        dx,
+        (y + height).toDouble(),
+        LinePainter2D.StrokeType.CENTERED,
+        1.0,
+        RenderingHints.VALUE_ANTIALIAS_ON
+      )
     } else {
-      final int newX = x + width / 2;
-      g.drawLine(newX, y, x, y + height);
+      val newX = x + width / 2
+      g.drawLine(newX, y, x, y + height)
     }
   }
 
-  private static boolean shouldPaintLines() {
-    if (UIManager.getBoolean("Tree.paintLines")) {
-      return true;
-    }
-    final UISettings settings = UISettings.getInstanceOrNull();
-    return settings != null && settings.getShowTreeIndentGuides();
+  private fun shouldPaintLines(): Boolean {
+    if (UIManager.getBoolean("Tree.paintLines")) return true
+
+    val settings: UISettings = UISettings.instanceOrNull!!
+    return settings.showTreeIndentGuides
   }
+
 }
