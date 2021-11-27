@@ -692,4 +692,10 @@ public enum MTUiUtils {
   public static EditorColorsScheme getCurrentScheme() {
     return EditorColorsManager.getInstance().getGlobalScheme();
   }
+
+  @SuppressWarnings("HardcodedFileSeparator")
+  @NonNls
+  public static String iconPrefix(final @NonNls String iconName) {
+    return String.format("/icons/actions/themes/%s.svg", iconName);
+  }
 }

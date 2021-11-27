@@ -25,6 +25,7 @@
  */
 package com.mallowigi.idea.themes.themes
 
+import com.mallowigi.idea.utils.MTUiUtils
 import java.awt.Color
 import javax.swing.plaf.ColorUIResource
 
@@ -52,7 +53,7 @@ class MTOceanicTheme : MTAbstractTheme() {
     get() = "Material Oceanic"
 
   override val themeIcon: String?
-    get() = iconPrefix("oceanic")
+    get() = MTUiUtils.iconPrefix("oceanic")
 
   override val backgroundColorResource: ColorUIResource
     get() = ColorUIResource(0x263238)

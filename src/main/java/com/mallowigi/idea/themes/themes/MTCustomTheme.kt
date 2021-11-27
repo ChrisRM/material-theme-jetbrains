@@ -26,6 +26,7 @@
 package com.mallowigi.idea.themes.themes
 
 import com.mallowigi.idea.config.custom.MTCustomThemeConfig
+import com.mallowigi.idea.utils.MTUiUtils
 import javax.swing.plaf.ColorUIResource
 
 /**
@@ -58,7 +59,7 @@ class MTCustomTheme : MTAbstractTheme() {
     get() = true
 
   override val themeIcon: String
-    get() = iconPrefix("custom")
+    get() = MTUiUtils.iconPrefix("custom")
 
   override val backgroundColorResource: ColorUIResource
     get() = customThemeConfig.backgroundColorString

@@ -25,6 +25,7 @@
  */
 package com.mallowigi.idea.themes.themes
 
+import com.mallowigi.idea.utils.MTUiUtils
 import java.awt.Color
 import javax.swing.plaf.ColorUIResource
 
@@ -46,7 +47,7 @@ class MTPalenightTheme : MTAbstractTheme() {
     get() = "Material Palenight"
 
   override val themeIcon: String?
-    get() = iconPrefix("palenight")
+    get() = MTUiUtils.iconPrefix("palenight")
 
   override val backgroundImage: String
     get() = "walls/palenight.svg"

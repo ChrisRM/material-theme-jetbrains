@@ -25,6 +25,7 @@
  */
 package com.mallowigi.idea.themes.themes
 
+import com.mallowigi.idea.utils.MTUiUtils
 import java.awt.Color
 import javax.swing.plaf.ColorUIResource
 
@@ -52,7 +53,7 @@ class NightOwlTheme : MTAbstractTheme() {
     get() = "Night Owl (Material)"
 
   override val themeIcon: String?
-    get() = iconPrefix("nightowl")
+    get() = MTUiUtils.iconPrefix("nightowl")
 
   override val backgroundColorResource: ColorUIResource
     get() = ColorUIResource(0x011627)

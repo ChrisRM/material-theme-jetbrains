@@ -25,6 +25,7 @@
  */
 package com.mallowigi.idea.themes.themes
 
+import com.mallowigi.idea.utils.MTUiUtils
 import java.awt.Color
 import javax.swing.plaf.ColorUIResource
 
@@ -46,7 +47,7 @@ class SolarizedLightTheme : MTAbstractTheme() {
     get() = "Solarized Light (Material)"
 
   override val themeIcon: String?
-    get() = iconPrefix("solarized_light")
+    get() = MTUiUtils.iconPrefix("solarized_light")
 
   override val backgroundImage: String
     get() = "walls/solarlight.svg"

@@ -25,6 +25,7 @@
  */
 package com.mallowigi.idea.themes.themes
 
+import com.mallowigi.idea.utils.MTUiUtils
 import java.awt.Color
 import javax.swing.plaf.ColorUIResource
 
@@ -46,7 +47,7 @@ class MTDarkerTheme : MTAbstractTheme() {
     get() = "Material Darker"
 
   override val themeIcon: String?
-    get() = iconPrefix("darker")
+    get() = MTUiUtils.iconPrefix("darker")
 
   override val backgroundImage: String
     get() = "walls/darker.svg"

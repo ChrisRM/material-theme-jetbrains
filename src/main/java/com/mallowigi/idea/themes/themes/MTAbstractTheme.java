@@ -81,12 +81,6 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
     init();
   }
 
-  @SuppressWarnings("HardcodedFileSeparator")
-  @NonNls
-  final String iconPrefix(final @NonNls String iconName) {
-    return String.format("/icons/actions/themes/%s.svg", iconName);
-  }
-
   /**
    * Theme Builder
    */
@@ -202,7 +196,8 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
    * Set the theme name
    */
   @Override
-  public final @NotNull MTAbstractTheme setName(final @NotNull String name) {
+  public final @NotNull
+  MTAbstractTheme setName(final @NotNull String name) {
     this.name = name;
     return this;
   }
@@ -216,7 +211,8 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
   }
 
   @Override
-  public final @NotNull MTAbstractTheme setEditorColorScheme(final String editorColorsScheme) {
+  public final @NotNull
+  MTAbstractTheme setEditorColorScheme(final String editorColorsScheme) {
     this.editorColorsScheme = editorColorsScheme;
     return this;
   }
@@ -232,7 +228,8 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
   }
 
   @Override
-  public final @NotNull MTAbstractTheme setId(final @NotNull String id) {
+  public final @NotNull
+  MTAbstractTheme setId(final @NotNull String id) {
     this.id = id;
     return this;
   }
@@ -246,7 +243,8 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
   }
 
   @Override
-  public final @NotNull MTAbstractTheme setIsDark(final boolean dark) {
+  public final @NotNull
+  MTAbstractTheme setIsDark(final boolean dark) {
     this.dark = dark;
     return this;
   }
@@ -258,7 +256,8 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
   }
 
   @Override
-  public final @NotNull MTAbstractTheme setIcon(final String icon) {
+  public final @NotNull
+  MTAbstractTheme setIcon(final String icon) {
     this.icon = icon;
     return this;
   }

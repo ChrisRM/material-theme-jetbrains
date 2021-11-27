@@ -25,6 +25,7 @@
  */
 package com.mallowigi.idea.themes.themes
 
+import com.mallowigi.idea.utils.MTUiUtils
 import java.awt.Color
 import javax.swing.plaf.ColorUIResource
 
@@ -46,7 +47,7 @@ class OneDarkTheme : MTAbstractTheme() {
     get() = "Atom One Dark (Material)"
 
   override val themeIcon: String?
-    get() = iconPrefix("one_dark")
+    get() = MTUiUtils.iconPrefix("one_dark")
 
   override val backgroundImage: String
     get() = "walls/onedark.svg"

@@ -25,6 +25,7 @@
  */
 package com.mallowigi.idea.themes.themes
 
+import com.mallowigi.idea.utils.MTUiUtils
 import javax.swing.plaf.ColorUIResource
 
 /**
@@ -45,7 +46,7 @@ class MonokaiTheme : MTAbstractTheme() {
     get() = "Monokai Pro (Material)"
 
   override val themeIcon: String?
-    get() = iconPrefix("monokai")
+    get() = MTUiUtils.iconPrefix("monokai")
 
   override val backgroundImage: String
     get() = "walls/monokai.svg"

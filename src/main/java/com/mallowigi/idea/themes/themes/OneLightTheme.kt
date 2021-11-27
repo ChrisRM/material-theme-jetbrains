@@ -25,6 +25,7 @@
  */
 package com.mallowigi.idea.themes.themes
 
+import com.mallowigi.idea.utils.MTUiUtils
 import java.awt.Color
 import javax.swing.plaf.ColorUIResource
 
@@ -46,7 +47,7 @@ class OneLightTheme : MTAbstractLightTheme() {
     get() = "Atom One Light (Material)"
 
   override val themeIcon: String?
-    get() = iconPrefix("one_light")
+    get() = MTUiUtils.iconPrefix("one_light")
 
   override val backgroundImage: String
     get() = "walls/onelight.svg"

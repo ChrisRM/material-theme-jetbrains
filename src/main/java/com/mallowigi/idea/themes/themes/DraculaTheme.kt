@@ -25,6 +25,7 @@
  */
 package com.mallowigi.idea.themes.themes
 
+import com.mallowigi.idea.utils.MTUiUtils
 import java.awt.Color
 import javax.swing.plaf.ColorUIResource
 
@@ -46,7 +47,7 @@ class DraculaTheme : MTAbstractTheme() {
     get() = "Dracula (Material)"
 
   override val themeIcon: String
-    get() = iconPrefix("dracula")
+    get() = MTUiUtils.iconPrefix("dracula")
 
   override val backgroundImage: String
     get() = "walls/dracula.svg"

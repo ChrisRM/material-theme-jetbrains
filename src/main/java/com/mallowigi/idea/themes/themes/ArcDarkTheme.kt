@@ -25,6 +25,7 @@
  */
 package com.mallowigi.idea.themes.themes
 
+import com.mallowigi.idea.utils.MTUiUtils
 import java.awt.Color
 import javax.swing.plaf.ColorUIResource
 
@@ -49,7 +50,7 @@ class ArcDarkTheme : MTAbstractTheme() {
     get() = "Arc Dark (Material)"
 
   override val themeIcon: String
-    get() = iconPrefix("arc_dark")
+    get() = MTUiUtils.iconPrefix("arc_dark")
 
   override val backgroundImage: String
     get() = "walls/arcdark.svg"

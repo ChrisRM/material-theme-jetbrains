@@ -25,6 +25,7 @@
  */
 package com.mallowigi.idea.themes.themes
 
+import com.mallowigi.idea.utils.MTUiUtils
 import java.awt.Color
 import javax.swing.plaf.ColorUIResource
 
@@ -46,7 +47,7 @@ class MoonlightTheme : MTAbstractTheme() {
     get() = "Moonlight (Material)"
 
   override val themeIcon: String?
-    get() = iconPrefix("moonlight")
+    get() = MTUiUtils.iconPrefix("moonlight")
 
   override val backgroundImage: String
     get() = "walls/moonlight.svg"
