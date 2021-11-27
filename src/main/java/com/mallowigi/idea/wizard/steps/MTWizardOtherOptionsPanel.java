@@ -58,7 +58,6 @@ import static com.mallowigi.idea.utils.MTUiUtils.disablePremium;
   "ClassWithTooManyFields",
   "CheckStyle",
   "Duplicates",
-  "OverlyLongLambda",
   "unused",
   "DuplicateStringLiteralInspection",
   "HardCodedStringLiteral",
@@ -144,8 +143,7 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
     languageAdditionsCheckbox.setSelected(config.isCodeAdditionsEnabled());
   }
 
-  @SuppressWarnings({"Duplicates",
-    "FeatureEnvy"})
+  @SuppressWarnings("FeatureEnvy")
   private void initSpinners() {
     final int highlightThickness = MTUiUtils.valueInRange(config.getHighlightThickness(),
       MTConfig.MIN_HIGHLIGHT_THICKNESS,

@@ -44,8 +44,8 @@ import java.util.stream.Collectors;
  * Contains a list of predefined themes and will contain all bundled themes
  */
 @SuppressWarnings({"OverlyCoupledClass",
-  "SuspiciousGetterSetter",
-  "ClassWithTooManyMethods"})
+  "SuspiciousGetterSetter"
+})
 public enum MTThemes implements MTThemeFacade {
   OCEANIC("OCEANIC", new MTOceanicTheme(), false),
   DARKER("DARKER", new MTDarkerTheme(), false),

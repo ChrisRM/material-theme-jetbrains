@@ -36,7 +36,6 @@ import java.util.ArrayDeque;
 public final class ButtonBackgroundTimer {
   private final int fps;
 
-  @SuppressWarnings("OverlyLongLambda")
   public ButtonBackgroundTimer(final int fps) {
     this.fps = fps;
   }

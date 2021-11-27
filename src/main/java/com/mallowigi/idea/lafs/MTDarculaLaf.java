@@ -54,8 +54,7 @@ public final class MTDarculaLaf extends DarculaLaf {
    *
    * @param defaults of type UIDefaults
    */
-  @SuppressWarnings({"DuplicateStringLiteralInspection",
-    "UnstableApiUsage"})
+  @SuppressWarnings("DuplicateStringLiteralInspection")
   private static void installDarculaDefaults(@NonNls final UIDefaults defaults) {
     defaults.put("darcula.primary", new ColorUIResource(0x3c3f41));
     defaults.put("darcula.contrastColor", new ColorUIResource(0x262626));
@@ -82,7 +81,6 @@ public final class MTDarculaLaf extends DarculaLaf {
     return defaults;
   }
 
-  @SuppressWarnings("MethodWithMultipleLoops")
   @Override
   protected void loadDefaults(final UIDefaults defaults) {
     try {

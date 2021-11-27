@@ -36,7 +36,6 @@ import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.application.ModalityState
 import com.intellij.openapi.editor.EditorFactory
 import com.intellij.openapi.editor.colors.EditorColorsManager
-import com.intellij.openapi.editor.colors.FontPreferences
 import com.intellij.openapi.editor.colors.impl.AppEditorFontOptions
 import com.intellij.openapi.editor.colors.impl.EditorColorsManagerImpl
 import com.intellij.openapi.fileTypes.ex.FileTypeManagerEx
@@ -74,7 +73,7 @@ import javax.swing.plaf.FontUIResource
  * Service for applying themes and settings
  *
  */
-@Suppress("TooManyFunctions")
+@Suppress("TooManyFunctions", "DuplicatedCode")
 class MTThemeManager private constructor() : Disposable {
   override fun dispose(): Unit = Unit
 
@@ -592,8 +591,6 @@ class MTThemeManager private constructor() : Disposable {
     EditorFactory.getInstance().refreshAllEditors()
   }
 
-  private val fontPreferences: FontPreferences
-    get() = MTUiUtils.getCurrentScheme().fontPreferences
   //endregion
 
   //region Contrast support

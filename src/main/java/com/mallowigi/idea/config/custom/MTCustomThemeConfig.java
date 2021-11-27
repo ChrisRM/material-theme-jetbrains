@@ -533,8 +533,7 @@ public final class MTCustomThemeConfig implements PersistentStateComponent<MTCus
     return !Objects.equals(MTColorUtils.parseColor(this.excludedColor), excludedColor);
   }
 
-  @SuppressWarnings({"FeatureEnvy",
-    "Duplicates"})
+  @SuppressWarnings("FeatureEnvy")
   public void importFrom(final MTThemeable theme) {
     theme.setPristine();
 

@@ -2,7 +2,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -35,7 +35,6 @@ import org.jetbrains.annotations.NotNull;
 
 @SuppressWarnings({"DuplicateStringLiteralInspection",
   "SwitchStatement",
-  "HardCodedStringLiteral",
   "SwitchStatementWithTooManyBranches",
   "ClassWithTooManyFields"})
 public final class KotlinAnnotator extends BaseAnnotator {
@@ -45,18 +44,20 @@ public final class KotlinAnnotator extends BaseAnnotator {
   private static final TextAttributesKey KOTLIN_NUMBER = ObjectUtils.notNull(TextAttributesKey.find("KOTLIN_NUMBER"),
     DefaultLanguageHighlighterColors.KEYWORD);
   public static final TextAttributesKey MODIFIER = TextAttributesKey.createTextAttributesKey("KOTLIN.MODIFIER", JavaAnnotator.MODIFIER);
-  public static final TextAttributesKey COMPANION = TextAttributesKey.createTextAttributesKey("KOTLIN.COMPANION", JavaAnnotator.STATIC_FINAL);
+  public static final TextAttributesKey COMPANION = TextAttributesKey.createTextAttributesKey("KOTLIN.COMPANION",
+    JavaAnnotator.STATIC_FINAL);
   public static final TextAttributesKey DATA = TextAttributesKey.createTextAttributesKey("KOTLIN.DATA", JavaAnnotator.STATIC_FINAL);
   public static final TextAttributesKey OP_INFIX = TextAttributesKey.createTextAttributesKey("KOTLIN.OP_INFIX", JavaAnnotator.STATIC_FINAL);
-  public static final TextAttributesKey THIS_SUPER = TextAttributesKey.createTextAttributesKey("KOTLIN.THIS_SUPER", JavaAnnotator.THIS_SUPER);
+  public static final TextAttributesKey THIS_SUPER = TextAttributesKey.createTextAttributesKey("KOTLIN.THIS_SUPER",
+    JavaAnnotator.THIS_SUPER);
   public static final TextAttributesKey NULL_UNIT = TextAttributesKey.createTextAttributesKey("KOTLIN.NULL_UNIT", JavaAnnotator.PRIMITIVE);
-  public static final TextAttributesKey IMPORT_PACKAGE = TextAttributesKey.createTextAttributesKey("KOTLIN.IMPORT_PACKAGE", JavaAnnotator.IMPORT_PACKAGE);
+  public static final TextAttributesKey IMPORT_PACKAGE = TextAttributesKey.createTextAttributesKey("KOTLIN.IMPORT_PACKAGE",
+    JavaAnnotator.IMPORT_PACKAGE);
   public static final TextAttributesKey SEALED_OVERRIDE = TextAttributesKey.createTextAttributesKey("KOTLIN.SEALED_OVERRIDE",
     JavaAnnotator.STATIC_FINAL);
   public static final TextAttributesKey PRIMITIVE = TextAttributesKey.createTextAttributesKey("KOTLIN.PRIMITIVE", JavaAnnotator.PRIMITIVE);
 
-  @SuppressWarnings({"OverlyComplexMethod",
-    "OverlyLongMethod"})
+  @SuppressWarnings("OverlyLongMethod")
   @Override
   protected TextAttributesKey getKeywordKind(@NotNull final PsiElement element) {
     TextAttributesKey kind = null;

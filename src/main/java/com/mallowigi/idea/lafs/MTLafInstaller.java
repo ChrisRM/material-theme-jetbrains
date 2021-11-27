@@ -463,8 +463,8 @@ public class MTLafInstaller {
    */
   @SuppressWarnings({"MagicCharacter",
     "DuplicateStringLiteralInspection",
-    "FeatureEnvy",
-    "Duplicates"})
+    "FeatureEnvy"
+  })
   static void loadDefaults(final UIDefaults defaults) {
     @NonNls final Map<String, Object> globalProps = new HashMap<>(100);
     final MTThemeable selectedTheme = MTConfig.getInstance().getSelectedTheme().getTheme();

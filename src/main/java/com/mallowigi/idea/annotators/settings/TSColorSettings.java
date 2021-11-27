@@ -44,7 +44,8 @@ import java.util.Map;
 
 @SuppressWarnings({"DuplicateStringLiteralInspection",
   "HardCodedStringLiteral"
-})
+  ,
+  "ClassWithTooManyFields"})
 public final class TSColorSettings extends JSColorSettings {
   @NotNull
   @NonNls

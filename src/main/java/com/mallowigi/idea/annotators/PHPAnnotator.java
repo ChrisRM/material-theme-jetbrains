@@ -2,7 +2,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -35,7 +35,6 @@ import org.jetbrains.annotations.NotNull;
 
 @SuppressWarnings({"DuplicateStringLiteralInspection",
   "SwitchStatement",
-  "HardCodedStringLiteral",
   "ClassWithTooManyFields",
   "SwitchStatementWithTooManyBranches"})
 public final class PHPAnnotator extends BaseAnnotator {
@@ -55,8 +54,7 @@ public final class PHPAnnotator extends BaseAnnotator {
   public static final TextAttributesKey EXIT = TextAttributesKey.createTextAttributesKey("PHP.EXIT", PHP_FUNCTION);
   public static final TextAttributesKey ECHO = TextAttributesKey.createTextAttributesKey("PHP.ECHO", PHP_FUNCTION);
 
-  @SuppressWarnings({"OverlyComplexMethod",
-    "OverlyLongMethod"})
+  @SuppressWarnings("OverlyLongMethod")
   @Override
   protected TextAttributesKey getKeywordKind(@NotNull final PsiElement element) {
     TextAttributesKey kind = null;

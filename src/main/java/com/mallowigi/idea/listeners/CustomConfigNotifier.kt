@@ -28,5 +28,5 @@ package com.mallowigi.idea.listeners
 import com.mallowigi.idea.config.MTBaseConfig
 
 fun interface CustomConfigNotifier {
-  fun customConfigChanged(mtBaseConfig: MTBaseConfig<*, *>?): Unit
+  fun customConfigChanged(mtBaseConfig: MTBaseConfig<*, *>?)
 }

@@ -35,6 +35,9 @@ import com.mallowigi.idea.wizard.MTWizardStepsProvider
  * Component for Material Theme plugin initializations
  */
 class MTApplicationComponent : AppLifecycleListener {
+  val instance: MTApplicationComponent
+    get() = ApplicationManager.getApplication().getComponent(MTApplicationComponent::class.java)
+
   override fun welcomeScreenDisplayed(): Unit = initComponent()
 
   override fun appClosing(): Unit = disposeComponent()
@@ -55,9 +58,6 @@ class MTApplicationComponent : AppLifecycleListener {
       MTConfig.getInstance().setIsWizardShown(true)
     }
   }
-
-  val instance: MTApplicationComponent
-    get() = ApplicationManager.getApplication().getComponent(MTApplicationComponent::class.java)
 
   private fun initComponent() {
     // Show the wizard

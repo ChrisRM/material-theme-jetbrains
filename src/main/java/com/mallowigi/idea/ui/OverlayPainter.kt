@@ -248,5 +248,4 @@ class OverlayPainter : AWTEventListener, Disposable {
       return overlayComponent
     }
   }
-
 }

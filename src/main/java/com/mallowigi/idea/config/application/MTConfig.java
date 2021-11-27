@@ -64,7 +64,6 @@ import java.util.Objects;
   "OverlyComplexClass",
   "WeakerAccess",
   "PackageVisibleField",
-  "MethodParameterOfConcreteClass",
   "MethodReturnOfConcreteClass",
   "OverlyLongMethod",
   "PublicMethodNotExposedInInterface",
@@ -328,7 +327,6 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   @Override
   @SuppressWarnings({"CallToSimpleSetterFromWithinClass",
     "FeatureEnvy",
-    "Duplicates",
     "OverlyLongMethod"})
   public void applySettings(final MTForm form) {
     // First fire before change

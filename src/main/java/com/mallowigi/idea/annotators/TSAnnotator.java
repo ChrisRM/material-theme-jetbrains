@@ -34,9 +34,9 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 @SuppressWarnings({"SwitchStatement",
-  "HardCodedStringLiteral",
   "DuplicateStringLiteralInspection",
-  "SwitchStatementWithTooManyBranches"})
+  "SwitchStatementWithTooManyBranches",
+  "OverlyLongMethod"})
 public final class TSAnnotator extends JSAnnotator {
   public static final TextAttributesKey KEYWORD = ObjectUtils.notNull(TextAttributesKey.find("TS.KEYWORD"),
     DefaultLanguageHighlighterColors.KEYWORD);

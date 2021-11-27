@@ -46,8 +46,7 @@ import javax.swing.*;
 import java.util.Collections;
 import java.util.Map;
 
-@SuppressWarnings({"ClassWithTooManyFields",
-  "DialogTitleCapitalization"})
+@SuppressWarnings("ClassWithTooManyFields")
 public final class PHPColorSettings extends BaseColorSettings {
   @NonNls
   private static final AttributesDescriptor[] PHP_ATTRIBUTES;

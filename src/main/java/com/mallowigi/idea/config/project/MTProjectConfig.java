@@ -55,7 +55,6 @@ import java.util.Objects;
   "ClassWithTooManyMethods",
   "WeakerAccess",
   "PackageVisibleField",
-  "MethodParameterOfConcreteClass",
   "MethodReturnOfConcreteClass",
   "PublicMethodNotExposedInInterface",
   "StaticMethodOnlyUsedInOneClass",
@@ -110,9 +109,7 @@ public final class MTProjectConfig implements PersistentStateComponent<MTProject
   @Transient
   private transient boolean isPremium = false;
 
-  @SuppressWarnings({
-    "ImplicitCallToSuper",
-    "PublicConstructor"})
+  @SuppressWarnings("PublicConstructor")
   public MTProjectConfig() {
     isPremium = MTMainProductLicenseChecker.getInstance().isLicensed();
   }
@@ -155,8 +152,8 @@ public final class MTProjectConfig implements PersistentStateComponent<MTProject
   }
 
   @SuppressWarnings({"CallToSimpleSetterFromWithinClass",
-    "FeatureEnvy",
-    "Duplicates"})
+    "FeatureEnvy"
+  })
   @Override
   public void applySettings(final MTProjectForm form) {
     // First fire before change

@@ -57,7 +57,6 @@ import static com.mallowigi.idea.utils.MTUiUtils.disablePremium;
   "MagicNumber",
   "DuplicateStringLiteralInspection",
   "FieldCanBeLocal",
-  "OverlyLongLambda",
   "ClassWithTooManyFields",
   "PublicMethodNotExposedInInterface",
   "Duplicates",

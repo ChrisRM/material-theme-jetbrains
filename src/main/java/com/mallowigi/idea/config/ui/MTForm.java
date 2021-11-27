@@ -1078,7 +1078,6 @@ public class MTForm implements MTFormUI, Disposable {
   @Override
   @SuppressWarnings({
     "OverlyLongMethod",
-    "OverlyLongLambda",
     "HardCodedStringLiteral",
     "ConstantConditions"
   })

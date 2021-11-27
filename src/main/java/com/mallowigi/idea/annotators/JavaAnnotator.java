@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -34,8 +34,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 @SuppressWarnings({"DuplicateStringLiteralInspection",
-  "SwitchStatement",
-  "HardCodedStringLiteral"})
+  "SwitchStatement"
+})
 public final class JavaAnnotator extends BaseAnnotator {
 
   public static final TextAttributesKey JAVA_KEYWORD = ObjectUtils.notNull(TextAttributesKey.find("JAVA_KEYWORD"),

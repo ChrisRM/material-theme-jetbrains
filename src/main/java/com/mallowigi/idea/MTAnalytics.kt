@@ -50,6 +50,11 @@ class MTAnalytics {
   private val userId: String = MTConfig.getInstance().userId
   private var isOffline: Boolean
 
+  init {
+    isOffline = false
+    ApplicationManager.getApplication().executeOnPooledThread { ping() }
+  }
+
   /**
    * Initialize the MixPanel analytics
    */
@@ -179,10 +184,4 @@ class MTAnalytics {
     val instance: MTAnalytics
       get() = ApplicationManager.getApplication().getService(MTAnalytics::class.java)
   }
-
-  init {
-    isOffline = false
-    ApplicationManager.getApplication().executeOnPooledThread { ping() }
-  }
-
 }

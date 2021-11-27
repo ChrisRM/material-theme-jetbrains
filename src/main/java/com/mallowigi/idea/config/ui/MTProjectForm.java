@@ -65,7 +65,6 @@ import static com.mallowigi.idea.utils.MTUiUtils.disablePremium;
   "DuplicateStringLiteralInspection",
   "rawtypes",
   "Convert2MethodRef",
-  "AnonymousInnerClassMayBeStatic",
   "unused",
   "PublicMethodNotExposedInInterface",
   "UndesirableClassUsage",
@@ -113,7 +112,6 @@ public class MTProjectForm implements MTFormUI {
 
   @SuppressWarnings({
     "OverlyLongMethod",
-    "OverlyLongLambda",
     "HardCodedStringLiteral"
   })
   @Override

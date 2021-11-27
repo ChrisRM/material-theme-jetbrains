@@ -39,7 +39,6 @@ import org.jetbrains.annotations.Nullable;
 
 @SuppressWarnings({"DuplicateStringLiteralInspection",
   "SwitchStatement",
-  "HardCodedStringLiteral",
   "SwitchStatementWithTooManyBranches",
   "OverlyLongMethod",
   "ClassWithTooManyFields",

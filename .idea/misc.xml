@@ -23,6 +23,9 @@
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$" />
   </component>
+  <component name="PWA">
+    <option name="wasEnabledAtLeastOnce" value="true" />
+  </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectResources">
     <resource url="https://json.schemastore.org/detekt" location="$PROJECT_DIR$/detekt-config.yml" />

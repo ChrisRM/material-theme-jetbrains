@@ -37,17 +37,12 @@ import java.awt.event.*;
 import java.util.List;
 import java.util.*;
 
+@SuppressWarnings({"DuplicateStringLiteralInspection",
+  "StringConcatenation"})
 public final class DisabledPanel extends JPanel {
   private static final DisabledEventQueue queue = new DisabledEventQueue();
-
   private static final Map<Container, List<JComponent>> containers = new HashMap<>(10);
-  private final String text;
-
-  private JComponent glassPane;
-
-  public DisabledPanel(final Container container) {
-    this(container, null, "");
-  }
+  private final JComponent glassPane;
 
   /**
    * Create a DisablePanel for the specified Container. The disabled color
@@ -67,10 +62,9 @@ public final class DisabledPanel extends JPanel {
    * @param disabledColor the background color of the GlassPane
    * @param container     a Container to be added to this DisabledPanel
    */
-  public DisabledPanel(final Container container, final Color disabledColor, final String text) {
+  private DisabledPanel(final Container container, final Color disabledColor, final String text) {
     setLayout(new OverlapLayout());
     add(container);
-    this.text = text;
 
     glassPane = new GlassPane();
     glassPane.setLayout(new MigLayout(
@@ -95,45 +89,6 @@ public final class DisabledPanel extends JPanel {
     }
 
     setFocusTraversalPolicy(new DefaultFocusTraversalPolicy());
-  }
-
-  /**
-   * The background color of the glass pane.
-   *
-   * @return the background color of the glass pane
-   */
-  public Color getDisabledColor() {
-    return glassPane.getBackground();
-  }
-
-  /**
-   * Set the background color of the glass pane. This color should
-   * contain an alpha value to give the glass pane a transparent effect.
-   *
-   * @param disabledColor the background color of the glass pane
-   */
-  public void setDisabledColor(final Color disabledColor) {
-    glassPane.setBackground(disabledColor);
-  }
-
-  /**
-   * The glass pane of this DisablePanel. It can be customized by adding
-   * components to it.
-   *
-   * @return the glass pane
-   */
-  public JComponent getGlassPane() {
-    return glassPane;
-  }
-
-  /**
-   * Use a custom glass pane. You are responsible for adding the
-   * appropriate mouse listeners to intercept mouse events.
-   *
-   * @param glassPane a JComponent to be used as a glass pane
-   */
-  public void setGlassPane(final JComponent glassPane) {
-    this.glassPane = glassPane;
   }
 
   /**
@@ -244,6 +199,7 @@ public final class DisabledPanel extends JPanel {
    * on a DisablePanel then the event is ignored, otherwise it is
    * dispatched for normal processing.
    */
+  @SuppressWarnings("SyntheticAccessorCall")
   static final class DisabledEventQueue extends EventQueue implements WindowListener {
     private final Map<DisabledPanel, Set<KeyStroke>> panels = new HashMap<>(10);
 
@@ -292,9 +248,7 @@ public final class DisabledPanel extends JPanel {
         final InputMap im = component.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
 
         if (im != null && im.allKeys() != null) {
-          for (final KeyStroke keyStroke : im.allKeys()) {
-            keyStrokes.add(keyStroke);
-          }
+          Collections.addAll(keyStrokes, im.allKeys());
         }
       }
 
@@ -329,8 +283,7 @@ public final class DisabledPanel extends JPanel {
           final Window panelWindow = SwingUtilities.windowForComponent(panel);
 
           //  A binding was found so just return without dispatching it.
-          if (panelWindow == keyEvent.getComponent()
-            && searchForKeyBinding(panel, keyStroke)) {
+          if (panelWindow == keyEvent.getComponent() && hasKeyBinding(panel, keyStroke)) {
             return;
           }
         }
@@ -344,7 +297,7 @@ public final class DisabledPanel extends JPanel {
     /**
      * Check if the KeyStroke is for a Component on the DisablePanel
      */
-    private boolean searchForKeyBinding(final DisabledPanel panel, final KeyStroke keyStroke) {
+    private boolean hasKeyBinding(final DisabledPanel panel, final KeyStroke keyStroke) {
       final Set<KeyStroke> keyStrokes = panels.get(panel);
 
       return keyStrokes.contains(keyStroke);
