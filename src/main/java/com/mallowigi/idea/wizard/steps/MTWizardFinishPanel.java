@@ -36,6 +36,7 @@ import com.intellij.ui.components.labels.LinkLabel;
 import com.mallowigi.idea.messages.MTWizardBundle;
 import net.miginfocom.swing.MigLayout;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -52,7 +53,8 @@ import java.util.ResourceBundle;
   "ClassWithTooManyFields",
   "CheckStyle",
   "unchecked",
-  "rawtypes"})
+  "rawtypes",
+  "DuplicateStringLiteralInspection"})
 public final class MTWizardFinishPanel extends AbstractCustomizeWizardStep {
   public MTWizardFinishPanel() {
     initComponents();
@@ -64,7 +66,7 @@ public final class MTWizardFinishPanel extends AbstractCustomizeWizardStep {
   }
 
   @Override
-  public String getHTMLHeader() {
+  public @Nullable String getHTMLHeader() {
     return null;
   }
 
@@ -81,7 +83,8 @@ public final class MTWizardFinishPanel extends AbstractCustomizeWizardStep {
     "AbsoluteAlignmentInUserInterface",
     "StringConcatenation",
     "HardCodedStringLiteral",
-    "MagicNumber"})
+    "MagicNumber",
+    "UseDPIAwareBorders"})
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license

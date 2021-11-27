@@ -81,7 +81,7 @@ public final class MTLoadCustomThemeComboBoxAction extends ComboBoxAction {
   public JComponent createCustomComponent(@NotNull final Presentation presentation, @NotNull final String place) {
     final ComboBoxButton comboBoxButton = new ComboBoxButton(presentation);
     final NonOpaquePanel panel = new NonOpaquePanel(new BorderLayout());
-    final Border border = JBUI.Borders.empty(0);
+    final Border border = JBUI.Borders.empty();
 
     panel.setBorder(border);
     panel.add(comboBoxButton);

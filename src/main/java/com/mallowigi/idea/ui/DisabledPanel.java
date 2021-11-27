@@ -28,6 +28,7 @@ package com.mallowigi.idea.ui;
 
 import com.intellij.ui.ColorUtil;
 import com.mallowigi.idea.utils.MTUI;
+import com.mallowigi.idea.utils.SwingUtils;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;

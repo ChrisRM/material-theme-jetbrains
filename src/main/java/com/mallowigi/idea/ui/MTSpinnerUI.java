@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -64,7 +64,7 @@ public final class MTSpinnerUI extends DarculaSpinnerUI {
   protected JButton createButton(final int direction, final String name) {
     final JButton button = createArrow(direction);
     button.setName(name);
-    button.setBorder(JBUI.Borders.empty(0));
+    button.setBorder(JBUI.Borders.empty());
     if (direction == SwingConstants.NORTH) {
       installNextButtonListeners(button);
     } else {

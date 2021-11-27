@@ -36,6 +36,7 @@ import com.intellij.ui.ColorUtil;
 import com.intellij.ui.components.JBScrollPane;
 import com.intellij.ui.components.OnOffButton;
 import com.mallowigi.idea.config.application.MTConfig;
+import com.mallowigi.idea.license.MTMainProductLicenseChecker;
 import com.mallowigi.idea.messages.MTWizardBundle;
 import org.jdesktop.swingx.VerticalLayout;
 
@@ -44,6 +45,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.util.Objects;
 import java.util.ResourceBundle;
+
+import static com.mallowigi.idea.utils.MTUiUtils.disablePremium;
 
 /**
  * @author Elior Boukhobza
@@ -70,6 +73,11 @@ public final class MTWizardAccentPanel extends AbstractCustomizeWizardStep {
     accentThemeCheckbox.setSelected(config.isOverrideAccentColor());
     accentColorChooser.setSelectedColor(ColorUtil.fromHex(config.getAccentColor()));
     accentModeCheckbox.setSelected(config.isAccentMode());
+
+    final boolean isFreeLicense = !MTMainProductLicenseChecker.getInstance().isLicensed();
+    if (isFreeLicense) {
+      disablePremium(accentModeCheckbox);
+    }
   }
 
   @Override
