@@ -37,8 +37,7 @@ class DraculaTheme : MTAbstractTheme() {
   override val themeId: String
     get() = "dracula"
 
-  override val isThemeDark: Boolean
-    get() = true
+  override var isThemeDark: Boolean = true
 
   override val order: Int
     get() = 7

@@ -58,7 +58,7 @@ public enum MTStyledKitPatcher {
     final String retinaSuffix = JBUIScale.isUsrHiDPI() ? MTThemeManager.RETINA : MTThemeManager.NON_RETINA;
 
     // Load css
-    final URL url = selectedTheme.getClass().getResource(selectedTheme.getId() + retinaSuffix);
+    final URL url = selectedTheme.getClass().getResource(selectedTheme.getThemeId() + retinaSuffix);
     if (url == null) {
       return;
     }

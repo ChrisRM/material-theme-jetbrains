@@ -509,6 +509,6 @@ public class MTLafInstaller {
    * @return the prefix (type String) of the theme in properties
    */
   final String getPrefix() {
-    return Objects.requireNonNull(theme).getId();
+    return Objects.requireNonNull(theme).getThemeId();
   }
 }

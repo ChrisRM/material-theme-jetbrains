@@ -294,7 +294,7 @@ class MTThemeManager private constructor() : Disposable {
       activate(themeFor)
     } else {
       val mtTheme: MTThemeFacade = MTThemes.NATIVE
-      mtTheme.theme.isDark = isDark
+      mtTheme.theme.isThemeDark = isDark
       mtTheme.theme.name = name
       activate(mtTheme)
     }

@@ -58,6 +58,11 @@ public class MTDarkBundledTheme extends MTBundledTheme {
     return true;
   }
 
+  @Override
+  public void setThemeDark(final boolean isThemeDark) {
+
+  }
+
   protected final Object readResolve() {
     themeParser = new MTDarkBundledThemeParser(this);
     return this;
@@ -66,7 +71,7 @@ public class MTDarkBundledTheme extends MTBundledTheme {
   @NonNls
   @NotNull
   @Override
-  public final String getId() {
+  public final String getThemeId() {
     return "mt.dark";
   }
 

@@ -79,11 +79,7 @@ import javax.swing.UnsupportedLookAndFeelException
 import javax.swing.plaf.ColorUIResource
 
 abstract class MTAbstractTheme protected constructor() : Serializable, MTThemeable, MTSerializedTheme {
-  override var id: String = ""
-
   override var editorColorsScheme: String? = null
-
-  override var isDark: Boolean = false
 
   override var name: String = ""
 
@@ -103,17 +99,18 @@ abstract class MTAbstractTheme protected constructor() : Serializable, MTThemeab
     get() = false
 
   override val backgroundColor: Color
-    get() = contrastifyBackground(isDark, backgroundColorResource, isNotHighContrast)
+    get() = contrastifyBackground(isThemeDark, backgroundColorResource, isNotHighContrast)
 
   override val contrastColor: Color
-    get() = contrastifyBackground(isDark, contrastColorResource, isNotHighContrast)
+    get() = contrastifyBackground(isThemeDark, contrastColorResource, isNotHighContrast)
 
   override val foregroundColor: Color
-    get() = contrastifyForeground(isDark, foregroundColorResource, isNotHighContrast)
+    get() = contrastifyForeground(isThemeDark, foregroundColorResource, isNotHighContrast)
 
   override val primaryColor: Color
-    get() = contrastifyForeground(isDark, textColorResource, isNotHighContrast)
+    get() = contrastifyForeground(isThemeDark, textColorResource, isNotHighContrast)
 
+  //region Theme Colors
   override val selectionBackgroundColor: Color
     get() = selectionBackgroundColorResource
 
@@ -121,7 +118,7 @@ abstract class MTAbstractTheme protected constructor() : Serializable, MTThemeab
     get() = selectionForegroundColorResource
 
   override val excludedColor: Color
-    get() = contrastifyBackground(isDark, excludedColorResource, isNotHighContrast)
+    get() = contrastifyBackground(isThemeDark, excludedColorResource, isNotHighContrast)
 
   override val notificationsColor: Color
     get() = notificationsColorResource
@@ -152,6 +149,7 @@ abstract class MTAbstractTheme protected constructor() : Serializable, MTThemeab
 
   override val accentColor: Color
     get() = accentColorResource
+  //endregion
 
   init {
     init()
@@ -161,8 +159,6 @@ abstract class MTAbstractTheme protected constructor() : Serializable, MTThemeab
    * Theme Builder
    */
   protected open fun init() {
-    this.id = themeId
-    this.isDark = isThemeDark
     this.editorColorsScheme = themeColorScheme
     this.iconPath = themeIcon
     this.name = themeName
@@ -171,7 +167,7 @@ abstract class MTAbstractTheme protected constructor() : Serializable, MTThemeab
   /**
    * Get the theme id
    */
-  override fun toString(): String = id
+  override fun toString(): String = themeId
 
   /**
    * Activate the theme by overriding UIManager with the theme resources and by setting the relevant Look and feel
@@ -180,8 +176,8 @@ abstract class MTAbstractTheme protected constructor() : Serializable, MTThemeab
     val config = MTConfig.getInstance()
     isNotHighContrast = !config.isHighContrast
     try {
-      JBColor.setDark(isDark)
-      IconLoader.setUseDarkIcons(isDark)
+      JBColor.setDark(isThemeDark)
+      IconLoader.setUseDarkIcons(isThemeDark)
       // Overridable method
       buildAllResources()
 
@@ -201,7 +197,7 @@ abstract class MTAbstractTheme protected constructor() : Serializable, MTThemeab
 
   @Throws(UnsupportedLookAndFeelException::class)
   protected open fun setLookAndFeel() {
-    if (isDark) {
+    if (isThemeDark) {
       UIManager.setLookAndFeel(MTDarkLaf(this))
     } else {
       UIManager.setLookAndFeel(MTLightLaf(this))
@@ -214,12 +210,12 @@ abstract class MTAbstractTheme protected constructor() : Serializable, MTThemeab
   protected open fun buildAllResources() {
     MTUiUtils.buildResources(
       backgroundResources,
-      contrastifyBackground(isDark, backgroundColorResource, isNotHighContrast)
+      contrastifyBackground(isThemeDark, backgroundColorResource, isNotHighContrast)
     )
     MTUiUtils.buildResources(foregroundResources, foregroundColorResource)
     MTUiUtils.buildResources(
       textResources,
-      contrastifyForeground(isDark, textColorResource, isNotHighContrast)
+      contrastifyForeground(isThemeDark, textColorResource, isNotHighContrast)
     )
     MTUiUtils.buildResources(selectionBackgroundResources, selectionBackgroundColorResource)
     MTUiUtils.buildResources(
@@ -230,7 +226,8 @@ abstract class MTAbstractTheme protected constructor() : Serializable, MTThemeab
     MTUiUtils.buildResources(buttonColorResources, buttonColorResource)
     MTUiUtils.buildResources(secondaryBackgroundResources, secondaryBackgroundColorResource)
     MTUiUtils.buildResources(disabledResources, disabledColorResource)
-    MTUiUtils.buildResources(contrastResources, contrastifyBackground(isDark, contrastColorResource, isNotHighContrast))
+    MTUiUtils.buildResources(contrastResources,
+                             contrastifyBackground(isThemeDark, contrastColorResource, isNotHighContrast))
     MTUiUtils.buildResources(tableSelectedResources, tableSelectedColorResource)
     MTUiUtils.buildResources(secondBorderResources, secondBorderColorResource)
     MTUiUtils.buildResources(highlightResources, highlightColorResource)

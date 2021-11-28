@@ -37,8 +37,7 @@ class LightOwlTheme : MTAbstractTheme() {
   override val themeId: String
     get() = "lightowl"
 
-  override val isThemeDark: Boolean
-    get() = false
+  override var isThemeDark: Boolean = false
 
   override val order: Int
     get() = 12

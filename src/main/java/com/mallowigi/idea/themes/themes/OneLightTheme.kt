@@ -37,8 +37,7 @@ class OneLightTheme : MTAbstractLightTheme() {
   override val themeId: String
     get() = "one.light"
 
-  override val isThemeDark: Boolean
-    get() = false
+  override var isThemeDark: Boolean = false
 
   override val order: Int
     get() = 8

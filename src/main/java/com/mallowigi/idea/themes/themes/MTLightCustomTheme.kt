@@ -37,8 +37,7 @@ class MTLightCustomTheme : MTAbstractTheme() {
   override val themeId: String
     get() = "mt.light_custom"
 
-  override val isThemeDark: Boolean
-    get() = false
+  override var isThemeDark: Boolean = false
 
   override val order: Int
     get() = 101

@@ -86,7 +86,7 @@ public final class MTNativeLaf extends DarculaLaf {
   @NotNull
   @Override
   public String getName() {
-    if (theme.isDark()) {
+    if (theme.isThemeDark()) {
       return super.getName();
     } else {
       return "IntelliJ";
@@ -96,7 +96,7 @@ public final class MTNativeLaf extends DarculaLaf {
   @NotNull
   @Override
   protected String getPrefix() {
-    if (theme.isDark()) {
+    if (theme.isThemeDark()) {
       return super.getPrefix();
     } else {
       return "intellijlaf";
@@ -105,7 +105,7 @@ public final class MTNativeLaf extends DarculaLaf {
 
   @Override
   protected DefaultMetalTheme createMetalTheme() {
-    if (theme.isDark()) {
+    if (theme.isThemeDark()) {
       return super.createMetalTheme();
     } else {
       return new IdeaBlueMetalTheme();

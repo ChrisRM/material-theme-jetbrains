@@ -37,8 +37,7 @@ class MoonlightTheme : MTAbstractTheme() {
   override val themeId: String
     get() = "moonlight"
 
-  override val isThemeDark: Boolean
-    get() = true
+  override var isThemeDark: Boolean = true
 
   override val order: Int
     get() = 13

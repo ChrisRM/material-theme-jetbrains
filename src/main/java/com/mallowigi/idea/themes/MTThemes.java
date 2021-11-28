@@ -116,7 +116,7 @@ public enum MTThemes implements MTThemeFacade {
 
   @Override
   public boolean isDark() {
-    return mtTheme.isDark();
+    return mtTheme.isThemeDark();
   }
 
   @NotNull
@@ -186,7 +186,7 @@ public enum MTThemes implements MTThemeFacade {
   }
 
   public static MTThemeFacade installTheme(final MTThemeable theme) {
-    if (getThemeFor(theme.getId()) == null) {
+    if (getThemeFor(theme.getThemeId()) == null) {
       addTheme(fromTheme(theme));
     }
     return getThemeFor(theme.getThemeId());
@@ -240,13 +240,13 @@ public enum MTThemes implements MTThemeFacade {
 
       @Override
       public boolean isDark() {
-        return theme.isDark();
+        return theme.isThemeDark();
       }
 
       @NotNull
       @Override
       public String getName() {
-        return theme.getId();
+        return theme.getThemeId();
       }
 
       @Override

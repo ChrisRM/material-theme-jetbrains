@@ -49,8 +49,7 @@ class GithubTheme : MTAbstractLightTheme() {
   override val themeId: String
     get() = "github"
 
-  override val isThemeDark: Boolean
-    get() = false
+  override var isThemeDark: Boolean = false
 
   override val order: Int
     get() = 5

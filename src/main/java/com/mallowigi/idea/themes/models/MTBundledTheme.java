@@ -200,7 +200,7 @@ public abstract class MTBundledTheme extends MTAbstractTheme {
 
   @NotNull
   @Override
-  public final String getThemeId() {
+  public String getThemeId() {
     return ObjectUtils.notNull(themeId, "");
   }
 

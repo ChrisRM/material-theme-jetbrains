@@ -36,8 +36,7 @@ class MonokaiTheme : MTAbstractTheme() {
   override val themeId: String
     get() = "monokai"
 
-  override val isThemeDark: Boolean
-    get() = true
+  override var isThemeDark: Boolean = true
 
   override val order: Int
     get() = 4

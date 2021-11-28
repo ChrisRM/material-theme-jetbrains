@@ -37,8 +37,7 @@ class SolarizedLightTheme : MTAbstractTheme() {
   override val themeId: String
     get() = "solarized.light"
 
-  override val isThemeDark: Boolean
-    get() = false
+  override var isThemeDark: Boolean = false
 
   override val order: Int
     get() = 10

@@ -37,8 +37,7 @@ class MTPalenightTheme : MTAbstractTheme() {
   override val themeId: String
     get() = "mt.palenight"
 
-  override val isThemeDark: Boolean
-    get() = true
+  override var isThemeDark: Boolean = true
 
   override val order: Int
     get() = 2

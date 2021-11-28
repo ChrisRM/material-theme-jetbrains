@@ -51,16 +51,6 @@ interface MTThemeable {
   val editorColorsScheme: String?
 
   /**
-   * The theme's unique ID
-   */
-  val id: String
-
-  /**
-   * Whether the theme is a dark theme
-   */
-  var isDark: Boolean
-
-  /**
    * The theme icon
    */
   val icon: Icon?
@@ -168,7 +158,7 @@ interface MTThemeable {
   /**
    * Is theme dark?
    */
-  val isThemeDark: Boolean
+  var isThemeDark: Boolean
 
   /**
    * Theme Order in the dropdown

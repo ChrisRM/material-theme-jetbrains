@@ -57,8 +57,7 @@ class MTNativeTheme : MTAbstractTheme() {
   override val themeId: String
     get() = "external" // todo import from abstract?
 
-  override val isThemeDark: Boolean
-    get() = true
+  override var isThemeDark: Boolean = true
 
   override val order: Int
     get() = 200 // todo import from abstract?
@@ -140,7 +139,7 @@ class MTNativeTheme : MTAbstractTheme() {
   override fun buildAllResources(): Unit = Unit
 
   override fun applyContrast(apply: Boolean) {
-    val dark = isDark
+    val dark = isThemeDark
     for (resource in ContrastResources.CONTRASTED_RESOURCES) {
       val color = UIManager.getLookAndFeelDefaults().getColor(resource)
       if (color != null) {
