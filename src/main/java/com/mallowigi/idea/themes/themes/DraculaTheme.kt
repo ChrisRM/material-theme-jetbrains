@@ -42,8 +42,7 @@ class DraculaTheme : MTAbstractTheme() {
   override val order: Int
     get() = 7
 
-  override val themeName: String
-    get() = "Dracula (Material)"
+  override var themeName: String = "Dracula (Material)"
 
   override val themeIcon: String
     get() = MTUiUtils.iconPrefix("dracula")
@@ -51,8 +50,7 @@ class DraculaTheme : MTAbstractTheme() {
   override val backgroundImage: String
     get() = "walls/dracula.svg"
 
-  override val themeColorScheme: String
-    get() = "Dracula (Material)"
+  override var themeColorScheme: String? = "Dracula (Material)"
 
   override val backgroundColorResource: ColorUIResource
     get() = ColorUIResource(0x282A36)

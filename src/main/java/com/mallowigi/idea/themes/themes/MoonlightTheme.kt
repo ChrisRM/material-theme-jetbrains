@@ -42,8 +42,7 @@ class MoonlightTheme : MTAbstractTheme() {
   override val order: Int
     get() = 13
 
-  override val themeName: String
-    get() = "Moonlight (Material)"
+  override var themeName: String = "Moonlight (Material)"
 
   override val themeIcon: String?
     get() = MTUiUtils.iconPrefix("moonlight")
@@ -51,8 +50,7 @@ class MoonlightTheme : MTAbstractTheme() {
   override val backgroundImage: String
     get() = "walls/moonlight.svg"
 
-  override val themeColorScheme: String
-    get() = "Moonlight (Material)"
+  override var themeColorScheme: String? = "Moonlight (Material)"
 
   override val backgroundColorResource: ColorUIResource
     get() = ColorUIResource(0x222436)

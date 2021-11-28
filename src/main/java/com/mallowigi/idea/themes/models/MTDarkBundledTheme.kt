@@ -23,66 +23,39 @@
  *
  *
  */
+package com.mallowigi.idea.themes.models
 
-package com.mallowigi.idea.themes.models;
-
-import com.intellij.util.xmlb.annotations.Transient;
-import com.mallowigi.idea.themes.models.parsers.MTBundledThemeParser;
-import com.mallowigi.idea.themes.models.parsers.MTDarkBundledThemeParser;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import com.mallowigi.idea.themes.models.parsers.MTBundledThemeParser
+import com.mallowigi.idea.themes.models.parsers.MTDarkBundledThemeParser
+import org.jetbrains.annotations.NonNls
 
 /**
  * Represents a Dark theme parsed from XML
  */
-public class MTDarkBundledTheme extends MTBundledTheme {
-  @SuppressWarnings("ThisEscapedInObjectConstruction")
+class MTDarkBundledTheme : MTBundledTheme() {
+  @com.intellij.util.xmlb.annotations.Transient
   @Transient
-  private transient MTBundledThemeParser themeParser = new MTDarkBundledThemeParser(this);
+  private var themeParser: MTBundledThemeParser = MTDarkBundledThemeParser(this)
 
-  @Nullable
-  @Override
-  public String getThemeIcon() {
-    return null;
+  override val themeIcon: String?
+    get() = null
+
+  override var themeColorScheme: String? = null
+
+  override val themeId: @NonNls String
+    get() = "mt.dark"
+
+  override var themeName: String = ""
+
+  override val order: Int
+    get() = 1000
+
+  override var isThemeDark: Boolean = true
+
+  private fun readResolve(): Any {
+    themeParser = MTDarkBundledThemeParser(this)
+    return this
   }
 
-  @Nullable
-  @Override
-  public String getThemeColorScheme() {
-    return null;
-  }
-
-  @Override
-  public boolean isThemeDark() {
-    return true;
-  }
-
-  @Override
-  public void setThemeDark(final boolean isThemeDark) {
-
-  }
-
-  protected final Object readResolve() {
-    themeParser = new MTDarkBundledThemeParser(this);
-    return this;
-  }
-
-  @NonNls
-  @NotNull
-  @Override
-  public final String getThemeId() {
-    return "mt.dark";
-  }
-
-  @Override
-  public final int getOrder() {
-    return 1000;
-  }
-
-  @Override
-  public final MTBundledThemeParser getThemeParser() {
-    return themeParser;
-  }
-
+  public override fun getThemeParser(): MTBundledThemeParser = themeParser
 }

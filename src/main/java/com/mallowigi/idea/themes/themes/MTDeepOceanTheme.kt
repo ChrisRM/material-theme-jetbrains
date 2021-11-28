@@ -42,8 +42,7 @@ class MTDeepOceanTheme : MTAbstractTheme() {
   override val order: Int
     get() = 4
 
-  override val themeName: String
-    get() = "Material Deep Ocean"
+  override var themeName: String = "Material Deep Ocean"
 
   override val themeIcon: String?
     get() = MTUiUtils.iconPrefix("deepocean")
@@ -51,8 +50,7 @@ class MTDeepOceanTheme : MTAbstractTheme() {
   override val backgroundImage: String
     get() = "walls/deepocean.svg"
 
-  override val themeColorScheme: String?
-    get() = "Material Deep Ocean"
+  override var themeColorScheme: String? = "Material Deep Ocean"
 
   override val backgroundColorResource: ColorUIResource
     get() = ColorUIResource(0x0F111A)

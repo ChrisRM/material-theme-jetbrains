@@ -42,8 +42,7 @@ class MTDarkerTheme : MTAbstractTheme() {
   override val order: Int
     get() = 1
 
-  override val themeName: String
-    get() = "Material Darker"
+  override var themeName: String = "Material Darker"
 
   override val themeIcon: String?
     get() = MTUiUtils.iconPrefix("darker")
@@ -51,8 +50,7 @@ class MTDarkerTheme : MTAbstractTheme() {
   override val backgroundImage: String
     get() = "walls/darker.svg"
 
-  override val themeColorScheme: String
-    get() = "Material Darker"
+  override var themeColorScheme: String? = "Material Darker"
 
   override val backgroundColorResource: ColorUIResource
     get() = ColorUIResource(0x212121)

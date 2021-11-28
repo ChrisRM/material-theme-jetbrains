@@ -132,7 +132,7 @@ internal class MTStatusWidget : CustomStatusBarWidget {
     }
 
     public override fun paintComponent(g: Graphics) {
-      val themeName = mtConfig.selectedTheme.theme.name
+      val themeName = mtConfig.selectedTheme.theme.themeName
       if (themeName.isEmpty()) {
         return
       }

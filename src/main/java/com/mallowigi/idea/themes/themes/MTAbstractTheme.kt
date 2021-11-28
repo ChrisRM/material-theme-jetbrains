@@ -79,9 +79,6 @@ import javax.swing.UnsupportedLookAndFeelException
 import javax.swing.plaf.ColorUIResource
 
 abstract class MTAbstractTheme protected constructor() : Serializable, MTThemeable, MTSerializedTheme {
-  override var editorColorsScheme: String? = null
-
-  override var name: String = ""
 
   @Transient
   var iconPath: String? = null
@@ -98,6 +95,7 @@ abstract class MTAbstractTheme protected constructor() : Serializable, MTThemeab
   override val isNative: Boolean
     get() = false
 
+  //region Theme Colors
   override val backgroundColor: Color
     get() = contrastifyBackground(isThemeDark, backgroundColorResource, isNotHighContrast)
 
@@ -110,7 +108,6 @@ abstract class MTAbstractTheme protected constructor() : Serializable, MTThemeab
   override val primaryColor: Color
     get() = contrastifyForeground(isThemeDark, textColorResource, isNotHighContrast)
 
-  //region Theme Colors
   override val selectionBackgroundColor: Color
     get() = selectionBackgroundColorResource
 
@@ -159,9 +156,9 @@ abstract class MTAbstractTheme protected constructor() : Serializable, MTThemeab
    * Theme Builder
    */
   protected open fun init() {
-    this.editorColorsScheme = themeColorScheme
+//    this.themeColorScheme = themeColorScheme
     this.iconPath = themeIcon
-    this.name = themeName
+//    this.themeName = themeName
   }
 
   /**

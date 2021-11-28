@@ -42,8 +42,7 @@ class OneDarkTheme : MTAbstractTheme() {
   override val order: Int
     get() = 7
 
-  override val themeName: String
-    get() = "Atom One Dark (Material)"
+  override var themeName: String = "Atom One Dark (Material)"
 
   override val themeIcon: String?
     get() = MTUiUtils.iconPrefix("one_dark")
@@ -51,8 +50,7 @@ class OneDarkTheme : MTAbstractTheme() {
   override val backgroundImage: String
     get() = "walls/onedark.svg"
 
-  override val themeColorScheme: String
-    get() = "Atom One Dark (Material)"
+  override var themeColorScheme: String? = "Atom One Dark (Material)"
 
   override val backgroundColorResource: ColorUIResource
     get() = ColorUIResource(0x282C34)

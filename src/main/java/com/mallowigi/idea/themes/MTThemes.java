@@ -105,7 +105,7 @@ public enum MTThemes implements MTThemeFacade {
   @NotNull
   @Override
   public String getThemeColorScheme() {
-    return mtTheme.getEditorColorsScheme();
+    return mtTheme.getThemeColorScheme();
   }
 
   @NotNull
@@ -127,7 +127,7 @@ public enum MTThemes implements MTThemeFacade {
 
   @Override
   public String getThemeName() {
-    return mtTheme.getName();
+    return mtTheme.getThemeName();
   }
 
   @NotNull
@@ -229,7 +229,7 @@ public enum MTThemes implements MTThemeFacade {
       @NotNull
       @Override
       public String getThemeColorScheme() {
-        return theme.getEditorColorsScheme();
+        return theme.getThemeColorScheme();
       }
 
       @NotNull
@@ -251,7 +251,7 @@ public enum MTThemes implements MTThemeFacade {
 
       @Override
       public String getThemeName() {
-        return theme.getName();
+        return theme.getThemeName();
       }
 
       @NotNull

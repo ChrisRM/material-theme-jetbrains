@@ -205,11 +205,6 @@ public abstract class MTBundledTheme extends MTAbstractTheme {
   }
 
   @Override
-  public final String getThemeName() {
-    return getName();
-  }
-
-  @Override
   public abstract int getOrder();
 
   public final void setThemeId(final String themeId) {

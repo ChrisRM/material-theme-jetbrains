@@ -42,8 +42,7 @@ class MTPalenightTheme : MTAbstractTheme() {
   override val order: Int
     get() = 2
 
-  override val themeName: String
-    get() = "Material Palenight"
+  override var themeName: String = "Material Palenight"
 
   override val themeIcon: String?
     get() = MTUiUtils.iconPrefix("palenight")
@@ -51,8 +50,7 @@ class MTPalenightTheme : MTAbstractTheme() {
   override val backgroundImage: String
     get() = "walls/palenight.svg"
 
-  override val themeColorScheme: String
-    get() = "Material Palenight"
+  override var themeColorScheme: String? = "Material Palenight"
 
   override val backgroundColorResource: ColorUIResource
     get() = ColorUIResource(0x292D3E)

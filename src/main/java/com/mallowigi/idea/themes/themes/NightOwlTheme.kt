@@ -45,11 +45,9 @@ class NightOwlTheme : MTAbstractTheme() {
   override val backgroundImage: String
     get() = "walls/nightowl.svg"
 
-  override val themeColorScheme: String
-    get() = "Night Owl (Material)"
+  override var themeColorScheme: String? = "Night Owl (Material)"
 
-  override val themeName: String
-    get() = "Night Owl (Material)"
+  override var themeName: String = "Night Owl (Material)"
 
   override val themeIcon: String?
     get() = MTUiUtils.iconPrefix("nightowl")

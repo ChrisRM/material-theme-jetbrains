@@ -42,8 +42,7 @@ class LightOwlTheme : MTAbstractTheme() {
   override val order: Int
     get() = 12
 
-  override val themeName: String
-    get() = "Light Owl (Material)"
+  override var themeName: String = "Light Owl (Material)"
 
   override val themeIcon: String
     get() = MTUiUtils.iconPrefix("lightowl")
@@ -51,8 +50,7 @@ class LightOwlTheme : MTAbstractTheme() {
   override val backgroundImage: String
     get() = "walls/lightowl.svg"
 
-  override val themeColorScheme: String
-    get() = "Light Owl (Material)"
+  override var themeColorScheme: String? = "Light Owl (Material)"
 
   override val backgroundColorResource: ColorUIResource
     get() = ColorUIResource(0xF0F0F0)

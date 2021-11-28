@@ -37,14 +37,12 @@ class MTCustomTheme : MTAbstractTheme() {
 
   private val customThemeConfig = MTCustomThemeConfig.getInstance()
 
-  override val themeName: String
-    get() = "Custom Theme (Material)"
+  override var themeName: String = "Custom Theme (Material)"
 
   override val backgroundImage: String?
     get() = null
 
-  override val themeColorScheme: String?
-    get() = null
+  override var themeColorScheme: String? = null
 
   override val themeId: String
     get() = "mt.custom"

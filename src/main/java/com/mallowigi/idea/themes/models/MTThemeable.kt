@@ -41,16 +41,6 @@ interface MTThemeable {
   val isCustom: Boolean
 
   /**
-   * Return the theme's name
-   */
-  var name: String
-
-  /**
-   * The theme's inherent color scheme
-   */
-  val editorColorsScheme: String?
-
-  /**
    * The theme icon
    */
   val icon: Icon?
@@ -143,7 +133,7 @@ interface MTThemeable {
   /**
    * Theme name
    */
-  val themeName: String
+  var themeName: String
 
   /**
    * Theme icon (optional)
@@ -153,7 +143,7 @@ interface MTThemeable {
   /**
    * Theme color scheme (optional)
    */
-  val themeColorScheme: String?
+  var themeColorScheme: String?
 
   /**
    * Is theme dark?

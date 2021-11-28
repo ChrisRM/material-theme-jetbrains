@@ -48,8 +48,7 @@ import javax.swing.plaf.ColorUIResource
  *
  */
 class MTNativeTheme : MTAbstractTheme() {
-  override val themeName: String
-    get() = "External"
+  override var themeName: String = "External"
 
   override val themeIcon: String
     get() = MTUiUtils.iconPrefix("external")
@@ -65,8 +64,7 @@ class MTNativeTheme : MTAbstractTheme() {
   override val backgroundImage: String?
     get() = null // todo import from abstract?
 
-  override val themeColorScheme: String?
-    get() = null // todo import from abstract?
+  override var themeColorScheme: String? = null // todo import from abstract?
 
   override val isNative: Boolean
     get() = true

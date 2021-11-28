@@ -42,14 +42,12 @@ class MTLightCustomTheme : MTAbstractTheme() {
   override val order: Int
     get() = 101
 
-  override val themeName: String
-    get() = "Light Custom Theme (Material)"
+  override var themeName: String = "Light Custom Theme (Material)"
 
   override val backgroundImage: String?
     get() = null
 
-  override val themeColorScheme: String?
-    get() = null
+  override var themeColorScheme: String? = null
 
   override val isCustom: Boolean
     get() = true

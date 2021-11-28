@@ -42,8 +42,7 @@ class SolarizedLightTheme : MTAbstractTheme() {
   override val order: Int
     get() = 10
 
-  override val themeName: String
-    get() = "Solarized Light (Material)"
+  override var themeName: String = "Solarized Light (Material)"
 
   override val themeIcon: String?
     get() = MTUiUtils.iconPrefix("solarized_light")
@@ -51,8 +50,7 @@ class SolarizedLightTheme : MTAbstractTheme() {
   override val backgroundImage: String
     get() = "walls/solarlight.svg"
 
-  override val themeColorScheme: String
-    get() = "Solarized Light (Material)"
+  override var themeColorScheme: String? = "Solarized Light (Material)"
 
   override val backgroundColorResource: ColorUIResource
     get() = ColorUIResource(0xfdf6e3)

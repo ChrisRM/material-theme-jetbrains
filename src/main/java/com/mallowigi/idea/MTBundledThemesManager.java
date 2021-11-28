@@ -98,21 +98,10 @@ public final class MTBundledThemesManager implements Disposable {
     // do nothing
   }
 
-  /**
-   * Load external themes defined in other plugins' plugin.xml <bundledTheme> extension point
-   *
-   * @throws IOException the exception
-   */
-  void loadBundledThemes() throws IOException {
-    for (final BundledThemeEP ep : BundledThemeEP.EP_NAME.getExtensions()) {
-      installBundledTheme(ep);
-    }
-  }
-
   void installBundledTheme(final BundledThemeEP ep) throws IOException {
     final MTBundledTheme mtBundledTheme = loadBundledTheme(ep.path + ".xml", ep);
 
-    Objects.requireNonNull(mtBundledTheme).setName(ep.name);
+    Objects.requireNonNull(mtBundledTheme).setThemeName(ep.name);
     bundledThemes.put(mtBundledTheme.getThemeId(), mtBundledTheme);
 
     MTThemes.installTheme(mtBundledTheme);
@@ -213,7 +202,7 @@ public final class MTBundledThemesManager implements Disposable {
       });
       message = ApplicationBundle
         .message("scheme.exporter.ui.scheme.exported.message",
-          customTheme.getName(),
+          customTheme.getThemeName(),
           customTheme.getThemeName(),
           targetFile.getPresentableUrl());
     } catch (final Throwable e) {
@@ -289,8 +278,8 @@ public final class MTBundledThemesManager implements Disposable {
                                       final Icon ourNotCurrentAction) {
     final Icon themeIcon = theme.getIcon() != null ? theme.getIcon() : ourNotCurrentAction;
 
-    group.add(new DumbAwareAction(theme.getName(),
-      theme.getEditorColorsScheme(),
+    group.add(new DumbAwareAction(theme.getThemeName(),
+      theme.getThemeColorScheme(),
       theme == current ? ourCurrentAction : themeIcon) {
       @Override
       public void actionPerformed(@NotNull final AnActionEvent e) {

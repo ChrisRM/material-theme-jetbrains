@@ -42,8 +42,7 @@ class OneLightTheme : MTAbstractLightTheme() {
   override val order: Int
     get() = 8
 
-  override val themeName: String
-    get() = "Atom One Light (Material)"
+  override var themeName: String = "Atom One Light (Material)"
 
   override val themeIcon: String?
     get() = MTUiUtils.iconPrefix("one_light")
@@ -51,8 +50,7 @@ class OneLightTheme : MTAbstractLightTheme() {
   override val backgroundImage: String
     get() = "walls/onelight.svg"
 
-  override val themeColorScheme: String
-    get() = "Atom One Light (Material)"
+  override var themeColorScheme: String? = "Atom One Light (Material)"
 
   override val backgroundColorResource: ColorUIResource
     get() = ColorUIResource(0xF4F4F4)

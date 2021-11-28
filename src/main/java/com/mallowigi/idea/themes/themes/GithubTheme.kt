@@ -34,8 +34,7 @@ import javax.swing.plaf.ColorUIResource
  *
  */
 class GithubTheme : MTAbstractLightTheme() {
-  override val themeName: String
-    get() = "GitHub (Material)"
+  override var themeName: String = "GitHub (Material)"
 
   override val themeIcon: String
     get() = MTUiUtils.iconPrefix("github")
@@ -43,8 +42,7 @@ class GithubTheme : MTAbstractLightTheme() {
   override val backgroundImage: @NonNls String
     get() = "walls/github.svg"
 
-  override val themeColorScheme: String
-    get() = "GitHub (Material)"
+  override var themeColorScheme: String? = "GitHub (Material)"
 
   override val themeId: String
     get() = "github"

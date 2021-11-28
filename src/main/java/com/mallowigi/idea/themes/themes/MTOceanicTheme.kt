@@ -45,11 +45,9 @@ class MTOceanicTheme : MTAbstractTheme() {
   override val backgroundImage: String
     get() = "walls/oceanic.svg"
 
-  override val themeColorScheme: String
-    get() = "Material Oceanic"
+  override var themeColorScheme: String? = "Material Oceanic"
 
-  override val themeName: String
-    get() = "Material Oceanic"
+  override var themeName: String = "Material Oceanic"
 
   override val themeIcon: String?
     get() = MTUiUtils.iconPrefix("oceanic")

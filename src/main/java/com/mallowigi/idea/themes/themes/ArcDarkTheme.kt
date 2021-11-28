@@ -42,11 +42,9 @@ class ArcDarkTheme : MTAbstractTheme() {
   override val order: Int
     get() = 5
 
-  override val themeColorScheme: String
-    get() = "Arc Dark (Material)"
+  override var themeColorScheme: String? = "Arc Dark (Material)"
 
-  override val themeName: String
-    get() = "Arc Dark (Material)"
+  override var themeName: String = "Arc Dark (Material)"
 
   override val themeIcon: String
     get() = MTUiUtils.iconPrefix("arc_dark")

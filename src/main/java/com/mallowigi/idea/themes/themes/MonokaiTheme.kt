@@ -41,8 +41,7 @@ class MonokaiTheme : MTAbstractTheme() {
   override val order: Int
     get() = 4
 
-  override val themeName: String
-    get() = "Monokai Pro (Material)"
+  override var themeName: String = "Monokai Pro (Material)"
 
   override val themeIcon: String?
     get() = MTUiUtils.iconPrefix("monokai")
@@ -50,8 +49,7 @@ class MonokaiTheme : MTAbstractTheme() {
   override val backgroundImage: String
     get() = "walls/monokai.svg"
 
-  override val themeColorScheme: String
-    get() = "Monokai Pro (Material)"
+  override var themeColorScheme: String? = "Monokai Pro (Material)"
 
   override val backgroundColorResource: ColorUIResource
     get() = ColorUIResource(0x2D2A2E)

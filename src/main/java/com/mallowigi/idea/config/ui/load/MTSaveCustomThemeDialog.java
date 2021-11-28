@@ -103,14 +103,13 @@ public final class MTSaveCustomThemeDialog extends DialogWrapper {
     return dialogPane;
   }
 
-  @SuppressWarnings("FeatureEnvy")
   @Override
   protected void doOKAction() {
     final MTBundledTheme customTheme = MTCustomThemeConfig.export(form);
 
-    customTheme.setName(nameField.getText());
+    customTheme.setThemeName(nameField.getText());
     customTheme.setThemeId(idField.getText());
-    customTheme.setEditorColorsScheme(colorField.getText());
+    customTheme.setThemeColorScheme(colorField.getText());
     customTheme.setThemeDark(darkThemeCheckbox.isSelected());
 
     MTBundledThemesManager.saveTheme(customTheme);
