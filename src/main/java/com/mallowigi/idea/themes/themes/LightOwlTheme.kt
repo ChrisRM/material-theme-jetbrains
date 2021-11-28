@@ -34,8 +34,7 @@ import javax.swing.plaf.ColorUIResource
  *
  */
 class LightOwlTheme : MTAbstractTheme() {
-  override val themeId: String
-    get() = "lightowl"
+  override var themeId: String = "lightowl"
 
   override var isThemeDark: Boolean = false
 

@@ -44,8 +44,7 @@ class GithubDarkTheme : MTAbstractTheme() {
 
   override var themeColorScheme: String? = "GitHub Dark (Material)"
 
-  override val themeId: String
-    get() = "github_dark"
+  override var themeId: String = "github_dark"
 
   override var isThemeDark: Boolean = true
 

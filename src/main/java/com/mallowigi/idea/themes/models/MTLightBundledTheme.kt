@@ -27,15 +27,17 @@ package com.mallowigi.idea.themes.models
 
 import com.mallowigi.idea.themes.models.parsers.MTBundledThemeParser
 import com.mallowigi.idea.themes.models.parsers.MTLightBundledThemeParser
+import com.thoughtworks.xstream.annotations.XStreamAlias
 import org.jetbrains.annotations.NonNls
 
 /**
  * Represents a light theme parsed from XML
  */
+@XStreamAlias("mtTheme")
 class MTLightBundledTheme : MTBundledTheme() {
   @com.intellij.util.xmlb.annotations.Transient
   @Transient
-  private var themeParser: MTBundledThemeParser = MTLightBundledThemeParser(this)
+  override var themeParser: MTBundledThemeParser = MTLightBundledThemeParser(this)
 
   override val themeIcon: String?
     get() = null
@@ -44,8 +46,7 @@ class MTLightBundledTheme : MTBundledTheme() {
 
   override var isThemeDark: Boolean = false
 
-  override val themeId: @NonNls String
-    get() = "mt.light"
+  override var themeId: @NonNls String = "mt.light"
 
   override var themeName: String = ""
 
@@ -57,5 +58,4 @@ class MTLightBundledTheme : MTBundledTheme() {
     return this
   }
 
-  public override fun getThemeParser(): MTBundledThemeParser = themeParser
 }

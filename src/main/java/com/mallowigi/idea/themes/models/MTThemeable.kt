@@ -33,7 +33,7 @@ import javax.swing.Icon
  */
 @Suppress("ClassOrdering")
 interface MTThemeable {
-  val themeId: String
+  var themeId: String
 
   /**
    * Whether this is a custom theme
@@ -45,6 +45,32 @@ interface MTThemeable {
    */
   val icon: Icon?
 
+  /**
+   * Theme name
+   */
+  var themeName: String
+
+  /**
+   * Theme icon (optional)
+   */
+  val themeIcon: String?
+
+  /**
+   * Theme color scheme (optional)
+   */
+  var themeColorScheme: String?
+
+  /**
+   * Is theme dark?
+   */
+  var isThemeDark: Boolean
+
+  /**
+   * Theme Order in the dropdown
+   */
+  val order: Int
+
+  //region Theme methods
   /**
    * The theme's background color
    */
@@ -129,31 +155,7 @@ interface MTThemeable {
    * Get the excluded files color
    */
   val excludedColor: Color
-
-  /**
-   * Theme name
-   */
-  var themeName: String
-
-  /**
-   * Theme icon (optional)
-   */
-  val themeIcon: String?
-
-  /**
-   * Theme color scheme (optional)
-   */
-  var themeColorScheme: String?
-
-  /**
-   * Is theme dark?
-   */
-  var isThemeDark: Boolean
-
-  /**
-   * Theme Order in the dropdown
-   */
-  val order: Int
+  //endregion
 
   /**
    * Activate the theme

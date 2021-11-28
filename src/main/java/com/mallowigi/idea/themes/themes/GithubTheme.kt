@@ -44,8 +44,7 @@ class GithubTheme : MTAbstractLightTheme() {
 
   override var themeColorScheme: String? = "GitHub (Material)"
 
-  override val themeId: String
-    get() = "github"
+  override var themeId: String = "github"
 
   override var isThemeDark: Boolean = false
 

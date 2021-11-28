@@ -34,8 +34,7 @@ import javax.swing.plaf.ColorUIResource
  *
  */
 class MTDeepOceanTheme : MTAbstractTheme() {
-  override val themeId: String
-    get() = "mt.deepocean"
+  override var themeId: String = "mt.deepocean"
 
   override var isThemeDark: Boolean = true
 

@@ -27,8 +27,6 @@
 package com.mallowigi.idea;
 
 import com.intellij.openapi.Disposable;
-import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import com.intellij.openapi.application.ApplicationBundle;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.WriteAction;
@@ -37,34 +35,26 @@ import com.intellij.openapi.extensions.PluginDescriptor;
 import com.intellij.openapi.fileChooser.FileChooserFactory;
 import com.intellij.openapi.fileChooser.FileSaverDescriptor;
 import com.intellij.openapi.fileChooser.FileSaverDialog;
-import com.intellij.openapi.project.DumbAwareAction;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.vfs.VirtualFileWrapper;
 import com.intellij.util.ThrowableRunnable;
-import com.mallowigi.idea.config.application.MTConfig;
 import com.mallowigi.idea.messages.MaterialThemeBundle;
 import com.mallowigi.idea.themes.BundledThemeEP;
-import com.mallowigi.idea.themes.MTThemeFacade;
 import com.mallowigi.idea.themes.MTThemes;
-import com.mallowigi.idea.themes.models.*;
+import com.mallowigi.idea.themes.models.MTBundledTheme;
+import com.mallowigi.idea.themes.models.MTDarkBundledTheme;
+import com.mallowigi.idea.themes.models.MTLightBundledTheme;
+import com.mallowigi.idea.themes.models.MTThemeColor;
 import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.converters.Converter;
-import com.thoughtworks.xstream.converters.MarshallingContext;
-import com.thoughtworks.xstream.converters.UnmarshallingContext;
-import com.thoughtworks.xstream.converters.reflection.ReflectionProvider;
-import com.thoughtworks.xstream.io.HierarchicalStreamReader;
-import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import javax.swing.*;
 import java.io.*;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -82,15 +72,6 @@ public final class MTBundledThemesManager implements Disposable {
 
   public static MTBundledThemesManager getInstance() {
     return ApplicationManager.getApplication().getService(MTBundledThemesManager.class);
-  }
-
-  /**
-   * Returns the installed bundled (external) themes
-   *
-   * @return the list of installed external themes
-   */
-  public Map<String, MTBundledTheme> getBundledThemes() {
-    return Collections.unmodifiableMap(bundledThemes);
   }
 
   @Override
@@ -112,15 +93,6 @@ public final class MTBundledThemesManager implements Disposable {
     if (mtBundledTheme != null) {
       bundledThemes.remove(mtBundledTheme.getThemeId());
     }
-  }
-
-  /**
-   * Gets active theme.
-   *
-   * @return the active theme
-   */
-  private static MTThemeable getActiveTheme() {
-    return MTConfig.getInstance().getSelectedTheme().getTheme();
   }
 
   public static MTBundledTheme loadBundledTheme(final VirtualFile file) {
@@ -226,13 +198,11 @@ public final class MTBundledThemesManager implements Disposable {
   @NotNull
   private static XStream configureXStream() {
     @NonNls final XStream xStream = new XStream();
-    XStream.setupDefaultSecurity(xStream);
     xStream.allowTypesByWildcard(new String[]{"com.mallowigi.idea.themes.models.*"});
-    xStream.alias("mtTheme", MTBundledTheme.class);
-    xStream.alias("color", MTThemeColor.class);
-
-    xStream.useAttributeFor(MTThemeColor.class, "id");
-    xStream.useAttributeFor(MTThemeColor.class, "value");
+    xStream.processAnnotations(MTBundledTheme.class);
+    xStream.processAnnotations(MTDarkBundledTheme.class);
+    xStream.processAnnotations(MTLightBundledTheme.class);
+    xStream.processAnnotations(MTThemeColor.class);
 
     // Use a converter to create a MTDarkBundledTheme or MTLightBundledTheme according to the "dark" property
     xStream.registerConverter(new MTThemesConverter(
@@ -243,92 +213,6 @@ public final class MTBundledThemesManager implements Disposable {
     xStream.addDefaultImplementation(MTDarkBundledTheme.class, MTBundledTheme.class);
     xStream.addDefaultImplementation(MTLightBundledTheme.class, MTBundledTheme.class);
     return xStream;
-  }
-
-  /**
-   * Add bundled themes
-   *
-   * @param group               quick switch group
-   * @param ourCurrentAction    default current icon (check mark)
-   * @param ourNotCurrentAction default not current icon (empty)
-   */
-  public void addBundledThemes(@NotNull final DefaultActionGroup group, final Icon ourCurrentAction, final Icon ourNotCurrentAction) {
-    final Map<String, MTBundledTheme> themes = getBundledThemes();
-    final MTThemeable current = getActiveTheme();
-
-    for (final MTBundledTheme bundledTheme : themes.values()) {
-      addBundledTheme(group, bundledTheme, current, ourCurrentAction, ourNotCurrentAction);
-    }
-  }
-
-  /**
-   * Adds a bundled theme to the list, and mark it if it's the current theme
-   *
-   * @param group               switch scheme group
-   * @param theme               theme
-   * @param current             current theme
-   * @param ourCurrentAction    default current icon (check mark)
-   * @param ourNotCurrentAction default not current icon (empty)
-   */
-  @SuppressWarnings("FeatureEnvy")
-  private static void addBundledTheme(final DefaultActionGroup group,
-                                      final MTThemeable theme,
-                                      final MTThemeable current,
-                                      final Icon ourCurrentAction,
-                                      final Icon ourNotCurrentAction) {
-    final Icon themeIcon = theme.getIcon() != null ? theme.getIcon() : ourNotCurrentAction;
-
-    group.add(new DumbAwareAction(theme.getThemeName(),
-      theme.getThemeColorScheme(),
-      theme == current ? ourCurrentAction : themeIcon) {
-      @Override
-      public void actionPerformed(@NotNull final AnActionEvent e) {
-        //         Install theme if not installed
-        final MTThemeFacade externalTheme = MTThemes.installTheme(theme);
-
-        MTThemeManager.Companion.getInstance().activate(externalTheme);
-        MTAnalytics.getInstance().trackValue(MTAnalytics.SELECT_THEME, externalTheme);
-      }
-    });
-  }
-
-  /**
-   * Converts the object read from XML into a MTBundledTheme
-   */
-  @SuppressWarnings("ParameterNameDiffersFromOverriddenParameter")
-  private static final class MTThemesConverter implements Converter {
-    private final Converter defaultConverter;
-    private final ReflectionProvider reflectionProvider;
-
-    /**
-     * Instantiates a new Mt themes converter.
-     *
-     * @param defaultConverter   the default converter
-     * @param reflectionProvider the reflection provider
-     */
-    MTThemesConverter(final Converter defaultConverter, final ReflectionProvider reflectionProvider) {
-      this.defaultConverter = defaultConverter;
-      this.reflectionProvider = reflectionProvider;
-    }
-
-    @Override
-    public void marshal(final Object source, final HierarchicalStreamWriter writer, final MarshallingContext context) {
-      defaultConverter.marshal(source, writer, context);
-    }
-
-    @Override
-    public Object unmarshal(@NonNls final HierarchicalStreamReader reader, final UnmarshallingContext context) {
-      // todo convert this polymorphism into a strategy pattern or something
-      final boolean dark = Boolean.parseBoolean(reader.getAttribute("dark"));
-      final Class<? extends MTBundledTheme> themeClass = dark ? MTLightBundledTheme.class : MTDarkBundledTheme.class;
-      final Object result = reflectionProvider.newInstance(themeClass);
-      return context.convertAnother(result, themeClass, defaultConverter);
-    }
-
-    @Override
-    public boolean canConvert(final Class type) {
-      return MTBundledTheme.class.isAssignableFrom(type);
-    }
   }
 
   private class BundledThemeEPExtensionPointListener implements ExtensionPointListener<BundledThemeEP> {

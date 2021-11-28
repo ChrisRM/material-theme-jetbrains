@@ -26,21 +26,26 @@
 package com.mallowigi.idea.themes.models
 
 import com.intellij.util.xmlb.annotations.Property
+import com.thoughtworks.xstream.annotations.XStreamAlias
+import com.thoughtworks.xstream.annotations.XStreamAsAttribute
 import java.io.Serializable
 
 /**
  * Represents a color
  */
+@XStreamAlias("color")
 class MTThemeColor : Serializable {
   /**
    * Color id
    */
   @Property
+  @XStreamAsAttribute
   var id: String? = null
 
   /**
    * Color value
    */
   @Property
+  @XStreamAsAttribute
   var value: String? = null
 }

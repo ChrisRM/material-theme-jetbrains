@@ -23,207 +23,141 @@
  *
  *
  */
+package com.mallowigi.idea.themes.models
 
-package com.mallowigi.idea.themes.models;
+import com.intellij.util.xmlb.annotations.Tag
+import com.mallowigi.idea.themes.models.parsers.MTBundledThemeParser
+import com.mallowigi.idea.themes.themes.MTAbstractTheme
+import com.thoughtworks.xstream.annotations.XStreamAlias
+import com.thoughtworks.xstream.annotations.XStreamOmitField
+import javax.swing.plaf.ColorUIResource
 
-import com.intellij.util.ObjectUtils;
-import com.intellij.util.xmlb.annotations.Property;
-import com.intellij.util.xmlb.annotations.Tag;
-import com.mallowigi.idea.themes.models.parsers.MTBundledThemeParser;
-import com.mallowigi.idea.themes.themes.MTAbstractTheme;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+@XStreamAlias("mtTheme")
+abstract class MTBundledTheme : MTAbstractTheme() {
 
-import javax.swing.plaf.ColorUIResource;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+  @XStreamAlias("themeId")
+  override var themeId: String = ""
 
-public abstract class MTBundledTheme extends MTAbstractTheme {
+  @XStreamAlias("id")
+  @XStreamOmitField
+  var id: String = ""
+
+  @XStreamAlias("name")
+  override var themeName: String = ""
+
+  @XStreamAlias("editorColorsScheme")
+  override var themeColorScheme: String? = null
+
+  @XStreamAlias("dark")
+  override var isThemeDark: Boolean = true
+
   @Tag
-  private final List<MTThemeColor> colors = new ArrayList<>(16);
-  @Property
-  private String themeId;
+  @XStreamAlias("colors")
+  val colors: List<MTThemeColor> = ArrayList(16)
 
   /**
    * The theme parser, according to the bridge design pattern every subclass must define the parser
    */
-  protected abstract MTBundledThemeParser getThemeParser();
-
-  //region --------------- Setters ------------------
-  public final void setExcludedColor(final ColorUIResource excludedColor) {
-    getThemeParser().setExcludedColor(excludedColor);
-  }
-
-  public final void setAccentColor(final ColorUIResource accentColor) {
-    getThemeParser().setAccentColor(accentColor);
-  }
-
-  public final void setNotificationsColor(final ColorUIResource notificationsColor) {
-    getThemeParser().setNotificationsColor(notificationsColor);
-  }
-
-  public final void setHighlightColor(final ColorUIResource highlightColor) {
-    getThemeParser().setHighlightColor(highlightColor);
-  }
-
-  public final void setTreeSelectionColor(final ColorUIResource treeSelectionColor) {
-    getThemeParser().setTreeSelectionColor(treeSelectionColor);
-  }
-
-  public final void setSecondBorderColor(final ColorUIResource secondBorderColor) {
-    getThemeParser().setSecondBorderColor(secondBorderColor);
-  }
-
-  public final void setTableSelectedColor(final ColorUIResource tableSelectedColor) {
-    getThemeParser().setTableSelectedColor(tableSelectedColor);
-  }
-
-  public final void setContrastColor(final ColorUIResource contrastColor) {
-    getThemeParser().setContrastColor(contrastColor);
-  }
-
-  public final void setDisabledColor(final ColorUIResource disabledColor) {
-    getThemeParser().setDisabledColor(disabledColor);
-  }
-
-  public final void setSecondaryBackgroundColor(final ColorUIResource secondaryBackgroundColor) {
-    getThemeParser().setSecondaryBackgroundColor(secondaryBackgroundColor);
-  }
-
-  public final void setButtonColor(final ColorUIResource buttonColor) {
-    getThemeParser().setButtonColor(buttonColor);
-  }
-
-  public final void setSelectionForegroundColor(final ColorUIResource selectionForegroundColor) {
-    getThemeParser().setSelectionForegroundColor(selectionForegroundColor);
-  }
-
-  public final void setSelectionBackgroundColor(final ColorUIResource selectionBackgroundColor) {
-    getThemeParser().setSelectionBackgroundColor(selectionBackgroundColor);
-  }
-
-  public final void setTextColor(final ColorUIResource textColor) {
-    getThemeParser().setTextColor(textColor);
-  }
-
-  public final void setForegroundColor(final ColorUIResource foregroundColor) {
-    getThemeParser().setForegroundColor(foregroundColor);
-  }
-
-  public final void setBackgroundColor(final ColorUIResource backgroundColor) {
-    getThemeParser().setBackgroundColor(backgroundColor);
-  }
-  //endregion
+  protected abstract val themeParser: MTBundledThemeParser
 
   //region --------------- Getters ------------------
-  @Override
-  public final ColorUIResource getBackgroundColorResource() {
-    return getThemeParser().getBackgroundColorString();
-  }
 
-  @Override
-  public final ColorUIResource getForegroundColorResource() {
-    return getThemeParser().getForegroundColorString();
-  }
+  override val backgroundColorResource: ColorUIResource
+    get() = themeParser.backgroundColorString
 
-  @Override
-  public final ColorUIResource getTextColorResource() {
-    return getThemeParser().getTextColorString();
-  }
+  override val foregroundColorResource: ColorUIResource
+    get() = themeParser.foregroundColorString
 
-  @Override
-  public final ColorUIResource getSelectionBackgroundColorResource() {
-    return getThemeParser().getSelectionBackgroundColorString();
-  }
+  override val textColorResource: ColorUIResource
+    get() = themeParser.textColorString
 
-  @Override
-  public final ColorUIResource getSelectionForegroundColorResource() {
-    return getThemeParser().getSelectionForegroundColorString();
-  }
+  override val selectionBackgroundColorResource: ColorUIResource
+    get() = themeParser.selectionBackgroundColorString
 
-  @Override
-  public final ColorUIResource getButtonColorResource() {
-    return getThemeParser().getButtonColorString();
-  }
+  override val selectionForegroundColorResource: ColorUIResource
+    get() = themeParser.selectionForegroundColorString
 
-  @Override
-  public final ColorUIResource getSecondaryBackgroundColorResource() {
-    return getThemeParser().getSecondaryBackgroundColorString();
-  }
+  override val buttonColorResource: ColorUIResource
+    get() = themeParser.buttonColorString
 
-  @Override
-  public final ColorUIResource getDisabledColorResource() {
-    return getThemeParser().getDisabledColorString();
-  }
+  override val secondaryBackgroundColorResource: ColorUIResource
+    get() = themeParser.secondaryBackgroundColorString
 
-  @Override
-  public final ColorUIResource getContrastColorResource() {
-    return getThemeParser().getContrastColorString();
-  }
+  override val disabledColorResource: ColorUIResource
+    get() = themeParser.disabledColorString
 
-  @Override
-  public final ColorUIResource getTableSelectedColorResource() {
-    return getThemeParser().getTableSelectedColorString();
-  }
+  override val contrastColorResource: ColorUIResource
+    get() = themeParser.contrastColorString
 
-  @Override
-  public final ColorUIResource getSecondBorderColorResource() {
-    return getThemeParser().getSecondBorderColorString();
-  }
+  override val tableSelectedColorResource: ColorUIResource
+    get() = themeParser.tableSelectedColorString
 
-  @Override
-  public final ColorUIResource getHighlightColorResource() {
-    return getThemeParser().getHighlightColorString();
-  }
+  override val secondBorderColorResource: ColorUIResource
+    get() = themeParser.secondBorderColorString
 
-  @Override
-  public final ColorUIResource getTreeSelectionColorResource() {
-    return getThemeParser().getTreeSelectionColorString();
-  }
+  override val highlightColorResource: ColorUIResource
+    get() = themeParser.highlightColorString
 
-  @Override
-  public final ColorUIResource getNotificationsColorResource() {
-    return getThemeParser().getNotificationsColorString();
-  }
+  override val treeSelectionColorResource: ColorUIResource
+    get() = themeParser.treeSelectionColorString
 
-  @Override
-  public final ColorUIResource getAccentColorResource() {
-    return getThemeParser().getAccentColorString();
-  }
+  override val notificationsColorResource: ColorUIResource
+    get() = themeParser.notificationsColorString
 
-  @Override
-  public final ColorUIResource getExcludedColorResource() {
-    return getThemeParser().getExcludedColorString();
-  }
+  override val accentColorResource: ColorUIResource
+    get() = themeParser.accentColorString
+
+  override val excludedColorResource: ColorUIResource
+    get() = themeParser.excludedColorString
+
+  abstract override val order: Int
+
+  override val backgroundImage: String?
+    get() = null
   //endregion
 
-  @NotNull
-  @Override
-  public String getThemeId() {
-    return ObjectUtils.notNull(themeId, "");
-  }
+  //region --------------- Setters ------------------
+  fun setExcludedColor(excludedColor: ColorUIResource?): Unit = themeParser.setExcludedColor(excludedColor)
 
-  @Override
-  public abstract int getOrder();
+  fun setAccentColor(accentColor: ColorUIResource?): Unit = themeParser.setAccentColor(accentColor)
 
-  public final void setThemeId(final String themeId) {
-    this.themeId = themeId;
-  }
+  fun setNotificationsColor(notificationsColor: ColorUIResource?): Unit =
+    themeParser.setNotificationsColor(notificationsColor)
 
-  @SuppressWarnings("AssignmentOrReturnOfFieldWithMutableType")
-  public final Collection<MTThemeColor> getColors() {
-    return colors;
-  }
+  fun setHighlightColor(highlightColor: ColorUIResource?): Unit = themeParser.setHighlightColor(highlightColor)
 
-  @SuppressWarnings("NoopMethodInAbstractClass")
-  @Override
-  protected void init() {
-  }
+  fun setTreeSelectionColor(treeSelectionColor: ColorUIResource?): Unit =
+    themeParser.setTreeSelectionColor(treeSelectionColor)
 
-  @Nullable
-  @Override
-  public final String getBackgroundImage() {
-    return null;
-  }
+  fun setSecondBorderColor(secondBorderColor: ColorUIResource?): Unit =
+    themeParser.setSecondBorderColor(secondBorderColor)
+
+  fun setTableSelectedColor(tableSelectedColor: ColorUIResource?): Unit =
+    themeParser.setTableSelectedColor(tableSelectedColor)
+
+  fun setContrastColor(contrastColor: ColorUIResource?): Unit = themeParser.setContrastColor(contrastColor)
+
+  fun setDisabledColor(disabledColor: ColorUIResource?): Unit = themeParser.setDisabledColor(disabledColor)
+
+  fun setSecondaryBackgroundColor(secondaryBackgroundColor: ColorUIResource?): Unit =
+    themeParser.setSecondaryBackgroundColor(secondaryBackgroundColor)
+
+  fun setButtonColor(buttonColor: ColorUIResource?): Unit = themeParser.setButtonColor(buttonColor)
+
+  fun setSelectionForegroundColor(selectionForegroundColor: ColorUIResource?): Unit =
+    themeParser.setSelectionForegroundColor(selectionForegroundColor)
+
+  fun setSelectionBackgroundColor(selectionBackgroundColor: ColorUIResource?): Unit =
+    themeParser.setSelectionBackgroundColor(selectionBackgroundColor)
+
+  fun setTextColor(textColor: ColorUIResource?): Unit = themeParser.setTextColor(textColor)
+
+  fun setForegroundColor(foregroundColor: ColorUIResource?): Unit = themeParser.setForegroundColor(foregroundColor)
+
+  fun setBackgroundColor(backgroundColor: ColorUIResource?): Unit = themeParser.setBackgroundColor(backgroundColor)
+
+  //endregion
+
+  override fun init() {}
+
 }

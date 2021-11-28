@@ -53,8 +53,7 @@ class MTNativeTheme : MTAbstractTheme() {
   override val themeIcon: String
     get() = MTUiUtils.iconPrefix("external")
 
-  override val themeId: String
-    get() = "external" // todo import from abstract?
+  override var themeId: String = "external" // todo import from abstract?
 
   override var isThemeDark: Boolean = true
 
