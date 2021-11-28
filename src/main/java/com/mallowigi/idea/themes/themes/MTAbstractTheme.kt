@@ -23,586 +23,406 @@
  *
  *
  */
+package com.mallowigi.idea.themes.themes
 
-package com.mallowigi.idea.themes.themes;
+import com.intellij.ide.util.PropertiesComponent
+import com.intellij.openapi.application.ApplicationManager
+import com.intellij.openapi.diagnostic.thisLogger
+import com.intellij.openapi.util.IconLoader
+import com.intellij.openapi.util.io.FileUtil
+import com.intellij.openapi.util.text.StringUtil
+import com.intellij.openapi.wm.impl.IdeBackgroundUtil
+import com.intellij.ui.ColorUtil
+import com.intellij.ui.JBColor
+import com.mallowigi.idea.MTThemeManager.Companion.instance
+import com.mallowigi.idea.config.application.MTConfig
+import com.mallowigi.idea.lafs.MTDarkLaf
+import com.mallowigi.idea.lafs.MTLightLaf
+import com.mallowigi.idea.themes.MTAccentMode
+import com.mallowigi.idea.themes.MTAccentMode.selectionColor
+import com.mallowigi.idea.themes.lists.ContrastResources
+import com.mallowigi.idea.themes.lists.MTThemeResources.backgroundResources
+import com.mallowigi.idea.themes.lists.MTThemeResources.buttonColorResources
+import com.mallowigi.idea.themes.lists.MTThemeResources.contrastResources
+import com.mallowigi.idea.themes.lists.MTThemeResources.disabledResources
+import com.mallowigi.idea.themes.lists.MTThemeResources.excludedResources
+import com.mallowigi.idea.themes.lists.MTThemeResources.foregroundResources
+import com.mallowigi.idea.themes.lists.MTThemeResources.highlightResources
+import com.mallowigi.idea.themes.lists.MTThemeResources.notificationsResources
+import com.mallowigi.idea.themes.lists.MTThemeResources.secondBorderResources
+import com.mallowigi.idea.themes.lists.MTThemeResources.secondaryBackgroundResources
+import com.mallowigi.idea.themes.lists.MTThemeResources.selectionBackgroundResources
+import com.mallowigi.idea.themes.lists.MTThemeResources.selectionForegroundResources
+import com.mallowigi.idea.themes.lists.MTThemeResources.selectionTransparentBackgroundResources
+import com.mallowigi.idea.themes.lists.MTThemeResources.tableSelectedResources
+import com.mallowigi.idea.themes.lists.MTThemeResources.textResources
+import com.mallowigi.idea.themes.lists.MTThemeResources.treeSelectionResources
+import com.mallowigi.idea.themes.models.MTSerializedTheme
+import com.mallowigi.idea.themes.models.MTThemeable
+import com.mallowigi.idea.utils.MTColorUtils.contrastifyBackground
+import com.mallowigi.idea.utils.MTColorUtils.contrastifyForeground
+import com.mallowigi.idea.utils.MTUI
+import com.mallowigi.idea.utils.MTUI.List.selectedColor
+import com.mallowigi.idea.utils.MTUI.Panel.background
+import com.mallowigi.idea.utils.MTUI.Panel.editorColor
+import com.mallowigi.idea.utils.MTUI.Panel.transparentBackground
+import com.mallowigi.idea.utils.MTUI.Panel.transparentSelectionBackground
+import com.mallowigi.idea.utils.MTUiUtils
+import java.awt.Color
+import java.io.FileOutputStream
+import java.io.IOException
+import java.io.Serializable
+import java.util.Objects
+import javax.swing.Icon
+import javax.swing.UIManager
+import javax.swing.UnsupportedLookAndFeelException
+import javax.swing.plaf.ColorUIResource
 
-import com.google.common.collect.Sets;
-import com.intellij.ide.util.PropertiesComponent;
-import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.util.IconLoader;
-import com.intellij.openapi.util.io.FileUtil;
-import com.intellij.openapi.util.text.StringUtil;
-import com.intellij.openapi.wm.impl.IdeBackgroundUtil;
-import com.intellij.ui.ColorUtil;
-import com.intellij.ui.JBColor;
-import com.intellij.util.IconUtil;
-import com.mallowigi.idea.MTThemeManager;
-import com.mallowigi.idea.config.application.MTConfig;
-import com.mallowigi.idea.lafs.MTDarkLaf;
-import com.mallowigi.idea.lafs.MTLightLaf;
-import com.mallowigi.idea.themes.MTAccentMode;
-import com.mallowigi.idea.themes.lists.ContrastResources;
-import com.mallowigi.idea.themes.lists.MTThemeResources;
-import com.mallowigi.idea.themes.models.MTSerializedTheme;
-import com.mallowigi.idea.themes.models.MTThemeable;
-import com.mallowigi.idea.utils.MTColorUtils;
-import com.mallowigi.idea.utils.MTUI;
-import com.mallowigi.idea.utils.MTUiUtils;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+abstract class MTAbstractTheme protected constructor() : Serializable, MTThemeable, MTSerializedTheme {
+  override var id: String = ""
 
-import javax.swing.*;
-import javax.swing.plaf.ColorUIResource;
-import java.awt.*;
-import java.io.*;
-import java.net.URL;
-import java.util.Collections;
-import java.util.Objects;
-import java.util.Set;
+  override var editorColorsScheme: String? = null
 
-@SuppressWarnings({"DuplicateStringLiteralInspection",
-  "HardCodedStringLiteral",
-  "SerializableHasSerializationMethods",
-  "NegativelyNamedBooleanVariable",
-  "DesignForExtension"})
-public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSerializedTheme {
-  private String id = null;
-  private String editorColorsScheme = null;
-  private boolean dark = false;
-  private String name = null;
-  private String icon = null;
+  override var isDark: Boolean = false
 
-  @SuppressWarnings("TransientFieldNotInitialized")
-  private transient boolean isNotHighContrast = false;
+  override var name: String = ""
 
-  @SuppressWarnings({"OverridableMethodCallDuringObjectConstruction",
-    "OverriddenMethodCallDuringObjectConstruction"})
-  protected MTAbstractTheme() {
-    init();
+  @Transient
+  var iconPath: String? = null
+
+  @Transient
+  private var isNotHighContrast = false
+
+  override val icon: Icon?
+    get() = if (themeIcon != null) IconLoader.getIcon(themeIcon!!, MTAbstractTheme::class.java) else null
+
+  override val isCustom: Boolean
+    get() = false
+
+  override val isNative: Boolean
+    get() = false
+
+  override val backgroundColor: Color
+    get() = contrastifyBackground(isDark, backgroundColorResource, isNotHighContrast)
+
+  override val contrastColor: Color
+    get() = contrastifyBackground(isDark, contrastColorResource, isNotHighContrast)
+
+  override val foregroundColor: Color
+    get() = contrastifyForeground(isDark, foregroundColorResource, isNotHighContrast)
+
+  override val primaryColor: Color
+    get() = contrastifyForeground(isDark, textColorResource, isNotHighContrast)
+
+  override val selectionBackgroundColor: Color
+    get() = selectionBackgroundColorResource
+
+  override val selectionForegroundColor: Color
+    get() = selectionForegroundColorResource
+
+  override val excludedColor: Color
+    get() = contrastifyBackground(isDark, excludedColorResource, isNotHighContrast)
+
+  override val notificationsColor: Color
+    get() = notificationsColorResource
+
+  override val secondBorderColor: Color
+    get() = secondBorderColorResource
+
+  override val disabledColor: Color
+    get() = disabledColorResource
+
+  override val secondaryBackgroundColor: Color
+    get() = secondaryBackgroundColorResource
+
+  override val buttonColor: Color
+    get() = buttonColorResource
+
+  override val tableSelectedColor: Color
+    get() = tableSelectedColorResource
+
+  override val textColor: Color
+    get() = textColorResource
+
+  override val treeSelectionColor: Color
+    get() = treeSelectionColorResource
+
+  override val highlightColor: Color
+    get() = highlightColorResource
+
+  override val accentColor: Color
+    get() = accentColorResource
+
+  init {
+    init()
   }
 
   /**
    * Theme Builder
    */
-  @SuppressWarnings("DesignForExtension")
-  protected void init() {
-    setId(getThemeId())
-      .setIsDark(isThemeDark())
-      .setEditorColorScheme(getThemeColorScheme())
-      .setIcon(getThemeIcon())
-      .setName(getThemeName());
+  protected open fun init() {
+    this.id = themeId
+    this.isDark = isThemeDark
+    this.editorColorsScheme = themeColorScheme
+    this.iconPath = themeIcon
+    this.name = themeName
   }
 
   /**
    * Get the theme id
    */
-  @Override
-  public final String toString() {
-    return getId();
-  }
+  override fun toString(): String = id
 
   /**
    * Activate the theme by overriding UIManager with the theme resources and by setting the relevant Look and feel
    */
-  @SuppressWarnings("FeatureEnvy")
-  @Override
-  public final void activate() {
-    final MTConfig config = MTConfig.getInstance();
-    isNotHighContrast = !config.isHighContrast();
+  override fun activate() {
+    val config = MTConfig.getInstance()
+    isNotHighContrast = !config.isHighContrast
     try {
-      JBColor.setDark(dark);
-      IconLoader.setUseDarkIcons(dark);
+      JBColor.setDark(isDark)
+      IconLoader.setUseDarkIcons(isDark)
       // Overridable method
-      buildAllResources();
+      buildAllResources()
 
       // Apply theme accent color if said so
-      if (config.isOverrideAccentColor()) {
-        config.setAccentColor(ColorUtil.toHex(getAccentColorResource()));
-        MTThemeManager.Companion.getInstance().applyAccents(true);
+      if (config.isOverrideAccentColor) {
+        config.accentColor = ColorUtil.toHex(accentColorResource)
+        instance.applyAccents(true)
       }
-
-      installBackgroundImage();
+      installBackgroundImage()
 
       // Set MT Look and Feel
-      setLookAndFeel();
-    } catch (final UnsupportedLookAndFeelException e) {
-      e.printStackTrace();
+      setLookAndFeel()
+    } catch (e: UnsupportedLookAndFeelException) {
+      e.printStackTrace()
     }
   }
 
-  @SuppressWarnings("DesignForExtension")
-  protected void setLookAndFeel() throws UnsupportedLookAndFeelException {
-    if (dark) {
-      UIManager.setLookAndFeel(new MTDarkLaf(this));
+  @Throws(UnsupportedLookAndFeelException::class)
+  protected open fun setLookAndFeel() {
+    if (isDark) {
+      UIManager.setLookAndFeel(MTDarkLaf(this))
     } else {
-      UIManager.setLookAndFeel(new MTLightLaf(this));
+      UIManager.setLookAndFeel(MTLightLaf(this))
     }
   }
 
   /**
    * Build all resources. Overridable
    */
-  @SuppressWarnings({"CheckStyle",
-    "FeatureEnvy",
-    "DesignForExtension",
-    "MagicNumber"})
-  protected void buildAllResources() {
-    MTUiUtils.buildResources(MTThemeResources.getBackgroundResources(), MTColorUtils.contrastifyBackground(dark,
-      getBackgroundColorResource(), isNotHighContrast));
-    MTUiUtils.buildResources(MTThemeResources.getForegroundResources(), getForegroundColorResource());
-    MTUiUtils.buildResources(MTThemeResources.getTextResources(), MTColorUtils.contrastifyForeground(dark, getTextColorResource(),
-      isNotHighContrast));
-    MTUiUtils.buildResources(MTThemeResources.getSelectionBackgroundResources(), getSelectionBackgroundColorResource());
-    MTUiUtils.buildResources(MTThemeResources.getSelectionTransparentBackgroundResources(),
-      ColorUtil.withAlpha(getSelectionBackgroundColorResource(), 0.8));
-    MTUiUtils.buildResources(MTThemeResources.getSelectionForegroundResources(), getSelectionForegroundColorResource());
-    MTUiUtils.buildResources(MTThemeResources.getButtonColorResources(), getButtonColorResource());
-    MTUiUtils.buildResources(MTThemeResources.getSecondaryBackgroundResources(), getSecondaryBackgroundColorResource());
-    MTUiUtils.buildResources(MTThemeResources.getDisabledResources(), getDisabledColorResource());
-    MTUiUtils.buildResources(MTThemeResources.getContrastResources(), MTColorUtils.contrastifyBackground(dark, getContrastColorResource()
-      , isNotHighContrast));
-    MTUiUtils.buildResources(MTThemeResources.getTableSelectedResources(), getTableSelectedColorResource());
-    MTUiUtils.buildResources(MTThemeResources.getSecondBorderResources(), getSecondBorderColorResource());
-    MTUiUtils.buildResources(MTThemeResources.getHighlightResources(), getHighlightColorResource());
-
-    MTUiUtils.buildResources(MTThemeResources.getTreeSelectionResources(), getTreeSelectionColorResource());
-    MTUiUtils.buildResources(MTThemeResources.getNotificationsResources(), getNotificationsColorResource());
-    MTUiUtils.buildResources(MTThemeResources.getExcludedResources(), getExcludedColorResource());
-
-    buildNotificationsColors();
-    buildFlameChartColors();
-    buildFileColors();
-    buildTransparentColors();
-    buildTabsTransparentColors();
-    buildOutlineButtons();
-    buildCompletionSelectionColor();
-
-    UIManager.getDefaults().put("Component.grayForeground", ColorUtil.darker(getTextColorResource(), 2));
-    UIManager.getDefaults().put("EditorGroupsTabs.underlineHeight", MTConfig.getInstance().getHighlightThickness());
+  protected open fun buildAllResources() {
+    MTUiUtils.buildResources(
+      backgroundResources,
+      contrastifyBackground(isDark, backgroundColorResource, isNotHighContrast)
+    )
+    MTUiUtils.buildResources(foregroundResources, foregroundColorResource)
+    MTUiUtils.buildResources(
+      textResources,
+      contrastifyForeground(isDark, textColorResource, isNotHighContrast)
+    )
+    MTUiUtils.buildResources(selectionBackgroundResources, selectionBackgroundColorResource)
+    MTUiUtils.buildResources(
+      selectionTransparentBackgroundResources,
+      ColorUtil.withAlpha(selectionBackgroundColorResource, 0.8)
+    )
+    MTUiUtils.buildResources(selectionForegroundResources, selectionForegroundColorResource)
+    MTUiUtils.buildResources(buttonColorResources, buttonColorResource)
+    MTUiUtils.buildResources(secondaryBackgroundResources, secondaryBackgroundColorResource)
+    MTUiUtils.buildResources(disabledResources, disabledColorResource)
+    MTUiUtils.buildResources(contrastResources, contrastifyBackground(isDark, contrastColorResource, isNotHighContrast))
+    MTUiUtils.buildResources(tableSelectedResources, tableSelectedColorResource)
+    MTUiUtils.buildResources(secondBorderResources, secondBorderColorResource)
+    MTUiUtils.buildResources(highlightResources, highlightColorResource)
+    MTUiUtils.buildResources(treeSelectionResources, treeSelectionColorResource)
+    MTUiUtils.buildResources(notificationsResources, notificationsColorResource)
+    MTUiUtils.buildResources(excludedResources, excludedColorResource)
+    buildNotificationsColors()
+    buildFlameChartColors()
+    buildFileColors()
+    buildTransparentColors()
+    buildTabsTransparentColors()
+    buildOutlineButtons()
+    buildCompletionSelectionColor()
+    UIManager.getDefaults()["Component.grayForeground"] = ColorUtil.darker(textColorResource, 2)
+    UIManager.getDefaults()["EditorGroupsTabs.underlineHeight"] = MTConfig.getInstance().highlightThickness
   }
 
   //region Getters/Setters
 
-  /**
-   * The theme name
-   */
-  @NotNull
-  @Override
-  public final String getName() {
-    return name;
-  }
+//  fun getIcon(): Icon {
+//    return if (iconPath != null) IconLoader.getIcon(iconPath!!, MTAbstractTheme::class.java) else IconUtil.getEmptyIcon(
+//      true)
+//  }
 
-  /**
-   * Set the theme name
-   */
-  @Override
-  public final @NotNull
-  MTAbstractTheme setName(final @NotNull String name) {
-    this.name = name;
-    return this;
-  }
-
-  /**
-   * Get the editor color scheme
-   */
-  @Override
-  public final String getEditorColorsScheme() {
-    return editorColorsScheme;
-  }
-
-  @Override
-  public final @NotNull
-  MTAbstractTheme setEditorColorScheme(final String editorColorsScheme) {
-    this.editorColorsScheme = editorColorsScheme;
-    return this;
-  }
-
-  /**
-   * The theme id
-   */
-  @SuppressWarnings("DesignForExtension")
-  @Override
-  @NotNull
-  public String getId() {
-    return id;
-  }
-
-  @Override
-  public final @NotNull
-  MTAbstractTheme setId(final @NotNull String id) {
-    this.id = id;
-    return this;
-  }
-
-  /**
-   * Whether the theme is a dark one
-   */
-  @Override
-  public final boolean isDark() {
-    return dark;
-  }
-
-  @Override
-  public final @NotNull
-  MTAbstractTheme setIsDark(final boolean dark) {
-    this.dark = dark;
-    return this;
-  }
-
-  @NotNull
-  @Override
-  public final Icon getIcon() {
-    return icon != null ? IconLoader.getIcon(icon, MTAbstractTheme.class) : IconUtil.getEmptyIcon(true);
-  }
-
-  @Override
-  public final @NotNull
-  MTAbstractTheme setIcon(final String icon) {
-    this.icon = icon;
-    return this;
-  }
-
-  /**
-   * Whether the theme is a custom or external one
-   */
-  @SuppressWarnings("DesignForExtension")
-  @Override
-  public boolean isCustom() {
-    return false;
-  }
   //endregion
 
   //region Theme methods
 
-  /**
-   * Get background color custom property
-   */
-  @Override
-  @NotNull
-  public final Color getBackgroundColor() {
-    return MTColorUtils.contrastifyBackground(dark, getBackgroundColorResource(), isNotHighContrast);
+  override fun setPristine() {
+    isNotHighContrast = true
   }
 
-  /**
-   * Get contrast color custom property
-   */
-  @Override
-  @NotNull
-  public final Color getContrastColor() {
-    return MTColorUtils.contrastifyBackground(dark, getContrastColorResource(), isNotHighContrast);
+  private fun buildTabsTransparentColors() {
+    val colors = setOf(
+      "EditorTabs.inactiveColoredFileBackground"
+    )
+    val transparentBackground = ColorUtil.withAlpha(secondaryBackgroundColorResource, 0.5)
+    MTUiUtils.buildResources(colors, transparentBackground)
   }
 
-  /**
-   * Get foreground color custom property
-   */
-  @Override
-  @NotNull
-  public final Color getForegroundColor() {
-    return MTColorUtils.contrastifyForeground(dark, getForegroundColorResource(), isNotHighContrast);
+  private fun buildOutlineButtons() {
+    val colors = setOf(
+      "Button.background",
+      "Button.endBackground",
+      "Button.startBackground"
+    )
+    val buttonColor = buttonColor
+    val transparentBackground = if (MTConfig.getInstance().isBorderedButtons) background else buttonColor
+    MTUiUtils.buildResources(colors, transparentBackground)
   }
 
-  /**
-   * Get background color custom property
-   */
-  @Override
-  @NotNull
-  public final Color getPrimaryColor() {
-    return MTColorUtils.contrastifyForeground(dark, getTextColorResource(), isNotHighContrast);
-  }
-
-  @NotNull
-  @Override
-  public final Color getSelectionBackgroundColor() {
-    return getSelectionBackgroundColorResource();
-  }
-
-  @NotNull
-  @Override
-  public final Color getSelectionForegroundColor() {
-    return getSelectionForegroundColorResource();
-  }
-
-  @NotNull
-  @Override
-  public final Color getExcludedColor() {
-    return MTColorUtils.contrastifyBackground(dark, getExcludedColorResource(), isNotHighContrast);
-  }
-
-  @NotNull
-  @Override
-  public final Color getNotificationsColor() {
-    return getNotificationsColorResource();
-  }
-
-  @NotNull
-  @Override
-  public final Color getSecondBorderColor() {
-    return getSecondBorderColorResource();
-  }
-
-  @NotNull
-  @Override
-  public final Color getDisabledColor() {
-    return getDisabledColorResource();
-  }
-
-  @NotNull
-  @Override
-  public final Color getSecondaryBackgroundColor() {
-    return getSecondaryBackgroundColorResource();
-  }
-
-  @NotNull
-  @Override
-  public final Color getButtonColor() {
-    return getButtonColorResource();
-  }
-
-  @NotNull
-  @Override
-  public final Color getTableSelectedColor() {
-    return getTableSelectedColorResource();
-  }
-
-  @NotNull
-  @Override
-  public final Color getTextColor() {
-    return getTextColorResource();
-  }
-
-  @NotNull
-  @Override
-  public final Color getTreeSelectionColor() {
-    return getTreeSelectionColorResource();
-  }
-
-  @NotNull
-  @Override
-  public final Color getHighlightColor() {
-    return getHighlightColorResource();
-  }
-
-  @NotNull
-  @Override
-  public final Color getAccentColor() {
-    return getAccentColorResource();
-  }
-
-  @Override
-  public final void setPristine() {
-    isNotHighContrast = true;
-  }
-
-  //endregion
-
-  //region Other resources
-
-  /**
-   * Special treatment for notification colors
-   */
-  private static void buildNotificationsColors() {
-    final JBColor errorColor = new JBColor(new ColorUIResource(0xef9694), new ColorUIResource(0xb71c1c));
-    UIManager.put("Notification.ToolWindowError.background", errorColor);
-    UIManager.put("Notification.ToolWindow.errorBackground", errorColor);
-    UIManager.put("Notification.ToolWindowError.borderColor", errorColor);
-    UIManager.put("Notification.ToolWindow.errorBorderColor", errorColor);
-
-    final JBColor warnColor = new JBColor(new ColorUIResource(0xffeca0), new ColorUIResource(0x5D4037));
-    UIManager.put("Notification.ToolWindowWarning.background", warnColor);
-    UIManager.put("Notification.ToolWindow.warningBackground", warnColor);
-    UIManager.put("Notification.ToolWindowWarning.borderColor", warnColor);
-    UIManager.put("Notification.ToolWindow.warningBorderColor", warnColor);
-
-    final JBColor infoColor = new JBColor(new ColorUIResource(0x87bb91), new ColorUIResource(0x1B5E20));
-    UIManager.put("Notification.ToolWindowInfo.borderColor", infoColor); // deprecated
-    UIManager.put("Notification.ToolWindow.infoBorderColor", infoColor); // deprecated
-    UIManager.put("Notification.ToolWindow.informativeBorderColor", infoColor);
-
-    UIManager.put("Notification.ToolWindowInfo.background", infoColor); // deprecated
-    UIManager.put("Notification.ToolWindow.infoBackground", infoColor); // deprecated
-    UIManager.put("Notification.ToolWindow.informativeBackground", infoColor); // deprecated
-  }
-
-  /**
-   * Special treatment for flame chart colors
-   */
-  private static void buildFlameChartColors() {
-    UIManager.put("FlameGraph.JVMBackground", MTUI.MTColor.CYAN);
-    UIManager.put("FlameGraph.JVMFocusBackground", MTUI.MTColor.BLUE);
-    UIManager.put("FlameGraph.JVMSearchNotMatchedBackground", MTUI.MTColor.RED);
-    UIManager.put("FlameGraph.JVMFocusSearchNotMatchedBackground", MTUI.MTColor.BROWN);
-
-    UIManager.put("FlameGraph.nativeBackground", MTUI.MTColor.YELLOW);
-    UIManager.put("FlameGraph.nativeFocusBackground", MTUI.MTColor.ORANGE);
-    UIManager.put("FlameGraph.nativeSearchNotMatchedBackground", MTUI.MTColor.PURPLE);
-    UIManager.put("FlameGraph.nativeFocusSearchNotMatchedBackground", MTUI.MTColor.PINK);
-  }
-
-  /**
-   * Special treatment for file colors
-   */
-  private static void buildFileColors() {
-    UIManager.put("FileColor.Green", new JBColor(MTUI.MTColor.GREEN, MTUI.MTColor.DARK_GREEN));
-    UIManager.put("FileColor.Blue", new JBColor(MTUI.MTColor.BLUE, MTUI.MTColor.DARK_BLUE));
-    UIManager.put("FileColor.Yellow", new JBColor(MTUI.MTColor.YELLOW, MTUI.MTColor.DARK_YELLOW));
-    UIManager.put("FileColor.Orange", new JBColor(MTUI.MTColor.ORANGE, MTUI.MTColor.DARK_ORANGE));
-    UIManager.put("FileColor.Violet", new JBColor(MTUI.MTColor.PURPLE, MTUI.MTColor.DARK_PURPLE));
-    UIManager.put("FileColor.Rose", new JBColor(MTUI.MTColor.RED, MTUI.MTColor.DARK_RED));
-  }
-
-  /**
-   * Build transparent colors
-   */
-  private static void buildTransparentColors() {
-    final Set<String> colors = Collections.unmodifiableSet(
-      Sets.newHashSet(
-        "ScrollBar.hoverTrackColor",
-        "ScrollBar.trackColor",
-        "ScrollBar.Mac.hoverTrackColor",
-        "ScrollBar.Mac.trackColor",
-        "ScrollBar.Transparent.hoverTrackColor",
-        "ScrollBar.Transparent.trackColor",
-        "ScrollBar.Mac.Transparent.hoverTrackColor",
-        "ScrollBar.Mac.Transparent.trackColor"
-      ));
-
-    final Set<String> selectionColors = Collections.unmodifiableSet(
-      Sets.newHashSet(
-        "DragAndDrop.areaBackground"
-      ));
-
-    final Color transparentBackground = MTUI.Panel.getTransparentBackground();
-    MTUiUtils.buildResources(colors, transparentBackground);
-
-    final Color transparentSelectionBackground = MTUI.Panel.getTransparentSelectionBackground();
-    MTUiUtils.buildResources(selectionColors, transparentSelectionBackground);
-  }
-
-  /**
-   * Build Tabs Selection Inactive Colors
-   */
-  private void buildTabsTransparentColors() {
-    final Set<String> colors = Collections.unmodifiableSet(
-      Sets.newHashSet(
-        "EditorTabs.inactiveColoredFileBackground"
-      ));
-
-    final Color transparentBackground = ColorUtil.withAlpha(getSecondaryBackgroundColorResource(), 0.5);
-    MTUiUtils.buildResources(colors, transparentBackground);
-  }
-
-  private void buildOutlineButtons() {
-    final Set<String> colors = Collections.unmodifiableSet(
-      Sets.newHashSet(
-        "Button.background",
-        "Button.endBackground",
-        "Button.startBackground"
-      ));
-
-    final Color buttonColor = getButtonColor();
-    final Color transparentBackground = MTConfig.getInstance().isBorderedButtons() ? MTUI.Panel.getBackground() : buttonColor;
-    MTUiUtils.buildResources(colors, transparentBackground);
-  }
-
-  private static void buildCompletionSelectionColor() {
-    final Set<String> colors = Collections.unmodifiableSet(
-      Sets.newHashSet(
-        "CompletionPopup.selectionBackground",
-        "CompletionPopup.selectionInactiveBackground"
-      ));
-
-    final Color selectedColor = MTUI.List.getSelectedColor();
-    final Color invertedColor = MTUI.Panel.getEditorColor();
-    final Color assignedColor = MTConfig.getInstance().isInvertedSelectionColor() ? invertedColor : selectedColor;
-    MTUiUtils.buildResources(colors, assignedColor);
-  }
-
-  @Override
-  public void applyContrast(final boolean apply) {
-    final Color contrastedColor = apply ? getContrastColor() : getBackgroundColor();
-    for (final String resource : ContrastResources.CONTRASTED_RESOURCES) {
-      UIManager.put(resource, contrastedColor);
+  override fun applyContrast(apply: Boolean) {
+    val contrastedColor = if (apply) contrastColor else backgroundColor
+    for (resource in ContrastResources.CONTRASTED_RESOURCES) {
+      UIManager.put(resource, contrastedColor)
     }
   }
 
-  @Override
-  public boolean isNative() {
-    return false;
-  }
-
-  @SuppressWarnings({
-    "OverlyBroadCatchBlock",
-    "NestedTryStatement"})
-  private void installBackgroundImage() {
-    final String currentSpec = PropertiesComponent.getInstance().getValue(IdeBackgroundUtil.FRAME_PROP);
-    final String oldCurrentSpec = PropertiesComponent.getInstance().getValue("old.mt." + IdeBackgroundUtil.FRAME_PROP);
-
-    if (!MTConfig.getInstance().isUseMaterialWallpapers()) {
-      removeBackgroundImage(null);
-      return;
+  private fun installBackgroundImage() {
+    val currentSpec = PropertiesComponent.getInstance().getValue(IdeBackgroundUtil.FRAME_PROP)
+    val oldCurrentSpec = PropertiesComponent.getInstance().getValue("old.mt.${IdeBackgroundUtil.FRAME_PROP}")
+    if (!MTConfig.getInstance().isUseMaterialWallpapers) {
+      removeBackgroundImage(null)
+      return
     }
 
     try {
-      @NonNls final String path = getBackgroundImage();
+      val path = backgroundImage
       if (path != null) {
-        final File tmpImage = FileUtil.createTempFile("mtBackgroundImage", path.substring(path.lastIndexOf('.')), true);
-        final URL resource = getClass().getClassLoader().getResource(path);
-
+        val tmpImage = FileUtil.createTempFile("mtBackgroundImage", path.substring(path.lastIndexOf('.')), true)
+        val resource = javaClass.classLoader.getResource(path)
         if (resource != null) {
-          try (final InputStream input = getClass().getClassLoader().getResourceAsStream(path)) {
-            try (final FileOutputStream output = new FileOutputStream(tmpImage)) {
-              FileUtil.copy(Objects.requireNonNull(input), output);
+          javaClass.classLoader.getResourceAsStream(path).use { input ->
+            FileOutputStream(tmpImage).use {
+              FileUtil.copy(Objects.requireNonNull(input), it)
             }
           }
 
-          final String image = tmpImage.getPath();
-          final String alpha = String.valueOf(85);
-          final String fill = MTUiUtils.parseEnumValue("fill", IdeBackgroundUtil.Fill.PLAIN);
-          final String anchor = MTUiUtils.parseEnumValue("center", IdeBackgroundUtil.Anchor.CENTER);
-
-          final String spec = StringUtil.join(new String[]{image,
-            alpha,
-            fill,
-            anchor}, ",");
-          PropertiesComponent.getInstance().setValue("old.mt." + IdeBackgroundUtil.FRAME_PROP, currentSpec);
-          PropertiesComponent.getInstance().setValue(IdeBackgroundUtil.FRAME_PROP, spec);
-          ApplicationManager.getApplication().invokeLater(IdeBackgroundUtil::repaintAllWindows);
+          val image = tmpImage.path
+          val alpha = 85.toString()
+          val fill = MTUiUtils.parseEnumValue("fill", IdeBackgroundUtil.Fill.PLAIN)
+          val anchor = MTUiUtils.parseEnumValue("center", IdeBackgroundUtil.Anchor.CENTER)
+          val spec = StringUtil.join(arrayOf(image, alpha, fill, anchor), ",")
+          PropertiesComponent.getInstance().setValue("old.mt." + IdeBackgroundUtil.FRAME_PROP, currentSpec)
+          PropertiesComponent.getInstance().setValue(IdeBackgroundUtil.FRAME_PROP, spec)
+          ApplicationManager.getApplication().invokeLater { IdeBackgroundUtil.repaintAllWindows() }
         } else {
-          throw new IllegalArgumentException("Can't load background: " + path);
+          throw IllegalArgumentException("Can't load background: $path")
         }
       } else {
-        removeBackgroundImage(oldCurrentSpec);
+        removeBackgroundImage(oldCurrentSpec)
       }
-    } catch (final IOException ignored) {
+    } catch (ignored: IOException) {
+      thisLogger().error(ignored)
     }
-  }
-
-  private static void removeBackgroundImage(final String oldCurrentSpec) {
-    PropertiesComponent.getInstance().setValue(IdeBackgroundUtil.FRAME_PROP, oldCurrentSpec);
-    PropertiesComponent.getInstance().setValue("old.mt." + IdeBackgroundUtil.FRAME_PROP, null);
-    ApplicationManager.getApplication().invokeLater(IdeBackgroundUtil::repaintAllWindows);
   }
 
   //endregion
 
-  @SuppressWarnings("FeatureEnvy")
-  @Override
-  public void applyAccentMode() {
-    final MTConfig mtConfig = MTConfig.getInstance();
-    final Color accentColor = ColorUtil.fromHex(mtConfig.getAccentColor());
-    final Color darkerAccentColor = ColorUtil.darker(accentColor, 2);
-    final Color accentColorTransparent = ColorUtil.withAlpha(accentColor, 0.5);
-    final Color secondAccentColor = ColorUtil.fromHex(mtConfig.getSecondAccentColor());
-    final boolean accentMode = mtConfig.isAccentMode();
-
+  override fun applyAccentMode() {
+    val mtConfig = MTConfig.getInstance()
+    val accentColor = ColorUtil.fromHex(mtConfig.accentColor)
+    val darkerAccentColor = ColorUtil.darker(accentColor, 2)
+    val accentColorTransparent = ColorUtil.withAlpha(accentColor, 0.5)
+    val secondAccentColor = ColorUtil.fromHex(mtConfig.secondAccentColor)
+    val accentMode = mtConfig.isAccentMode
     if (accentMode) {
       // Add accent resources
-      MTUiUtils.buildResources(MTAccentMode.ACCENT_EXTRA_RESOURCES, accentColor);
-      MTUiUtils.buildResources(MTAccentMode.DARKER_ACCENT_RESOURCES, darkerAccentColor);
-      MTUiUtils.buildResources(MTAccentMode.ACCENT_TRANSPARENT_EXTRA_RESOURCES, accentColorTransparent);
+      MTUiUtils.buildResources(MTAccentMode.ACCENT_EXTRA_RESOURCES, accentColor)
+      MTUiUtils.buildResources(MTAccentMode.DARKER_ACCENT_RESOURCES, darkerAccentColor)
+      MTUiUtils.buildResources(MTAccentMode.ACCENT_TRANSPARENT_EXTRA_RESOURCES, accentColorTransparent)
       // Add new selection color resources
-      MTUiUtils.buildResources(MTAccentMode.SELECTION_RESOURCES, MTAccentMode.getSelectionColor());
-      MTUiUtils.buildResources(MTAccentMode.SECOND_ACCENT_RESOURCES, secondAccentColor);
+      MTUiUtils.buildResources(MTAccentMode.SELECTION_RESOURCES, selectionColor)
+      MTUiUtils.buildResources(MTAccentMode.SECOND_ACCENT_RESOURCES, secondAccentColor)
     }
   }
+
+  private fun buildNotificationsColors() {
+    val errorColor = JBColor(ColorUIResource(0xef9694), ColorUIResource(0xb71c1c))
+    UIManager.put("Notification.ToolWindowError.background", errorColor)
+    UIManager.put("Notification.ToolWindow.errorBackground", errorColor)
+    UIManager.put("Notification.ToolWindowError.borderColor", errorColor)
+    UIManager.put("Notification.ToolWindow.errorBorderColor", errorColor)
+    val warnColor = JBColor(ColorUIResource(0xffeca0), ColorUIResource(0x5D4037))
+    UIManager.put("Notification.ToolWindowWarning.background", warnColor)
+    UIManager.put("Notification.ToolWindow.warningBackground", warnColor)
+    UIManager.put("Notification.ToolWindowWarning.borderColor", warnColor)
+    UIManager.put("Notification.ToolWindow.warningBorderColor", warnColor)
+    val infoColor = JBColor(ColorUIResource(0x87bb91), ColorUIResource(0x1B5E20))
+    UIManager.put("Notification.ToolWindowInfo.borderColor", infoColor)
+    UIManager.put("Notification.ToolWindow.infoBorderColor", infoColor)
+    UIManager.put("Notification.ToolWindow.informativeBorderColor", infoColor)
+    UIManager.put("Notification.ToolWindowInfo.background", infoColor)
+    UIManager.put("Notification.ToolWindow.infoBackground", infoColor)
+    UIManager.put("Notification.ToolWindow.informativeBackground", infoColor)
+  }
+
+  private fun buildFlameChartColors() {
+    UIManager.put("FlameGraph.JVMBackground", MTUI.MTColor.CYAN)
+    UIManager.put("FlameGraph.JVMFocusBackground", MTUI.MTColor.BLUE)
+    UIManager.put("FlameGraph.JVMSearchNotMatchedBackground", MTUI.MTColor.RED)
+    UIManager.put("FlameGraph.JVMFocusSearchNotMatchedBackground", MTUI.MTColor.BROWN)
+    UIManager.put("FlameGraph.nativeBackground", MTUI.MTColor.YELLOW)
+    UIManager.put("FlameGraph.nativeFocusBackground", MTUI.MTColor.ORANGE)
+    UIManager.put("FlameGraph.nativeSearchNotMatchedBackground", MTUI.MTColor.PURPLE)
+    UIManager.put("FlameGraph.nativeFocusSearchNotMatchedBackground", MTUI.MTColor.PINK)
+  }
+
+  private fun buildFileColors() {
+    UIManager.put("FileColor.Green", JBColor(MTUI.MTColor.GREEN, MTUI.MTColor.DARK_GREEN))
+    UIManager.put("FileColor.Blue", JBColor(MTUI.MTColor.BLUE, MTUI.MTColor.DARK_BLUE))
+    UIManager.put("FileColor.Yellow", JBColor(MTUI.MTColor.YELLOW, MTUI.MTColor.DARK_YELLOW))
+    UIManager.put("FileColor.Orange", JBColor(MTUI.MTColor.ORANGE, MTUI.MTColor.DARK_ORANGE))
+    UIManager.put("FileColor.Violet", JBColor(MTUI.MTColor.PURPLE, MTUI.MTColor.DARK_PURPLE))
+    UIManager.put("FileColor.Rose", JBColor(MTUI.MTColor.RED, MTUI.MTColor.DARK_RED))
+  }
+
+  private fun buildTransparentColors() {
+    val colors = setOf(
+      "ScrollBar.hoverTrackColor",
+      "ScrollBar.trackColor",
+      "ScrollBar.Mac.hoverTrackColor",
+      "ScrollBar.Mac.trackColor",
+      "ScrollBar.Transparent.hoverTrackColor",
+      "ScrollBar.Transparent.trackColor",
+      "ScrollBar.Mac.Transparent.hoverTrackColor",
+      "ScrollBar.Mac.Transparent.trackColor"
+    )
+    val selectionColors = setOf(
+      "DragAndDrop.areaBackground"
+    )
+    val transparentBackground = transparentBackground
+    MTUiUtils.buildResources(colors, transparentBackground)
+    val transparentSelectionBackground = transparentSelectionBackground
+    MTUiUtils.buildResources(selectionColors, transparentSelectionBackground)
+  }
+
+  private fun buildCompletionSelectionColor() {
+    val colors = setOf(
+      "CompletionPopup.selectionBackground",
+      "CompletionPopup.selectionInactiveBackground"
+    )
+    val selectedColor = selectedColor
+    val invertedColor = editorColor
+    val assignedColor = if (MTConfig.getInstance().isInvertedSelectionColor) invertedColor else selectedColor
+    MTUiUtils.buildResources(colors, assignedColor)
+  }
+
+  private fun removeBackgroundImage(oldCurrentSpec: String?) {
+    PropertiesComponent.getInstance().setValue(IdeBackgroundUtil.FRAME_PROP, oldCurrentSpec)
+    PropertiesComponent.getInstance().setValue("old.mt.${IdeBackgroundUtil.FRAME_PROP}", null)
+    ApplicationManager.getApplication().invokeLater { IdeBackgroundUtil.repaintAllWindows() }
+  }
+
 }

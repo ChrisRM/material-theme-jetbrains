@@ -41,19 +41,9 @@ interface MTThemeable {
   val isCustom: Boolean
 
   /**
-   * Activate the theme
-   */
-  fun activate()
-
-  /**
    * Return the theme's name
    */
-  val name: String
-
-  /**
-   * Set the theme name
-   */
-  fun setName(name: String): MTThemeable
+  var name: String
 
   /**
    * The theme's inherent color scheme
@@ -61,39 +51,19 @@ interface MTThemeable {
   val editorColorsScheme: String?
 
   /**
-   * Set the editor color scheme
-   */
-  fun setEditorColorScheme(editorColorsScheme: String?): MTThemeable
-
-  /**
    * The theme's unique ID
    */
   val id: String
 
   /**
-   * Set the theme id
-   */
-  fun setId(id: String): MTThemeable
-
-  /**
    * Whether the theme is a dark theme
    */
-  val isDark: Boolean
-
-  /**
-   * Set the theme dark state
-   */
-  fun setIsDark(dark: Boolean): MTThemeable
+  var isDark: Boolean
 
   /**
    * The theme icon
    */
   val icon: Icon?
-
-  /**
-   * Set the theme icon
-   */
-  fun setIcon(icon: String?): MTThemeable
 
   /**
    * The theme's background color
@@ -204,6 +174,11 @@ interface MTThemeable {
    * Theme Order in the dropdown
    */
   val order: Int
+
+  /**
+   * Activate the theme
+   */
+  fun activate()
 
   /**
    * Clean up all irrelevant properties

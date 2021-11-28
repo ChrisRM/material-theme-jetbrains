@@ -111,8 +111,8 @@ public final class MTSaveCustomThemeDialog extends DialogWrapper {
     customTheme.setName(nameField.getText());
     customTheme.setThemeId(idField.getText());
     customTheme.setId(idField.getText());
-    customTheme.setEditorColorScheme(colorField.getText());
-    customTheme.setIsDark(darkThemeCheckbox.isSelected());
+    customTheme.setEditorColorsScheme(colorField.getText());
+    customTheme.setDark(darkThemeCheckbox.isSelected());
 
     MTBundledThemesManager.saveTheme(customTheme);
     close(0, true);
