@@ -42,7 +42,7 @@ import com.mallowigi.idea.listeners.ConfigNotifier
 import com.mallowigi.idea.listeners.CustomConfigNotifier
 import com.mallowigi.idea.listeners.MTTopics
 import com.mallowigi.idea.messages.MaterialThemeBundle.message
-import com.mallowigi.idea.themes.MTThemes
+import com.mallowigi.idea.themes.MTTheme
 import com.mallowigi.idea.ui.MTButtonUI
 import com.mallowigi.idea.ui.indicators.MTSelectedTreeIndicatorImpl
 import com.mallowigi.idea.utils.MTUiUtils
@@ -197,8 +197,8 @@ class MTLafComponent : AppLifecycleListener {
         Messages.getQuestionIcon()
       )
       if (okCancelDialog == Messages.OK) {
-        mtConfig.selectedTheme = MTThemes.CUSTOM
-        MTThemeManager.instance.setLookAndFeel(MTThemes.CUSTOM)
+        mtConfig.selectedTheme = MTTheme.CUSTOM
+        MTThemeManager.instance.setLookAndFeel(MTTheme.CUSTOM)
       }
     }
     activateTheme()

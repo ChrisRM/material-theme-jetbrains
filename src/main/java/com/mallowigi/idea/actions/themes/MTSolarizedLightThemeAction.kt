@@ -25,9 +25,9 @@
  */
 package com.mallowigi.idea.actions.themes
 
-import com.mallowigi.idea.themes.MTThemes
+import com.mallowigi.idea.themes.MTTheme
 
 class MTSolarizedLightThemeAction : MTAbstractThemeAction() {
-  override val theme: MTThemes
-    get() = MTThemes.SOLARIZED_LIGHT
+  override val theme: MTTheme
+    get() = MTTheme.SOLARIZED_LIGHT
 }

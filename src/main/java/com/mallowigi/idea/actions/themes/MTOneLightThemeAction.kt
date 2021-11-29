@@ -25,9 +25,9 @@
  */
 package com.mallowigi.idea.actions.themes
 
-import com.mallowigi.idea.themes.MTThemes
+import com.mallowigi.idea.themes.MTTheme
 
 class MTOneLightThemeAction : MTAbstractThemeAction() {
-  override val theme: MTThemes
-    get() = MTThemes.ONE_LIGHT
+  override val theme: MTTheme
+    get() = MTTheme.ONE_LIGHT
 }

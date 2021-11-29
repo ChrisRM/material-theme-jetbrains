@@ -27,11 +27,11 @@ package com.mallowigi.idea.actions.themes
 
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.mallowigi.idea.license.MTMainProductLicenseChecker
-import com.mallowigi.idea.themes.MTThemes
+import com.mallowigi.idea.themes.MTTheme
 
 class MTCustomThemeAction : MTAbstractThemeAction() {
-  override val theme: MTThemes
-    get() = MTThemes.CUSTOM
+  override val theme: MTTheme
+    get() = MTTheme.CUSTOM
 
   override fun checkLicense(e: AnActionEvent) {
     e.presentation.isEnabled = MTMainProductLicenseChecker.instance.isLicensed
