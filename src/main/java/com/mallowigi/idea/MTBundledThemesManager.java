@@ -30,8 +30,6 @@ import com.intellij.openapi.Disposable;
 import com.intellij.openapi.application.ApplicationBundle;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.WriteAction;
-import com.intellij.openapi.extensions.ExtensionPointListener;
-import com.intellij.openapi.extensions.PluginDescriptor;
 import com.intellij.openapi.fileChooser.FileChooserFactory;
 import com.intellij.openapi.fileChooser.FileSaverDescriptor;
 import com.intellij.openapi.fileChooser.FileSaverDialog;
@@ -41,8 +39,6 @@ import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.vfs.VirtualFileWrapper;
 import com.intellij.util.ThrowableRunnable;
 import com.mallowigi.idea.messages.MaterialThemeBundle;
-import com.mallowigi.idea.themes.BundledThemeEP;
-import com.mallowigi.idea.themes.MTThemeCollection;
 import com.mallowigi.idea.themes.models.MTBundledTheme;
 import com.mallowigi.idea.themes.models.MTDarkBundledTheme;
 import com.mallowigi.idea.themes.models.MTLightBundledTheme;
@@ -55,9 +51,6 @@ import org.jetbrains.annotations.Nullable;
 import java.io.*;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
 
 /**
  * Manages the Bundled themes (external themes)
@@ -65,10 +58,7 @@ import java.util.Objects;
 @SuppressWarnings("WeakerAccess")
 public final class MTBundledThemesManager implements Disposable {
   MTBundledThemesManager() {
-    BundledThemeEP.EP_NAME.addExtensionPointListener(new BundledThemeEPExtensionPointListener(), this);
   }
-
-  private final Map<String, MTBundledTheme> bundledThemes = new HashMap<>(10);
 
   public static MTBundledThemesManager getInstance() {
     return ApplicationManager.getApplication().getService(MTBundledThemesManager.class);
@@ -79,41 +69,9 @@ public final class MTBundledThemesManager implements Disposable {
     // do nothing
   }
 
-  void installBundledTheme(final BundledThemeEP ep) throws IOException {
-    final MTBundledTheme mtBundledTheme = loadBundledTheme(ep.path + ".xml", ep);
-
-    Objects.requireNonNull(mtBundledTheme).setThemeName(ep.name);
-    bundledThemes.put(mtBundledTheme.getThemeId(), mtBundledTheme);
-
-    MTThemeCollection.installTheme(mtBundledTheme);
-  }
-
-  void removeBundledTheme(final BundledThemeEP ep) throws IOException {
-    final MTBundledTheme mtBundledTheme = loadBundledTheme(ep.path + ".xml", ep);
-    if (mtBundledTheme != null) {
-      bundledThemes.remove(mtBundledTheme.getThemeId());
-    }
-  }
-
   public static MTBundledTheme loadBundledTheme(final VirtualFile file) {
     final File url = new File(file.getPath());
     return loadFromXml(null, url);
-  }
-
-  /**
-   * Load an external theme from the XML
-   *
-   * @param resource xml file
-   * @param ep       The Bundled Theme extension point
-   * @return a new instance of MTBundledTheme
-   */
-  private static MTBundledTheme loadBundledTheme(@NonNls final String resource, final BundledThemeEP ep) throws IOException {
-    final URL url = ep.getLoaderForClass().getResource(resource);
-    if (url == null) {
-      throw new IOException("Cannot read theme from " + resource);
-    }
-
-    return loadFromXml(url, null);
   }
 
   @SuppressWarnings("MethodWithMultipleReturnPoints")
@@ -215,26 +173,4 @@ public final class MTBundledThemesManager implements Disposable {
     return xStream;
   }
 
-  private class BundledThemeEPExtensionPointListener implements ExtensionPointListener<BundledThemeEP> {
-    BundledThemeEPExtensionPointListener() {
-    }
-
-    @Override
-    public final void extensionAdded(@NotNull final BundledThemeEP theme, @NotNull final PluginDescriptor pluginDescriptor) {
-      try {
-        installBundledTheme(theme);
-      } catch (final IOException e) {
-        e.printStackTrace();
-      }
-    }
-
-    @Override
-    public final void extensionRemoved(@NotNull final BundledThemeEP theme, @NotNull final PluginDescriptor pluginDescriptor) {
-      try {
-        removeBundledTheme(theme);
-      } catch (final IOException e) {
-        e.printStackTrace();
-      }
-    }
-  }
 }
