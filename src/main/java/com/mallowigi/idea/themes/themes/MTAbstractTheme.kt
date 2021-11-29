@@ -81,9 +81,6 @@ import javax.swing.plaf.ColorUIResource
 abstract class MTAbstractTheme protected constructor() : Serializable, MTThemeable, MTSerializedTheme {
 
   @Transient
-  var iconPath: String? = null
-
-  @Transient
   private var isNotHighContrast = false
 
   override val icon: Icon?
@@ -148,22 +145,6 @@ abstract class MTAbstractTheme protected constructor() : Serializable, MTThemeab
     get() = accentColorResource
   //endregion
 
-  init {
-    init()
-  }
-
-  /**
-   * Theme Builder
-   */
-  protected open fun init() {
-//    this.themeColorScheme = themeColorScheme
-    this.iconPath = themeIcon
-//    this.themeName = themeName
-  }
-
-  /**
-   * Get the theme id
-   */
   override fun toString(): String = themeId
 
   /**
@@ -223,8 +204,10 @@ abstract class MTAbstractTheme protected constructor() : Serializable, MTThemeab
     MTUiUtils.buildResources(buttonColorResources, buttonColorResource)
     MTUiUtils.buildResources(secondaryBackgroundResources, secondaryBackgroundColorResource)
     MTUiUtils.buildResources(disabledResources, disabledColorResource)
-    MTUiUtils.buildResources(contrastResources,
-                             contrastifyBackground(isThemeDark, contrastColorResource, isNotHighContrast))
+    MTUiUtils.buildResources(
+      contrastResources,
+      contrastifyBackground(isThemeDark, contrastColorResource, isNotHighContrast)
+    )
     MTUiUtils.buildResources(tableSelectedResources, tableSelectedColorResource)
     MTUiUtils.buildResources(secondBorderResources, secondBorderColorResource)
     MTUiUtils.buildResources(highlightResources, highlightColorResource)
@@ -241,15 +224,6 @@ abstract class MTAbstractTheme protected constructor() : Serializable, MTThemeab
     UIManager.getDefaults()["Component.grayForeground"] = ColorUtil.darker(textColorResource, 2)
     UIManager.getDefaults()["EditorGroupsTabs.underlineHeight"] = MTConfig.getInstance().highlightThickness
   }
-
-  //region Getters/Setters
-
-//  fun getIcon(): Icon {
-//    return if (iconPath != null) IconLoader.getIcon(iconPath!!, MTAbstractTheme::class.java) else IconUtil.getEmptyIcon(
-//      true)
-//  }
-
-  //endregion
 
   //region Theme methods
 

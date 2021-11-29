@@ -27,13 +27,10 @@ package com.mallowigi.idea.themes.models
 
 import com.mallowigi.idea.themes.models.parsers.MTBundledThemeParser
 import com.mallowigi.idea.themes.models.parsers.MTDarkBundledThemeParser
-import com.thoughtworks.xstream.annotations.XStreamAlias
-import org.jetbrains.annotations.NonNls
 
 /**
  * Represents a Dark theme parsed from XML
  */
-@XStreamAlias("mtTheme")
 class MTDarkBundledTheme : MTBundledTheme() {
   @com.intellij.util.xmlb.annotations.Transient
   @Transient
@@ -42,16 +39,8 @@ class MTDarkBundledTheme : MTBundledTheme() {
   override val themeIcon: String?
     get() = null
 
-  override var themeColorScheme: String? = null
-
-  override var themeId: @NonNls String = "mt.dark"
-
-  override var themeName: String = ""
-
   override val order: Int
     get() = 1000
-
-  override var isThemeDark: Boolean = true
 
   private fun readResolve(): Any {
     themeParser = MTDarkBundledThemeParser(this)

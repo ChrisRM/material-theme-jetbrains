@@ -117,47 +117,45 @@ abstract class MTBundledTheme : MTAbstractTheme() {
   //endregion
 
   //region --------------- Setters ------------------
-  fun setExcludedColor(excludedColor: ColorUIResource?): Unit = themeParser.setExcludedColor(excludedColor)
+  fun setExcludedColor(excludedColor: ColorUIResource): Unit = themeParser.setExcludedColor(excludedColor)
 
-  fun setAccentColor(accentColor: ColorUIResource?): Unit = themeParser.setAccentColor(accentColor)
+  fun setAccentColor(accentColor: ColorUIResource): Unit = themeParser.setAccentColor(accentColor)
 
-  fun setNotificationsColor(notificationsColor: ColorUIResource?): Unit =
+  fun setNotificationsColor(notificationsColor: ColorUIResource): Unit =
     themeParser.setNotificationsColor(notificationsColor)
 
-  fun setHighlightColor(highlightColor: ColorUIResource?): Unit = themeParser.setHighlightColor(highlightColor)
+  fun setHighlightColor(highlightColor: ColorUIResource): Unit = themeParser.setHighlightColor(highlightColor)
 
-  fun setTreeSelectionColor(treeSelectionColor: ColorUIResource?): Unit =
+  fun setTreeSelectionColor(treeSelectionColor: ColorUIResource): Unit =
     themeParser.setTreeSelectionColor(treeSelectionColor)
 
-  fun setSecondBorderColor(secondBorderColor: ColorUIResource?): Unit =
+  fun setSecondBorderColor(secondBorderColor: ColorUIResource): Unit =
     themeParser.setSecondBorderColor(secondBorderColor)
 
-  fun setTableSelectedColor(tableSelectedColor: ColorUIResource?): Unit =
+  fun setTableSelectedColor(tableSelectedColor: ColorUIResource): Unit =
     themeParser.setTableSelectedColor(tableSelectedColor)
 
-  fun setContrastColor(contrastColor: ColorUIResource?): Unit = themeParser.setContrastColor(contrastColor)
+  fun setContrastColor(contrastColor: ColorUIResource): Unit = themeParser.setContrastColor(contrastColor)
 
-  fun setDisabledColor(disabledColor: ColorUIResource?): Unit = themeParser.setDisabledColor(disabledColor)
+  fun setDisabledColor(disabledColor: ColorUIResource): Unit = themeParser.setDisabledColor(disabledColor)
 
-  fun setSecondaryBackgroundColor(secondaryBackgroundColor: ColorUIResource?): Unit =
+  fun setSecondaryBackgroundColor(secondaryBackgroundColor: ColorUIResource): Unit =
     themeParser.setSecondaryBackgroundColor(secondaryBackgroundColor)
 
-  fun setButtonColor(buttonColor: ColorUIResource?): Unit = themeParser.setButtonColor(buttonColor)
+  fun setButtonColor(buttonColor: ColorUIResource): Unit = themeParser.setButtonColor(buttonColor)
 
-  fun setSelectionForegroundColor(selectionForegroundColor: ColorUIResource?): Unit =
+  fun setSelectionForegroundColor(selectionForegroundColor: ColorUIResource): Unit =
     themeParser.setSelectionForegroundColor(selectionForegroundColor)
 
-  fun setSelectionBackgroundColor(selectionBackgroundColor: ColorUIResource?): Unit =
+  fun setSelectionBackgroundColor(selectionBackgroundColor: ColorUIResource): Unit =
     themeParser.setSelectionBackgroundColor(selectionBackgroundColor)
 
-  fun setTextColor(textColor: ColorUIResource?): Unit = themeParser.setTextColor(textColor)
+  fun setTextColor(textColor: ColorUIResource): Unit = themeParser.setTextColor(textColor)
 
-  fun setForegroundColor(foregroundColor: ColorUIResource?): Unit = themeParser.setForegroundColor(foregroundColor)
+  fun setForegroundColor(foregroundColor: ColorUIResource): Unit = themeParser.setForegroundColor(foregroundColor)
 
-  fun setBackgroundColor(backgroundColor: ColorUIResource?): Unit = themeParser.setBackgroundColor(backgroundColor)
+  fun setBackgroundColor(backgroundColor: ColorUIResource): Unit = themeParser.setBackgroundColor(backgroundColor)
 
   //endregion
-
-  override fun init() {}
 
 }
