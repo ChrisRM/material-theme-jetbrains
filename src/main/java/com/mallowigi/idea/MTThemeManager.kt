@@ -65,7 +65,6 @@ import org.jetbrains.annotations.NonNls
 import java.awt.Color
 import java.awt.Font
 import java.util.Locale
-import javax.swing.SwingUtilities
 import javax.swing.UIDefaults
 import javax.swing.UIManager
 import javax.swing.plaf.FontUIResource
@@ -381,7 +380,7 @@ class MTThemeManager private constructor() : Disposable {
       activate(selectedTheme)
     }
 
-    SwingUtilities.invokeLater { MTChangeLafService.hideSnapshotWithAnimation() }
+    ApplicationManager.getApplication().invokeLater { MTChangeLafService.hideSnapshotWithAnimation() }
   }
 
   /**

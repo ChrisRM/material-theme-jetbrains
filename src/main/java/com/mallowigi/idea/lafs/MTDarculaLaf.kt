@@ -23,75 +23,59 @@
  *
  *
  */
+package com.mallowigi.idea.lafs
 
-package com.mallowigi.idea.lafs;
-
-import com.intellij.ide.ui.UITheme;
-import com.intellij.ide.ui.laf.darcula.DarculaLaf;
-import com.intellij.util.ui.UIUtil;
-import org.jetbrains.annotations.NonNls;
-
-import javax.swing.*;
-import javax.swing.plaf.ColorUIResource;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.function.Function;
+import com.intellij.ide.ui.UITheme
+import com.intellij.ide.ui.laf.darcula.DarculaLaf
+import com.intellij.util.ui.UIUtil
+import org.jetbrains.annotations.NonNls
+import java.io.IOException
+import java.util.function.Function
+import javax.swing.UIDefaults
+import javax.swing.plaf.ColorUIResource
 
 /**
- * Look and Feel class for Dark Material Themes
+ * Look and Feel class for Darcula
  *
- * @author helio
- * Created on 2018-10-29
  */
-@SuppressWarnings({"SerializableHasSerializationMethods",
-  "MagicNumber",
-  "StringConcatenation",
-  "DuplicateStringLiteralInspection"})
-public final class MTDarculaLaf extends DarculaLaf {
+@Suppress("MagicNumber")
+class MTDarculaLaf : DarculaLaf() {
+  /**
+   * Installs and returns the defaults for darcula specifically
+   *
+   */
+  override fun getDefaults(): UIDefaults {
+    val defaults = super.getDefaults()
+    MTLafInstaller.installDefaults(defaults)
+    // Install darcula defaults
+    installDarculaDefaults(defaults)
+    // Install material defaults
+    MTLafInstaller.installMTDefaults(defaults)
+    return defaults
+  }
+
+  override fun loadDefaults(defaults: UIDefaults) {
+    try {
+      DarculaLaf::class.java.getResourceAsStream("$prefix.theme.json").use { stream ->
+        assert(stream != null)
+        val theme = UITheme.loadFromJson(stream, "Darcula", javaClass.classLoader, Function.identity())
+        theme.applyProperties(defaults)
+      }
+    } catch (e: IOException) {
+      log(e)
+    }
+  }
 
   /**
    * Install additional Darcula defaults
    *
    * @param defaults of type UIDefaults
    */
-  @SuppressWarnings("DuplicateStringLiteralInspection")
-  private static void installDarculaDefaults(@NonNls final UIDefaults defaults) {
-    defaults.put("darcula.primary", new ColorUIResource(0x3c3f41));
-    defaults.put("darcula.contrastColor", new ColorUIResource(0x262626));
-
-    defaults.put("grayFilter", new UIUtil.GrayFilter(-100, -100, 100));
-    defaults.put("text.grayFilter", new UIUtil.GrayFilter(-15, -10, 100));
-  }
-
-  /**
-   * Installs and returns the defaults for dark lafs
-   *
-   * @return the defaults (type UIDefaults) of this MTDarkLaf object.
-   */
-  @Override
-  public UIDefaults getDefaults() {
-    final UIDefaults defaults = super.getDefaults();
-
-    MTLafInstaller.installDefaults(defaults);
-    // Install darcula defaults
-    installDarculaDefaults(defaults);
-    // Install material defaults
-    MTLafInstaller.installMTDefaults(defaults);
-
-    return defaults;
-  }
-
-  @Override
-  protected void loadDefaults(final UIDefaults defaults) {
-    try {
-      try (@NonNls final InputStream stream = DarculaLaf.class.getResourceAsStream(getPrefix() + ".theme.json")) {
-        assert stream != null;
-        final UITheme theme = UITheme.loadFromJson(stream, "Darcula", getClass().getClassLoader(), Function.identity());
-        theme.applyProperties(defaults);
-      }
-    } catch (final IOException e) {
-      log(e);
-    }
+  private fun installDarculaDefaults(defaults: @NonNls UIDefaults) {
+    defaults["darcula.primary"] = ColorUIResource(0x3c3f41)
+    defaults["darcula.contrastColor"] = ColorUIResource(0x262626)
+    defaults["grayFilter"] = UIUtil.GrayFilter(-100, -100, 100)
+    defaults["text.grayFilter"] = UIUtil.GrayFilter(-15, -10, 100)
   }
 
 }
