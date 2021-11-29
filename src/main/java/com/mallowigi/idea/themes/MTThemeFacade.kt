@@ -44,7 +44,7 @@ interface MTThemeFacade {
    *
    * @return The color scheme
    */
-  val themeColorScheme: String
+  val themeColorScheme: String?
 
   /**
    * The internal theme

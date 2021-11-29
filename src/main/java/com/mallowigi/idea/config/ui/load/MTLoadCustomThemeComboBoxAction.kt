@@ -44,8 +44,8 @@ import com.mallowigi.idea.MTBundledThemesManager
 import com.mallowigi.idea.config.custom.MTCustomThemeConfig
 import com.mallowigi.idea.config.ui.MTCustomThemeForm
 import com.mallowigi.idea.messages.MaterialThemeBundle.message
+import com.mallowigi.idea.themes.MTThemeCollection
 import com.mallowigi.idea.themes.MTThemeFacade
-import com.mallowigi.idea.themes.MTThemes
 import java.awt.BorderLayout
 import java.io.File
 import javax.swing.JComponent
@@ -99,7 +99,7 @@ class MTLoadCustomThemeComboBoxAction(private val mtCustomThemeForm: MTCustomThe
     group.addSeparator(message("MTCustomThemeForm.loadFromButton.loadFrom"))
 
     // Add the bundled themes
-    MTThemes.getAllThemes()
+    MTThemeCollection.getAllThemes()
       .filterNot { it.isCustom || it.isNative }
       .forEach { group.add(ImportBundledThemeAction(it)) }
 

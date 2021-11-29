@@ -167,6 +167,8 @@
                             id="MTAnalytics" />
         <applicationService serviceImplementation="com.mallowigi.idea.themes.MTAccentMode"
                             id="MTAccentMode" />
+        <applicationService serviceImplementation="com.mallowigi.idea.themes.MTThemeCollection"
+                            id="MTThemeCollection" />
         <projectService serviceImplementation="com.mallowigi.idea.config.project.MTProjectConfig" />
 
         <applicationConfigurable instance="com.mallowigi.idea.config.MTHome"
@@ -194,26 +196,26 @@
 
         <notificationGroup displayType="BALLOON" id="Material Theme Notifications" />
 
-        <themeProvider id="CUSTOM" path="/themes/custom.theme.json" />
-        <themeProvider id="LIGHT_CUSTOM" path="/themes/light_custom.theme.json" />
+        <themeProvider id="mt.custom" path="/themes/custom.theme.json" />
+        <themeProvider id="mt.light_custom" path="/themes/light_custom.theme.json" />
 
-        <themeProvider id="OCEANIC" path="/themes/oceanic.theme.json" />
-        <themeProvider id="DARKER" path="/themes/darker.theme.json" />
-        <themeProvider id="LIGHTER" path="/themes/lighter.theme.json" />
-        <themeProvider id="PALENIGHT" path="/themes/palenight.theme.json" />
-        <themeProvider id="DEEPOCEAN" path="/themes/deepocean.theme.json" />
-        <themeProvider id="ARC_DARK" path="/themes/arcdark.theme.json" />
-        <themeProvider id="ONE_DARK" path="/themes/onedark.theme.json" />
-        <themeProvider id="ONE_LIGHT" path="/themes/onelight.theme.json" />
-        <themeProvider id="DRACULA" path="/themes/dracula.theme.json" />
-        <themeProvider id="MONOKAI" path="/themes/monokai.theme.json" />
-        <themeProvider id="GITHUB" path="/themes/github.theme.json" />
-        <themeProvider id="GITHUB_DARK" path="/themes/github_dark.theme.json" />
-        <themeProvider id="SOLARIZED_DARK" path="/themes/solardark.theme.json" />
-        <themeProvider id="SOLARIZED_LIGHT" path="/themes/solarlight.theme.json" />
-        <themeProvider id="NIGHT_OWL" path="/themes/nightowl.theme.json" />
-        <themeProvider id="LIGHT_OWL" path="/themes/lightowl.theme.json" />
-        <themeProvider id="MOONLIGHT" path="/themes/moonlight.theme.json" />
+        <themeProvider id="mt.oceanic" path="/themes/oceanic.theme.json" />
+        <themeProvider id="mt.darker" path="/themes/darker.theme.json" />
+        <themeProvider id="mt.lighter" path="/themes/lighter.theme.json" />
+        <themeProvider id="mt.palenight" path="/themes/palenight.theme.json" />
+        <themeProvider id="mt.deepocean" path="/themes/deepocean.theme.json" />
+        <themeProvider id="arc.dark" path="/themes/arcdark.theme.json" />
+        <themeProvider id="one.dark" path="/themes/onedark.theme.json" />
+        <themeProvider id="one.light" path="/themes/onelight.theme.json" />
+        <themeProvider id="dracula" path="/themes/dracula.theme.json" />
+        <themeProvider id="monokai" path="/themes/monokai.theme.json" />
+        <themeProvider id="github" path="/themes/github.theme.json" />
+        <themeProvider id="github_dark" path="/themes/github_dark.theme.json" />
+        <themeProvider id="solarized.dark" path="/themes/solardark.theme.json" />
+        <themeProvider id="solarized.light" path="/themes/solarlight.theme.json" />
+        <themeProvider id="nightowl" path="/themes/nightowl.theme.json" />
+        <themeProvider id="lightowl" path="/themes/lightowl.theme.json" />
+        <themeProvider id="moonlight" path="/themes/moonlight.theme.json" />
 
 
         <search.optionContributor implementation="com.mallowigi.idea.config.application.MTOptionContributor"

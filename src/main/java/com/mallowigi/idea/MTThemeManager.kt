@@ -52,8 +52,9 @@ import com.intellij.util.ui.JBUI
 import com.intellij.util.ui.UIUtil
 import com.mallowigi.idea.config.application.MTConfig
 import com.mallowigi.idea.listeners.MTTopics
+import com.mallowigi.idea.themes.MTTheme
+import com.mallowigi.idea.themes.MTThemeCollection
 import com.mallowigi.idea.themes.MTThemeFacade
-import com.mallowigi.idea.themes.MTThemes
 import com.mallowigi.idea.themes.lists.AccentResources
 import com.mallowigi.idea.themes.lists.FontResources
 import com.mallowigi.idea.utils.MTStyledKitPatcher
@@ -289,11 +290,11 @@ class MTThemeManager private constructor() : Disposable {
    * @param name    name
    */
   fun activateLAF(themeId: String, isDark: Boolean, name: String) {
-    val themeFor = MTThemes.getThemeFor(themeId)
+    val themeFor = MTThemeCollection.getThemeFor(themeId)
     if (themeFor != null) {
       activate(themeFor)
     } else {
-      val mtTheme: MTThemeFacade = MTThemes.NATIVE
+      val mtTheme: MTThemeFacade = MTTheme.NATIVE
       mtTheme.theme.isThemeDark = isDark
       mtTheme.theme.themeName = name
       activate(mtTheme)
@@ -307,7 +308,7 @@ class MTThemeManager private constructor() : Disposable {
    * @return
    */
   fun isMaterialTheme(theme: @NonNls UIManager.LookAndFeelInfo?): Boolean =
-    theme is UIThemeBasedLookAndFeelInfo && MTThemes.getThemeFor(theme.theme.id) != null
+    theme is UIThemeBasedLookAndFeelInfo && MTThemeCollection.getThemeFor(theme.theme.id) != null
 
   /**
    * Activate a Look and Feel
@@ -324,7 +325,7 @@ class MTThemeManager private constructor() : Disposable {
   fun activate(mtTheme: MTThemeFacade?) {
     var newTheme = mtTheme
     if (newTheme == null) {
-      newTheme = MTThemes.OCEANIC
+      newTheme = MTTheme.OCEANIC
     }
     mtConfig.selectedTheme = newTheme
     newTheme.theme.activate()

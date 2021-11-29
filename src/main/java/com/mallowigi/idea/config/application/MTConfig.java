@@ -47,8 +47,9 @@ import com.mallowigi.idea.license.MTMainProductLicenseChecker;
 import com.mallowigi.idea.listeners.MTTopics;
 import com.mallowigi.idea.messages.MaterialThemeBundle;
 import com.mallowigi.idea.themes.MTAccents;
+import com.mallowigi.idea.themes.MTTheme;
+import com.mallowigi.idea.themes.MTThemeCollection;
 import com.mallowigi.idea.themes.MTThemeFacade;
-import com.mallowigi.idea.themes.MTThemes;
 import com.mallowigi.idea.utils.MTUiUtils;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
@@ -222,7 +223,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   String highlightColor = ACCENT_COLOR;
   @NonNls
   @Property
-  String selectedTheme = MTThemes.OCEANIC.getName();
+  String selectedTheme = MTTheme.OCEANIC.getName();
   @Property
   String userId = new UID().toString();
   @Property
@@ -429,7 +430,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     pristineConfig = true;
     rightTreeIndent = DEFAULT_RIGHT_INDENT;
     secondAccentColor = SECOND_ACCENT_COLOR;
-    selectedTheme = MTThemes.OCEANIC.getName();
+    selectedTheme = MTTheme.OCEANIC.getName();
     showOverlays = true;
     showWhatsNew = true;
     statusBarTheme = true;
@@ -492,12 +493,12 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   }
 
   public MTThemeFacade getSelectedTheme() {
-    final MTThemeFacade themeFor = MTThemes.getThemeFor(selectedTheme);
+    final MTThemeFacade themeFor = MTThemeCollection.getThemeFor(selectedTheme);
     if (!isPremium && themeFor != null && themeFor.isPremium()) {
-      return MTThemes.OCEANIC;
+      return MTTheme.OCEANIC;
     }
 
-    return ObjectUtils.notNull(themeFor, MTThemes.OCEANIC);
+    return ObjectUtils.notNull(themeFor, MTTheme.OCEANIC);
   }
   //endregion
 

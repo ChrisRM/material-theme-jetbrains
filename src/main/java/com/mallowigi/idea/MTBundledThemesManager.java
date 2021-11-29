@@ -42,7 +42,7 @@ import com.intellij.openapi.vfs.VirtualFileWrapper;
 import com.intellij.util.ThrowableRunnable;
 import com.mallowigi.idea.messages.MaterialThemeBundle;
 import com.mallowigi.idea.themes.BundledThemeEP;
-import com.mallowigi.idea.themes.MTThemes;
+import com.mallowigi.idea.themes.MTThemeCollection;
 import com.mallowigi.idea.themes.models.MTBundledTheme;
 import com.mallowigi.idea.themes.models.MTDarkBundledTheme;
 import com.mallowigi.idea.themes.models.MTLightBundledTheme;
@@ -85,7 +85,7 @@ public final class MTBundledThemesManager implements Disposable {
     Objects.requireNonNull(mtBundledTheme).setThemeName(ep.name);
     bundledThemes.put(mtBundledTheme.getThemeId(), mtBundledTheme);
 
-    MTThemes.installTheme(mtBundledTheme);
+    MTThemeCollection.installTheme(mtBundledTheme);
   }
 
   void removeBundledTheme(final BundledThemeEP ep) throws IOException {

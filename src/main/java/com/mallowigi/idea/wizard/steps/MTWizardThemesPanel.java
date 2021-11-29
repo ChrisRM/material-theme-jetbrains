@@ -35,8 +35,8 @@ import com.intellij.ui.components.JBScrollPane;
 import com.mallowigi.idea.MTThemeManager;
 import com.mallowigi.idea.config.application.MTConfig;
 import com.mallowigi.idea.messages.MTWizardBundle;
+import com.mallowigi.idea.themes.MTTheme;
 import com.mallowigi.idea.themes.MTThemeFacade;
-import com.mallowigi.idea.themes.MTThemes;
 import net.miginfocom.swing.MigLayout;
 import org.jetbrains.annotations.NotNull;
 
@@ -101,71 +101,71 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
   }
 
   private void oceanicButtonActionPerformed(final ActionEvent e) {
-    selectTheme(MTThemes.OCEANIC);
+    selectTheme(MTTheme.OCEANIC);
   }
 
   private void darkerButtonActionPerformed(final ActionEvent e) {
-    selectTheme(MTThemes.DARKER);
+    selectTheme(MTTheme.DARKER);
   }
 
   private void palenightButtonActionPerformed(final ActionEvent e) {
-    selectTheme(MTThemes.PALENIGHT);
+    selectTheme(MTTheme.PALENIGHT);
   }
 
   private void lighterButtonActionPerformed(final ActionEvent e) {
-    selectTheme(MTThemes.LIGHTER);
+    selectTheme(MTTheme.LIGHTER);
   }
 
   private void deepoceanButtonActionPerformed(final ActionEvent e) {
-    selectTheme(MTThemes.DEEPOCEAN);
+    selectTheme(MTTheme.DEEPOCEAN);
   }
 
   private void monokaiButtonActionPerformed(final ActionEvent e) {
-    selectTheme(MTThemes.MONOKAI);
+    selectTheme(MTTheme.MONOKAI);
   }
 
   private void arcdarkButtonActionPerformed(final ActionEvent e) {
-    selectTheme(MTThemes.ARC_DARK);
+    selectTheme(MTTheme.ARC_DARK);
   }
 
   private void onedarkButtonActionPerformed(final ActionEvent e) {
-    selectTheme(MTThemes.ONE_DARK);
+    selectTheme(MTTheme.ONE_DARK);
   }
 
   private void onelightButtonActionPerformed(final ActionEvent e) {
-    selectTheme(MTThemes.ONE_LIGHT);
+    selectTheme(MTTheme.ONE_LIGHT);
   }
 
   private void solarizedDarkButtonActionPerformed(final ActionEvent e) {
-    selectTheme(MTThemes.SOLARIZED_DARK);
+    selectTheme(MTTheme.SOLARIZED_DARK);
   }
 
   private void draculaButtonActionPerformed(final ActionEvent e) {
-    selectTheme(MTThemes.DRACULA);
+    selectTheme(MTTheme.DRACULA);
   }
 
   private void solarizedLightButtonActionPerformed(final ActionEvent e) {
-    selectTheme(MTThemes.SOLARIZED_LIGHT);
+    selectTheme(MTTheme.SOLARIZED_LIGHT);
   }
 
   private void githubButtonActionPerformed(final ActionEvent e) {
-    selectTheme(MTThemes.GITHUB);
+    selectTheme(MTTheme.GITHUB);
   }
 
   private void nightowlButtonActionPerformed(final ActionEvent e) {
-    selectTheme(MTThemes.NIGHTOWL);
+    selectTheme(MTTheme.NIGHTOWL);
   }
 
   private void moonlightButtonActionPerformed(final ActionEvent e) {
-    selectTheme(MTThemes.MOONLIGHT);
+    selectTheme(MTTheme.MOONLIGHT);
   }
 
   private void githubdarkButtonActionPerformed(final ActionEvent e) {
-    selectTheme(MTThemes.GITHUB_DARK);
+    selectTheme(MTTheme.GITHUB_DARK);
   }
 
   private void lightowlButtonActionPerformed(final ActionEvent e) {
-    selectTheme(MTThemes.LIGHTOWL);
+    selectTheme(MTTheme.LIGHTOWL);
   }
 
   @SuppressWarnings({"OverlyLongMethod",

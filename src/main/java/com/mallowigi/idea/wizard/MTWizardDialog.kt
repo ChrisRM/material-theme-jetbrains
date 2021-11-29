@@ -32,7 +32,7 @@ import com.intellij.util.ui.JBUI
 import com.mallowigi.idea.MTThemeManager
 import com.mallowigi.idea.config.application.MTConfig
 import com.mallowigi.idea.messages.MTWizardBundle
-import com.mallowigi.idea.themes.MTThemes
+import com.mallowigi.idea.themes.MTTheme
 import java.awt.event.ActionEvent
 import java.awt.event.ActionListener
 import javax.swing.JComponent
@@ -52,7 +52,7 @@ class MTWizardDialog(
     configCopy = MTConfig.getInstance().clone()
     setSize(1200, 800)
     if (firstRun) {
-      MTThemeManager.instance.setLookAndFeel(MTThemes.OCEANIC)
+      MTThemeManager.instance.setLookAndFeel(MTTheme.OCEANIC)
       MTThemeManager.instance.activate()
     }
 

@@ -50,8 +50,8 @@ import com.mallowigi.idea.config.enums.TabHighlightPositions;
 import com.mallowigi.idea.license.MTHCLicenseChecker;
 import com.mallowigi.idea.license.MTMainProductLicenseChecker;
 import com.mallowigi.idea.messages.MaterialThemeBundle;
+import com.mallowigi.idea.themes.MTThemeCollection;
 import com.mallowigi.idea.themes.MTThemeFacade;
-import com.mallowigi.idea.themes.MTThemes;
 import com.mallowigi.idea.utils.MTUiUtils;
 import net.miginfocom.swing.MigLayout;
 import org.jetbrains.annotations.NonNls;
@@ -1785,7 +1785,7 @@ public class MTForm implements MTFormUI, Disposable {
    */
   private void initComboboxes() {
     // Themes
-    themeComboBox.setModel(new DefaultComboBoxModel<>(MTThemes.getAllThemes()));
+    themeComboBox.setModel(new DefaultComboBoxModel<MTThemeFacade>(MTThemeCollection.getAllThemes()));
     themeComboBox.setRenderer(new ListCellRendererWrapper<MTThemeFacade>() {
       @Override
       public void customize(final JList list, final MTThemeFacade value, final int index, final boolean selected, final boolean hasFocus) {
