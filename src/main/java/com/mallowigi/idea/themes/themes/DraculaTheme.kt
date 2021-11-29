@@ -34,7 +34,7 @@ import javax.swing.plaf.ColorUIResource
  *
  */
 class DraculaTheme : MTAbstractTheme() {
-  override var themeId: String = "dracula"
+  override var themeId: String = "DRACULA"
 
   override var isThemeDark: Boolean = true
 

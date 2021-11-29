@@ -34,7 +34,7 @@ import javax.swing.plaf.ColorUIResource
  *
  */
 class MTDarkerTheme : MTAbstractTheme() {
-  override var themeId: String = "mt.darker"
+  override var themeId: String = "DARKER"
 
   override var isThemeDark: Boolean = true
 

@@ -33,7 +33,7 @@ import javax.swing.plaf.ColorUIResource
  *
  */
 class MonokaiTheme : MTAbstractTheme() {
-  override var themeId: String = "monokai"
+  override var themeId: String = "MONOKAI"
 
   override var isThemeDark: Boolean = true
 

@@ -44,7 +44,7 @@ class MTCustomTheme : MTAbstractTheme() {
 
   override var themeColorScheme: String? = null
 
-  override var themeId: String = "mt.custom"
+  override var themeId: String = "CUSTOM"
 
   override var isThemeDark: Boolean = true
 
