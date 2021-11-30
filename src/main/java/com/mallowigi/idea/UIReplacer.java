@@ -29,15 +29,20 @@ package com.mallowigi.idea;
 import com.intellij.codeInsight.lookup.impl.LookupCellRenderer;
 import com.intellij.history.integration.ui.views.RevisionsList;
 import com.intellij.ide.actions.Switcher;
-import com.intellij.ide.bookmarks.actions.MnemonicChooser;
 import com.intellij.ide.navigationToolbar.ui.NavBarUIManager;
 import com.intellij.ide.plugins.PluginManagerCore;
 import com.intellij.openapi.actionSystem.ex.ActionButtonLook;
+import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.extensions.PluginId;
 import com.intellij.openapi.keymap.impl.ui.MouseShortcutPanel;
 import com.intellij.openapi.roots.ui.configuration.JavaModuleSourceRootEditHandler;
 import com.intellij.openapi.roots.ui.configuration.JavaTestSourceRootEditHandler;
-import com.intellij.ui.*;
+import com.intellij.ui.CaptionPanel;
+import com.intellij.ui.DarculaColors;
+import com.intellij.ui.Gray;
+import com.intellij.ui.JBColor;
+import com.intellij.ui.LightColors;
+import com.intellij.ui.SimpleTextAttributes;
 import com.intellij.ui.colorpicker.ColorPickerBuilderKt;
 import com.intellij.ui.tabs.FileColorManagerImpl;
 import com.intellij.ui.tabs.impl.SingleHeightTabs;
@@ -63,7 +68,9 @@ import java.util.stream.Stream;
 @SuppressWarnings({"FeatureEnvy",
   "MagicNumber",
   "DuplicateStringLiteralInspection",
-  "KotlinInternalInJava"})
+  "KotlinInternalInJava",
+  "HardCodedStringLiteral",
+  "UnstableApiUsage"})
 public enum UIReplacer {
   DEFAULT;
 
@@ -80,24 +87,25 @@ public enum UIReplacer {
       patchAttributes();
       patchKeymap();
       patchDebugWindow();
-      patchBookmarks();
       patchJavaModules();
       patchColors();
       patchColorPicker();
       patchScopes();
 
-      if (PluginManagerCore.isPluginInstalled(PluginId.getId("training"))) {
+      if (PluginManagerCore.isPluginInstalled(PluginId.getId("training"))) { //NON-NLS
         patchLearner();
       }
 
+      //noinspection CallToSuspiciousStringMethod
       if (!"CodeWithMeGuest".equals(PlatformUtils.getPlatformPrefix())) {
         patchLocalHistory();
       }
     } catch (final IllegalAccessException | NoSuchFieldException | ClassNotFoundException e) {
-      e.printStackTrace();
+      Logger.getInstance(UIReplacer.class).error(e);
     }
   }
 
+  @SuppressWarnings("OverlyBroadCatchBlock")
   private static void patchLearner() throws NoSuchFieldException, IllegalAccessException {
     try {
       final Class<?> uiSettings = Class.forName("training.ui.UISettings");
@@ -109,11 +117,6 @@ public enum UIReplacer {
     } catch (final Exception e) {
       // do nothing, plugin is absent
     }
-  }
-
-  private static void patchBookmarks() throws NoSuchFieldException, IllegalAccessException {
-    StaticPatcher.setFinalStatic(MnemonicChooser.class, "OCCUPIED_CELL_COLOR", MTUI.Button.getSelectedBackgroundColor());
-    StaticPatcher.setFinalStatic(MnemonicChooser.class, "FREE_CELL_COLOR", MTUI.Button.getBackgroundColor());
   }
 
   private static void patchJavaModules() throws NoSuchFieldException, IllegalAccessException {
@@ -165,9 +168,6 @@ public enum UIReplacer {
     StaticPatcher.setFinalStatic(LightColors.class, "YELLOW", new JBColor(MTUI.MTColor.YELLOW, MTUI.MTColor.DARK_YELLOW));
     StaticPatcher.setFinalStatic(LightColors.class, "GREEN", new JBColor(MTUI.MTColor.GREEN, MTUI.MTColor.DARK_GREEN));
     StaticPatcher.setFinalStatic(LightColors.class, "CYAN", new JBColor(MTUI.MTColor.CYAN, MTUI.MTColor.DARK_CYAN));
-
-    //    StaticPatcher.setFinalStatic(JBColor.class, "PanelBackground", MTUI.Panel.getAccentColor());
-
   }
 
   private static void patchOnMouseOver() throws NoSuchFieldException, IllegalAccessException {
@@ -236,7 +236,7 @@ public enum UIReplacer {
       StaticPatcher.setFinalStatic(studioColors, "border", panelBackground);
       StaticPatcher.setFinalStatic(studioColors, "borderLight", secondaryBackground);
     } catch (final ClassNotFoundException e) {
-      //      e.printStackTrace();
+      Logger.getInstance(UIReplacer.class).error(e);
     }
   }
 
@@ -254,10 +254,8 @@ public enum UIReplacer {
                                      .toArray();
 
       StaticPatcher.setFinalStatic((Field) objects[0], color);
-
-      //      StaticPatcher.setFinalStatic(kotlinParamInfo, "GREEN_BACKGROUND", color);
     } catch (final ClassNotFoundException e) {
-      //      e.printStackTrace();
+      Logger.getInstance(UIReplacer.class);
     }
   }
 
@@ -324,14 +322,13 @@ public enum UIReplacer {
    * Patch the Completion Popup background to match the currently selected
    * theme.
    */
-  @SuppressWarnings("HardCodedStringLiteral")
   static void patchCompletionPopup() {
     final Color autoCompleteBackground = MTUI.Panel.getSecondaryBackground();
     try {
       final Field backgroundColorField = LookupCellRenderer.class.getDeclaredField("BACKGROUND_COLOR");
       StaticPatcher.setFinalStatic(backgroundColorField, autoCompleteBackground);
     } catch (final NoSuchFieldException | IllegalAccessException e) {
-      System.err.println("Unable to patch completion popup: " + e.getLocalizedMessage());
+      Logger.getInstance(UIReplacer.class).error(e);
     }
   }
 
@@ -370,7 +367,7 @@ public enum UIReplacer {
         )
       );
     } catch (final NoSuchFieldException | IllegalAccessException e) {
-      e.printStackTrace();
+      Logger.getInstance(UIReplacer.class).error(e);
     }
   }
 }
