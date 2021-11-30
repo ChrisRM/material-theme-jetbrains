@@ -23,351 +23,372 @@
  *
  *
  */
+@file:Suppress("HardCodedStringLiteral", "SpellCheckingInspection")
 
-package com.mallowigi.idea;
+package com.mallowigi.idea
 
-import com.intellij.codeInsight.lookup.impl.LookupCellRenderer;
-import com.intellij.history.integration.ui.views.RevisionsList;
-import com.intellij.ide.actions.Switcher;
-import com.intellij.ide.navigationToolbar.ui.NavBarUIManager;
-import com.intellij.ide.plugins.PluginManagerCore;
-import com.intellij.openapi.actionSystem.ex.ActionButtonLook;
-import com.intellij.openapi.diagnostic.Logger;
-import com.intellij.openapi.extensions.PluginId;
-import com.intellij.openapi.keymap.impl.ui.MouseShortcutPanel;
-import com.intellij.openapi.roots.ui.configuration.JavaModuleSourceRootEditHandler;
-import com.intellij.openapi.roots.ui.configuration.JavaTestSourceRootEditHandler;
-import com.intellij.ui.CaptionPanel;
-import com.intellij.ui.DarculaColors;
-import com.intellij.ui.Gray;
-import com.intellij.ui.JBColor;
-import com.intellij.ui.LightColors;
-import com.intellij.ui.SimpleTextAttributes;
-import com.intellij.ui.colorpicker.ColorPickerBuilderKt;
-import com.intellij.ui.tabs.FileColorManagerImpl;
-import com.intellij.ui.tabs.impl.SingleHeightTabs;
-import com.intellij.util.PlatformUtils;
-import com.intellij.util.containers.ContainerUtil;
-import com.intellij.util.ui.PlatformColors;
-import com.intellij.util.ui.UIUtil;
-import com.mallowigi.idea.config.application.MTConfig;
-import com.mallowigi.idea.ui.MTActionButtonLook;
-import com.mallowigi.idea.ui.MTNavBarUI;
-import com.mallowigi.idea.utils.MTUI;
-import com.mallowigi.idea.utils.MTUiUtils;
-import com.mallowigi.idea.utils.StaticPatcher;
-import training.ui.UISettings;
+import com.intellij.codeInsight.lookup.impl.LookupCellRenderer
+import com.intellij.history.integration.ui.views.RevisionsList
+import com.intellij.ide.navigationToolbar.ui.NavBarUIManager
+import com.intellij.ide.plugins.PluginManagerCore
+import com.intellij.ide.ui.UISettings
+import com.intellij.openapi.actionSystem.ex.ActionButtonLook
+import com.intellij.openapi.diagnostic.thisLogger
+import com.intellij.openapi.extensions.PluginId
+import com.intellij.openapi.roots.ui.configuration.JavaModuleSourceRootEditHandler
+import com.intellij.openapi.roots.ui.configuration.JavaTestSourceRootEditHandler
+import com.intellij.ui.CaptionPanel
+import com.intellij.ui.DarculaColors
+import com.intellij.ui.Gray
+import com.intellij.ui.JBColor
+import com.intellij.ui.LightColors
+import com.intellij.ui.SimpleTextAttributes
+import com.intellij.ui.colorpicker.ColorPickerBuilder
+import com.intellij.ui.tabs.FileColorManagerImpl
+import com.intellij.ui.tabs.impl.SingleHeightTabs
+import com.intellij.util.PlatformUtils
+import com.intellij.util.containers.ContainerUtil
+import com.intellij.util.ui.PlatformColors
+import com.intellij.util.ui.UIUtil
+import com.mallowigi.idea.config.application.MTConfig
+import com.mallowigi.idea.ui.MTActionButtonLook
+import com.mallowigi.idea.ui.MTNavBarUI
+import com.mallowigi.idea.utils.MTUI
+import com.mallowigi.idea.utils.MTUI.Label.labelDisabledForeground
+import com.mallowigi.idea.utils.MTUI.Label.labelInfoForeground
+import com.mallowigi.idea.utils.MTUI.Label.selectedForeground
+import com.mallowigi.idea.utils.MTUI.Panel.accentColor
+import com.mallowigi.idea.utils.MTUI.Panel.background
+import com.mallowigi.idea.utils.MTUI.Panel.contrastBackground
+import com.mallowigi.idea.utils.MTUI.Panel.foreground
+import com.mallowigi.idea.utils.MTUI.Panel.highlightBackground
+import com.mallowigi.idea.utils.MTUI.Panel.linkForeground
+import com.mallowigi.idea.utils.MTUI.Panel.primaryForeground
+import com.mallowigi.idea.utils.MTUI.Panel.secondaryBackground
+import com.mallowigi.idea.utils.MTUI.Separator.separatorColor
+import com.mallowigi.idea.utils.MTUiUtils
+import com.mallowigi.idea.utils.StaticPatcher.setFinal
+import com.mallowigi.idea.utils.StaticPatcher.setFinalStatic
+import java.awt.Color
+import java.lang.reflect.Field
+import java.util.Arrays
+import javax.swing.UIManager
 
-import javax.swing.*;
-import java.awt.*;
-import java.lang.reflect.Field;
-import java.util.Arrays;
-import java.util.Map;
-import java.util.stream.Stream;
+private const val TRAINING_PLUGIN = "training"
 
-@SuppressWarnings({"FeatureEnvy",
-  "MagicNumber",
-  "DuplicateStringLiteralInspection",
-  "KotlinInternalInJava",
-  "HardCodedStringLiteral",
-  "UnstableApiUsage"})
-public enum UIReplacer {
-  DEFAULT;
+private const val TAB_PADDING = 10
 
-  public static void patchUI() {
+/**
+ * Replace static UI elements with custom ones.
+ *
+ */
+object UIReplacer {
+
+  /**
+   * Main method
+   */
+  @Suppress("UnstableApiUsage")
+  fun patchUI() {
     try {
-      patchCompletionPopup();
-      patchTabs();
-      patchGrays();
-      patchNavBar();
-      patchIdeaActionButton();
-      patchOnMouseOver();
-      patchAndroid();
-      patchKotlin();
-      patchAttributes();
-      patchKeymap();
-      patchDebugWindow();
-      patchJavaModules();
-      patchColors();
-      patchColorPicker();
-      patchScopes();
+      patchCompletionPopup()
+      patchTabs()
+      patchGrays()
+      patchNavBar()
+      patchIdeaActionButton()
+      patchAndroid()
+      patchKotlin()
+      patchAttributes()
+      patchDebugWindow()
+      patchJavaModules()
+      patchColors()
+      patchColorPicker()
+      patchScopes()
 
-      if (PluginManagerCore.isPluginInstalled(PluginId.getId("training"))) { //NON-NLS
-        patchLearner();
+      if (PluginManagerCore.isPluginInstalled(PluginId.getId(TRAINING_PLUGIN))) {
+        patchLearner()
       }
 
-      //noinspection CallToSuspiciousStringMethod
-      if (!"CodeWithMeGuest".equals(PlatformUtils.getPlatformPrefix())) {
-        patchLocalHistory();
+      if ("CodeWithMeGuest" != PlatformUtils.getPlatformPrefix()) {
+        patchLocalHistory()
       }
-    } catch (final IllegalAccessException | NoSuchFieldException | ClassNotFoundException e) {
-      Logger.getInstance(UIReplacer.class).error(e);
+
+    } catch (e: Exception) {
+      thisLogger().error(e)
     }
   }
 
-  @SuppressWarnings("OverlyBroadCatchBlock")
-  private static void patchLearner() throws NoSuchFieldException, IllegalAccessException {
+  @Throws(NoSuchFieldException::class, IllegalAccessException::class)
+  private fun patchLearner() {
     try {
-      final Class<?> uiSettings = Class.forName("training.ui.UISettings");
-      final JBColor border = new JBColor(MTUI.Separator.getSeparatorColor(), MTUI.Separator.getSeparatorColor());
-      final Field[] fields = uiSettings.getDeclaredFields();
-      final Stream<Field> fieldStream = Arrays.stream(fields).filter(field -> field.getType().equals(Color.class));
-
-      StaticPatcher.setFinal(UISettings.Companion.getInstance(), MTUiUtils.findField(fieldStream, "separatorColor"), border);
-    } catch (final Exception e) {
+      val uiSettings = Class.forName("training.ui.UISettings")
+      val border = JBColor(separatorColor, separatorColor)
+      val fields = uiSettings.declaredFields
+      val fieldStream = Arrays.stream(fields).filter { field: Field -> field.type == Color::class.java }
+      setFinal(UISettings.instance, MTUiUtils.findField(fieldStream, "separatorColor"), border)
+    } catch (e: Exception) {
       // do nothing, plugin is absent
     }
   }
 
-  private static void patchJavaModules() throws NoSuchFieldException, IllegalAccessException {
-    StaticPatcher.setFinalStatic(JavaModuleSourceRootEditHandler.class, "SOURCES_COLOR", MTUI.MTColor.BLUE);
-    StaticPatcher.setFinalStatic(JavaTestSourceRootEditHandler.class, "TESTS_COLOR", MTUI.MTColor.GREEN);
+  @Throws(NoSuchFieldException::class, IllegalAccessException::class)
+  private fun patchJavaModules() {
+    setFinalStatic(JavaModuleSourceRootEditHandler::class.java, "SOURCES_COLOR", MTUI.MTColor.BLUE)
+    setFinalStatic(JavaTestSourceRootEditHandler::class.java, "TESTS_COLOR", MTUI.MTColor.GREEN)
   }
 
-  private static void patchColorPicker() throws NoSuchFieldException, IllegalAccessException {
-    StaticPatcher.setFinalStatic(ColorPickerBuilderKt.class, "PICKER_BACKGROUND_COLOR", MTUI.Panel.getSecondaryBackground());
-    StaticPatcher.setFinalStatic(ColorPickerBuilderKt.class, "PICKER_TEXT_COLOR", MTUI.Panel.getForeground());
+  @Throws(NoSuchFieldException::class, IllegalAccessException::class)
+  private fun patchColorPicker() {
+    setFinalStatic(ColorPickerBuilder::class.java, "PICKER_BACKGROUND_COLOR", secondaryBackground)
+    setFinalStatic(ColorPickerBuilder::class.java, "PICKER_TEXT_COLOR", foreground)
   }
 
-  @SuppressWarnings("OverlyLongMethod")
-  private static void patchColors() throws NoSuchFieldException, IllegalAccessException {
-    StaticPatcher.setFinalStatic(JBColor.class, "red", new JBColor(MTUI.MTColor.RED, MTUI.MTColor.DARK_RED));
-    StaticPatcher.setFinalStatic(JBColor.class, "RED", new JBColor(MTUI.MTColor.RED, MTUI.MTColor.DARK_RED));
-    StaticPatcher.setFinalStatic(JBColor.class, "blue", MTUI.Panel.getAccentColor());
-    StaticPatcher.setFinalStatic(JBColor.class, "BLUE", MTUI.Panel.getAccentColor());
-    StaticPatcher.setFinalStatic(JBColor.class, "orange", new JBColor(MTUI.MTColor.ORANGE, MTUI.MTColor.DARK_ORANGE));
-    StaticPatcher.setFinalStatic(JBColor.class, "ORANGE", new JBColor(MTUI.MTColor.ORANGE, MTUI.MTColor.DARK_ORANGE));
-    StaticPatcher.setFinalStatic(JBColor.class, "pink", new JBColor(MTUI.MTColor.PINK, MTUI.MTColor.DARK_PINK));
-    StaticPatcher.setFinalStatic(JBColor.class, "PINK", new JBColor(MTUI.MTColor.PINK, MTUI.MTColor.DARK_PINK));
-    StaticPatcher.setFinalStatic(JBColor.class, "yellow", new JBColor(MTUI.MTColor.YELLOW, MTUI.MTColor.DARK_YELLOW));
-    StaticPatcher.setFinalStatic(JBColor.class, "YELLOW", new JBColor(MTUI.MTColor.YELLOW, MTUI.MTColor.DARK_YELLOW));
-    StaticPatcher.setFinalStatic(JBColor.class, "green", new JBColor(MTUI.MTColor.GREEN, MTUI.MTColor.DARK_GREEN));
-    StaticPatcher.setFinalStatic(JBColor.class, "GREEN", new JBColor(MTUI.MTColor.GREEN, MTUI.MTColor.DARK_GREEN));
-    StaticPatcher.setFinalStatic(JBColor.class, "magenta", new JBColor(MTUI.MTColor.PURPLE, MTUI.MTColor.DARK_PURPLE));
-    StaticPatcher.setFinalStatic(JBColor.class, "MAGENTA", new JBColor(MTUI.MTColor.PURPLE, MTUI.MTColor.DARK_PURPLE));
-    StaticPatcher.setFinalStatic(JBColor.class, "cyan", new JBColor(MTUI.MTColor.CYAN, MTUI.MTColor.DARK_CYAN));
-    StaticPatcher.setFinalStatic(JBColor.class, "CYAN", new JBColor(MTUI.MTColor.CYAN, MTUI.MTColor.DARK_CYAN));
-
-    StaticPatcher.setFinalStatic(JBColor.class, "white", MTUI.Panel.getBackground());
-    StaticPatcher.setFinalStatic(JBColor.class, "WHITE", MTUI.Panel.getBackground());
-    StaticPatcher.setFinalStatic(JBColor.class, "black", MTUI.Panel.getForeground());
-    StaticPatcher.setFinalStatic(JBColor.class, "BLACK", MTUI.Panel.getForeground());
-    StaticPatcher.setFinalStatic(JBColor.class, "gray", MTUI.Panel.getPrimaryForeground());
-    //    StaticPatcher.setFinalStatic(JBColor.class, "GRAY", MTUI.Panel.getPrimaryForeground());
-    StaticPatcher.setFinalStatic(JBColor.class, "lightGray", MTUI.Separator.getSeparatorColor());
-    //    StaticPatcher.setFinalStatic(JBColor.class, "LIGHT_GRAY", MTUI.Separator.getSeparatorColor());
-    StaticPatcher.setFinalStatic(JBColor.class, "darkGray", MTUI.Separator.getSeparatorColor());
-    //    StaticPatcher.setFinalStatic(JBColor.class, "DARK_GRAY", MTUI.Separator.getSeparatorColor());
-
-    StaticPatcher.setFinalStatic(DarculaColors.class, "BLUE", MTUI.Panel.getAccentColor());
-    StaticPatcher.setFinalStatic(DarculaColors.class, "RED", MTUI.Panel.getAccentColor());
-    StaticPatcher.setFinalStatic(PlatformColors.class, "BLUE", MTUI.Panel.getAccentColor());
-
-    StaticPatcher.setFinalStatic(LightColors.class, "BLUE", new JBColor(MTUI.MTColor.BLUE, MTUI.MTColor.DARK_BLUE));
-    StaticPatcher.setFinalStatic(LightColors.class, "RED", new JBColor(MTUI.MTColor.RED, MTUI.MTColor.DARK_RED));
-    StaticPatcher.setFinalStatic(LightColors.class, "YELLOW", new JBColor(MTUI.MTColor.YELLOW, MTUI.MTColor.DARK_YELLOW));
-    StaticPatcher.setFinalStatic(LightColors.class, "GREEN", new JBColor(MTUI.MTColor.GREEN, MTUI.MTColor.DARK_GREEN));
-    StaticPatcher.setFinalStatic(LightColors.class, "CYAN", new JBColor(MTUI.MTColor.CYAN, MTUI.MTColor.DARK_CYAN));
+  @Throws(NoSuchFieldException::class, IllegalAccessException::class)
+  private fun patchColors() {
+    setFinalStatic(JBColor::class.java, "red", JBColor(MTUI.MTColor.RED, MTUI.MTColor.DARK_RED))
+    setFinalStatic(JBColor::class.java, "RED", JBColor(MTUI.MTColor.RED, MTUI.MTColor.DARK_RED))
+    setFinalStatic(JBColor::class.java, "blue", accentColor)
+    setFinalStatic(JBColor::class.java, "BLUE", accentColor)
+    setFinalStatic(JBColor::class.java, "orange", JBColor(MTUI.MTColor.ORANGE, MTUI.MTColor.DARK_ORANGE))
+    setFinalStatic(JBColor::class.java, "ORANGE", JBColor(MTUI.MTColor.ORANGE, MTUI.MTColor.DARK_ORANGE))
+    setFinalStatic(JBColor::class.java, "pink", JBColor(MTUI.MTColor.PINK, MTUI.MTColor.DARK_PINK))
+    setFinalStatic(JBColor::class.java, "PINK", JBColor(MTUI.MTColor.PINK, MTUI.MTColor.DARK_PINK))
+    setFinalStatic(JBColor::class.java, "yellow", JBColor(MTUI.MTColor.YELLOW, MTUI.MTColor.DARK_YELLOW))
+    setFinalStatic(JBColor::class.java, "YELLOW", JBColor(MTUI.MTColor.YELLOW, MTUI.MTColor.DARK_YELLOW))
+    setFinalStatic(JBColor::class.java, "green", JBColor(MTUI.MTColor.GREEN, MTUI.MTColor.DARK_GREEN))
+    setFinalStatic(JBColor::class.java, "GREEN", JBColor(MTUI.MTColor.GREEN, MTUI.MTColor.DARK_GREEN))
+    setFinalStatic(JBColor::class.java, "magenta", JBColor(MTUI.MTColor.PURPLE, MTUI.MTColor.DARK_PURPLE))
+    setFinalStatic(JBColor::class.java, "MAGENTA", JBColor(MTUI.MTColor.PURPLE, MTUI.MTColor.DARK_PURPLE))
+    setFinalStatic(JBColor::class.java, "cyan", JBColor(MTUI.MTColor.CYAN, MTUI.MTColor.DARK_CYAN))
+    setFinalStatic(JBColor::class.java, "CYAN", JBColor(MTUI.MTColor.CYAN, MTUI.MTColor.DARK_CYAN))
+    setFinalStatic(JBColor::class.java, "white", background)
+    setFinalStatic(JBColor::class.java, "WHITE", background)
+    setFinalStatic(JBColor::class.java, "black", foreground)
+    setFinalStatic(JBColor::class.java, "BLACK", foreground)
+    setFinalStatic(JBColor::class.java, "gray", primaryForeground)
+    setFinalStatic(JBColor::class.java, "lightGray", separatorColor)
+    setFinalStatic(JBColor::class.java, "darkGray", separatorColor)
+    setFinalStatic(DarculaColors::class.java, "BLUE", accentColor)
+    setFinalStatic(DarculaColors::class.java, "RED", accentColor)
+    setFinalStatic(PlatformColors::class.java, "BLUE", accentColor)
+    setFinalStatic(LightColors::class.java, "BLUE", JBColor(MTUI.MTColor.BLUE, MTUI.MTColor.DARK_BLUE))
+    setFinalStatic(LightColors::class.java, "RED", JBColor(MTUI.MTColor.RED, MTUI.MTColor.DARK_RED))
+    setFinalStatic(LightColors::class.java, "YELLOW", JBColor(MTUI.MTColor.YELLOW, MTUI.MTColor.DARK_YELLOW))
+    setFinalStatic(LightColors::class.java, "GREEN", JBColor(MTUI.MTColor.GREEN, MTUI.MTColor.DARK_GREEN))
+    setFinalStatic(LightColors::class.java, "CYAN", JBColor(MTUI.MTColor.CYAN, MTUI.MTColor.DARK_CYAN))
   }
 
-  private static void patchOnMouseOver() throws NoSuchFieldException, IllegalAccessException {
-    StaticPatcher.setFinalStatic(Switcher.class, "ON_MOUSE_OVER_BG_COLOR", UIUtil.getListSelectionBackground(true));
+  /**
+   * Patch local history user label color
+   *
+   */
+  @Throws(NoSuchFieldException::class, IllegalAccessException::class)
+  private fun patchLocalHistory() {
+    setFinalStatic(RevisionsList.MyCellRenderer::class.java, "USER_LABEL_COLOR", accentColor)
   }
 
-  private static void patchLocalHistory() throws NoSuchFieldException, IllegalAccessException {
-    StaticPatcher.setFinalStatic(RevisionsList.MyCellRenderer.class, "USER_LABEL_COLOR", MTUI.Panel.getAccentColor());
+  @Throws(NoSuchFieldException::class, IllegalAccessException::class)
+  private fun patchDebugWindow() {
+    setFinalStatic(CaptionPanel::class.java, "CNT_ACTIVE_BORDER_COLOR", background)
   }
 
-  private static void patchKeymap() throws NoSuchFieldException, IllegalAccessException {
-    StaticPatcher.setFinalStatic(MouseShortcutPanel.class, "BACKGROUND", MTUI.Panel.getSecondaryBackground());
-    StaticPatcher.setFinalStatic(MouseShortcutPanel.class, "BORDER", MTUI.Panel.getSecondaryBackground());
-    StaticPatcher.setFinalStatic(MouseShortcutPanel.class, "FOREGROUND", MTUI.Panel.getForeground());
-  }
-
-  private static void patchDebugWindow() throws NoSuchFieldException, IllegalAccessException {
-    StaticPatcher.setFinalStatic(CaptionPanel.class, "CNT_ACTIVE_BORDER_COLOR", MTUI.Panel.getBackground());
-  }
-
-  private static void patchGrays() throws NoSuchFieldException, IllegalAccessException {
+  @Throws(NoSuchFieldException::class, IllegalAccessException::class)
+  private fun patchGrays() {
     // Replace Gray with a clear and transparent color
-    final Gray gray = Gray._85;
-    final Color alphaGray = gray.withAlpha(1);
-    StaticPatcher.setFinalStatic(Gray.class, "_85", alphaGray);
-    StaticPatcher.setFinalStatic(Gray.class, "_40", alphaGray);
-    StaticPatcher.setFinalStatic(Gray.class, "_145", alphaGray);
-    StaticPatcher.setFinalStatic(Gray.class, "_201", alphaGray);
+    val gray = Gray._85
+    val alphaGray = gray.withAlpha(1)
+    setFinalStatic(Gray::class.java, "_85", alphaGray)
+    setFinalStatic(Gray::class.java, "_40", alphaGray)
+    setFinalStatic(Gray::class.java, "_145", alphaGray)
+    setFinalStatic(Gray::class.java, "_201", alphaGray)
 
     // Quick info border
-    StaticPatcher.setFinalStatic(Gray.class, "_90", gray.withAlpha(25));
+    setFinalStatic(Gray::class.java, "_90", gray.withAlpha(25))
 
     // tool window color
-    final boolean dark = MTConfig.getInstance().getSelectedTheme().isDark();
-    StaticPatcher.setFinalStatic(Gray.class, "_15", dark ? Gray._15.withAlpha(255) : Gray._200.withAlpha(15));
+    val dark = MTConfig.getInstance().selectedTheme.isDark
+    setFinalStatic(Gray::class.java, "_15", if (dark) Gray._15.withAlpha(255) else Gray._200.withAlpha(15))
   }
 
-  private static void patchAndroid() throws NoSuchFieldException, IllegalAccessException {
-    final Color panelBackground = MTUI.Panel.getBackground();
-    final Color contrastBackground = MTUI.Panel.getContrastBackground();
-    final Color secondaryBackground = MTUI.Panel.getSecondaryBackground();
-    final Color highlightBackground = MTUI.Panel.getHighlightBackground();
-
+  @Suppress("StringLiteralDuplication")
+  @Throws(NoSuchFieldException::class, IllegalAccessException::class)
+  private fun patchAndroid() {
+    val panelBackground = background
+    val contrastBackground = contrastBackground
+    val secondaryBackground = secondaryBackground
+    val highlightBackground = highlightBackground
     try {
-      final Class<?> uiUtils = Class.forName("com.android.tools.idea.assistant.view.UIUtils");
-      StaticPatcher.setFinalStatic(uiUtils, "AS_STANDARD_BACKGROUND_COLOR", panelBackground);
-      StaticPatcher.setFinalStatic(uiUtils, "BACKGROUND_COLOR", panelBackground);
-      StaticPatcher.setFinalStatic(uiUtils, "SECONDARY_COLOR", secondaryBackground);
-
-      final Class<?> wizardConstants = Class.forName("com.android.tools.idea.wizard.WizardConstants");
-      StaticPatcher.setFinalStatic(wizardConstants, "ANDROID_NPW_HEADER_COLOR", panelBackground);
-
-      final Class<?> navColorSet = Class.forName("com.android.tools.idea.naveditor.scene.NavColorSet");
-      StaticPatcher.setFinalStatic(navColorSet, "BACKGROUND_COLOR", contrastBackground);
-      StaticPatcher.setFinalStatic(navColorSet, "FRAME_COLOR", contrastBackground);
-      StaticPatcher.setFinalStatic(navColorSet, "HIGHLIGHTED_FRAME_COLOR", highlightBackground);
-      StaticPatcher.setFinalStatic(navColorSet, "SUBDUED_FRAME_COLOR", highlightBackground);
-      StaticPatcher.setFinalStatic(navColorSet, "SUBDUED_BACKGROUND_COLOR", panelBackground);
-      StaticPatcher.setFinalStatic(navColorSet, "COMPONENT_BACKGROUND_COLOR", secondaryBackground);
-      StaticPatcher.setFinalStatic(navColorSet, "LIST_MOUSEOVER_COLOR", secondaryBackground);
-      StaticPatcher.setFinalStatic(navColorSet, "PLACEHOLDER_BACKGROUND_COLOR", secondaryBackground);
-
-      final Class<?> studioColors = Class.forName("com.android.tools.adtui.common.StudioColorsKt");
-      StaticPatcher.setFinalStatic(studioColors, "primaryPanelBackground", new JBColor(contrastBackground, contrastBackground));
-      StaticPatcher.setFinalStatic(studioColors, "secondaryPanelBackground", panelBackground);
-      StaticPatcher.setFinalStatic(studioColors, "border", panelBackground);
-      StaticPatcher.setFinalStatic(studioColors, "borderLight", secondaryBackground);
-    } catch (final ClassNotFoundException e) {
-      Logger.getInstance(UIReplacer.class).error(e);
+      val uiUtils = Class.forName("com.android.tools.idea.assistant.view.UIUtils")
+      setFinalStatic(uiUtils, "AS_STANDARD_BACKGROUND_COLOR", panelBackground)
+      setFinalStatic(uiUtils, "BACKGROUND_COLOR", panelBackground)
+      setFinalStatic(uiUtils, "SECONDARY_COLOR", secondaryBackground)
+      val wizardConstants = Class.forName("com.android.tools.idea.wizard.WizardConstants")
+      setFinalStatic(wizardConstants, "ANDROID_NPW_HEADER_COLOR", panelBackground)
+      val navColorSet = Class.forName("com.android.tools.idea.naveditor.scene.NavColorSet")
+      setFinalStatic(navColorSet, "BACKGROUND_COLOR", contrastBackground)
+      setFinalStatic(navColorSet, "FRAME_COLOR", contrastBackground)
+      setFinalStatic(navColorSet, "HIGHLIGHTED_FRAME_COLOR", highlightBackground)
+      setFinalStatic(navColorSet, "SUBDUED_FRAME_COLOR", highlightBackground)
+      setFinalStatic(navColorSet, "SUBDUED_BACKGROUND_COLOR", panelBackground)
+      setFinalStatic(navColorSet, "COMPONENT_BACKGROUND_COLOR", secondaryBackground)
+      setFinalStatic(navColorSet, "LIST_MOUSEOVER_COLOR", secondaryBackground)
+      setFinalStatic(navColorSet, "PLACEHOLDER_BACKGROUND_COLOR", secondaryBackground)
+      val studioColors = Class.forName("com.android.tools.adtui.common.StudioColorsKt")
+      setFinalStatic(studioColors, "primaryPanelBackground", JBColor(contrastBackground, contrastBackground))
+      setFinalStatic(studioColors, "secondaryPanelBackground", panelBackground)
+      setFinalStatic(studioColors, "border", panelBackground)
+      setFinalStatic(studioColors, "borderLight", secondaryBackground)
+    } catch (e: ClassNotFoundException) {
+      // do not log
     }
   }
 
-  private static void patchKotlin() throws NoSuchFieldException, IllegalAccessException {
-    final Color highlightBackground = JBColor.namedColor("ParameterInfo.currentOverloadBackground",
-      UIUtil.getListSelectionBackground(false));
-
+  @Throws(NoSuchFieldException::class, IllegalAccessException::class)
+  private fun patchKotlin() {
+    val highlightBackground: Color = JBColor.namedColor(
+      "ParameterInfo.currentOverloadBackground",
+      UIUtil.getListSelectionBackground(false)
+    )
     try {
-      final Class<?> kotlinParamInfo = Class.forName("org.jetbrains.kotlin.idea.parameterInfo.KotlinParameterInfoWithCallHandlerBase");
-      final JBColor color = new JBColor(highlightBackground, highlightBackground);
-
-      final Field[] fields = kotlinParamInfo.getDeclaredFields();
-      final Object[] objects = Arrays.stream(fields)
-                                     .filter(field -> field.getType().equals(Color.class))
-                                     .toArray();
-
-      StaticPatcher.setFinalStatic((Field) objects[0], color);
-    } catch (final ClassNotFoundException e) {
-      Logger.getInstance(UIReplacer.class);
+      val kotlinParamInfo =
+        Class.forName("org.jetbrains.kotlin.idea.parameterInfo.KotlinParameterInfoWithCallHandlerBase")
+      val color = JBColor(highlightBackground, highlightBackground)
+      val fields = kotlinParamInfo.declaredFields
+      val objects = Arrays.stream(fields)
+        .filter { field: Field -> field.type == Color::class.java }
+        .toArray()
+      setFinalStatic((objects[0] as Field), color)
+    } catch (e: ClassNotFoundException) {
+      thisLogger().error(e)
     }
   }
 
   /**
    * Very clever way to theme excluded files color
    */
-  private static void patchScopes() throws NoSuchFieldException, IllegalAccessException, ClassNotFoundException {
-    final Color excludedColor = MTConfig.getInstance().getSelectedTheme().getTheme().getExcludedColor();
+  @Throws(NoSuchFieldException::class, IllegalAccessException::class, ClassNotFoundException::class)
+  private fun patchScopes() {
+    val excludedColor = MTConfig.getInstance().selectedTheme.theme.excludedColor
 
     // Do not replace file colors on native themes
-    if (MTConfig.getInstance().getSelectedTheme().isNative()) {
-      return;
+    if (MTConfig.getInstance().selectedTheme.isNative) {
+      return
     }
 
     // Colors for the scope editor
-    StaticPatcher.setFinalStatic(Class.forName("com.intellij.ide.util.scopeChooser.ScopeEditorPanel$MyTreeCellRenderer"),
-      "WHOLE_INCLUDED", MTUI.MTColor.BLUE);
-    StaticPatcher.setFinalStatic(Class.forName("com.intellij.ide.util.scopeChooser.ScopeEditorPanel$MyTreeCellRenderer"),
-      "PARTIAL_INCLUDED", MTUI.MTColor.ORANGE);
-
-    final Map<String, Color> ourDefaultColors = ContainerUtil.<String, Color>immutableMapBuilder()
-                                                             .put("Sea", UIManager.getColor("FileColor.Blue")) //NON-NLS
-                                                             .put("Forest", UIManager.getColor("FileColor.Green"))//NON-NLS
-                                                             .put("Spice", UIManager.getColor("FileColor.Orange"))//NON-NLS
-                                                             .put("Crimson", UIManager.getColor("FileColor.Rose"))//NON-NLS
-                                                             .put("DeepPurple", UIManager.getColor("FileColor.Violet"))//NON-NLS
-                                                             .put("Amber", UIManager.getColor("FileColor.Yellow"))//NON-NLS
-                                                             .put("Theme Excluded Color", excludedColor)//NON-NLS
-                                                             .build();
-
-    final Field[] fields = FileColorManagerImpl.class.getDeclaredFields();
-    final Object[] objects = Arrays.stream(fields)
-                                   .filter(field -> field.getType().equals(Map.class))
-                                   .toArray();
-
-    StaticPatcher.setFinalStatic((Field) objects[0], ourDefaultColors);
+    setFinalStatic(
+      Class.forName("com.intellij.ide.util.scopeChooser.ScopeEditorPanel\$MyTreeCellRenderer"),
+      "WHOLE_INCLUDED",
+      MTUI.MTColor.BLUE
+    )
+    setFinalStatic(
+      Class.forName("com.intellij.ide.util.scopeChooser.ScopeEditorPanel\$MyTreeCellRenderer"),
+      "PARTIAL_INCLUDED",
+      MTUI.MTColor.ORANGE
+    )
+    val ourDefaultColors = ContainerUtil.immutableMapBuilder<String, Color>()
+      .put("Sea", UIManager.getColor("FileColor.Blue")) //NON-NLS
+      .put("Forest", UIManager.getColor("FileColor.Green")) //NON-NLS
+      .put("Spice", UIManager.getColor("FileColor.Orange")) //NON-NLS
+      .put("Crimson", UIManager.getColor("FileColor.Rose")) //NON-NLS
+      .put("DeepPurple", UIManager.getColor("FileColor.Violet")) //NON-NLS
+      .put("Amber", UIManager.getColor("FileColor.Yellow")) //NON-NLS
+      .put("Theme Excluded Color", excludedColor) //NON-NLS
+      .build()
+    val fields = FileColorManagerImpl::class.java.declaredFields
+    val objects = Arrays.stream(fields)
+      .filter { field: Field -> field.type == MutableMap::class.java }
+      .toArray()
+    setFinalStatic((objects[0] as Field), ourDefaultColors)
   }
 
   /**
    * Replace NavBar with MTNavBar
    */
-  private static void patchNavBar() throws NoSuchFieldException, IllegalAccessException {
-    StaticPatcher.setFinalStatic(NavBarUIManager.class, "DARCULA", new MTNavBarUI());
-    StaticPatcher.setFinalStatic(NavBarUIManager.class, "COMMON", new MTNavBarUI());
+  @Throws(NoSuchFieldException::class, IllegalAccessException::class)
+  private fun patchNavBar() {
+    setFinalStatic(NavBarUIManager::class.java, "DARCULA", MTNavBarUI())
+    setFinalStatic(NavBarUIManager::class.java, "COMMON", MTNavBarUI())
   }
 
   /**
    * Replace IdeaActionButton with MTIdeaActionButton
    */
-  private static void patchIdeaActionButton() throws NoSuchFieldException, IllegalAccessException {
-    StaticPatcher.setFinalStatic(ActionButtonLook.class, "SYSTEM_LOOK", new MTActionButtonLook());
+  @Throws(NoSuchFieldException::class, IllegalAccessException::class)
+  private fun patchIdeaActionButton() {
+    setFinalStatic(ActionButtonLook::class.java, "SYSTEM_LOOK", MTActionButtonLook())
   }
 
   /**
    * New implementation for tabs height
    */
-  private static void patchTabs() throws NoSuchFieldException, IllegalAccessException {
-    final int tabsHeight = MTConfig.getInstance().getTabsHeight() + 10;
-    StaticPatcher.setFinalStatic(SingleHeightTabs.class, "UNSCALED_PREF_HEIGHT", tabsHeight);
-    UIManager.put("TabbedPane.tabHeight", tabsHeight);
+  @Throws(NoSuchFieldException::class, IllegalAccessException::class)
+  private fun patchTabs() {
+    val tabsHeight = MTConfig.getInstance().tabsHeight + TAB_PADDING
+    setFinalStatic(SingleHeightTabs::class.java, "UNSCALED_PREF_HEIGHT", tabsHeight)
+    UIManager.put("TabbedPane.tabHeight", tabsHeight)
   }
 
   /**
-   * Patch the Completion Popup background to match the currently selected
-   * theme.
+   * Patch the Completion Popup background to match the currently selected theme.
+   * Note: This has since been replaced from the color scheme, yet it's better to use it this way for now
    */
-  static void patchCompletionPopup() {
-    final Color autoCompleteBackground = MTUI.Panel.getSecondaryBackground();
+  private fun patchCompletionPopup() {
+    val autoCompleteBackground = secondaryBackground
     try {
-      final Field backgroundColorField = LookupCellRenderer.class.getDeclaredField("BACKGROUND_COLOR");
-      StaticPatcher.setFinalStatic(backgroundColorField, autoCompleteBackground);
-    } catch (final NoSuchFieldException | IllegalAccessException e) {
-      Logger.getInstance(UIReplacer.class).error(e);
+      val backgroundColorField = LookupCellRenderer::class.java.getDeclaredField("BACKGROUND_COLOR")
+      setFinalStatic(backgroundColorField, autoCompleteBackground)
+    } catch (e: NoSuchFieldException) {
+      thisLogger().error(e)
+    } catch (e: IllegalAccessException) {
+      thisLogger().error(e)
     }
   }
 
-  static void patchAttributes() {
+  private fun patchAttributes() {
     try {
-      StaticPatcher.setFinalStatic(JBColor.class, "GRAY", MTUI.Label.getLabelInfoForeground());
-      StaticPatcher.setFinalStatic(JBColor.class, "LIGHT_GRAY", MTUI.Label.getSelectedForeground());
-      StaticPatcher.setFinalStatic(JBColor.class, "DARK_GRAY", MTUI.Label.getLabelDisabledForeground());
-
-      StaticPatcher.setFinalStatic(SimpleTextAttributes.class, "DARK_TEXT", new SimpleTextAttributes(
-        SimpleTextAttributes.STYLE_PLAIN,
-        MTUI.Label.getLabelDisabledForeground()));
-
-      StaticPatcher.setFinalStatic(SimpleTextAttributes.class, "SIMPLE_CELL_ATTRIBUTES", new SimpleTextAttributes(
-        SimpleTextAttributes.STYLE_PLAIN,
-        MTUI.Label.getLabelInfoForeground()));
-
-      StaticPatcher.setFinalStatic(SimpleTextAttributes.class, "EXCLUDED_ATTRIBUTES", new SimpleTextAttributes(
-        SimpleTextAttributes.STYLE_PLAIN,
-        MTUI.Label.getLabelDisabledForeground()));
-
-      StaticPatcher.setFinalStatic(SimpleTextAttributes.class, "GRAY_ATTRIBUTES", new SimpleTextAttributes(
-        SimpleTextAttributes.STYLE_PLAIN,
-        MTUI.Label.getLabelInfoForeground()));
-      StaticPatcher.setFinalStatic(SimpleTextAttributes.class, "GRAY_SMALL_ATTRIBUTES", new SimpleTextAttributes(
-        SimpleTextAttributes.STYLE_SMALLER,
-        MTUI.Label.getLabelInfoForeground()));
-      StaticPatcher.setFinalStatic(SimpleTextAttributes.class, "GRAY_ITALIC_ATTRIBUTES", new SimpleTextAttributes(
-        SimpleTextAttributes.STYLE_ITALIC,
-        MTUI.Label.getLabelInfoForeground()));
-
-      StaticPatcher.setFinalStatic(SimpleTextAttributes.class, "SYNTHETIC_ATTRIBUTES",
-        new SimpleTextAttributes(
-          SimpleTextAttributes.STYLE_PLAIN,
-          MTUI.Panel.getLinkForeground()
-        )
-      );
-    } catch (final NoSuchFieldException | IllegalAccessException e) {
-      Logger.getInstance(UIReplacer.class).error(e);
+      setFinalStatic(JBColor::class.java, "GRAY", labelInfoForeground)
+      setFinalStatic(JBColor::class.java, "LIGHT_GRAY", selectedForeground)
+      setFinalStatic(JBColor::class.java, "DARK_GRAY", labelDisabledForeground)
+      setFinalStatic(
+        SimpleTextAttributes::class.java,
+        "DARK_TEXT",
+        SimpleTextAttributes(SimpleTextAttributes.STYLE_PLAIN, labelDisabledForeground)
+      )
+      setFinalStatic(
+        SimpleTextAttributes::class.java,
+        "SIMPLE_CELL_ATTRIBUTES",
+        SimpleTextAttributes(SimpleTextAttributes.STYLE_PLAIN, labelInfoForeground)
+      )
+      setFinalStatic(
+        SimpleTextAttributes::class.java,
+        "EXCLUDED_ATTRIBUTES",
+        SimpleTextAttributes(SimpleTextAttributes.STYLE_PLAIN, labelDisabledForeground)
+      )
+      setFinalStatic(
+        SimpleTextAttributes::class.java,
+        "GRAY_ATTRIBUTES",
+        SimpleTextAttributes(SimpleTextAttributes.STYLE_PLAIN, labelInfoForeground)
+      )
+      setFinalStatic(
+        SimpleTextAttributes::class.java,
+        "GRAY_SMALL_ATTRIBUTES",
+        SimpleTextAttributes(SimpleTextAttributes.STYLE_SMALLER, labelInfoForeground)
+      )
+      setFinalStatic(
+        SimpleTextAttributes::class.java,
+        "GRAY_ITALIC_ATTRIBUTES",
+        SimpleTextAttributes(SimpleTextAttributes.STYLE_ITALIC, labelInfoForeground)
+      )
+      setFinalStatic(
+        SimpleTextAttributes::class.java,
+        "SYNTHETIC_ATTRIBUTES",
+        SimpleTextAttributes(SimpleTextAttributes.STYLE_PLAIN, linkForeground)
+      )
+    } catch (e: NoSuchFieldException) {
+      thisLogger().error(e)
+    } catch (e: IllegalAccessException) {
+      thisLogger().error(e)
     }
   }
 }
+

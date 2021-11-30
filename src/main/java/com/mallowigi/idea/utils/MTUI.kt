@@ -23,6 +23,7 @@
  *
  *
  */
+
 package com.mallowigi.idea.utils
 
 import com.intellij.ide.ui.laf.darcula.DarculaLaf
@@ -48,7 +49,7 @@ import javax.swing.UIManager
 import javax.swing.border.Border
 import javax.swing.plaf.ColorUIResource
 
-@Suppress("unused")
+@Suppress("KDocMissingDocumentation", "MagicNumber", "unused", "HardCodedStringLiteral")
 object MTUI {
   object Tree {
     private const val TREE_SELECTION_BACKGROUND: String = "Tree.selectionBackground"
@@ -136,9 +137,6 @@ object MTUI {
     private const val TEXT_FIELD_SELECTED_SEPARATOR_COLOR: String = "Component.focusedBorderColor"
 
     @JvmStatic
-    fun getBorderColor(enabled: Boolean): Color = if (enabled) separatorColor else disabledSeparatorColor
-
-    @JvmStatic
     val selectedBorderColor: Color
       get() = JBColor.namedColor(TEXT_FIELD_SELECTED_SEPARATOR_COLOR, JBColor(0x87AFDA, 0x466D94))
 
@@ -149,6 +147,10 @@ object MTUI {
     @JvmStatic
     val disabledSeparatorColor: Color
       get() = JBColor.namedColor(TEXT_FIELD_SEPARATOR_COLOR_DISABLED, JBColor(0xc4c4c4, 0x646464))
+
+    @JvmStatic
+    fun getBorderColor(enabled: Boolean): Color = if (enabled) separatorColor else disabledSeparatorColor
+
   }
 
   object List {
@@ -241,15 +243,16 @@ object MTUI {
       get() = JBColor.namedColor(TAB_BACKGROUND, JBColor(0xdae4ed, 0x3d4b5c))
 
     @JvmStatic
+    val shadowColor: Color
+      get() = JBColor.namedColor(TABBED_PANE_SHADOW, JBColor(0xdae4ed, 0x3d4b5c))
+
+    @JvmStatic
     fun getInactiveBackground(isContrast: Boolean): Color {
       val inactiveTabBG = JBColor.namedColor(INACTIVE_TAB_BACKGROUND, JBColor(0xdae4ed, 0x3d4b5c))
       val inactiveContrastBG = JBColor.namedColor(INACTIVE_TAB_CONTRAST_BACKGROUND, JBColor(0xdae4ed, 0x3d4b5c))
       return if (isContrast) inactiveContrastBG else inactiveTabBG
     }
 
-    @JvmStatic
-    val shadowColor: Color
-      get() = JBColor.namedColor(TABBED_PANE_SHADOW, JBColor(0xdae4ed, 0x3d4b5c))
   }
 
   object Slider {
@@ -371,9 +374,6 @@ object MTUI {
     private const val RADIO_BUTTON_FOCUS_COLOR: String = "RadioButton.focusColor"
 
     @JvmStatic
-    fun getSelectedColor(enabled: Boolean): Color = if (enabled) selectionEnabledColor else selectionDisabledColor
-
-    @JvmStatic
     val selectionEnabledColor: Color
       get() = JBColor.namedColor(RADIO_BUTTON_SELECTION_ENABLED_COLOR, JBColor(0x00000040, 0x1e1e1e))
 
@@ -391,6 +391,10 @@ object MTUI {
         val color: Color = JBColor.namedColor(RADIO_BUTTON_FOCUS_COLOR, JBColor(0xcfcfcf, 0xaaaaaa))
         return ColorUtil.withAlpha(color, 0.5)
       }
+
+    @JvmStatic
+    fun getSelectedColor(enabled: Boolean): Color = if (enabled) selectionEnabledColor else selectionDisabledColor
+
   }
 
   object ProgressBar {
@@ -476,6 +480,26 @@ object MTUI {
     private const val TEXT_FIELD_BACKGROUND = "TextField.background"
 
     @JvmStatic
+    val nonEditableBackground: Color
+      get() = JBColor.namedColor(COMBO_BOX_NON_EDITABLE_BACKGROUND, JBColor(0xffffff, 0x3c3f41))
+
+    @JvmStatic
+    val disabledForeground: Color
+      get() = JBColor.namedColor(COMBO_BOX_DISABLED_FOREGROUND, JBColor(0xb1b1b1, 0xb1b1b1))
+
+    @JvmStatic
+    val fallbackBackground: Color
+      get() = Button.backgroundColor
+
+    @JvmStatic
+    val disabledBackground: Color
+      get() = Button.backgroundColor
+
+    @JvmStatic
+    val enabledBackground: Color
+      get() = JBColor.namedColor(TEXT_FIELD_BACKGROUND, JBColor(0xffffff, 0x45494A))
+
+    @JvmStatic
     fun getArrowShape(button: Component): Shape {
       val r = Rectangle(button.size)
       JBInsets.removeFrom(r, JBUI.insets(1, 0, 1, 1))
@@ -498,29 +522,18 @@ object MTUI {
         JBColor.namedColor(COMBO_BOX_ARROW_BUTTON_NON_EDITABLE_BACKGROUND, JBColor(0xffffff, 0x3c3f41))
       return if (enabled) color else UIUtil.getPanelBackground()
     }
-
-    @JvmStatic
-    val nonEditableBackground: Color
-      get() = JBColor.namedColor(COMBO_BOX_NON_EDITABLE_BACKGROUND, JBColor(0xffffff, 0x3c3f41))
-
-    @JvmStatic
-    val disabledForeground: Color
-      get() = JBColor.namedColor(COMBO_BOX_DISABLED_FOREGROUND, JBColor(0xb1b1b1, 0xb1b1b1))
-
-    @JvmStatic
-    val fallbackBackground: Color
-      get() = Button.backgroundColor
-
-    @JvmStatic
-    val disabledBackground: Color
-      get() = Button.backgroundColor
-
-    @JvmStatic
-    val enabledBackground: Color
-      get() = JBColor.namedColor(TEXT_FIELD_BACKGROUND, JBColor(0xffffff, 0x45494A))
   }
 
   object CheckBox {
+    @JvmStatic
+    val inactiveFillColor: Color
+      get() = getColor(
+        shortPropertyName = "Background",
+        defaultValue = JBColor(Gray._240.withAlpha(180), Gray._110.withAlpha(180)),
+        selected = false,
+        disabled = true
+      )
+
     private fun getColor(shortPropertyName: String, defaultValue: Color): Color =
       JBColor.namedColor("Checkbox.$shortPropertyName", defaultValue)
 
@@ -530,15 +543,6 @@ object MTUI {
         disabled -> getColor("$shortPropertyName.Disabled", defaultValue)
         else     -> getColor("$shortPropertyName.Default", defaultValue)
       }
-
-    @JvmStatic
-    val inactiveFillColor: Color
-      get() = getColor(
-        shortPropertyName = "Background",
-        defaultValue = JBColor(Gray._240.withAlpha(180), Gray._110.withAlpha(180)),
-        selected = false,
-        disabled = true
-      )
 
     @JvmStatic
     fun getBorderColor(enabled: Boolean, selected: Boolean): Color = when {
@@ -576,6 +580,14 @@ object MTUI {
     private const val LABEL_FOREGROUND = "Label.foreground"
 
     @JvmStatic
+    val selectedForeground: Color
+      get() = JBColor.namedColor(LABEL_SELECTED_FOREGROUND, JBColor(0x11111, 0xFFFFFF))
+
+    @JvmStatic
+    val labelForeground: Color
+      get() = JBColor.namedColor(LABEL_FOREGROUND, UIUtil.getLabelForeground())
+
+    @JvmStatic
     val labelInfoForeground: Color
       get() = JBColor.namedColor(LABEL_INFO_FOREGROUND, JBColor(0x777777, 0x787878))
 
@@ -598,13 +610,6 @@ object MTUI {
       UIUtilities.drawStringUnderlineCharAt(label, g, s, mnemIndex, textX, textY)
     }
 
-    @JvmStatic
-    val selectedForeground: Color
-      get() = JBColor.namedColor(LABEL_SELECTED_FOREGROUND, JBColor(0x11111, 0xFFFFFF))
-
-    @JvmStatic
-    val labelForeground: Color
-      get() = JBColor.namedColor(LABEL_FOREGROUND, UIUtil.getLabelForeground())
   }
 
   object Panel {
