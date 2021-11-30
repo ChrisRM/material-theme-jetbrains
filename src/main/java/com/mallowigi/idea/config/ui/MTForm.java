@@ -36,7 +36,11 @@ import com.intellij.openapi.options.ex.Settings;
 import com.intellij.openapi.ui.ComboBox;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.ui.popup.Balloon;
-import com.intellij.ui.*;
+import com.intellij.ui.ColorPanel;
+import com.intellij.ui.ColorUtil;
+import com.intellij.ui.FontComboBox;
+import com.intellij.ui.GotItTooltip;
+import com.intellij.ui.ListCellRendererWrapper;
 import com.intellij.ui.components.OnOffButton;
 import com.intellij.ui.components.labels.LinkLabel;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
@@ -216,7 +220,7 @@ public class MTForm implements MTFormUI, Disposable {
   public final void setFormState(final MTBaseConfig config) {
     final MTConfig mtConfig = (MTConfig) config;
 
-    mtConfig.setPremium(true);
+    MTConfig.setPremium(true);
     setCodeAdditionsEnabled(mtConfig.isCodeAdditionsEnabled());
     setCustomAccentColor(ColorUtil.fromHex(mtConfig.getAccentColor()));
     setCustomSidebarHeight(mtConfig.getCustomSidebarHeight());
@@ -272,7 +276,7 @@ public class MTForm implements MTFormUI, Disposable {
     setUseProjectTitle(mtConfig.isUseProjectTitle());
     setUseStripedToolWindows(mtConfig.isStripedToolWindowsEnabled());
 
-    mtConfig.setPremium(MTMainProductLicenseChecker.getInstance().isLicensed());
+    MTConfig.setPremium(MTMainProductLicenseChecker.getInstance().isLicensed());
 
     afterStateSet();
   }

@@ -33,13 +33,20 @@ import javax.swing.*;
 import java.awt.*;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
-import java.util.*;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
 import java.util.regex.Pattern;
 
 @SuppressWarnings({"unused",
   "ThrowsRuntimeException",
-  "DuplicateStringLiteralInspection"})
+  "DuplicateStringLiteralInspection",
+  "ThrowInsideCatchBlockWhichIgnoresCaughtException"})
 public enum SwingUtils {
   ;
 
@@ -48,16 +55,17 @@ public enum SwingUtils {
   /**
    * Exclude methods that return values that are meaningless to the user
    */
-  static final Set<String> excluded = new HashSet<>(10);
+  @SuppressWarnings("StaticCollection")
+  static final Set<String> EXCLUDED_METHODS = new HashSet<>(10);
   private static final Pattern GETTER_REGEX = Pattern.compile("^(is|get).*");
   private static final Pattern JAVAX_SWING = Pattern.compile("javax.swing.J[^.]*$");
 
   static {
-    excluded.add("getFocusCycleRootAncestor");
-    excluded.add("getAccessibleContext");
-    excluded.add("getColorModel");
-    excluded.add("getGraphics");
-    excluded.add("getGraphicsConfiguration");
+    EXCLUDED_METHODS.add("getFocusCycleRootAncestor");
+    EXCLUDED_METHODS.add("getAccessibleContext");
+    EXCLUDED_METHODS.add("getColorModel");
+    EXCLUDED_METHODS.add("getGraphics");
+    EXCLUDED_METHODS.add("getGraphicsConfiguration");
   }
 
   /**
@@ -328,6 +336,7 @@ public enum SwingUtils {
    * @param nested    true to drill down to nested containers, false otherwise
    * @return the Map of the UI
    */
+  @SuppressWarnings("ObjectAllocationInLoop")
   public static Map<JComponent, List<JComponent>> getComponentMap(final JComponent container, final boolean nested) {
     final Map<JComponent, List<JComponent>> componentMap = new HashMap<>(10);
 
@@ -415,19 +424,20 @@ public enum SwingUtils {
    * @return the class and value of the properties
    */
   @SuppressWarnings({"SingleCharacterStartsWith",
-    "MethodWithMoreThanThreeNegations"})
+    "MethodWithMoreThanThreeNegations",
+    "ObjectAllocationInLoop"})
   public static Map<Object, Object> getProperties(final JComponent component) {
     final Map<Object, Object> propMap = new HashMap<>(10);
     final Class<?> clazz = component.getClass();
     final Method[] methods = clazz.getMethods();
-    Object value = null;
+    Object value;
 
     for (final Method method : methods) {
       if (GETTER_REGEX.matcher(method.getName()).matches() && method.getParameterTypes().length == 0) {
         try {
           final Class<?> returnType = method.getReturnType();
 
-          if (returnType != void.class && !returnType.getName().startsWith("[") && !excluded.contains(method.getName())) {
+          if (returnType != void.class && !returnType.getName().startsWith("[") && !EXCLUDED_METHODS.contains(method.getName())) {
             final String key = method.getName();
             value = method.invoke(component);
 

@@ -251,7 +251,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   @Transient
   private static transient boolean isHcPremium = false;
   @Transient
-  public transient Boolean hadStripesEnabled = null;
+  public transient Boolean hadStripesEnabled;
 
   //endregion
 
@@ -280,7 +280,8 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   /**
    * Get the state of MTConfig
    */
-  @SuppressWarnings("AccessingNonPublicFieldOfAnotherObject")
+  @SuppressWarnings({"AccessingNonPublicFieldOfAnotherObject",
+    "AssignmentToStaticFieldFromInstanceMethod"})
   @NotNull
   @Override
   public MTConfig getState() {
@@ -529,7 +530,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   }
 
   public boolean isHighContrast() {
-    return hasHighContrast() && isHighContrast;
+    return hasHighContrastLicense() && isHighContrast;
   }
 
   //endregion
@@ -1713,11 +1714,11 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   }
   //endregion
 
-  public boolean hasHighContrast() {
+  public static boolean hasHighContrastLicense() {
     return isPremium || isHcPremium;
   }
 
-  public void setPremium(final boolean premium) {
+  public static void setPremium(final boolean premium) {
     isPremium = premium;
   }
   //endregion
