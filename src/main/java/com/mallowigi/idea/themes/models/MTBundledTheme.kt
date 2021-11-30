@@ -26,12 +26,14 @@
 package com.mallowigi.idea.themes.models
 
 import com.intellij.util.xmlb.annotations.Tag
+import com.mallowigi.idea.MTBundledThemesManager
 import com.mallowigi.idea.themes.models.parsers.MTBundledThemeParser
 import com.mallowigi.idea.themes.themes.MTAbstractTheme
 import com.thoughtworks.xstream.annotations.XStreamAlias
 import com.thoughtworks.xstream.annotations.XStreamOmitField
 import javax.swing.plaf.ColorUIResource
 
+@Suppress("KDocMissingDocumentation")
 @XStreamAlias("mtTheme")
 abstract class MTBundledTheme : MTAbstractTheme() {
 
@@ -158,4 +160,15 @@ abstract class MTBundledTheme : MTAbstractTheme() {
 
   //endregion
 
+  /**
+   * Save theme from the form data to a file
+   */
+  fun saveTheme(name: String, id: String, dark: Boolean, colorScheme: String?) {
+    this.themeName = name
+    this.themeId = id
+    this.themeColorScheme = colorScheme
+    this.isThemeDark = dark
+
+    MTBundledThemesManager.saveTheme(this)
+  }
 }

@@ -31,10 +31,8 @@ import com.mallowigi.idea.MTAnalytics.Companion.instance
 import com.mallowigi.idea.config.custom.MTCustomThemeConfigurable
 import com.mallowigi.idea.utils.MTUiUtils
 
-/**
- * Redirects help to support site
- *
- */
+/** Redirects help to support site */
+@Suppress("KDocMissingDocumentation")
 class MTHelpProvider : WebHelpProvider() {
   override fun getHelpPageUrl(helpTopicId: String): String {
     val unprefixedTopicId = helpTopicId.replace("$helpTopicPrefix.", "")

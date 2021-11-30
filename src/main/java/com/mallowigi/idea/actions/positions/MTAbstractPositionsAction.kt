@@ -32,8 +32,17 @@ import com.mallowigi.idea.actions.MTToggleAction
 import com.mallowigi.idea.config.application.MTConfig
 import com.mallowigi.idea.config.enums.TabHighlightPositions
 
+/**
+ * Abstract class for toggle tab highlight positions
+ *
+ */
 abstract class MTAbstractPositionsAction : MTToggleAction() {
   private val mtConfig = MTConfig.getInstance()
+
+  /**
+   * The Tab Highlight Position
+   */
+  protected abstract val position: TabHighlightPositions
 
   override fun isSelected(e: AnActionEvent): Boolean = mtConfig.tabHighlightPosition == position
 
@@ -46,5 +55,4 @@ abstract class MTAbstractPositionsAction : MTToggleAction() {
     super.setSelected(e, state)
   }
 
-  protected abstract val position: TabHighlightPositions
 }

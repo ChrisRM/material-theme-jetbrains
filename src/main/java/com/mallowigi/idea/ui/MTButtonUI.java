@@ -30,26 +30,27 @@ import com.intellij.icons.AllIcons;
 import com.intellij.ide.ui.laf.darcula.DarculaLaf;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaButtonUI;
 import com.intellij.openapi.actionSystem.ex.ComboBoxAction;
-import com.intellij.openapi.actionSystem.impl.segmentedActionBar.SegmentedBarActionComponent;
+import com.intellij.openapi.actionSystem.impl.segmentedActionBar.SegmentedActionToolbarComponent;
 import com.intellij.openapi.ui.GraphicsConfig;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.JBColor;
 import com.intellij.ui.scale.JBUIScale;
-import com.intellij.util.ui.*;
+import com.intellij.util.ui.GraphicsUtil;
+import com.intellij.util.ui.JBInsets;
+import com.intellij.util.ui.JBUI;
+import com.intellij.util.ui.UIUtil;
+import com.intellij.util.ui.UIUtilities;
 import com.mallowigi.idea.config.application.MTConfig;
-import com.mallowigi.idea.utils.ButtonBackgroundTimer;
 import com.mallowigi.idea.utils.MTUI;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import sun.swing.SwingUtilities2;
 
 import javax.swing.*;
-import javax.swing.event.ChangeEvent;
 import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.UIResource;
 import javax.swing.plaf.basic.BasicButtonListener;
 import java.awt.*;
-import java.util.ArrayDeque;
 import java.util.Locale;
 
 @SuppressWarnings({"NonThreadSafeLazyInitialization",
@@ -214,14 +215,13 @@ public final class MTButtonUI extends DarculaButtonUI {
   @Override
   public void installDefaults(final AbstractButton button) {
     super.installDefaults(button);
-    //    b.setBackground(isDefaultButton(b) ? primaryButtonBg() : buttonBg());
     isNotThemed = true;
     button.setRolloverEnabled(true);
 
     if (MTConfig.getInstance().isUpperCaseButtons()) {
-      button.setFont(button.getFont().deriveFont(Font.BOLD, JBUIScale.scale(12.0f)));
+      button.setFont(button.getFont().deriveFont(Font.BOLD, JBUIScale.scale(12.0F)));
     } else {
-      button.setFont(button.getFont().deriveFont(Font.BOLD, JBUIScale.scale(13.0f)));
+      button.setFont(button.getFont().deriveFont(Font.BOLD, JBUIScale.scale(13.0F)));
     }
   }
 
@@ -238,6 +238,8 @@ public final class MTButtonUI extends DarculaButtonUI {
    * @return {@code true} if it is allowed to continue painting,
    * {@code false} if painting should be stopped
    */
+  @SuppressWarnings({"MethodWithMultipleReturnPoints",
+    "java:S1142"})
   @Override
   protected boolean paintDecorations(final Graphics2D g, final JComponent c) {
     if (!((AbstractButton) c).isContentAreaFilled()) {
@@ -253,14 +255,14 @@ public final class MTButtonUI extends DarculaButtonUI {
       isNotThemed = false;
     }
 
-    if (SegmentedBarActionComponent.Companion.isCustomBar(c)) {
-      return SegmentedBarActionComponent.Companion.paintButtonDecorations(g, c, buttonBg());
+    if (SegmentedActionToolbarComponent.Companion.isCustomBar(c)) {
+      return SegmentedActionToolbarComponent.Companion.paintButtonDecorations(g, c, buttonBg());
     }
 
     final Rectangle r = new Rectangle(c.getSize());
     JBInsets.removeFrom(r, isSmallVariant(c) ? c.getInsets() : JBUI.insets(1));
 
-    final Color overridenColor = (Color) c.getClientProperty("JButton.backgroundColor");
+    final Paint overriddenColor = (Paint) c.getClientProperty("JButton.backgroundColor");
     final Color backgroundColor = buttonBg();
     final Color focusedColor = primaryButtonHoverColor();
 
@@ -277,8 +279,8 @@ public final class MTButtonUI extends DarculaButtonUI {
         g.setPaint(background);
       }
 
-      if (overridenColor != null) {
-        g.setPaint(overridenColor);
+      if (overriddenColor != null) {
+        g.setPaint(overriddenColor);
       }
 
       final int rad = JBUI.scale(3);
@@ -298,7 +300,7 @@ public final class MTButtonUI extends DarculaButtonUI {
     final boolean smallVariant = b.getClientProperty("ActionToolbar.smallVariant") == Boolean.TRUE;
     final ComboBoxAction a = (ComboBoxAction) b.getClientProperty("styleCombo");
 
-    return smallVariant || a != null && a.isSmallVariant();
+    return smallVariant || (a != null && a.isSmallVariant());
   }
 
   /**
@@ -312,16 +314,14 @@ public final class MTButtonUI extends DarculaButtonUI {
 
     final AbstractButton button = (AbstractButton) c;
     final ButtonModel model = button.getModel();
-    final Color overridenColor = (Color) button.getClientProperty("JButton.textColor");
+    final Color overriddenColor = (Color) button.getClientProperty("JButton.textColor");
 
     Color fg = isDefaultButton(c) ? primaryButtonFg() : buttonFg();
 
-    if (fg instanceof UIResource && button.isSelected()) {
-      fg = selectedButtonFg();
-    } else if (model.isRollover()) {
+    if ((fg instanceof UIResource && button.isSelected()) || model.isRollover()) {
       fg = selectedButtonFg();
     }
-    g.setColor(overridenColor != null ? overridenColor : fg);
+    g.setColor(overriddenColor != null ? overriddenColor : fg);
 
     final FontMetrics metrics = UIUtilities.getFontMetrics(c, g);
     final String textToPrint = MTConfig.getInstance().isUpperCaseButtons() ? text.toUpperCase(Locale.ENGLISH) : text;
@@ -386,78 +386,13 @@ public final class MTButtonUI extends DarculaButtonUI {
    */
   @Override
   protected BasicButtonListener createButtonListener(final AbstractButton b) {
-    return new ButtonHighlighter(b);
+    return new MTButtonHighlighter(b);
   }
 
   @Override
   protected void paintIcon(final Graphics g, final JComponent c, final Rectangle iconRect) {
     final Rectangle newIconRect = new Rectangle(iconRect.getBounds());
-    //    newIconRect.x = Math.min(iconRect.x, ICON_MIN_PADDING);
     super.paintIcon(g, c, newIconRect);
   }
 
-  @SuppressWarnings({"DuplicatedCode",
-    "ParameterNameDiffersFromOverriddenParameter"})
-  private static final class ButtonHighlighter extends BasicButtonListener {
-
-    public static final int ANIM_STEPS = 5;
-    public static final double BALANCE = 1.0f / ANIM_STEPS;
-    private static final ButtonBackgroundTimer HL_BUTTON_BACKGROUND_TIMER = new ButtonBackgroundTimer(20);
-    private boolean rollover = false;
-
-    private final AbstractButton button;
-
-    ButtonHighlighter(final AbstractButton button) {
-      super(button);
-      this.button = button;
-    }
-
-    @Override
-    public void stateChanged(final ChangeEvent e) {
-      if (e == null) {
-        return;
-      }
-      final ButtonModel model = button.getModel();
-      if (model.isRollover() != rollover) {
-        rollover = model.isRollover();
-
-        if (rollover) {
-          highlightButton(button);
-        } else {
-          removeHighlight(button);
-        }
-      }
-    }
-
-    private static void highlightButton(final AbstractButton e) {
-      final JButton jButton = (JButton) e;
-      final Color hoverColor = jButton.isDefaultButton() ? primaryButtonHoverColor() : buttonHoverColor();
-      final Color preHoverColor = jButton.isDefaultButton() ? primaryButtonBg() : buttonBg();
-
-      final ArrayDeque<Color> colors = new ArrayDeque<>(ANIM_STEPS);
-      for (int i = 0; i < ANIM_STEPS; i++) {
-        colors.add(ColorUtil.mix(preHoverColor, hoverColor, i * BALANCE));
-      }
-
-      final Color textColor = selectedButtonFg();
-      e.setForeground(textColor);
-      HL_BUTTON_BACKGROUND_TIMER.start("Highlight", e, colors);
-    }
-
-    private static void removeHighlight(final AbstractButton e) {
-      final JButton jButton = (JButton) e;
-      final Color hoverColor = jButton.isDefaultButton() ? primaryButtonHoverColor() : buttonHoverColor();
-      final Color preHoverColor = jButton.isDefaultButton() ? primaryButtonBg() : buttonBg();
-
-      final ArrayDeque<Color> colors = new ArrayDeque<>(ANIM_STEPS);
-      for (int i = 0; i < ANIM_STEPS; i++) {
-        colors.addFirst(ColorUtil.mix(preHoverColor, hoverColor, i * BALANCE));
-      }
-
-      final Color textColor = buttonFg();
-      e.setForeground(textColor);
-      HL_BUTTON_BACKGROUND_TIMER.start("Remove Highlight", e, colors);
-    }
-
-  }
 }

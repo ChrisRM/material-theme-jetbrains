@@ -35,7 +35,6 @@ import com.intellij.openapi.ui.DialogWrapper;
 import com.intellij.openapi.ui.ValidationInfo;
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
-import com.mallowigi.idea.MTBundledThemesManager;
 import com.mallowigi.idea.config.custom.MTCustomThemeConfig;
 import com.mallowigi.idea.config.ui.MTCustomThemeForm;
 import com.mallowigi.idea.messages.MaterialThemeBundle;
@@ -107,12 +106,13 @@ public final class MTSaveCustomThemeDialog extends DialogWrapper {
   protected void doOKAction() {
     final MTBundledTheme customTheme = MTCustomThemeConfig.export(form);
 
-    customTheme.setThemeName(nameField.getText());
-    customTheme.setThemeId(idField.getText());
-    customTheme.setThemeColorScheme(colorField.getText());
-    customTheme.setThemeDark(darkThemeCheckbox.isSelected());
+    customTheme.saveTheme(
+      nameField.getText(),
+      idField.getText(),
+      darkThemeCheckbox.isSelected(),
+      colorField.getText()
+    );
 
-    MTBundledThemesManager.saveTheme(customTheme);
     close(0, true);
   }
 
@@ -304,7 +304,8 @@ public final class MTSaveCustomThemeDialog extends DialogWrapper {
     addValidators();
   }
 
-  @SuppressWarnings("ReturnOfNull")
+  @SuppressWarnings({"ReturnOfNull",
+    "OverlyLongLambda"})
   private void addValidators() {
     new ComponentValidator(getDisposable())
       .withValidator(() -> {

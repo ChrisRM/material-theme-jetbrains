@@ -35,7 +35,16 @@ import com.mallowigi.idea.config.application.MTConfig
 import com.mallowigi.idea.themes.MTThemeFacade
 import com.mallowigi.idea.ui.MTButtonUI
 
+/**
+ * Abstract class for switching themes
+ *
+ */
 abstract class MTAbstractThemeAction : MTToggleAction(), DumbAware {
+  /**
+   * The theme to switch to
+   */
+  protected abstract val theme: MTThemeFacade
+
   override fun setSelected(e: AnActionEvent, state: Boolean) {
     MTButtonUI.resetCache()
 
@@ -47,8 +56,6 @@ abstract class MTAbstractThemeAction : MTToggleAction(), DumbAware {
   }
 
   override fun isSelected(e: AnActionEvent): Boolean = MTConfig.getInstance().selectedTheme === theme
-
-  protected abstract val theme: MTThemeFacade
 
   override fun checkLicense(e: AnActionEvent) {
     e.presentation.isEnabled = true

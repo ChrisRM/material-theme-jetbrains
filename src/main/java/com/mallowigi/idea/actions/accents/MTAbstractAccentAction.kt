@@ -38,7 +38,16 @@ import com.mallowigi.idea.config.application.MTConfig
 import com.mallowigi.idea.themes.MTAccents
 import com.mallowigi.idea.ui.indicators.MTSelectedTreeIndicatorImpl
 
+/**
+ * Abstract Accent Toggle Action
+ *
+ */
 abstract class MTAbstractAccentAction : MTToggleAction(), DumbAware {
+  /**
+   * The Accent Color String
+   */
+  protected abstract val accent: MTAccents
+
   override fun setSelected(e: AnActionEvent, state: Boolean) {
     MTSelectedTreeIndicatorImpl.resetCache()
     IconLoader.clearCache()
@@ -58,11 +67,6 @@ abstract class MTAbstractAccentAction : MTToggleAction(), DumbAware {
   override fun update(e: AnActionEvent) {
     e.presentation.isEnabled = !MTConfig.getInstance().isOverrideAccentColor
   }
-
-  /**
-   * The Accent Color String
-   */
-  protected abstract val accent: MTAccents
 
   override fun checkLicense(e: AnActionEvent) {
     e.presentation.isEnabled = true

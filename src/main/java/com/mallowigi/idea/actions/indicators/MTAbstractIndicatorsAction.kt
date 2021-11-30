@@ -33,8 +33,17 @@ import com.mallowigi.idea.actions.MTToggleAction
 import com.mallowigi.idea.config.application.MTConfig
 import com.mallowigi.idea.config.enums.IndicatorStyles
 
+/**
+ * Abstract class for toggle indicators actions
+ *
+ */
 abstract class MTAbstractIndicatorsAction : MTToggleAction() {
   private val mtConfig = MTConfig.getInstance()
+
+  /**
+   * Indicator style
+   */
+  protected abstract val indicatorStyle: IndicatorStyles
 
   override fun isSelected(e: AnActionEvent): Boolean = mtConfig.indicatorStyle == indicatorStyle
 
@@ -48,5 +57,4 @@ abstract class MTAbstractIndicatorsAction : MTToggleAction() {
     super.setSelected(e, state)
   }
 
-  protected abstract val indicatorStyle: IndicatorStyles
 }

@@ -33,6 +33,10 @@ import com.mallowigi.idea.config.application.MTConfig
 import com.mallowigi.idea.license.MTHCLicenseChecker
 import com.mallowigi.idea.license.MTMainProductLicenseChecker
 
+/**
+ * Toggle High Contrast
+ *
+ */
 class MTHighContrastAction : MTToggleAction() {
   override fun isSelected(e: AnActionEvent): Boolean = MTConfig.getInstance().isHighContrast
 
@@ -48,7 +52,7 @@ class MTHighContrastAction : MTToggleAction() {
   }
 
   override fun checkLicense(e: AnActionEvent) {
-    e.presentation.isEnabled = MTMainProductLicenseChecker.instance.isLicensed ||
-      MTHCLicenseChecker.instance.isLicensed
+    e.presentation.isEnabled =
+      MTMainProductLicenseChecker.instance.isLicensed || MTHCLicenseChecker.instance.isLicensed
   }
 }
