@@ -130,6 +130,7 @@
         <option name="JUPYTER.CELL_UNDER_CARET_COMMAND_MODE_STRIPE_COLOR" value="2AA298" />
         <option name="JUPYTER.CELL_UNDER_CARET_EDITOR_MODE_STRIPE_COLOR" value="CCCCCC" />
         <option name="JUPYTER.CODE_CELL_BACKGROUND" value="FBFBFB" />
+        <option name="LOOKUP_COLOR" value="FBFBFB" />
         <option name="JUPYTER.GUTTER_INPUT_EXECUTION_COUNT" value="c969b" />
         <option name="JUPYTER.GUTTER_OUTPUT_EXECUTION_COUNT" value="c96765" />
         <option name="JUPYTER.PROGRESS_STATUS_RUNNING_COLOR" value="2AA298" />
