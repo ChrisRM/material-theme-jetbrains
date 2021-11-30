@@ -165,9 +165,7 @@ public final class MTCustomThemeConfig implements PersistentStateComponent<MTCus
 
   @Override
   public void fireBeforeChanged(final MTCustomThemeForm form) {
-    //    ApplicationManager.getApplication().getMessageBus()
-    //                      .syncPublisher(CustomConfigNotifier.CONFIG_TOPIC)
-    //                      .customConfigChanged(this);
+    // Do nothing
   }
 
   @Override

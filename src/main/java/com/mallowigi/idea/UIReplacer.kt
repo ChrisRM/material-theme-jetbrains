@@ -258,7 +258,7 @@ object UIReplacer {
         .toArray()
       setFinalStatic((objects[0] as Field), color)
     } catch (e: ClassNotFoundException) {
-      thisLogger().error(e)
+      // do not log
     }
   }
 

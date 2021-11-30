@@ -37,6 +37,7 @@ import com.mallowigi.idea.config.MTBaseConfig;
 import com.mallowigi.idea.config.application.MTConfig;
 import com.mallowigi.idea.license.MTMainProductLicenseChecker;
 import com.mallowigi.idea.messages.MaterialThemeBundle;
+import com.mallowigi.idea.utils.MTUiUtils;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
@@ -53,11 +54,11 @@ import java.util.ResourceBundle;
   "FieldCanBeLocal",
   "DuplicateStringLiteralInspection",
   "StringConcatenation",
-  "MethodOnlyUsedFromInnerClass",
   "AnonymousInnerClassMayBeStatic",
   "SyntheticAccessorCall",
   "unused",
-  "ClassWithTooManyFields"})
+  "ClassWithTooManyFields",
+  "MethodReturnAlwaysConstant"})
 public final class MTHomeForm implements MTFormUI {
 
   private final MTMainProductLicenseChecker productLicenseChecker;
@@ -119,7 +120,7 @@ public final class MTHomeForm implements MTFormUI {
     try {
       Desktop.getDesktop().browse(new URI(MaterialThemeBundle.message(s)));
     } catch (final IOException | URISyntaxException ioException) {
-      ioException.printStackTrace();
+      MTUiUtils.showErrorDialog();
     }
   }
 

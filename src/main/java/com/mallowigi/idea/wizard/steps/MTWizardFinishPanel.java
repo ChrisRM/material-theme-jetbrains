@@ -34,6 +34,7 @@ import com.intellij.ide.customize.AbstractCustomizeWizardStep;
 import com.intellij.ui.components.JBScrollPane;
 import com.intellij.ui.components.labels.LinkLabel;
 import com.mallowigi.idea.messages.MTWizardBundle;
+import com.mallowigi.idea.utils.MTUiUtils;
 import net.miginfocom.swing.MigLayout;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -180,7 +181,7 @@ public final class MTWizardFinishPanel extends AbstractCustomizeWizardStep {
         try {
           Desktop.getDesktop().browse(new URI("https://www.material-theme.com"));
         } catch (final IOException | URISyntaxException e) {
-          e.printStackTrace();
+          MTUiUtils.showErrorDialog();
         }
       }
     }, null);
@@ -190,7 +191,7 @@ public final class MTWizardFinishPanel extends AbstractCustomizeWizardStep {
         try {
           Desktop.getDesktop().browse(new URI("https://plugins.jetbrains.com/plugin/8006-material-theme-ui/pricing"));
         } catch (final IOException | URISyntaxException e) {
-          e.printStackTrace();
+          MTUiUtils.showErrorDialog();
         }
       }
     }, null);
@@ -200,7 +201,7 @@ public final class MTWizardFinishPanel extends AbstractCustomizeWizardStep {
         try {
           Desktop.getDesktop().browse(new URI("https://plugins.jetbrains.com/search?search=mallowigi"));
         } catch (final IOException | URISyntaxException e) {
-          e.printStackTrace();
+          MTUiUtils.showErrorDialog();
         }
       }
     }, null);

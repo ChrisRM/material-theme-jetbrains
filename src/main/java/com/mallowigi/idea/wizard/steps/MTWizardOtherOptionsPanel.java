@@ -62,7 +62,8 @@ import static com.mallowigi.idea.utils.MTUiUtils.disablePremium;
   "DuplicateStringLiteralInspection",
   "HardCodedStringLiteral",
   "FeatureEnvy",
-  "MagicNumber"})
+  "MagicNumber",
+  "ClassWithTooManyMethods"})
 public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep {
   private SpinnerModel highlightSpinnerModel;
   private SpinnerModel tabsHeightSpinnerModel;
@@ -80,6 +81,7 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
     setupComponents();
   }
 
+  @SuppressWarnings("FeatureEnvy")
   private void setupComponents() {
     final boolean isFreeLicense = !MTMainProductLicenseChecker.getInstance().isLicensed();
     if (isFreeLicense) {

@@ -28,9 +28,14 @@ package com.mallowigi.idea.license;
 
 import com.google.gson.Gson;
 import com.google.gson.internal.LinkedTreeMap;
-import com.intellij.openapi.actionSystem.*;
+import com.intellij.openapi.actionSystem.ActionManager;
+import com.intellij.openapi.actionSystem.AnAction;
+import com.intellij.openapi.actionSystem.AnActionEvent;
+import com.intellij.openapi.actionSystem.DataContext;
+import com.intellij.openapi.actionSystem.Presentation;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ModalityState;
+import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.ui.LicensingFacade;
 import com.mallowigi.idea.messages.MaterialThemeBundle;
@@ -44,7 +49,13 @@ import java.nio.charset.StandardCharsets;
 import java.security.Signature;
 import java.security.cert.*;
 import java.time.temporal.ChronoUnit;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Base64;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @SuppressWarnings({"UseOfObsoleteDateTimeApi",
   "HardcodedLineSeparator",
@@ -52,7 +63,12 @@ import java.util.*;
   "OverlyBroadCatchBlock",
   "OverlyBroadThrowsClause",
   "ProhibitedExceptionThrown",
-  "ProhibitedExceptionDeclared"})
+  "ProhibitedExceptionDeclared",
+  "MethodWithMultipleReturnPoints",
+  "java:S1200",
+  "java:S1142",
+  "DuplicatedCode",
+  "FeatureEnvy"})
 public abstract class MTLicenseChecker {
   @NonNls
   private static final String KEY_PREFIX = "key:";
@@ -167,6 +183,7 @@ public abstract class MTLicenseChecker {
     }
   }
 
+  @SuppressWarnings("MethodReturnAlwaysConstant")
   abstract String getProductCode();
 
   /**
@@ -178,7 +195,7 @@ public abstract class MTLicenseChecker {
     final String[] licenseParts = key.split("-");
     if (licenseParts.length != 4) {
       licenseDetails.invalidate();
-      return; // invalid format
+      return;
     }
 
     final String licensePartBase64 = licenseParts[1];
@@ -222,6 +239,7 @@ public abstract class MTLicenseChecker {
   /**
    * Extract evaluation information
    */
+  @SuppressWarnings("FeatureEnvy")
   private void extractFromEval(final String expirationTime) {
     licenseDetails.setLicenseType(LicenseType.EVALUATION);
 
@@ -270,7 +288,9 @@ public abstract class MTLicenseChecker {
   /**
    * Display License information
    */
-  @SuppressWarnings("FeatureEnvy")
+  @SuppressWarnings({"FeatureEnvy",
+    "java:S2143",
+    "java:S1142"})
   public final String getLicensedInfo() {
     final LicensingFacade facade = LicensingFacade.getInstance();
     if (facade == null) {
@@ -318,6 +338,8 @@ public abstract class MTLicenseChecker {
   /**
    * Parse the json containing the license info and save in the license Details
    */
+  @SuppressWarnings({"java:S3740",
+    "FeatureEnvy"})
   private void extractInfo(final byte... licenseBytes) {
     final String licenseString = new String(licenseBytes, StandardCharsets.UTF_8);
     final LinkedTreeMap json = new Gson().fromJson(licenseString, LinkedTreeMap.class);
@@ -343,10 +365,10 @@ public abstract class MTLicenseChecker {
   }
 
   private static boolean isKeyValid(final String key) {
-    // Always ask for new information, we cant rely on the  field
+    // Always ask for new information, we can't rely on the  field
     final String[] licenseParts = key.split("-");
     if (licenseParts.length != 4) {
-      return false; // invalid format
+      return false;
     }
 
     @NonNls final String licenseId = licenseParts[0];
@@ -360,18 +382,20 @@ public abstract class MTLicenseChecker {
         return false;
       }
       // Optional additional check: the licenseId corresponds to the licenseId encoded in the signed license data
-      // The following is a 'least-effort' code. It would be more accurate to parse json and then find there the value of the attribute
+      // The following is a 'least-effort' code. It would be more correct to parse json and then find there the value of the attribute
       // "licenseId"
-      final String licenseData = new String(licenseBytes, StandardCharsets.UTF_8);
+      final @NonNls String licenseData = new String(licenseBytes, StandardCharsets.UTF_8);
       return licenseData.contains("\"licenseId\":\"" + licenseId + "\"");
     } catch (final Throwable e) {
-      e.printStackTrace(); // For debug purposes only. Normally you will not want to print exception's trace to console
+      // For debug purposes only. Normally you will not want to print exception's trace to console
+      Logger.getInstance(MTLicenseChecker.class).error(e);
     }
     return false;
   }
 
+  @SuppressWarnings("ArrayLengthInLoopCondition")
   private static boolean isLicenseServerStampValid(final String serverStamp) {
-    // Always ask for new information, we cant rely on the  field
+    // Always ask for new information, we can't rely on the  field
     try {
       final String[] parts = serverStamp.split(":");
       final Base64.Decoder base64 = Base64.getMimeDecoder();
@@ -406,7 +430,7 @@ public abstract class MTLicenseChecker {
   }
 
   private static boolean isEvaluationValid(final String expirationTime) {
-    // Always ask for new information, we cant rely on the  field
+    // Always ask for new information, we can't rely on the  field
     try {
       final Date now = new Date();
       final Date expiration = new Date(Long.parseLong(expirationTime));
@@ -422,9 +446,10 @@ public abstract class MTLicenseChecker {
    * - productCode: the product corresponding to the passed productCode will be pre-selected in the opened dialog
    * - message: optional message explaining the reason why the dialog has been shown
    */
+  @SuppressWarnings("OverlyLongLambda")
   @NotNull
   private DataContext asDataContext(@Nullable final String message) {
-    return dataId -> {
+    return (@NonNls @NotNull String dataId) -> {
       switch (dataId) {
         // the same code as registered in plugin.xml, 'product-descriptor' tag
         case "register.product-descriptor.code":
@@ -449,10 +474,10 @@ public abstract class MTLicenseChecker {
    * @return the license in bytes
    * @throws Exception if the decoding fails
    */
-  private static byte[] verifySignature(final String licensePartBase64, final String signatureBase64, final String certBase64)
+  private static byte @Nullable [] verifySignature(final String licensePartBase64, final String signatureBase64, final String certBase64)
     throws Exception {
     final Signature sig = Signature.getInstance("SHA1withRSA");
-    // the last parameter of 'createCertificate()' set to 'false' switches off certificate expiration checks.
+    // The last parameter of 'createCertificate()' set to 'false' switches off certificate expiration checks.
     // This might be the case if the key is at the same time a perpetual fallback license for older IDE versions.
     // Here it is only important that the key was signed with an authentic JetBrains certificate.
     sig.initVerify(createCertificate(
@@ -469,6 +494,7 @@ public abstract class MTLicenseChecker {
   /**
    * Verify the stamp signature
    */
+  @SuppressWarnings("ArrayLengthInLoopCondition")
   private static @Nullable String verifyStampSignature(final String[] parts, final Base64.Decoder base64) throws Exception {
     final long timeStamp = Long.parseLong(parts[1]);
     final String machineId = parts[2];
@@ -497,7 +523,8 @@ public abstract class MTLicenseChecker {
    * Create X509 Certificate to use the licensing server
    */
   @SuppressWarnings({"ObjectAllocationInLoop",
-    "TypeMayBeWeakened"})
+    "TypeMayBeWeakened",
+    "MethodWithMultipleLoops"})
   @NotNull
   private static X509Certificate createCertificate(final byte[] certBytes,
                                                    final Collection<byte[]> intermediateCertsBytes,
@@ -516,14 +543,14 @@ public abstract class MTLicenseChecker {
       final X509CertSelector selector = new X509CertSelector();
       selector.setCertificate(cert);
       // Configure the PKIX certificate builder algorithm parameters
-      final Set<TrustAnchor> trustAchors = new HashSet<>(10);
+      final Set<TrustAnchor> trustAnchors = new HashSet<>(10);
       for (final String rc : ROOT_CERTIFICATES) {
-        trustAchors.add(new TrustAnchor(
+        trustAnchors.add(new TrustAnchor(
           (X509Certificate) x509factory.generateCertificate(new ByteArrayInputStream(rc.getBytes(StandardCharsets.UTF_8))), null
         ));
       }
 
-      final PKIXBuilderParameters pkixParams = new PKIXBuilderParameters(trustAchors, selector);
+      final PKIXBuilderParameters pkixParams = new PKIXBuilderParameters(trustAnchors, selector);
       pkixParams.setRevocationEnabled(false);
       if (!checkValidityAtCurrentDate) {
         // deliberately check validity on the start date of cert validity period, so that we do not depend on
@@ -555,64 +582,4 @@ public abstract class MTLicenseChecker {
     FREE
   }
 
-  /**
-   * Data holding class for license info
-   */
-  @SuppressWarnings({"StaticMethodOnlyUsedInOneClass",
-    "FieldCanBeLocal",
-    "unused"})
-  private static final class LicenseDetails {
-    @NonNls
-    static final String LICENSE_ID = "licenseId";
-    @NonNls
-    static final String LICENSEE_NAME = "licenseeName";
-    @NonNls
-    static final String PRODUCTS = "products";
-    @NonNls
-    static final String CODE = "code";
-    @NonNls
-    static final String PAID_UP_TO = "paidUpTo";
-
-    private String id = null;
-    private String name = null;
-    private String paidUpTo = null;
-    private String machineId = null;
-    private LicenseType licenseType = MTLicenseChecker.LicenseType.FREE;
-    private boolean isValid = true;
-
-    LicenseDetails() {
-    }
-
-    void setId(final String id) {
-      this.id = id;
-    }
-
-    String getName() {
-      return name;
-    }
-
-    void setName(final String name) {
-      this.name = name;
-    }
-
-    void setPaidUpTo(final String paidUpTo) {
-      this.paidUpTo = paidUpTo;
-    }
-
-    void invalidate() {
-      isValid = false;
-    }
-
-    void setMachineId(final String machineId) {
-      this.machineId = machineId;
-    }
-
-    void setLicenseType(final LicenseType licenseType) {
-      this.licenseType = licenseType;
-    }
-
-    LicenseType getLicenseType() {
-      return licenseType;
-    }
-  }
 }

@@ -48,6 +48,7 @@ import com.intellij.openapi.editor.colors.EditorColorsScheme;
 import com.intellij.openapi.extensions.PluginId;
 import com.intellij.openapi.options.ShowSettingsUtil;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.openapi.wm.impl.IdeBackgroundUtil;
@@ -78,7 +79,11 @@ import java.lang.reflect.Field;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.security.SecureRandom;
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Random;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.stream.Stream;
 
@@ -89,7 +94,10 @@ import java.util.stream.Stream;
   "StaticMethodOnlyUsedInOneClass",
   "ClassWithTooManyMethods",
   "HardcodedFileSeparator",
-  "OverlyComplexClass"})
+  "OverlyComplexClass",
+  "MethodWithMultipleReturnPoints",
+  "UseJBColor",
+  "UnstableApiUsage"})
 public enum MTUiUtils {
   DEFAULT;
 
@@ -532,7 +540,7 @@ public enum MTUiUtils {
     final StringBuilder sb = new StringBuilder(100);
     final Random randomProvider = new SecureRandom();
     for (int i = 0; i < charCount; i++) {
-      final char c = charSet.charAt(randomProvider.nextInt(charSet.length()));
+      final @NonNls char c = charSet.charAt(randomProvider.nextInt(charSet.length()));
       sb.append(c);
     }
     return sb.toString();
@@ -697,5 +705,12 @@ public enum MTUiUtils {
   @NonNls
   public static String iconPrefix(final @NonNls String iconName) {
     return String.format("/icons/actions/themes/%s.svg", iconName);
+  }
+
+  public static void showErrorDialog() {
+    Messages.showErrorDialog(
+      MaterialThemeBundle.message("dialog.message.unable.to.open.browser"),
+      MaterialThemeBundle.message("dialog.title.error")
+    );
   }
 }

@@ -85,16 +85,6 @@ public final class MTSpinnerUI extends DarculaSpinnerUI {
   private JButton createArrow(final int direction) {
     final MTSpinnerArrowButton arrowButton = new MTSpinnerArrowButton(direction);
     arrowButton.addMouseListener(new SpinnerButtonHighlightedAdapter(arrowButton));
-
-    // addRootPane border
-    //    final Border buttonBorder = UIManager.getBorder("Spinner.arrowButtonBorder");
-    //    if (buttonBorder instanceof UIResource) {
-    //      // Wrap the border to avoid having the UIResource be replaced by
-    //      // the ButtonUI. This is the opposite of using BorderUIResource.
-    //      arrowButton.setBorder(new CompoundBorder(buttonBorder, null));
-    //    } else {
-    //      arrowButton.setBorder(buttonBorder);
-    //    }
     arrowButton.setInheritsPopupMenu(true);
     return arrowButton;
   }

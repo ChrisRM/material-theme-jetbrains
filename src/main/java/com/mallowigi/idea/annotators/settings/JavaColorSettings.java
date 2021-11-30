@@ -47,8 +47,7 @@ import javax.swing.*;
 import java.util.Collections;
 import java.util.Map;
 
-@SuppressWarnings({"DuplicateStringLiteralInspection"
-})
+@SuppressWarnings("DuplicateStringLiteralInspection")
 public final class JavaColorSettings extends BaseColorSettings {
   @NotNull
   @NonNls

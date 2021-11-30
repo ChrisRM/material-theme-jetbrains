@@ -31,7 +31,7 @@ import com.intellij.util.ui.TimerUtil;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
-import java.util.ArrayDeque;
+import java.util.Deque;
 
 public final class ButtonBackgroundTimer {
   private final int fps;
@@ -40,7 +40,8 @@ public final class ButtonBackgroundTimer {
     this.fps = fps;
   }
 
-  private static ActionListener getActionListener(final Timer timer, final Component component, final ArrayDeque<? extends Color> colors) {
+  @SuppressWarnings("OverlyLongLambda")
+  private static ActionListener getActionListener(final Timer timer, final Component component, final Deque<? extends Color> colors) {
     return e -> {
       final Color color = colors.poll();
       if (color == null) {
@@ -59,7 +60,7 @@ public final class ButtonBackgroundTimer {
     };
   }
 
-  public void start(final String name, final Component component, final ArrayDeque<Color> colors) {
+  public void start(final String name, final Component component, final Deque<Color> colors) {
     final Timer timer = TimerUtil.createNamedTimer(name, 1000 / fps);
     timer.addActionListener(getActionListener(timer, component, colors));
     timer.start();

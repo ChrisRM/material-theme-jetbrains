@@ -1814,11 +1814,7 @@ public class MTForm implements MTFormUI, Disposable {
    * Disable features that are not available on certain platforms/versions/etc
    */
   private static void disableFeatures() {
-    //    final boolean eap = ApplicationInfoEx.getInstanceEx().isEAP();
-    //    showIconCheckbox.setEnabled(eap);
-    //    if (!eap) {
-    //      showIconCheckbox.setToolTipText(MaterialThemeBundle.message("MTProjectForm.showIconCheckbox.disabledTooltipText"));
-    //    }
+    // to be implemented if necessary
   }
 
   /**
