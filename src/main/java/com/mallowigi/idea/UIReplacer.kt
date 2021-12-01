@@ -28,6 +28,7 @@
 package com.mallowigi.idea
 
 import com.intellij.codeInsight.lookup.impl.LookupCellRenderer
+import com.intellij.codeInspection.ui.InspectionTreeTailRenderer
 import com.intellij.history.integration.ui.views.RevisionsList
 import com.intellij.ide.IdeTooltipManager
 import com.intellij.ide.navigationToolbar.ui.NavBarUIManager
@@ -387,6 +388,9 @@ object UIReplacer {
         "SYNTHETIC_ATTRIBUTES",
         SimpleTextAttributes(SimpleTextAttributes.STYLE_PLAIN, linkForeground)
       )
+      setFinalStatic(InspectionTreeTailRenderer::class.java, "TREE_GRAY", labelDisabledForeground)
+      setFinalStatic(InspectionTreeTailRenderer::class.java, "TREE_RED", JBColor(MTUI.MTColor.RED, MTUI.MTColor.RED))
+
     } catch (e: NoSuchFieldException) {
       thisLogger().error(e)
     } catch (e: IllegalAccessException) {
