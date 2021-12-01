@@ -102,7 +102,7 @@ class MTScrollbarsPage : ColorSettingsPage, DisplayPrioritySortable {
     init {
       val colorDescriptors: MutableSet<ColorDescriptor> = mutableSetOf()
       val thumbnailResources = Sets.union(SCROLLBAR_HOVER_RESOURCES, SCROLLBAR_RESOURCES)
-      val allResources = Sets.union(thumbnailResources, MTThemeResources.SCROLLBAR_RESOURCES)
+      val allResources = Sets.union(thumbnailResources, MTThemeResources.scrollBarResources)
       val (macResources, nonMacResources) = allResources.partition { it.contains("Mac.") }
 
       if (SystemInfoRt.isMac) {

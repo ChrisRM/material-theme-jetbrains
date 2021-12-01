@@ -23,21 +23,30 @@
  *
  *
  */
+@file:Suppress("HardCodedStringLiteral")
+
 package com.mallowigi.idea.themes.lists
 
+/**
+ * List of UI Resources
+ */
 object MTThemeResources {
 
-  @JvmField
-  val SCROLLBAR_RESOURCES: Set<String> = setOf(
-    "ScrollBar.Mac.Transparent.hoverTrackColor",
-    "ScrollBar.Mac.Transparent.trackColor",
-    "ScrollBar.Mac.hoverTrackColor",
-    "ScrollBar.Mac.trackColor",
-    "ScrollBar.Transparent.hoverTrackColor",
-    "ScrollBar.Transparent.trackColor",
-    "ScrollBar.hoverTrackColor",
-    "ScrollBar.trackColor"
-  )
+  /**
+   * Scrollbar related resources
+   */
+  @JvmStatic
+  val scrollBarResources: Set<String>
+    get() = setOf(
+      "ScrollBar.Mac.Transparent.hoverTrackColor",
+      "ScrollBar.Mac.Transparent.trackColor",
+      "ScrollBar.Mac.hoverTrackColor",
+      "ScrollBar.Mac.trackColor",
+      "ScrollBar.Transparent.hoverTrackColor",
+      "ScrollBar.Transparent.trackColor",
+      "ScrollBar.hoverTrackColor",
+      "ScrollBar.trackColor"
+    )
 
   /**
    * Get resources using the background color
@@ -400,6 +409,9 @@ object MTThemeResources {
       "material.selectionBackground"
     )
 
+  /**
+   * Selected transparent resources
+   */
   @JvmStatic
   val selectionTransparentBackgroundResources: Set<String>
     get() = setOf(
@@ -868,6 +880,9 @@ object MTThemeResources {
       "ValidationTooltip.warningBorderColor"
     )
 
+  /**
+   * Excluded resources
+   */
   @JvmStatic
   val excludedResources: Set<String>
     get() = setOf(
