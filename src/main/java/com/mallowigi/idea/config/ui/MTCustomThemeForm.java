@@ -62,7 +62,8 @@ import static com.mallowigi.idea.utils.MTUiUtils.disablePremium;
   "Duplicates",
   "ClassWithTooManyMethods",
   "UseJBColor",
-  "InstanceVariableMayNotBeInitialized"})
+  "InstanceVariableMayNotBeInitialized",
+  "HardCodedStringLiteral"})
 public final class MTCustomThemeForm implements MTFormUI {
   // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
   // Generated using JFormDesigner non-commercial license
@@ -135,7 +136,7 @@ public final class MTCustomThemeForm implements MTFormUI {
 
   @Override
   public void dispose() {
-
+    // do nothing
   }
 
   @SuppressWarnings({"OverlyComplexMethod",
@@ -751,6 +752,7 @@ public final class MTCustomThemeForm implements MTFormUI {
   public void setupComponents() {
     // Load from preset combobox
     final ActionToolbar actionToolbar = addLoadFromPresetComboBox();
+    actionToolbar.setTargetComponent(customThemeForm);
     customThemeForm.add(actionToolbar.getComponent(), "cell 1 1, align right center,grow 0 0");
     disabledPanel = new DisabledPanel(content, MaterialThemeBundle.message("plugin.premiumSimple"));
 
@@ -765,7 +767,7 @@ public final class MTCustomThemeForm implements MTFormUI {
     final ComboBoxAction action = new MTLoadCustomThemeComboBoxAction(this);
     actions.addAction(action);
 
-    return ActionManager.getInstance().createActionToolbar("inspection.view.quick.fix.preview", actions, true);
+    return ActionManager.getInstance().createActionToolbar("MTCustomThemeLoader", actions, true);
   }
 
   /**
