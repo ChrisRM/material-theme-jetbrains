@@ -29,6 +29,7 @@ package com.mallowigi.idea
 
 import com.intellij.codeInsight.lookup.impl.LookupCellRenderer
 import com.intellij.history.integration.ui.views.RevisionsList
+import com.intellij.ide.IdeTooltipManager
 import com.intellij.ide.navigationToolbar.ui.NavBarUIManager
 import com.intellij.ide.plugins.PluginManagerCore
 import com.intellij.ide.ui.UISettings
@@ -337,6 +338,8 @@ object UIReplacer {
     try {
       val backgroundColorField = LookupCellRenderer::class.java.getDeclaredField("BACKGROUND_COLOR")
       setFinalStatic(backgroundColorField, autoCompleteBackground)
+      setFinalStatic(IdeTooltipManager::class.java, "GRAPHITE_COLOR", secondaryBackground)
+
     } catch (e: NoSuchFieldException) {
       thisLogger().error(e)
     } catch (e: IllegalAccessException) {
