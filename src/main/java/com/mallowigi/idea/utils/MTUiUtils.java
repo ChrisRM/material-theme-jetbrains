@@ -97,7 +97,8 @@ import java.util.stream.Stream;
   "OverlyComplexClass",
   "MethodWithMultipleReturnPoints",
   "UseJBColor",
-  "UnstableApiUsage"})
+  "UnstableApiUsage",
+  "java:S5612"})
 public enum MTUiUtils {
   DEFAULT;
 
@@ -135,7 +136,7 @@ public enum MTUiUtils {
     RENDERING_HINTS.put(RenderingHints.KEY_FRACTIONALMETRICS, RenderingHints.VALUE_FRACTIONALMETRICS_ON);
   }
 
-  public static Map getHints() {
+  public static Map<Object, Object> getHints() {
     return Collections.unmodifiableMap(RENDERING_HINTS);
   }
 
@@ -456,7 +457,7 @@ public enum MTUiUtils {
    * @param component the component
    * @param state     the new state
    */
-  public static void disableEnable(final JComponent component, final boolean state) {
+  public static void disableEnable(final Component component, final boolean state) {
     component.setEnabled(state);
   }
 
@@ -512,13 +513,13 @@ public enum MTUiUtils {
   /**
    * Generate a random color
    */
-  @SuppressWarnings("UnsecureRandomNumberGeneration")
+  @SuppressWarnings("java:S2164")
   public static Color getRandomColor() {
-    final Random random = new Random();
+    final SecureRandom random = new SecureRandom();
     final float hue = random.nextFloat();
     // Saturation between 0.1 and 0.3
-    final float saturation = (random.nextInt(2000) + 1000) / 10000.0f;
-    final float luminance = 0.4f;
+    final float saturation = (random.nextInt(2000) + 1000) / 10000.0F;
+    final float luminance = 0.4F;
     return Color.getHSBColor(hue, saturation, luminance);
   }
 
