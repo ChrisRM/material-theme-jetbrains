@@ -25,9 +25,16 @@
  */
 package com.mallowigi.idea.themes.lists
 
+/**
+ * Accent resources
+ *
+ */
 object AccentResources {
+  /**
+   * All accent resources
+   */
   @JvmField
-  val ACCENT_RESOURCES: Set<String> = setOf(
+  val accentResources: Set<String> = setOf(
     "ActionButton.pressedBackground",
     "ActionButton.pressedBorderColor",
     "BookmarkIcon.background",
@@ -162,20 +169,25 @@ object AccentResources {
 
   )
 
+  /**
+   * Accent transparent resources
+   */
   @JvmField
-  val ACCENT_TRANSPARENT_RESOURCES: Set<String> = setOf(
+  val accentTransparentResources: Set<String> = setOf(
     "ActionButton.focusedBorderColor",
     "ActionButton.hoverBackground",
     "ActionButton.hoverBorderColor",
     "DragAndDrop.rowBackground",
     "Focus.Color", // deprecated
     "Focus.borderColor", // deprecated
-    "Focus.color" // deprecated
-
+    "Focus.color", // deprecated,
   )
 
+  /**
+   * Scrollbar resources
+   */
   @JvmField
-  val SCROLLBAR_RESOURCES: Set<String> = setOf(
+  val scrollbarResources: Set<String> = setOf(
     "ScrollBar.Mac.Transparent.thumbBorderColor",
     "ScrollBar.Mac.Transparent.thumbColor",
     "ScrollBar.Mac.thumbBorderColor",
@@ -187,8 +199,11 @@ object AccentResources {
 
   )
 
+  /**
+   * Scrollbar hover resources
+   */
   @JvmField
-  val SCROLLBAR_HOVER_RESOURCES: Set<String> = setOf(
+  val scrollbarHoverResources: Set<String> = setOf(
     "ScrollBar.Mac.Transparent.hoverThumbBorderColor",
     "ScrollBar.Mac.Transparent.hoverThumbColor",
     "ScrollBar.Mac.hoverThumbBorderColor",

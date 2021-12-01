@@ -390,9 +390,9 @@ class MTThemeManager private constructor() : Disposable {
     val accentColor = ColorUtil.fromHex(mtConfig.accentColor)
     val transparentAccentColor = ColorUtil.toAlpha(accentColor, 70)
 
-    AccentResources.ACCENT_RESOURCES.forEach { UIManager.put(it, accentColor) }
+    AccentResources.accentResources.forEach { UIManager.put(it, accentColor) }
 
-    AccentResources.ACCENT_TRANSPARENT_RESOURCES.forEach { UIManager.put(it, transparentAccentColor) }
+    AccentResources.accentTransparentResources.forEach { UIManager.put(it, transparentAccentColor) }
 
     // Accent mode
     applyAccentMode()
@@ -422,9 +422,9 @@ class MTThemeManager private constructor() : Disposable {
     val scrollbarColor = scrollbarColors.getFirst()
     val scrollbarHoverColor = scrollbarColors.getSecond()
 
-    AccentResources.SCROLLBAR_RESOURCES.forEach { UIManager.put(it, scrollbarColor) }
+    AccentResources.scrollbarResources.forEach { UIManager.put(it, scrollbarColor) }
 
-    AccentResources.SCROLLBAR_HOVER_RESOURCES.forEach { UIManager.put(it, scrollbarHoverColor) }
+    AccentResources.scrollbarHoverResources.forEach { UIManager.put(it, scrollbarHoverColor) }
 
     reloadUI()
   }

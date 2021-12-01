@@ -38,8 +38,8 @@ import com.intellij.psi.codeStyle.DisplayPriority
 import com.intellij.psi.codeStyle.DisplayPrioritySortable
 import com.intellij.util.ArrayUtil
 import com.mallowigi.idea.messages.MaterialThemeBundle.message
-import com.mallowigi.idea.themes.lists.AccentResources.SCROLLBAR_HOVER_RESOURCES
-import com.mallowigi.idea.themes.lists.AccentResources.SCROLLBAR_RESOURCES
+import com.mallowigi.idea.themes.lists.AccentResources.scrollbarHoverResources
+import com.mallowigi.idea.themes.lists.AccentResources.scrollbarResources
 import com.mallowigi.idea.themes.lists.MTThemeResources
 import org.jetbrains.annotations.NonNls
 import javax.swing.Icon
@@ -101,7 +101,7 @@ class MTScrollbarsPage : ColorSettingsPage, DisplayPrioritySortable {
 
     init {
       val colorDescriptors: MutableSet<ColorDescriptor> = mutableSetOf()
-      val thumbnailResources = Sets.union(SCROLLBAR_HOVER_RESOURCES, SCROLLBAR_RESOURCES)
+      val thumbnailResources = Sets.union(scrollbarHoverResources, scrollbarResources)
       val allResources = Sets.union(thumbnailResources, MTThemeResources.scrollBarResources)
       val (macResources, nonMacResources) = allResources.partition { it.contains("Mac.") }
 
