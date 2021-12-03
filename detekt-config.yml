@@ -4,14 +4,22 @@
 exceptions:
   InstanceOfCheckForException:
     active: true
+    excludes: [ '**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**' ]
   NotImplementedDeclaration:
     active: true
   TooGenericExceptionCaught:
     active: false
   SwallowedException:
     active: false
+    ignoredExceptionTypes:
+      - 'InterruptedException'
+      - 'MalformedURLException'
+      - 'NumberFormatException'
+      - 'ParseException'
+    allowedExceptionNameRegex: '_|(ignore|expected).*'
 
 formatting:
+  autoCorrect: true
   AnnotationOnSeparateLine:
     active: true
   AnnotationSpacing:
@@ -145,24 +153,38 @@ comments:
     active: true
   OutdatedDocumentation:
     active: true
+    matchTypeParameters: true
+    matchDeclarationsOrder: true
   UndocumentedPublicClass:
     active: false
-    excludes: [ '**/*Bundle*', '**/actions/**' ]
+    excludes: [ '**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**', '**/*Bundle*', '**/actions/**' ]
   UndocumentedPublicFunction:
     active: false
-    excludes: [ '**/*Bundle*', '**/actions/**' ]
+    excludes: [ '**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**', '**/*Bundle*', '**/actions/**' ]
 
 complexity:
   LargeClass:
     active: true
-    excludes: [ '**/*Resources*' ]
+    excludes: [ '**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**', '**/*Resources*' ]
   NamedArguments:
     active: true
   ReplaceSafeCallChainWithRun:
     active: true
   StringLiteralDuplication:
     active: true
+    threshold: 3
+    ignoreAnnotation: true
+    excludeStringsWithLessThan5Characters: true
+    ignoreStringsRegex: '$^'
+    excludes: [ '**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**' ]
   TooManyFunctions:
+    excludes: [ '**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**' ]
+    thresholdInFiles: 11
+    thresholdInClasses: 11
+    thresholdInInterfaces: 11
+    thresholdInObjects: 11
+    thresholdInEnums: 11
+    ignoreDeprecated: false
     ignorePrivate: true
     ignoreOverridden: true
 
@@ -205,6 +227,7 @@ potential-bugs:
     active: true
   MissingPackageDeclaration:
     active: true
+    excludes: [ '**/*.kts' ]
   MissingWhenCase:
     active: true
   NullableToStringCall:
