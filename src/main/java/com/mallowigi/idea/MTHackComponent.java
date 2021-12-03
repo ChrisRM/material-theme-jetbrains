@@ -29,14 +29,18 @@ package com.mallowigi.idea;
 import com.intellij.execution.runners.ProcessProxy;
 import com.intellij.openapi.editor.toolbar.floating.DefaultFloatingToolbarProvider;
 import com.intellij.openapi.util.SystemInfoRt;
-import com.intellij.openapi.vcs.configurable.VcsContentAnnotationConfigurable;
 import com.intellij.openapi.wm.impl.IdeBackgroundUtil;
 import com.intellij.openapi.wm.impl.SquareStripeButtonLook;
 import com.intellij.openapi.wm.impl.welcomeScreen.FlatWelcomeFrameProvider;
 import com.intellij.ui.CaptionPanel;
 import com.intellij.ui.components.MultiColumnList;
 import com.intellij.ui.tabs.FileColorsConfigurable;
-import javassist.*;
+import javassist.CannotCompileException;
+import javassist.ClassClassPath;
+import javassist.ClassPool;
+import javassist.CtClass;
+import javassist.CtConstructor;
+import javassist.CtMethod;
 import javassist.expr.ExprEditor;
 import javassist.expr.MethodCall;
 import javassist.expr.NewExpr;
@@ -47,7 +51,8 @@ import org.jetbrains.annotations.NonNls;
   "DuplicateStringLiteralInspection",
   "OverlyBroadCatchBlock",
   "KotlinInternalInJava",
-  "StandardVariableNames"})
+  "HardCodedStringLiteral",
+  "SpellCheckingInspection"})
 public final class MTHackComponent {
 
   static {
@@ -310,7 +315,6 @@ public final class MTHackComponent {
   private static void hackEapAgreement() {
     try {
       @NonNls final ClassPool cp = new ClassPool(true);
-      cp.insertClassPath(new ClassClassPath(VcsContentAnnotationConfigurable.class));
       final CtClass agreementClass = cp.get("com.intellij.ide.gdpr.AgreementUi");
 
       //      final CtMethod createHtmlEditorPane = agreementClass.getDeclaredMethod("createHtmlEditorPane");
@@ -341,7 +345,6 @@ public final class MTHackComponent {
   private static void hackExperimentalUI() {
     try {
       @NonNls final ClassPool cp = new ClassPool(true);
-      cp.insertClassPath(new ClassClassPath(VcsContentAnnotationConfigurable.class));
       final CtClass experimentalUIClass = cp.get("com.intellij.ui.ExperimentalUI");
 
       final CtMethod isNewToolWindowsStripes = experimentalUIClass.getDeclaredMethod("isNewToolWindowsStripes");
@@ -356,7 +359,6 @@ public final class MTHackComponent {
   private static void hackTagButton() {
     try {
       @NonNls final ClassPool cp = new ClassPool(true);
-      cp.insertClassPath(new ClassClassPath(VcsContentAnnotationConfigurable.class));
       final CtClass tagButtonClass = cp.get("com.intellij.execution.ui.TagButton");
 
       final CtMethod getBackgroundColor = tagButtonClass.getDeclaredMethod("getBackgroundColor");

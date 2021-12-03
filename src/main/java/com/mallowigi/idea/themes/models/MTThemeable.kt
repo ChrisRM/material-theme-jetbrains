@@ -33,6 +33,9 @@ import javax.swing.Icon
  */
 @Suppress("ClassOrdering")
 interface MTThemeable {
+  /**
+   * Theme id
+   */
   var themeId: String
 
   /**

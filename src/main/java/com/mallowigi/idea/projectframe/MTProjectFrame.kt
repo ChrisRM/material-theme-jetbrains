@@ -37,7 +37,6 @@ import com.mallowigi.idea.config.project.MTProjectConfig
 import com.mallowigi.idea.listeners.ConfigNotifier
 import com.mallowigi.idea.listeners.MTTopics
 import com.mallowigi.idea.listeners.ProjectConfigNotifier
-import org.jetbrains.annotations.NonNls
 import java.awt.BorderLayout
 import java.awt.Graphics
 import java.awt.Insets
@@ -94,7 +93,7 @@ class MTProjectFrame private constructor(private val myProject: Project) : IdeRo
    * Key identifying the project frame
    *
    */
-  override fun getKey(): @NonNls String = "MTProjectFrame"
+  override fun getKey(): String = "MTProjectFrame"
 
   /**
    * IDERootPane component

@@ -48,7 +48,6 @@ import com.mallowigi.idea.listeners.ThemeListener
 import com.mallowigi.idea.messages.MaterialThemeBundle.message
 import com.mallowigi.idea.utils.MTUI
 import com.mallowigi.idea.utils.MTUiUtils
-import org.jetbrains.annotations.NonNls
 import java.awt.Dimension
 import java.awt.Font
 import java.awt.Graphics
@@ -66,7 +65,7 @@ internal class MTStatusWidget : CustomStatusBarWidget {
   private val mtWidget: MTWidget = MTWidget()
   private val connect = ApplicationManager.getApplication().messageBus.connect(this)
 
-  override fun ID(): @NonNls String = "MTStatusBarWidget"
+  override fun ID(): String = "MTStatusBarWidget"
 
   override fun install(statusBar: StatusBar) {
     connect.subscribe(MTTopics.THEMES, ThemeListener { refresh() })

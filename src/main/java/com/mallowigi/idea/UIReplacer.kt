@@ -182,10 +182,13 @@ object UIReplacer {
    * Patch local history user label color
    *
    */
-  @Throws(NoSuchFieldException::class, IllegalAccessException::class)
   private fun patchLocalHistory() {
-    val clazz = Class.forName("com.intellij.history.integration.ui.views.RevisionsList\$MyCellRenderer")
-    setFinalStatic(clazz, "USER_LABEL_COLOR", accentColor)
+    try {
+      val clazz = Class.forName("com.intellij.history.integration.ui.views.RevisionsList\$MyCellRenderer")
+      setFinalStatic(clazz, "USER_LABEL_COLOR", accentColor)
+    } catch (e: ClassNotFoundException) {
+      // do nothing
+    }
   }
 
   @Throws(NoSuchFieldException::class, IllegalAccessException::class)

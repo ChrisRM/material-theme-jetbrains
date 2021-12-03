@@ -28,7 +28,6 @@ package com.mallowigi.idea.lafs
 import com.intellij.ide.ui.UITheme
 import com.intellij.ide.ui.laf.darcula.DarculaLaf
 import com.intellij.util.ui.UIUtil
-import org.jetbrains.annotations.NonNls
 import java.io.IOException
 import java.util.function.Function
 import javax.swing.UIDefaults
@@ -71,7 +70,7 @@ class MTDarculaLaf : DarculaLaf() {
    *
    * @param defaults of type UIDefaults
    */
-  private fun installDarculaDefaults(defaults: @NonNls UIDefaults) {
+  private fun installDarculaDefaults(defaults: UIDefaults) {
     defaults["darcula.primary"] = ColorUIResource(0x3c3f41)
     defaults["darcula.contrastColor"] = ColorUIResource(0x262626)
     defaults["grayFilter"] = UIUtil.GrayFilter(-100, -100, 100)

@@ -30,12 +30,11 @@ import com.intellij.openapi.wm.StatusBar
 import com.intellij.openapi.wm.StatusBarWidget
 import com.intellij.openapi.wm.StatusBarWidgetFactory
 import com.mallowigi.idea.messages.MaterialThemeBundle.message
-import org.jetbrains.annotations.Nls
 
 class MTStatusBarFactory : StatusBarWidgetFactory {
   override fun getId(): String = "mtStatusBar"
 
-  override fun getDisplayName(): @Nls String = message("mt.settings.statusbar")
+  override fun getDisplayName(): String = message("mt.settings.statusbar")
 
   override fun isAvailable(project: Project): Boolean = true
 

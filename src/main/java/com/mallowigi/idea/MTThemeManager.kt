@@ -61,7 +61,6 @@ import com.mallowigi.idea.utils.MTStyledKitPatcher
 import com.mallowigi.idea.utils.MTUI
 import com.mallowigi.idea.utils.MTUiUtils
 import com.mallowigi.idea.utils.animator.MTChangeLafService
-import org.jetbrains.annotations.NonNls
 import java.awt.Color
 import java.awt.Font
 import java.util.Locale
@@ -306,7 +305,7 @@ class MTThemeManager private constructor() : Disposable {
    * @param theme
    * @return
    */
-  fun isMaterialTheme(theme: @NonNls UIManager.LookAndFeelInfo?): Boolean =
+  fun isMaterialTheme(theme: UIManager.LookAndFeelInfo?): Boolean =
     theme is UIThemeBasedLookAndFeelInfo && MTThemeCollection.getThemeFor(theme.theme.id) != null
 
   /**
@@ -486,7 +485,7 @@ class MTThemeManager private constructor() : Disposable {
    * @param fontFace   the font face
    * @param fontSize   the font size
    */
-  private fun applySettingsFont(uiDefaults: @NonNls UIDefaults?, fontFace: String?, fontSize: Int) {
+  private fun applySettingsFont(uiDefaults: UIDefaults?, fontFace: String?, fontSize: Int) {
     uiDefaults!!["Tree.ancestorInputMap"] = null
 
     val font = UIUtil.getFontWithFallback(fontFace, Font.PLAIN, fontSize)
@@ -511,7 +510,7 @@ class MTThemeManager private constructor() : Disposable {
    *
    * @param uiDefaults
    */
-  private fun applyMaterialFonts(uiDefaults: @NonNls UIDefaults?) {
+  private fun applyMaterialFonts(uiDefaults: UIDefaults?) {
     uiDefaults!!["Tree.ancestorInputMap"] = null
 
     val language = Locale.getDefault().language
@@ -568,7 +567,7 @@ class MTThemeManager private constructor() : Disposable {
    *
    * @param lookAndFeelDefaults
    */
-  private fun applyCustomTreeFont(lookAndFeelDefaults: @NonNls UIDefaults?) {
+  private fun applyCustomTreeFont(lookAndFeelDefaults: UIDefaults?) {
     val treeFontSize = JBUI.scale(mtConfig.treeFontSize)
     val treeFont = mtConfig.treeFont
 

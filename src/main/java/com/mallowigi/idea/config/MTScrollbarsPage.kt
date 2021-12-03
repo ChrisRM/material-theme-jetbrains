@@ -41,7 +41,6 @@ import com.mallowigi.idea.messages.MaterialThemeBundle.message
 import com.mallowigi.idea.themes.lists.AccentResources.scrollbarHoverResources
 import com.mallowigi.idea.themes.lists.AccentResources.scrollbarResources
 import com.mallowigi.idea.themes.lists.MTThemeResources
-import org.jetbrains.annotations.NonNls
 import javax.swing.Icon
 
 /**
@@ -65,7 +64,7 @@ class MTScrollbarsPage : ColorSettingsPage, DisplayPrioritySortable {
    * Page name
    *
    */
-  override fun getDisplayName(): @NonNls String = message("MTScrollbars.title")
+  override fun getDisplayName(): String = message("MTScrollbars.title")
 
   /**
    * Put it with the common settings
