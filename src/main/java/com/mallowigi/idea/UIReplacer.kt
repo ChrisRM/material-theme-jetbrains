@@ -29,7 +29,6 @@ package com.mallowigi.idea
 
 import com.intellij.codeInsight.lookup.impl.LookupCellRenderer
 import com.intellij.codeInspection.ui.InspectionTreeTailRenderer
-import com.intellij.history.integration.ui.views.RevisionsList
 import com.intellij.ide.IdeTooltipManager
 import com.intellij.ide.navigationToolbar.ui.NavBarUIManager
 import com.intellij.ide.plugins.PluginManagerCore
@@ -185,7 +184,8 @@ object UIReplacer {
    */
   @Throws(NoSuchFieldException::class, IllegalAccessException::class)
   private fun patchLocalHistory() {
-    setFinalStatic(RevisionsList.MyCellRenderer::class.java, "USER_LABEL_COLOR", accentColor)
+    val clazz = Class.forName("com.intellij.history.integration.ui.views.RevisionsList\$MyCellRenderer")
+    setFinalStatic(clazz, "USER_LABEL_COLOR", accentColor)
   }
 
   @Throws(NoSuchFieldException::class, IllegalAccessException::class)
@@ -193,6 +193,7 @@ object UIReplacer {
     setFinalStatic(CaptionPanel::class.java, "CNT_ACTIVE_BORDER_COLOR", background)
   }
 
+  @Suppress("MagicNumber")
   @Throws(NoSuchFieldException::class, IllegalAccessException::class)
   private fun patchGrays() {
     // Replace Gray with a clear and transparent color
@@ -258,7 +259,7 @@ object UIReplacer {
       val objects = Arrays.stream(fields)
         .filter { field: Field -> field.type == Color::class.java }
         .toArray()
-      setFinalStatic((objects[0] as Field), color)
+      setFinalStatic(objects[0] as Field, color)
     } catch (e: ClassNotFoundException) {
       // do not log
     }
@@ -300,7 +301,7 @@ object UIReplacer {
     val objects = Arrays.stream(fields)
       .filter { field: Field -> field.type == MutableMap::class.java }
       .toArray()
-    setFinalStatic((objects[0] as Field), ourDefaultColors)
+    setFinalStatic(objects[0] as Field, ourDefaultColors)
   }
 
   /**
