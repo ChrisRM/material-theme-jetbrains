@@ -43,19 +43,30 @@ import com.mallowigi.idea.utils.MTUiUtils
  *
  */
 class MTUpdatesComponent : StartupActivity.Background {
+  private val isAgreementShown: Boolean
+    get() = PropertiesComponent.getInstance().isValueSet(MTStatisticsNotification.SHOW_STATISTICS_AGREEMENT)
+
+  private val isInstallAtomShown: Boolean
+    get() = PropertiesComponent.getInstance().isValueSet(MTInstallAtomNotification.SHOW_INSTALL_ATOM)
+
   private var config: MTConfig? = MTConfig.getInstance()
 
+  /**
+   * Run activity on project load
+   *
+   */
   override fun runActivity(project: Project) {
     config = MTConfig.getInstance()
     projectOpened(project)
   }
 
   private fun projectOpened(project: Project) {
+    val mtConfig = config ?: return
     // Show new version notification
     val pluginVersion = MTUiUtils.getVersion()
-    val updated = pluginVersion != config!!.version
-    val showWhatsNew = config!!.isShowWhatsNew
-    config!!.version = pluginVersion
+    val updated = pluginVersion != mtConfig.version
+    val showWhatsNew = mtConfig.isShowWhatsNew
+    mtConfig.version = pluginVersion
 
     // Show notification update
     if (updated && showWhatsNew) {
@@ -96,9 +107,4 @@ class MTUpdatesComponent : StartupActivity.Background {
    */
   private fun createInstallAtomNotification(): Notification = MTInstallAtomNotification()
 
-  private val isAgreementShown: Boolean
-    get() = PropertiesComponent.getInstance().isValueSet(MTStatisticsNotification.SHOW_STATISTICS_AGREEMENT)
-
-  private val isInstallAtomShown: Boolean
-    get() = PropertiesComponent.getInstance().isValueSet(MTInstallAtomNotification.SHOW_INSTALL_ATOM)
 }

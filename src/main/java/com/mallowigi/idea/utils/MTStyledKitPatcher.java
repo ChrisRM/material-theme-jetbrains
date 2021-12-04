@@ -30,7 +30,6 @@ import com.intellij.ide.ui.laf.darcula.DarculaLaf;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.scale.JBUIScale;
 import com.intellij.util.ui.UIUtil;
-import com.mallowigi.idea.MTThemeManager;
 import com.mallowigi.idea.config.application.MTConfig;
 import com.mallowigi.idea.themes.models.MTThemeable;
 import org.jetbrains.annotations.NonNls;
@@ -49,13 +48,15 @@ public enum MTStyledKitPatcher {
   ;
 
   public static final String STYLED_EDITOR_KIT = "StyledEditorKit.JBDefaultStyle";
+  public static final String RETINA = "@2x.css";
+  public static final String NON_RETINA = ".css";
 
   /**
    * Patch the Styled Editor Kit for the doc comments
    */
   public static void patchStyledEditorKit() {
     final MTThemeable selectedTheme = MTConfig.getInstance().getSelectedTheme().getTheme();
-    final String retinaSuffix = JBUIScale.isUsrHiDPI() ? MTThemeManager.RETINA : MTThemeManager.NON_RETINA;
+    final String retinaSuffix = JBUIScale.isUsrHiDPI() ? RETINA : NON_RETINA;
 
     // Load css
     final URL url = selectedTheme.getClass().getResource(selectedTheme.getThemeId() + retinaSuffix);

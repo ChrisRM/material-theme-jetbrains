@@ -40,10 +40,10 @@ import com.intellij.openapi.vfs.VfsUtil
 import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.ui.components.panels.NonOpaquePanel
 import com.intellij.util.ui.JBUI
-import com.mallowigi.idea.MTBundledThemesManager
 import com.mallowigi.idea.config.custom.MTCustomThemeConfig
 import com.mallowigi.idea.config.ui.MTCustomThemeForm
 import com.mallowigi.idea.messages.MaterialThemeBundle.message
+import com.mallowigi.idea.themes.MTBundledThemesManager
 import com.mallowigi.idea.themes.MTThemeCollection
 import com.mallowigi.idea.themes.MTThemeFacade
 import java.awt.BorderLayout

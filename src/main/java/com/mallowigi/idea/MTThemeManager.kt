@@ -69,11 +69,28 @@ import javax.swing.UIManager
 import javax.swing.plaf.FontUIResource
 
 /**
+ * Registry key for new stripes UI
+ */
+const val NEW_STRIPES_UI: String = "ide.experimental.ui.toolwindow.stripes"
+
+/**
  * Service for applying themes and settings
  *
  */
-@Suppress("TooManyFunctions", "DuplicatedCode")
-class MTThemeManager private constructor() : Disposable {
+@Suppress("TooManyFunctions", "DuplicatedCode", "UnstableApiUsage")
+object MTThemeManager : Disposable {
+  private val mtConfig = MTConfig.getInstance()
+
+  /**
+   * Instance of the theme manager
+   */
+  val instance: MTThemeManager
+    get() = ApplicationManager.getApplication().getService(MTThemeManager::class.java)
+
+  /**
+   * Dispose
+   *
+   */
   override fun dispose(): Unit = Unit
 
   //region Action Toggles
@@ -486,7 +503,7 @@ class MTThemeManager private constructor() : Disposable {
    * @param fontSize   the font size
    */
   private fun applySettingsFont(uiDefaults: UIDefaults?, fontFace: String?, fontSize: Int) {
-    uiDefaults!!["Tree.ancestorInputMap"] = null
+    (uiDefaults ?: return)["Tree.ancestorInputMap"] = null
 
     val font = UIUtil.getFontWithFallback(fontFace, Font.PLAIN, fontSize)
     val editorFontName = AppEditorFontOptions.getInstance().fontPreferences.fontFamily
@@ -511,7 +528,7 @@ class MTThemeManager private constructor() : Disposable {
    * @param uiDefaults
    */
   private fun applyMaterialFonts(uiDefaults: UIDefaults?) {
-    uiDefaults!!["Tree.ancestorInputMap"] = null
+    (uiDefaults ?: return)["Tree.ancestorInputMap"] = null
 
     val language = Locale.getDefault().language
     val cjkLocale =
@@ -572,7 +589,7 @@ class MTThemeManager private constructor() : Disposable {
     val treeFont = mtConfig.treeFont
 
     if (mtConfig.isTreeFontSizeEnabled) {
-      val font = lookAndFeelDefaults!!.getFont("Tree.font")
+      val font = (lookAndFeelDefaults ?: return).getFont("Tree.font")
       lookAndFeelDefaults["Tree.font"] = Font(treeFont, font.style, treeFontSize)
       LafManager.getInstance().updateUI()
     }
@@ -724,14 +741,4 @@ class MTThemeManager private constructor() : Disposable {
     Registry.get(NEW_STRIPES_UI).resetToDefault()
   }
 
-  companion object {
-    private val mtConfig = MTConfig.getInstance()
-    const val RETINA: String = "@2x.css"
-    const val NON_RETINA: String = ".css"
-
-    const val NEW_STRIPES_UI: String = "ide.experimental.ui.toolwindow.stripes"
-
-    val instance: MTThemeManager
-      get() = ApplicationManager.getApplication().getService(MTThemeManager::class.java)
-  }
 }

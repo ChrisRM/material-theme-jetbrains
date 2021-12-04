@@ -23,7 +23,7 @@
  *
  *
  */
-package com.mallowigi.idea
+package com.mallowigi.idea.themes
 
 import com.mallowigi.idea.themes.models.MTBundledTheme
 import com.mallowigi.idea.themes.models.MTDarkBundledTheme

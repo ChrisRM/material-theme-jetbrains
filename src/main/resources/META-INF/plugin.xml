@@ -161,7 +161,7 @@
                             id="MTCustomThemeConfig" />
         <applicationService serviceImplementation="com.mallowigi.idea.MTThemeManager"
                             id="MTThemeManager" />
-        <applicationService serviceImplementation="com.mallowigi.idea.MTBundledThemesManager"
+        <applicationService serviceImplementation="com.mallowigi.idea.themes.MTBundledThemesManager"
                             id="MTBundledThemesManager" />
         <applicationService serviceImplementation="com.mallowigi.idea.MTAnalytics"
                             id="MTAnalytics" />

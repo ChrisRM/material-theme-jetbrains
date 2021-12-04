@@ -34,7 +34,7 @@ import com.intellij.openapi.util.text.StringUtil
 import com.intellij.openapi.wm.impl.IdeBackgroundUtil
 import com.intellij.ui.ColorUtil
 import com.intellij.ui.JBColor
-import com.mallowigi.idea.MTThemeManager.Companion.instance
+import com.mallowigi.idea.MTThemeManager
 import com.mallowigi.idea.config.application.MTConfig
 import com.mallowigi.idea.lafs.MTDarkLaf
 import com.mallowigi.idea.lafs.MTLightLaf
@@ -162,7 +162,7 @@ abstract class MTAbstractTheme protected constructor() : Serializable, MTThemeab
       // Apply theme accent color if said so
       if (config.isOverrideAccentColor) {
         config.accentColor = ColorUtil.toHex(accentColorResource)
-        instance.applyAccents(true)
+        MTThemeManager.applyAccents(true)
       }
       installBackgroundImage()
 

@@ -23,7 +23,7 @@
  *
  *
  */
-package com.mallowigi.idea
+package com.mallowigi.idea.themes
 
 import com.intellij.openapi.application.ApplicationBundle
 import com.intellij.openapi.application.ApplicationManager

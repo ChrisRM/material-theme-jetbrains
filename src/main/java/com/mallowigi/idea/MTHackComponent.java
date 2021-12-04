@@ -348,8 +348,8 @@ public final class MTHackComponent {
       final CtClass experimentalUIClass = cp.get("com.intellij.ui.ExperimentalUI");
 
       final CtMethod isNewToolWindowsStripes = experimentalUIClass.getDeclaredMethod("isNewToolWindowsStripes");
-      isNewToolWindowsStripes.setBody("{ return com.intellij.openapi.util.registry.Registry.is(\"" + MTThemeManager.NEW_STRIPES_UI + "\")" +
-        "; }");
+      isNewToolWindowsStripes.setBody(String.format("{ return com.intellij.openapi.util.registry.Registry.is(\"%s\"); }",
+        MTThemeManagerKt.NEW_STRIPES_UI));
       experimentalUIClass.toClass();
     } catch (final Throwable e) {
       // do nothing

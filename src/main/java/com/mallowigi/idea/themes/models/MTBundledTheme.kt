@@ -26,7 +26,7 @@
 package com.mallowigi.idea.themes.models
 
 import com.intellij.util.xmlb.annotations.Tag
-import com.mallowigi.idea.MTBundledThemesManager
+import com.mallowigi.idea.themes.MTBundledThemesManager
 import com.mallowigi.idea.themes.models.parsers.MTBundledThemeParser
 import com.mallowigi.idea.themes.themes.MTAbstractTheme
 import com.thoughtworks.xstream.annotations.XStreamAlias
