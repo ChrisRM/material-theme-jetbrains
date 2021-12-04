@@ -28,6 +28,7 @@ package com.mallowigi.idea
 import com.intellij.ide.AppLifecycleListener
 import com.intellij.openapi.application.ApplicationManager
 import com.mallowigi.idea.config.application.MTConfig
+import com.mallowigi.idea.utils.MTRegistry
 import com.mallowigi.idea.wizard.MTWizardDialog
 import com.mallowigi.idea.wizard.MTWizardStepsProvider
 
@@ -35,11 +36,22 @@ import com.mallowigi.idea.wizard.MTWizardStepsProvider
  * Component for Material Theme plugin initializations
  */
 class MTApplicationComponent : AppLifecycleListener {
+  /**
+   * Instance
+   */
   val instance: MTApplicationComponent
     get() = ApplicationManager.getApplication().getComponent(MTApplicationComponent::class.java)
 
+  /**
+   * Init on Welcome screen displayed
+   *
+   */
   override fun welcomeScreenDisplayed(): Unit = initComponent()
 
+  /**
+   * Dispose on App closing
+   *
+   */
   override fun appClosing(): Unit = disposeComponent()
 
   /**
@@ -69,5 +81,5 @@ class MTApplicationComponent : AppLifecycleListener {
 
   private fun disposeComponent() = cleanRegistry()
 
-  private fun cleanRegistry() = MTThemeManager.instance.cleanRegistry()
+  private fun cleanRegistry() = MTRegistry.cleanRegistry()
 }

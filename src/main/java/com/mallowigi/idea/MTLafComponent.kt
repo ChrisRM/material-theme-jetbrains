@@ -56,6 +56,10 @@ class MTLafComponent : AppLifecycleListener {
   private var willRestartIde = false
   private var shouldChangeTheme = false
 
+  /**
+   * Run on App frame created
+   *
+   */
   override fun appFrameCreated(commandLineArgs: List<String>): Unit = initComponent()
 
   /**
@@ -66,6 +70,8 @@ class MTLafComponent : AppLifecycleListener {
   private fun lookAndFeelChanged(source: LafManager) {
     val currentLookAndFeel = source.currentLookAndFeel
     patchTree()
+    MTButtonUI.resetCache()
+
     // Prevent infinite loop
     if (currentLookAndFeel === activeLookAndFeel) return
     // Save instance of current laf

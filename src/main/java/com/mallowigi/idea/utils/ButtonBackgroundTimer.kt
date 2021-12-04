@@ -23,48 +23,52 @@
  *
  *
  */
+package com.mallowigi.idea.utils
 
-package com.mallowigi.idea.utils;
+import com.intellij.util.ui.TimerUtil
+import org.jetbrains.annotations.NonNls
+import java.awt.Color
+import java.awt.Component
+import java.awt.event.ActionEvent
+import java.awt.event.ActionListener
+import java.util.Deque
+import javax.swing.Timer
 
-import com.intellij.util.ui.TimerUtil;
-
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionListener;
-import java.util.Deque;
-
-public final class ButtonBackgroundTimer {
-  private final int fps;
-
-  public ButtonBackgroundTimer(final int fps) {
-    this.fps = fps;
+/**
+ * Button background timer
+ *
+ * @property fps
+ */
+class ButtonBackgroundTimer(private val fps: Int) {
+  /**
+   * Start animation
+   *
+   * @param name component name
+   * @param component component
+   * @param colors list of colors
+   */
+  fun start(name: @NonNls String, component: Component, colors: Deque<out Color>) {
+    val timer = TimerUtil.createNamedTimer(name, 1000 / fps)
+    timer.addActionListener(getActionListener(timer, component, colors))
+    timer.start()
   }
 
-  @SuppressWarnings({"OverlyLongLambda",
-    "java:S5612"})
-  private static ActionListener getActionListener(final Timer timer, final Component component, final Deque<? extends Color> colors) {
-    return e -> {
-      final Color color = colors.poll();
-      if (color == null) {
-        timer.stop();
-        return;
-      }
+  private fun getActionListener(timer: Timer, component: Component, colors: Deque<out Color>): ActionListener =
+    object : ActionListener {
+      override fun actionPerformed(it: ActionEvent) {
+        val color = colors.poll()
+        if (color == null) {
+          timer.stop()
+          return
+        }
 
-      if (component != null) {
         try {
-          component.setBackground(color);
-          component.repaint();
-        } catch (final Exception exception) {
+          component.background = color
+          component.repaint()
+        } catch (exception: Exception) {
           // do nothing
         }
       }
-    };
-  }
-
-  public void start(final String name, final Component component, final Deque<? extends Color> colors) {
-    final Timer timer = TimerUtil.createNamedTimer(name, 1000 / fps);
-    timer.addActionListener(getActionListener(timer, component, colors));
-    timer.start();
-  }
+    }
 
 }

@@ -23,80 +23,75 @@
  *
  *
  */
+package com.mallowigi.idea.ui
 
-package com.mallowigi.idea.ui;
+import com.intellij.ui.ColorUtil
+import com.mallowigi.idea.utils.ButtonBackgroundTimer
+import java.awt.Color
+import java.util.ArrayDeque
+import java.util.Deque
+import javax.swing.AbstractButton
+import javax.swing.JButton
+import javax.swing.event.ChangeEvent
+import javax.swing.plaf.basic.BasicButtonListener
 
-import com.intellij.ui.ColorUtil;
-import com.mallowigi.idea.utils.ButtonBackgroundTimer;
+internal class MTButtonHighlighter(button: AbstractButton?) : BasicButtonListener(button) {
 
-import javax.swing.*;
-import javax.swing.event.ChangeEvent;
-import javax.swing.plaf.basic.BasicButtonListener;
-import java.awt.*;
-import java.util.ArrayDeque;
+  override fun stateChanged(e: ChangeEvent) {
+    val button = e.source as JButton
+    val model = button.model
+    val rollover = model.isRollover
 
-@SuppressWarnings({"DuplicatedCode",
-  "ParameterNameDiffersFromOverriddenParameter"})
-final class MTButtonHighlighter extends BasicButtonListener {
-  private static final int ANIM_STEPS = 5;
-  public static final double BALANCE = 0.2F;
-  private static final ButtonBackgroundTimer HL_BUTTON_BACKGROUND_TIMER = new ButtonBackgroundTimer(20);
-  private boolean rollover = false;
-
-  private final AbstractButton button;
-
-  MTButtonHighlighter(final AbstractButton button) {
-    super(button);
-    this.button = button;
-  }
-
-  @Override
-  public void stateChanged(final ChangeEvent e) {
-    if (e == null) {
-      return;
-    }
-    final ButtonModel model = button.getModel();
-    if (model.isRollover() != rollover) {
-      rollover = model.isRollover();
-
-      if (rollover) {
-        highlightButton(button);
-      } else {
-        removeHighlight(button);
-      }
+    if (rollover) {
+      highlightButton(button)
+    } else {
+      removeHighlight(button)
     }
   }
 
-  @SuppressWarnings("FeatureEnvy")
-  private static void highlightButton(final AbstractButton e) {
-    final JButton jButton = (JButton) e;
-    final Color hoverColor = jButton.isDefaultButton() ? MTButtonUI.primaryButtonHoverColor() : MTButtonUI.buttonHoverColor();
-    final Color preHoverColor = jButton.isDefaultButton() ? MTButtonUI.primaryButtonBg() : MTButtonUI.buttonBg();
+  private fun highlightButton(jButton: JButton) {
+    val hoverColor = hoverColor(jButton)
+    val preHoverColor = preHoverColor(jButton)
+    val buttonBackgroundTimer = ButtonBackgroundTimer(/* fps = */ 20)
 
-    final ArrayDeque<Color> colors = new ArrayDeque<>(ANIM_STEPS);
-    for (int i = 0; i < ANIM_STEPS; i++) {
-      colors.add(ColorUtil.mix(preHoverColor, hoverColor, i * BALANCE));
+    val colors: Deque<Color> = ArrayDeque(ANIM_STEPS)
+    val textColor = textColor(highlight = true)
+
+    // Build the colors from non-highlighted to highlighted
+    for (i in 0 until ANIM_STEPS) {
+      colors.add(ColorUtil.mix(preHoverColor, hoverColor, i * BALANCE))
     }
-
-    final Color textColor = MTButtonUI.selectedButtonFg();
-    e.setForeground(textColor);
-    HL_BUTTON_BACKGROUND_TIMER.start("Highlight", e, colors);
+    jButton.foreground = textColor
+    buttonBackgroundTimer.start("Highlight", jButton, colors)
   }
 
-  @SuppressWarnings("FeatureEnvy")
-  private static void removeHighlight(final AbstractButton e) {
-    final JButton jButton = (JButton) e;
-    final Color hoverColor = jButton.isDefaultButton() ? MTButtonUI.primaryButtonHoverColor() : MTButtonUI.buttonHoverColor();
-    final Color preHoverColor = jButton.isDefaultButton() ? MTButtonUI.primaryButtonBg() : MTButtonUI.buttonBg();
+  private fun removeHighlight(jButton: JButton) {
+    val hoverColor = hoverColor(jButton)
+    val preHoverColor = preHoverColor(jButton)
+    val buttonBackgroundTimer = ButtonBackgroundTimer(/* fps = */ 20)
 
-    final ArrayDeque<Color> colors = new ArrayDeque<>(ANIM_STEPS);
-    for (int i = 0; i < ANIM_STEPS; i++) {
-      colors.addFirst(ColorUtil.mix(preHoverColor, hoverColor, i * BALANCE));
+    val colors: Deque<Color> = ArrayDeque(ANIM_STEPS)
+    val textColor = textColor(highlight = false)
+
+    // Build the colors from highlighted to non-highlighted
+    for (i in 0 until ANIM_STEPS) {
+      colors.addFirst(ColorUtil.mix(preHoverColor, hoverColor, i * BALANCE))
     }
-
-    final Color textColor = MTButtonUI.buttonFg();
-    e.setForeground(textColor);
-    HL_BUTTON_BACKGROUND_TIMER.start("Remove Highlight", e, colors);
+    jButton.foreground = textColor
+    buttonBackgroundTimer.start("Remove Highlight", jButton, colors)
   }
 
+  private fun preHoverColor(jButton: JButton) =
+    if (jButton.isDefaultButton) MTButtonUI.primaryButtonBg() else MTButtonUI.buttonBg()
+
+  private fun hoverColor(jButton: JButton) =
+    if (jButton.isDefaultButton) MTButtonUI.primaryButtonHoverColor() else MTButtonUI.buttonHoverColor()
+
+  private fun textColor(highlight: Boolean) =
+    if (highlight) MTButtonUI.selectedButtonFg() else MTButtonUI.buttonFg()
+
+  companion object {
+    private const val ANIM_STEPS = 5
+    private const val BALANCE = 0.2
+  }
 }

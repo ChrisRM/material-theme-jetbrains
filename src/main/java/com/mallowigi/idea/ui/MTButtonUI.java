@@ -96,6 +96,7 @@ public final class MTButtonUI extends DarculaButtonUI {
     selectedButtonBg = null;
     buttonBg = null;
     buttonFg = null;
+    buttonHover = null;
     primaryButtonFg = null;
     primaryButtonBg = null;
     primaryButtonHover = null;
