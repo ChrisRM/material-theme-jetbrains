@@ -23,154 +23,168 @@
  *
  *
  */
+package com.mallowigi.idea
 
-package com.mallowigi.idea;
-
-import com.intellij.openapi.Disposable;
-import com.intellij.openapi.application.ApplicationBundle;
-import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.application.WriteAction;
-import com.intellij.openapi.fileChooser.FileChooserFactory;
-import com.intellij.openapi.fileChooser.FileSaverDescriptor;
-import com.intellij.openapi.fileChooser.FileSaverDialog;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.ui.Messages;
-import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.openapi.vfs.VirtualFileWrapper;
-import com.intellij.util.ThrowableRunnable;
-import com.mallowigi.idea.messages.MaterialThemeBundle;
-import com.mallowigi.idea.themes.models.MTBundledTheme;
-import com.mallowigi.idea.themes.models.MTDarkBundledTheme;
-import com.mallowigi.idea.themes.models.MTLightBundledTheme;
-import com.mallowigi.idea.themes.models.MTThemeColor;
-import com.thoughtworks.xstream.XStream;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
-import java.io.*;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
+import com.intellij.openapi.application.ApplicationBundle
+import com.intellij.openapi.application.ApplicationManager
+import com.intellij.openapi.application.WriteAction
+import com.intellij.openapi.fileChooser.FileChooserFactory
+import com.intellij.openapi.fileChooser.FileSaverDescriptor
+import com.intellij.openapi.ui.Messages
+import com.intellij.openapi.vfs.VirtualFile
+import com.intellij.util.ThrowableRunnable
+import com.mallowigi.idea.messages.MaterialThemeBundle.message
+import com.mallowigi.idea.themes.models.MTBundledTheme
+import com.mallowigi.idea.themes.models.MTDarkBundledTheme
+import com.mallowigi.idea.themes.models.MTLightBundledTheme
+import com.mallowigi.idea.themes.models.MTThemeColor
+import com.thoughtworks.xstream.XStream
+import java.io.File
+import java.io.IOException
+import java.io.OutputStream
+import java.io.OutputStreamWriter
+import java.io.PrintWriter
+import java.net.URL
+import java.nio.charset.StandardCharsets
 
 /**
- * Manages the Bundled themes (external themes)
+ * Service for bundled themes such as custom themes and old external themes
  */
-@SuppressWarnings("WeakerAccess")
-public final class MTBundledThemesManager implements Disposable {
-  MTBundledThemesManager() {
+object MTBundledThemesManager {
+  /**
+   * Instance
+   */
+  val instance: MTBundledThemesManager
+    get() = ApplicationManager.getApplication().getService(MTBundledThemesManager::class.java)
+
+  /**
+   * Load bundled theme from xml
+   *
+   * @param file xml file
+   * @return the bundled theme
+   */
+  fun loadBundledTheme(file: VirtualFile): MTBundledTheme? {
+    val url = File(file.path)
+    return loadFromXml(null, url)
   }
 
-  public static MTBundledThemesManager getInstance() {
-    return ApplicationManager.getApplication().getService(MTBundledThemesManager.class);
-  }
-
-  @Override
-  public void dispose() {
-    // do nothing
-  }
-
-  public static MTBundledTheme loadBundledTheme(final VirtualFile file) {
-    final File url = new File(file.getPath());
-    return loadFromXml(null, url);
-  }
-
-  @SuppressWarnings("MethodWithMultipleReturnPoints")
-  @Nullable
-  private static MTBundledTheme loadFromXml(@Nullable final URL url, @Nullable final File file) {
-    @NonNls final XStream xStream = configureXStream();
-
-    try {
-      if (url != null) {
-        return (MTBundledTheme) xStream.fromXML(url);
-      } else if (file != null) {
-        return (MTBundledTheme) xStream.fromXML(file);
+  /**
+   * Load from xml
+   *
+   * @param url if defined, load from that url
+   * @param file if defined, load from that file
+   * @return the parsed bundled theme, or null if failed
+   */
+  private fun loadFromXml(url: URL?, file: File?): MTBundledTheme? {
+    val xStream = configureXStream()
+    return try {
+      when {
+        url != null  -> return xStream.fromXML(url) as MTBundledTheme
+        file != null -> return xStream.fromXML(file) as MTBundledTheme
+        else         -> null
       }
-      return null;
-    } catch (final RuntimeException e) {
-      return null;
+    } catch (e: RuntimeException) {
+      null
     }
   }
 
-  @SuppressWarnings("FeatureEnvy")
-  public static void saveTheme(final MTBundledTheme customTheme) {
-    @NonNls final FileSaverDialog saveFileDialog = FileChooserFactory.getInstance().createSaveFileDialog(
-      new FileSaverDescriptor(
-        MaterialThemeBundle.message("SaveThemeDialog.placeholder"),
-        MaterialThemeBundle.message("SaveThemeDialog.title"),
-        "xml"),
-      (Project) null);
-    final VirtualFileWrapper target = saveFileDialog.save(customTheme.getThemeId() + ".xml");
+  /**
+   * Save custom theme to xml
+   *
+   * @param customTheme the custom theme
+   */
+  fun saveTheme(customTheme: MTBundledTheme) {
+    val saveFileDialog = FileChooserFactory.getInstance().createSaveFileDialog(
+      FileSaverDescriptor(message("SaveThemeDialog.placeholder"), message("SaveThemeDialog.title"), "xml"),
+      null
+    )
 
+    val target = saveFileDialog.save("${customTheme.themeId}.xml")
     if (target != null) {
-      final VirtualFile targetFile = target.getVirtualFile(true);
-      final String message;
+      val targetFile = target.getVirtualFile(true)
+      val message: String = if (targetFile != null) {
+        generateMessage(customTheme, targetFile)
+      } else {
+        ApplicationBundle.message("scheme.exporter.ui.cannot.write.message")
+      }
 
-      message = targetFile != null ?
-                generateMessage(customTheme, targetFile) :
-                ApplicationBundle.message("scheme.exporter.ui.cannot.write.message");
-
-      Messages.showDialog(message,
-        MaterialThemeBundle.message("common.status"),
-        new String[]{MaterialThemeBundle.message("common.ok")},
+      Messages.showDialog(
+        message,
+        message("common.status"),
+        arrayOf(message("common.ok")),
         0,
-        null);
-
+        null
+      )
     }
-
   }
 
-  private static String generateMessage(final MTBundledTheme customTheme, final VirtualFile targetFile) {
-    String message;
-    try {
-      WriteAction.run(new ThrowableRunnable<Throwable>() {
-        @SuppressWarnings("SyntheticAccessorCall")
-        @Override
-        public void run() throws IOException {
-          final OutputStream outputStream = targetFile.getOutputStream(this);
-          exportTheme(customTheme, outputStream);
+  /**
+   * Save to disk and generate the message to display upon saving
+   *
+   * @param customTheme the theme to save
+   * @param targetFile the xml file
+   * @return the message
+   */
+  private fun generateMessage(customTheme: MTBundledTheme, targetFile: VirtualFile): String {
+    val message: String = try {
+      // Save to disk
+      WriteAction.run(object : ThrowableRunnable<Throwable?> {
+        @Throws(IOException::class)
+        override fun run() {
+          val outputStream = targetFile.getOutputStream(this)
+          exportTheme(customTheme, outputStream)
         }
-      });
-      message = ApplicationBundle
-        .message("scheme.exporter.ui.scheme.exported.message",
-          customTheme.getThemeName(),
-          customTheme.getThemeName(),
-          targetFile.getPresentableUrl());
-    } catch (final Throwable e) {
-      message = ApplicationBundle.message("scheme.exporter.ui.export.failed", e.getMessage());
+      })
+      // Return the "successfully saved" message
+      ApplicationBundle.message(
+        "scheme.exporter.ui.scheme.exported.message",
+        customTheme.themeName,
+        "(${customTheme.themeId})",
+        targetFile.presentableUrl
+      )
+    } catch (e: Throwable) {
+      ApplicationBundle.message("scheme.exporter.ui.export.failed", e.message)
     }
-    return message;
+    return message
   }
 
-  @SuppressWarnings({"CheckStyle",
-    "MethodOnlyUsedFromInnerClass"})
-  private static void exportTheme(final MTBundledTheme customTheme, final OutputStream outputStream) {
-    final OutputStreamWriter writer = new OutputStreamWriter(outputStream, StandardCharsets.UTF_8);
-    @NonNls final XStream xStream = configureXStream();
-    final String xml = xStream.toXML(customTheme);
-
-    try (final PrintWriter printWriter = new PrintWriter(writer)) {
-      printWriter.write(xml);
-    }
+  /**
+   * Write the xml file to disk at the given location
+   *
+   * @param customTheme the theme
+   * @param outputStream output stream
+   */
+  private fun exportTheme(customTheme: MTBundledTheme, outputStream: OutputStream) {
+    val writer = OutputStreamWriter(outputStream, StandardCharsets.UTF_8)
+    val xStream = configureXStream()
+    val xml = xStream.toXML(customTheme)
+    PrintWriter(writer).use { printWriter -> printWriter.write(xml) }
   }
 
-  @NotNull
-  private static XStream configureXStream() {
-    @NonNls final XStream xStream = new XStream();
-    xStream.allowTypesByWildcard(new String[]{"com.mallowigi.idea.themes.models.*"});
-    xStream.processAnnotations(MTBundledTheme.class);
-    xStream.processAnnotations(MTDarkBundledTheme.class);
-    xStream.processAnnotations(MTLightBundledTheme.class);
-    xStream.processAnnotations(MTThemeColor.class);
+  /**
+   * Configure the xstream theme parser
+   *
+   * @return the configured xstream
+   */
+  @Suppress("HardCodedStringLiteral")
+  private fun configureXStream(): XStream {
+    val xStream = XStream()
+    xStream.allowTypesByWildcard(arrayOf("com.mallowigi.idea.themes.models.*"))
+    xStream.processAnnotations(MTBundledTheme::class.java)
+    xStream.processAnnotations(MTDarkBundledTheme::class.java)
+    xStream.processAnnotations(MTLightBundledTheme::class.java)
+    xStream.processAnnotations(MTThemeColor::class.java)
 
     // Use a converter to create a MTDarkBundledTheme or MTLightBundledTheme according to the "dark" property
-    xStream.registerConverter(new MTThemesConverter(
-      xStream.getConverterLookup().lookupConverterForType(MTBundledTheme.class),
-      xStream.getReflectionProvider()
-    ));
-
-    xStream.addDefaultImplementation(MTDarkBundledTheme.class, MTBundledTheme.class);
-    xStream.addDefaultImplementation(MTLightBundledTheme.class, MTBundledTheme.class);
-    return xStream;
+    xStream.registerConverter(
+      MTThemesConverter(
+        xStream.converterLookup.lookupConverterForType(MTBundledTheme::class.java),
+        xStream.reflectionProvider
+      )
+    )
+    xStream.addDefaultImplementation(MTDarkBundledTheme::class.java, MTBundledTheme::class.java)
+    xStream.addDefaultImplementation(MTLightBundledTheme::class.java, MTBundledTheme::class.java)
+    return xStream
   }
 
 }
