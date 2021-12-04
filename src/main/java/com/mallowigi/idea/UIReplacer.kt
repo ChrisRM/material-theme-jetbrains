@@ -75,15 +75,13 @@ import java.lang.reflect.Field
 import java.util.Arrays
 import javax.swing.UIManager
 
-private const val TRAINING_PLUGIN = "training"
-
-private const val TAB_PADDING = 10
-
 /**
  * Replace static UI elements with custom ones.
  *
  */
 object UIReplacer {
+  private const val TRAINING_PLUGIN = "training"
+  private const val TAB_PADDING = 10
 
   /**
    * Main method

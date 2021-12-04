@@ -28,7 +28,6 @@ package com.mallowigi.idea.ui;
 
 import com.intellij.ui.ColorUtil;
 import com.mallowigi.idea.utils.ButtonBackgroundTimer;
-import org.jetbrains.annotations.NonNls;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
@@ -41,7 +40,7 @@ import java.util.ArrayDeque;
 final class MTButtonHighlighter extends BasicButtonListener {
   private static final int ANIM_STEPS = 5;
   public static final double BALANCE = 0.2F;
-  private static final @NonNls ButtonBackgroundTimer HL_BUTTON_BACKGROUND_TIMER = new ButtonBackgroundTimer(20);
+  private static final ButtonBackgroundTimer HL_BUTTON_BACKGROUND_TIMER = new ButtonBackgroundTimer(20);
   private boolean rollover = false;
 
   private final AbstractButton button;

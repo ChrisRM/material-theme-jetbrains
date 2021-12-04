@@ -37,6 +37,7 @@ import javax.swing.plaf.ColorUIResource
  * Patch icons with accent color
  *
  */
+@Suppress("UnstableApiUsage", "HardCodedStringLiteral")
 class MTAccentColorPatcher internal constructor() : SvgElementColorPatcherProvider {
   init {
     refreshColors()

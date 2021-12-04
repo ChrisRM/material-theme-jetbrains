@@ -35,6 +35,7 @@ import com.intellij.openapi.wm.impl.welcomeScreen.FlatWelcomeFrameProvider;
 import com.intellij.ui.CaptionPanel;
 import com.intellij.ui.components.MultiColumnList;
 import com.intellij.ui.tabs.FileColorsConfigurable;
+import com.mallowigi.idea.utils.MTRegistry;
 import javassist.CannotCompileException;
 import javassist.ClassClassPath;
 import javassist.ClassPool;
@@ -349,7 +350,7 @@ public final class MTHackComponent {
 
       final CtMethod isNewToolWindowsStripes = experimentalUIClass.getDeclaredMethod("isNewToolWindowsStripes");
       isNewToolWindowsStripes.setBody(String.format("{ return com.intellij.openapi.util.registry.Registry.is(\"%s\"); }",
-        MTThemeManagerKt.NEW_STRIPES_UI));
+        MTRegistry.NEW_STRIPES_UI));
       experimentalUIClass.toClass();
     } catch (final Throwable e) {
       // do nothing

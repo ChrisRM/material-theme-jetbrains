@@ -42,7 +42,6 @@ import com.intellij.openapi.fileTypes.ex.FileTypeManagerEx
 import com.intellij.openapi.util.Couple
 import com.intellij.openapi.util.IconLoader
 import com.intellij.openapi.util.SystemInfo
-import com.intellij.openapi.util.registry.Registry
 import com.intellij.ui.ColorUtil
 import com.intellij.util.ModalityUiUtil
 import com.intellij.util.ObjectUtils
@@ -57,6 +56,7 @@ import com.mallowigi.idea.themes.MTThemeCollection
 import com.mallowigi.idea.themes.MTThemeFacade
 import com.mallowigi.idea.themes.lists.AccentResources
 import com.mallowigi.idea.themes.lists.FontResources
+import com.mallowigi.idea.utils.MTRegistry
 import com.mallowigi.idea.utils.MTStyledKitPatcher
 import com.mallowigi.idea.utils.MTUI
 import com.mallowigi.idea.utils.MTUiUtils
@@ -67,11 +67,6 @@ import java.util.Locale
 import javax.swing.UIDefaults
 import javax.swing.UIManager
 import javax.swing.plaf.FontUIResource
-
-/**
- * Registry key for new stripes UI
- */
-const val NEW_STRIPES_UI: String = "ide.experimental.ui.toolwindow.stripes"
 
 /**
  * Service for applying themes and settings
@@ -275,7 +270,8 @@ object MTThemeManager : Disposable {
    * Apply striped tool windows in the Registry
    *
    */
-  private fun applyStripedToolWindows() = Registry.get(NEW_STRIPES_UI).setValue(mtConfig.isStripedToolWindowsEnabled)
+  private fun applyStripedToolWindows() =
+    MTRegistry.getLargeToolWindows().setValue(mtConfig.isStripedToolWindowsEnabled)
 
   /**
    * Refresh trees
@@ -731,14 +727,6 @@ object MTThemeManager : Disposable {
     }
 
     LafManager.getInstance().updateUI()
-  }
-
-  /**
-   * Clean registry
-   *
-   */
-  fun cleanRegistry() {
-    Registry.get(NEW_STRIPES_UI).resetToDefault()
   }
 
 }

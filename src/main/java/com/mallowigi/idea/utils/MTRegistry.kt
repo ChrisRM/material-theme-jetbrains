@@ -24,47 +24,31 @@
  *
  */
 
-package com.mallowigi.idea.utils;
+package com.mallowigi.idea.utils
 
-import com.intellij.util.ui.TimerUtil;
+import com.intellij.openapi.util.registry.Registry
+import com.intellij.openapi.util.registry.RegistryValue
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionListener;
-import java.util.Deque;
+/**
+ * Service for managing registry
+ *
+ */
+object MTRegistry {
+  /**
+   * Registry key for new stripes UI
+   */
+  const val NEW_STRIPES_UI: String = "ide.experimental.ui.toolwindow.stripes"
 
-public final class ButtonBackgroundTimer {
-  private final int fps;
+  /**
+   * Clean registry
+   *
+   */
+  fun cleanRegistry() = Registry.get(NEW_STRIPES_UI).resetToDefault()
 
-  public ButtonBackgroundTimer(final int fps) {
-    this.fps = fps;
-  }
-
-  @SuppressWarnings({"OverlyLongLambda",
-    "java:S5612"})
-  private static ActionListener getActionListener(final Timer timer, final Component component, final Deque<? extends Color> colors) {
-    return e -> {
-      final Color color = colors.poll();
-      if (color == null) {
-        timer.stop();
-        return;
-      }
-
-      if (component != null) {
-        try {
-          component.setBackground(color);
-          component.repaint();
-        } catch (final Exception exception) {
-          // do nothing
-        }
-      }
-    };
-  }
-
-  public void start(final String name, final Component component, final Deque<? extends Color> colors) {
-    final Timer timer = TimerUtil.createNamedTimer(name, 1000 / fps);
-    timer.addActionListener(getActionListener(timer, component, colors));
-    timer.start();
-  }
-
+  /**
+   * Get large tool windows registry value
+   *
+   * @return
+   */
+  fun getLargeToolWindows(): RegistryValue = Registry.get(NEW_STRIPES_UI)
 }
