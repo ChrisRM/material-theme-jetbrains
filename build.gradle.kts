@@ -24,8 +24,15 @@
  *
  */
 
+@file:Suppress("SpellCheckingInspection", "HardCodedStringLiteral")
+
 import org.jetbrains.changelog.markdownToHTML
 
+/**
+ * Get property from gradle.properties file.
+ *
+ * @param key the key to get the value for
+ */
 fun properties(key: String) = project.findProperty(key).toString()
 
 plugins {
