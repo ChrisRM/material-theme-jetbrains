@@ -1527,7 +1527,9 @@
             </value>
         </option>
         <option name="KOTLIN_PROPERTY_WITH_BACKING_FIELD">
-            <value />
+            <value>
+                <option name="FOREGROUND" value="57b6c2" />
+            </value>
         </option>
         <option name="KOTLIN_QUEST">
             <value>

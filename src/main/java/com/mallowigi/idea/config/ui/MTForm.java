@@ -1742,7 +1742,7 @@ public class MTForm implements MTFormUI, Disposable {
           enforceLanguageOnOff.setText(bundle.getString("MTForm.enforceLanguageOnOff.text"));
           enforceLanguageOnOff.setToolTipText(bundle.getString("MTForm.enforceLanguageOnOff.toolTipText"));
           enforceLanguageOnOff.addActionListener(e -> enforceLanguageOnOffActionPerformed(e));
-          otherTweaksPanel.add(enforceLanguageOnOff, "cell 1 1,alignx right,growx 0");
+          otherTweaksPanel.add(enforceLanguageOnOff, "cell 1 1,alignx right,grow 0 100");
 
           //---- isColoredOpenedDirsCheckbox ----
           isColoredOpenedDirsCheckbox.setText(bundle.getString("MTForm.isColoredOpenedDirsCheckbox.text"));

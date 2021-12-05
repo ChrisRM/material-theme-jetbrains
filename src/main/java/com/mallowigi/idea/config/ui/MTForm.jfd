@@ -1,4 +1,4 @@
-JFDML JFormDesigner: "7.0.4.0.360" Java: "11.0.12" encoding: "UTF-8"
+JFDML JFormDesigner: "7.0.5.0.404" Java: "11.0.13" encoding: "UTF-8"
 
 new FormModel {
 	"i18n.bundlePackage": "messages"
@@ -671,7 +671,7 @@ new FormModel {
 						"toolTipText": new FormMessage( null, "MTForm.enforceLanguageOnOff.toolTipText" )
 						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "enforceLanguageOnOffActionPerformed", true ) )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 1 1,alignx right,growx 0"
+						"value": "cell 1 1,alignx right,grow 0 100"
 					} )
 					add( new FormComponent( "javax.swing.JCheckBox" ) {
 						name: "isColoredOpenedDirsCheckbox"

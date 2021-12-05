@@ -1461,6 +1461,11 @@
                 <option name="FOREGROUND" value="f76d47" />
             </value>
         </option>
+        <option name="KOTLIN_PROPERTY_WITH_BACKING_FIELD">
+            <value>
+                <option name="FOREGROUND" value="8796b0" />
+            </value>
+        </option>
         <option name="KOTLIN_PACKAGE_FUNCTION_CALL">
             <value>
                 <option name="FOREGROUND" value="6182b8" />
