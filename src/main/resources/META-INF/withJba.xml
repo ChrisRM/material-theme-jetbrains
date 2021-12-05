@@ -26,7 +26,7 @@
 
 <idea-plugin>
     <extensions defaultExtensionNs="com.intellij">
-        <cloudConfigAppender implementation="com.mallowigi.idea.MTCloudProvider" />
+        <cloudConfigAppender implementation="com.mallowigi.idea.integrations.MTCloudProvider" />
     </extensions>
 
 

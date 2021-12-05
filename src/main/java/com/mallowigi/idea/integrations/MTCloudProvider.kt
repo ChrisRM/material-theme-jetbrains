@@ -23,7 +23,7 @@
  *
  *
  */
-package com.mallowigi.idea
+package com.mallowigi.idea.integrations
 
 import com.intellij.cloudConfig.CloudConfigAppender
 import com.intellij.util.containers.ContainerUtil
@@ -37,6 +37,10 @@ import com.mallowigi.idea.messages.MaterialThemeBundle
  *
  */
 class MTCloudProvider : CloudConfigAppender {
+  /**
+   * Add settings to the cloud
+   *
+   */
   override fun appendClassesToStream(): List<Class<*>> {
     return ContainerUtil.newArrayList<Class<*>>(
       MTConfig::class.java,
@@ -45,6 +49,12 @@ class MTCloudProvider : CloudConfigAppender {
     )
   }
 
+  /**
+   * Names to show in the Sync Settings Dialog
+   *
+   * @param clazz Configurable
+   * @return message for the title
+   */
   override fun getConfigDescription(clazz: Class<*>): String {
     return MaterialThemeBundle.message(
       "mt.settings.titles",
