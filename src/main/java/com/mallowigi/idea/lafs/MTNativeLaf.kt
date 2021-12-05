@@ -23,92 +23,42 @@
  *
  *
  */
+package com.mallowigi.idea.lafs
 
-package com.mallowigi.idea.lafs;
-
-import com.intellij.ide.ui.laf.IdeaBlueMetalTheme;
-import com.intellij.ide.ui.laf.UIThemeBasedLookAndFeelInfo;
-import com.intellij.ide.ui.laf.darcula.DarculaLaf;
-import com.intellij.util.xmlb.annotations.Transient;
-import com.mallowigi.idea.themes.models.MTThemeable;
-import org.jetbrains.annotations.NotNull;
-
-import javax.swing.*;
-import javax.swing.plaf.metal.DefaultMetalTheme;
+import com.intellij.ide.ui.laf.UIThemeBasedLookAndFeelInfo
+import com.intellij.ide.ui.laf.darcula.DarculaLaf
+import com.intellij.util.xmlb.annotations.Transient
+import com.mallowigi.idea.themes.models.MTThemeable
+import javax.swing.UIDefaults
+import javax.swing.UIManager
 
 /**
- * Look and Feel class for Dark Material Themes
- *
- * @author helio
- * Created on 2018-10-29
+ * Look and Feel class for Native Themes
  */
-@SuppressWarnings("SerializableHasSerializationMethods")
-public final class MTNativeLaf extends DarculaLaf {
-
-  @NotNull
-  private final MTThemeable theme;
-  @Transient
-  private final UIManager.LookAndFeelInfo currentLookAndFeel;
-
-  /**
-   * Represents a Material Dark Look And Feel
-   *
-   * @param theme           of type MTThemeable
-   * @param lookAndFeelInfo current look and feel
-   */
-  public MTNativeLaf(@NotNull final MTThemeable theme, final UIManager.LookAndFeelInfo lookAndFeelInfo) {
-    this.theme = theme;
-    currentLookAndFeel = lookAndFeelInfo;
-  }
-
+class MTNativeLaf(
+  private val theme: MTThemeable,
+  @field:Transient private val currentLookAndFeel: UIManager.LookAndFeelInfo,
+) : DarculaLaf() {
   /**
    * Installs and returns the defaults for dark lafs
    *
    * @return the defaults (type UIDefaults) of this MTDarkLaf object.
    */
-  @Override
-  public UIDefaults getDefaults() {
-    final UIDefaults defaults = super.getDefaults();
-
-    MTLafInstaller.installDefaults(defaults);
+  override fun getDefaults(): UIDefaults {
+    val defaults = super.getDefaults()
+    MTLafInstaller.installDefaults(defaults)
     // Install material defaults
-    MTLafInstaller.installMTDefaults(defaults);
-
-    return defaults;
+    MTLafInstaller.installMTDefaults(defaults)
+    return defaults
   }
 
-  @Override
-  protected void loadDefaults(final UIDefaults defaults) {
-    MTLafInstaller.loadDefaults(defaults);
-    ((UIThemeBasedLookAndFeelInfo) currentLookAndFeel).installTheme(defaults, true);
+  /**
+   * Override Load defaults to load Material Design defaults
+   *
+   */
+  override fun loadDefaults(defaults: UIDefaults) {
+    MTLafInstaller.loadDefaults(defaults)
+    (currentLookAndFeel as UIThemeBasedLookAndFeelInfo).installTheme(defaults, true)
   }
 
-  @NotNull
-  @Override
-  public String getName() {
-    if (theme.isThemeDark()) {
-      return super.getName();
-    } else {
-      return "IntelliJ";
-    }
-  }
-
-  @NotNull
-  @Override
-  protected String getPrefix() {
-    if (theme.isThemeDark()) {
-      return super.getPrefix();
-    } else {
-      return "intellijlaf";
-    }
-  }
-
-  @Override
-  protected DefaultMetalTheme createMetalTheme() {
-    if (theme.isThemeDark()) {
-      return super.createMetalTheme();
-    } else {
-      return new IdeaBlueMetalTheme();
-    }
-  }
 }
