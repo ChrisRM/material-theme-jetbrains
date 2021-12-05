@@ -147,6 +147,9 @@
         <option name="MnemonicIcon.foreground" value="fffbf7" />
         <option name="MnemonicIcon.background" value="353535" />
         <option name="MnemonicIcon.borderColor" value="353535" />
+        <option name="BookmarkMnemonicIcon.foreground" value="fffbf7" />
+        <option name="BookmarkMnemonicIcon.background" value="353535" />
+        <option name="BookmarkMnemonicIcon.borderColor" value="353535" />
         <option name="MODIFIED_LINES_COLOR" value="ffcb6b" />
         <option name="MODIFIED_TAB_ICON" value="ff9800" />
         <option name="MT_IGNORE.PROJECT_VIEW.IGNORED" value="ab7967" />

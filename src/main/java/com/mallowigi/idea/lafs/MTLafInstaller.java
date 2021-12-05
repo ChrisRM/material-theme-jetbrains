@@ -183,6 +183,8 @@ public class MTLafInstaller {
     defaults.put("TextArea.caretBlinkRate", 500);
     defaults.put("Tree.border", "1,1,1,1");
     defaults.put("Tree.paintLines", false);
+    defaults.put("ToolWindow.Header.padding", 6); // todo verify once experimental ui is merged
+    defaults.put("ToolWindow.HeaderTab.padding", 6); // todo verify once experimental ui is merged
     defaults.put("Tree.expandedIcon", "/com/intellij/ide/ui/laf/icons/darcula/treeExpanded.svg");
     defaults.put("Tree.expandedSelectedIcon", "/com/intellij/ide/ui/laf/icons/darcula/treeExpandedSelected.svg");
     defaults.put("Tree.collapsedIcon", "/com/intellij/ide/ui/laf/icons/darcula/treeCollapsed.svg");

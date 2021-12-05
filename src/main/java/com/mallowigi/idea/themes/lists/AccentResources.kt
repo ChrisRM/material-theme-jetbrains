@@ -38,6 +38,8 @@ object AccentResources {
     "ActionButton.pressedBackground",
     "ActionButton.pressedBorderColor",
     "BookmarkIcon.background",
+    "BookmarkMnemonicCurrent.background",
+    "BookmarkMnemonicCurrent.borderColor",
     "Button.darcula.defaultFocusedOutlineColor", // deprecated
     "Button.darcula.focusedOutlineColor", // deprecated
     "Button.darcula.outlineDefaultEndColor", // deprecated
@@ -95,6 +97,7 @@ object AccentResources {
     "Hg.Log.Ref.Branch", // deprecated
     "Hyperlink.linkColor", // deprecated
     "Label.errorForeground",
+    "Lesson.Badge.newLessonBackground",
     "Link.activeForeground",
     "Link.hoverForeground",
     "Link.pressedForeground",

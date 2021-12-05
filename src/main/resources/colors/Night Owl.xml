@@ -153,6 +153,9 @@
         <option name="MnemonicIcon.foreground" value="ffffff" />
         <option name="MnemonicIcon.background" value="4373c2" />
         <option name="MnemonicIcon.borderColor" value="4373c2" />
+        <option name="BookmarkMnemonicIcon.foreground" value="ffffff" />
+        <option name="BookmarkMnemonicIcon.background" value="4373c2" />
+        <option name="BookmarkMnemonicIcon.borderColor" value="4373c2" />
         <option name="NOTIFICATION_BACKGROUND" value="1111d" />
         <option name="NOT_CHANGED" value="d6deeb" />
         <option name="PROMOTION_PANE" value="1d3b53" />

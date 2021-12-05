@@ -144,6 +144,9 @@
         <option name="MnemonicIcon.foreground" value="ffffff" />
         <option name="MnemonicIcon.background" value="666b87" />
         <option name="MnemonicIcon.borderColor" value="666b87" />
+        <option name="BookmarkMnemonicIcon.foreground" value="ffffff" />
+        <option name="BookmarkMnemonicIcon.background" value="666b87" />
+        <option name="BookmarkMnemonicIcon.borderColor" value="666b87" />
         <option name="PROMOTION_PANE" value="191a21" />
         <option name="QUESTION_HINT" value="282a36" />
         <option name="RECENT_LOCATIONS_SELECTION" value="191a21" />

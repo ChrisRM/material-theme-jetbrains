@@ -206,6 +206,7 @@ object MTThemeResources {
   val foregroundResources: Set<String>
     get() = setOf(
       "AvailableMnemonic.foreground",
+      "BookmarkMnemonicAvailable.foreground",
       "CheckBox.darcula.borderColor1", // deprecated
       "CheckBox.foreground",
       "CheckBoxMenuItem.foreground",
@@ -235,11 +236,13 @@ object MTThemeResources {
       "Label.foreground",
       "Label.selectedDisabledForeground",
       "Lesson.Tooltip.foreground",
+      "Lesson.Tooltip.spanForeground",
       "List.foreground",
       "Menu.foreground",
       "MenuBar.foreground",
       "MenuItem.foreground",
       "MnemonicIcon.foreground",
+      "BookmarkMnemonicIcon.foreground",
       "NavBar.arrowColor",
       "Notification.MoreButton.foreground",
       "Notification.ToolWindow.errorForeground",
@@ -394,6 +397,7 @@ object MTThemeResources {
     get() = setOf(
       "AssignedMnemonic.borderColor",
       "Autocomplete.selectionBackground", // deprecated
+      "BookmarkMnemonicAssigned.borderColor",
       "CheckBoxMenuItem.selectionBackground",
       "Content.selectionBackground",
       "EditorPane.selectionBackground",
@@ -426,6 +430,7 @@ object MTThemeResources {
   val selectionForegroundResources: Set<String>
     get() = setOf(
       "AssignedMnemonic.foreground",
+      "BookmarkMnemonicAssigned.foreground",
       "Button.darcula.selectedButtonForeground", // deprecated
       "Button.default.foreground",
       "Button.highlight",
@@ -439,6 +444,7 @@ object MTThemeResources {
       "CompletionPopup.selectionInfoForeground", // deprecated
       "Counter.foreground",
       "CurrentMnemonic.foreground",
+      "BookmarkMnemonicCurrent.foreground",
       "DefaultTabs.underlinedTabForeground",
       "EditorPane.selectionForeground",
       "EditorTabs.underlinedTabForeground",
@@ -446,6 +452,7 @@ object MTThemeResources {
       "Github.List.tallRow.selectionForeground", // deprecated
       "Github.List.tallRow.selectionForeground.unfocused", // deprecated
       "Label.selectedForeground",
+      "Lesson.Badge.newLessonForeground",
       "List.selectionForeground",
       "List.selectionInactiveForeground",
       "Menu.acceleratorSelectionForeground",
@@ -488,6 +495,8 @@ object MTThemeResources {
       "ActionButton.hoverSeparatorColor",
       "AvailableMnemonic.background",
       "AvailableMnemonic.borderColor",
+      "BookmarkMnemonicAvailable.background",
+      "BookmarkMnemonicAvailable.borderColor",
       "Button.background", // deprecated
       "Button.darcula.borderColor", // deprecated
       "Button.darcula.defaultBorderColor", // deprecated
@@ -781,6 +790,7 @@ object MTThemeResources {
   val highlightResources: Set<String>
     get() = setOf(
       "AssignedMnemonic.background",
+      "BookmarkMnemonicAssigned.background",
       "Autocomplete.selectionUnfocus", // deprecated
       "CheckBox.darcula.inactiveFillColor", // deprecated
       "Checkbox.Border.Default",
@@ -802,7 +812,9 @@ object MTThemeResources {
       "MemoryIndicator.usedBackground",
       "MemoryIndicator.usedColor", // deprecated
       "MnemonicIcon.background",
+      "BookmarkMnemonicIcon.background",
       "MnemonicIcon.borderColor",
+      "BookmarkMnemonicIcon.borderColor",
       "Outline.focusedColor", // deprecated
       "ParameterInfo.currentOverloadBackground",
       "Plugins.Button.installFocusedBackground",
@@ -865,6 +877,7 @@ object MTThemeResources {
       "GotItTooltip.background",
       "GotItTooltip.borderColor",
       "Lesson.Tooltip.background",
+      "Lesson.Tooltip.borderColor",
       "Notification.background",
       "Notification.borderColor",
       "Notifications.background", // deprecated

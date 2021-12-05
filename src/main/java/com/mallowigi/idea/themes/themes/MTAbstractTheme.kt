@@ -354,6 +354,7 @@ abstract class MTAbstractTheme protected constructor() : Serializable, MTThemeab
     UIManager.put("FileColor.Orange", JBColor(MTUI.MTColor.ORANGE, MTUI.MTColor.DARK_ORANGE))
     UIManager.put("FileColor.Violet", JBColor(MTUI.MTColor.PURPLE, MTUI.MTColor.DARK_PURPLE))
     UIManager.put("FileColor.Rose", JBColor(MTUI.MTColor.RED, MTUI.MTColor.DARK_RED))
+    UIManager.put("FileColor.Gray", MTUI.Label.labelInfoForeground)
   }
 
   private fun buildTransparentColors() {
