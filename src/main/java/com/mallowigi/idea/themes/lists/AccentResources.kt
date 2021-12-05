@@ -38,6 +38,7 @@ object AccentResources {
     "ActionButton.pressedBackground",
     "ActionButton.pressedBorderColor",
     "BookmarkIcon.background",
+    "Bookmark.iconBackground",
     "BookmarkMnemonicCurrent.background",
     "BookmarkMnemonicCurrent.borderColor",
     "Button.darcula.defaultFocusedOutlineColor", // deprecated
@@ -108,7 +109,7 @@ object AccentResources {
     "Notification.Error.foreground", // deprecated
     "Notification.Link.foreground", // deprecated
     "Notification.errorForeground",
-    "Notification.linkForeground", // deprecated
+    "Notification.linkForeground",
     "Outline.focusedColor",
     "ParameterInfo.currentParameterForeground",
     "ParameterInfo.highlightedColor", // deprecated

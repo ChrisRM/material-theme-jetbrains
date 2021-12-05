@@ -150,12 +150,16 @@
         <option name="MT_SUPPRESSED" value="403f53" />
         <option name="MODIFIED_TAB_ICON" value="2aa298" />
         <option name="BookmarkIcon.background" value="2aa298" />
+        <option name="Bookmark.iconBackground" value="2aa298" />
         <option name="MnemonicIcon.foreground" value="403f53" />
         <option name="MnemonicIcon.background" value="93a1a1" />
         <option name="MnemonicIcon.borderColor" value="93a1a1" />
         <option name="BookmarkMnemonicIcon.foreground" value="403f53" />
+        <option name="Bookmark.Mnemonic.iconForeground" value="403f53" />
         <option name="BookmarkMnemonicIcon.background" value="93a1a1" />
+        <option name="Bookmark.Mnemonic.iconBackground" value="93a1a1" />
         <option name="BookmarkMnemonicIcon.borderColor" value="93a1a1" />
+        <option name="Bookmark.Mnemonic.iconBorderColor" value="93a1a1" />
         <option name="NOTIFICATION_BACKGROUND" value="f0f0f0" />
         <option name="NOT_CHANGED" value="403f53" />
         <option name="PROMOTION_PANE" value="d3e8f8" />

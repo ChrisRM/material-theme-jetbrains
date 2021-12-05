@@ -153,12 +153,16 @@
         <option name="MODIFIED_LINES_COLOR" value="268bd2" />
         <option name="MODIFIED_TAB_ICON" value="d33682" />
         <option name="BookmarkIcon.background" value="d33682" />
+        <option name="Bookmark.iconBackground" value="d33682" />
         <option name="MnemonicIcon.foreground" value="ffffff" />
         <option name="MnemonicIcon.background" value="e2dccb" />
         <option name="MnemonicIcon.borderColor" value="e2dccb" />
         <option name="BookmarkMnemonicIcon.foreground" value="ffffff" />
+        <option name="Bookmark.Mnemonic.iconForeground" value="ffffff" />
         <option name="BookmarkMnemonicIcon.background" value="e2dccb" />
+        <option name="Bookmark.Mnemonic.iconBackground" value="e2dccb" />
         <option name="BookmarkMnemonicIcon.borderColor" value="e2dccb" />
+        <option name="Bookmark.Mnemonic.iconBorderColor" value="e2dccb" />
         <option name="NOTIFICATION_BACKGROUND" value="999178" />
         <option name="PROMOTION_PANE" value="eee8d5" />
         <option name="QUESTION_HINT" value="b6cce9" />

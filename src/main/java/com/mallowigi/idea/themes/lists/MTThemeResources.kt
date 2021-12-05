@@ -243,6 +243,7 @@ object MTThemeResources {
       "MenuItem.foreground",
       "MnemonicIcon.foreground",
       "BookmarkMnemonicIcon.foreground",
+      "Bookmark.Mnemonic.iconForeground",
       "NavBar.arrowColor",
       "Notification.MoreButton.foreground",
       "Notification.ToolWindow.errorForeground",
@@ -813,9 +814,11 @@ object MTThemeResources {
       "MemoryIndicator.usedBackground",
       "MemoryIndicator.usedColor", // deprecated
       "MnemonicIcon.background",
-      "BookmarkMnemonicIcon.background",
       "MnemonicIcon.borderColor",
+      "BookmarkMnemonicIcon.background",
       "BookmarkMnemonicIcon.borderColor",
+      "Bookmark.Mnemonic.iconBackground",
+      "Bookmark.Mnemonic.iconBorderColor",
       "Outline.focusedColor", // deprecated
       "ParameterInfo.currentOverloadBackground",
       "Plugins.Button.installFocusedBackground",

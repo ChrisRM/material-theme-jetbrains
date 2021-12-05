@@ -141,12 +141,16 @@
         <option name="LINE_NUMBER_ON_CARET_ROW_COLOR" value="676e95" />
         <option name="METHOD_SEPARATORS_COLOR" value="828ed5" />
         <option name="BookmarkIcon.background" value="ab47bc" />
+        <option name="Bookmark.iconBackground" value="ab47bc" />
         <option name="MnemonicIcon.foreground" value="fffbf7" />
         <option name="MnemonicIcon.background" value="424865" />
         <option name="MnemonicIcon.borderColor" value="424865" />
         <option name="BookmarkMnemonicIcon.foreground" value="fffbf7" />
+        <option name="Bookmark.Mnemonic.iconForeground" value="fffbf7" />
         <option name="BookmarkMnemonicIcon.background" value="424865" />
+        <option name="Bookmark.Mnemonic.iconBackground" value="424865" />
         <option name="BookmarkMnemonicIcon.borderColor" value="424865" />
+        <option name="Bookmark.Mnemonic.iconBorderColor" value="424865" />
         <option name="MODIFIED_LINES_COLOR" value="ffcb6b" />
         <option name="MODIFIED_TAB_ICON" value="ab47bc" />
         <option name="MT_IGNORE.PROJECT_VIEW.IGNORED" value="ab7967" />

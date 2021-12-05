@@ -50,17 +50,14 @@ import java.util.Objects;
 
 /**
  * Service to install Material Theme properties in the UIManager
- *
- * @author helio
- * Created on 2018-10-29
  */
 @SuppressWarnings({"ClassWithTooManyMethods",
   "OverlyLongMethod",
   "DuplicateStringLiteralInspection",
   "OverlyCoupledClass",
   "MagicNumber",
-  "java:S109",
-  "StandardVariableNames"})
+  "java:S109"
+})
 public class MTLafInstaller {
   /**
    * The Theme
@@ -121,6 +118,7 @@ public class MTLafInstaller {
     defaults.put("ActionsList.mnemonics.insets", "0,8,0,8");
     defaults.put("ActionsList.mnemonicsBorderInsets", "0,8,1,6");
     defaults.put("Border.width", 2); // deprecated
+    defaults.put("Button.ToolWindow.arc", 0);
     defaults.put("Button.arc", 6);
     defaults.put("Caret.width", 2);
     defaults.put("CellEditor.border.width", 2);
@@ -162,14 +160,16 @@ public class MTLafInstaller {
     defaults.put("MenuItem.border", new DarculaMenuItemBorder());
     defaults.put("MenuItem.maxGutterIconWidth", 18);
     defaults.put("NewClass.separatorWidth", 10);
+    defaults.put("Notification.arc", 4);
+    defaults.put("Notification.borderInsets", JBUI.insets(4, 6, 4, 6));
     defaults.put("Popup.Advertiser.borderInsets", JBUI.insets(10, 10, 10, 15));
     defaults.put("RadioButton.border.width", 3);
     defaults.put("RadioButtonMenuItem.borderPainted", false);
     defaults.put("ScrollBarUI", JBScrollBar.class.getName());
+    defaults.put("SearchEverywhere.Advertiser.borderInsets", JBUI.insets(10, 10, 10, 15));
     defaults.put("Spinner.arrowButtonInsets", JBUI.insets(1, 1, 1, 1));
     defaults.put("Spinner.editorBorderPainted", false);
     defaults.put("TabbedPane.fontSizeOffset", 0);
-    defaults.put("SearchEverywhere.Advertiser.borderInsets", JBUI.insets(10, 10, 10, 15));
     defaults.put("TabbedPane.labelShift", 0);
     defaults.put("TabbedPane.selectedLabelShift", 0);
     defaults.put("TabbedPane.tabAreaInsets", JBUI.insets(0));
@@ -181,15 +181,14 @@ public class MTLafInstaller {
     defaults.put("Table.rowHeight", 20);
     defaults.put("TableHeader.height", 25);
     defaults.put("TextArea.caretBlinkRate", 500);
-    defaults.put("Tree.border", "1,1,1,1");
-    defaults.put("Tree.paintLines", false);
     defaults.put("ToolWindow.Header.padding", 6); // todo verify once experimental ui is merged
     defaults.put("ToolWindow.HeaderTab.padding", 6); // todo verify once experimental ui is merged
-    defaults.put("Tree.expandedIcon", "/com/intellij/ide/ui/laf/icons/darcula/treeExpanded.svg");
-    defaults.put("Tree.expandedSelectedIcon", "/com/intellij/ide/ui/laf/icons/darcula/treeExpandedSelected.svg");
+    defaults.put("Tree.border", "1,1,1,1");
     defaults.put("Tree.collapsedIcon", "/com/intellij/ide/ui/laf/icons/darcula/treeCollapsed.svg");
     defaults.put("Tree.collapsedSelectedIcon", "/com/intellij/ide/ui/laf/icons/darcula/treeCollapsedSelected.svg");
-    defaults.put("Button.ToolWindow.arc", 0);
+    defaults.put("Tree.expandedIcon", "/com/intellij/ide/ui/laf/icons/darcula/treeExpanded.svg");
+    defaults.put("Tree.expandedSelectedIcon", "/com/intellij/ide/ui/laf/icons/darcula/treeExpandedSelected.svg");
+    defaults.put("Tree.paintLines", false);
     defaults.put("ValidationTooltip.maxWidth", 384);
     defaults.put("Window.border", "1,1,1,1,000000");
     defaults.put(JBScrollBar.class.getName(), JBScrollBar.class);

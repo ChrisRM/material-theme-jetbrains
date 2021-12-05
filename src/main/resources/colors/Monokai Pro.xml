@@ -144,12 +144,16 @@
         <option name="MT_IGNORE.PROJECT_VIEW.IGNORED" value="ab7967" />
         <option name="MT_SUPPRESSED" value="eeffff" />
         <option name="BookmarkIcon.background" value="ffd866" />
+        <option name="Bookmark.iconBackground" value="ffd866" />
         <option name="MnemonicIcon.foreground" value="ffffff" />
         <option name="MnemonicIcon.background" value="403e41" />
         <option name="MnemonicIcon.borderColor" value="403e41" />
         <option name="BookmarkMnemonicIcon.foreground" value="ffffff" />
+        <option name="Bookmark.Mnemonic.iconForeground" value="ffffff" />
         <option name="BookmarkMnemonicIcon.background" value="403e41" />
+        <option name="Bookmark.Mnemonic.iconBackground" value="403e41" />
         <option name="BookmarkMnemonicIcon.borderColor" value="403e41" />
+        <option name="Bookmark.Mnemonic.iconBorderColor" value="403e41" />
         <option name="NOTIFICATION_BACKGROUND" value="19181a" />
         <option name="NOT_CHANGED" value="939393" />
         <option name="PROMOTION_PANE" value="221f22" />
