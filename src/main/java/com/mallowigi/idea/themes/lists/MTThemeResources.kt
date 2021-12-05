@@ -532,6 +532,7 @@ object MTThemeResources {
       "Plugins.Button.installFillBackground",
       "Plugins.Button.updateBorderColor",
       "StateWidget.activeBackground",
+      "Tag.background",
       "ToggleButton.borderColor",
       "ToggleButton.buttonColor",
       "ToolBar.comboBoxButtonBackground", // deprecated
@@ -858,6 +859,8 @@ object MTThemeResources {
   val treeSelectionResources: Set<String>
     get() = setOf(
       "List.hoverBackground",
+      "NotificationsToolwindow.newNotification.hoverBackground",
+      "NotificationsToolwindow.Notification.hoverBackground",
       "Plugins.hoverBackground",
       "Table.hoverBackground",
       "Tree.hoverBackground",
@@ -882,6 +885,7 @@ object MTThemeResources {
       "Notification.borderColor",
       "Notifications.background", // deprecated
       "Notifications.borderColor", // deprecated
+      "NotificationsToolwindow.newNotification.background",
       "SearchField.errorBackground",
       "ToolTip.background",
       "UIDesigner.motion.Notification.background",

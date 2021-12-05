@@ -156,11 +156,11 @@ class MTNativeTheme : MTAbstractTheme() {
     val accentMode = mtConfig.isAccentMode
 
     // Add accent resources
-    MTUiUtils.buildAccentResources(MTAccentMode.ACCENT_EXTRA_RESOURCES, accentColor, accentMode)
-    MTUiUtils.buildAccentResources(MTAccentMode.DARKER_ACCENT_RESOURCES, darkerAccentColor, accentMode)
-    MTUiUtils.buildAccentResources(MTAccentMode.ACCENT_TRANSPARENT_EXTRA_RESOURCES, accentColorTransparent, accentMode)
+    MTUiUtils.buildAccentResources(MTAccentMode.accentModeResources, accentColor, accentMode)
+    MTUiUtils.buildAccentResources(MTAccentMode.darkerAccentResources, darkerAccentColor, accentMode)
+    MTUiUtils.buildAccentResources(MTAccentMode.accentModeTransparentResources, accentColorTransparent, accentMode)
     // Add new selection color resources
-    MTUiUtils.buildAccentResources(MTAccentMode.SELECTION_RESOURCES, selectionColor, accentMode)
-    MTUiUtils.buildAccentResources(MTAccentMode.SECOND_ACCENT_RESOURCES, secondAccentColor, accentMode)
+    MTUiUtils.buildAccentResources(MTAccentMode.selectionResources, selectionColor, accentMode)
+    MTUiUtils.buildAccentResources(MTAccentMode.secondAccentResources, secondAccentColor, accentMode)
   }
 }

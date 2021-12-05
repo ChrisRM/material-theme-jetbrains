@@ -307,12 +307,12 @@ abstract class MTAbstractTheme protected constructor() : Serializable, MTThemeab
     val accentMode = mtConfig.isAccentMode
     if (accentMode) {
       // Add accent resources
-      MTUiUtils.buildResources(MTAccentMode.ACCENT_EXTRA_RESOURCES, accentColor)
-      MTUiUtils.buildResources(MTAccentMode.DARKER_ACCENT_RESOURCES, darkerAccentColor)
-      MTUiUtils.buildResources(MTAccentMode.ACCENT_TRANSPARENT_EXTRA_RESOURCES, accentColorTransparent)
+      MTUiUtils.buildResources(MTAccentMode.accentModeResources, accentColor)
+      MTUiUtils.buildResources(MTAccentMode.darkerAccentResources, darkerAccentColor)
+      MTUiUtils.buildResources(MTAccentMode.accentModeTransparentResources, accentColorTransparent)
       // Add new selection color resources
-      MTUiUtils.buildResources(MTAccentMode.SELECTION_RESOURCES, selectionColor)
-      MTUiUtils.buildResources(MTAccentMode.SECOND_ACCENT_RESOURCES, secondAccentColor)
+      MTUiUtils.buildResources(MTAccentMode.selectionResources, selectionColor)
+      MTUiUtils.buildResources(MTAccentMode.secondAccentResources, secondAccentColor)
     }
   }
 

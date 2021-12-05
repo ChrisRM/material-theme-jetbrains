@@ -29,9 +29,29 @@ import com.intellij.openapi.application.ApplicationManager
 import com.intellij.ui.JBColor
 import java.awt.Color
 
+/**
+ * Accent mode service
+ *
+ */
 object MTAccentMode {
+  /**
+   * The singleton instance
+   */
+  val instance: MTAccentMode
+    get() = ApplicationManager.getApplication().getService(MTAccentMode::class.java)
+
+  /**
+   * Hard coded selection color to use inside accented components
+   */
+  @JvmStatic
+  val selectionColor: Color
+    get() = JBColor(0x111111, 0xFFFFFF)
+
+  /**
+   * Resources that use the second accent
+   */
   @JvmField
-  val SECOND_ACCENT_RESOURCES: Set<String> = setOf(
+  val secondAccentResources: Set<String> = setOf(
     "CompletionPopup.matchForeground",
     "CompletionPopup.matchSelectedForeground", // deprecated
     "CompletionPopup.matchSelectionForeground",
@@ -51,8 +71,11 @@ object MTAccentMode {
 
   )
 
+  /**
+   * Selection color resources
+   */
   @JvmField
-  val SELECTION_RESOURCES: Set<String> = setOf(
+  val selectionResources: Set<String> = setOf(
     "DefaultTabs.underlinedTabForeground",
     "EditorTabs.active.foreground", // deprecated
     "EditorTabs.selectedForeground",
@@ -63,8 +86,11 @@ object MTAccentMode {
     "WelcomeScreen.Projects.actions.selectionBackground"
   )
 
+  /**
+   * Accent mode resources
+   */
   @JvmField
-  val ACCENT_EXTRA_RESOURCES: Set<String> = setOf(
+  val accentModeResources: Set<String> = setOf(
     "Autocomplete.selectionBackground",
     "Button.default.endBackground",
     "Button.default.startBackground",
@@ -84,12 +110,17 @@ object MTAccentMode {
     "Table.highlightOuter",
     "Table.lightSelectionBackground", // deprecated
     "Table.selectionBackground",
+    "ToolWindow.background", // for large tool windows
+    "ToolWindow.Background",
     "WelcomeScreen.Projects.selectionBackground"
 
   )
 
+  /**
+   * Accent mode transparent resources
+   */
   @JvmField
-  val ACCENT_TRANSPARENT_EXTRA_RESOURCES: Set<String> = setOf(
+  val accentModeTransparentResources: Set<String> = setOf(
     "CompletionPopup.selectionBackground",
     "List.selectionBackground",
     "Menu.selectionBackground",
@@ -98,8 +129,11 @@ object MTAccentMode {
     "Toolbar.Floating.background"
   )
 
+  /**
+   * Slightly darker/lighter accent resources for accent mode
+   */
   @JvmField
-  val DARKER_ACCENT_RESOURCES: Set<String> = setOf(
+  val darkerAccentResources: Set<String> = setOf(
     "EditorTabs.background",
     "EditorTabs.borderColor",
     "EditorTabs.inactiveColoredFileBackground",
@@ -108,11 +142,4 @@ object MTAccentMode {
     "Notification.background",
     "Notification.borderColor"
   )
-
-  val instance: MTAccentMode
-    get() = ApplicationManager.getApplication().getService(MTAccentMode::class.java)
-
-  @JvmStatic
-  val selectionColor: Color
-    get() = JBColor(0x111111, 0xFFFFFF)
 }
