@@ -33,16 +33,16 @@ import com.mallowigi.idea.messages.MaterialThemeBundle
 import com.mallowigi.idea.utils.MTUiUtils
 import javax.swing.event.HyperlinkEvent
 
+/**
+ * Statistics notification
+ *
+ */
 class MTStatisticsNotification : Notification(
   MTNotifications.CHANNEL,
   MaterialThemeBundle.message("mt.stats.notification.title", MTUiUtils.getPluginName()),
   MaterialThemeBundle.message("mt.stats.config.details", MaterialThemeBundle.message("mt.stats.plugin.team")),
   NotificationType.INFORMATION
 ) {
-  companion object {
-    const val SHOW_STATISTICS_AGREEMENT: String = "mt.showStatisticsAgreement"
-  }
-
   init {
     setListener { notification1: Notification, event: HyperlinkEvent ->
       MTConfig.getInstance().setAllowDataCollection("allow" == event.description)
@@ -50,4 +50,12 @@ class MTStatisticsNotification : Notification(
       notification1.expire()
     }
   }
+
+  companion object {
+    /**
+     * Notification Channel id
+     */
+    const val SHOW_STATISTICS_AGREEMENT: String = "mt.showStatisticsAgreement"
+  }
+
 }

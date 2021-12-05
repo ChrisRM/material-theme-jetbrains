@@ -31,7 +31,6 @@ import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.fileEditor.impl.HTMLEditorProvider
 import com.intellij.openapi.project.DumbAware
 import com.intellij.openapi.project.Project
-import com.intellij.openapi.util.NlsContexts.DetailedDescription
 import com.intellij.ui.jcef.JBCefApp
 import com.intellij.util.Urls.newFromEncoded
 import com.mallowigi.idea.config.application.MTConfig
@@ -39,7 +38,15 @@ import com.mallowigi.idea.messages.MaterialThemeBundle
 import com.mallowigi.idea.utils.MTUiUtils
 import org.jetbrains.annotations.Contract
 
+/**
+ * Show the whats new notification.
+ *
+ */
 class MTWhatsNewAction : AnAction(), DumbAware {
+  /**
+   * Action when clicking on the link
+   *
+   */
   override fun actionPerformed(e: AnActionEvent) {
     val whatsNewUrl = WHATS_NEW_URL
     val project = e.project
@@ -51,6 +58,10 @@ class MTWhatsNewAction : AnAction(), DumbAware {
     }
   }
 
+  /**
+   * Show notification according to the configuration
+   *
+   */
   override fun update(e: AnActionEvent) {
     val available = shouldShow()
     e.presentation.isEnabledAndVisible = available
@@ -63,13 +74,28 @@ class MTWhatsNewAction : AnAction(), DumbAware {
   }
 
   companion object {
+    /**
+     * What's New URL
+     */
     const val WHATS_NEW_URL: String = "https://www.material-theme.com/docs/what-s-new/"
 
+    /**
+     * Show the notification when the version is updated
+     *
+     */
     private fun shouldShow(): Boolean = MTUiUtils.getVersion() != MTConfig.getInstance().version
 
+    /**
+     * Open what's new file in the embedded browser
+     *
+     * @param project project to show the notification in
+     * @param url url to open
+     * @param content content to show (optional0
+     */
+    @Suppress("HardCodedStringLiteral")
     @JvmStatic
     @Contract("_, null, null -> fail")
-    fun openWhatsNewFile(project: Project, url: String?, content: @DetailedDescription String?) {
+    fun openWhatsNewFile(project: Project, url: String?, content: String?) {
       require(!(url == null && content == null))
 
       val title = MaterialThemeBundle.message("whats.new.action.title")
@@ -84,7 +110,7 @@ class MTWhatsNewAction : AnAction(), DumbAware {
 
         HTMLEditorProvider.openEditor(project, title, finalUrl, timeoutContent)
       } else {
-        HTMLEditorProvider.openEditor(project, title, content!!)
+        HTMLEditorProvider.openEditor(project, title, content ?: return)
       }
     }
   }

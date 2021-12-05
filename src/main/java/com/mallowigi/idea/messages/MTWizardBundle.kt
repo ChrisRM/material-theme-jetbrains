@@ -38,6 +38,7 @@ private const val BUNDLE: String = "messages.MTWizardBundle"
  * Get strings for the Wizard Resource Bundle
  *
  */
+@Suppress("KDocMissingDocumentation")
 object MTWizardBundle : DynamicBundle(BUNDLE) {
   @JvmStatic
   fun getBundle(): ResourceBundle = ResourceBundle.getBundle(BUNDLE)

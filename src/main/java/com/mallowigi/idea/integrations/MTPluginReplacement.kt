@@ -29,7 +29,14 @@ import com.intellij.ide.plugins.IdeaPluginDescriptor
 import com.intellij.ide.plugins.PluginReplacement
 import com.mallowigi.idea.messages.MaterialThemeBundle
 
+/**
+ * Service blocking Material Theme if Lite is installed
+ *
+ */
 class MTPluginReplacement : PluginReplacement(MaterialThemeBundle.message("plugins.materialThemeLite")) {
+  /**
+   * Gets the replacement message
+   */
   override fun getReplacementMessage(oldPlugin: IdeaPluginDescriptor, newPlugin: IdeaPluginDescriptor): String =
     MaterialThemeBundle.message("MTPluginReplacement.materialLite", newPlugin.name, oldPlugin.name)
 }

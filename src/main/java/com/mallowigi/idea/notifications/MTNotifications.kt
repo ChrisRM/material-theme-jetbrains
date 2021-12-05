@@ -42,7 +42,14 @@ import com.mallowigi.idea.utils.MTUiUtils
 import java.awt.Point
 import java.util.Objects
 
+/**
+ * Service for sending notifications
+ *
+ */
 object MTNotifications {
+  /**
+   * Notification channel ID
+   */
   const val CHANNEL: String = "Material Theme Notifications"
 
   /**
@@ -60,6 +67,12 @@ object MTNotifications {
     showFullNotification(project, notification)
   }
 
+  /**
+   * Show a simple notification
+   *
+   * @param project the project concerned
+   * @param content the content text
+   */
   @JvmStatic
   fun showSimple(project: Project, content: String) {
     val notification = createNotification("", content, NotificationType.INFORMATION)
@@ -109,7 +122,7 @@ object MTNotifications {
    *
    * @param title    notification title
    * @param content  the content
-   * @param type     the type (sticky...)
+   * @param type     the type (sticky…)
    * @param listener listener
    * @return new notification to be displayed
    */

@@ -43,11 +43,23 @@ import org.intellij.plugins.xpathView.XPathAppComponent
  * @constructor Create empty X path listener
  */
 class XPathListener : LafManagerListener, StartupActivity {
+  /**
+   * When Look and feel changed
+   *
+   * @param source
+   */
   override fun lookAndFeelChanged(source: LafManager): Unit = installXPathSearchColors()
+
+  /**
+   * Run activity when IDE is started
+   *
+   */
+  override fun runActivity(project: Project): Unit = installXPathSearchColors()
 
   private fun installXPathSearchColors() {
     val currentLookAndFeel = LafManager.getInstance().currentLookAndFeel
     val xpathConfig = XPathAppComponent.getInstance().config
+
     if (MTThemeManager.instance.isMaterialTheme(currentLookAndFeel)) {
       val schemeForCurrentUITheme = EditorColorsManager.getInstance().schemeForCurrentUITheme
       // install themed search results text attributes.
@@ -67,5 +79,4 @@ class XPathListener : LafManagerListener, StartupActivity {
     }
   }
 
-  override fun runActivity(project: Project): Unit = installXPathSearchColors()
 }

@@ -27,6 +27,15 @@ package com.mallowigi.idea.listeners
 
 import com.mallowigi.idea.config.MTBaseConfig
 
+/**
+ * Listener for when custom config is changed
+ *
+ */
 fun interface CustomConfigNotifier {
+  /**
+   * When Custom theme is changed
+   *
+   * @param mtBaseConfig the new config
+   */
   fun customConfigChanged(mtBaseConfig: MTBaseConfig<*, *>?)
 }

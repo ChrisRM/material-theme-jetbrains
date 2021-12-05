@@ -23,6 +23,8 @@
  *
  *
  */
+@file:Suppress("KDocMissingDocumentation")
+
 package com.mallowigi.idea.listeners
 
 import com.intellij.util.messages.Topic

@@ -28,8 +28,23 @@ package com.mallowigi.idea.listeners
 import com.mallowigi.idea.config.project.MTProjectConfig
 import com.mallowigi.idea.config.ui.MTProjectForm
 
+/**
+ * Listener for when project config is changed
+ *
+ */
 interface ProjectConfigNotifier {
+  /**
+   * When Project config is changed
+   *
+   * @param mtConfig the new project config
+   */
   fun projectConfigChanged(mtConfig: MTProjectConfig): Unit = Unit
 
+  /**
+   * Before project config is changed
+   *
+   * @param mtConfig config before the changes
+   * @param form the new project form values
+   */
   fun beforeProjectConfigChanged(mtConfig: MTProjectConfig, form: MTProjectForm): Unit = Unit
 }

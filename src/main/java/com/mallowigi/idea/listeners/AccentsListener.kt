@@ -28,6 +28,15 @@ package com.mallowigi.idea.listeners
 import java.awt.Color
 import java.util.EventListener
 
+/**
+ * Listener for when accent color is changed
+ *
+ */
 fun interface AccentsListener : EventListener {
+  /**
+   * Accent changed
+   *
+   * @param accentColor
+   */
   fun accentChanged(accentColor: Color)
 }

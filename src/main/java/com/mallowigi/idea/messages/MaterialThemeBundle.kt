@@ -23,6 +23,8 @@
  *
  *
  */
+@file:Suppress("KDocMissingDocumentation")
+
 package com.mallowigi.idea.messages
 
 import com.intellij.DynamicBundle

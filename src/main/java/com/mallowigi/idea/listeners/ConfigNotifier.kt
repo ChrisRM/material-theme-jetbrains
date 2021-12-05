@@ -28,8 +28,23 @@ package com.mallowigi.idea.listeners
 import com.mallowigi.idea.config.application.MTConfig
 import com.mallowigi.idea.config.ui.MTForm
 
+/**
+ * Listener for when Material Theme config is changed
+ *
+ */
 interface ConfigNotifier {
+  /**
+   * When Config is changed (settings)
+   *
+   * @param mtConfig new config
+   */
   fun configChanged(mtConfig: MTConfig): Unit = Unit
 
+  /**
+   * Before config is changed
+   *
+   * @param mtConfig the current config, before changes
+   * @param form the new form valuess
+   */
   fun beforeConfigChanged(mtConfig: MTConfig, form: MTForm): Unit = Unit
 }

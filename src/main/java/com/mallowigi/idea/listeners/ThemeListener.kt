@@ -28,6 +28,15 @@ package com.mallowigi.idea.listeners
 import com.mallowigi.idea.themes.MTThemeFacade
 import java.util.EventListener
 
+/**
+ * Listener for when the current Material Theme is changed
+ *
+ */
 fun interface ThemeListener : EventListener {
+  /**
+   * When the Theme is changed
+   *
+   * @param theme new theme
+   */
   fun themeChanged(theme: MTThemeFacade)
 }

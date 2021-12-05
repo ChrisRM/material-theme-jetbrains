@@ -33,6 +33,9 @@ import com.mallowigi.idea.messages.MaterialThemeBundle
 import com.mallowigi.idea.utils.MTUiUtils
 import javax.swing.event.HyperlinkEvent
 
+/**
+ * Notification prompting to install the Atom Plugin
+ */
 @Suppress("DialogTitleCapitalization")
 class MTInstallAtomNotification : Notification(
   MTNotifications.CHANNEL,
@@ -40,18 +43,15 @@ class MTInstallAtomNotification : Notification(
   MaterialThemeBundle.message("atom.plugin.content", MaterialThemeBundle.message("mt.stats.plugin.team")),
   NotificationType.INFORMATION
 ) {
-  companion object {
-    const val SHOW_INSTALL_ATOM: String = "mt.showInstallAtom"
-  }
 
   init {
     setListener { notification1: Notification, event: HyperlinkEvent ->
       when (event.description) {
         "decline" -> closeNotification(notification1)
         else      -> installAndEnable(
-          null,
-          setOf(MTUiUtils.getAtomPluginId()),
-          true
+          project = null,
+          pluginIds = setOf(MTUiUtils.getAtomPluginId()),
+          showDialog = true
         ) { closeNotification(notification1) }
       }
     }
@@ -60,5 +60,12 @@ class MTInstallAtomNotification : Notification(
   private fun closeNotification(notification1: Notification) {
     PropertiesComponent.getInstance().setValue(SHOW_INSTALL_ATOM, true)
     notification1.expire()
+  }
+
+  companion object {
+    /**
+     * Notification topic ID
+     */
+    const val SHOW_INSTALL_ATOM: String = "mt.showInstallAtom"
   }
 }

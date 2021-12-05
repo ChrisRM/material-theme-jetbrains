@@ -46,6 +46,16 @@ import org.jetbrains.annotations.NonNls
  *
  */
 object MTFileColors {
+  init {
+    initFileColors()
+
+    // Listen for color scheme changes and update the file colors
+    ApplicationManager.getApplication().messageBus.connect()
+      .subscribe(EditorColorsManager.TOPIC, EditorColorsListener { apply() })
+
+    apply()
+  }
+
   @NonNls
   private val MT_PREFIX: String = "MT_FILESTATUS_"
 
@@ -154,13 +164,4 @@ object MTFileColors {
   @JvmStatic
   fun getColorKey(status: FileStatus): ColorKey? = COLOR_KEYS[status]
 
-  init {
-    initFileColors()
-
-    // Listen for color scheme changes and update the file colors
-    ApplicationManager.getApplication().messageBus.connect()
-      .subscribe(EditorColorsManager.TOPIC, EditorColorsListener { apply() })
-
-    apply()
-  }
 }
