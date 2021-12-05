@@ -29,33 +29,61 @@ package com.mallowigi.idea.utils
 import com.intellij.icons.AllIcons
 import com.intellij.openapi.util.IconLoader
 import com.intellij.util.ObjectUtils
+import org.jetbrains.annotations.NonNls
 import javax.swing.Icon
 
+/**
+ * Service for retrieving the different checkbox icons
+ *
+ */
 @Suppress("LongParameterList")
 object MTCheckboxIconLookup {
   private const val ICONS_DIR_PREFIX = "/icons/mt/"
 
+  /**
+   * Get the icon for the given checkbox state
+   *
+   *
+   * @param name icon name
+   * @param selected if selected
+   * @param focused if focused
+   * @param enabled if enabled
+   * @return the icon
+   */
   @JvmStatic
-  fun getIcon(name: String?): Icon = getIcon(
-    name,
-    selected = false,
-    focused = false,
-    enabled = true,
-    editable = false,
-    pressed = false
-  )
-
-  @JvmStatic
-  fun getIcon(name: String?, selected: Boolean, focused: Boolean, enabled: Boolean): Icon =
+  fun getIcon(@NonNls name: String, selected: Boolean, focused: Boolean, enabled: Boolean): Icon =
     getIcon(name, selected, focused, enabled, false)
 
+  /**
+   * Get the icon for the given checkbox state
+   *
+   *
+   * @param name icon name
+   * @param selected if selected
+   * @param focused if focused
+   * @param enabled if enabled
+   * @param editable if editable
+   * @return the icon
+   */
   @JvmStatic
-  fun getIcon(name: String?, selected: Boolean, focused: Boolean, enabled: Boolean, editable: Boolean): Icon =
+  fun getIcon(@NonNls name: String, selected: Boolean, focused: Boolean, enabled: Boolean, editable: Boolean): Icon =
     getIcon(name, selected, focused, enabled, editable, false)
 
+  /**
+   * Get the icon for the given checkbox state
+   *
+   *
+   * @param name icon name
+   * @param selected if selected
+   * @param focused if focused
+   * @param enabled if enabled
+   * @param editable if editable
+   * @param pressed if pressed
+   * @return the icon
+   */
   @JvmStatic
   fun getIcon(
-    name: String?,
+    @NonNls name: String,
     selected: Boolean,
     focused: Boolean,
     enabled: Boolean,
@@ -63,15 +91,26 @@ object MTCheckboxIconLookup {
     pressed: Boolean,
   ): Icon = findIcon(name, selected, focused, enabled, editable, pressed)
 
+  /**
+   * Find icon
+   *
+   * @param name icon name
+   * @param selected if selected
+   * @param focused if focused
+   * @param enabled if enabled
+   * @param editable if editable
+   * @param pressed if pressed
+   * @return the icon
+   */
   private fun findIcon(
-    name: String?,
+    @NonNls name: String,
     selected: Boolean,
     focused: Boolean,
     enabled: Boolean,
     editable: Boolean,
     pressed: Boolean,
   ): Icon {
-    var key = name
+    @NonNls var key = "checkboxes/${name}"
     if (editable) key += "Editable"
     if (selected) key += "Selected"
 
@@ -81,30 +120,11 @@ object MTCheckboxIconLookup {
       !enabled -> key += "Disabled"
     }
 
-    val path = "${ICONS_DIR_PREFIX}$key.svg"
+    @NonNls val path = "${ICONS_DIR_PREFIX}${key}.svg"
     return ObjectUtils.notNull(
       IconLoader.findIcon(path, MTCheckboxIconLookup::class.java, true, true),
       AllIcons.Actions.Stub
     )
   }
 
-  @JvmStatic
-  fun getDisabledIcon(name: String?): Icon = getIcon(
-    name,
-    selected = false,
-    focused = false,
-    enabled = false,
-    editable = false,
-    pressed = false
-  )
-
-  @JvmStatic
-  fun getSelectedIcon(name: String?): Icon = getIcon(
-    name,
-    selected = true,
-    focused = false,
-    enabled = false,
-    editable = true,
-    pressed = false
-  )
 }

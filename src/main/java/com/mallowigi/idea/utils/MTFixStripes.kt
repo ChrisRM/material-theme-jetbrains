@@ -37,7 +37,13 @@ import javax.swing.JPanel
 /**
  * Temporary fix for the stripes feature to avoid having duplicates
  */
+@Suppress("UnstableApiUsage")
 class MTFixStripes : ProjectManagerListener {
+  /**
+   * When project closing, remove the stripes
+   *
+   * @param project
+   */
   override fun projectClosing(project: Project) {
     if (!MTConfig.getInstance().isStripedToolWindowsEnabled) return
 

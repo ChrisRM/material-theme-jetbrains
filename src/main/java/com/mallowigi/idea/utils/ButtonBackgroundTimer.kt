@@ -35,11 +35,13 @@ import java.util.Deque
 import javax.swing.Timer
 
 /**
- * Button background timer
+ * Button background timer used for animating button highlights
  *
  * @property fps
  */
 class ButtonBackgroundTimer(private val fps: Int) {
+  private val baseline = 1000
+
   /**
    * Start animation
    *
@@ -47,8 +49,8 @@ class ButtonBackgroundTimer(private val fps: Int) {
    * @param component component
    * @param colors list of colors
    */
-  fun start(name: @NonNls String, component: Component, colors: Deque<out Color>) {
-    val timer = TimerUtil.createNamedTimer(name, 1000 / fps)
+  fun start(@NonNls name: String, component: Component, colors: Deque<out Color>) {
+    val timer = TimerUtil.createNamedTimer(name, baseline / fps)
     timer.addActionListener(getActionListener(timer, component, colors))
     timer.start()
   }

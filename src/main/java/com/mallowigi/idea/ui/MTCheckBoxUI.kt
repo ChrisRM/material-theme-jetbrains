@@ -47,6 +47,7 @@ import javax.swing.text.View
  *
  */
 class MTCheckBoxUI : DarculaCheckBoxUI() {
+  private val iconGap = 4
   private val defaultIcon: Icon = JBUIScale.scaleIcon(EmptyIcon.create(20)).asUIResource()
 
   /**
@@ -67,7 +68,7 @@ class MTCheckBoxUI : DarculaCheckBoxUI() {
    * Gap between the box and the text
    *
    */
-  override fun textIconGap(): Int = JBUIScale.scale(4)
+  override fun textIconGap(): Int = JBUIScale.scale(iconGap)
 
   /**
    * Get default icon for the checkbox
@@ -100,10 +101,10 @@ class MTCheckBoxUI : DarculaCheckBoxUI() {
 
       // get the relevant icon
       val checkboxIcon = MTCheckboxIconLookup.getIcon(
-        "checkboxes/$iconName",
-        selected || isIndeterminate(b),
-        hasFocus,
-        b.isEnabled
+        name = iconName,
+        selected = selected || isIndeterminate(b),
+        focused = hasFocus,
+        enabled = b.isEnabled
       )
       checkboxIcon.paintIcon(b, g2, iconRect.x, iconRect.y)
     } finally {
@@ -137,12 +138,12 @@ class MTCheckBoxUI : DarculaCheckBoxUI() {
       } else {
         g.color = if (b.isEnabled) b.foreground else getDisabledTextColor()
         UIUtilities.drawStringUnderlineCharAt(
-          c,
-          g,
-          text,
-          b.displayedMnemonicIndex,
-          textRect.x,
-          textRect.y + fm.ascent
+          /* c = */ c,
+          /* g = */ g,
+          /* text = */ text,
+          /* underlinedIndex = */ b.displayedMnemonicIndex,
+          /* x = */ textRect.x,
+          /* y = */ textRect.y + fm.ascent
         )
       }
     }
@@ -154,7 +155,7 @@ class MTCheckBoxUI : DarculaCheckBoxUI() {
      *
      * @param c original component
      */
-    @Suppress("UNUSED_PARAMETER")
+    @Suppress("UNUSED_PARAMETER", "HardCodedStringLiteral")
     @JvmStatic
     fun createUI(c: JComponent): MTCheckBoxUI = MTCheckBoxUI()
   }
