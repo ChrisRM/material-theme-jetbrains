@@ -126,9 +126,9 @@ class MTNativeTheme : MTAbstractTheme() {
     }
 
     val newLookAndFeel = when {
-      currentLookAndFeel is UIThemeBasedLookAndFeelInfo                 -> MTNativeLaf(this, currentLookAndFeel)
+      currentLookAndFeel is UIThemeBasedLookAndFeelInfo                 -> MTNativeLaf(currentLookAndFeel)
       DarculaLookAndFeelInfo.CLASS_NAME == currentLookAndFeel.className -> MTDarculaLaf()
-      else                                                              -> MTLightLaf(this)
+      else                                                              -> MTLightLaf()
     }
     UIManager.setLookAndFeel(newLookAndFeel)
   }

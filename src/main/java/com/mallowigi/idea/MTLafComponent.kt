@@ -221,5 +221,5 @@ class MTLafComponent : AppLifecycleListener {
    *
    */
   private fun patchTree() =
-    ApplicationManager.getApplication().invokeLater { MTLafInstaller.replaceTree(UIManager.getLookAndFeelDefaults()) }
+    ApplicationManager.getApplication().invokeLater { MTLafInstaller.replaceTree() }
 }

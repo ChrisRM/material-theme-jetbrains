@@ -53,6 +53,11 @@ class MTDarculaLaf : DarculaLaf() {
     return defaults
   }
 
+  /**
+   * Load defaults
+   *
+   * @param defaults
+   */
   override fun loadDefaults(defaults: UIDefaults) {
     try {
       DarculaLaf::class.java.getResourceAsStream("$prefix.theme.json").use { stream ->

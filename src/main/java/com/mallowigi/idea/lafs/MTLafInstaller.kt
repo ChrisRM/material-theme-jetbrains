@@ -23,87 +23,99 @@
  *
  *
  */
+package com.mallowigi.idea.lafs
 
-package com.mallowigi.idea.lafs;
-
-import com.intellij.ide.ui.laf.darcula.ui.DarculaMenuBarBorder;
-import com.intellij.ide.ui.laf.darcula.ui.DarculaMenuItemBorder;
-import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.util.registry.Registry;
-import com.intellij.ui.components.JBScrollBar;
-import com.intellij.ui.tree.ui.Control;
-import com.intellij.util.ui.JBUI;
-import com.mallowigi.idea.config.application.MTConfig;
-import com.mallowigi.idea.themes.models.MTThemeable;
-import com.mallowigi.idea.ui.*;
-import com.mallowigi.idea.ui.indicators.MTSelectedTreePainter;
-import com.mallowigi.idea.utils.MTUI;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.Nullable;
-
-import javax.swing.*;
-import javax.swing.plaf.ColorUIResource;
-import java.awt.*;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import com.intellij.ide.ui.laf.darcula.ui.DarculaMenuBarBorder
+import com.intellij.ide.ui.laf.darcula.ui.DarculaMenuItemBorder
+import com.intellij.openapi.application.ApplicationManager
+import com.intellij.openapi.util.registry.Registry
+import com.intellij.ui.components.JBScrollBar
+import com.intellij.ui.tree.ui.Control
+import com.intellij.util.ui.JBUI
+import com.mallowigi.idea.config.application.MTConfig
+import com.mallowigi.idea.ui.MTButtonBorder
+import com.mallowigi.idea.ui.MTButtonUI
+import com.mallowigi.idea.ui.MTCheckBoxBorder
+import com.mallowigi.idea.ui.MTCheckBoxMenuItemUI
+import com.mallowigi.idea.ui.MTCheckBoxUI
+import com.mallowigi.idea.ui.MTComboBoxUI
+import com.mallowigi.idea.ui.MTDarculaButtonUI
+import com.mallowigi.idea.ui.MTEditorTextFieldBorder
+import com.mallowigi.idea.ui.MTLabelUI
+import com.mallowigi.idea.ui.MTMenuItemBorder
+import com.mallowigi.idea.ui.MTOnOffButtonUI
+import com.mallowigi.idea.ui.MTOptionButtonUI
+import com.mallowigi.idea.ui.MTPasswordFieldUI
+import com.mallowigi.idea.ui.MTPopupMenuBorder
+import com.mallowigi.idea.ui.MTPopupMenuUI
+import com.mallowigi.idea.ui.MTProgressBarBorder
+import com.mallowigi.idea.ui.MTProgressBarUI
+import com.mallowigi.idea.ui.MTRadioButtonMenuItemUI
+import com.mallowigi.idea.ui.MTRadioButtonUI
+import com.mallowigi.idea.ui.MTRootPaneUI
+import com.mallowigi.idea.ui.MTRowPainter
+import com.mallowigi.idea.ui.MTSeparatorUI
+import com.mallowigi.idea.ui.MTSliderUI
+import com.mallowigi.idea.ui.MTSpinnerBorder
+import com.mallowigi.idea.ui.MTSpinnerUI
+import com.mallowigi.idea.ui.MTStatusBarBorder
+import com.mallowigi.idea.ui.MTStatusBarUI
+import com.mallowigi.idea.ui.MTTabbedPaneUI
+import com.mallowigi.idea.ui.MTTableCellNoFocusBorder
+import com.mallowigi.idea.ui.MTTableHeaderBorder
+import com.mallowigi.idea.ui.MTTableHeaderUI
+import com.mallowigi.idea.ui.MTTableSelectedCellHighlightBorder
+import com.mallowigi.idea.ui.MTTextAreaUI
+import com.mallowigi.idea.ui.MTTextBorder
+import com.mallowigi.idea.ui.MTTextFieldUI
+import com.mallowigi.idea.ui.indicators.MTSelectedTreePainter
+import com.mallowigi.idea.utils.MTUI.List.listFocusedSelectionPainterKey
+import com.mallowigi.idea.utils.MTUI.List.listSelectionPainterKey
+import com.mallowigi.idea.utils.MTUI.StatusBar.statusBarBorderKey
+import java.awt.Color
+import java.awt.Component
+import java.awt.Graphics
+import java.awt.Graphics2D
+import java.awt.RenderingHints
+import javax.swing.Icon
+import javax.swing.UIDefaults
+import javax.swing.plaf.ColorUIResource
 
 /**
  * Service to install Material Theme properties in the UIManager
  */
-@SuppressWarnings({"ClassWithTooManyMethods",
-  "OverlyLongMethod",
-  "DuplicateStringLiteralInspection",
-  "OverlyCoupledClass",
-  "MagicNumber",
-  "java:S109"
-})
-public class MTLafInstaller {
-  /**
-   * The Theme
-   */
-  @Nullable
-  private final MTThemeable theme;
-
-  /**
-   * Constructor MTLafInstaller creates a new MTLafInstaller instance.
-   *
-   * @param theme of type MTThemeable
-   */
-  MTLafInstaller(@Nullable final MTThemeable theme) {
-    this.theme = theme;
-  }
-
+@Suppress("MagicNumber")
+object MTLafInstaller {
   /**
    * Install Material Theme UI Components.
-   * <p>
-   * Some components will only be installed if the Material Components option is set, while others depend on other options, such as
-   * Compact Statusbars, Arrow Styles, Title bar and so on.
+   *
+   *
+   * Some components will only be installed if the Material Components option is set, while others depend on other
+   * options, such as Compact Statusbars, Arrow Styles, Title bar and so on.
    *
    * @param defaults the UIManager defaults to install properties into
    */
-  static void installMTDefaults(final UIDefaults defaults) {
-    replaceStatusBar(defaults);
-    replaceTree(defaults);
-    replaceSelectedIndicator(defaults);
-    replaceDropdowns(defaults);
-    replaceTableHeaders(defaults);
-    replaceRootPane(defaults);
-    replaceMenus(defaults);
-    replaceTabbedPanes(defaults);
-    replaceLabels(defaults);
-    replaceDefaultButtons(defaults);
-
-    replaceButtons(defaults);
-    replaceTextFields(defaults);
-    replaceProgressBar(defaults);
-    replaceTables(defaults);
-    replaceSpinners(defaults);
-    replaceCheckboxes(defaults);
-    replaceRadioButtons(defaults);
-    replaceSliders(defaults);
-    replaceTextAreas(defaults);
-    modifyRegistry();
+  fun installMTDefaults(defaults: UIDefaults) {
+    replaceStatusBar(defaults)
+    replaceTree()
+    replaceSelectedIndicator(defaults)
+    replaceDropdowns(defaults)
+    replaceTableHeaders(defaults)
+    replaceRootPane(defaults)
+    replaceMenus(defaults)
+    replaceTabbedPanes(defaults)
+    replaceLabels(defaults)
+    replaceDefaultButtons(defaults)
+    replaceButtons(defaults)
+    replaceTextFields(defaults)
+    replaceProgressBar(defaults)
+    replaceTables(defaults)
+    replaceSpinners(defaults)
+    replaceCheckboxes(defaults)
+    replaceRadioButtons(defaults)
+    replaceSliders(defaults)
+    replaceTextAreas(defaults)
+    modifyRegistry()
   }
 
   /**
@@ -111,92 +123,97 @@ public class MTLafInstaller {
    *
    * @param defaults of type UIDefaults
    */
-  @SuppressWarnings("DuplicateStringLiteralInspection")
-  static void installDefaults(@NonNls final UIDefaults defaults) {
-    defaults.put("ActionsList.icon.gap", 8);
-    defaults.put("ActionsList.mnemonic.icon.gap", 6);
-    defaults.put("ActionsList.mnemonics.insets", "0,8,0,8");
-    defaults.put("ActionsList.mnemonicsBorderInsets", "0,8,1,6");
-    defaults.put("Border.width", 2); // deprecated
-    defaults.put("Button.ToolWindow.arc", 0);
-    defaults.put("Button.arc", 6);
-    defaults.put("Caret.width", 2);
-    defaults.put("CellEditor.border.width", 2);
-    defaults.put("CheckBox.border.width", 3);
-    defaults.put("CheckBoxMenuItem.borderPainted", false);
-    defaults.put("ComboBox.padding", JBUI.insets(1, 5, 1, 5));
-    defaults.put("ComboBox.squareButton", true);
-    defaults.put("CompletionPopup.nonFocusedState", true);
-    defaults.put("Component.arc", 0);
-    defaults.put("Component.errorFocusColor", new ColorUIResource(0xE53935));
-    defaults.put("Component.focusErrorColor", new ColorUIResource(0xE53935));
-    defaults.put("Component.focusWarningColor", new ColorUIResource(0xFFB62C));
-    defaults.put("Component.focusWidth", 2);
-    defaults.put("Component.inactiveErrorFocusColor", new ColorUIResource(0x743A3A));
-    defaults.put("Component.inactiveFocusErrorColor", new ColorUIResource(0x743A3A));
-    defaults.put("Component.inactiveFocusWarningColor", new ColorUIResource(0x7F6C00));
-    defaults.put("Component.inactiveWarningFocusColor", new ColorUIResource(0x7F6C00));
-    defaults.put("Component.warningFocusColor", new ColorUIResource(0xFFB62C));
-    defaults.put("EditorTabs.underlineHeight", 0);
-    defaults.put("Focus.activeErrorBorderColor", new ColorUIResource(0xE53935));
-    defaults.put("Focus.activeWarningBorderColor", new ColorUIResource(0xFFB62C));
-    defaults.put("Focus.inactiveErrorBorderColor", new ColorUIResource(0x743A3A));
-    defaults.put("Focus.inactiveWarningBorderColor", new ColorUIResource(0x7F6C00));
-    defaults.put("HelpTooltip.defaultTextBorderInsets", JBUI.insets(10, 10, 10, 16));
-    defaults.put("HelpTooltip.fontSizeDelta", 0);
-    defaults.put("HelpTooltip.horizontalGap", 10);
-    defaults.put("HelpTooltip.maxWidth", 250);
-    defaults.put("HelpTooltip.smallTextBorderInsets", JBUI.insets(4, 8, 5, 8));
-    defaults.put("HelpTooltip.verticalGap", 4);
-    defaults.put("HelpTooltip.xOffset", 1);
-    defaults.put("HelpTooltip.yOffset", 1);
-    defaults.put("List.rowHeight", 20);
-    defaults.put("List.selectedItemAlpha", 100);
-    defaults.put("ListUI", "com.intellij.ui.components.WideSelectionListUI");
-    defaults.put("Menu.border", new DarculaMenuItemBorder());
-    defaults.put("Menu.maxGutterIconWidth", 18);
-    defaults.put("MenuBar.border", new DarculaMenuBarBorder());
-    defaults.put("MenuItem.acceleratorDelimiter", "-");
-    defaults.put("MenuItem.border", new DarculaMenuItemBorder());
-    defaults.put("MenuItem.maxGutterIconWidth", 18);
-    defaults.put("NewClass.separatorWidth", 10);
-    defaults.put("Notification.arc", 4);
-    defaults.put("Notification.borderInsets", JBUI.insets(4, 6, 4, 6));
-    defaults.put("Popup.Advertiser.borderInsets", JBUI.insets(10, 10, 10, 15));
-    defaults.put("RadioButton.border.width", 3);
-    defaults.put("RadioButtonMenuItem.borderPainted", false);
-    defaults.put("ScrollBarUI", JBScrollBar.class.getName());
-    defaults.put("SearchEverywhere.Advertiser.borderInsets", JBUI.insets(10, 10, 10, 15));
-    defaults.put("Spinner.arrowButtonInsets", JBUI.insets(1, 1, 1, 1));
-    defaults.put("Spinner.editorBorderPainted", false);
-    defaults.put("TabbedPane.fontSizeOffset", 0);
-    defaults.put("TabbedPane.labelShift", 0);
-    defaults.put("TabbedPane.selectedLabelShift", 0);
-    defaults.put("TabbedPane.tabAreaInsets", JBUI.insets(0));
-    defaults.put("TabbedPane.tabFillStyle", "underline");
-    defaults.put("TabbedPane.tabHeight", 32);
-    defaults.put("TabbedPane.tabSelectionHeight", 2);
-    defaults.put("TabbedPane.tabsOverlapBorder", true);
-    defaults.put("Table.cellNoFocusBorder", JBUI.insets(4, 4, 4, 4));
-    defaults.put("Table.rowHeight", 20);
-    defaults.put("TableHeader.height", 25);
-    defaults.put("TextArea.caretBlinkRate", 500);
-    defaults.put("ToolWindow.Header.padding", 6); // todo verify once experimental ui is merged
-    defaults.put("ToolWindow.HeaderTab.padding", 6); // todo verify once experimental ui is merged
-    defaults.put("Tree.border", "1,1,1,1");
-    defaults.put("Tree.collapsedIcon", "/com/intellij/ide/ui/laf/icons/darcula/treeCollapsed.svg");
-    defaults.put("Tree.collapsedSelectedIcon", "/com/intellij/ide/ui/laf/icons/darcula/treeCollapsedSelected.svg");
-    defaults.put("Tree.expandedIcon", "/com/intellij/ide/ui/laf/icons/darcula/treeExpanded.svg");
-    defaults.put("Tree.expandedSelectedIcon", "/com/intellij/ide/ui/laf/icons/darcula/treeExpandedSelected.svg");
-    defaults.put("Tree.paintLines", false);
-    defaults.put("ValidationTooltip.maxWidth", 384);
-    defaults.put("Window.border", "1,1,1,1,000000");
-    defaults.put(JBScrollBar.class.getName(), JBScrollBar.class);
+  @Suppress("HardCodedStringLiteral")
+  fun installDefaults(defaults: UIDefaults) {
+    defaults["ActionsList.icon.gap"] = 8
+    defaults["ActionsList.mnemonic.icon.gap"] = 6
+    defaults["ActionsList.mnemonics.insets"] = "0,8,0,8"
+    defaults["ActionsList.mnemonicsBorderInsets"] = "0,8,1,6"
+    defaults["Border.width"] = 2 // deprecated
+    defaults["Button.ToolWindow.arc"] = 0
+    defaults["Button.arc"] = 6
+    defaults["Caret.width"] = 2
+    defaults["CellEditor.border.width"] = 2
+    defaults["CheckBox.border.width"] = 3
+    defaults["CheckBoxMenuItem.borderPainted"] = false
+    defaults["ComboBox.padding"] = JBUI.insets(1, 5, 1, 5)
+    defaults["ComboBox.squareButton"] = true
+    defaults["CompletionPopup.nonFocusedState"] = true
+    defaults["Component.arc"] = 0
+    defaults["Component.errorFocusColor"] = ColorUIResource(0xE53935)
+    defaults["Component.focusErrorColor"] = ColorUIResource(0xE53935)
+    defaults["Component.focusWarningColor"] = ColorUIResource(0xFFB62C)
+    defaults["Component.focusWidth"] = 2
+    defaults["Component.inactiveErrorFocusColor"] = ColorUIResource(0x743A3A)
+    defaults["Component.inactiveFocusErrorColor"] = ColorUIResource(0x743A3A)
+    defaults["Component.inactiveFocusWarningColor"] = ColorUIResource(0x7F6C00)
+    defaults["Component.inactiveWarningFocusColor"] = ColorUIResource(0x7F6C00)
+    defaults["Component.warningFocusColor"] = ColorUIResource(0xFFB62C)
+    defaults["EditorTabs.underlineHeight"] = 0
+    defaults["Focus.activeErrorBorderColor"] = ColorUIResource(0xE53935)
+    defaults["Focus.activeWarningBorderColor"] = ColorUIResource(0xFFB62C)
+    defaults["Focus.inactiveErrorBorderColor"] = ColorUIResource(0x743A3A)
+    defaults["Focus.inactiveWarningBorderColor"] = ColorUIResource(0x7F6C00)
+    defaults["HelpTooltip.defaultTextBorderInsets"] = JBUI.insets(10, 10, 10, 16)
+    defaults["HelpTooltip.fontSizeDelta"] = 0
+    defaults["HelpTooltip.horizontalGap"] = 10
+    defaults["HelpTooltip.maxWidth"] = 250
+    defaults["HelpTooltip.smallTextBorderInsets"] = JBUI.insets(4, 8, 5, 8)
+    defaults["HelpTooltip.verticalGap"] = 4
+    defaults["HelpTooltip.xOffset"] = 1
+    defaults["HelpTooltip.yOffset"] = 1
+    defaults["List.rowHeight"] = 20
+    defaults["List.selectedItemAlpha"] = 100
+    defaults["ListUI"] = "com.intellij.ui.components.WideSelectionListUI"
+    defaults["Menu.border"] = DarculaMenuItemBorder()
+    defaults["Menu.maxGutterIconWidth"] = 18
+    defaults["MenuBar.border"] = DarculaMenuBarBorder()
+    defaults["MenuItem.acceleratorDelimiter"] = "-"
+    defaults["MenuItem.border"] = DarculaMenuItemBorder()
+    defaults["MenuItem.maxGutterIconWidth"] = 18
+    defaults["NewClass.separatorWidth"] = 10
+    defaults["Notification.arc"] = 4
+    defaults["Notification.borderInsets"] = JBUI.insets(4, 6, 4, 6)
+    defaults["Popup.Advertiser.borderInsets"] = JBUI.insets(10, 10, 10, 15)
+    defaults["RadioButton.border.width"] = 3
+    defaults["RadioButtonMenuItem.borderPainted"] = false
+    defaults["ScrollBarUI"] = JBScrollBar::class.java.name
+    defaults["SearchEverywhere.Advertiser.borderInsets"] = JBUI.insets(10, 10, 10, 15)
+    defaults["Spinner.arrowButtonInsets"] = JBUI.insets(1, 1, 1, 1)
+    defaults["Spinner.editorBorderPainted"] = false
+    defaults["TabbedPane.fontSizeOffset"] = 0
+    defaults["TabbedPane.labelShift"] = 0
+    defaults["TabbedPane.selectedLabelShift"] = 0
+    defaults["TabbedPane.tabAreaInsets"] = JBUI.insets(0)
+    defaults["TabbedPane.tabFillStyle"] = "underline"
+    defaults["TabbedPane.tabHeight"] = 32
+    defaults["TabbedPane.tabSelectionHeight"] = 2
+    defaults["TabbedPane.tabsOverlapBorder"] = true
+    defaults["Table.cellNoFocusBorder"] = JBUI.insets(4, 4, 4, 4)
+    defaults["Table.rowHeight"] = 20
+    defaults["TableHeader.height"] = 25
+    defaults["TextArea.caretBlinkRate"] = 500
+    defaults["ToolWindow.Header.padding"] = 6 // todo verify once experimental ui is merged
+    defaults["ToolWindow.HeaderTab.padding"] = 6 // todo verify once experimental ui is merged
+    defaults["Tree.border"] = "1,1,1,1"
+    defaults["Tree.collapsedIcon"] = "/com/intellij/ide/ui/laf/icons/darcula/treeCollapsed.svg"
+    defaults["Tree.collapsedSelectedIcon"] = "/com/intellij/ide/ui/laf/icons/darcula/treeCollapsedSelected.svg"
+    defaults["Tree.expandedIcon"] = "/com/intellij/ide/ui/laf/icons/darcula/treeExpanded.svg"
+    defaults["Tree.expandedSelectedIcon"] = "/com/intellij/ide/ui/laf/icons/darcula/treeExpandedSelected.svg"
+    defaults["Tree.paintLines"] = false
+    defaults["ValidationTooltip.maxWidth"] = 384
+    defaults["Window.border"] = "1,1,1,1,000000"
+    defaults[JBScrollBar::class.java.name] = JBScrollBar::class.java
   }
 
-  private static void replaceDefaultButtons(final UIDefaults defaults) {
-    defaults.put("ButtonUI", MTDarculaButtonUI.class.getName());
-    defaults.put(MTDarculaButtonUI.class.getName(), MTDarculaButtonUI.class);
+  /**
+   * Replace default buttons
+   *
+   * @param defaults
+   */
+  private fun replaceDefaultButtons(defaults: UIDefaults) {
+    defaults["ButtonUI"] = MTDarculaButtonUI::class.java.name
+    defaults[MTDarculaButtonUI::class.java.name] = MTDarculaButtonUI::class.java
   }
 
   /**
@@ -204,50 +221,39 @@ public class MTLafInstaller {
    *
    * @param defaults of type UIDefaults
    */
-  @SuppressWarnings("OverlyComplexAnonymousInnerClass")
-  private static void replaceButtons(final UIDefaults defaults) {
-    defaults.put("ButtonUI", MTButtonUI.class.getName());
-    defaults.put(MTButtonUI.class.getName(), MTButtonUI.class);
+  private fun replaceButtons(defaults: UIDefaults) {
+    defaults["ButtonUI"] = MTButtonUI::class.java.name
+    defaults[MTButtonUI::class.java.name] = MTButtonUI::class.java
+    defaults["Button.border"] = MTButtonBorder()
 
-    defaults.put("Button.border", new MTButtonBorder());
+    defaults["OptionButtonUI"] = MTOptionButtonUI::class.java.name
+    defaults[MTOptionButtonUI::class.java.name] = MTOptionButtonUI::class.java
 
-    defaults.put("OptionButtonUI", MTOptionButtonUI.class.getName());
-    defaults.put(MTOptionButtonUI.class.getName(), MTOptionButtonUI.class);
+    defaults["OnOffButtonUI"] = MTOnOffButtonUI::class.java.name
+    defaults[MTOnOffButtonUI::class.java.name] = MTOnOffButtonUI::class.java
 
-    defaults.put("OnOffButtonUI", MTOnOffButtonUI.class.getName());
-    defaults.put(MTOnOffButtonUI.class.getName(), MTOnOffButtonUI.class);
-
-    defaults.put("ActionButton.backgroundIcon", new Icon() {
-      @Override
-      public void paintIcon(final Component c, final Graphics g, final int x, final int y) {
-        final Graphics2D g2 = (Graphics2D) g.create();
+    defaults["ActionButton.backgroundIcon"] = object : Icon {
+      override fun paintIcon(c: Component, g: Graphics, x: Int, y: Int) {
+        val g2 = g.create() as Graphics2D
         try {
-          g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-          g2.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
-
-          g2.translate(x, y);
-          g2.setColor(JBUI.CurrentTheme.ActionButton.pressedBackground());
-
-          if (getIconWidth() > 28) {
-            g2.fill3DRect(0, 0, getIconWidth(), getIconHeight(), true);
+          g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON)
+          g2.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE)
+          g2.translate(x, y)
+          g2.color = JBUI.CurrentTheme.ActionButton.pressedBackground()
+          if (iconWidth > 28) {
+            g2.fill3DRect(0, 0, iconWidth, iconHeight, true)
           } else {
-            g2.fillOval(0, 0, getIconWidth(), getIconHeight());
+            g2.fillOval(0, 0, iconWidth, iconHeight)
           }
         } finally {
-          g2.dispose();
+          g2.dispose()
         }
       }
 
-      @Override
-      public int getIconWidth() {
-        return JBUI.scale(18);
-      }
+      override fun getIconWidth(): Int = JBUI.scale(18)
 
-      @Override
-      public int getIconHeight() {
-        return JBUI.scale(18);
-      }
-    });
+      override fun getIconHeight(): Int = JBUI.scale(18)
+    }
   }
 
   /**
@@ -255,16 +261,16 @@ public class MTLafInstaller {
    *
    * @param defaults of type UIDefaults
    */
-  private static void replaceTextFields(final UIDefaults defaults) {
-    defaults.put("TextFieldUI", MTTextFieldUI.class.getName());
-    defaults.put(MTTextFieldUI.class.getName(), MTTextFieldUI.class);
+  private fun replaceTextFields(defaults: UIDefaults) {
+    defaults["TextFieldUI"] = MTTextFieldUI::class.java.name
+    defaults[MTTextFieldUI::class.java.name] = MTTextFieldUI::class.java
 
-    defaults.put("PasswordFieldUI", MTPasswordFieldUI.class.getName());
-    defaults.put(MTPasswordFieldUI.class.getName(), MTPasswordFieldUI.class);
+    defaults["PasswordFieldUI"] = MTPasswordFieldUI::class.java.name
+    defaults[MTPasswordFieldUI::class.java.name] = MTPasswordFieldUI::class.java
 
-    defaults.put("TextField.border", new MTTextBorder());
-    defaults.put("PasswordField.border", new MTTextBorder());
-    defaults.put("EditorTextField.border", new MTEditorTextFieldBorder());
+    defaults["TextField.border"] = MTTextBorder()
+    defaults["PasswordField.border"] = MTTextBorder()
+    defaults["EditorTextField.border"] = MTEditorTextFieldBorder()
   }
 
   /**
@@ -272,9 +278,9 @@ public class MTLafInstaller {
    *
    * @param defaults of type UIDefaults
    */
-  private static void replaceDropdowns(final UIDefaults defaults) {
-    defaults.put("ComboBoxUI", MTComboBoxUI.class.getName());
-    defaults.put(MTComboBoxUI.class.getName(), MTComboBoxUI.class);
+  private fun replaceDropdowns(defaults: UIDefaults) {
+    defaults["ComboBoxUI"] = MTComboBoxUI::class.java.name
+    defaults[MTComboBoxUI::class.java.name] = MTComboBoxUI::class.java
   }
 
   /**
@@ -282,31 +288,28 @@ public class MTLafInstaller {
    *
    * @param defaults of type UIDefaults
    */
-  private static void replaceProgressBar(final UIDefaults defaults) {
-    defaults.put("ProgressBarUI", MTProgressBarUI.class.getName());
-    defaults.put(MTProgressBarUI.class.getName(), MTProgressBarUI.class);
-
-    defaults.put("ProgressBar.border", new MTProgressBarBorder());
+  private fun replaceProgressBar(defaults: UIDefaults) {
+    defaults["ProgressBarUI"] = MTProgressBarUI::class.java.name
+    defaults[MTProgressBarUI::class.java.name] = MTProgressBarUI::class.java
+    defaults["ProgressBar.border"] = MTProgressBarBorder()
   }
 
   /**
    * Replace trees with custom trees with arrow styles, padding, etc
    *
-   * @param defaults of type UIDefaults
    */
-  public static void replaceTree(final UIDefaults defaults) {
-    ApplicationManager.getApplication().putUserData(Control.Painter.KEY, new MTRowPainter());
-  }
+  fun replaceTree(): Unit =
+    ApplicationManager.getApplication().putUserData(Control.Painter.KEY, MTRowPainter())
 
   /**
    * Install the selected item indicator in trees
    *
    * @param defaults of type UIDefaults
    */
-  private static void replaceSelectedIndicator(@NonNls final UIDefaults defaults) {
-    final MTSelectedTreePainter painter = new MTSelectedTreePainter();
-    defaults.put(MTUI.List.getListSelectionPainterKey(), painter);
-    defaults.put(MTUI.List.getListFocusedSelectionPainterKey(), painter);
+  private fun replaceSelectedIndicator(defaults: UIDefaults) {
+    val painter = MTSelectedTreePainter()
+    defaults[listSelectionPainterKey] = painter
+    defaults[listFocusedSelectionPainterKey] = painter
   }
 
   /**
@@ -314,12 +317,12 @@ public class MTLafInstaller {
    *
    * @param defaults of type UIDefaults
    */
-  private static void replaceTableHeaders(@NonNls final UIDefaults defaults) {
-    defaults.put("TableHeaderUI", MTTableHeaderUI.class.getName());
-    defaults.put(MTTableHeaderUI.class.getName(), MTTableHeaderUI.class);
+  private fun replaceTableHeaders(defaults: UIDefaults) {
+    defaults["TableHeaderUI"] = MTTableHeaderUI::class.java.name
+    defaults[MTTableHeaderUI::class.java.name] = MTTableHeaderUI::class.java
 
-    defaults.put("TableHeader.border", new MTTableHeaderBorder());
-    defaults.put("Table.focusSelectedCellHighlightBorder", new MTTableSelectedCellHighlightBorder());
+    defaults["TableHeader.border"] = MTTableHeaderBorder()
+    defaults["Table.focusSelectedCellHighlightBorder"] = MTTableSelectedCellHighlightBorder()
   }
 
   /**
@@ -327,10 +330,10 @@ public class MTLafInstaller {
    *
    * @param defaults of type UIDefaults
    */
-  private static void replaceTables(@NonNls final UIDefaults defaults) {
-    defaults.put("TableHeader.cellBorder", new MTTableHeaderBorder());
-    defaults.put("Table.cellNoFocusBorder", new MTTableCellNoFocusBorder());
-    defaults.put("Table.focusCellHighlightBorder", new MTTableSelectedCellHighlightBorder());
+  private fun replaceTables(defaults: UIDefaults) {
+    defaults["TableHeader.cellBorder"] = MTTableHeaderBorder()
+    defaults["Table.cellNoFocusBorder"] = MTTableCellNoFocusBorder()
+    defaults["Table.focusCellHighlightBorder"] = MTTableSelectedCellHighlightBorder()
   }
 
   /**
@@ -338,13 +341,13 @@ public class MTLafInstaller {
    *
    * @param defaults of type UIDefaults
    */
-  private static void replaceStatusBar(@NonNls final UIDefaults defaults) {
-    defaults.put("IdeStatusBarUI", MTStatusBarUI.class.getName());
-    defaults.put(MTStatusBarUI.class.getName(), MTStatusBarUI.class);
-    defaults.put(MTUI.StatusBar.getStatusBarBorderKey(), new MTStatusBarBorder());
+  private fun replaceStatusBar(defaults: UIDefaults) {
+    defaults["IdeStatusBarUI"] = MTStatusBarUI::class.java.name
+    defaults[MTStatusBarUI::class.java.name] = MTStatusBarUI::class.java
 
-    defaults.put("SeparatorUI", MTSeparatorUI.class.getName());
-    defaults.put(MTSeparatorUI.class.getName(), MTSeparatorUI.class);
+    defaults[statusBarBorderKey] = MTStatusBarBorder()
+    defaults["SeparatorUI"] = MTSeparatorUI::class.java.name
+    defaults[MTSeparatorUI::class.java.name] = MTSeparatorUI::class.java
   }
 
   /**
@@ -352,11 +355,11 @@ public class MTLafInstaller {
    *
    * @param defaults of type UIDefaults
    */
-  private static void replaceSpinners(final UIDefaults defaults) {
-    defaults.put("SpinnerUI", MTSpinnerUI.class.getName());
-    defaults.put(MTSpinnerUI.class.getName(), MTSpinnerUI.class);
+  private fun replaceSpinners(defaults: UIDefaults) {
+    defaults["SpinnerUI"] = MTSpinnerUI::class.java.name
+    defaults[MTSpinnerUI::class.java.name] = MTSpinnerUI::class.java
 
-    defaults.put("Spinner.border", new MTSpinnerBorder());
+    defaults["Spinner.border"] = MTSpinnerBorder()
   }
 
   /**
@@ -364,14 +367,14 @@ public class MTLafInstaller {
    *
    * @param defaults of type UIDefaults
    */
-  private static void replaceCheckboxes(final UIDefaults defaults) {
-    defaults.put("CheckBoxUI", MTCheckBoxUI.class.getName());
-    defaults.put(MTCheckBoxUI.class.getName(), MTCheckBoxUI.class);
+  private fun replaceCheckboxes(defaults: UIDefaults) {
+    defaults["CheckBoxUI"] = MTCheckBoxUI::class.java.name
+    defaults[MTCheckBoxUI::class.java.name] = MTCheckBoxUI::class.java
 
-    defaults.put("CheckBoxMenuItemUI", MTCheckBoxMenuItemUI.class.getName());
-    defaults.put(MTCheckBoxMenuItemUI.class.getName(), MTCheckBoxMenuItemUI.class);
+    defaults["CheckBoxMenuItemUI"] = MTCheckBoxMenuItemUI::class.java.name
+    defaults[MTCheckBoxMenuItemUI::class.java.name] = MTCheckBoxMenuItemUI::class.java
 
-    defaults.put("CheckBox.border", new MTCheckBoxBorder());
+    defaults["CheckBox.border"] = MTCheckBoxBorder()
   }
 
   /**
@@ -379,12 +382,12 @@ public class MTLafInstaller {
    *
    * @param defaults of type UIDefaults
    */
-  private static void replaceRadioButtons(final UIDefaults defaults) {
-    defaults.put("RadioButtonUI", MTRadioButtonUI.class.getName());
-    defaults.put(MTRadioButtonUI.class.getName(), MTRadioButtonUI.class);
+  private fun replaceRadioButtons(defaults: UIDefaults) {
+    defaults["RadioButtonUI"] = MTRadioButtonUI::class.java.name
+    defaults[MTRadioButtonUI::class.java.name] = MTRadioButtonUI::class.java
 
-    defaults.put("RadioButtonMenuItemUI", MTRadioButtonMenuItemUI.class.getName());
-    defaults.put(MTRadioButtonMenuItemUI.class.getName(), MTRadioButtonMenuItemUI.class);
+    defaults["RadioButtonMenuItemUI"] = MTRadioButtonMenuItemUI::class.java.name
+    defaults[MTRadioButtonMenuItemUI::class.java.name] = MTRadioButtonMenuItemUI::class.java
   }
 
   /**
@@ -392,9 +395,9 @@ public class MTLafInstaller {
    *
    * @param defaults of type UIDefaults
    */
-  private static void replaceSliders(final UIDefaults defaults) {
-    defaults.put("SliderUI", MTSliderUI.class.getName());
-    defaults.put(MTSliderUI.class.getName(), MTSliderUI.class);
+  private fun replaceSliders(defaults: UIDefaults) {
+    defaults["SliderUI"] = MTSliderUI::class.java.name
+    defaults[MTSliderUI::class.java.name] = MTSliderUI::class.java
   }
 
   /**
@@ -402,9 +405,9 @@ public class MTLafInstaller {
    *
    * @param defaults of type UIDefaults
    */
-  private static void replaceRootPane(final UIDefaults defaults) {
-    defaults.put("RootPaneUI", MTRootPaneUI.class.getName());
-    defaults.put(MTRootPaneUI.class.getName(), MTRootPaneUI.class);
+  private fun replaceRootPane(defaults: UIDefaults) {
+    defaults["RootPaneUI"] = MTRootPaneUI::class.java.name
+    defaults[MTRootPaneUI::class.java.name] = MTRootPaneUI::class.java
   }
 
   /**
@@ -412,9 +415,9 @@ public class MTLafInstaller {
    *
    * @param defaults of type UIDefaults
    */
-  private static void replaceTextAreas(final UIDefaults defaults) {
-    defaults.put("TextAreaUI", MTTextAreaUI.class.getName());
-    defaults.put(MTTextAreaUI.class.getName(), MTTextAreaUI.class);
+  private fun replaceTextAreas(defaults: UIDefaults) {
+    defaults["TextAreaUI"] = MTTextAreaUI::class.java.name
+    defaults[MTTextAreaUI::class.java.name] = MTTextAreaUI::class.java
   }
 
   /**
@@ -422,18 +425,23 @@ public class MTLafInstaller {
    *
    * @param defaults of type UIDefaults
    */
-  private static void replaceTabbedPanes(final UIDefaults defaults) {
-    defaults.put("TabbedPane.tabInsets", JBUI.insets(5, 10, 5, 10));
-    defaults.put("TabbedPane.selectedTabPadInsets", JBUI.insets(0));
-    defaults.put("TabbedPane.contentBorderInsets", JBUI.insets(3, 1, 1, 1));
+  private fun replaceTabbedPanes(defaults: UIDefaults) {
+    defaults["TabbedPane.tabInsets"] = JBUI.insets(5, 10, 5, 10)
+    defaults["TabbedPane.selectedTabPadInsets"] = JBUI.insets(0)
+    defaults["TabbedPane.contentBorderInsets"] = JBUI.insets(3, 1, 1, 1)
 
-    defaults.put("TabbedPaneUI", MTTabbedPaneUI.class.getName());
-    defaults.put(MTTabbedPaneUI.class.getName(), MTTabbedPaneUI.class);
+    defaults["TabbedPaneUI"] = MTTabbedPaneUI::class.java.name
+    defaults[MTTabbedPaneUI::class.java.name] = MTTabbedPaneUI::class.java
   }
 
-  private static void replaceLabels(@NonNls final UIDefaults defaults) {
-    defaults.put("LabelUI", MTLabelUI.class.getName());
-    defaults.put(MTLabelUI.class.getName(), MTLabelUI.class);
+  /**
+   * Replace labels
+   *
+   * @param defaults of type UIDefaults
+   */
+  private fun replaceLabels(defaults: UIDefaults) {
+    defaults["LabelUI"] = MTLabelUI::class.java.name
+    defaults[MTLabelUI::class.java.name] = MTLabelUI::class.java
   }
 
   /**
@@ -441,20 +449,20 @@ public class MTLafInstaller {
    *
    * @param defaults defaults to fill
    */
-  private static void replaceMenus(@NonNls final UIDefaults defaults) {
-    defaults.put("PopupMenuUI", MTPopupMenuUI.class.getName());
-    defaults.put(MTPopupMenuUI.class.getName(), MTPopupMenuUI.class);
+  private fun replaceMenus(defaults: UIDefaults) {
+    defaults["PopupMenuUI"] = MTPopupMenuUI::class.java.name
+    defaults[MTPopupMenuUI::class.java.name] = MTPopupMenuUI::class.java
 
-    defaults.put("PopupMenu.border", new MTPopupMenuBorder());
-    defaults.put("MenuItem.border", new MTMenuItemBorder());
-    defaults.put("Menu.border", new MTMenuItemBorder());
+    defaults["PopupMenu.border"] = MTPopupMenuBorder()
+    defaults["MenuItem.border"] = MTMenuItemBorder()
+    defaults["Menu.border"] = MTMenuItemBorder()
   }
 
   /**
    * Add registry modifications
    */
-  private static void modifyRegistry() {
-    Registry.get("ide.balloon.shadow.size").setValue(0);
+  private fun modifyRegistry() {
+    Registry.get("ide.balloon.shadow.size").setValue(0)
   }
 
   /**
@@ -462,54 +470,42 @@ public class MTLafInstaller {
    *
    * @param defaults of type UIDefaults the defaults to fill
    */
-  @SuppressWarnings({"MagicCharacter",
-    "DuplicateStringLiteralInspection",
-    "FeatureEnvy"
-  })
-  static void loadDefaults(final UIDefaults defaults) {
-    @NonNls final Map<String, Object> globalProps = new HashMap<>(100);
-    final MTThemeable selectedTheme = MTConfig.getInstance().getSelectedTheme().getTheme();
+  @Suppress("HardCodedStringLiteral")
+  fun loadDefaults(defaults: UIDefaults) {
+    val globalProps: MutableMap<String, Any> = HashMap(100)
+    val selectedTheme = MTConfig.getInstance().selectedTheme.theme
+    val backgroundColorString = selectedTheme.backgroundColor
+    val backgroundColor = ColorUIResource(backgroundColorString)
 
-    final Color backgroundColorString = selectedTheme.getBackgroundColor();
-    final ColorUIResource backgroundColor = new ColorUIResource(backgroundColorString);
-    globalProps.put("background", backgroundColor);
-    globalProps.put("textBackground", backgroundColor);
-    globalProps.put("inactiveBackground", backgroundColor);
+    globalProps["background"] = backgroundColor
+    globalProps["textBackground"] = backgroundColor
+    globalProps["inactiveBackground"] = backgroundColor
 
-    final Color foregroundColorString = selectedTheme.getForegroundColor();
-    final ColorUIResource foregroundColor = new ColorUIResource(foregroundColorString);
-    globalProps.put("foreground", foregroundColor);
-    globalProps.put("textForeground", foregroundColor);
-    globalProps.put("inactiveForeground", foregroundColor);
-    globalProps.put("selectionForegroundInactive", foregroundColor);
-    globalProps.put("selectionInactiveForeground", foregroundColor);
+    val foregroundColorString = selectedTheme.foregroundColor
+    val foregroundColor = ColorUIResource(foregroundColorString)
+    globalProps["foreground"] = foregroundColor
+    globalProps["textForeground"] = foregroundColor
+    globalProps["inactiveForeground"] = foregroundColor
+    globalProps["selectionForegroundInactive"] = foregroundColor
+    globalProps["selectionInactiveForeground"] = foregroundColor
 
-    final Color selectionBackgroundColorString = selectedTheme.getSelectionBackgroundColor();
-    final Color selectionBgColor = new ColorUIResource(selectionBackgroundColorString);
-    globalProps.put("selectionBackgroundInactive", selectionBgColor);
-    globalProps.put("selectionInactiveBackground", selectionBgColor);
+    val selectionBackgroundColorString = selectedTheme.selectionBackgroundColor
+    val selectionBgColor: Color = ColorUIResource(selectionBackgroundColorString)
+    globalProps["selectionBackgroundInactive"] = selectionBgColor
+    globalProps["selectionInactiveBackground"] = selectionBgColor
 
-    final Color selectionForegroundColorString = selectedTheme.getSelectionForegroundColor();
-    final Color selectionFgColor = new ColorUIResource(selectionForegroundColorString);
-    globalProps.put("selectionForeground", selectionFgColor);
+    val selectionForegroundColorString = selectedTheme.selectionForegroundColor
+    val selectionFgColor: Color = ColorUIResource(selectionForegroundColorString)
+    globalProps["selectionForeground"] = selectionFgColor
 
-    for (final Object key : defaults.keySet()) {
-      if (key instanceof String && ((String) key).contains(".")) {
-        final String s = (String) key;
-        final String property = s.substring(s.lastIndexOf('.') + 1);
+    for (key in defaults.keys) {
+      if (key is String && key.contains(".")) {
+        val property = key.substring(key.lastIndexOf('.') + 1)
         if (globalProps.containsKey(property)) {
-          defaults.put(key, globalProps.get(property));
+          defaults[key] = globalProps[property]
         }
       }
     }
   }
-
-  /**
-   * Method getPrefix returns the prefix of the theme in properties
-   *
-   * @return the prefix (type String) of the theme in properties
-   */
-  final String getPrefix() {
-    return Objects.requireNonNull(theme).getThemeId();
-  }
 }
+

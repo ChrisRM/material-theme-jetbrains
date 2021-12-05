@@ -27,9 +27,7 @@ package com.mallowigi.idea.lafs
 
 import com.intellij.ide.ui.laf.darcula.DarculaLaf
 import com.intellij.util.ui.UIUtil
-import com.intellij.util.xmlb.annotations.Transient
 import com.mallowigi.idea.messages.MaterialThemeBundle.message
-import com.mallowigi.idea.themes.models.MTThemeable
 import javax.swing.UIDefaults
 import javax.swing.plaf.ColorUIResource
 
@@ -38,22 +36,7 @@ import javax.swing.plaf.ColorUIResource
  *
  */
 @Suppress("MagicNumber")
-class MTDarkLaf(theme: MTThemeable) : DarculaLaf() {
-  /**
-   * Service to install properties in UIManager
-   */
-  @Transient
-  private val mtLafInstaller: MTLafInstaller
-
-  /**
-   * Represents a Material Dark Look And Feel
-   *
-   * @param theme of type MTThemeable
-   */
-  init {
-    mtLafInstaller = MTLafInstaller(theme)
-  }
-
+class MTDarkLaf : DarculaLaf() {
   /**
    * Installs and returns the defaults for dark lafs
    *
@@ -69,10 +52,17 @@ class MTDarkLaf(theme: MTThemeable) : DarculaLaf() {
     return defaults
   }
 
+  /**
+   * Laf name
+   *
+   */
   override fun getDescription(): String = message("themes.dark.material")
 
-  override fun getPrefix(): String = mtLafInstaller.prefix
-
+  /**
+   * Load defaults of dark themes
+   *
+   * @param defaults
+   */
   override fun loadDefaults(defaults: UIDefaults): Unit = MTLafInstaller.loadDefaults(defaults)
 
   /**

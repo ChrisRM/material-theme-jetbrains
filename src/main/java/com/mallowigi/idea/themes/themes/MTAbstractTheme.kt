@@ -176,9 +176,9 @@ abstract class MTAbstractTheme protected constructor() : Serializable, MTThemeab
   @Throws(UnsupportedLookAndFeelException::class)
   protected open fun setLookAndFeel() {
     if (isThemeDark) {
-      UIManager.setLookAndFeel(MTDarkLaf(this))
+      UIManager.setLookAndFeel(MTDarkLaf())
     } else {
-      UIManager.setLookAndFeel(MTLightLaf(this))
+      UIManager.setLookAndFeel(MTLightLaf())
     }
   }
 

@@ -28,7 +28,6 @@ package com.mallowigi.idea.lafs
 import com.intellij.ide.ui.laf.UIThemeBasedLookAndFeelInfo
 import com.intellij.ide.ui.laf.darcula.DarculaLaf
 import com.intellij.util.xmlb.annotations.Transient
-import com.mallowigi.idea.themes.models.MTThemeable
 import javax.swing.UIDefaults
 import javax.swing.UIManager
 
@@ -36,7 +35,6 @@ import javax.swing.UIManager
  * Look and Feel class for Native Themes
  */
 class MTNativeLaf(
-  private val theme: MTThemeable,
   @field:Transient private val currentLookAndFeel: UIManager.LookAndFeelInfo,
 ) : DarculaLaf() {
   /**
