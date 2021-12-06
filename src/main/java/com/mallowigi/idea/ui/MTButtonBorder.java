@@ -28,7 +28,11 @@ package com.mallowigi.idea.ui;
 import com.intellij.ide.ui.laf.darcula.DarculaUIUtil;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaButtonPainter;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaButtonUI;
-import com.intellij.util.ui.*;
+import com.intellij.util.ui.JBInsets;
+import com.intellij.util.ui.JBUI;
+import com.intellij.util.ui.JBValue;
+import com.intellij.util.ui.MacUIUtil;
+import com.intellij.util.ui.UIUtil;
 import com.mallowigi.idea.config.application.MTConfig;
 import com.mallowigi.idea.utils.MTUI;
 
@@ -38,11 +42,14 @@ import java.awt.geom.Ellipse2D;
 import java.awt.geom.Path2D;
 import java.awt.geom.RoundRectangle2D;
 
+import static com.intellij.ide.ui.laf.darcula.ui.DarculaButtonUI.isDefaultButton;
+import static com.intellij.ide.ui.laf.darcula.ui.DarculaButtonUI.isGotItButton;
+
 @SuppressWarnings("OverlyComplexMethod")
 public final class MTButtonBorder extends DarculaButtonPainter {
   private static final JBValue HELP_BUTTON_DIAMETER = new JBValue.Float(22);
+  private static final int PADDING = 16;
 
-  @SuppressWarnings("StandardVariableNames")
   @Override
   public void paintBorder(final Component c, final Graphics g, final int x, final int y, final int width, final int height) {
     if (MTConfig.getInstance().isBorderedButtons()) {
@@ -53,7 +60,7 @@ public final class MTButtonBorder extends DarculaButtonPainter {
     }
   }
 
-  public static void paintFocusOval(final Graphics2D g, final float x, final float y, final float width, final float height) {
+  private static void paintFocusOval(final Graphics2D g, final float x, final float y, final float width, final float height) {
     DarculaUIUtil.Outline.focus.setGraphicsColor(g, true);
     final float borderWidth = JBUI.scale(1);
     final float padding = 0;
@@ -67,7 +74,6 @@ public final class MTButtonBorder extends DarculaButtonPainter {
 
   @SuppressWarnings({
     "MagicNumber",
-    "MethodWithTooManyParameters",
     "OverlyLongMethod"})
   private void paintOutlinedBorder(final Component component,
                                    final Graphics g,
@@ -87,14 +93,14 @@ public final class MTButtonBorder extends DarculaButtonPainter {
       final float borderWidth = JBUI.scale(1);
       final float padding = 0;
       float arc = DarculaButtonUI.isTag(component) ?
-                  height - padding * 2 - borderWidth * 2 :
+                  (height - padding * 2 - borderWidth * 2) :
                   DarculaUIUtil.BUTTON_ARC.getFloat();
 
       final Rectangle r = new Rectangle(x, y, width, height);
       final boolean paintComboFocus = isSmallComboButton && component.isFocusable() && component.hasFocus();
 
       // Paint combobox buttons
-      if (paintComboFocus) { // a11y support
+      if (paintComboFocus) {
         g2.setColor(JBUI.CurrentTheme.Focus.focusColor());
 
         final Path2D border = new Path2D.Float(Path2D.WIND_EVEN_ODD);
@@ -109,7 +115,7 @@ public final class MTButtonBorder extends DarculaButtonPainter {
         ), false);
         g2.fill(border);
       }
-      if (!DarculaButtonUI.isGotItButton(component)) {
+      if (!isGotItButton(component)) {
         JBInsets.removeFrom(r, JBUI.insets(1));
       }
 
@@ -121,15 +127,15 @@ public final class MTButtonBorder extends DarculaButtonPainter {
           if (UIUtil.isHelpButton(component)) {
             paintFocusOval(
               g2,
-              (r.width - helpButtonDiameter) / 2.0f,
-              (r.height - helpButtonDiameter) / 2.0f,
+              (r.width - helpButtonDiameter) / 2.0F,
+              (r.height - helpButtonDiameter) / 2.0F,
               helpButtonDiameter,
               helpButtonDiameter
             );
           } else if (DarculaButtonUI.isTag(component)) {
             DarculaUIUtil.paintTag(g2, r.width, r.height, component.hasFocus(), DarculaUIUtil.computeOutlineFor(component));
           } else {
-            final DarculaUIUtil.Outline type = DarculaButtonUI.isDefaultButton((JComponent) component) ?
+            final DarculaUIUtil.Outline type = isDefaultButton((JComponent) component) ?
                                                DarculaUIUtil.Outline.defaultButton :
                                                DarculaUIUtil.Outline.focus;
             DarculaUIUtil.paintOutlineBorder(g2, r.width, r.height, arc, true, true, type);
@@ -143,8 +149,8 @@ public final class MTButtonBorder extends DarculaButtonPainter {
 
       if (UIUtil.isHelpButton(component)) {
         g2.draw(new Ellipse2D.Float(
-          (r.width - helpButtonDiameter) / 2.0f,
-          (r.height - helpButtonDiameter) / 2.0f,
+          (r.width - helpButtonDiameter) / 2.0F,
+          (r.height - helpButtonDiameter) / 2.0F,
           helpButtonDiameter,
           helpButtonDiameter)
         );
@@ -160,7 +166,7 @@ public final class MTButtonBorder extends DarculaButtonPainter {
           arc
         ), false);
 
-        arc = arc > borderWidth ? arc - borderWidth : 0.0f;
+        arc = arc > borderWidth ? (arc - borderWidth) : 0;
         border.append(new RoundRectangle2D.Float(
           padding + borderWidth,
           padding + borderWidth,
@@ -177,9 +183,33 @@ public final class MTButtonBorder extends DarculaButtonPainter {
     }
   }
 
-  @SuppressWarnings("MagicNumber")
+  @Override
+  public Paint getBorderPaint(final Component button) {
+    final AbstractButton abstractButton = (AbstractButton) button;
+    final Paint borderColor = (Paint) abstractButton.getClientProperty("JButton.borderColor");
+    final Rectangle r = new Rectangle(abstractButton.getSize());
+
+    JBInsets.removeFrom(r, abstractButton.getInsets());
+
+    final boolean isDefButton = isDefaultButton(abstractButton);
+
+    if (button.isEnabled()) {
+      if (borderColor != null) {
+        return borderColor;
+      } else if (isGotItButton(button)) {
+        return MTUI.Button.getGotItButtonColor();
+      } else if (button.hasFocus()) {
+        return MTUI.Button.focusBorderColor(isDefButton);
+      } else {
+        return MTUI.Button.borderColor(isDefButton);
+      }
+    } else {
+      return MTUI.Button.getDisabledOutlineColor();
+    }
+  }
+
   @Override
   protected int getOffset() {
-    return 16;
+    return JBUI.scale(PADDING);
   }
 }

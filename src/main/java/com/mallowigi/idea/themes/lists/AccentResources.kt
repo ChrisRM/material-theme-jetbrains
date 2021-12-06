@@ -41,19 +41,6 @@ object AccentResources {
     "Bookmark.iconBackground",
     "BookmarkMnemonicCurrent.background",
     "BookmarkMnemonicCurrent.borderColor",
-    "Button.darcula.defaultFocusedOutlineColor", // deprecated
-    "Button.darcula.focusedOutlineColor", // deprecated
-    "Button.darcula.outlineDefaultEndColor", // deprecated
-    "Button.darcula.outlineDefaultStartColor", // deprecated
-    "Button.darcula.outlineEndColor", // deprecated
-    "Button.darcula.outlineStartColor", // deprecated
-    "Button.default.endBorderColor",
-    "Button.default.focusColor",
-    "Button.default.focusedBorderColor",
-    "Button.default.startBorderColor",
-    "Button.endBorderColor",
-    "Button.focusedBorderColor",
-    "Button.startBorderColor",
     "CheckBox.background.selected",
     "CheckBox.borderColor.selected",
     "CheckBox.disabledBorderColor.selected",
@@ -216,5 +203,25 @@ object AccentResources {
     "ScrollBar.Transparent.hoverThumbColor",
     "ScrollBar.hoverThumbBorderColor",
     "ScrollBar.hoverThumbColor"
+  )
+
+  /**
+   * Outline button resources
+   */
+  @JvmField
+  val outlineButtonResources: Set<String> = setOf(
+    "Button.darcula.defaultFocusedOutlineColor", // deprecated
+    "Button.darcula.focusedOutlineColor", // deprecated
+    "Button.darcula.outlineDefaultEndColor", // deprecated
+    "Button.darcula.outlineDefaultStartColor", // deprecated
+    "Button.darcula.outlineEndColor", // deprecated
+    "Button.darcula.outlineStartColor", // deprecated
+    "Button.default.endBorderColor",
+    "Button.default.focusColor",
+    "Button.default.focusedBorderColor",
+    "Button.default.startBorderColor",
+    "Button.endBorderColor",
+    "Button.focusedBorderColor",
+    "Button.startBorderColor",
   )
 }

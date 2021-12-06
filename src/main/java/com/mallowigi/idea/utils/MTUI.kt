@@ -93,6 +93,12 @@ object MTUI {
     private const val BUTTON_SELECTED_FOREGROUND: String = "Button.default.foreground"
     private const val BUTTON_DISABLED_TEXT_SHADOW: String = "Button.default.shadowColor"
     private const val NO_BORDER: String = "MTButton.noBorder"
+    private const val GOTIT_BORDER_START: String = "GotItTooltip.startBorderColor"
+    private const val DEFAULT_FOCUS_BORDER_COLOR: String = "Button.default.focusedBorderColor"
+    private const val FOCUS_BORDER_COLOR: String = "Button.focusedBorderColor"
+    private const val DEFAULT_BORDER_COLOR: String = "Button.default.startBorderColor"
+    private const val BORDER_COLOR: String = "Button.startBorderColor"
+    private const val DISABLED_BORDER_COLOR: String = "Button.disabledBorderColor"
 
     @JvmStatic
     val backgroundColor: Color
@@ -129,6 +135,27 @@ object MTUI {
     @JvmStatic
     val noBorder: String
       get() = NO_BORDER
+
+    @JvmStatic
+    val gotItButtonColor: Color
+      get() = JBColor.namedColor(GOTIT_BORDER_START, JBUI.CurrentTheme.Button.buttonOutlineColorStart(false))
+
+    @JvmStatic
+    val disabledOutlineColor: Color
+      get() = JBColor.namedColor(DISABLED_BORDER_COLOR, Gray.xCF)
+
+    @JvmStatic
+    fun focusBorderColor(isDefaultButton: Boolean): Color = when {
+      isDefaultButton -> JBColor.namedColor(DEFAULT_FOCUS_BORDER_COLOR, 0x87afda)
+      else            -> JBColor.namedColor(FOCUS_BORDER_COLOR, 0x87afda)
+    }
+
+    @JvmStatic
+    fun borderColor(isDefaultButton: Boolean): Color = when {
+      isDefaultButton -> JBColor.namedColor(DEFAULT_BORDER_COLOR, Gray.xBF)
+      else            -> JBColor.namedColor(BORDER_COLOR, Gray.xBF)
+    }
+
   }
 
   object TextField {

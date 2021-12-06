@@ -276,10 +276,8 @@ object MTThemeManager : Disposable {
   /**
    * Refresh trees
    */
-  private fun updateFileIcons() {
-    ModalityUiUtil.invokeLaterIfNeeded(ModalityState.NON_MODAL) {
-      ApplicationManager.getApplication().runWriteAction { FileTypeManagerEx.getInstanceEx().fireFileTypesChanged() }
-    }
+  private fun updateFileIcons() = ModalityUiUtil.invokeLaterIfNeeded(ModalityState.NON_MODAL) {
+    ApplicationManager.getApplication().runWriteAction { FileTypeManagerEx.getInstanceEx().fireFileTypesChanged() }
   }
   //endregion
 
@@ -369,10 +367,8 @@ object MTThemeManager : Disposable {
    * Refresh color scheme
    *
    */
-  private fun refreshColorScheme() {
-    ApplicationManager.getApplication()
-      .invokeLater { (EditorColorsManager.getInstance() as EditorColorsManagerImpl).schemeChangedOrSwitched(null) }
-  }
+  private fun refreshColorScheme() = ApplicationManager.getApplication()
+    .invokeLater { (EditorColorsManager.getInstance() as EditorColorsManagerImpl).schemeChangedOrSwitched(null) }
 
   /**
    * New way of switching themes
@@ -406,6 +402,9 @@ object MTThemeManager : Disposable {
 
     AccentResources.accentTransparentResources.forEach { UIManager.put(it, transparentAccentColor) }
 
+    // Apply outline buttons
+    applyOutlineButtons(accentColor)
+
     // Accent mode
     applyAccentMode()
     // Scrollbars management
@@ -420,9 +419,15 @@ object MTThemeManager : Disposable {
     }
   }
 
-  private fun applyAccentMode() {
-    mtConfig.selectedTheme.theme.applyAccentMode()
+  private fun applyOutlineButtons(accentColor: Color) {
+    if (mtConfig.isBorderedButtons) {
+      AccentResources.outlineButtonResources.forEach { UIManager.put(it, accentColor) }
+    } else {
+      AccentResources.outlineButtonResources.forEach { UIManager.put(it, MTUI.Button.backgroundColor) }
+    }
   }
+
+  private fun applyAccentMode() = mtConfig.selectedTheme.theme.applyAccentMode()
 
   /**
    * Apply scrollbars accent color
@@ -471,22 +476,18 @@ object MTThemeManager : Disposable {
    *
    * @param newTheme
    */
-  private fun fireThemeChanged(newTheme: MTThemeFacade) {
-    ApplicationManager.getApplication().messageBus
-      .syncPublisher(MTTopics.THEMES)
-      .themeChanged(newTheme)
-  }
+  private fun fireThemeChanged(newTheme: MTThemeFacade) = ApplicationManager.getApplication().messageBus
+    .syncPublisher(MTTopics.THEMES)
+    .themeChanged(newTheme)
 
   /**
    * Fire accent changed
    *
    * @param accentColorColor
    */
-  private fun fireAccentChanged(accentColorColor: Color) {
-    ApplicationManager.getApplication().messageBus
-      .syncPublisher(MTTopics.ACCENTS)
-      .accentChanged(accentColorColor)
-  }
+  private fun fireAccentChanged(accentColorColor: Color) = ApplicationManager.getApplication().messageBus
+    .syncPublisher(MTTopics.ACCENTS)
+    .accentChanged(accentColorColor)
 
   //endregion
 
@@ -498,8 +499,8 @@ object MTThemeManager : Disposable {
    * @param fontFace   the font face
    * @param fontSize   the font size
    */
-  private fun applySettingsFont(uiDefaults: UIDefaults?, fontFace: String?, fontSize: Int) {
-    (uiDefaults ?: return)["Tree.ancestorInputMap"] = null
+  private fun applySettingsFont(uiDefaults: UIDefaults, fontFace: String?, fontSize: Int) {
+    uiDefaults["Tree.ancestorInputMap"] = null
 
     val font = UIUtil.getFontWithFallback(fontFace, Font.PLAIN, fontSize)
     val editorFontName = AppEditorFontOptions.getInstance().fontPreferences.fontFamily
@@ -523,8 +524,8 @@ object MTThemeManager : Disposable {
    *
    * @param uiDefaults
    */
-  private fun applyMaterialFonts(uiDefaults: UIDefaults?) {
-    (uiDefaults ?: return)["Tree.ancestorInputMap"] = null
+  private fun applyMaterialFonts(uiDefaults: UIDefaults) {
+    uiDefaults["Tree.ancestorInputMap"] = null
 
     val language = Locale.getDefault().language
     val cjkLocale =
@@ -580,12 +581,12 @@ object MTThemeManager : Disposable {
    *
    * @param lookAndFeelDefaults
    */
-  private fun applyCustomTreeFont(lookAndFeelDefaults: UIDefaults?) {
+  private fun applyCustomTreeFont(lookAndFeelDefaults: UIDefaults) {
     val treeFontSize = JBUI.scale(mtConfig.treeFontSize)
     val treeFont = mtConfig.treeFont
 
     if (mtConfig.isTreeFontSizeEnabled) {
-      val font = (lookAndFeelDefaults ?: return).getFont("Tree.font")
+      val font = lookAndFeelDefaults.getFont("Tree.font")
       lookAndFeelDefaults["Tree.font"] = Font(treeFont, font.style, treeFontSize)
       LafManager.getInstance().updateUI()
     }
