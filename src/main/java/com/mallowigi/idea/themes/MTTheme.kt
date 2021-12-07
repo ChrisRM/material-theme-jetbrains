@@ -49,29 +49,123 @@ import com.mallowigi.idea.themes.themes.SolarizedDarkTheme
 import com.mallowigi.idea.themes.themes.SolarizedLightTheme
 import javax.swing.Icon
 
+/**
+ * List of available Material Themes
+ *
+ * @property theme — the theme as a [MTThemeable]
+ * @property isPremium — whether the theme is a premium theme
+ */
 enum class MTTheme(
   override val theme: MTThemeable,
   override val isPremium: Boolean,
 ) : MTThemeFacade {
+  /**
+   * Oceanic Theme — A blue oceanic theme
+   *
+   */
   OCEANIC(MTOceanicTheme(), false),
+
+  /**
+   * Darker Theme — A black and dark theme
+   *
+   */
   DARKER(MTDarkerTheme(), false),
+
+  /**
+   * Lighter Theme — A white and light theme
+   *
+   */
   LIGHTER(MTLighterTheme(), false),
+
+  /**
+   * Palenight Theme — A purplish and indigo theme
+   *
+   */
   PALENIGHT(MTPalenightTheme(), false),
+
+  /**
+   * Deep Ocean Theme — A dark blue theme reminding the ocean abysses
+   *
+   */
   DEEPOCEAN(MTDeepOceanTheme(), false),
+
+  /**
+   * Placeholder for user dark custom themes
+   *
+   */
   CUSTOM(MTCustomTheme(), true),
+
+  /**
+   * Placeholder for user light custom themes
+   *
+   */
   LIGHT_CUSTOM(MTLightCustomTheme(), true),
+
+  /**
+   * Monokai Pro Theme
+   *
+   */
   MONOKAI(MonokaiTheme(), false),
+
+  /**
+   * Arc Dark Theme
+   *
+   */
   ARC_DARK(ArcDarkTheme(), false),
+
+  /**
+   * Atom One Dark Theme
+   */
   ONE_DARK(OneDarkTheme(), false),
+
+  /**
+   * Atom One Light Theme
+   */
   ONE_LIGHT(OneLightTheme(), false),
+
+  /**
+   * Solarized Dark Theme
+   */
   SOLARIZED_DARK(SolarizedDarkTheme(), false),
+
+  /**
+   * Solarized Light Theme
+   */
   SOLARIZED_LIGHT(SolarizedLightTheme(), false),
+
+  /**
+   * Dracula Theme
+   */
   DRACULA(DraculaTheme(), false),
+
+  /**
+   * GitHub Theme
+   */
   GITHUB(GithubTheme(), false),
+
+  /**
+   * GitHub Dark Theme
+   */
   GITHUB_DARK(GithubDarkTheme(), false),
+
+  /**
+   * Night Owl Theme
+   */
   NIGHTOWL(NightOwlTheme(), false),
+
+  /**
+   * Light Owl Theme
+   */
   LIGHTOWL(LightOwlTheme(), false),
+
+  /**
+   * Moonlight Theme
+   */
   MOONLIGHT(MoonlightTheme(), false),
+
+  /**
+   * Placeholder for external themes (marketplace)
+   */
   NATIVE(MTNativeTheme(), false);
 
   override val themeName: String

@@ -32,6 +32,10 @@ import com.mallowigi.idea.themes.models.MTThemeable
 import java.util.Vector
 import javax.swing.Icon
 
+/**
+ * Material Theme Collection — Collection containing the pre-bundled and downloaded themes
+ *
+ */
 object MTThemeCollection {
   private val themesMap: MutableMap<String, MTThemeFacade> = emptyMap<String, MTThemeFacade>().toMutableMap()
 
@@ -41,6 +45,9 @@ object MTThemeCollection {
     }
   }
 
+  /**
+   * Instance
+   */
   val instance: MTThemeCollection
     get() = ApplicationManager.getApplication().getService(MTThemeCollection::class.java)
 
@@ -91,10 +98,10 @@ object MTThemeCollection {
   }
 
   /**
-   * Converts a  MTThemeable to a MTTheme
+   * Converts a [MTThemeable] to a [MTTheme]
    *
    * @param theme the themeable (such as NativeTheme)
-   * @return the MTTheme
+   * @return the [MTTheme]
    */
   private fun fromTheme(theme: MTThemeable): MTThemeFacade {
     return object : MTThemeFacade {
