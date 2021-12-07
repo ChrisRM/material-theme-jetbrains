@@ -32,10 +32,17 @@ import javax.swing.plaf.ColorUIResource
 /**
  * Color Utils!
  */
+@Suppress("unused", "HardCodedStringLiteral", "MagicNumber")
 object MTColorUtils {
   private const val HC_FG_TONES = 4
   private const val HC_BG_TONES = 2
 
+  /**
+   * Parse color from string
+   *
+   * @param value string in hex
+   * @return the [ColorUIResource]
+   */
   @JvmStatic
   fun parseColor(value: String?): ColorUIResource {
     if (value != null && value.length == 8) {
@@ -53,6 +60,14 @@ object MTColorUtils {
     return ColorUIResource(Color(color!!.red, color.green, color.blue))
   }
 
+  /**
+   * Brightens/Darkens foreground
+   *
+   * @param dark if the theme is dark
+   * @param colorString color to contrastify
+   * @param isNotHighContrast whether to apply more contrast
+   * @return
+   */
   @JvmStatic
   private fun contrastifyForeground(dark: Boolean, colorString: String, isNotHighContrast: Boolean): String {
     if (isNotHighContrast) return colorString
@@ -63,6 +78,14 @@ object MTColorUtils {
     }
   }
 
+  /**
+   * Brightens/Darkens foreground
+   *
+   * @param isDark if the theme is dark
+   * @param color color to contrastify
+   * @param isNotHighContrast whether to apply more contrast
+   * @return
+   */
   @JvmStatic
   fun contrastifyForeground(isDark: Boolean, color: Color, isNotHighContrast: Boolean): Color {
     if (isNotHighContrast) return color
@@ -70,29 +93,45 @@ object MTColorUtils {
     val alpha = color.alpha / 255
     val contrastColor = when {
       isDark -> ColorUtil.brighter(color, HC_FG_TONES)
-      else -> ColorUtil.darker(color, HC_FG_TONES)
+      else   -> ColorUtil.darker(color, HC_FG_TONES)
     }
 
     return ColorUtil.withAlpha(ColorUIResource(contrastColor), alpha.toDouble())
   }
 
+  /**
+   * Brightens/Darkens backgroun
+   *
+   * @param isDark if the theme is dark
+   * @param colorString color to contrastify
+   * @param isNotHighContrast whether to apply more contrast
+   * @return
+   */
   @JvmStatic
   fun contrastifyBackground(isDark: Boolean, colorString: String, isNotHighContrast: Boolean): String {
     if (isNotHighContrast) return colorString
     val contrastColor = when {
       isDark -> ColorUtil.toHex(ColorUtil.darker(ColorUtil.fromHex(colorString), HC_BG_TONES))
-      else -> ColorUtil.toHex(ColorUtil.brighter(ColorUtil.fromHex(colorString), HC_BG_TONES))
+      else   -> ColorUtil.toHex(ColorUtil.brighter(ColorUtil.fromHex(colorString), HC_BG_TONES))
     }
     return contrastColor
   }
 
+  /**
+   * Brightens/Darkens background
+   *
+   * @param isDark if the theme is dark
+   * @param color color to contrastify
+   * @param isNotHighContrast whether to apply more contrast
+   * @return
+   */
   @JvmStatic
   fun contrastifyBackground(isDark: Boolean, color: ColorUIResource, isNotHighContrast: Boolean): Color {
     if (isNotHighContrast) return color
     val alpha = color.alpha / 255
     val contrastColor = when {
       isDark -> ColorUtil.darker(color, HC_BG_TONES)
-      else -> ColorUtil.brighter(color, HC_BG_TONES)
+      else   -> ColorUtil.brighter(color, HC_BG_TONES)
     }
 
     return ColorUtil.withAlpha(ColorUIResource(contrastColor), alpha.toDouble())

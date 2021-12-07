@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,273 +23,362 @@
  *
  *
  */
+package com.mallowigi.idea.themes.models.parsers
 
-package com.mallowigi.idea.themes.models.parsers;
-
-import com.intellij.ui.ColorUtil;
-import com.mallowigi.idea.themes.models.MTBundledTheme;
-import com.mallowigi.idea.themes.models.MTThemeColor;
-import com.mallowigi.idea.utils.MTColorUtils;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
-import javax.swing.plaf.ColorUIResource;
-import java.util.Collection;
+import com.intellij.ui.ColorUtil
+import com.mallowigi.idea.themes.models.MTBundledTheme
+import com.mallowigi.idea.themes.models.MTThemeColor
+import com.mallowigi.idea.utils.MTColorUtils.parseColor
+import org.jetbrains.annotations.NonNls
+import javax.swing.plaf.ColorUIResource
 
 /**
  * Bridge class for Bundled themes for parsing bundled themes xml
  */
-@SuppressWarnings({"ClassWithTooManyMethods",
-  "DuplicateStringLiteralInspection"})
-public abstract class MTBundledThemeParser {
-  @NonNls
-  private static final String EXCLUDED_TAG = "excluded";
-  @NonNls
-  private static final String ACCENT_TAG = "accent";
-  @NonNls
-  private static final String NOTIFICATIONS_TAG = "notifications";
-  @NonNls
-  private static final String TREE_SELECTION_TAG = "treeSelection";
-  @NonNls
-  private static final String HIGHLIGHT_TAG = "highlight";
-  @NonNls
-  private static final String SECOND_BORDER_TAG = "secondBorder";
-  @NonNls
-  private static final String TABLE_SELECTED_TAG = "tableSelected";
-  @NonNls
-  private static final String CONTRAST_TAG = "contrast";
-  @NonNls
-  private static final String DISABLED_TAG = "disabled";
-  @NonNls
-  private static final String SECONDARY_BACKGROUND_TAG = "secondaryBackground";
-  @NonNls
-  private static final String BUTTON_TAG = "button";
-  @NonNls
-  private static final String SELECTION_FOREGROUND_TAG = "selectionForeground";
-  @NonNls
-  private static final String SELECTION_BACKGROUND_TAG = "selectionBackground";
-  @NonNls
-  private static final String TEXT_TAG = "text";
-  @NonNls
-  private static final String FOREGROUND_TAG = "foreground";
-  @NonNls
-  private static final String BACKGROUND_TAG = "background";
-
-  private final MTBundledTheme mtBundledTheme;
-
-  MTBundledThemeParser(final MTBundledTheme mtBundledTheme) {
-    this.mtBundledTheme = mtBundledTheme;
-  }
+abstract class MTBundledThemeParser internal constructor(private val mtBundledTheme: MTBundledTheme) {
+  private val colors: MutableCollection<MTThemeColor>
+    get() = mtBundledTheme.colors.toMutableList()
 
   //region ----------- Default colors -------------
-  protected abstract ColorUIResource getDefaultExcludedColor();
+  /**
+   * Default excluded color
+   */
+  protected abstract val defaultExcludedColor: ColorUIResource
 
-  protected abstract ColorUIResource getDefaultAccentColor();
+  /**
+   * Default accent color
+   */
+  protected abstract val defaultAccentColor: ColorUIResource
 
-  protected abstract ColorUIResource getDefaultNotificationsColor();
+  /**
+   * Default notifications color
+   */
+  protected abstract val defaultNotificationsColor: ColorUIResource
 
-  protected abstract ColorUIResource getDefaultTreeSelectionColor();
+  /**
+   * Default tree selection color
+   */
+  protected abstract val defaultTreeSelectionColor: ColorUIResource
 
-  protected abstract ColorUIResource getDefaultHighlightColor();
+  /**
+   * Default highlight color
+   */
+  protected abstract val defaultHighlightColor: ColorUIResource
 
-  protected abstract ColorUIResource getDefaultSecondBorderColor();
+  /**
+   * Default second border color
+   */
+  protected abstract val defaultSecondBorderColor: ColorUIResource
 
-  protected abstract ColorUIResource getDefaultTableSelectedColor();
+  /**
+   * Default table selected color
+   */
+  protected abstract val defaultTableSelectedColor: ColorUIResource
 
-  protected abstract ColorUIResource getDefaultContrastColor();
+  /**
+   * Default contrast color
+   */
+  protected abstract val defaultContrastColor: ColorUIResource
 
-  protected abstract ColorUIResource getDefaultDisabledColor();
+  /**
+   * Default disabled color
+   */
+  protected abstract val defaultDisabledColor: ColorUIResource
 
-  protected abstract ColorUIResource getDefaultSecondaryBackgroundColor();
+  /**
+   * Default secondary background color
+   */
+  protected abstract val defaultSecondaryBackgroundColor: ColorUIResource
 
-  protected abstract ColorUIResource getDefaultButtonColor();
+  /**
+   * Default button color
+   */
+  protected abstract val defaultButtonColor: ColorUIResource
 
-  protected abstract ColorUIResource getDefaultSelectionForegroundColor();
+  /**
+   * Default selection foreground color
+   */
+  protected abstract val defaultSelectionForegroundColor: ColorUIResource
 
-  protected abstract ColorUIResource getDefaultSelectionBackgroundColor();
+  /**
+   * Default selection background color
+   */
+  protected abstract val defaultSelectionBackgroundColor: ColorUIResource
 
-  protected abstract ColorUIResource getDefaultTextColor();
+  /**
+   * Default text color
+   */
+  protected abstract val defaultTextColor: ColorUIResource
 
-  protected abstract ColorUIResource getDefaultForegroundColor();
+  /**
+   * Default foreground color
+   */
+  protected abstract val defaultForegroundColor: ColorUIResource
 
-  protected abstract ColorUIResource getDefaultBackgroundColor();
+  /**
+   * Default background color
+   */
+  protected abstract val defaultBackgroundColor: ColorUIResource
+
   //endregion
 
   //region ------------ Getters ---------------
-  public final ColorUIResource getExcludedColorString() {
-    return getColor(EXCLUDED_TAG, getDefaultExcludedColor());
-  }
+  /**
+   * Excluded color string
+   */
+  val excludedColorString: ColorUIResource
+    get() = getColor(EXCLUDED_TAG, defaultExcludedColor)
 
-  public final ColorUIResource getAccentColorString() {
-    return getColor(ACCENT_TAG, getDefaultAccentColor());
-  }
+  /**
+   * Accent color string
+   */
+  val accentColorString: ColorUIResource
+    get() = getColor(ACCENT_TAG, defaultAccentColor)
 
-  public final ColorUIResource getNotificationsColorString() {
-    return getColor(NOTIFICATIONS_TAG, getDefaultNotificationsColor());
-  }
+  /**
+   * Notifications color string
+   */
+  val notificationsColorString: ColorUIResource
+    get() = getColor(NOTIFICATIONS_TAG, defaultNotificationsColor)
 
-  public final ColorUIResource getTreeSelectionColorString() {
-    return getColor(TREE_SELECTION_TAG, getDefaultTreeSelectionColor());
-  }
+  /**
+   * Tree selection color string
+   */
+  val treeSelectionColorString: ColorUIResource
+    get() = getColor(TREE_SELECTION_TAG, defaultTreeSelectionColor)
 
-  public final ColorUIResource getHighlightColorString() {
-    return getColor(HIGHLIGHT_TAG, getDefaultHighlightColor());
-  }
+  /**
+   * Highlight color string
+   */
+  val highlightColorString: ColorUIResource
+    get() = getColor(HIGHLIGHT_TAG, defaultHighlightColor)
 
-  public final ColorUIResource getSecondBorderColorString() {
-    return getColor(SECOND_BORDER_TAG, getDefaultSecondBorderColor());
-  }
+  /**
+   * Second border color string
+   */
+  val secondBorderColorString: ColorUIResource
+    get() = getColor(SECOND_BORDER_TAG, defaultSecondBorderColor)
 
-  public final ColorUIResource getTableSelectedColorString() {
-    return getColor(TABLE_SELECTED_TAG, getDefaultTableSelectedColor());
-  }
+  /**
+   * Table selected color string
+   */
+  val tableSelectedColorString: ColorUIResource
+    get() = getColor(TABLE_SELECTED_TAG, defaultTableSelectedColor)
 
-  public final ColorUIResource getContrastColorString() {
-    return getColor(CONTRAST_TAG, getDefaultContrastColor());
-  }
+  /**
+   * Contrast color string
+   */
+  val contrastColorString: ColorUIResource
+    get() = getColor(CONTRAST_TAG, defaultContrastColor)
 
-  public final ColorUIResource getDisabledColorString() {
-    return getColor(DISABLED_TAG, getDefaultDisabledColor());
-  }
+  /**
+   * Disabled color string
+   */
+  val disabledColorString: ColorUIResource
+    get() = getColor(DISABLED_TAG, defaultDisabledColor)
 
-  public final ColorUIResource getSecondaryBackgroundColorString() {
-    return getColor(SECONDARY_BACKGROUND_TAG, getDefaultSecondaryBackgroundColor());
-  }
+  /**
+   * Secondary background color string
+   */
+  val secondaryBackgroundColorString: ColorUIResource
+    get() = getColor(SECONDARY_BACKGROUND_TAG, defaultSecondaryBackgroundColor)
 
-  public final ColorUIResource getButtonColorString() {
-    return getColor(BUTTON_TAG, getDefaultButtonColor());
-  }
+  /**
+   * Button color string
+   */
+  val buttonColorString: ColorUIResource
+    get() = getColor(BUTTON_TAG, defaultButtonColor)
 
-  public final ColorUIResource getSelectionForegroundColorString() {
-    return getColor(SELECTION_FOREGROUND_TAG, getDefaultSelectionForegroundColor());
-  }
+  /**
+   * Selection foreground color string
+   */
+  val selectionForegroundColorString: ColorUIResource
+    get() = getColor(SELECTION_FOREGROUND_TAG, defaultSelectionForegroundColor)
 
-  public final ColorUIResource getSelectionBackgroundColorString() {
-    return getColor(SELECTION_BACKGROUND_TAG, getDefaultSelectionBackgroundColor());
-  }
+  /**
+   * Selection background color string
+   */
+  val selectionBackgroundColorString: ColorUIResource
+    get() = getColor(SELECTION_BACKGROUND_TAG, defaultSelectionBackgroundColor)
 
-  public final ColorUIResource getTextColorString() {
-    return getColor(TEXT_TAG, getDefaultTextColor());
-  }
+  /**
+   * Text color string
+   */
+  val textColorString: ColorUIResource
+    get() = getColor(TEXT_TAG, defaultTextColor)
 
-  public final ColorUIResource getForegroundColorString() {
-    return getColor(FOREGROUND_TAG, getDefaultForegroundColor());
-  }
+  /**
+   * Foreground color string
+   */
+  val foregroundColorString: ColorUIResource
+    get() = getColor(FOREGROUND_TAG, defaultForegroundColor)
 
-  public final ColorUIResource getBackgroundColorString() {
-    return getColor(BACKGROUND_TAG, getDefaultBackgroundColor());
-  }
+  /**
+   * Background color string
+   */
+  val backgroundColorString: ColorUIResource
+    get() = getColor(BACKGROUND_TAG, defaultBackgroundColor)
+
   //endregion
 
   //region --------------- Setters -----------------
-  public final void setExcludedColor(final ColorUIResource excludedColor) {
-    setColor(EXCLUDED_TAG, excludedColor);
-  }
+  /**
+   * Set excluded color
+   *
+   * @param excludedColor
+   */
+  fun setExcludedColor(excludedColor: ColorUIResource): Unit = setColor(EXCLUDED_TAG, excludedColor)
 
-  public final void setAccentColor(final ColorUIResource accentColor) {
-    setColor(ACCENT_TAG, accentColor);
-  }
+  /**
+   * Set accent color
+   *
+   * @param accentColor
+   */
+  fun setAccentColor(accentColor: ColorUIResource): Unit = setColor(ACCENT_TAG, accentColor)
 
-  public final void setNotificationsColor(final ColorUIResource notificationsColor) {
-    setColor(NOTIFICATIONS_TAG, notificationsColor);
-  }
+  /**
+   * Set notifications color
+   *
+   * @param notificationsColor
+   */
+  fun setNotificationsColor(notificationsColor: ColorUIResource): Unit = setColor(NOTIFICATIONS_TAG, notificationsColor)
 
-  public final void setHighlightColor(final ColorUIResource highlightColor) {
-    setColor(HIGHLIGHT_TAG, highlightColor);
-  }
+  /**
+   * Set highlight color
+   *
+   * @param highlightColor
+   */
+  fun setHighlightColor(highlightColor: ColorUIResource): Unit = setColor(HIGHLIGHT_TAG, highlightColor)
 
-  public final void setTreeSelectionColor(final ColorUIResource treeSelectionColor) {
-    setColor(TREE_SELECTION_TAG, treeSelectionColor);
-  }
+  /**
+   * Set tree selection color
+   *
+   * @param treeSelectionColor
+   */
+  fun setTreeSelectionColor(treeSelectionColor: ColorUIResource): Unit =
+    setColor(TREE_SELECTION_TAG, treeSelectionColor)
 
-  public final void setSecondBorderColor(final ColorUIResource secondBorderColor) {
-    setColor(SECOND_BORDER_TAG, secondBorderColor);
-  }
+  /**
+   * Set second border color
+   *
+   * @param secondBorderColor
+   */
+  fun setSecondBorderColor(secondBorderColor: ColorUIResource): Unit = setColor(SECOND_BORDER_TAG, secondBorderColor)
 
-  public final void setTableSelectedColor(final ColorUIResource tableSelectedColor) {
-    setColor(TABLE_SELECTED_TAG, tableSelectedColor);
-  }
+  /**
+   * Set table selected color
+   *
+   * @param tableSelectedColor
+   */
+  fun setTableSelectedColor(tableSelectedColor: ColorUIResource): Unit =
+    setColor(TABLE_SELECTED_TAG, tableSelectedColor)
 
-  public final void setContrastColor(final ColorUIResource contrastColor) {
-    setColor(CONTRAST_TAG, contrastColor);
-  }
+  /**
+   * Set contrast color
+   *
+   * @param contrastColor
+   */
+  fun setContrastColor(contrastColor: ColorUIResource): Unit = setColor(CONTRAST_TAG, contrastColor)
 
-  public final void setDisabledColor(final ColorUIResource disabledColor) {
-    setColor(DISABLED_TAG, disabledColor);
-  }
+  /**
+   * Set disabled color
+   *
+   * @param disabledColor
+   */
+  fun setDisabledColor(disabledColor: ColorUIResource): Unit = setColor(DISABLED_TAG, disabledColor)
 
-  public final void setSecondaryBackgroundColor(final ColorUIResource secondaryBackgroundColor) {
-    setColor(SECONDARY_BACKGROUND_TAG, secondaryBackgroundColor);
-  }
+  /**
+   * Set secondary background color
+   *
+   * @param secondaryBackgroundColor
+   */
+  fun setSecondaryBackgroundColor(secondaryBackgroundColor: ColorUIResource): Unit =
+    setColor(SECONDARY_BACKGROUND_TAG, secondaryBackgroundColor)
 
-  public final void setButtonColor(final ColorUIResource buttonColor) {
-    setColor(BUTTON_TAG, buttonColor);
-  }
+  /**
+   * Set button color
+   *
+   * @param buttonColor
+   */
+  fun setButtonColor(buttonColor: ColorUIResource): Unit = setColor(BUTTON_TAG, buttonColor)
 
-  public final void setSelectionForegroundColor(final ColorUIResource selectionForegroundColor) {
-    setColor(SELECTION_FOREGROUND_TAG, selectionForegroundColor);
-  }
+  /**
+   * Set selection foreground color
+   *
+   * @param selectionForegroundColor
+   */
+  fun setSelectionForegroundColor(selectionForegroundColor: ColorUIResource): Unit =
+    setColor(SELECTION_FOREGROUND_TAG, selectionForegroundColor)
 
-  public final void setSelectionBackgroundColor(final ColorUIResource selectionBackgroundColor) {
-    setColor(SELECTION_BACKGROUND_TAG, selectionBackgroundColor);
-  }
+  /**
+   * Set selection background color
+   *
+   * @param selectionBackgroundColor
+   */
+  fun setSelectionBackgroundColor(selectionBackgroundColor: ColorUIResource): Unit =
+    setColor(SELECTION_BACKGROUND_TAG, selectionBackgroundColor)
 
-  public final void setTextColor(final ColorUIResource textColor) {
-    setColor(TEXT_TAG, textColor);
-  }
+  /**
+   * Set text color
+   *
+   * @param textColor
+   */
+  fun setTextColor(textColor: ColorUIResource): Unit = setColor(TEXT_TAG, textColor)
 
-  public final void setForegroundColor(final ColorUIResource foregroundColor) {
-    setColor(FOREGROUND_TAG, foregroundColor);
-  }
+  /**
+   * Set foreground color
+   *
+   * @param foregroundColor
+   */
+  fun setForegroundColor(foregroundColor: ColorUIResource): Unit = setColor(FOREGROUND_TAG, foregroundColor)
 
-  public final void setBackgroundColor(final ColorUIResource backgroundColor) {
-    setColor(BACKGROUND_TAG, backgroundColor);
-  }
+  /**
+   * Set background color
+   *
+   * @param backgroundColor
+   */
+  fun setBackgroundColor(backgroundColor: ColorUIResource): Unit = setColor(BACKGROUND_TAG, backgroundColor)
   //endregion
 
   /**
    * Return the color parsed from the XML file, or return the default color if not found
    */
-  @NotNull
-  private ColorUIResource getColor(final String tag, final ColorUIResource defaultColor) {
-    final MTThemeColor color = findColor(tag);
-    if (color == null) {
-      return defaultColor;
-    }
-
-    return new ColorUIResource(MTColorUtils.parseColor(color.getValue()));
+  private fun getColor(tag: String, defaultColor: ColorUIResource): ColorUIResource {
+    val color = findColor(tag) ?: return defaultColor
+    return ColorUIResource(parseColor(color.value))
   }
 
-  private Collection<MTThemeColor> getColors() {
-    return mtBundledTheme.getColors();
-  }
-
-  private void setColor(final String tag, final ColorUIResource newColor) {
-    MTThemeColor color = findColor(tag);
+  private fun setColor(tag: String, newColor: ColorUIResource) {
+    var color = findColor(tag)
     if (color == null) {
-      color = new MTThemeColor();
-      color.setId(tag);
-      getColors().add(color);
+      color = MTThemeColor()
+      color.id = tag
+      colors += color
     }
-
-    color.setValue(ColorUtil.toHex(newColor, true));
+    color.value = ColorUtil.toHex(newColor, true)
   }
 
   /**
    * Find a color in the parsed colors
-   * TODO use streams
    */
-  @Nullable
-  private MTThemeColor findColor(@NonNls final String id) {
-    MTThemeColor result = null;
-    for (final MTThemeColor color : getColors()) {
-      if (color.getId().equals(id)) {
-        result = color;
-        break;
-      }
-    }
+  private fun findColor(id: String): MTThemeColor? = colors.firstOrNull { it.id == id }
 
-    return result;
+  companion object {
+    private const val EXCLUDED_TAG: @NonNls String = "excluded"
+    private const val ACCENT_TAG: @NonNls String = "accent"
+    private const val NOTIFICATIONS_TAG: @NonNls String = "notifications"
+    private const val TREE_SELECTION_TAG: @NonNls String = "treeSelection"
+    private const val HIGHLIGHT_TAG: @NonNls String = "highlight"
+    private const val SECOND_BORDER_TAG: @NonNls String = "secondBorder"
+    private const val TABLE_SELECTED_TAG: @NonNls String = "tableSelected"
+    private const val CONTRAST_TAG: @NonNls String = "contrast"
+    private const val DISABLED_TAG: @NonNls String = "disabled"
+    private const val SECONDARY_BACKGROUND_TAG: @NonNls String = "secondaryBackground"
+    private const val BUTTON_TAG: @NonNls String = "button"
+    private const val SELECTION_FOREGROUND_TAG: @NonNls String = "selectionForeground"
+    private const val SELECTION_BACKGROUND_TAG: @NonNls String = "selectionBackground"
+    private const val TEXT_TAG: @NonNls String = "text"
+    private const val FOREGROUND_TAG: @NonNls String = "foreground"
+    private const val BACKGROUND_TAG: @NonNls String = "background"
   }
 }

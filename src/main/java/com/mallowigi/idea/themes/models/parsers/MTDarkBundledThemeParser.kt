@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,96 +23,47 @@
  *
  *
  */
+package com.mallowigi.idea.themes.models.parsers
 
-package com.mallowigi.idea.themes.models.parsers;
+import com.mallowigi.idea.themes.models.MTBundledTheme
+import javax.swing.plaf.ColorUIResource
 
-import com.mallowigi.idea.themes.models.MTBundledTheme;
-
-import javax.swing.plaf.ColorUIResource;
-
-@SuppressWarnings("MagicNumber")
-public class MTDarkBundledThemeParser extends MTBundledThemeParser {
-  public MTDarkBundledThemeParser(final MTBundledTheme mtBundledTheme) {
-    super(mtBundledTheme);
-  }
-
-  @Override
-  protected final ColorUIResource getDefaultExcludedColor() {
-    return new ColorUIResource(0x2E3C43);
-  }
-
-  @Override
-  protected final ColorUIResource getDefaultAccentColor() {
-    return new ColorUIResource(0x009688);
-  }
-
-  @Override
-  protected final ColorUIResource getDefaultNotificationsColor() {
-    return new ColorUIResource(0x323232);
-  }
-
-  @Override
-  protected final ColorUIResource getDefaultTreeSelectionColor() {
-    return new ColorUIResource(0x546E7A);
-  }
-
-  @Override
-  protected final ColorUIResource getDefaultHighlightColor() {
-    return new ColorUIResource(0x425B67);
-  }
-
-  @Override
-  protected final ColorUIResource getDefaultSecondBorderColor() {
-    return new ColorUIResource(0x2A373E);
-  }
-
-  @Override
-  protected final ColorUIResource getDefaultTableSelectedColor() {
-    return new ColorUIResource(0x314549);
-  }
-
-  @Override
-  protected final ColorUIResource getDefaultContrastColor() {
-    return new ColorUIResource(0x1E272C);
-  }
-
-  @Override
-  protected final ColorUIResource getDefaultDisabledColor() {
-    return new ColorUIResource(0x415967);
-  }
-
-  @Override
-  protected final ColorUIResource getDefaultSecondaryBackgroundColor() {
-    return new ColorUIResource(0x32424A);
-  }
-
-  @Override
-  protected final ColorUIResource getDefaultButtonColor() {
-    return new ColorUIResource(0x2E3C43);
-  }
-
-  @Override
-  protected final ColorUIResource getDefaultSelectionForegroundColor() {
-    return new ColorUIResource(0xFFFFFF);
-  }
-
-  @Override
-  protected final ColorUIResource getDefaultSelectionBackgroundColor() {
-    return new ColorUIResource(0x546E7A);
-  }
-
-  @Override
-  protected final ColorUIResource getDefaultTextColor() {
-    return new ColorUIResource(0x607D8B);
-  }
-
-  @Override
-  protected final ColorUIResource getDefaultForegroundColor() {
-    return new ColorUIResource(0xB0BEC5);
-  }
-
-  @Override
-  protected final ColorUIResource getDefaultBackgroundColor() {
-    return new ColorUIResource(0x263238);
-  }
+/**
+ * Dark Theme parser from XML
+ *
+ * @param mtBundledTheme the theme to fill
+ */
+class MTDarkBundledThemeParser(mtBundledTheme: MTBundledTheme?) : MTBundledThemeParser(mtBundledTheme!!) {
+  override val defaultExcludedColor: ColorUIResource
+    get() = ColorUIResource(0x2E3C43)
+  override val defaultAccentColor: ColorUIResource
+    get() = ColorUIResource(0x009688)
+  override val defaultNotificationsColor: ColorUIResource
+    get() = ColorUIResource(0x323232)
+  override val defaultTreeSelectionColor: ColorUIResource
+    get() = ColorUIResource(0x546E7A)
+  override val defaultHighlightColor: ColorUIResource
+    get() = ColorUIResource(0x425B67)
+  override val defaultSecondBorderColor: ColorUIResource
+    get() = ColorUIResource(0x2A373E)
+  override val defaultTableSelectedColor: ColorUIResource
+    get() = ColorUIResource(0x314549)
+  override val defaultContrastColor: ColorUIResource
+    get() = ColorUIResource(0x1E272C)
+  override val defaultDisabledColor: ColorUIResource
+    get() = ColorUIResource(0x415967)
+  override val defaultSecondaryBackgroundColor: ColorUIResource
+    get() = ColorUIResource(0x32424A)
+  override val defaultButtonColor: ColorUIResource
+    get() = ColorUIResource(0x2E3C43)
+  override val defaultSelectionForegroundColor: ColorUIResource
+    get() = ColorUIResource(0xFFFFFF)
+  override val defaultSelectionBackgroundColor: ColorUIResource
+    get() = ColorUIResource(0x546E7A)
+  override val defaultTextColor: ColorUIResource
+    get() = ColorUIResource(0x607D8B)
+  override val defaultForegroundColor: ColorUIResource
+    get() = ColorUIResource(0xB0BEC5)
+  override val defaultBackgroundColor: ColorUIResource
+    get() = ColorUIResource(0x263238)
 }
