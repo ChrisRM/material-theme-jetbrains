@@ -137,10 +137,6 @@
 
     <resource-bundle>messages.MaterialThemeBundle</resource-bundle>
 
-    <!--    <extensionPoints>-->
-    <!--        <extensionPoint beanClass="com.mallowigi.idea.themes.BundledThemeEP" name="bundledTheme" dynamic="true" />-->
-    <!--    </extensionPoints>-->
-
     <!--suppress PluginXmlDynamicPlugin -->
     <application-components>
         <component>
@@ -149,6 +145,8 @@
     </application-components>
 
     <extensions defaultExtensionNs="com.intellij">
+        <applicationService serviceImplementation="com.mallowigi.idea.schemes.MTFileColors"
+                            id="MTFileColors" />
         <applicationService serviceImplementation="com.mallowigi.idea.ui.OverlayPainter"
                             id="OverlayPainter" />
         <applicationService serviceImplementation="com.mallowigi.idea.license.MTMainProductLicenseChecker"

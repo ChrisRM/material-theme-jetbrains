@@ -37,7 +37,7 @@ import com.intellij.psi.codeStyle.DisplayPriority
 import com.intellij.psi.codeStyle.DisplayPrioritySortable
 import com.intellij.util.ArrayUtil
 import com.mallowigi.idea.messages.MaterialThemeBundle.message
-import com.mallowigi.idea.schemes.MTFileColors.getColorKey
+import com.mallowigi.idea.schemes.MTFileColors
 import javax.swing.Icon
 
 /**
@@ -109,7 +109,8 @@ class MTFileColorsPage : ColorSettingsPage, DisplayPrioritySortable {
       val allFileStatuses = FileStatusFactory.getInstance().allFileStatuses
       val colorDescriptors: MutableSet<ColorDescriptor> = mutableSetOf()
       allFileStatuses.forEach {
-        colorDescriptors.add(ColorDescriptor(it.text, getColorKey(it)!!, ColorDescriptor.Kind.FOREGROUND))
+        val colorKey = MTFileColors.instance.getColorKey(it)
+        if (colorKey != null) colorDescriptors.add(ColorDescriptor(it.text, colorKey, ColorDescriptor.Kind.FOREGROUND))
       }
 
       DESCRIPTORS = ArrayUtil.toObjectArray(colorDescriptors, ColorDescriptor::class.java)

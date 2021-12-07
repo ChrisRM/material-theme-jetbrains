@@ -25,6 +25,7 @@
  */
 package com.mallowigi.idea.schemes
 
+import com.intellij.openapi.Disposable
 import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.editor.colors.ColorKey
 import com.intellij.openapi.editor.colors.EditorColorsListener
@@ -45,24 +46,37 @@ import org.jetbrains.annotations.NonNls
  * Service for loading and managing file colors
  *
  */
-object MTFileColors {
-  init {
-    initFileColors()
+object MTFileColors : Disposable {
+  private val connection = ApplicationManager.getApplication().messageBus.connect()
 
-    // Listen for color scheme changes and update the file colors
-    ApplicationManager.getApplication().messageBus.connect()
-      .subscribe(EditorColorsManager.TOPIC, EditorColorsListener { apply() })
-
-    apply()
-  }
+  /**
+   * Instance
+   */
+  val instance: MTFileColors
+    get() = ApplicationManager.getApplication().getService(MTFileColors::class.java)
 
   @NonNls
   private val MT_PREFIX: String = "MT_FILESTATUS_"
 
-  private val COLOR_KEYS = HashMap<FileStatus, ColorKey>(18)
+  /**
+   * Saved color keys
+   */
+  private val colorKeys = HashMap<FileStatus, ColorKey>(18)
 
+  /**
+   * Current scheme for current theme
+   */
   private val currentSchemeForCurrentUITheme: EditorColorsScheme
     get() = EditorColorsManager.getInstance().schemeForCurrentUITheme
+
+  init {
+    initFileColors()
+
+    // Listen for color scheme changes and update the file colors
+    connection.subscribe(EditorColorsManager.TOPIC, EditorColorsListener { apply() })
+
+    apply()
+  }
 
   /**
    * Apply file colors and styled directories
@@ -131,26 +145,26 @@ object MTFileColors {
         val originalColorString = ColorUtil.toHex(originalColor)
         // 2a. Get custom file color from the bundle, or default to original file color
         val property = messageOrDefault(
-          "material.file." + allFileStatus.id.lowercase(),
+          "material.file.${allFileStatus.id.lowercase()}",
           originalColorString
         )
         val color = ColorUtil.fromHex(property)
 
         // 2b. Set in the map the custom/default file color
-        COLOR_KEYS[allFileStatus] = ColorKey.createColorKey(MT_PREFIX + allFileStatus.id, color)
+        colorKeys[allFileStatus] = ColorKey.createColorKey(MT_PREFIX + allFileStatus.id, color)
       } else {
         // 3. If there is no default file color
         // 3a. Get custom file color from the bundle
-        val property = messageOrDefault("material.file." + allFileStatus.id.lowercase(), "-1")
+        val property = messageOrDefault("material.file.${allFileStatus.id.lowercase()}", "-1")
         // If not found do not add the color to the map
         if (property == "-1") {
-          COLOR_KEYS[allFileStatus] = ColorKey.createColorKey(MT_PREFIX + allFileStatus.id)
+          colorKeys[allFileStatus] = ColorKey.createColorKey(MT_PREFIX + allFileStatus.id)
           continue
         }
 
-        // 3b. add custom color to the map
+        // 3b. Add custom color to the map
         val color = ColorUtil.fromHex(property)
-        COLOR_KEYS[allFileStatus] = ColorKey.createColorKey(MT_PREFIX + allFileStatus.id, color)
+        colorKeys[allFileStatus] = ColorKey.createColorKey(MT_PREFIX + allFileStatus.id, color)
       }
     }
   }
@@ -161,7 +175,11 @@ object MTFileColors {
    * @param status the file status
    * @return
    */
-  @JvmStatic
-  fun getColorKey(status: FileStatus): ColorKey? = COLOR_KEYS[status]
+  fun getColorKey(status: FileStatus): ColorKey? = colorKeys[status]
 
+  /**
+   * Disconnect on dispose
+   *
+   */
+  override fun dispose(): Unit = connection.disconnect()
 }
