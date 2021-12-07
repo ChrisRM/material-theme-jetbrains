@@ -26,6 +26,7 @@
 package com.mallowigi.idea.themes.themes
 
 import com.mallowigi.idea.utils.MTUiUtils
+import org.jetbrains.annotations.NonNls
 import java.awt.Color
 import javax.swing.plaf.ColorUIResource
 
@@ -34,6 +35,7 @@ import javax.swing.plaf.ColorUIResource
  *
  */
 class MoonlightTheme : MTAbstractTheme() {
+  @NonNls
   override var themeId: String = "MOONLIGHT"
 
   override var isThemeDark: Boolean = true
@@ -41,14 +43,16 @@ class MoonlightTheme : MTAbstractTheme() {
   override val order: Int
     get() = 13
 
+  @NonNls
   override var themeName: String = "Moonlight (Material)"
 
   override val themeIcon: String?
     get() = MTUiUtils.iconPrefix("moonlight")
 
   override val backgroundImage: String
-    get() = "walls/moonlight.svg"
+    @NonNls get() = "walls/moonlight.svg"
 
+  @NonNls
   override var themeColorScheme: String? = "Moonlight (Material)"
 
   override val backgroundColorResource: ColorUIResource

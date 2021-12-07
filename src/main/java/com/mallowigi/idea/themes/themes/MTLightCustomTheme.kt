@@ -27,6 +27,7 @@ package com.mallowigi.idea.themes.themes
 
 import com.mallowigi.idea.config.custom.MTCustomThemeConfig
 import com.mallowigi.idea.utils.MTUiUtils
+import org.jetbrains.annotations.NonNls
 import javax.swing.plaf.ColorUIResource
 
 /**
@@ -34,6 +35,7 @@ import javax.swing.plaf.ColorUIResource
  *
  */
 class MTLightCustomTheme : MTAbstractTheme() {
+  @NonNls
   override var themeId: String = "LIGHT_CUSTOM"
 
   override var isThemeDark: Boolean = false
@@ -41,11 +43,13 @@ class MTLightCustomTheme : MTAbstractTheme() {
   override val order: Int
     get() = 101
 
+  @NonNls
   override var themeName: String = "Light Custom Theme (Material)"
 
   override val backgroundImage: String?
-    get() = null
+    @NonNls get() = null
 
+  @NonNls
   override var themeColorScheme: String? = null
 
   override val isCustom: Boolean

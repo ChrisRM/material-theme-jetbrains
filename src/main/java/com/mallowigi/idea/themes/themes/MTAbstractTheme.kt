@@ -173,6 +173,10 @@ abstract class MTAbstractTheme protected constructor() : Serializable, MTThemeab
     }
   }
 
+  /**
+   * Set look and feel for the current theme
+   *
+   */
   @Throws(UnsupportedLookAndFeelException::class)
   protected open fun setLookAndFeel() {
     if (isThemeDark) {
@@ -252,11 +256,12 @@ abstract class MTAbstractTheme protected constructor() : Serializable, MTThemeab
 
   override fun applyContrast(apply: Boolean) {
     val contrastedColor = if (apply) contrastColor else backgroundColor
-    for (resource in ContrastResources.CONTRASTED_RESOURCES) {
+    for (resource in ContrastResources.contrastedResources) {
       UIManager.put(resource, contrastedColor)
     }
   }
 
+  @Suppress("HardCodedStringLiteral")
   private fun installBackgroundImage() {
     val currentSpec = PropertiesComponent.getInstance().getValue(IdeBackgroundUtil.FRAME_PROP)
     val oldCurrentSpec = PropertiesComponent.getInstance().getValue("old.mt.${IdeBackgroundUtil.FRAME_PROP}")

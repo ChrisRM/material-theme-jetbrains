@@ -26,6 +26,7 @@
 package com.mallowigi.idea.themes.themes
 
 import com.mallowigi.idea.utils.MTUiUtils
+import org.jetbrains.annotations.NonNls
 import java.awt.Color
 import javax.swing.plaf.ColorUIResource
 
@@ -34,6 +35,7 @@ import javax.swing.plaf.ColorUIResource
  *
  */
 class MTDeepOceanTheme : MTAbstractTheme() {
+  @NonNls
   override var themeId: String = "DEEPOCEAN"
 
   override var isThemeDark: Boolean = true
@@ -41,14 +43,16 @@ class MTDeepOceanTheme : MTAbstractTheme() {
   override val order: Int
     get() = 4
 
+  @NonNls
   override var themeName: String = "Material Deep Ocean"
 
   override val themeIcon: String?
     get() = MTUiUtils.iconPrefix("deepocean")
 
   override val backgroundImage: String
-    get() = "walls/deepocean.svg"
+    @NonNls get() = "walls/deepocean.svg"
 
+  @NonNls
   override var themeColorScheme: String? = "Material Deep Ocean"
 
   override val backgroundColorResource: ColorUIResource

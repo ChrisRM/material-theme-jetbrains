@@ -26,6 +26,7 @@
 package com.mallowigi.idea.themes.themes
 
 import com.mallowigi.idea.utils.MTUiUtils
+import org.jetbrains.annotations.NonNls
 import java.awt.Color
 import javax.swing.plaf.ColorUIResource
 
@@ -34,6 +35,7 @@ import javax.swing.plaf.ColorUIResource
  *
  */
 class ArcDarkTheme : MTAbstractTheme() {
+  @NonNls
   override var themeId: String = "ARC_DARK"
 
   override var isThemeDark: Boolean = true
@@ -41,15 +43,17 @@ class ArcDarkTheme : MTAbstractTheme() {
   override val order: Int
     get() = 5
 
+  @NonNls
   override var themeColorScheme: String? = "Arc Dark (Material)"
 
+  @NonNls
   override var themeName: String = "Arc Dark (Material)"
 
   override val themeIcon: String
     get() = MTUiUtils.iconPrefix("arc_dark")
 
   override val backgroundImage: String
-    get() = "walls/arcdark.svg"
+    @NonNls get() = "walls/arcdark.svg"
 
   override val backgroundColorResource: ColorUIResource
     get() = ColorUIResource(0x2f343f)

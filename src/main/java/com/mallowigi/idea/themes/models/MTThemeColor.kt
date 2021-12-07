@@ -33,6 +33,7 @@ import java.io.Serializable
 /**
  * Represents a color
  */
+@Suppress("HardCodedStringLiteral")
 @XStreamAlias("color")
 class MTThemeColor : Serializable {
   /**

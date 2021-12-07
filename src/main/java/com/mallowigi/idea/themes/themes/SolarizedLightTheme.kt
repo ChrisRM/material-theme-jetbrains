@@ -26,6 +26,7 @@
 package com.mallowigi.idea.themes.themes
 
 import com.mallowigi.idea.utils.MTUiUtils
+import org.jetbrains.annotations.NonNls
 import java.awt.Color
 import javax.swing.plaf.ColorUIResource
 
@@ -34,6 +35,7 @@ import javax.swing.plaf.ColorUIResource
  *
  */
 class SolarizedLightTheme : MTAbstractTheme() {
+  @NonNls
   override var themeId: String = "SOLARIZED_LIGHT"
 
   override var isThemeDark: Boolean = false
@@ -41,14 +43,16 @@ class SolarizedLightTheme : MTAbstractTheme() {
   override val order: Int
     get() = 10
 
+  @NonNls
   override var themeName: String = "Solarized Light (Material)"
 
   override val themeIcon: String?
     get() = MTUiUtils.iconPrefix("solarized_light")
 
   override val backgroundImage: String
-    get() = "walls/solarlight.svg"
+    @NonNls get() = "walls/solarlight.svg"
 
+  @NonNls
   override var themeColorScheme: String? = "Solarized Light (Material)"
 
   override val backgroundColorResource: ColorUIResource

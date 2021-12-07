@@ -26,6 +26,7 @@
 package com.mallowigi.idea.themes.themes
 
 import com.mallowigi.idea.utils.MTUiUtils
+import org.jetbrains.annotations.NonNls
 import javax.swing.plaf.ColorUIResource
 
 /**
@@ -33,16 +34,19 @@ import javax.swing.plaf.ColorUIResource
  *
  */
 class GithubTheme : MTAbstractLightTheme() {
+  @NonNls
   override var themeId: String = "GITHUB"
 
+  @NonNls
   override var themeName: String = "GitHub (Material)"
 
   override val themeIcon: String
     get() = MTUiUtils.iconPrefix("github")
 
   override val backgroundImage: String
-    get() = "walls/github.svg"
+    @NonNls get() = "walls/github.svg"
 
+  @NonNls
   override var themeColorScheme: String? = "GitHub (Material)"
 
   override var isThemeDark: Boolean = false

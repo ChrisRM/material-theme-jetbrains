@@ -26,6 +26,7 @@
 package com.mallowigi.idea.themes.themes
 
 import com.mallowigi.idea.utils.MTUiUtils
+import org.jetbrains.annotations.NonNls
 import javax.swing.plaf.ColorUIResource
 
 /**
@@ -33,6 +34,7 @@ import javax.swing.plaf.ColorUIResource
  *
  */
 class MonokaiTheme : MTAbstractTheme() {
+  @NonNls
   override var themeId: String = "MONOKAI"
 
   override var isThemeDark: Boolean = true
@@ -40,14 +42,16 @@ class MonokaiTheme : MTAbstractTheme() {
   override val order: Int
     get() = 4
 
+  @NonNls
   override var themeName: String = "Monokai Pro (Material)"
 
   override val themeIcon: String?
     get() = MTUiUtils.iconPrefix("monokai")
 
   override val backgroundImage: String
-    get() = "walls/monokai.svg"
+    @NonNls get() = "walls/monokai.svg"
 
+  @NonNls
   override var themeColorScheme: String? = "Monokai Pro (Material)"
 
   override val backgroundColorResource: ColorUIResource

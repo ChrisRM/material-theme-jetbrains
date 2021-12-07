@@ -39,6 +39,7 @@ import com.mallowigi.idea.themes.lists.ContrastResources
 import com.mallowigi.idea.utils.MTColorUtils.contrastifyBackground
 import com.mallowigi.idea.utils.MTUI
 import com.mallowigi.idea.utils.MTUiUtils
+import org.jetbrains.annotations.NonNls
 import javax.swing.UIManager
 import javax.swing.UnsupportedLookAndFeelException
 import javax.swing.plaf.ColorUIResource
@@ -48,22 +49,25 @@ import javax.swing.plaf.ColorUIResource
  *
  */
 class MTNativeTheme : MTAbstractTheme() {
+  @NonNls
   override var themeName: String = "External"
 
   override val themeIcon: String
     get() = MTUiUtils.iconPrefix("external")
 
-  override var themeId: String = "NATIVE" // todo import from abstract?
+  @NonNls
+  override var themeId: String = "NATIVE"
 
   override var isThemeDark: Boolean = true
 
   override val order: Int
-    get() = 200 // todo import from abstract?
+    get() = 200
 
   override val backgroundImage: String?
-    get() = null // todo import from abstract?
+    get() = null
 
-  override var themeColorScheme: String? = null // todo import from abstract?
+  @NonNls
+  override var themeColorScheme: String? = null
 
   override val isNative: Boolean
     get() = true
@@ -137,7 +141,7 @@ class MTNativeTheme : MTAbstractTheme() {
 
   override fun applyContrast(apply: Boolean) {
     val dark = isThemeDark
-    for (resource in ContrastResources.CONTRASTED_RESOURCES) {
+    for (resource in ContrastResources.contrastedResources) {
       val color = UIManager.getLookAndFeelDefaults().getColor(resource)
       if (color != null) {
         UIManager.put(resource, if (apply) contrastifyBackground(dark, ColorUIResource(color), false) else color)

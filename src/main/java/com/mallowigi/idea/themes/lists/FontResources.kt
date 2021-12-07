@@ -25,9 +25,15 @@
  */
 package com.mallowigi.idea.themes.lists
 
+/**
+ * List of font resources
+ */
 object FontResources {
+  /**
+   * The font resources
+   */
   @JvmField
-  val FONT_RESOURCES: Set<String> = setOf(
+  val fontResources: Set<String> = setOf(
     "Button.font",
     "Component.font",
     "CheckBox.font",

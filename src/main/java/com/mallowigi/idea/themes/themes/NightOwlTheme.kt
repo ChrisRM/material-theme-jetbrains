@@ -26,6 +26,7 @@
 package com.mallowigi.idea.themes.themes
 
 import com.mallowigi.idea.utils.MTUiUtils
+import org.jetbrains.annotations.NonNls
 import java.awt.Color
 import javax.swing.plaf.ColorUIResource
 
@@ -34,6 +35,7 @@ import javax.swing.plaf.ColorUIResource
  *
  */
 class NightOwlTheme : MTAbstractTheme() {
+  @NonNls
   override var themeId: String = "NIGHT_OWL"
 
   override var isThemeDark: Boolean = true
@@ -42,10 +44,12 @@ class NightOwlTheme : MTAbstractTheme() {
     get() = 11
 
   override val backgroundImage: String
-    get() = "walls/nightowl.svg"
+    @NonNls get() = "walls/nightowl.svg"
 
+  @NonNls
   override var themeColorScheme: String? = "Night Owl (Material)"
 
+  @NonNls
   override var themeName: String = "Night Owl (Material)"
 
   override val themeIcon: String?

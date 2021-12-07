@@ -508,7 +508,7 @@ object MTThemeManager : Disposable {
     val monoFont = FontUIResource(monospaceFont, Font.PLAIN, fontSize)
 
     // Keep old style and size
-    FontResources.FONT_RESOURCES.forEach {
+    FontResources.fontResources.forEach {
       val curFont = ObjectUtils.notNull(uiDefaults.getFont(it), font)
       uiDefaults[it] = font.deriveFont(curFont.style, curFont.size.toFloat())
     }
@@ -543,7 +543,7 @@ object MTThemeManager : Disposable {
     val monoFont = FontUIResource(monospaceFont, Font.PLAIN, MTConfig.DEFAULT_FONT_SIZE)
 
     // Keep old style and size
-    FontResources.FONT_RESOURCES.forEach {
+    FontResources.fontResources.forEach {
       val curFont = ObjectUtils.notNull(uiDefaults.getFont(it), uiFont)
       uiDefaults[it] = uiFont.deriveFont(curFont.style, curFont.size.toFloat())
     }

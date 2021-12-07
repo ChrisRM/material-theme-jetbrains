@@ -26,6 +26,7 @@
 package com.mallowigi.idea.themes.themes
 
 import com.mallowigi.idea.utils.MTUiUtils
+import org.jetbrains.annotations.NonNls
 import java.awt.Color
 import javax.swing.plaf.ColorUIResource
 
@@ -34,6 +35,7 @@ import javax.swing.plaf.ColorUIResource
  *
  */
 class MTDarkerTheme : MTAbstractTheme() {
+  @NonNls
   override var themeId: String = "DARKER"
 
   override var isThemeDark: Boolean = true
@@ -41,14 +43,16 @@ class MTDarkerTheme : MTAbstractTheme() {
   override val order: Int
     get() = 1
 
+  @NonNls
   override var themeName: String = "Material Darker"
 
   override val themeIcon: String?
     get() = MTUiUtils.iconPrefix("darker")
 
   override val backgroundImage: String
-    get() = "walls/darker.svg"
+    @NonNls get() = "walls/darker.svg"
 
+  @NonNls
   override var themeColorScheme: String? = "Material Darker"
 
   override val backgroundColorResource: ColorUIResource

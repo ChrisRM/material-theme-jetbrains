@@ -26,6 +26,7 @@
 package com.mallowigi.idea.themes.themes
 
 import com.mallowigi.idea.utils.MTUiUtils
+import org.jetbrains.annotations.NonNls
 import java.awt.Color
 import javax.swing.plaf.ColorUIResource
 
@@ -34,6 +35,7 @@ import javax.swing.plaf.ColorUIResource
  *
  */
 class DraculaTheme : MTAbstractTheme() {
+  @NonNls
   override var themeId: String = "DRACULA"
 
   override var isThemeDark: Boolean = true
@@ -41,14 +43,16 @@ class DraculaTheme : MTAbstractTheme() {
   override val order: Int
     get() = 7
 
+  @NonNls
   override var themeName: String = "Dracula (Material)"
 
   override val themeIcon: String
     get() = MTUiUtils.iconPrefix("dracula")
 
   override val backgroundImage: String
-    get() = "walls/dracula.svg"
+    @NonNls get() = "walls/dracula.svg"
 
+  @NonNls
   override var themeColorScheme: String? = "Dracula (Material)"
 
   override val backgroundColorResource: ColorUIResource

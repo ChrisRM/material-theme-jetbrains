@@ -25,9 +25,15 @@
  */
 package com.mallowigi.idea.themes.lists
 
+/**
+ * Lists of Contrast Resources
+ */
 object ContrastResources {
+  /**
+   * The contrasted resources
+   */
   @JvmField
-  val CONTRASTED_RESOURCES: Set<String> = setOf(
+  val contrastedResources: Set<String> = setOf(
     "ActionToolbar.background", // deprecated
     "activeCaption", // deprecated
     "ComboBox.darcula.arrowButtonBackground", // deprecated

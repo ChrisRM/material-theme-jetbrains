@@ -26,6 +26,7 @@
 package com.mallowigi.idea.themes.themes
 
 import com.mallowigi.idea.utils.MTUiUtils
+import org.jetbrains.annotations.NonNls
 import java.awt.Color
 import javax.swing.plaf.ColorUIResource
 
@@ -34,6 +35,7 @@ import javax.swing.plaf.ColorUIResource
  *
  */
 class OneLightTheme : MTAbstractLightTheme() {
+  @NonNls
   override var themeId: String = "ONE_LIGHT"
 
   override var isThemeDark: Boolean = false
@@ -41,14 +43,16 @@ class OneLightTheme : MTAbstractLightTheme() {
   override val order: Int
     get() = 8
 
+  @NonNls
   override var themeName: String = "Atom One Light (Material)"
 
   override val themeIcon: String?
     get() = MTUiUtils.iconPrefix("one_light")
 
   override val backgroundImage: String
-    get() = "walls/onelight.svg"
+    @NonNls get() = "walls/onelight.svg"
 
+  @NonNls
   override var themeColorScheme: String? = "Atom One Light (Material)"
 
   override val backgroundColorResource: ColorUIResource
