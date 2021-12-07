@@ -31,10 +31,18 @@ import com.intellij.openapi.application.ApplicationManager
 import com.mallowigi.idea.notifications.MTWhatsNewAction
 import com.mallowigi.idea.notifications.MTWhatsNewAction.Companion.openWhatsNewFile
 
+/**
+ * Open a new tab with the "What's New" page.
+ *
+ */
 class MTShowWhatsNewAction : AnAction() {
   override fun actionPerformed(e: AnActionEvent): Unit = ApplicationManager.getApplication().invokeLater {
-    openWhatsNewFile(e.project!!, MTWhatsNewAction.WHATS_NEW_URL, null)
+    openWhatsNewFile(e.project ?: return@invokeLater, MTWhatsNewAction.WHATS_NEW_URL, null)
   }
 
+  /**
+   * Is dumb aware
+   *
+   */
   override fun isDumbAware(): Boolean = true
 }

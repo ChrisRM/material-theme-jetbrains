@@ -27,6 +27,10 @@ package com.mallowigi.idea.actions.positions
 
 import com.mallowigi.idea.config.enums.TabHighlightPositions
 
+/**
+ * [TabHighlightPositions.TOPLESS] position
+ *
+ */
 class MTToplessPosition : MTAbstractPositionsAction() {
   override val position: TabHighlightPositions
     get() = TabHighlightPositions.TOPLESS

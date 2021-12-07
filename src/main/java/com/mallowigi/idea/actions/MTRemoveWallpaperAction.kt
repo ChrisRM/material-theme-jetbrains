@@ -36,8 +36,16 @@ import com.mallowigi.idea.messages.MaterialThemeBundle
 import com.mallowigi.idea.notifications.MTNotifications.showWithListener
 import com.mallowigi.idea.utils.MTUiUtils
 
+/**
+ * Forcefully remove wallpapers
+ *
+ */
 class MTRemoveWallpaperAction : AnAction() {
 
+  /**
+   * Action performed
+   *
+   */
   override fun actionPerformed(e: AnActionEvent): Unit = installWallpaper(e.project)
 
   private fun installWallpaper(project: Project?) {
@@ -57,5 +65,9 @@ class MTRemoveWallpaperAction : AnAction() {
     MTAnalytics.instance.track(MTAnalytics.REMOVE_WALLPAPER)
   }
 
+  /**
+   * Is dumb aware
+   *
+   */
   override fun isDumbAware(): Boolean = true
 }

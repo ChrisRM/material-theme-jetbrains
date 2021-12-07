@@ -27,6 +27,10 @@ package com.mallowigi.idea.actions.themes
 
 import com.mallowigi.idea.themes.MTTheme
 
+/**
+ * [MTTheme.GITHUB] theme
+ *
+ */
 class MTGithubThemeAction : MTAbstractThemeAction() {
   override val theme: MTTheme
     get() = MTTheme.GITHUB

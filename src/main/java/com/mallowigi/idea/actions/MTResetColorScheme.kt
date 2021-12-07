@@ -41,6 +41,10 @@ import java.lang.reflect.InvocationTargetException
  *
  */
 class MTResetColorScheme : AnAction() {
+  /**
+   * Action performed
+   *
+   */
   override fun actionPerformed(e: AnActionEvent) {
     if (Messages.showOkCancelDialog(
         message("action.MTResetColorScheme.explanation"),
@@ -68,9 +72,13 @@ class MTResetColorScheme : AnAction() {
       }
 
       MTAnalytics.instance.track(MTAnalytics.RESET_COLOR_SCHEME)
-      MTNotifications.showSimple(e.project!!, message("MTResetColorScheme.notification"))
+      MTNotifications.showSimple(e.project ?: return, message("MTResetColorScheme.notification"))
     }
   }
 
+  /**
+   * Is dumb aware
+   *
+   */
   override fun isDumbAware(): Boolean = true
 }

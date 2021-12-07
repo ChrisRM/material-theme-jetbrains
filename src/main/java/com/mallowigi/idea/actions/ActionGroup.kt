@@ -30,7 +30,15 @@ import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.CommonDataKeys
 import com.intellij.openapi.actionSystem.DefaultActionGroup
 
+/**
+ * Action group for the plugin.
+ *
+ */
 class ActionGroup : DefaultActionGroup() {
+  /**
+   * Show action group only if project set
+   *
+   */
   override fun update(e: AnActionEvent) {
     val p = e.presentation
     val hasProject = e.getData(CommonDataKeys.PROJECT) != null

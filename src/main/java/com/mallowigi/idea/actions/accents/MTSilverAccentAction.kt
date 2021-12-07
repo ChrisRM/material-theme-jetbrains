@@ -27,6 +27,10 @@ package com.mallowigi.idea.actions.accents
 
 import com.mallowigi.idea.themes.MTAccents
 
+/**
+ * [MTAccents.SILVER] color
+ *
+ */
 class MTSilverAccentAction : MTAbstractAccentAction() {
   override val accent: MTAccents
     get() = MTAccents.SILVER

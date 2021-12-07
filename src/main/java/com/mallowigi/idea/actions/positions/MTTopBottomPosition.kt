@@ -27,6 +27,10 @@ package com.mallowigi.idea.actions.positions
 
 import com.mallowigi.idea.config.enums.TabHighlightPositions
 
+/**
+ * [TabHighlightPositions.TOP_BOTTOM] position
+ *
+ */
 class MTTopBottomPosition : MTAbstractPositionsAction() {
   override val position: TabHighlightPositions
     get() = TabHighlightPositions.TOP_BOTTOM

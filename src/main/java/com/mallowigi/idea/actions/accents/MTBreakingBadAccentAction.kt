@@ -27,6 +27,10 @@ package com.mallowigi.idea.actions.accents
 
 import com.mallowigi.idea.themes.MTAccents
 
+/**
+ * [MTAccents.BREAKING_BAD] color
+ *
+ */
 class MTBreakingBadAccentAction : MTAbstractAccentAction() {
   override val accent: MTAccents
     get() = MTAccents.BREAKING_BAD

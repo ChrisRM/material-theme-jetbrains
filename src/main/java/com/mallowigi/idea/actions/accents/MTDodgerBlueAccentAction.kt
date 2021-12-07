@@ -27,6 +27,10 @@ package com.mallowigi.idea.actions.accents
 
 import com.mallowigi.idea.themes.MTAccents
 
+/**
+ * [MTAccents.DODGER_BLUE] color
+ *
+ */
 class MTDodgerBlueAccentAction : MTAbstractAccentAction() {
   override val accent: MTAccents
     get() = MTAccents.DODGER_BLUE

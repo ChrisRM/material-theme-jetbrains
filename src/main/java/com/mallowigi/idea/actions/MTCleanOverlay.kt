@@ -32,12 +32,24 @@ import com.mallowigi.idea.messages.MaterialThemeBundle
 import com.mallowigi.idea.notifications.MTNotifications
 import com.mallowigi.idea.ui.OverlayPainter
 
+/**
+ * Clean overlays if they are still lingering.
+ *
+ */
 class MTCleanOverlay : AnAction() {
+  /**
+   * Action performed
+   *
+   */
   override fun actionPerformed(e: AnActionEvent) {
     OverlayPainter.instance.cleanOverlays()
     MTAnalytics.instance.track(MTAnalytics.CLEAN_OVERLAYS)
     MTNotifications.showSimple(e.project!!, MaterialThemeBundle.message("MTCleanOverlay.notification"))
   }
 
+  /**
+   * Is dumb aware
+   *
+   */
   override fun isDumbAware(): Boolean = true
 }

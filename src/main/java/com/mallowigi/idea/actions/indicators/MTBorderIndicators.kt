@@ -27,6 +27,10 @@ package com.mallowigi.idea.actions.indicators
 
 import com.mallowigi.idea.config.enums.IndicatorStyles
 
+/**
+ * [IndicatorStyles.BORDER] style
+ *
+ */
 class MTBorderIndicators : MTAbstractIndicatorsAction() {
   override val indicatorStyle: IndicatorStyles
     get() = IndicatorStyles.BORDER

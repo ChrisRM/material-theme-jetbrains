@@ -27,6 +27,10 @@ package com.mallowigi.idea.actions.themes
 
 import com.mallowigi.idea.themes.MTTheme
 
+/**
+ * [MTTheme.DEEPOCEAN] theme
+ *
+ */
 class MTDeepOceanThemeAction : MTAbstractThemeAction() {
   override val theme: MTTheme
     get() = MTTheme.DEEPOCEAN

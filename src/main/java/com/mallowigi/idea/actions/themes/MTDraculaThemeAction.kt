@@ -27,6 +27,10 @@ package com.mallowigi.idea.actions.themes
 
 import com.mallowigi.idea.themes.MTTheme
 
+/**
+ * [MTTheme.DRACULA] theme
+ *
+ */
 class MTDraculaThemeAction : MTAbstractThemeAction() {
   override val theme: MTTheme
     get() = MTTheme.DRACULA

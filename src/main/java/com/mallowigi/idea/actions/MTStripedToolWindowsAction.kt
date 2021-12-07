@@ -34,6 +34,10 @@ import com.mallowigi.idea.config.application.MTConfig
 import com.mallowigi.idea.messages.MaterialThemeBundle.message
 import com.mallowigi.idea.utils.MTUiUtils
 
+/**
+ * Toggle Striped Tool Windows
+ *
+ */
 class MTStripedToolWindowsAction : MTToggleAction() {
   override fun isSelected(e: AnActionEvent): Boolean = MTConfig.getInstance().isStripedToolWindowsEnabled
 

@@ -27,6 +27,10 @@ package com.mallowigi.idea.actions.accents
 
 import com.mallowigi.idea.themes.MTAccents
 
+/**
+ * [MTAccents.ACID_LIME] color
+ *
+ */
 class MTAcidLimeAccentAction : MTAbstractAccentAction() {
   override val accent: MTAccents
     get() = MTAccents.ACID_LIME

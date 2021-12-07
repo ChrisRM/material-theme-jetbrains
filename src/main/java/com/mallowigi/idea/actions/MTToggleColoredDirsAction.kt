@@ -31,6 +31,10 @@ import com.mallowigi.idea.MTAnalytics.Companion.instance
 import com.mallowigi.idea.MTThemeManager
 import com.mallowigi.idea.config.application.MTConfig
 
+/**
+ * Toggle Colored Directories
+ *
+ */
 class MTToggleColoredDirsAction : MTToggleAction() {
   override fun isSelected(e: AnActionEvent): Boolean = MTConfig.getInstance().isUseColoredDirectories
 

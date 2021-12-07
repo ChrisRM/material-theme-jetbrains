@@ -30,12 +30,28 @@ import com.intellij.openapi.actionSystem.AnActionEvent
 import com.mallowigi.idea.license.MTMainProductLicenseChecker
 import com.mallowigi.idea.messages.MaterialThemeBundle.message
 
+/**
+ * Activates License
+ *
+ */
 class MTActivateLicenseAction : AnAction() {
+  /**
+   * Shows the license modal
+   *
+   */
   override fun actionPerformed(e: AnActionEvent): Unit =
     MTMainProductLicenseChecker.instance.requestLicense(message("plugin.activateLicense"))
 
+  /**
+   * Is dumb aware
+   *
+   */
   override fun isDumbAware(): Boolean = true
 
+  /**
+   * Only shows if no license
+   *
+   */
   override fun update(e: AnActionEvent) {
     e.presentation.isEnabled = !MTMainProductLicenseChecker.instance.isLicensed
   }

@@ -27,6 +27,10 @@ package com.mallowigi.idea.actions.accents
 
 import com.mallowigi.idea.themes.MTAccents
 
+/**
+ * [MTAccents.TOMATO] color
+ *
+ */
 class MTTomatoAccentAction : MTAbstractAccentAction() {
   override val accent: MTAccents
     get() = MTAccents.TOMATO

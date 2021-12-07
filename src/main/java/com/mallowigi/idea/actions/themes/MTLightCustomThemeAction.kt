@@ -29,6 +29,10 @@ import com.intellij.openapi.actionSystem.AnActionEvent
 import com.mallowigi.idea.license.MTMainProductLicenseChecker
 import com.mallowigi.idea.themes.MTTheme
 
+/**
+ * [MTTheme.LIGHT_CUSTOM] theme
+ *
+ */
 class MTLightCustomThemeAction : MTAbstractThemeAction() {
   override val theme: MTTheme
     get() = MTTheme.LIGHT_CUSTOM

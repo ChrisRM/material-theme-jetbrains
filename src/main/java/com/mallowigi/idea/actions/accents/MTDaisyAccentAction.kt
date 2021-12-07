@@ -27,6 +27,10 @@ package com.mallowigi.idea.actions.accents
 
 import com.mallowigi.idea.themes.MTAccents
 
+/**
+ * [MTAccents.DAISY] color
+ *
+ */
 class MTDaisyAccentAction : MTAbstractAccentAction() {
   override val accent: MTAccents
     get() = MTAccents.DAISY

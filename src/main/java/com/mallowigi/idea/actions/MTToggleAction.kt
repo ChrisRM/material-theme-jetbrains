@@ -38,7 +38,6 @@ import com.mallowigi.idea.messages.MaterialThemeBundle.message
 import com.mallowigi.idea.notifications.MTNotifications.showSimple
 import java.awt.Component
 import java.awt.Graphics
-import java.text.MessageFormat
 import javax.swing.Icon
 import javax.swing.UIManager
 
@@ -84,7 +83,7 @@ abstract class MTToggleAction : ToggleAction() {
   override fun setSelected(e: AnActionEvent, state: Boolean) {
     val notificationMessage = e.presentation.text
     val restText = message(if (state) "action.toggle.enabled" else "action.toggle.disabled")
-    showSimple(e.project!!, MessageFormat.format("<b>{0}</b> {1}", notificationMessage, restText))
+    showSimple(e.project ?: return, message("notification.message", notificationMessage, restText))
   }
 
   /**

@@ -30,6 +30,10 @@ import com.mallowigi.idea.MTAnalytics
 import com.mallowigi.idea.MTThemeManager
 import com.mallowigi.idea.config.application.MTConfig
 
+/**
+ * Toggle Tabs Custom Font
+ *
+ */
 class MTTabCustomFontAction : MTToggleAction() {
   override fun isSelected(e: AnActionEvent): Boolean = MTConfig.getInstance().isTabFontSizeEnabled
 

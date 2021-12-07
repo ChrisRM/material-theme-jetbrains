@@ -30,6 +30,10 @@ import com.mallowigi.idea.MTAnalytics
 import com.mallowigi.idea.MTThemeManager
 import com.mallowigi.idea.config.application.MTConfig
 
+/**
+ * Toggle Tree Custom Font
+ *
+ */
 class MTTreeCustomFontAction : MTToggleAction() {
   override fun isSelected(e: AnActionEvent): Boolean = MTConfig.getInstance().isTreeFontSizeEnabled
 

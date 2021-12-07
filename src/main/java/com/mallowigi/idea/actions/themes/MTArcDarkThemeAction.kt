@@ -27,6 +27,10 @@ package com.mallowigi.idea.actions.themes
 
 import com.mallowigi.idea.themes.MTTheme
 
+/**
+ * [MTTheme.ARC_DARK] theme
+ *
+ */
 class MTArcDarkThemeAction : MTAbstractThemeAction() {
   override val theme: MTTheme
     get() = MTTheme.ARC_DARK

@@ -27,6 +27,10 @@ package com.mallowigi.idea.actions.accents
 
 import com.mallowigi.idea.themes.MTAccents
 
+/**
+ * [MTAccents.CARBON] color
+ *
+ */
 class MTCarbonAccentAction : MTAbstractAccentAction() {
   override val accent: MTAccents
     get() = MTAccents.CARBON

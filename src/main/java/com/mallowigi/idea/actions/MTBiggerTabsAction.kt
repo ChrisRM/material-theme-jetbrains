@@ -30,15 +30,28 @@ import com.intellij.openapi.actionSystem.AnActionEvent
 import com.mallowigi.idea.MTAnalytics
 import com.mallowigi.idea.MTAnalytics.Companion.instance
 import com.mallowigi.idea.MTThemeManager
+import com.mallowigi.idea.config.application.MTConfig
 import com.mallowigi.idea.messages.MaterialThemeBundle.message
 import com.mallowigi.idea.notifications.MTNotifications.showSimple
 
+/**
+ * Sets recommended tab height
+ *
+ */
 class MTBiggerTabsAction : AnAction() {
+  /**
+   * Action performed
+   *
+   */
   override fun actionPerformed(e: AnActionEvent) {
-    MTThemeManager.instance.setTabsHeight(42)
+    MTThemeManager.instance.setTabsHeight(MTConfig.DEFAULT_TAB_HEIGHT)
     instance.track(MTAnalytics.RECOMMENDED_HEIGHT)
-    showSimple(e.project!!, message("MTBiggerTabsAction.notification"))
+    showSimple(e.project ?: return, message("MTBiggerTabsAction.notification"))
   }
 
+  /**
+   * Is dumb aware
+   *
+   */
   override fun isDumbAware(): Boolean = true
 }

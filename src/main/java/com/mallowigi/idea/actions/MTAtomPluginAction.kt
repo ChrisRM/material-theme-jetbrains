@@ -40,6 +40,10 @@ import java.net.URISyntaxException
  *
  */
 class MTAtomPluginAction : AnAction() {
+  /**
+   * Opens browser to download the Atom plugin
+   *
+   */
   override fun actionPerformed(e: AnActionEvent): Unit = try {
     Desktop.getDesktop().browse(URI(message("atom.plugin.url")))
   } catch (ioException: IOException) {
@@ -48,5 +52,9 @@ class MTAtomPluginAction : AnAction() {
     thisLogger().error(e)
   }
 
+  /**
+   * Is dumb aware
+   *
+   */
   override fun isDumbAware(): Boolean = true
 }

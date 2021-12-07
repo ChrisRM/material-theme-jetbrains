@@ -32,6 +32,10 @@ import com.mallowigi.idea.MTThemeManager
 import com.mallowigi.idea.config.application.MTConfig
 import com.mallowigi.idea.config.ui.MTForm
 
+/**
+ * Toggle Material Fonts
+ *
+ */
 class MTMaterialFontsAction : MTToggleAction() {
   override fun isSelected(e: AnActionEvent): Boolean = MTConfig.getInstance().isUseMaterialFont
 

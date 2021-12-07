@@ -34,11 +34,23 @@ import com.mallowigi.idea.MTAnalytics.Companion.instance
 import com.mallowigi.idea.wizard.MTWizardDialog
 import com.mallowigi.idea.wizard.MTWizardStepsProvider
 
+/**
+ * Displays the Wizard
+ *
+ */
 class MTConfigWizardAction : AnAction(), DumbAware {
+  /**
+   * Action performed
+   *
+   */
   override fun actionPerformed(e: AnActionEvent) {
     ApplicationManager.getApplication().invokeLater { MTWizardDialog(MTWizardStepsProvider(), false).show() }
     instance.track(MTAnalytics.SHOW_WIZARD)
   }
 
+  /**
+   * Is dumb aware
+   *
+   */
   override fun isDumbAware(): Boolean = true
 }
