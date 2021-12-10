@@ -47,6 +47,8 @@ import java.awt.Toolkit
 import java.awt.Window
 import java.awt.event.AWTEventListener
 import java.awt.event.WindowEvent
+import java.awt.event.WindowEvent.WINDOW_CLOSED
+import java.awt.event.WindowEvent.WINDOW_CLOSING
 import java.util.ArrayDeque
 import java.util.Deque
 import javax.swing.JComponent
@@ -106,11 +108,11 @@ class OverlayPainter : AWTEventListener, Disposable {
 
     // Remove highlights when all windows are closed
     when {
-      event.id == WindowEvent.WINDOW_CLOSED && openedWindowsStack.contains(source)         -> {
+      event.id in listOf(WINDOW_CLOSED, WINDOW_CLOSING) && openedWindowsStack.contains(source) -> {
         openedWindowsStack.remove(source)
         if (openedWindowsStack.isEmpty()) removeOverlays()
       }
-      event.id == WindowEvent.WINDOW_OPENED && MTUiUtils.isDialogWindow(source as Window?) -> {
+      event.id == WindowEvent.WINDOW_OPENED && MTUiUtils.isDialogWindow(source as Window?)     -> {
         openedWindowsStack.push(source)
         updateOverlays()
       }
