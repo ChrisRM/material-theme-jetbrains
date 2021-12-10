@@ -23,69 +23,35 @@
  *
  *
  */
+package com.mallowigi.idea.utils
 
-package com.mallowigi.idea.utils;
+import com.intellij.ui.ColorUtil
+import com.intellij.util.ui.UIUtil
+import com.mallowigi.idea.utils.MTUI.Panel.linkForeground
+import javax.swing.UIManager
 
-import com.intellij.ide.ui.laf.darcula.DarculaLaf;
-import com.intellij.ui.ColorUtil;
-import com.intellij.ui.scale.JBUIScale;
-import com.intellij.util.ui.UIUtil;
-import com.mallowigi.idea.config.application.MTConfig;
-import com.mallowigi.idea.themes.models.MTThemeable;
-import org.jetbrains.annotations.NonNls;
-import sun.awt.AppContext;
+/**
+ * Add custom CSS for Editor Kits
+ *
+ */
+object MTStyledKitPatcher {
 
-import javax.swing.*;
-import javax.swing.text.html.HTMLEditorKit;
-import javax.swing.text.html.StyleSheet;
-import java.lang.reflect.Field;
-import java.net.URL;
-
-import static com.mallowigi.idea.utils.MTUiUtils.DARCULA;
-
-// Note: cannot convert to kotlin
-public enum MTStyledKitPatcher {
-  ;
-
-  public static final String STYLED_EDITOR_KIT = "StyledEditorKit.JBDefaultStyle";
-  public static final String RETINA = "@2x.css";
-  public static final String NON_RETINA = ".css";
+  /**
+   * The UI key
+   */
+  private const val STYLED_EDITOR_KIT = "StyledEditorKit.JBDefaultStyle"
 
   /**
    * Patch the Styled Editor Kit for the doc comments
    */
-  public static void patchStyledEditorKit() {
-    final MTThemeable selectedTheme = MTConfig.getInstance().getSelectedTheme().getTheme();
-    final String retinaSuffix = JBUIScale.isUsrHiDPI() ? RETINA : NON_RETINA;
+  fun patchStyledEditorKit() {
+    val defaults = UIManager.getLookAndFeelDefaults()
+    val styleSheet = UIUtil.getHTMLEditorKit().styleSheet ?: return
+    val accentColor = ColorUtil.toHex(linkForeground)
+    val css = "a, address, b { color: #%s; }"
 
-    // Load css
-    final URL url = selectedTheme.getClass().getResource(selectedTheme.getThemeId() + retinaSuffix);
-    if (url == null) {
-      return;
-    }
-
-    final UIDefaults defaults = UIManager.getLookAndFeelDefaults();
-    StyleSheet styleSheet = UIUtil.loadStyleSheet(url);
-    if (styleSheet == null) {
-      final URL fallbackUrl = DarculaLaf.class.getResource(DARCULA + retinaSuffix);
-      styleSheet = UIUtil.loadStyleSheet(fallbackUrl);
-    }
-
-    // Add custom accent color
-    assert styleSheet != null;
-    final String accentColor = ColorUtil.toHex(MTUI.Panel.getLinkForeground());
-
-    @NonNls final String css = "a, address, b { color: #%s; }";
-    styleSheet.addRule(String.format(css, accentColor));
-    UIManager.put(STYLED_EDITOR_KIT, styleSheet);
-    defaults.put(STYLED_EDITOR_KIT, styleSheet);
-
-    try {
-      final Field keyField = HTMLEditorKit.class.getDeclaredField("DEFAULT_STYLES_KEY");
-      keyField.setAccessible(true);
-      AppContext.getAppContext().put(keyField.get(null), styleSheet);
-    } catch (final IllegalAccessException | NoSuchFieldException e) {
-      // do nothing
-    }
+    styleSheet.addRule(String.format(css, accentColor))
+    UIManager.put(STYLED_EDITOR_KIT, styleSheet)
+    defaults[STYLED_EDITOR_KIT] = styleSheet
   }
 }
