@@ -54,24 +54,43 @@
     </console-font>
     <option name="CONSOLE_LIGATURES" value="true" />
     <colors>
-        <option name="ActionButton.hoverBackground" value="444a7350" />
-        <option name="ActionButton.pressedBackground" value="444a73" />
-        <option name="ActionButton.iconTextForeground" value="a9b8e8" />
+
+
         <option name="ADDED_LINES_COLOR" value="7af8ca" />
         <option name="ANNOTATIONS_COLOR" value="fffbf7" />
+        <option name="ActionButton.hoverBackground" value="444a7350" />
+        <option name="ActionButton.iconTextForeground" value="a9b8e8" />
+        <option name="ActionButton.pressedBackground" value="444a73" />
+        <option name="DIAGRAM_NODE_SLOPPY_BACKGROUND" value="444a73" />
+        <option name="DIAGRAM_NOTE_SLOPPY_BACKGROUND" value="444a73" />
+        <option name="Bookmark.Mnemonic.iconBackground" value="444a73" />
+        <option name="Bookmark.Mnemonic.iconBorderColor" value="444a73" />
+        <option name="Bookmark.Mnemonic.iconForeground" value="ffffff" />
+        <option name="Bookmark.iconBackground" value="4fd6be" />
+        <option name="BookmarkIcon.background" value="4fd6be" />
+        <option name="BookmarkMnemonicIcon.background" value="444a73" />
+        <option name="BookmarkMnemonicIcon.borderColor" value="444a73" />
+        <option name="BookmarkMnemonicIcon.foreground" value="ffffff" />
         <option name="CARET_COLOR" value="4fd6be" />
         <option name="CARET_ROW_COLOR" value="2f334d" />
         <option name="CONSOLE_BACKGROUND_KEY" value="1e2030" />
         <option name="DELETED_LINES_COLOR" value="ff5370" />
         <option name="DIAGRAM_ANNOTATION_EDGE" value="baacff" />
+        <option name="DIAGRAM_COARSE_GRID" value="444a73" />
         <option name="DIAGRAM_DEFAULT_EDGE" value="c8d3f5" />
+        <option name="DIAGRAM_FINE_GRID" value="444a73" />
         <option name="DIAGRAM_GENERALIZATION_EDGE" value="70b0ff" />
+        <option name="DIAGRAM_HOT_SPOTS" value="34d3fb" />
         <option name="DIAGRAM_INNER_EDGE" value="ff757f" />
         <option name="DIAGRAM_NODE_BACKGROUND" value="222436" />
-        <option name="DIAGRAM_NODE_HEADER" value="444a73" />
+        <option name="DIAGRAM_NODE_BORDER" value="444a73" />
+        <option name="DIAGRAM_NODE_HEADER" value="2f334d" />
         <option name="DIAGRAM_NOTE_BACKGROUND" value="222436" />
         <option name="DIAGRAM_NOTE_BORDER" value="c8d3f5" />
         <option name="DIAGRAM_REALIZATION_EDGE" value="ffd88c" />
+        <option name="DIAGRAM_SELECTED_NODE_BORDER" value="4fd6be" />
+        <option name="DIAGRAM_SELECTION_BOX_BORDER" value="4fd6be" />
+        <option name="DIAGRAM_SNAPPING_LINES" value="4fd6be" />
         <option name="DIFF_SEPARATORS_BACKGROUND" value="1e2030" />
         <option name="DIFF_SEPARATORS_TOP_BORDER" value="191a2a" />
         <option name="DOCUMENTATION_COLOR" value="2f334d" />
@@ -97,7 +116,29 @@
         <option name="FILESTATUS_addedOutside" value="7af8ca" />
         <option name="FILESTATUS_changelistConflict" value="ffdb8e" />
         <option name="FILESTATUS_modifiedOutside" value="70b0ff" />
-
+        <option name="FOLDED_TEXT_BORDER_COLOR" value="222436" />
+        <option name="GUTTER_BACKGROUND" value="222436" />
+        <option name="INDENT_GUIDE" value="444a73" />
+        <option name="INFORMATION_HINT" value="222436" />
+        <option name="INLINE_REFACTORING_SETTINGS_DEFAULT" value="222436" />
+        <option name="INLINE_REFACTORING_SETTINGS_FOCUSED" value="444a73" />
+        <option name="INLINE_REFACTORING_SETTINGS_HOVERED" value="2f334d" />
+        <option name="JUPYTER.CELL_UNDER_CARET_COMMAND_MODE_STRIPE_COLOR" value="74a0f1" />
+        <option name="JUPYTER.CELL_UNDER_CARET_EDITOR_MODE_STRIPE_COLOR" value="444a73" />
+        <option name="JUPYTER.CODE_CELL_BACKGROUND" value="2f334d" />
+        <option name="JUPYTER.GUTTER_INPUT_EXECUTION_COUNT" value="f3c1ff" />
+        <option name="JUPYTER.GUTTER_OUTPUT_EXECUTION_COUNT" value="34d3fb" />
+        <option name="JUPYTER.PROGRESS_STATUS_RUNNING_COLOR" value="74a0f1" />
+        <option name="JUPYTER.SAUSAGE_BUTTON_BORDER_COLOR" value="222436" />
+        <option name="JUPYTER.SAUSAGE_BUTTON_SHORTCUT_COLOR" value="a9b8e8" />
+        <option name="LINE_NUMBERS_COLOR" value="444a73" />
+        <option name="LINE_NUMBER_ON_CARET_ROW_COLOR" value="828bb8" />
+        <option name="LOOKUP_COLOR" value="2f334d" />
+        <option name="METHOD_SEPARATORS_COLOR" value="444a73" />
+        <option name="MODIFIED_LINES_COLOR" value="34d3fb" />
+        <option name="MODIFIED_TAB_ICON" value="4fd6be" />
+        <option name="MT_ADDED" value="7af8ca" />
+        <option name="MT_DELETED" value="ff5370" />
         <option name="MT_FILESTATUS_ADDED" value="7af8ca" />
         <option name="MT_FILESTATUS_COPIED" value="7af8ca" />
         <option name="MT_FILESTATUS_DELETED" value="ff5370" />
@@ -118,52 +159,18 @@
         <option name="MT_FILESTATUS_addedOutside" value="baacff" />
         <option name="MT_FILESTATUS_changelistConflict" value="ffdb8e" />
         <option name="MT_FILESTATUS_modifiedOutside" value="70b0ff" />
-
-        <option name="FOLDED_TEXT_BORDER_COLOR" value="222436" />
-        <option name="GUTTER_BACKGROUND" value="222436" />
-        <option name="INDENT_GUIDE" value="444a73" />
-        <option name="INFORMATION_HINT" value="222436" />
-        <option name="INLINE_REFACTORING_SETTINGS_DEFAULT" value="222436" />
-        <option name="INLINE_REFACTORING_SETTINGS_FOCUSED" value="444a73" />
-        <option name="INLINE_REFACTORING_SETTINGS_HOVERED" value="2f334d" />
-
-        <option name="JUPYTER.CELL_UNDER_CARET_COMMAND_MODE_STRIPE_COLOR" value="74a0f1" />
-        <option name="JUPYTER.CELL_UNDER_CARET_EDITOR_MODE_STRIPE_COLOR" value="444a73" />
-        <option name="JUPYTER.CODE_CELL_BACKGROUND" value="2f334d" />
-        <option name="LOOKUP_COLOR" value="2f334d" />
-        <option name="JUPYTER.GUTTER_INPUT_EXECUTION_COUNT" value="f3c1ff" />
-        <option name="JUPYTER.GUTTER_OUTPUT_EXECUTION_COUNT" value="34d3fb" />
-        <option name="JUPYTER.PROGRESS_STATUS_RUNNING_COLOR" value="74a0f1" />
-        <option name="JUPYTER.SAUSAGE_BUTTON_BORDER_COLOR" value="222436" />
-        <option name="JUPYTER.SAUSAGE_BUTTON_SHORTCUT_COLOR" value="a9b8e8" />
-
-        <option name="LINE_NUMBERS_COLOR" value="444a73" />
-        <option name="LINE_NUMBER_ON_CARET_ROW_COLOR" value="828bb8" />
-        <option name="METHOD_SEPARATORS_COLOR" value="444a73" />
-        <option name="MODIFIED_LINES_COLOR" value="34d3fb" />
-        <option name="MODIFIED_TAB_ICON" value="4fd6be" />
-        <option name="MT_ADDED" value="7af8ca" />
-        <option name="MT_DELETED" value="ff5370" />
         <option name="MT_IDEA_FILESTATUS_IGNORED" value="bcc4d6" />
         <option name="MT_IGNORE.PROJECT_VIEW.IGNORED" value="bcc4d6" />
         <option name="MT_MODIFIED" value="34d3fb" />
         <option name="MT_RENAMED" value="70b0ff" />
         <option name="MT_SUPPRESSED" value="bcc4d6" />
-        <option name="BookmarkIcon.background" value="4fd6be" />
-        <option name="Bookmark.iconBackground" value="4fd6be" />
-        <option name="MnemonicIcon.foreground" value="ffffff" />
         <option name="MnemonicIcon.background" value="444a73" />
         <option name="MnemonicIcon.borderColor" value="444a73" />
-        <option name="BookmarkMnemonicIcon.foreground" value="ffffff" />
-        <option name="Bookmark.Mnemonic.iconForeground" value="ffffff" />
-        <option name="BookmarkMnemonicIcon.background" value="444a73" />
-        <option name="Bookmark.Mnemonic.iconBackground" value="444a73" />
-        <option name="BookmarkMnemonicIcon.borderColor" value="444a73" />
-        <option name="Bookmark.Mnemonic.iconBorderColor" value="444a73" />
+        <option name="MnemonicIcon.foreground" value="ffffff" />
         <option name="NOTIFICATION_BACKGROUND" value="191a2a" />
         <option name="NOT_CHANGED" value="bcc4d6" />
-        <option name="QUESTION_HINT" value="222436" />
         <option name="PROMOTION_PANE" value="222436" />
+        <option name="QUESTION_HINT" value="222436" />
         <option name="RECENT_LOCATIONS_SELECTION" value="222436" />
         <option name="RIGHT_MARGIN_COLOR" value="828bb8" />
         <option name="SELECTED_INDENT_GUIDE" value="444a73" />

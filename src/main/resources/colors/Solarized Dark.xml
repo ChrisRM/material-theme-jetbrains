@@ -53,25 +53,44 @@
     </console-font>
     <option name="CONSOLE_LINE_SPACING" value="1.6" />
     <colors>
-        <option name="ActionButton.hoverBackground" value="005a6f50" />
-        <option name="ActionButton.pressedBackground" value="005a6f" />
-        <option name="ActionButton.iconTextForeground" value="586e75" />
+
+
         <option name="ADDED_LINES_COLOR" value="859900" />
         <option name="ANNOTATIONS_COLOR" value="7899a4" />
         <option name="ANNOTATIONS_MERGED_COLOR" value="2aa198" />
+        <option name="ActionButton.hoverBackground" value="005a6f50" />
+        <option name="ActionButton.iconTextForeground" value="586e75" />
+        <option name="ActionButton.pressedBackground" value="005a6f" />
+        <option name="DIAGRAM_NODE_SLOPPY_BACKGROUND" value="005a6f" />
+        <option name="DIAGRAM_NOTE_SLOPPY_BACKGROUND" value="005a6f" />
+        <option name="Bookmark.Mnemonic.iconBackground" value="2e4c52" />
+        <option name="Bookmark.Mnemonic.iconBorderColor" value="2e4c52" />
+        <option name="Bookmark.Mnemonic.iconForeground" value="ffffff" />
+        <option name="Bookmark.iconBackground" value="d33682" />
+        <option name="BookmarkIcon.background" value="d33682" />
+        <option name="BookmarkMnemonicIcon.background" value="2e4c52" />
+        <option name="BookmarkMnemonicIcon.borderColor" value="2e4c52" />
+        <option name="BookmarkMnemonicIcon.foreground" value="ffffff" />
         <option name="CARET_COLOR" value="d30102" />
         <option name="CARET_ROW_COLOR" value="73642" />
         <option name="CONSOLE_BACKGROUND_KEY" value="2b36" />
         <option name="DELETED_LINES_COLOR" value="d30102" />
         <option name="DIAGRAM_ANNOTATION_EDGE" value="d33682" />
+        <option name="DIAGRAM_COARSE_GRID" value="2b4e58" />
         <option name="DIAGRAM_DEFAULT_EDGE" value="c3cee3" />
+        <option name="DIAGRAM_FINE_GRID" value="93640" />
         <option name="DIAGRAM_GENERALIZATION_EDGE" value="b58900" />
+        <option name="DIAGRAM_HOT_SPOTS" value="268bd2" />
         <option name="DIAGRAM_INNER_EDGE" value="859900" />
         <option name="DIAGRAM_NODE_BACKGROUND" value="2b36" />
-        <option name="DIAGRAM_NODE_HEADER" value="2b4e58" />
+        <option name="DIAGRAM_NODE_BORDER" value="93640" />
+        <option name="DIAGRAM_NODE_HEADER" value="003745" />
         <option name="DIAGRAM_NOTE_BACKGROUND" value="2b36" />
         <option name="DIAGRAM_NOTE_BORDER" value="c3cee3" />
         <option name="DIAGRAM_REALIZATION_EDGE" value="cb4b16" />
+        <option name="DIAGRAM_SELECTED_NODE_BORDER" value="d33682" />
+        <option name="DIAGRAM_SELECTION_BOX_BORDER" value="d33682" />
+        <option name="DIAGRAM_SNAPPING_LINES" value="d33682" />
         <option name="DIFF_SEPARATORS_BACKGROUND" value="4242a" />
         <option name="DIFF_SEPARATORS_TOP_BORDER" value="1e26" />
         <option name="DOCUMENTATION_COLOR" value="003745" />
@@ -98,7 +117,36 @@
         <option name="FILESTATUS_addedOutside" value="d33682" />
         <option name="FILESTATUS_changelistConflict" value="cb4b16" />
         <option name="FILESTATUS_modifiedOutside" value="6c71c4" />
-
+        <option name="FOLDED_TEXT_BORDER_COLOR" value="1b4652" />
+        <option name="GUTTER_BACKGROUND" value="2b36" />
+        <option name="HTML_TAG_TREE_LEVEL0" value="dc322f" />
+        <option name="HTML_TAG_TREE_LEVEL1" value="b58900" />
+        <option name="HTML_TAG_TREE_LEVEL2" value="859900" />
+        <option name="HTML_TAG_TREE_LEVEL3" value="2aa198" />
+        <option name="HTML_TAG_TREE_LEVEL4" value="268bd2" />
+        <option name="HTML_TAG_TREE_LEVEL5" value="d33682" />
+        <option name="IGNORED_ADDED_LINES_BORDER_COLOR" value="2d6754" />
+        <option name="IGNORED_DELETED_LINES_BORDER_COLOR" value="496e7d" />
+        <option name="IGNORED_MODIFIED_LINES_BORDER_COLOR" value="25566b" />
+        <option name="INDENT_GUIDE" value="93640" />
+        <option name="INFORMATION_HINT" value="52730" />
+        <option name="INLINE_REFACTORING_SETTINGS_DEFAULT" value="2b36" />
+        <option name="INLINE_REFACTORING_SETTINGS_FOCUSED" value="2e4c52" />
+        <option name="INLINE_REFACTORING_SETTINGS_HOVERED" value="113a46" />
+        <option name="JUPYTER.CELL_UNDER_CARET_COMMAND_MODE_STRIPE_COLOR" value="d33682" />
+        <option name="JUPYTER.CELL_UNDER_CARET_EDITOR_MODE_STRIPE_COLOR" value="005a6f" />
+        <option name="JUPYTER.CODE_CELL_BACKGROUND" value="003745" />
+        <option name="JUPYTER.GUTTER_INPUT_EXECUTION_COUNT" value="839496" />
+        <option name="JUPYTER.GUTTER_OUTPUT_EXECUTION_COUNT" value="268bd2" />
+        <option name="JUPYTER.PROGRESS_STATUS_RUNNING_COLOR" value="d33682" />
+        <option name="JUPYTER.SAUSAGE_BUTTON_BORDER_COLOR" value="0D3640" />
+        <option name="JUPYTER.SAUSAGE_BUTTON_SHORTCUT_COLOR" value="586e75" />
+        <option name="LINE_NUMBERS_COLOR" value="839496" />
+        <option name="LINE_NUMBER_ON_CARET_ROW_COLOR" value="ffffff" />
+        <option name="LOOKUP_COLOR" value="003745" />
+        <option name="METHOD_SEPARATORS_COLOR" value="73642" />
+        <option name="MODIFIED_LINES_COLOR" value="268bd2" />
+        <option name="MODIFIED_TAB_ICON" value="d33682" />
         <option name="MT_FILESTATUS_ADDED" value="859900" />
         <option name="MT_FILESTATUS_COPIED" value="859900" />
         <option name="MT_FILESTATUS_DELETED" value="b58900" />
@@ -119,50 +167,9 @@
         <option name="MT_FILESTATUS_addedOutside" value="d33682" />
         <option name="MT_FILESTATUS_changelistConflict" value="cb4b16" />
         <option name="MT_FILESTATUS_modifiedOutside" value="6c71c4" />
-
-        <option name="FOLDED_TEXT_BORDER_COLOR" value="1b4652" />
-        <option name="GUTTER_BACKGROUND" value="2b36" />
-        <option name="HTML_TAG_TREE_LEVEL0" value="dc322f" />
-        <option name="HTML_TAG_TREE_LEVEL1" value="b58900" />
-        <option name="HTML_TAG_TREE_LEVEL2" value="859900" />
-        <option name="HTML_TAG_TREE_LEVEL3" value="2aa198" />
-        <option name="HTML_TAG_TREE_LEVEL4" value="268bd2" />
-        <option name="HTML_TAG_TREE_LEVEL5" value="d33682" />
-        <option name="IGNORED_ADDED_LINES_BORDER_COLOR" value="2d6754" />
-        <option name="IGNORED_DELETED_LINES_BORDER_COLOR" value="496e7d" />
-        <option name="IGNORED_MODIFIED_LINES_BORDER_COLOR" value="25566b" />
-        <option name="INDENT_GUIDE" value="93640" />
-        <option name="INFORMATION_HINT" value="52730" />
-        <option name="INLINE_REFACTORING_SETTINGS_DEFAULT" value="2b36" />
-        <option name="INLINE_REFACTORING_SETTINGS_FOCUSED" value="2e4c52" />
-        <option name="INLINE_REFACTORING_SETTINGS_HOVERED" value="113a46" />
-
-        <option name="JUPYTER.CELL_UNDER_CARET_COMMAND_MODE_STRIPE_COLOR" value="d33682" />
-        <option name="JUPYTER.CELL_UNDER_CARET_EDITOR_MODE_STRIPE_COLOR" value="005a6f" />
-        <option name="JUPYTER.CODE_CELL_BACKGROUND" value="003745" />
-        <option name="LOOKUP_COLOR" value="003745" />
-        <option name="JUPYTER.GUTTER_INPUT_EXECUTION_COUNT" value="839496" />
-        <option name="JUPYTER.GUTTER_OUTPUT_EXECUTION_COUNT" value="268bd2" />
-        <option name="JUPYTER.PROGRESS_STATUS_RUNNING_COLOR" value="d33682" />
-        <option name="JUPYTER.SAUSAGE_BUTTON_BORDER_COLOR" value="0D3640" />
-        <option name="JUPYTER.SAUSAGE_BUTTON_SHORTCUT_COLOR" value="586e75" />
-
-        <option name="LINE_NUMBERS_COLOR" value="839496" />
-        <option name="LINE_NUMBER_ON_CARET_ROW_COLOR" value="ffffff" />
-        <option name="METHOD_SEPARATORS_COLOR" value="73642" />
-        <option name="MODIFIED_LINES_COLOR" value="268bd2" />
-        <option name="MODIFIED_TAB_ICON" value="d33682" />
-        <option name="BookmarkIcon.background" value="d33682" />
-        <option name="Bookmark.iconBackground" value="d33682" />
-        <option name="MnemonicIcon.foreground" value="ffffff" />
         <option name="MnemonicIcon.background" value="2e4c52" />
         <option name="MnemonicIcon.borderColor" value="2e4c52" />
-        <option name="BookmarkMnemonicIcon.foreground" value="ffffff" />
-        <option name="Bookmark.Mnemonic.iconForeground" value="ffffff" />
-        <option name="BookmarkMnemonicIcon.background" value="2e4c52" />
-        <option name="Bookmark.Mnemonic.iconBackground" value="2e4c52" />
-        <option name="BookmarkMnemonicIcon.borderColor" value="2e4c52" />
-        <option name="Bookmark.Mnemonic.iconBorderColor" value="2e4c52" />
+        <option name="MnemonicIcon.foreground" value="ffffff" />
         <option name="NOTIFICATION_BACKGROUND" value="3847" />
         <option name="PROMOTION_PANE" value="252e" />
         <option name="QUESTION_HINT" value="1f6c8f" />
