@@ -23,69 +23,57 @@
  *
  *
  */
+package com.mallowigi.idea.annotators
 
-package com.mallowigi.idea.annotators;
+import com.intellij.lang.annotation.AnnotationHolder
+import com.intellij.lang.annotation.Annotator
+import com.intellij.lang.annotation.HighlightSeverity
+import com.intellij.openapi.editor.colors.TextAttributesKey
+import com.intellij.openapi.util.TextRange
+import com.intellij.psi.PsiComment
+import com.intellij.psi.PsiElement
+import com.intellij.psi.PsiElementVisitor
+import com.intellij.psi.util.PsiTreeUtil
+import com.intellij.psi.xml.XmlTag
+import com.mallowigi.idea.config.application.MTConfig
 
-import com.intellij.lang.annotation.AnnotationHolder;
-import com.intellij.lang.annotation.Annotator;
-import com.intellij.lang.annotation.HighlightSeverity;
-import com.intellij.openapi.editor.colors.TextAttributesKey;
-import com.intellij.openapi.util.TextRange;
-import com.intellij.psi.PsiComment;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiElementVisitor;
-import com.intellij.psi.util.PsiTreeUtil;
-import com.intellij.psi.xml.XmlTag;
-import com.mallowigi.idea.config.application.MTConfig;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+internal abstract class BaseAnnotator : PsiElementVisitor(), Annotator {
+  protected var myHolder: AnnotationHolder? = null
 
-abstract class BaseAnnotator extends PsiElementVisitor implements Annotator {
-  @Nullable
-  protected AnnotationHolder myHolder;
-
-  @Override
-  public final void annotate(@NotNull final PsiElement element, @NotNull final AnnotationHolder holder) {
-    assert myHolder == null : "unsupported concurrent annotator invocation";
-    if (!MTConfig.getInstance().isCodeAdditionsEnabled()) {
-      return;
-    }
+  override fun annotate(element: PsiElement, holder: AnnotationHolder) {
+    assert(myHolder == null) { "unsupported concurrent annotator invocation" }
+    if (!MTConfig.getInstance().isCodeAdditionsEnabled) return
 
     try {
-      myHolder = holder;
-      element.accept(this);
+      myHolder = holder
+      element.accept(this)
     } finally {
-      myHolder = null;
+      myHolder = null
     }
-
   }
 
-  @Override
-  public void visitElement(@NotNull final PsiElement element) {
-    assert myHolder != null;
-    final TextAttributesKey kind = getKeywordKind(element);
-    if (kind == null) {
-      return;
-    }
-    if (PsiTreeUtil.getParentOfType(element, PsiComment.class) != null) {
-      return;
-    } else if (PsiTreeUtil.getParentOfType(element, XmlTag.class) != null) {
-      return;
+  override fun visitElement(element: PsiElement) {
+    assert(myHolder != null)
+    val kind = getKeywordKind(element) ?: return
+
+    if (PsiTreeUtil.getParentOfType(element, PsiComment::class.java) != null) {
+      return
+    } else if (PsiTreeUtil.getParentOfType(element, XmlTag::class.java) != null) {
+      return
     }
 
-    final TextRange textRange = element.getTextRange();
-    final TextRange range = new TextRange(textRange.getStartOffset(), textRange.getEndOffset());
+    val textRange = element.textRange
+    val range = TextRange(textRange.startOffset, textRange.endOffset)
+    val enforcedLanguageAdditions = MTConfig.getInstance().isEnforcedLanguageAdditions
+    val highlightSeverity =
+      if (enforcedLanguageAdditions) HighlightSeverity.WEAK_WARNING else HighlightSeverity.INFORMATION
 
-    final boolean enforcedLanguageAdditions = MTConfig.getInstance().isEnforcedLanguageAdditions();
-    final HighlightSeverity highlightSeverity = enforcedLanguageAdditions ? HighlightSeverity.WEAK_WARNING : HighlightSeverity.INFORMATION;
-
-    myHolder.newSilentAnnotation(highlightSeverity)
-            .needsUpdateOnTyping(false)
-            .range(range)
-            .textAttributes(kind)
-            .create();
+    (myHolder ?: return).newSilentAnnotation(highlightSeverity)
+      .needsUpdateOnTyping(false)
+      .range(range)
+      .textAttributes(kind)
+      .create()
   }
 
-  @Nullable
-  protected abstract TextAttributesKey getKeywordKind(@NotNull PsiElement element);
+  protected abstract fun getKeywordKind(element: PsiElement): TextAttributesKey?
 }

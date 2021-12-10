@@ -1,4 +1,3 @@
-
 /*
  * The MIT License (MIT)
  *
@@ -24,77 +23,69 @@
  *
  *
  */
+package com.mallowigi.idea.annotators
 
-package com.mallowigi.idea.annotators;
+import com.intellij.openapi.editor.DefaultLanguageHighlighterColors
+import com.intellij.openapi.editor.colors.TextAttributesKey
+import com.intellij.psi.PsiElement
+import com.intellij.util.ObjectUtils
 
-import com.intellij.openapi.editor.DefaultLanguageHighlighterColors;
-import com.intellij.openapi.editor.colors.TextAttributesKey;
-import com.intellij.psi.PsiElement;
-import com.intellij.util.ObjectUtils;
-import org.jetbrains.annotations.NotNull;
-
-@SuppressWarnings({"DuplicateStringLiteralInspection",
-  "SwitchStatement",
-  "ClassWithTooManyFields",
-  "SwitchStatementWithTooManyBranches"})
-public final class PHPAnnotator extends BaseAnnotator {
-  public static final TextAttributesKey PHP_KEYWORD = ObjectUtils.notNull(TextAttributesKey.find("PHP_KEYWORD"),
-    DefaultLanguageHighlighterColors.KEYWORD);
-  public static final TextAttributesKey PHP_FUNCTION = ObjectUtils.notNull(TextAttributesKey.find("PHP_FUNCTION_CALL"),
-    DefaultLanguageHighlighterColors.KEYWORD);
-  public static final TextAttributesKey PHP_NUMBER = ObjectUtils.notNull(TextAttributesKey.find("PHP_NUMBER"),
-    DefaultLanguageHighlighterColors.KEYWORD);
-  public static final TextAttributesKey MODIFIER = TextAttributesKey.createTextAttributesKey("PHP.MODIFIER", PHP_KEYWORD);
-  public static final TextAttributesKey STATIC_FINAL = TextAttributesKey.createTextAttributesKey("PHP.STATIC_FINAL", PHP_KEYWORD);
-  public static final TextAttributesKey THIS_SELF = TextAttributesKey.createTextAttributesKey("PHP.THIS_SELF", PHP_KEYWORD);
-  public static final TextAttributesKey USE_NAMESPACE = TextAttributesKey.createTextAttributesKey("PHP.USE_NAMESPACE", PHP_KEYWORD);
-  public static final TextAttributesKey FUNCTION = TextAttributesKey.createTextAttributesKey("PHP.FUNCTION", PHP_KEYWORD);
-  public static final TextAttributesKey PRIMITIVE = TextAttributesKey.createTextAttributesKey("PHP.PRIMITIVE", PHP_NUMBER);
-  public static final TextAttributesKey NULL = TextAttributesKey.createTextAttributesKey("PHP.NULL", PHP_NUMBER);
-  public static final TextAttributesKey EXIT = TextAttributesKey.createTextAttributesKey("PHP.EXIT", PHP_FUNCTION);
-  public static final TextAttributesKey ECHO = TextAttributesKey.createTextAttributesKey("PHP.ECHO", PHP_FUNCTION);
-
-  @SuppressWarnings("OverlyLongMethod")
-  @Override
-  protected TextAttributesKey getKeywordKind(@NotNull final PsiElement element) {
-    TextAttributesKey kind = null;
-    switch (element.getText()) {
-      case "private":
-      case "public":
-      case "protected":
-        kind = MODIFIER;
-        break;
-      case "static":
-      case "final":
-        kind = STATIC_FINAL;
-        break;
-      case "self":
-        kind = THIS_SELF;
-        break;
-      case "use":
-      case "namespace":
-        kind = USE_NAMESPACE;
-        break;
-      case "true":
-      case "false":
-        kind = PRIMITIVE;
-        break;
-      case "null":
-        kind = NULL;
-        break;
-      case "exit":
-      case "die":
-        kind = EXIT;
-        break;
-      case "function":
-        kind = FUNCTION;
-        break;
-      case "echo":
-        kind = ECHO;
-        break;
-      default:
-        break;
+internal class PHPAnnotator : BaseAnnotator() {
+  override fun getKeywordKind(element: PsiElement): TextAttributesKey? {
+    var kind: TextAttributesKey? = null
+    when (element.text) {
+      "private", "public", "protected" -> kind = MODIFIER
+      "static", "final"                -> kind = STATIC_FINAL
+      "self"                           -> kind = THIS_SELF
+      "use", "namespace"               -> kind = USE_NAMESPACE
+      "true", "false"                  -> kind = PRIMITIVE
+      "null"                           -> kind = NULL
+      "exit", "die"                    -> kind = EXIT
+      "function"                       -> kind = FUNCTION
+      "echo"                           -> kind = ECHO
     }
-    return kind;
+    return kind
+  }
+
+  companion object {
+    val PHP_KEYWORD = ObjectUtils.notNull(
+      TextAttributesKey.find("PHP_KEYWORD"),
+      DefaultLanguageHighlighterColors.KEYWORD
+    )
+    val PHP_FUNCTION = ObjectUtils.notNull(
+      TextAttributesKey.find("PHP_FUNCTION_CALL"),
+      DefaultLanguageHighlighterColors.KEYWORD
+    )
+    val PHP_NUMBER = ObjectUtils.notNull(
+      TextAttributesKey.find("PHP_NUMBER"),
+      DefaultLanguageHighlighterColors.KEYWORD
+    )
+
+    @JvmField
+    val MODIFIER = TextAttributesKey.createTextAttributesKey("PHP.MODIFIER", PHP_KEYWORD)
+
+    @JvmField
+    val STATIC_FINAL = TextAttributesKey.createTextAttributesKey("PHP.STATIC_FINAL", PHP_KEYWORD)
+
+    @JvmField
+    val THIS_SELF = TextAttributesKey.createTextAttributesKey("PHP.THIS_SELF", PHP_KEYWORD)
+
+    @JvmField
+    val USE_NAMESPACE = TextAttributesKey.createTextAttributesKey("PHP.USE_NAMESPACE", PHP_KEYWORD)
+
+    @JvmField
+    val FUNCTION = TextAttributesKey.createTextAttributesKey("PHP.FUNCTION", PHP_KEYWORD)
+
+    @JvmField
+    val PRIMITIVE = TextAttributesKey.createTextAttributesKey("PHP.PRIMITIVE", PHP_NUMBER)
+
+    @JvmField
+    val NULL = TextAttributesKey.createTextAttributesKey("PHP.NULL", PHP_NUMBER)
+
+    @JvmField
+    val EXIT = TextAttributesKey.createTextAttributesKey("PHP.EXIT", PHP_FUNCTION)
+
+    @JvmField
+    val ECHO = TextAttributesKey.createTextAttributesKey("PHP.ECHO", PHP_FUNCTION)
   }
 }

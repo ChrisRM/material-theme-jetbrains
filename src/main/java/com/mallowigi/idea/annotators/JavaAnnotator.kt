@@ -23,62 +23,51 @@
  *
  *
  */
+package com.mallowigi.idea.annotators
 
-package com.mallowigi.idea.annotators;
+import com.intellij.openapi.editor.DefaultLanguageHighlighterColors
+import com.intellij.openapi.editor.colors.TextAttributesKey
+import com.intellij.psi.PsiElement
+import com.intellij.util.ObjectUtils
 
-import com.intellij.openapi.editor.DefaultLanguageHighlighterColors;
-import com.intellij.openapi.editor.colors.TextAttributesKey;
-import com.intellij.psi.PsiElement;
-import com.intellij.util.ObjectUtils;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
-@SuppressWarnings({"DuplicateStringLiteralInspection",
-  "SwitchStatement"
-})
-public final class JavaAnnotator extends BaseAnnotator {
-
-  public static final TextAttributesKey JAVA_KEYWORD = ObjectUtils.notNull(TextAttributesKey.find("JAVA_KEYWORD"),
-    DefaultLanguageHighlighterColors.KEYWORD);
-  private static final TextAttributesKey JAVA_NUMBER = ObjectUtils.notNull(TextAttributesKey.find("JAVA_NUMBER"),
-    DefaultLanguageHighlighterColors.NUMBER);
-  public static final TextAttributesKey MODIFIER = TextAttributesKey.createTextAttributesKey("JAVA.MODIFIER", JAVA_KEYWORD);
-  public static final TextAttributesKey STATIC_FINAL = TextAttributesKey.createTextAttributesKey("JAVA.STATIC_FINAL", JAVA_KEYWORD);
-  public static final TextAttributesKey THIS_SUPER = TextAttributesKey.createTextAttributesKey("JAVA.THIS_SUPER", JAVA_KEYWORD);
-  public static final TextAttributesKey IMPORT_PACKAGE = TextAttributesKey.createTextAttributesKey("JAVA.IMPORT_PACKAGE", JAVA_KEYWORD);
-  public static final TextAttributesKey PRIMITIVE = TextAttributesKey.createTextAttributesKey("JAVA.PRIMITIVE", JAVA_NUMBER);
-
-  @SuppressWarnings("SwitchStatementWithTooManyBranches")
-  @Nullable
-  @Override
-  protected TextAttributesKey getKeywordKind(@NotNull final PsiElement element) {
-    TextAttributesKey kind = null;
-    switch (element.getText()) {
-      case "private":
-      case "public":
-      case "protected":
-        kind = MODIFIER;
-        break;
-      case "static":
-      case "final":
-        kind = STATIC_FINAL;
-        break;
-      case "this":
-      case "super":
-        kind = THIS_SUPER;
-        break;
-      case "import":
-      case "package":
-        kind = IMPORT_PACKAGE;
-        break;
-      case "null":
-      case "true":
-      case "false":
-        kind = PRIMITIVE;
-        break;
-      default:
-        break;
+internal class JavaAnnotator : BaseAnnotator() {
+  override fun getKeywordKind(element: PsiElement): TextAttributesKey? {
+    var kind: TextAttributesKey? = null
+    when (element.text) {
+      "private", "public", "protected" -> kind = MODIFIER
+      "static", "final"                -> kind = STATIC_FINAL
+      "this", "super"                  -> kind = THIS_SUPER
+      "import", "package"              -> kind = IMPORT_PACKAGE
+      "null", "true", "false"          -> kind = PRIMITIVE
     }
-    return kind;
+    return kind
+  }
+
+  companion object {
+    @JvmField
+    val JAVA_KEYWORD = ObjectUtils.notNull(
+      TextAttributesKey.find("JAVA_KEYWORD"),
+      DefaultLanguageHighlighterColors.KEYWORD
+    )
+
+    private val JAVA_NUMBER = ObjectUtils.notNull(
+      TextAttributesKey.find("JAVA_NUMBER"),
+      DefaultLanguageHighlighterColors.NUMBER
+    )
+
+    @JvmField
+    val MODIFIER = TextAttributesKey.createTextAttributesKey("JAVA.MODIFIER", JAVA_KEYWORD)
+
+    @JvmField
+    val STATIC_FINAL = TextAttributesKey.createTextAttributesKey("JAVA.STATIC_FINAL", JAVA_KEYWORD)
+
+    @JvmField
+    val THIS_SUPER = TextAttributesKey.createTextAttributesKey("JAVA.THIS_SUPER", JAVA_KEYWORD)
+
+    @JvmField
+    val IMPORT_PACKAGE = TextAttributesKey.createTextAttributesKey("JAVA.IMPORT_PACKAGE", JAVA_KEYWORD)
+
+    @JvmField
+    val PRIMITIVE = TextAttributesKey.createTextAttributesKey("JAVA.PRIMITIVE", JAVA_NUMBER)
   }
 }

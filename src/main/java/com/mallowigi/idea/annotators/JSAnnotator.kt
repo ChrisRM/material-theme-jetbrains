@@ -23,175 +23,125 @@
  *
  *
  */
+package com.mallowigi.idea.annotators
 
-package com.mallowigi.idea.annotators;
+import com.intellij.lang.annotation.HighlightSeverity
+import com.intellij.openapi.editor.DefaultLanguageHighlighterColors
+import com.intellij.openapi.editor.colors.TextAttributesKey
+import com.intellij.openapi.util.TextRange
+import com.intellij.psi.PsiComment
+import com.intellij.psi.PsiElement
+import com.intellij.psi.impl.source.tree.LeafPsiElement
+import com.intellij.psi.util.PsiTreeUtil
+import com.intellij.util.ObjectUtils
+import com.mallowigi.idea.config.application.MTConfig
 
-import com.intellij.lang.annotation.HighlightSeverity;
-import com.intellij.openapi.editor.DefaultLanguageHighlighterColors;
-import com.intellij.openapi.editor.colors.TextAttributesKey;
-import com.intellij.openapi.util.TextRange;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.impl.source.tree.LeafPsiElement;
-import com.intellij.util.ObjectUtils;
-import com.mallowigi.idea.config.application.MTConfig;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+@Suppress("KDocMissingDocumentation")
+internal open class JSAnnotator : BaseAnnotator() {
+  override fun visitElement(element: PsiElement) {
+    assert(myHolder != null)
+    val kind = getKeywordKind(element) ?: return
 
-@SuppressWarnings({"DuplicateStringLiteralInspection",
-  "SwitchStatement",
-  "SwitchStatementWithTooManyBranches",
-  "OverlyLongMethod",
-  "ClassWithTooManyFields",
-  "OverlyComplexMethod",
-  "DesignForExtension"})
-public class JSAnnotator extends BaseAnnotator {
+    if (PsiTreeUtil.getParentOfType(element, PsiComment::class.java) != null) return
 
-  public static final TextAttributesKey JS_KEYWORD = ObjectUtils.notNull(TextAttributesKey.find("JS.KEYWORD"),
-    DefaultLanguageHighlighterColors.KEYWORD);
-  public static final TextAttributesKey JS_NUMBER = ObjectUtils.notNull(TextAttributesKey.find("JS.NUMBER"),
-    DefaultLanguageHighlighterColors.KEYWORD);
-  public static final TextAttributesKey THIS_SUPER = TextAttributesKey.createTextAttributesKey("JS.THIS_SUPER", JS_KEYWORD);
-  public static final TextAttributesKey MODULE_KEYWORD = TextAttributesKey.createTextAttributesKey("JS.MODULE_KEYWORD", JS_KEYWORD);
-  public static final TextAttributesKey DEBUGGER_STMT = TextAttributesKey.createTextAttributesKey("JS.DEBUGGER_STMT", JS_KEYWORD);
-  public static final TextAttributesKey CONSOLE = TextAttributesKey.createTextAttributesKey("JS.CONSOLE", JS_KEYWORD);
-  public static final TextAttributesKey NULL = TextAttributesKey.createTextAttributesKey("JS.NULL_UNDEFINED", JS_NUMBER);
-  public static final TextAttributesKey VAL = TextAttributesKey.createTextAttributesKey("JS.VAR_DEF", JS_KEYWORD);
-  public static final TextAttributesKey FUNCTION = TextAttributesKey.createTextAttributesKey("JS.FUNCTION", JS_KEYWORD);
-  public static final TextAttributesKey PRIMITIVE = TextAttributesKey.createTextAttributesKey("JS.PRIMITIVE", JS_NUMBER);
-  public static final TextAttributesKey CLASS_EXTENDS = TextAttributesKey.createTextAttributesKey("JS.CLASS_EXTENDS", JS_KEYWORD);
-  public static final TextAttributesKey YIELD = TextAttributesKey.createTextAttributesKey("JS.YIELD", JS_KEYWORD);
-  public static final TextAttributesKey ASYNC_AWAIT = TextAttributesKey.createTextAttributesKey("JS.ASYNC_AWAIT", JS_KEYWORD);
-  public static final TextAttributesKey TRY_CATCH = TextAttributesKey.createTextAttributesKey("JS.TRY_CATCH", JS_KEYWORD);
-  public static final TextAttributesKey INLINE = TextAttributesKey.createTextAttributesKey("JS.INLINE", JS_KEYWORD);
-  public static final TextAttributesKey NEW = TextAttributesKey.createTextAttributesKey("JS.NEW", JS_KEYWORD);
-  public static final TextAttributesKey PROTOTYPE = TextAttributesKey.createTextAttributesKey("JS.PROTOTYPE", JS_KEYWORD);
-  public static final TextAttributesKey CONSTRUCTOR = TextAttributesKey.createTextAttributesKey("JS.CONSTRUCTOR", JS_KEYWORD);
-  public static final TextAttributesKey IF_ELSE = TextAttributesKey.createTextAttributesKey("JS.IF_ELSE", JS_KEYWORD);
-  public static final TextAttributesKey GET_SET = TextAttributesKey.createTextAttributesKey("JS.GET_SET", JS_KEYWORD);
+    if (element !is LeafPsiElement) return
 
-  @Override
-  public final void visitElement(@NotNull final PsiElement element) {
-    assert myHolder != null;
-    final TextAttributesKey kind = getKeywordKind(element);
-    if (kind == null) {
-      return;
-    }
-    if (!(element instanceof LeafPsiElement)) {
-      return;
-    }
+    val textRange = element.getTextRange()
+    val range = TextRange(textRange.startOffset, textRange.endOffset)
+    val enforcedLanguageAdditions = MTConfig.getInstance().isEnforcedLanguageAdditions
+    val highlightSeverity =
+      if (enforcedLanguageAdditions) HighlightSeverity.WEAK_WARNING else HighlightSeverity.INFORMATION
 
-    //    final IElementType elementType = element.getNode().getElementType();
-    //    if (!elementType.toString().contains("KEYWORD") && !elementType.toString().contains("LITERAL")) {
-    //      return;
-    //    }
-
-    final TextRange textRange = element.getTextRange();
-    final TextRange range = new TextRange(textRange.getStartOffset(), textRange.getEndOffset());
-
-    final boolean enforcedLanguageAdditions = MTConfig.getInstance().isEnforcedLanguageAdditions();
-    final HighlightSeverity highlightSeverity = enforcedLanguageAdditions ? HighlightSeverity.WEAK_WARNING : HighlightSeverity.INFORMATION;
-
-    myHolder.newSilentAnnotation(highlightSeverity)
-            .needsUpdateOnTyping(false)
-            .range(range)
-            .textAttributes(kind)
-            .create();
+    (myHolder ?: return).newSilentAnnotation(highlightSeverity).needsUpdateOnTyping(false).range(range)
+      .textAttributes(kind).create()
   }
 
-  @Nullable
-  @Override
-  protected TextAttributesKey getKeywordKind(@NotNull final PsiElement element) {
-    TextAttributesKey kind = null;
-    switch (element.getText()) {
-      case "this":
-      case "super":
-        kind = THIS_SUPER;
-        break;
-      case "if":
-      case "else":
-      case "for":
-      case "while":
-      case "do":
-        kind = IF_ELSE;
-        break;
-      case "constructor":
-        kind = CONSTRUCTOR;
-        break;
-      case "return":
-      case "yield":
-        kind = YIELD;
-        break;
-      case "new":
-      case "throw":
-        kind = NEW;
-        break;
-      case "async":
-      case "await":
-        kind = ASYNC_AWAIT;
-        break;
-      case "try":
-      case "catch":
-      case "finally":
-        kind = TRY_CATCH;
-        break;
-      case "export":
-      case "import":
-      case "require":
-      case "from":
-      case "default":
-      case "module":
-        kind = MODULE_KEYWORD;
-        break;
-      case "debugger":
-        kind = DEBUGGER_STMT;
-        break;
-      case "prototype":
-        kind = PROTOTYPE;
-        break;
-      case "null":
-      case "undefined":
-      case "NaN":
-        kind = NULL;
-        break;
-      case "true":
-      case "false":
-        kind = PRIMITIVE;
-        break;
-      case "var":
-      case "let":
-      case "const":
-        kind = VAL;
-        break;
-      case "function":
-      case "static":
-        kind = FUNCTION;
-        break;
-      case "get":
-      case "set":
-        kind = GET_SET;
-        break;
-      case "abstract":
-      case "class":
-      case "extends":
-      case "implements":
-        kind = CLASS_EXTENDS;
-        break;
-      case "console":
-      case "window":
-      case "document":
-      case "global":
-        kind = CONSOLE;
-        break;
-      case "in":
-      case "of":
-      case "as":
-      case "instanceof":
-      case "typeof":
-        kind = INLINE;
-        break;
-      default:
-        break;
+  override fun getKeywordKind(element: PsiElement): TextAttributesKey? {
+    var kind: TextAttributesKey? = null
+    when (element.text) {
+      "this", "super"                                            -> kind = THIS_SUPER
+      "if", "else", "for", "while", "do"                         -> kind = IF_ELSE
+      "constructor"                                              -> kind = CONSTRUCTOR
+      "return", "yield"                                          -> kind = YIELD
+      "new", "throw"                                             -> kind = NEW
+      "async", "await"                                           -> kind = ASYNC_AWAIT
+      "try", "catch", "finally"                                  -> kind = TRY_CATCH
+      "export", "import", "require", "from", "default", "module" -> kind = MODULE_KEYWORD
+      "debugger"                                                 -> kind = DEBUGGER_STMT
+      "prototype"                                                -> kind = PROTOTYPE
+      "null", "undefined", "NaN"                                 -> kind = NULL
+      "true", "false"                                            -> kind = PRIMITIVE
+      "var", "let", "const"                                      -> kind = VAL
+      "function", "static"                                       -> kind = FUNCTION
+      "get", "set"                                               -> kind = GET_SET
+      "abstract", "class", "extends", "implements"               -> kind = CLASS_EXTENDS
+      "console", "window", "document", "global"                  -> kind = CONSOLE
+      "in", "of", "as", "instanceof", "typeof"                   -> kind = INLINE
     }
-    return kind;
+    return kind
+  }
+
+  companion object {
+    @JvmField
+    val JS_KEYWORD: TextAttributesKey =
+      ObjectUtils.notNull(TextAttributesKey.find("JS.KEYWORD"), DefaultLanguageHighlighterColors.KEYWORD)
+
+    @JvmField
+    val JS_NUMBER: TextAttributesKey =
+      ObjectUtils.notNull(TextAttributesKey.find("JS.NUMBER"), DefaultLanguageHighlighterColors.KEYWORD)
+
+    @JvmField
+    val THIS_SUPER: TextAttributesKey = TextAttributesKey.createTextAttributesKey("JS.THIS_SUPER", JS_KEYWORD)
+
+    @JvmField
+    val MODULE_KEYWORD: TextAttributesKey = TextAttributesKey.createTextAttributesKey("JS.MODULE_KEYWORD", JS_KEYWORD)
+
+    @JvmField
+    val DEBUGGER_STMT: TextAttributesKey = TextAttributesKey.createTextAttributesKey("JS.DEBUGGER_STMT", JS_KEYWORD)
+
+    @JvmField
+    val CONSOLE: TextAttributesKey = TextAttributesKey.createTextAttributesKey("JS.CONSOLE", JS_KEYWORD)
+
+    @JvmField
+    val NULL: TextAttributesKey = TextAttributesKey.createTextAttributesKey("JS.NULL_UNDEFINED", JS_NUMBER)
+
+    @JvmField
+    val VAL: TextAttributesKey = TextAttributesKey.createTextAttributesKey("JS.VAR_DEF", JS_KEYWORD)
+
+    @JvmField
+    val FUNCTION: TextAttributesKey = TextAttributesKey.createTextAttributesKey("JS.FUNCTION", JS_KEYWORD)
+
+    @JvmField
+    val PRIMITIVE: TextAttributesKey = TextAttributesKey.createTextAttributesKey("JS.PRIMITIVE", JS_NUMBER)
+
+    @JvmField
+    val CLASS_EXTENDS: TextAttributesKey = TextAttributesKey.createTextAttributesKey("JS.CLASS_EXTENDS", JS_KEYWORD)
+
+    @JvmField
+    val YIELD: TextAttributesKey = TextAttributesKey.createTextAttributesKey("JS.YIELD", JS_KEYWORD)
+
+    @JvmField
+    val ASYNC_AWAIT: TextAttributesKey = TextAttributesKey.createTextAttributesKey("JS.ASYNC_AWAIT", JS_KEYWORD)
+
+    @JvmField
+    val TRY_CATCH: TextAttributesKey = TextAttributesKey.createTextAttributesKey("JS.TRY_CATCH", JS_KEYWORD)
+
+    @JvmField
+    val INLINE: TextAttributesKey = TextAttributesKey.createTextAttributesKey("JS.INLINE", JS_KEYWORD)
+
+    @JvmField
+    val NEW: TextAttributesKey = TextAttributesKey.createTextAttributesKey("JS.NEW", JS_KEYWORD)
+
+    @JvmField
+    val PROTOTYPE: TextAttributesKey = TextAttributesKey.createTextAttributesKey("JS.PROTOTYPE", JS_KEYWORD)
+
+    @JvmField
+    val CONSTRUCTOR: TextAttributesKey = TextAttributesKey.createTextAttributesKey("JS.CONSTRUCTOR", JS_KEYWORD)
+
+    @JvmField
+    val IF_ELSE: TextAttributesKey = TextAttributesKey.createTextAttributesKey("JS.IF_ELSE", JS_KEYWORD)
+
+    @JvmField
+    val GET_SET: TextAttributesKey = TextAttributesKey.createTextAttributesKey("JS.GET_SET", JS_KEYWORD)
   }
 }

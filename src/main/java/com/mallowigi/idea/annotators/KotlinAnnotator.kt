@@ -1,4 +1,3 @@
-
 /*
  * The MIT License (MIT)
  *
@@ -24,85 +23,78 @@
  *
  *
  */
+package com.mallowigi.idea.annotators
 
-package com.mallowigi.idea.annotators;
+import com.intellij.openapi.editor.DefaultLanguageHighlighterColors
+import com.intellij.openapi.editor.colors.TextAttributesKey
+import com.intellij.psi.PsiElement
+import com.intellij.util.ObjectUtils
 
-import com.intellij.openapi.editor.DefaultLanguageHighlighterColors;
-import com.intellij.openapi.editor.colors.TextAttributesKey;
-import com.intellij.psi.PsiElement;
-import com.intellij.util.ObjectUtils;
-import org.jetbrains.annotations.NotNull;
-
-@SuppressWarnings({"DuplicateStringLiteralInspection",
-  "SwitchStatement",
-  "SwitchStatementWithTooManyBranches",
-  "ClassWithTooManyFields"})
-public final class KotlinAnnotator extends BaseAnnotator {
-
-  private static final TextAttributesKey KOTLIN_KEYWORD = ObjectUtils.notNull(TextAttributesKey.find("KOTLIN_KEYWORD"),
-    DefaultLanguageHighlighterColors.KEYWORD);
-  private static final TextAttributesKey KOTLIN_NUMBER = ObjectUtils.notNull(TextAttributesKey.find("KOTLIN_NUMBER"),
-    DefaultLanguageHighlighterColors.KEYWORD);
-  public static final TextAttributesKey MODIFIER = TextAttributesKey.createTextAttributesKey("KOTLIN.MODIFIER", JavaAnnotator.MODIFIER);
-  public static final TextAttributesKey COMPANION = TextAttributesKey.createTextAttributesKey("KOTLIN.COMPANION",
-    JavaAnnotator.STATIC_FINAL);
-  public static final TextAttributesKey DATA = TextAttributesKey.createTextAttributesKey("KOTLIN.DATA", JavaAnnotator.STATIC_FINAL);
-  public static final TextAttributesKey OP_INFIX = TextAttributesKey.createTextAttributesKey("KOTLIN.OP_INFIX", JavaAnnotator.STATIC_FINAL);
-  public static final TextAttributesKey THIS_SUPER = TextAttributesKey.createTextAttributesKey("KOTLIN.THIS_SUPER",
-    JavaAnnotator.THIS_SUPER);
-  public static final TextAttributesKey NULL_UNIT = TextAttributesKey.createTextAttributesKey("KOTLIN.NULL_UNIT", JavaAnnotator.PRIMITIVE);
-  public static final TextAttributesKey IMPORT_PACKAGE = TextAttributesKey.createTextAttributesKey("KOTLIN.IMPORT_PACKAGE",
-    JavaAnnotator.IMPORT_PACKAGE);
-  public static final TextAttributesKey SEALED_OVERRIDE = TextAttributesKey.createTextAttributesKey("KOTLIN.SEALED_OVERRIDE",
-    JavaAnnotator.STATIC_FINAL);
-  public static final TextAttributesKey PRIMITIVE = TextAttributesKey.createTextAttributesKey("KOTLIN.PRIMITIVE", JavaAnnotator.PRIMITIVE);
-
-  @SuppressWarnings("OverlyLongMethod")
-  @Override
-  protected TextAttributesKey getKeywordKind(@NotNull final PsiElement element) {
-    TextAttributesKey kind = null;
-    switch (element.getText()) {
-      case "private":
-      case "public":
-      case "protected":
-      case "internal":
-        kind = MODIFIER;
-        break;
-      case "sealed":
-      case "open":
-      case "override":
-        kind = SEALED_OVERRIDE;
-        break;
-      case "object":
-      case "companion":
-        kind = COMPANION;
-        break;
-      case "data":
-        kind = DATA;
-        break;
-      case "operator":
-      case "infix":
-        kind = OP_INFIX;
-        break;
-      case "this":
-      case "super":
-        kind = THIS_SUPER;
-        break;
-      case "null":
-      case "Unit":
-        kind = NULL_UNIT;
-        break;
-      case "import":
-      case "package":
-        kind = IMPORT_PACKAGE;
-        break;
-      case "true":
-      case "false":
-        kind = PRIMITIVE;
-        break;
-      default:
-        break;
+internal class KotlinAnnotator : BaseAnnotator() {
+  override fun getKeywordKind(element: PsiElement): TextAttributesKey? {
+    var kind: TextAttributesKey? = null
+    when (element.text) {
+      "private", "public", "protected", "internal" -> kind = MODIFIER
+      "sealed", "open", "override"                 -> kind = SEALED_OVERRIDE
+      "object", "companion"                        -> kind = COMPANION
+      "data"                                       -> kind = DATA
+      "operator", "infix"                          -> kind = OP_INFIX
+      "this", "super"                              -> kind = THIS_SUPER
+      "null", "Unit"                               -> kind = NULL_UNIT
+      "import", "package"                          -> kind = IMPORT_PACKAGE
+      "true", "false"                              -> kind = PRIMITIVE
+      else                                         -> {}
     }
-    return kind;
+    return kind
+  }
+
+  companion object {
+    private val KOTLIN_KEYWORD = ObjectUtils.notNull(
+      TextAttributesKey.find("KOTLIN_KEYWORD"),
+      DefaultLanguageHighlighterColors.KEYWORD
+    )
+    private val KOTLIN_NUMBER = ObjectUtils.notNull(
+      TextAttributesKey.find("KOTLIN_NUMBER"),
+      DefaultLanguageHighlighterColors.KEYWORD
+    )
+
+    @JvmField
+    val MODIFIER = TextAttributesKey.createTextAttributesKey("KOTLIN.MODIFIER", JavaAnnotator.MODIFIER)
+
+    @JvmField
+    val COMPANION = TextAttributesKey.createTextAttributesKey(
+      "KOTLIN.COMPANION",
+      JavaAnnotator.STATIC_FINAL
+    )
+
+    @JvmField
+    val DATA = TextAttributesKey.createTextAttributesKey("KOTLIN.DATA", JavaAnnotator.STATIC_FINAL)
+
+    @JvmField
+    val OP_INFIX = TextAttributesKey.createTextAttributesKey("KOTLIN.OP_INFIX", JavaAnnotator.STATIC_FINAL)
+
+    @JvmField
+    val THIS_SUPER = TextAttributesKey.createTextAttributesKey(
+      "KOTLIN.THIS_SUPER",
+      JavaAnnotator.THIS_SUPER
+    )
+
+    @JvmField
+    val NULL_UNIT = TextAttributesKey.createTextAttributesKey("KOTLIN.NULL_UNIT", JavaAnnotator.PRIMITIVE)
+
+    @JvmField
+    val IMPORT_PACKAGE = TextAttributesKey.createTextAttributesKey(
+      "KOTLIN.IMPORT_PACKAGE",
+      JavaAnnotator.IMPORT_PACKAGE
+    )
+
+    @JvmField
+    val SEALED_OVERRIDE = TextAttributesKey.createTextAttributesKey(
+      "KOTLIN.SEALED_OVERRIDE",
+      JavaAnnotator.STATIC_FINAL
+    )
+
+    @JvmField
+    val PRIMITIVE = TextAttributesKey.createTextAttributesKey("KOTLIN.PRIMITIVE", JavaAnnotator.PRIMITIVE)
   }
 }
