@@ -25,10 +25,8 @@
  */
 package com.mallowigi.idea.annotators
 
-import com.intellij.openapi.editor.DefaultLanguageHighlighterColors
 import com.intellij.openapi.editor.colors.TextAttributesKey
 import com.intellij.psi.PsiElement
-import com.intellij.util.ObjectUtils
 
 internal class PHPAnnotator : BaseAnnotator() {
   override fun getKeywordKind(element: PsiElement): TextAttributesKey? {
@@ -48,18 +46,9 @@ internal class PHPAnnotator : BaseAnnotator() {
   }
 
   companion object {
-    val PHP_KEYWORD = ObjectUtils.notNull(
-      TextAttributesKey.find("PHP_KEYWORD"),
-      DefaultLanguageHighlighterColors.KEYWORD
-    )
-    val PHP_FUNCTION = ObjectUtils.notNull(
-      TextAttributesKey.find("PHP_FUNCTION_CALL"),
-      DefaultLanguageHighlighterColors.KEYWORD
-    )
-    val PHP_NUMBER = ObjectUtils.notNull(
-      TextAttributesKey.find("PHP_NUMBER"),
-      DefaultLanguageHighlighterColors.KEYWORD
-    )
+    val PHP_KEYWORD = TextAttributesKey.find("PHP_KEYWORD")
+    val PHP_FUNCTION = TextAttributesKey.find("PHP_FUNCTION_CALL")
+    val PHP_NUMBER = TextAttributesKey.find("PHP_NUMBER")
 
     @JvmField
     val MODIFIER = TextAttributesKey.createTextAttributesKey("PHP.MODIFIER", PHP_KEYWORD)

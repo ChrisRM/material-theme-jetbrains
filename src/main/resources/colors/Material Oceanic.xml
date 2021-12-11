@@ -3181,6 +3181,54 @@
                 <option name="FOREGROUND" value="ffcb6b" />
             </value>
         </option>
+        <option name="PY.AS">
+            <value>
+                <option name="FOREGROUND" value="89ddff" />
+                <option name="FONT_TYPE" value="2" />
+            </value>
+        </option>
+        <option name="PY.ASYNC">
+            <value>
+                <option name="FOREGROUND" value="89ddff" />
+                <option name="FONT_TYPE" value="2" />
+            </value>
+        </option>
+        <option name="PY.IF_ELSE">
+            <value>
+                <option name="FOREGROUND" value="89ddff" />
+                <option name="FONT_TYPE" value="2" />
+            </value>
+        </option>
+        <option name="PY.IMPORT">
+            <value>
+                <option name="FOREGROUND" value="89ddff" />
+                <option name="FONT_TYPE" value="2" />
+            </value>
+        </option>
+        <option name="PY.TRY">
+            <value>
+                <option name="FOREGROUND" value="89ddff" />
+                <option name="FONT_TYPE" value="2" />
+            </value>
+        </option>
+        <option name="PY.RETURN">
+            <value>
+                <option name="FOREGROUND" value="89ddff" />
+                <option name="FONT_TYPE" value="2" />
+            </value>
+        </option>
+        <option name="PY.RAISE">
+            <value>
+                <option name="FOREGROUND" value="89ddff" />
+                <option name="FONT_TYPE" value="2" />
+            </value>
+        </option>
+        <option name="PY.WITH">
+            <value>
+                <option name="FOREGROUND" value="89ddff" />
+                <option name="FONT_TYPE" value="2" />
+            </value>
+        </option>
         <option name="PY.BUILTIN_NAME" baseAttributes="DEFAULT_PREDEFINED_SYMBOL" />
         <option name="PY.DECORATOR">
             <value>

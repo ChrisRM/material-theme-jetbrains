@@ -3132,6 +3132,26 @@
             </value>
         </option>
         <option name="PUPPET_HEREDOC_TAGS" baseAttributes="DEFAULT_IDENTIFIER" />
+        <option name="PY.IMPORT">
+            <value>
+                <option name="FOREGROUND" value="e4564a" />
+            </value>
+        </option>
+        <option name="PY.PRINT">
+            <value>
+                <option name="FOREGROUND" value="219598" />
+            </value>
+        </option>
+        <option name="PY.NONE">
+            <value>
+                <option name="FOREGROUND" value="986801" />
+            </value>
+        </option>
+        <option name="PY.TRUE_FALSE">
+            <value>
+                <option name="FOREGROUND" value="986801" />
+            </value>
+        </option>
         <option name="PY.DECORATOR">
             <value>
                 <option name="FOREGROUND" value="4078f2" />

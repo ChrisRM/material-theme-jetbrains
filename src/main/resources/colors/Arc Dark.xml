@@ -3145,6 +3145,12 @@
             </value>
         </option>
         <option name="PUPPET_HEREDOC_TAGS" baseAttributes="DEFAULT_IDENTIFIER" />
+        <option name="PY.IMPORT">
+            <value>
+                <option name="FOREGROUND" value="a7a7a7" />
+                <option name="FONT_TYPE" value="2" />
+            </value>
+        </option>
         <option name="PY.BUILTIN_NAME" baseAttributes="DEFAULT_PREDEFINED_SYMBOL" />
         <option name="PY.DECORATOR">
             <value>

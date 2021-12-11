@@ -1702,7 +1702,7 @@
         </option>
         <option name="JS.MODULE_KEYWORD">
             <value>
-                <option name="FOREGROUND" value="cb4b16" />
+                <option name="FOREGROUND" value="859900" />
             </value>
         </option>
         <option name="JS.MODULE_NAME">
@@ -3497,6 +3497,21 @@
                 <option name="EFFECT_TYPE" value="1" />
             </value>
         </option>
+        <option name="PY.DEF">
+            <value>
+                <option name="FONT_TYPE" value="1" />
+            </value>
+        </option>
+        <option name="PY.CLASS">
+            <value>
+                <option name="FONT_TYPE" value="1" />
+            </value>
+        </option>
+        <option name="PY.IMPORT">
+            <value>
+                <option name="FOREGROUND" value="859900" />
+            </value>
+        </option>
         <option name="PY.DECORATOR">
             <value>
                 <option name="FOREGROUND" value="6c71c4" />
@@ -3536,6 +3551,16 @@
         <option name="PY.STRING.B">
             <value>
                 <option name="FOREGROUND" value="2aa198" />
+            </value>
+        </option>
+        <option name="PY.TRUE_FALSE">
+            <value>
+                <option name="FOREGROUND" value="b58900" />
+            </value>
+        </option>
+        <option name="PY.NONE">
+            <value>
+                <option name="FOREGROUND" value="b58900" />
             </value>
         </option>
         <option name="Predefined types">

@@ -3064,6 +3064,54 @@
                 <option name="FOREGROUND" value="E2931D" />
             </value>
         </option>
+        <option name="PY.AS">
+            <value>
+                <option name="FOREGROUND" value="39adb5" />
+                <option name="FONT_TYPE" value="2" />
+            </value>
+        </option>
+        <option name="PY.ASYNC">
+            <value>
+                <option name="FOREGROUND" value="39adb5" />
+                <option name="FONT_TYPE" value="2" />
+            </value>
+        </option>
+        <option name="PY.IF_ELSE">
+            <value>
+                <option name="FOREGROUND" value="39adb5" />
+                <option name="FONT_TYPE" value="2" />
+            </value>
+        </option>
+        <option name="PY.IMPORT">
+            <value>
+                <option name="FOREGROUND" value="39adb5" />
+                <option name="FONT_TYPE" value="2" />
+            </value>
+        </option>
+        <option name="PY.TRY">
+            <value>
+                <option name="FOREGROUND" value="39adb5" />
+                <option name="FONT_TYPE" value="2" />
+            </value>
+        </option>
+        <option name="PY.RETURN">
+            <value>
+                <option name="FOREGROUND" value="39adb5" />
+                <option name="FONT_TYPE" value="2" />
+            </value>
+        </option>
+        <option name="PY.RAISE">
+            <value>
+                <option name="FOREGROUND" value="39adb5" />
+                <option name="FONT_TYPE" value="2" />
+            </value>
+        </option>
+        <option name="PY.WITH">
+            <value>
+                <option name="FOREGROUND" value="39adb5" />
+                <option name="FONT_TYPE" value="2" />
+            </value>
+        </option>
         <option name="PY.BRACES">
             <value>
                 <option name="FOREGROUND" value="39adb5" />

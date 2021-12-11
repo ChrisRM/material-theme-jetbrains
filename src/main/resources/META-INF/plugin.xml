@@ -128,7 +128,7 @@
     <!--    <depends optional="true" config-file="withProperties.xml">com.intellij.properties</depends>-->
     <depends optional="true" config-file="withKotlin.xml">org.jetbrains.kotlin</depends>
     <depends optional="true" config-file="withPhp.xml">com.jetbrains.php</depends>
-    <!--    <depends optional="true" config-file="withPython.xml">com.intellij.modules.python</depends>-->
+    <depends optional="true" config-file="withPython.xml">com.intellij.modules.python</depends>
     <!--    <depends optional="true" config-file="withGo.xml">com.intellij.modules.go-capable</depends>-->
     <!--    <depends optional="true" config-file="withAppCode.xml">com.intellij.modules.cidr.lang</depends>-->
     <depends optional="true" config-file="withJba.xml">com.intellij.CloudConfig</depends>

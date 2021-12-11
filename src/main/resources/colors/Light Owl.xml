@@ -3174,6 +3174,12 @@
                 <option name="FOREGROUND" value="219598" />
             </value>
         </option>
+        <option name="PY.IMPORT">
+            <value>
+                <option name="FOREGROUND" value="994cc3" />
+                <option name="FONT_TYPE" value="2" />
+            </value>
+        </option>
         <option name="PY.BUILTIN_NAME" baseAttributes="DEFAULT_PREDEFINED_SYMBOL" />
         <option name="PY.DECORATOR">
             <value>
@@ -3217,6 +3223,16 @@
         <option name="PY.STRING.B">
             <value>
                 <option name="FOREGROUND" value="4876d6" />
+            </value>
+        </option>
+        <option name="PY.TRUE_FALSE">
+            <value>
+                <option name="FOREGROUND" value="bc5454" />
+            </value>
+        </option>
+        <option name="PY.NONE">
+            <value>
+                <option name="FOREGROUND" value="bc5454" />
             </value>
         </option>
         <option name="RDOC_DIRECTIVE">

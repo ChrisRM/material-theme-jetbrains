@@ -3153,6 +3153,11 @@
                 <option name="FOREGROUND" value="d73a49" />
             </value>
         </option>
+        <option name="PY.IMPORT">
+            <value>
+                <option name="FOREGROUND" value="d73a49" />
+            </value>
+        </option>
         <option name="PY.BUILTIN_NAME" baseAttributes="DEFAULT_PREDEFINED_SYMBOL" />
         <option name="PY.DECORATOR">
             <value>
