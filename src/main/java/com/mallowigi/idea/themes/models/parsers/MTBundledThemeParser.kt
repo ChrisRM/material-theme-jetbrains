@@ -29,7 +29,6 @@ import com.intellij.ui.ColorUtil
 import com.mallowigi.idea.themes.models.MTBundledTheme
 import com.mallowigi.idea.themes.models.MTThemeColor
 import com.mallowigi.idea.utils.MTColorUtils.parseColor
-import org.jetbrains.annotations.NonNls
 import javax.swing.plaf.ColorUIResource
 
 /**
@@ -364,21 +363,21 @@ abstract class MTBundledThemeParser internal constructor(private val mtBundledTh
   private fun findColor(id: String): MTThemeColor? = colors.firstOrNull { it.id == id }
 
   companion object {
-    private const val EXCLUDED_TAG: @NonNls String = "excluded"
-    private const val ACCENT_TAG: @NonNls String = "accent"
-    private const val NOTIFICATIONS_TAG: @NonNls String = "notifications"
-    private const val TREE_SELECTION_TAG: @NonNls String = "treeSelection"
-    private const val HIGHLIGHT_TAG: @NonNls String = "highlight"
-    private const val SECOND_BORDER_TAG: @NonNls String = "secondBorder"
-    private const val TABLE_SELECTED_TAG: @NonNls String = "tableSelected"
-    private const val CONTRAST_TAG: @NonNls String = "contrast"
-    private const val DISABLED_TAG: @NonNls String = "disabled"
-    private const val SECONDARY_BACKGROUND_TAG: @NonNls String = "secondaryBackground"
-    private const val BUTTON_TAG: @NonNls String = "button"
-    private const val SELECTION_FOREGROUND_TAG: @NonNls String = "selectionForeground"
-    private const val SELECTION_BACKGROUND_TAG: @NonNls String = "selectionBackground"
-    private const val TEXT_TAG: @NonNls String = "text"
-    private const val FOREGROUND_TAG: @NonNls String = "foreground"
-    private const val BACKGROUND_TAG: @NonNls String = "background"
+    private const val EXCLUDED_TAG: String = "excluded"
+    private const val ACCENT_TAG: String = "accent"
+    private const val NOTIFICATIONS_TAG: String = "notifications"
+    private const val TREE_SELECTION_TAG: String = "treeSelection"
+    private const val HIGHLIGHT_TAG: String = "highlight"
+    private const val SECOND_BORDER_TAG: String = "secondBorder"
+    private const val TABLE_SELECTED_TAG: String = "tableSelected"
+    private const val CONTRAST_TAG: String = "contrast"
+    private const val DISABLED_TAG: String = "disabled"
+    private const val SECONDARY_BACKGROUND_TAG: String = "secondaryBackground"
+    private const val BUTTON_TAG: String = "button"
+    private const val SELECTION_FOREGROUND_TAG: String = "selectionForeground"
+    private const val SELECTION_BACKGROUND_TAG: String = "selectionBackground"
+    private const val TEXT_TAG: String = "text"
+    private const val FOREGROUND_TAG: String = "foreground"
+    private const val BACKGROUND_TAG: String = "background"
   }
 }

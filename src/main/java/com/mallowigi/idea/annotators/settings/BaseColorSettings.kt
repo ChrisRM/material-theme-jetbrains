@@ -34,7 +34,6 @@ import com.intellij.openapi.options.colors.ColorDescriptor
 import com.intellij.openapi.options.colors.ColorSettingsPage
 import com.intellij.psi.codeStyle.DisplayPriority
 import com.intellij.psi.codeStyle.DisplayPrioritySortable
-import org.jetbrains.annotations.NonNls
 import javax.swing.Icon
 
 /**
@@ -69,7 +68,7 @@ abstract class BaseColorSettings : ColorSettingsPage, DisplayPrioritySortable {
    * The demo text to display
    *
    */
-  abstract override fun getDemoText(): @NonNls String
+  abstract override fun getDemoText(): String
 
   /**
    * Additional highlighting tags to highlight the demo text
