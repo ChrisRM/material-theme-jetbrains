@@ -23,172 +23,140 @@
  *
  *
  */
+package com.mallowigi.idea.annotators.settings
 
-package com.mallowigi.idea.annotators.settings;
+import com.intellij.icons.AllIcons
+import com.intellij.lang.Language
+import com.intellij.openapi.editor.DefaultLanguageHighlighterColors
+import com.intellij.openapi.editor.colors.TextAttributesKey
+import com.intellij.openapi.fileTypes.SyntaxHighlighter
+import com.intellij.openapi.options.colors.AttributesDescriptor
+import com.intellij.openapi.options.colors.ColorDescriptor
+import com.intellij.psi.codeStyle.DisplayPriority
+import com.intellij.util.PlatformUtils
+import com.mallowigi.idea.annotators.JSAnnotator
+import com.mallowigi.idea.messages.LanguageAdditionsBundle.message
+import gnu.trove.THashMap
+import java.util.Collections
+import javax.swing.Icon
 
-import com.intellij.icons.AllIcons;
-import com.intellij.lang.Language;
-import com.intellij.openapi.editor.DefaultLanguageHighlighterColors;
-import com.intellij.openapi.editor.colors.TextAttributesKey;
-import com.intellij.openapi.fileTypes.SyntaxHighlighter;
-import com.intellij.openapi.options.colors.AttributesDescriptor;
-import com.intellij.openapi.options.colors.ColorDescriptor;
-import com.intellij.psi.codeStyle.DisplayPriority;
-import com.intellij.util.ObjectUtils;
-import com.intellij.util.PlatformUtils;
-import com.mallowigi.idea.annotators.JSAnnotator;
-import com.mallowigi.idea.messages.LanguageAdditionsBundle;
-import gnu.trove.THashMap;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+/**
+ * JavaScript Additions color settings
+ *
+ */
+open class JSColorSettings : BaseColorSettings() {
+  override fun getIcon(): Icon = AllIcons.FileTypes.JavaScript
 
-import javax.swing.*;
-import java.util.Collections;
-import java.util.Map;
-
-@SuppressWarnings({"DuplicateStringLiteralInspection",
-  "ClassWithTooManyFields"
-  ,
-  "DesignForExtension"})
-public class JSColorSettings extends BaseColorSettings {
-  @NotNull
-  @NonNls
-  private static final AttributesDescriptor[] JS_ATTRIBUTES;
-  @NonNls
-  static final Map<String, TextAttributesKey> JS_DESCRIPTORS = new THashMap<>();
-
-  private static final TextAttributesKey JS_KEYWORD = JSAnnotator.JS_KEYWORD;
-  private static final TextAttributesKey JS_NUMBER = JSAnnotator.JS_NUMBER;
-  private static final TextAttributesKey VARIABLE = ObjectUtils.notNull(TextAttributesKey.find("JS.LOCAL_VARIABLE"),
-    DefaultLanguageHighlighterColors.LOCAL_VARIABLE);
-  private static final TextAttributesKey FUNCTION = JSAnnotator.FUNCTION;
-  private static final TextAttributesKey THIS_SUPER = JSAnnotator.THIS_SUPER;
-  private static final TextAttributesKey MODULE = JSAnnotator.MODULE_KEYWORD;
-  private static final TextAttributesKey CONSOLE = JSAnnotator.CONSOLE;
-  private static final TextAttributesKey DEBUGGER = JSAnnotator.DEBUGGER_STMT;
-  private static final TextAttributesKey NULL = JSAnnotator.NULL;
-  private static final TextAttributesKey PRIMITIVE = JSAnnotator.PRIMITIVE;
-  private static final TextAttributesKey VAL = JSAnnotator.VAL;
-  private static final TextAttributesKey CLASS = JSAnnotator.CLASS_EXTENDS;
-  private static final TextAttributesKey FUNCTION_NAME = DefaultLanguageHighlighterColors.FUNCTION_CALL;
-  private static final TextAttributesKey YIELD = JSAnnotator.YIELD;
-  private static final TextAttributesKey ASYNC = JSAnnotator.ASYNC_AWAIT;
-  private static final TextAttributesKey TRY_CATCH = JSAnnotator.TRY_CATCH;
-  private static final TextAttributesKey INLINE = JSAnnotator.INLINE;
-  private static final TextAttributesKey NEW = JSAnnotator.NEW;
-  private static final TextAttributesKey PROTOTYPE = JSAnnotator.PROTOTYPE;
-  private static final TextAttributesKey CONSTRUCTOR = JSAnnotator.CONSTRUCTOR;
-  private static final TextAttributesKey IF_ELSE = JSAnnotator.IF_ELSE;
-  private static final TextAttributesKey GET_SET = JSAnnotator.GET_SET;
-
-  static {
-    JS_ATTRIBUTES = new AttributesDescriptor[]{
-      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.this.super"), THIS_SUPER),
-      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.module.import.export.from"), MODULE),
-      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.debugger"), DEBUGGER),
-      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.null.undefined"), NULL),
-      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.true.false"), PRIMITIVE),
-      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.var.let.const"), VAL),
-      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.if.else"), IF_ELSE),
-      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.class.extends"), CLASS),
-      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.function"), FUNCTION),
-      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.get.set"), GET_SET),
-      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.inline"), INLINE),
-      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.yield"), YIELD),
-      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.new"), NEW),
-      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.async"), ASYNC),
-      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.try.catch"), TRY_CATCH),
-      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.constructor"), CONSTRUCTOR),
-      new AttributesDescriptor(LanguageAdditionsBundle.message("globals.var.console"), CONSOLE),
-      new AttributesDescriptor(LanguageAdditionsBundle.message("globals.prototype"), PROTOTYPE),
-    };
-
-    JS_DESCRIPTORS.putAll(createAdditionalHlAttrs());
+  override fun getHighlighter(): SyntaxHighlighter {
+    val lang = Language.findLanguageByID("JavaScript") ?: Language.ANY
+    return getSyntaxHighlighterWithFallback(lang)
   }
 
-  @NotNull
-  private static Map<String, TextAttributesKey> createAdditionalHlAttrs() {
-    @NonNls final Map<String, TextAttributesKey> descriptors = new THashMap<>();
-    descriptors.put("string", DefaultLanguageHighlighterColors.STRING);
-    descriptors.put("keyword", JS_KEYWORD);
-    descriptors.put("function", FUNCTION);
-    descriptors.put("function_name", FUNCTION_NAME);
-    descriptors.put("val", VAL);
-    descriptors.put("local_variable", VARIABLE);
-    descriptors.put("class", CLASS);
-    descriptors.put("class_name", DefaultLanguageHighlighterColors.CLASS_NAME);
-    descriptors.put("interface_name", DefaultLanguageHighlighterColors.INTERFACE_NAME);
+  override fun getDemoText(): String = message("JSColorPage.demoText")
 
-    descriptors.put("this", THIS_SUPER);
-    descriptors.put("null", NULL);
-    descriptors.put("primitive", PRIMITIVE);
-    descriptors.put("debugger", DEBUGGER);
-    descriptors.put("import", MODULE);
-    descriptors.put("console", CONSOLE);
-    descriptors.put("number", JS_NUMBER);
-    descriptors.put("inst_field", DefaultLanguageHighlighterColors.INSTANCE_FIELD);
+  override fun getAdditionalHighlightingTagToDescriptorMap(): Map<String, TextAttributesKey> =
+    Collections.unmodifiableMap(JS_DESCRIPTORS)
 
-    descriptors.put("yield", YIELD);
-    descriptors.put("new", NEW);
-    descriptors.put("throw", NEW);
-    descriptors.put("async", ASYNC);
-    descriptors.put("try", TRY_CATCH);
-    descriptors.put("inline", INLINE);
-    descriptors.put("prototype", PROTOTYPE);
-    descriptors.put("constructor", CONSTRUCTOR);
-    descriptors.put("if_else", IF_ELSE);
-    descriptors.put("getter", GET_SET);
+  override fun getAttributeDescriptors(): Array<AttributesDescriptor> = JS_ATTRIBUTES
 
-    return descriptors;
-  }
+  override fun getColorDescriptors(): Array<ColorDescriptor> = ColorDescriptor.EMPTY_ARRAY
 
-  @NotNull
-  @Override
-  public Icon getIcon() {
-    return AllIcons.FileTypes.JavaScript;
-  }
+  override fun getDisplayName(): String = message("JSColorPage.java.additions")
 
-  @NotNull
-  @Override
-  public SyntaxHighlighter getHighlighter() {
-    @NonNls final Language lang = ObjectUtils.notNull(Language.findLanguageByID("JavaScript"), Language.ANY);
-    return getSyntaxHighlighterWithFallback(lang);
-  }
+  @Suppress("UnstableApiUsage")
+  override fun getPriority(): DisplayPriority =
+    if (PlatformUtils.isWebStorm()) DisplayPriority.KEY_LANGUAGE_SETTINGS else DisplayPriority.LANGUAGE_SETTINGS
 
-  @NonNls
-  @NotNull
-  @Override
-  public String getDemoText() {
-    return LanguageAdditionsBundle.message("JSColorPage.demoText");
-  }
+  companion object {
+    private val JS_ATTRIBUTES: Array<AttributesDescriptor>
 
-  @NotNull
-  @Override
-  public Map<String, TextAttributesKey> getAdditionalHighlightingTagToDescriptorMap() {
-    return Collections.unmodifiableMap(JS_DESCRIPTORS);
-  }
+    @JvmField
+    val JS_DESCRIPTORS: MutableMap<String, TextAttributesKey> = THashMap()
 
-  @NotNull
-  @Override
-  public AttributesDescriptor[] getAttributeDescriptors() {
-    return JS_ATTRIBUTES;
-  }
+    private val JS_KEYWORD = JSAnnotator.JS_KEYWORD
+    private val JS_NUMBER = JSAnnotator.JS_NUMBER
+    private val VARIABLE = TextAttributesKey.find("JS.LOCAL_VARIABLE")
 
-  @NotNull
-  @Override
-  public final ColorDescriptor[] getColorDescriptors() {
-    return ColorDescriptor.EMPTY_ARRAY;
-  }
+    private val FUNCTION = JSAnnotator.FUNCTION
+    private val THIS_SUPER = JSAnnotator.THIS_SUPER
+    private val MODULE = JSAnnotator.MODULE_KEYWORD
+    private val CONSOLE = JSAnnotator.CONSOLE
+    private val DEBUGGER = JSAnnotator.DEBUGGER_STMT
+    private val NULL = JSAnnotator.NULL
+    private val PRIMITIVE = JSAnnotator.PRIMITIVE
+    private val VAL = JSAnnotator.VAL
+    private val CLASS = JSAnnotator.CLASS_EXTENDS
+    private val FUNCTION_NAME = DefaultLanguageHighlighterColors.FUNCTION_CALL
+    private val YIELD = JSAnnotator.YIELD
+    private val ASYNC = JSAnnotator.ASYNC_AWAIT
+    private val TRY_CATCH = JSAnnotator.TRY_CATCH
+    private val INLINE = JSAnnotator.INLINE
+    private val NEW = JSAnnotator.NEW
+    private val PROTOTYPE = JSAnnotator.PROTOTYPE
+    private val CONSTRUCTOR = JSAnnotator.CONSTRUCTOR
+    private val IF_ELSE = JSAnnotator.IF_ELSE
+    private val GET_SET = JSAnnotator.GET_SET
 
-  @NotNull
-  @Override
-  public String getDisplayName() {
-    return LanguageAdditionsBundle.message("JSColorPage.java.additions");
-  }
+    init {
+      JS_ATTRIBUTES = arrayOf(
+        AttributesDescriptor(message("keywords.this.super"), THIS_SUPER),
+        AttributesDescriptor(message("keywords.module.import.export.from"), MODULE),
+        AttributesDescriptor(message("keywords.debugger"), DEBUGGER),
+        AttributesDescriptor(message("keywords.null.undefined"), NULL),
+        AttributesDescriptor(message("keywords.true.false"), PRIMITIVE),
+        AttributesDescriptor(message("keywords.var.let.const"), VAL),
+        AttributesDescriptor(message("keywords.if.else"), IF_ELSE),
+        AttributesDescriptor(message("keywords.class.extends"), CLASS),
+        AttributesDescriptor(message("keywords.function"), FUNCTION),
+        AttributesDescriptor(message("keywords.get.set"), GET_SET),
+        AttributesDescriptor(message("keywords.inline"), INLINE),
+        AttributesDescriptor(message("keywords.yield"), YIELD),
+        AttributesDescriptor(message("keywords.new"), NEW),
+        AttributesDescriptor(message("keywords.async"), ASYNC),
+        AttributesDescriptor(message("keywords.try.catch"), TRY_CATCH),
+        AttributesDescriptor(message("keywords.constructor"), CONSTRUCTOR),
+        AttributesDescriptor(message("globals.var.console"), CONSOLE),
+        AttributesDescriptor(message("globals.prototype"), PROTOTYPE)
+      )
 
-  @NotNull
-  @Override
-  public final DisplayPriority getPriority() {
-    return PlatformUtils.isWebStorm() ? DisplayPriority.KEY_LANGUAGE_SETTINGS : DisplayPriority.LANGUAGE_SETTINGS;
+      JS_DESCRIPTORS.putAll(createAdditionalHlAttrs())
+    }
+
+    /**
+     * Create additional hl attrs to be highlighted in the example demo text
+     *
+     */
+    @Suppress("HardCodedStringLiteral")
+    private fun createAdditionalHlAttrs(): Map<String, TextAttributesKey> {
+      val descriptors: MutableMap<String, TextAttributesKey> = THashMap()
+      descriptors["string"] = DefaultLanguageHighlighterColors.STRING
+      descriptors["keyword"] = JS_KEYWORD
+      descriptors["function"] = FUNCTION
+      descriptors["function_name"] = FUNCTION_NAME
+      descriptors["val"] = VAL
+      descriptors["local_variable"] = VARIABLE
+      descriptors["class"] = CLASS
+      descriptors["class_name"] = DefaultLanguageHighlighterColors.CLASS_NAME
+      descriptors["interface_name"] = DefaultLanguageHighlighterColors.INTERFACE_NAME
+      descriptors["this"] = THIS_SUPER
+      descriptors["null"] = NULL
+      descriptors["primitive"] = PRIMITIVE
+      descriptors["debugger"] = DEBUGGER
+      descriptors["import"] = MODULE
+      descriptors["console"] = CONSOLE
+      descriptors["number"] = JS_NUMBER
+      descriptors["inst_field"] = DefaultLanguageHighlighterColors.INSTANCE_FIELD
+      descriptors["yield"] = YIELD
+      descriptors["new"] = NEW
+      descriptors["throw"] = NEW
+      descriptors["async"] = ASYNC
+      descriptors["try"] = TRY_CATCH
+      descriptors["inline"] = INLINE
+      descriptors["prototype"] = PROTOTYPE
+      descriptors["constructor"] = CONSTRUCTOR
+      descriptors["if_else"] = IF_ELSE
+      descriptors["getter"] = GET_SET
+      return descriptors
+    }
   }
 }

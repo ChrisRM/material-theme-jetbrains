@@ -23,147 +23,104 @@
  *
  *
  */
+package com.mallowigi.idea.annotators.settings
 
-package com.mallowigi.idea.annotators.settings;
+import com.intellij.icons.AllIcons
+import com.intellij.lang.Language
+import com.intellij.openapi.editor.DefaultLanguageHighlighterColors
+import com.intellij.openapi.editor.colors.TextAttributesKey
+import com.intellij.openapi.fileTypes.SyntaxHighlighter
+import com.intellij.openapi.options.colors.AttributesDescriptor
+import com.intellij.openapi.options.colors.ColorDescriptor
+import com.intellij.psi.codeStyle.DisplayPriority
+import com.intellij.util.PlatformUtils
+import com.mallowigi.idea.annotators.PHPAnnotator
+import com.mallowigi.idea.messages.LanguageAdditionsBundle.message
+import gnu.trove.THashMap
+import java.util.Collections
+import javax.swing.Icon
 
-import com.intellij.icons.AllIcons;
-import com.intellij.lang.Language;
-import com.intellij.openapi.editor.DefaultLanguageHighlighterColors;
-import com.intellij.openapi.editor.colors.TextAttributesKey;
-import com.intellij.openapi.fileTypes.SyntaxHighlighter;
-import com.intellij.openapi.options.colors.AttributesDescriptor;
-import com.intellij.openapi.options.colors.ColorDescriptor;
-import com.intellij.psi.codeStyle.DisplayPriority;
-import com.intellij.util.ObjectUtils;
-import com.intellij.util.PlatformUtils;
-import com.mallowigi.idea.annotators.PHPAnnotator;
-import com.mallowigi.idea.messages.LanguageAdditionsBundle;
-import gnu.trove.THashMap;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+/**
+ * PHP Additions Color settings
+ *
+ */
+class PHPColorSettings : BaseColorSettings() {
+  override fun getIcon(): Icon = AllIcons.FileTypes.JavaScript
 
-import javax.swing.*;
-import java.util.Collections;
-import java.util.Map;
-
-@SuppressWarnings("ClassWithTooManyFields")
-public final class PHPColorSettings extends BaseColorSettings {
-  @NonNls
-  private static final AttributesDescriptor[] PHP_ATTRIBUTES;
-  @NonNls
-  private static final Map<String, TextAttributesKey> PHP_DESCRIPTORS = new THashMap<>();
-
-  @SuppressWarnings("DuplicateStringLiteralInspection")
-  private static final TextAttributesKey PHPKEYWORD = ObjectUtils.notNull(TextAttributesKey.find("PHP_KEYWORD"),
-    DefaultLanguageHighlighterColors.KEYWORD);
-  private static final TextAttributesKey VARIABLE = ObjectUtils.notNull(TextAttributesKey.find("PHP_VAR"),
-    DefaultLanguageHighlighterColors.LOCAL_VARIABLE);
-  private static final TextAttributesKey CLASS = ObjectUtils.notNull(TextAttributesKey.find("PHP_CLASS"),
-    DefaultLanguageHighlighterColors.CLASS_NAME);
-  private static final TextAttributesKey NUMBER = ObjectUtils.notNull(TextAttributesKey.find("PHP_NUMBER"),
-    DefaultLanguageHighlighterColors.NUMBER);
-  private static final TextAttributesKey CONSTANT = ObjectUtils.notNull(TextAttributesKey.find("PHP_CONSTANT"),
-    DefaultLanguageHighlighterColors.CONSTANT);
-  private static final TextAttributesKey FN = ObjectUtils.notNull(TextAttributesKey.find("PHP_FUNCTION_CALL"),
-    DefaultLanguageHighlighterColors.FUNCTION_CALL);
-
-  private static final TextAttributesKey FUNCTION = PHPAnnotator.FUNCTION;
-  private static final TextAttributesKey THIS_SELF = PHPAnnotator.THIS_SELF;
-  private static final TextAttributesKey MODIFIER = PHPAnnotator.MODIFIER;
-  private static final TextAttributesKey STATIC_FINAL = PHPAnnotator.STATIC_FINAL;
-  private static final TextAttributesKey USE_NAMESPACE = PHPAnnotator.USE_NAMESPACE;
-  private static final TextAttributesKey NULL = PHPAnnotator.NULL;
-  private static final TextAttributesKey PRIMITIVE = PHPAnnotator.PRIMITIVE;
-  private static final TextAttributesKey EXIT = PHPAnnotator.EXIT;
-  private static final TextAttributesKey ECHO = PHPAnnotator.ECHO;
-
-  static {
-    PHP_ATTRIBUTES = new AttributesDescriptor[]{
-      new AttributesDescriptor(LanguageAdditionsBundle.message("php.keywords.function"), FUNCTION),
-      new AttributesDescriptor(LanguageAdditionsBundle.message("php.keywords.self"), THIS_SELF),
-      new AttributesDescriptor(LanguageAdditionsBundle.message("php.keywords.private.public.protected"), MODIFIER),
-      new AttributesDescriptor(LanguageAdditionsBundle.message("php.keywords.static.final"), STATIC_FINAL),
-      new AttributesDescriptor(LanguageAdditionsBundle.message("php.keywords.use.namespace"), USE_NAMESPACE),
-      new AttributesDescriptor(LanguageAdditionsBundle.message("php.keywords.true.false"), PRIMITIVE),
-      new AttributesDescriptor(LanguageAdditionsBundle.message("php.keywords.null"), NULL),
-      new AttributesDescriptor(LanguageAdditionsBundle.message("php.keywords.exit.die"), EXIT),
-      new AttributesDescriptor(LanguageAdditionsBundle.message("php.keywords.echo"), ECHO),
-    };
-
-    PHP_DESCRIPTORS.putAll(createAdditionalHlAttrs());
+  override fun getHighlighter(): SyntaxHighlighter {
+    val lang = Language.findLanguageByID("PHP") ?: Language.ANY
+    return getSyntaxHighlighterWithFallback(lang)
   }
 
-  @SuppressWarnings({"HardCodedStringLiteral",
-    "DuplicateStringLiteralInspection"})
-  private static Map<String, TextAttributesKey> createAdditionalHlAttrs() {
-    final Map<String, TextAttributesKey> descriptors = new THashMap<>();
-    descriptors.put("string", DefaultLanguageHighlighterColors.STRING);
-    descriptors.put("keyword", PHPKEYWORD);
-    descriptors.put("function", FUNCTION);
-    descriptors.put("class", CLASS);
-    descriptors.put("const", CONSTANT);
-    descriptors.put("num", NUMBER);
-    descriptors.put("var", VARIABLE);
-    descriptors.put("fn", FN);
+  override fun getDemoText(): String = message("PHPColorPage.demoText")
 
-    descriptors.put("use", USE_NAMESPACE);
-    descriptors.put("static", STATIC_FINAL);
-    descriptors.put("modifier", MODIFIER);
-    descriptors.put("self", THIS_SELF);
-    descriptors.put("primitive", PRIMITIVE);
-    descriptors.put("null", NULL);
-    descriptors.put("echo", ECHO);
-    descriptors.put("exit", EXIT);
+  override fun getAdditionalHighlightingTagToDescriptorMap(): Map<String, TextAttributesKey> =
+    Collections.unmodifiableMap(PHP_DESCRIPTORS)
 
-    return descriptors;
-  }
+  override fun getAttributeDescriptors(): Array<AttributesDescriptor> = PHP_ATTRIBUTES
 
-  @NotNull
-  @Override
-  public Icon getIcon() {
-    return AllIcons.FileTypes.JavaScript;
-  }
+  override fun getColorDescriptors(): Array<ColorDescriptor> = ColorDescriptor.EMPTY_ARRAY
 
-  @NotNull
-  @Override
-  public SyntaxHighlighter getHighlighter() {
-    @NonNls final Language lang = ObjectUtils.notNull(Language.findLanguageByID("PHP"), Language.ANY);
-    return getSyntaxHighlighterWithFallback(lang);
-  }
+  override fun getDisplayName(): String = message("PHPColorPage.php.additions")
 
-  @NonNls
-  @NotNull
-  @Override
-  public String getDemoText() {
-    return LanguageAdditionsBundle.message("PHPColorPage.demoText");
-  }
+  @Suppress("UnstableApiUsage")
+  override fun getPriority(): DisplayPriority =
+    if (PlatformUtils.isPhpStorm()) DisplayPriority.KEY_LANGUAGE_SETTINGS else DisplayPriority.LANGUAGE_SETTINGS
 
-  @NotNull
-  @Override
-  public Map<String, TextAttributesKey> getAdditionalHighlightingTagToDescriptorMap() {
-    return Collections.unmodifiableMap(PHP_DESCRIPTORS);
-  }
+  companion object {
+    private val PHP_ATTRIBUTES: Array<AttributesDescriptor>
+    private val PHP_DESCRIPTORS: MutableMap<String, TextAttributesKey> = THashMap()
+    private val PHP_KEYWORD = TextAttributesKey.find("PHP_KEYWORD")
+    private val VARIABLE = TextAttributesKey.find("PHP_VAR")
+    private val CLASS = TextAttributesKey.find("PHP_CLASS")
+    private val NUMBER = TextAttributesKey.find("PHP_NUMBER")
+    private val CONSTANT = TextAttributesKey.find("PHP_CONSTANT")
+    private val FN = TextAttributesKey.find("PHP_FUNCTION_CALL")
+    private val FUNCTION = PHPAnnotator.FUNCTION
+    private val THIS_SELF = PHPAnnotator.THIS_SELF
+    private val MODIFIER = PHPAnnotator.MODIFIER
+    private val STATIC_FINAL = PHPAnnotator.STATIC_FINAL
+    private val USE_NAMESPACE = PHPAnnotator.USE_NAMESPACE
+    private val NULL = PHPAnnotator.NULL
+    private val PRIMITIVE = PHPAnnotator.PRIMITIVE
+    private val EXIT = PHPAnnotator.EXIT
+    private val ECHO = PHPAnnotator.ECHO
 
-  @NotNull
-  @Override
-  public AttributesDescriptor[] getAttributeDescriptors() {
-    return PHP_ATTRIBUTES;
-  }
+    init {
+      PHP_ATTRIBUTES = arrayOf(
+        AttributesDescriptor(message("php.keywords.function"), FUNCTION),
+        AttributesDescriptor(message("php.keywords.self"), THIS_SELF),
+        AttributesDescriptor(message("php.keywords.private.public.protected"), MODIFIER),
+        AttributesDescriptor(message("php.keywords.static.final"), STATIC_FINAL),
+        AttributesDescriptor(message("php.keywords.use.namespace"), USE_NAMESPACE),
+        AttributesDescriptor(message("php.keywords.true.false"), PRIMITIVE),
+        AttributesDescriptor(message("php.keywords.null"), NULL),
+        AttributesDescriptor(message("php.keywords.exit.die"), EXIT),
+        AttributesDescriptor(message("php.keywords.echo"), ECHO)
+      )
+      PHP_DESCRIPTORS.putAll(createAdditionalHlAttrs())
+    }
 
-  @NotNull
-  @Override
-  public ColorDescriptor[] getColorDescriptors() {
-    return ColorDescriptor.EMPTY_ARRAY;
-  }
-
-  @NotNull
-  @Override
-  public String getDisplayName() {
-    return LanguageAdditionsBundle.message("PHPColorPage.php.additions");
-  }
-
-  @Override
-  public DisplayPriority getPriority() {
-    return PlatformUtils.isPhpStorm() ? DisplayPriority.KEY_LANGUAGE_SETTINGS : DisplayPriority.LANGUAGE_SETTINGS;
+    @Suppress("HardCodedStringLiteral")
+    private fun createAdditionalHlAttrs(): Map<String, TextAttributesKey> {
+      val descriptors: MutableMap<String, TextAttributesKey> = THashMap()
+      descriptors["string"] = DefaultLanguageHighlighterColors.STRING
+      descriptors["keyword"] = PHP_KEYWORD
+      descriptors["function"] = FUNCTION
+      descriptors["class"] = CLASS
+      descriptors["const"] = CONSTANT
+      descriptors["num"] = NUMBER
+      descriptors["var"] = VARIABLE
+      descriptors["fn"] = FN
+      descriptors["use"] = USE_NAMESPACE
+      descriptors["static"] = STATIC_FINAL
+      descriptors["modifier"] = MODIFIER
+      descriptors["self"] = THIS_SELF
+      descriptors["primitive"] = PRIMITIVE
+      descriptors["null"] = NULL
+      descriptors["echo"] = ECHO
+      descriptors["exit"] = EXIT
+      return descriptors
+    }
   }
 }

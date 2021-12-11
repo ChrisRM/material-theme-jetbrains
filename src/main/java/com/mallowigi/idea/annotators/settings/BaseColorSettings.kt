@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,22 +23,83 @@
  *
  *
  */
+package com.mallowigi.idea.annotators.settings
 
-package com.mallowigi.idea.annotators.settings;
+import com.intellij.lang.Language
+import com.intellij.openapi.editor.colors.TextAttributesKey
+import com.intellij.openapi.fileTypes.SyntaxHighlighter
+import com.intellij.openapi.fileTypes.SyntaxHighlighterFactory
+import com.intellij.openapi.options.colors.AttributesDescriptor
+import com.intellij.openapi.options.colors.ColorDescriptor
+import com.intellij.openapi.options.colors.ColorSettingsPage
+import com.intellij.psi.codeStyle.DisplayPriority
+import com.intellij.psi.codeStyle.DisplayPrioritySortable
+import org.jetbrains.annotations.NonNls
+import javax.swing.Icon
 
-import com.intellij.lang.Language;
-import com.intellij.openapi.fileTypes.SyntaxHighlighter;
-import com.intellij.openapi.fileTypes.SyntaxHighlighterFactory;
-import com.intellij.openapi.options.colors.ColorSettingsPage;
-import com.intellij.psi.codeStyle.DisplayPrioritySortable;
-import org.jetbrains.annotations.NotNull;
-
-abstract class BaseColorSettings implements ColorSettingsPage, DisplayPrioritySortable {
-  static SyntaxHighlighter getSyntaxHighlighterWithFallback(@NotNull final Language lang) {
-    final SyntaxHighlighter syntaxHighlighter = SyntaxHighlighterFactory.getSyntaxHighlighter(lang, null, null);
-    if (syntaxHighlighter == null) {
-      return SyntaxHighlighterFactory.getSyntaxHighlighter(Language.ANY, null, null);
-    }
-    return syntaxHighlighter;
+/**
+ * Base color settings
+ *
+ */
+abstract class BaseColorSettings : ColorSettingsPage, DisplayPrioritySortable {
+  /**
+   * Get syntax highlighter with fallback
+   *
+   * @param lang the current language
+   * @return the syntax highlighter for the language, or the any language highlighter
+   */
+  fun getSyntaxHighlighterWithFallback(lang: Language): SyntaxHighlighter {
+    return SyntaxHighlighterFactory.getSyntaxHighlighter(lang, null, null)
+      ?: return SyntaxHighlighterFactory.getSyntaxHighlighter(Language.ANY, null, null)
   }
+
+  /**
+   * Icon (unused)
+   *
+   */
+  abstract override fun getIcon(): Icon
+
+  /**
+   * Returns the highlighter
+   *
+   */
+  abstract override fun getHighlighter(): SyntaxHighlighter
+
+  /**
+   * The demo text to display
+   *
+   */
+  abstract override fun getDemoText(): @NonNls String
+
+  /**
+   * Additional highlighting tags to highlight the demo text
+   *
+   */
+  abstract override fun getAdditionalHighlightingTagToDescriptorMap(): Map<String, TextAttributesKey>
+
+  /**
+   * The language additions attributes
+   *
+   */
+  abstract override fun getAttributeDescriptors(): Array<AttributesDescriptor>
+
+  /**
+   * Color descriptors are empty
+   *
+   */
+  abstract override fun getColorDescriptors(): Array<ColorDescriptor>
+
+  /**
+   * Display name
+   *
+   */
+  abstract override fun getDisplayName(): String
+
+  /**
+   * Displays the page on the top on WebStorm
+   *
+   */
+  @Suppress("UnstableApiUsage")
+  abstract override fun getPriority(): DisplayPriority
+
 }

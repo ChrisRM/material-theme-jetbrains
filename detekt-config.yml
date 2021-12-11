@@ -200,7 +200,7 @@ naming:
   FunctionMaxLength:
     active: true
     maximumFunctionNameLength: 36
-    excludes: [ '**/*Page*' ]
+    excludes: [ '**/*Page*', '**/*Settings*' ]
   FunctionMinLength:
     active: true
     minimumFunctionNameLength: 2
