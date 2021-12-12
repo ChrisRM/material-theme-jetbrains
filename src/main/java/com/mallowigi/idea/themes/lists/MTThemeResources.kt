@@ -493,6 +493,7 @@ object MTThemeResources {
   @JvmStatic
   val buttonColorResources: Set<String>
     get() = setOf(
+      "OptionButton.separatorColor",
       "ActionButton.hoverSeparatorColor",
       "AvailableMnemonic.background",
       "AvailableMnemonic.borderColor",
@@ -690,6 +691,7 @@ object MTThemeResources {
   @JvmStatic
   val tableSelectedResources: Set<String>
     get() = setOf(
+      "OptionButton.default.separatorColor",
       "Button.darcula.defaultFocusedBorderColor", // deprecated
       "Button.darcula.focusedBorderColor", // deprecated
       "Button.darcula.selection.color1", // deprecated

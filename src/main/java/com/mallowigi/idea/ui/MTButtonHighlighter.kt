@@ -25,6 +25,7 @@
  */
 package com.mallowigi.idea.ui
 
+import com.intellij.ide.ui.laf.darcula.ui.DarculaButtonUI
 import com.intellij.ui.ColorUtil
 import com.mallowigi.idea.utils.ButtonBackgroundTimer
 import java.awt.Color
@@ -35,7 +36,7 @@ import javax.swing.JButton
 import javax.swing.event.ChangeEvent
 import javax.swing.plaf.basic.BasicButtonListener
 
-internal class MTButtonHighlighter(button: AbstractButton?) : BasicButtonListener(button) {
+class MTButtonHighlighter(button: AbstractButton?) : BasicButtonListener(button) {
 
   override fun stateChanged(e: ChangeEvent) {
     val button = e.source as JButton
@@ -81,11 +82,19 @@ internal class MTButtonHighlighter(button: AbstractButton?) : BasicButtonListene
     buttonBackgroundTimer.start("Remove Highlight", jButton, colors)
   }
 
-  private fun preHoverColor(jButton: JButton) =
-    if (jButton.isDefaultButton) MTButtonUI.primaryButtonBg() else MTButtonUI.buttonBg()
+  private fun preHoverColor(jButton: JButton): Color = try {
+    if (DarculaButtonUI.isDefaultButton(jButton)) MTButtonUI.primaryButtonBg() else MTButtonUI.buttonBg()
+  } catch (e: Exception) {
+    // swallow exception
+    MTButtonUI.buttonBg()
+  }
 
-  private fun hoverColor(jButton: JButton) =
-    if (jButton.isDefaultButton) MTButtonUI.primaryButtonHoverColor() else MTButtonUI.buttonHoverColor()
+  private fun hoverColor(jButton: JButton): Color = try {
+    if (DarculaButtonUI.isDefaultButton(jButton)) MTButtonUI.primaryButtonHoverColor() else MTButtonUI.buttonHoverColor()
+  } catch (e: Exception) {
+    // swallow exception
+    MTButtonUI.buttonHoverColor()
+  }
 
   private fun textColor(highlight: Boolean) =
     if (highlight) MTButtonUI.selectedButtonFg() else MTButtonUI.buttonFg()

@@ -23,377 +23,387 @@
  *
  *
  */
+package com.mallowigi.idea.ui
 
-package com.mallowigi.idea.ui;
+import com.intellij.icons.AllIcons
+import com.intellij.ide.ui.laf.darcula.DarculaLaf
+import com.intellij.ide.ui.laf.darcula.ui.DarculaButtonUI
+import com.intellij.openapi.actionSystem.ex.ComboBoxAction
+import com.intellij.openapi.actionSystem.impl.segmentedActionBar.SegmentedActionToolbarComponent.Companion.isCustomBar
+import com.intellij.openapi.actionSystem.impl.segmentedActionBar.SegmentedActionToolbarComponent.Companion.paintButtonDecorations
+import com.intellij.ui.ColorUtil
+import com.intellij.ui.JBColor
+import com.intellij.ui.scale.JBUIScale
+import com.intellij.util.ui.GraphicsUtil
+import com.intellij.util.ui.JBInsets
+import com.intellij.util.ui.JBUI
+import com.intellij.util.ui.UIUtil
+import com.intellij.util.ui.UIUtilities
+import com.mallowigi.idea.config.application.MTConfig
+import com.mallowigi.idea.utils.MTUI
+import java.awt.Color
+import java.awt.Component
+import java.awt.Dimension
+import java.awt.Font
+import java.awt.FontMetrics
+import java.awt.Graphics
+import java.awt.Graphics2D
+import java.awt.Paint
+import java.awt.Rectangle
+import javax.swing.AbstractButton
+import javax.swing.JComponent
+import javax.swing.plaf.UIResource
+import kotlin.math.max
 
-import com.intellij.icons.AllIcons;
-import com.intellij.ide.ui.laf.darcula.DarculaLaf;
-import com.intellij.ide.ui.laf.darcula.ui.DarculaButtonUI;
-import com.intellij.openapi.actionSystem.ex.ComboBoxAction;
-import com.intellij.openapi.actionSystem.impl.segmentedActionBar.SegmentedActionToolbarComponent;
-import com.intellij.openapi.ui.GraphicsConfig;
-import com.intellij.ui.ColorUtil;
-import com.intellij.ui.JBColor;
-import com.intellij.ui.scale.JBUIScale;
-import com.intellij.util.ui.GraphicsUtil;
-import com.intellij.util.ui.JBInsets;
-import com.intellij.util.ui.JBUI;
-import com.intellij.util.ui.UIUtil;
-import com.intellij.util.ui.UIUtilities;
-import com.mallowigi.idea.config.application.MTConfig;
-import com.mallowigi.idea.utils.MTUI;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-import sun.swing.SwingUtilities2;
-
-import javax.swing.*;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.UIResource;
-import javax.swing.plaf.basic.BasicButtonListener;
-import java.awt.*;
-import java.util.Locale;
-
-@SuppressWarnings({"NonThreadSafeLazyInitialization",
-  "StaticVariableMayNotBeInitialized",
-  "StaticVariableUsedBeforeInitialization",
-  "WeakerAccess",
-  "StaticMethodOnlyUsedInOneClass",
-  "MagicNumber",
-  "NegativelyNamedBooleanVariable",
-  "ParameterNameDiffersFromOverriddenParameter",
-  "StandardVariableNames",
-  "DuplicatedCode"})
-public final class MTButtonUI extends DarculaButtonUI {
-  private static final int HELP_BUTTON_DIAMETER = JBUI.scale(22);
-  private static final int MINIMUM_BUTTON_WIDTH = JBUI.scale(64);
-  private static final int HORIZONTAL_PADDING = JBUI.scale(20);
-  @Nullable
-  private static Color primaryButtonBg;
-  @Nullable
-  private static Color primaryButtonFg;
-  @Nullable
-  private static Color primaryButtonHover;
-  @Nullable
-  private static Color buttonHover;
-  @Nullable
-  private static Color selectedButtonFg;
-  @Nullable
-  private static Color selectedButtonBg;
-  @Nullable
-  private static Color buttonFg;
-  @Nullable
-  private static Color buttonBg;
-  private boolean isNotThemed = true;
-
-  @SuppressWarnings({"MethodOverridesStaticMethodOfSuperclass",
-    "unused"})
-  public static ComponentUI createUI(final JComponent component) {
-    return new MTButtonUI();
-  }
-
-  public static void resetCache() {
-    selectedButtonFg = null;
-    selectedButtonBg = null;
-    buttonBg = null;
-    buttonFg = null;
-    buttonHover = null;
-    primaryButtonFg = null;
-    primaryButtonBg = null;
-    primaryButtonHover = null;
-  }
-
-  @NotNull
-  static Color buttonBg() {
-    if (buttonBg == null) {
-      buttonBg = MTUI.Button.getBackgroundColor();
-      if (MTConfig.getInstance().isBorderedButtons()) {
-        buttonBg = MTUI.Panel.getBackground();
-      }
-    }
-    return buttonBg;
-  }
-
-  @NotNull
-  static Color buttonFg() {
-    if (buttonFg == null) {
-      buttonFg = MTUI.Button.getForegroundColor();
-      if (MTConfig.getInstance().isBorderedButtons()) {
-        buttonFg = MTUI.Panel.getAccentColor();
-      }
-    }
-    return buttonFg;
-  }
-
-  @NotNull
-  static Color primaryButtonBg() {
-    if (primaryButtonBg == null) {
-      primaryButtonBg = MTUI.Button.getPrimaryBackgroundColor();
-      if (MTConfig.getInstance().isBorderedButtons()) {
-        primaryButtonBg = MTUI.Panel.getBackground();
-      }
-    }
-    return primaryButtonBg;
-  }
-
-  private static Color primaryButtonFg() {
-    if (primaryButtonFg == null) {
-      primaryButtonFg = MTUI.Button.getPrimaryForegroundColor();
-      if (MTConfig.getInstance().isBorderedButtons()) {
-        primaryButtonFg = MTUI.Panel.getAccentColor();
-      }
-    }
-    return primaryButtonFg;
-  }
-
-  @NotNull
-  private static Color selectedButtonBg() {
-    if (selectedButtonBg == null) {
-      selectedButtonBg = MTUI.Button.getSelectedBackgroundColor();
-      if (MTConfig.getInstance().isBorderedButtons()) {
-        selectedButtonBg = MTUI.Panel.getBackground();
-      }
-    }
-    return selectedButtonBg;
-  }
-
-  @NotNull
-  static Color selectedButtonFg() {
-    if (selectedButtonFg == null) {
-      selectedButtonFg = MTUI.Button.getSelectedForegroundColor();
-      if (MTConfig.getInstance().isBorderedButtons()) {
-        selectedButtonFg = MTUI.Panel.getAccentColor();
-      }
-    }
-    return selectedButtonFg;
-  }
-
-  @NotNull
-  static Color primaryButtonHoverColor() {
-    if (primaryButtonHover == null) {
-      final Color color = primaryButtonBg();
-      primaryButtonHover = new JBColor(ColorUtil.darker(color, 2), ColorUtil.brighter(color, 2));
-      if (MTConfig.getInstance().isBorderedButtons()) {
-        primaryButtonHover = ColorUtil.mix(MTUI.Panel.getBackground(), MTUI.Panel.getAccentColor(), 0.25);
-      }
-    }
-    return primaryButtonHover;
-  }
-
-  @NotNull
-  static Color buttonHoverColor() {
-    if (buttonHover == null) {
-      final Color color = selectedButtonBg();
-      buttonHover = new JBColor(ColorUtil.darker(color, 2), ColorUtil.brighter(color, 2));
-      if (MTConfig.getInstance().isBorderedButtons()) {
-        buttonHover = ColorUtil.mix(MTUI.Panel.getBackground(), MTUI.Panel.getAccentColor(), 0.25);
-      }
-    }
-    return buttonHover;
-  }
-
-  @SuppressWarnings({"BooleanMethodNameMustStartWithQuestion",
-    "SameReturnValue"})
-  private static boolean paintHelpIcon(final Graphics2D g, final JComponent component, final int w, final int h, final Color buttonColor1) {
-    g.setPaint(UIUtil.getGradientPaint(0, 0, buttonColor1, 0, h, buttonColor1));
-    final int off = JBUI.scale(22);
-    final int x = (w - off) / 2;
-    final int y = (h - off) / 2;
-    g.fillOval(x, y, off, off);
-    AllIcons.Actions.Help.paintIcon(component, g, x + JBUI.scale(3), y + JBUI.scale(3));
-
-    // Remove decorations
-    final AbstractButton button = (AbstractButton) component;
-    button.setBorderPainted(false);
-    button.setFocusPainted(false);
-    button.setBackground(MTUI.Panel.getBackground());
-
-    return false;
-  }
+/**
+ * Material Buttons
+ *
+ */
+class MTButtonUI : DarculaButtonUI() {
+  private var isNotThemed = true
 
   /**
    * Install defaults and set font to bold + 13px
    */
-  @Override
-  public void installDefaults(final AbstractButton button) {
-    super.installDefaults(button);
-    isNotThemed = true;
-    button.setRolloverEnabled(true);
+  @Suppress("MagicNumber")
+  override fun installDefaults(button: AbstractButton) {
+    super.installDefaults(button)
+    isNotThemed = true
+    button.isRolloverEnabled = true
 
-    if (MTConfig.getInstance().isUpperCaseButtons()) {
-      button.setFont(button.getFont().deriveFont(Font.BOLD, JBUIScale.scale(12.0F)));
-    } else {
-      button.setFont(button.getFont().deriveFont(Font.BOLD, JBUIScale.scale(13.0F)));
+    button.font = when {
+      MTConfig.getInstance().isUpperCaseButtons -> button.font.deriveFont(Font.BOLD, JBUIScale.scale(12.0F))
+      else                                      -> button.font.deriveFont(Font.BOLD, JBUIScale.scale(13.0F))
     }
   }
 
-  @Override
-  protected int textIconGap() {
-    return JBUI.scale(24);
-  }
+  /**
+   * Gap between text and icon
+   *
+   */
+  override fun textIconGap(): Int = JBUI.scale(TEXT_ICON_GAP)
 
   /**
    * Paints additional buttons decorations
    *
    * @param g Graphics
    * @param c button component
-   * @return {@code true} if it is allowed to continue painting,
-   * {@code false} if painting should be stopped
+   * @return `true` if it is allowed to continue painting,
+   * `false` if painting should be stopped
    */
-  @SuppressWarnings({"MethodWithMultipleReturnPoints",
-    "java:S1142"})
-  @Override
-  protected boolean paintDecorations(final Graphics2D g, final JComponent c) {
-    if (!((AbstractButton) c).isContentAreaFilled()) {
-      return true;
-    }
+  override fun paintDecorations(g: Graphics2D, c: JComponent): Boolean {
+    if (!(c as AbstractButton).isContentAreaFilled) return true
 
-    final int w = c.getWidth();
-    final int h = c.getHeight();
-    final Color background = c.getBackground();
+    val w = c.getWidth()
+    val h = c.getHeight()
+    val background = c.getBackground()
+
+    if (isCustomBar(c)) return paintButtonDecorations(g, c, buttonBg())
+
     // Need to set the background because it is not set at installDefaults
     if (isNotThemed && isDefaultButton(c)) {
-      c.setBackground(primaryButtonBg());
-      isNotThemed = false;
+      c.setBackground(primaryButtonBg())
+      isNotThemed = false
     }
 
-    if (SegmentedActionToolbarComponent.Companion.isCustomBar(c)) {
-      return SegmentedActionToolbarComponent.Companion.paintButtonDecorations(g, c, buttonBg());
-    }
+    val r = Rectangle(c.getSize())
+    JBInsets.removeFrom(r, if (isSmallVariant(c)) c.getInsets() else JBUI.insets(1))
 
-    final Rectangle r = new Rectangle(c.getSize());
-    JBInsets.removeFrom(r, isSmallVariant(c) ? c.getInsets() : JBUI.insets(1));
+    val overriddenColor = c.getClientProperty("JButton.backgroundColor") as? Paint
+    val backgroundColor = buttonBg()
+    val focusedColor = primaryButtonHoverColor()
 
-    final Paint overriddenColor = (Paint) c.getClientProperty("JButton.backgroundColor");
-    final Color backgroundColor = buttonBg();
-    final Color focusedColor = primaryButtonHoverColor();
+    return when {
+      UIUtil.isHelpButton(c) -> paintHelpIcon(g, c, w, h, backgroundColor)
+      else                   -> {
+        val config = GraphicsUtil.setupAAPainting(g)
+        val xOff = 0
+        val yOff = 0
 
-    if (UIUtil.isHelpButton(c)) {
-      return paintHelpIcon(g, c, w, h, backgroundColor);
-    } else {
-      final GraphicsConfig config = GraphicsUtil.setupAAPainting(g);
-      final int xOff = 0;
-      final int yOff = 0;
+        when {
+          c.hasFocus() -> g.paint = focusedColor
+          else         -> g.paint = background
+        }
+        // override color if needed
+        if (overriddenColor != null) g.paint = overriddenColor
 
-      if (c.hasFocus()) {
-        g.setPaint(focusedColor);
-      } else {
-        g.setPaint(background);
+        val rad = JBUI.scale(BUTTON_RADIUS)
+        g.fillRoundRect(xOff, yOff, w, h, rad, rad)
+        config.restore()
+        true
       }
-
-      if (overriddenColor != null) {
-        g.setPaint(overriddenColor);
-      }
-
-      final int rad = JBUI.scale(3);
-      g.fillRoundRect(xOff, yOff, w, h, rad, rad);
-      config.restore();
-      return true;
     }
-  }
-
-  @SuppressWarnings("MethodOverridesStaticMethodOfSuperclass")
-  public static boolean isSmallVariant(final Component c) {
-    if (!(c instanceof AbstractButton)) {
-      return false;
-    }
-
-    final AbstractButton b = (AbstractButton) c;
-    final boolean smallVariant = b.getClientProperty("ActionToolbar.smallVariant") == Boolean.TRUE;
-    final ComboBoxAction a = (ComboBoxAction) b.getClientProperty("styleCombo");
-
-    return smallVariant || (a != null && a.isSmallVariant());
   }
 
   /**
    * Paint the text of the button
    */
-  @Override
-  protected void paintText(final Graphics g, final JComponent c, final Rectangle textRect, final String text) {
-    if (UIUtil.isHelpButton(c)) {
-      return;
-    }
+  override fun paintText(g: Graphics, c: JComponent, textRect: Rectangle, text: String) {
+    if (UIUtil.isHelpButton(c)) return
 
-    final AbstractButton button = (AbstractButton) c;
-    final ButtonModel model = button.getModel();
-    final Color overriddenColor = (Color) button.getClientProperty("JButton.textColor");
+    val button = c as AbstractButton
+    val model = button.model
 
-    Color fg = isDefaultButton(c) ? primaryButtonFg() : buttonFg();
+    // Determine the button foreground
+    val overriddenColor = button.getClientProperty("JButton.textColor") as? Color
+    var fg = buttonForeground(c)
 
-    if ((fg instanceof UIResource && button.isSelected()) || model.isRollover()) {
-      fg = selectedButtonFg();
-    }
-    g.setColor(overriddenColor != null ? overriddenColor : fg);
+    // if button is selected or hovered
+    if (fg is UIResource && button.isSelected || model.isRollover) fg = selectedButtonFg()
+    // sets the color
+    g.color = overriddenColor ?: fg
 
-    final FontMetrics metrics = UIUtilities.getFontMetrics(c, g);
-    final String textToPrint = MTConfig.getInstance().isUpperCaseButtons() ? text.toUpperCase(Locale.ENGLISH) : text;
-    final int textWidth = metrics.stringWidth(textToPrint);
+    // Set the text to uppercase if needed
+    val metrics = UIUtilities.getFontMetrics(c, g)
+    val textToPrint = if (MTConfig.getInstance().isUpperCaseButtons) text.uppercase() else text
 
-    final int x = (c.getWidth() - getTextShiftOffset() - textWidth) / 2;
-    final int y = textRect.y + metrics.getAscent();
+    val textWidth = metrics.stringWidth(textToPrint)
+    val x = (c.getWidth() - textShiftOffset - textWidth) / 2
+    val y = textRect.y + metrics.ascent
+    val mnemonicIndex = if (DarculaLaf.isAltPressed()) button.displayedMnemonicIndex else -1
 
-    final int mnemonicIndex = DarculaLaf.isAltPressed() ? button.getDisplayedMnemonicIndex() : -1;
-    if (model.isEnabled()) {
-      UIUtilities.drawStringUnderlineCharAt(c, g, textToPrint, mnemonicIndex, x, y);
+    if (model.isEnabled) {
+      UIUtilities.drawStringUnderlineCharAt(c, g, textToPrint, mnemonicIndex, x, y)
     } else {
-      paintDisabledText(g, text, c, textRect, metrics);
+      paintDisabledText(g, text, c, textRect, metrics)
     }
   }
 
   /**
+   * Button foreground
+   *
+   */
+  private fun buttonForeground(c: JComponent) = if (isDefaultButton(c)) primaryButtonFg() else buttonFg()
+
+  /**
    * Paint disabled text
    */
-  @Override
-  protected void paintDisabledText(final Graphics g,
-                                   final String text,
-                                   final JComponent c,
-                                   final Rectangle textRect,
-                                   final FontMetrics metrics) {
-    final String textToPrint = MTConfig.getInstance().isUpperCaseButtons() ? text.toUpperCase(Locale.ENGLISH) : text;
-    final int x = (c.getWidth() - getTextShiftOffset() - metrics.stringWidth(textToPrint)) / 2;
+  override fun paintDisabledText(
+    g: Graphics,
+    text: String,
+    c: JComponent,
+    textRect: Rectangle,
+    metrics: FontMetrics,
+  ) {
+    val textToPrint = if (MTConfig.getInstance().isUpperCaseButtons) text.uppercase() else text
+    val x = (c.width - textShiftOffset - metrics.stringWidth(textToPrint)) / 2
 
-    g.setColor(MTUI.Button.getDisabledShadowColor());
-    SwingUtilities2.drawStringUnderlineCharAt(c, g, textToPrint, -1, x + 1, textRect.y + metrics.getAscent() + 1);
-
-    g.setColor(MTUI.Button.getDisabledColor());
-    SwingUtilities2.drawStringUnderlineCharAt(c, g, textToPrint, -1, x, textRect.y + metrics.getAscent());
+    // draw text with shadow
+    g.color = MTUI.Button.disabledShadowColor
+    UIUtilities.drawStringUnderlineCharAt(c, g, textToPrint, -1, x + 1, textRect.y + metrics.ascent + 1)
+    g.color = MTUI.Button.disabledColor
+    UIUtilities.drawStringUnderlineCharAt(c, g, textToPrint, -1, x, textRect.y + metrics.ascent)
   }
 
-  @Override
-  protected Dimension getDarculaButtonSize(final JComponent c, final Dimension prefSize) {
-    final Insets insets = c.getInsets();
-    if (UIUtil.isHelpButton(c) || isSquare(c)) {
-      final int helpDiam = HELP_BUTTON_DIAMETER;
-      return new Dimension(
-        Math.max(prefSize.width, helpDiam + insets.left + insets.right),
-        Math.max(prefSize.height, helpDiam + insets.top + insets.bottom)
-      );
-    } else {
-      final int width = isComboAction(c) ?
-                        prefSize.width :
-                        Math.max(
-                          (HORIZONTAL_PADDING << 1) + prefSize.width,
-                          MINIMUM_BUTTON_WIDTH + insets.left + insets.right
-                        );
-      final int height = Math.max(
-        prefSize.height, getMinimumHeight() + insets.top + insets.bottom
-      );
+  /**
+   * Compute button size
+   *
+   * @param c the component
+   * @param prefSize the preferred size
+   * @return the size
+   */
+  override fun getDarculaButtonSize(c: JComponent, prefSize: Dimension): Dimension {
+    val insets = c.insets
 
-      return new Dimension(width, height);
+    // If help or square button
+    return when {
+      UIUtil.isHelpButton(c) || isSquare(c) -> {
+        val helpDiam = HELP_BUTTON_DIAMETER
+        Dimension(
+          max(prefSize.width, helpDiam + insets.left + insets.right),
+          max(prefSize.height, helpDiam + insets.top + insets.bottom)
+        )
+      }
+      else                                  -> {
+        val width = when {
+          isComboAction(c) -> prefSize.width
+          else             -> max(
+            (HORIZONTAL_PADDING shl 1) + prefSize.width,
+            MINIMUM_BUTTON_WIDTH + insets.left + insets.right
+          )
+        }
+        val height = max(prefSize.height, minimumHeight + insets.top + insets.bottom)
+        Dimension(width, height)
+      }
     }
   }
 
   /**
    * Create mouse listeners to simulate an highlighting
    */
-  @Override
-  protected BasicButtonListener createButtonListener(final AbstractButton b) {
-    return new MTButtonHighlighter(b);
+  override fun createButtonListener(b: AbstractButton): MTButtonHighlighter = MTButtonHighlighter(b)
+
+  /**
+   * Paint icon
+   *
+   */
+  override fun paintIcon(g: Graphics, c: JComponent, iconRect: Rectangle) {
+    val newIconRect = Rectangle(iconRect.bounds)
+    super.paintIcon(g, c, newIconRect)
   }
 
-  @Override
-  protected void paintIcon(final Graphics g, final JComponent c, final Rectangle iconRect) {
-    final Rectangle newIconRect = new Rectangle(iconRect.getBounds());
-    super.paintIcon(g, c, newIconRect);
-  }
+  companion object {
+    private val HELP_BUTTON_DIAMETER = JBUI.scale(22)
+    private val MINIMUM_BUTTON_WIDTH = JBUI.scale(64)
+    private val HORIZONTAL_PADDING = JBUI.scale(20)
+    private const val TEXT_ICON_GAP = 24
+    private const val BUTTON_RADIUS = 3
 
+    private var primaryButtonBg: Color? = null
+    private var primaryButtonFg: Color? = null
+    private var primaryButtonHover: Color? = null
+    private var buttonHover: Color? = null
+    private var selectedButtonFg: Color? = null
+    private var selectedButtonBg: Color? = null
+    private var buttonFg: Color? = null
+    private var buttonBg: Color? = null
+
+    /**
+     * Create Material Button
+     *
+     */
+    @Suppress("UNUSED_PARAMETER", "HardCodedStringLiteral")
+    @JvmStatic
+    fun createUI(component: JComponent): MTButtonUI = MTButtonUI()
+
+    /**
+     * Reset cached values
+     *
+     */
+    fun resetCache() {
+      selectedButtonFg = null
+      selectedButtonBg = null
+      buttonBg = null
+      buttonFg = null
+      buttonHover = null
+      primaryButtonFg = null
+      primaryButtonBg = null
+      primaryButtonHover = null
+    }
+
+    /**
+     * Buttons background
+     *
+     */
+    fun buttonBg(): Color {
+      if (buttonBg == null) {
+        buttonBg = if (MTConfig.getInstance().isBorderedButtons) MTUI.Panel.background else MTUI.Button.backgroundColor
+      }
+      return buttonBg!!
+    }
+
+    /**
+     * Buttons foreground
+     */
+    fun buttonFg(): Color {
+      if (buttonFg == null) {
+        buttonFg = if (MTConfig.getInstance().isBorderedButtons) MTUI.Panel.accentColor else MTUI.Button.foregroundColor
+      }
+      return buttonFg!!
+    }
+
+    /**
+     * Primary buttons background
+     */
+    fun primaryButtonBg(): Color {
+      if (primaryButtonBg == null) {
+        primaryButtonBg =
+          if (MTConfig.getInstance().isBorderedButtons) MTUI.Panel.background else MTUI.Button.primaryBackgroundColor
+      }
+      return primaryButtonBg!!
+    }
+
+    /**
+     * Primary buttons foreground
+     *
+     */
+    private fun primaryButtonFg(): Color? {
+      if (primaryButtonFg == null) {
+        primaryButtonFg =
+          if (MTConfig.getInstance().isBorderedButtons) MTUI.Panel.accentColor else MTUI.Button.primaryForegroundColor
+      }
+      return primaryButtonFg
+    }
+
+    /**
+     * Selected buttons background
+     *
+     */
+    private fun selectedButtonBg(): Color {
+      if (selectedButtonBg == null) {
+        selectedButtonBg =
+          if (MTConfig.getInstance().isBorderedButtons) MTUI.Panel.background else MTUI.Button.selectedBackgroundColor
+      }
+      return selectedButtonBg!!
+    }
+
+    /**
+     * Selected buttons foreground
+     */
+    fun selectedButtonFg(): Color {
+      if (selectedButtonFg == null) {
+        selectedButtonFg =
+          if (MTConfig.getInstance().isBorderedButtons) MTUI.Panel.accentColor else MTUI.Button.selectedForegroundColor
+      }
+      return selectedButtonFg!!
+    }
+
+    /**
+     * Primary buttons hover
+     */
+    @Suppress("MagicNumber")
+    fun primaryButtonHoverColor(): Color {
+      if (primaryButtonHover == null) {
+        val color = primaryButtonBg()
+        primaryButtonHover = JBColor(ColorUtil.darker(color, 2), ColorUtil.brighter(color, 2))
+        if (MTConfig.getInstance().isBorderedButtons) {
+          primaryButtonHover = ColorUtil.mix(MTUI.Panel.background, MTUI.Panel.accentColor, 0.25)
+        }
+      }
+      return primaryButtonHover!!
+    }
+
+    /**
+     * Buttons hover
+     */
+    @Suppress("MagicNumber")
+    fun buttonHoverColor(): Color {
+      if (buttonHover == null) {
+        val color = selectedButtonBg()
+        buttonHover = JBColor(ColorUtil.darker(color, 2), ColorUtil.brighter(color, 2))
+        if (MTConfig.getInstance().isBorderedButtons) {
+          buttonHover = ColorUtil.mix(MTUI.Panel.background, MTUI.Panel.accentColor, 0.25)
+        }
+      }
+      return buttonHover!!
+    }
+
+    @Suppress("MagicNumber")
+    private fun paintHelpIcon(g: Graphics2D, component: JComponent, w: Int, h: Int, buttonColor1: Color): Boolean {
+      g.paint = UIUtil.getGradientPaint(0f, 0f, buttonColor1, 0f, h.toFloat(), buttonColor1)
+      val off = JBUI.scale(22)
+      val x = (w - off) / 2
+      val y = (h - off) / 2
+      g.fillOval(x, y, off, off)
+      AllIcons.Actions.Help.paintIcon(component, g, x + JBUI.scale(3), y + JBUI.scale(3))
+
+      // Remove decorations
+      val button = component as AbstractButton
+      button.isBorderPainted = false
+      button.isFocusPainted = false
+      button.background = MTUI.Panel.background
+      return false
+    }
+
+    /**
+     * Small variant?
+     */
+    fun isSmallVariant(c: Component?): Boolean {
+      if (c !is AbstractButton) return false
+
+      val smallVariant = c.getClientProperty("ActionToolbar.smallVariant") === java.lang.Boolean.TRUE
+      val a = c.getClientProperty("styleCombo") as? ComboBoxAction
+      return smallVariant || a != null && a.isSmallVariant
+    }
+  }
 }

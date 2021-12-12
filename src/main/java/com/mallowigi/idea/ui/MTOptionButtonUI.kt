@@ -54,7 +54,7 @@ open class MTOptionButtonUI : DarculaOptionButtonUI() {
      * Create a new MTOptionButtonUI
      *
      */
-    @Suppress("UNUSED_PARAMETER")
+    @Suppress("UNUSED_PARAMETER", "HardCodedStringLiteral")
     @JvmStatic
     fun createUI(c: JComponent): MTOptionButtonUI = MTOptionButtonUI()
   }
