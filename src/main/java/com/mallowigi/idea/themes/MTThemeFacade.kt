@@ -72,7 +72,7 @@ interface MTThemeFacade {
    *
    * @return the internal theme name
    */
-  val themeName: String?
+  val themeName: String
 
   /**
    * The internal theme id (OCEANIC, DARKER, PALENIGHT...)

@@ -391,6 +391,13 @@ new FormModel {
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 0 6"
 					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "newIcon"
+						"icon": new com.jformdesigner.model.SwingIcon( 0, "/actions/rollback.png" )
+						"toolTipText": new FormMessage( null, "MTForm.newIcon.toolTipText" )
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 6"
+					} )
 					add( new FormComponent( "com.intellij.ui.FontComboBox" ) {
 						name: "treeFontChooser"
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
@@ -478,7 +485,7 @@ new FormModel {
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 					"$layoutConstraints": "fillx,hidemode 3,align left top"
 					"$columnConstraints": "[left][right]"
-					"$rowConstraints": "[][][][][][][][][]"
+					"$rowConstraints": "[][][][][][][][]"
 				} ) {
 					name: "featuresPanel"
 					"border": sfield com.jformdesigner.model.FormObject NULL_VALUE

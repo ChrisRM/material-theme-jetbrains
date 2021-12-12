@@ -88,7 +88,6 @@ import static com.mallowigi.idea.utils.MTUiUtils.disablePremium;
   "unused",
   "PublicMethodNotExposedInInterface",
   "UndesirableClassUsage",
-  "unchecked",
   "MethodWithMoreThanThreeNegations",
   "OverlyLongMethod"})
 public class MTForm implements MTFormUI, Disposable {
@@ -153,6 +152,7 @@ public class MTForm implements MTFormUI, Disposable {
   private JCheckBox styledDirectoriesCheckbox;
   private LinkLabel directoriesColorLink;
   private JCheckBox fontSizeCheckbox;
+  private JLabel newIcon;
   private FontComboBox treeFontChooser;
   private JSpinner fontSizeSpinner;
   private JPanel componentsPanel;
@@ -1140,6 +1140,7 @@ public class MTForm implements MTFormUI, Disposable {
     styledDirectoriesCheckbox = new JCheckBox();
     directoriesColorLink = new LinkLabel();
     fontSizeCheckbox = new JCheckBox();
+    newIcon = new JLabel();
     treeFontChooser = new FontComboBox();
     fontSizeSpinner = new JSpinner();
     componentsPanel = new JPanel();
@@ -1500,6 +1501,11 @@ public class MTForm implements MTFormUI, Disposable {
           fontSizeCheckbox.setToolTipText(bundle.getString("MTForm.fontSizeCheckbox.toolTipText"));
           fontSizeCheckbox.addActionListener(e -> fontSizeCheckboxActionPerformed(e));
           projectViewPanel.add(fontSizeCheckbox, "cell 0 6");
+
+          //---- newIcon ----
+          newIcon.setIcon(new ImageIcon(getClass().getResource("/actions/rollback.png")));
+          newIcon.setToolTipText(bundle.getString("MTForm.newIcon.toolTipText"));
+          projectViewPanel.add(newIcon, "cell 0 6");
           projectViewPanel.add(treeFontChooser, "cell 1 6,aligny bottom,growy 0,width 150:150");
 
           //---- fontSizeSpinner ----
@@ -1586,7 +1592,6 @@ public class MTForm implements MTFormUI, Disposable {
               "[]" +
               "[]" +
               "[]" +
-              "[]" +
               "[]"));
 
           //---- featuresDesc ----
@@ -1602,7 +1607,6 @@ public class MTForm implements MTFormUI, Disposable {
           //---- useGlobalFontCheckbox ----
           useGlobalFontCheckbox.setText(bundle.getString("MTForm.useGlobalFontCheckbox.text"));
           useGlobalFontCheckbox.setToolTipText(bundle.getString("MTForm.useGlobalFontCheckbox.toolTipText"));
-          useGlobalFontCheckbox.addActionListener(e -> useGlobalFontCheckboxActionPerformed(e));
           featuresPanel.add(useGlobalFontCheckbox, "cell 0 2,align left center,grow 0 0");
 
           //---- globalFontLink ----
@@ -1787,12 +1791,13 @@ public class MTForm implements MTFormUI, Disposable {
   /**
    * Initialize comboboxes
    */
+  @SuppressWarnings("Convert2Diamond")
   private void initComboboxes() {
     // Themes
     themeComboBox.setModel(new DefaultComboBoxModel<MTThemeFacade>(MTThemeCollection.getAllThemes()));
     themeComboBox.setRenderer(new ListCellRendererWrapper<MTThemeFacade>() {
       @Override
-      public void customize(final JList list, final MTThemeFacade value, final int index, final boolean selected, final boolean hasFocus) {
+      public void customize(final JList jList, final MTThemeFacade value, final int i, final boolean b, final boolean b1) {
         final Icon baseIcon;
         if (value == null) {
           return;
@@ -1856,6 +1861,7 @@ public class MTForm implements MTFormUI, Disposable {
   /**
    * Create the links and their targets
    */
+  @SuppressWarnings("OverlyLongLambda")
   private void configureLinks() {
     fileColorsLink.setIcon(MTUiUtils.LINK_ICON);
     directoriesColorLink.setIcon(MTUiUtils.LINK_ICON);
@@ -1908,7 +1914,7 @@ public class MTForm implements MTFormUI, Disposable {
         final SearchableConfigurable subConfigurable =
           Objects.requireNonNull(settings.find(ColorAndFontOptions.class)).findSubConfigurable(MTFileColorsPage.class);
         if (subConfigurable != null) {
-          settings.select(subConfigurable, "Directories");
+          settings.select(subConfigurable, MaterialThemeBundle.message("material.file.directories"));
         }
       }
     }, null);
@@ -1984,7 +1990,7 @@ public class MTForm implements MTFormUI, Disposable {
     );
   }
 
-  public static void showUseGlobalFontWarningDialog() {
+  private static void showUseGlobalFontWarningDialog() {
     Messages.showWarningDialog(
       MaterialThemeBundle.message("MTForm.useGlobalFonts.warning.message"),
       MaterialThemeBundle.message("MTForm.useMaterialFonts.warning.title")

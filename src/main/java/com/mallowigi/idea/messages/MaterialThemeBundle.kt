@@ -28,6 +28,7 @@
 package com.mallowigi.idea.messages
 
 import com.intellij.DynamicBundle
+import com.intellij.openapi.util.NlsContexts
 import org.jetbrains.annotations.NonNls
 import org.jetbrains.annotations.PropertyKey
 import java.util.ResourceBundle
@@ -41,6 +42,7 @@ private const val BUNDLE: String = "messages.MaterialThemeBundle"
  *
  * @constructor Create empty Material theme bundle
  */
+@Suppress("UnstableApiUsage")
 object MaterialThemeBundle : DynamicBundle(BUNDLE) {
   @JvmStatic
   fun getBundle(): ResourceBundle = ResourceBundle.getBundle(BUNDLE)
@@ -55,6 +57,8 @@ object MaterialThemeBundle : DynamicBundle(BUNDLE) {
   fun messageWithPrefix(key: String, prefix: String): String =
     message("$prefix.$key")
 
+  @NlsContexts.DialogTitle
+  @NlsContexts.DialogMessage
   @JvmStatic
   fun message(@PropertyKey(resourceBundle = BUNDLE) key: String, vararg params: Any): String =
     getMessage(key, *params)

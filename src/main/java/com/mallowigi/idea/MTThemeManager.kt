@@ -205,7 +205,7 @@ object MTThemeManager : Disposable {
   fun toggleMaterialFonts() {
     val useMaterialFonts = mtConfig.isUseMaterialFont
     mtConfig.isUseMaterialFont = !useMaterialFonts
-    applyFonts()
+    applyFonts(true)
   }
 
   /**
@@ -349,7 +349,7 @@ object MTThemeManager : Disposable {
     applyMenusHeight()
     applyDropdownLists()
     applyAccents(false)
-    applyFonts()
+    applyFonts(false)
     applyCompactToolWindowHeaders()
     applyStripedToolWindows()
 
@@ -442,8 +442,6 @@ object MTThemeManager : Disposable {
     AccentResources.scrollbarResources.forEach { UIManager.put(it, scrollbarColor) }
 
     AccentResources.scrollbarHoverResources.forEach { UIManager.put(it, scrollbarHoverColor) }
-
-    reloadUI()
   }
 
   /**
@@ -557,7 +555,7 @@ object MTThemeManager : Disposable {
   /**
    * Apply fonts according to settings
    */
-  private fun applyFonts() {
+  private fun applyFonts(reloadUI: Boolean) {
     val uiSettings: UISettings = UISettings.instance
     val lookAndFeelDefaults = UIManager.getLookAndFeelDefaults()
     val useMaterialFont = mtConfig.isUseMaterialFont
@@ -574,6 +572,10 @@ object MTThemeManager : Disposable {
 
     applyCustomTreeFont(lookAndFeelDefaults)
     applyGlobalFontSettings()
+
+    if (reloadUI) {
+      reloadUI()
+    }
   }
 
   /**
@@ -588,7 +590,6 @@ object MTThemeManager : Disposable {
     if (mtConfig.isTreeFontSizeEnabled) {
       val font = lookAndFeelDefaults.getFont("Tree.font")
       lookAndFeelDefaults["Tree.font"] = Font(treeFont, font.style, treeFontSize)
-      LafManager.getInstance().updateUI()
     }
   }
 
@@ -720,7 +721,7 @@ object MTThemeManager : Disposable {
    * Trigger a reloadUI event
    */
   private fun reloadUI() {
-    applyFonts()
+//    applyFonts()
     DarculaInstaller.uninstall()
 
     if (UIUtil.isUnderDarcula()) {
