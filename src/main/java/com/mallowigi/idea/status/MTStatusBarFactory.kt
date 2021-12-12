@@ -26,27 +26,54 @@
 package com.mallowigi.idea.status
 
 import com.intellij.openapi.project.Project
+import com.intellij.openapi.util.Disposer
 import com.intellij.openapi.wm.StatusBar
 import com.intellij.openapi.wm.StatusBarWidget
 import com.intellij.openapi.wm.StatusBarWidgetFactory
 import com.mallowigi.idea.messages.MaterialThemeBundle.message
 
+/**
+ * Builds the MT Status Bar
+ *
+ */
 class MTStatusBarFactory : StatusBarWidgetFactory {
+  /**
+   * Material Status Bar Factory ID
+   */
   override fun getId(): String = "mtStatusBar"
 
+  /**
+   * Status Bar Widget Name
+   */
   override fun getDisplayName(): String = message("mt.settings.statusbar")
 
+  /**
+   * Make widget available everywhere
+   */
   override fun isAvailable(project: Project): Boolean = true
 
+  /**
+   * Make a new [MTStatusWidget]
+   */
   override fun createWidget(project: Project): StatusBarWidget = MTStatusWidget()
 
-  override fun disposeWidget(widget: StatusBarWidget) {
-    // nothing
-  }
+  /**
+   * Dispose widget
+   */
+  override fun disposeWidget(widget: StatusBarWidget): Unit = Disposer.dispose(widget)
 
+  /**
+   * Check when widget can be enabled
+   */
   override fun canBeEnabledOn(statusBar: StatusBar): Boolean = true
 
+  /**
+   * Whether widget is enabled by default
+   */
   override fun isEnabledByDefault(): Boolean = true
 
+  /**
+   * Whether widget is configurable
+   */
   override fun isConfigurable(): Boolean = true
 }
