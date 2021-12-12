@@ -26,7 +26,12 @@
 
 package com.mallowigi.idea.ui
 
+import com.intellij.ide.ui.laf.darcula.ui.DarculaButtonUI
 import com.intellij.ide.ui.laf.darcula.ui.DarculaOptionButtonUI
+import com.intellij.ui.ComponentUtil
+import com.mallowigi.idea.config.application.MTConfig
+import com.mallowigi.idea.utils.MTUI
+import java.awt.Color
 import java.awt.Graphics2D
 import javax.swing.JComponent
 
@@ -34,6 +39,7 @@ import javax.swing.JComponent
  * Material Option Button
  *
  */
+@Suppress("DEPRECATED_IDENTITY_EQUALS")
 open class MTOptionButtonUI : DarculaOptionButtonUI() {
   /**
    * Clip x offset
@@ -42,7 +48,46 @@ open class MTOptionButtonUI : DarculaOptionButtonUI() {
     get() = 0
 
   /**
-   * Paint separator
+   * Buttons background
+   *
+   */
+  private val buttonBg: Color
+    get() = if (MTConfig.getInstance().isBorderedButtons) MTUI.Panel.background else MTUI.Button.backgroundColor
+
+  /**
+   * Primary buttons background
+   */
+  private val primaryButtonBg: Color
+    get() = if (MTConfig.getInstance().isBorderedButtons) MTUI.Panel.background else MTUI.Button.primaryBackgroundColor
+
+  /**
+   * Primary buttons background
+   */
+  private val disabledButtonBg: Color
+    get() = if (MTConfig.getInstance().isBorderedButtons) MTUI.Panel.background else MTUI.Button.disabledColor
+
+  /**
+   * Install UI
+   */
+  override fun installUI(c: JComponent) {
+    super.installUI(c)
+    c.background = buttonBackground(c)
+  }
+
+  /**
+   * Button background
+   *
+   */
+  private fun buttonBackground(c: JComponent): Color {
+    if (!c.isEnabled) return disabledButtonBg
+    return if (isDefaultButton(c)) primaryButtonBg else buttonBg
+  }
+
+  private fun isDefaultButton(c: JComponent): Boolean =
+    ComponentUtil.getClientProperty(c, DarculaButtonUI.DEFAULT_STYLE_KEY) === java.lang.Boolean.TRUE
+
+  /**
+   * Do not paint separator
    *
    */
   override fun paintSeparator(g: Graphics2D, c: JComponent) {
