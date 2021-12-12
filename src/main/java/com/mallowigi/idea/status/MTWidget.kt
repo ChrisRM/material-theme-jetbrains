@@ -30,6 +30,7 @@ import com.intellij.openapi.Disposable
 import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.options.ShowSettingsUtil
 import com.intellij.openapi.ui.popup.Balloon
+import com.intellij.openapi.util.Disposer
 import com.intellij.ui.ColorUtil
 import com.intellij.ui.GotItTooltip
 import com.intellij.util.ui.BaseButtonBehavior
@@ -85,9 +86,7 @@ class MTWidget : JButton(), Disposable {
    * Dispose
    *
    */
-  override fun dispose() {
-    // do nothing
-  }
+  override fun dispose(): Unit = Disposer.dispose(this)
 
   /**
    * Show got it tooltip
@@ -180,12 +179,12 @@ class MTWidget : JButton(), Disposable {
   override fun getPreferredSize(): Dimension {
     val themeName = mtConfig.selectedTheme.themeName
     val width = getFontMetrics(widgetFont).charsWidth(
-      themeName.toCharArray(),
-      0,
-      themeName.length
+      /* data = */ themeName.toCharArray(),
+      /* off = */ 0,
+      /* len = */ themeName.length
     ) + 2 * STATUS_PADDING
     val accentDiameter = JBUI.scale(STATUS_HEIGHT)
-    return Dimension(width + accentDiameter, accentDiameter)
+    return Dimension(width + 2 * accentDiameter, accentDiameter)
   }
 
   /**
@@ -221,9 +220,9 @@ class MTWidget : JButton(), Disposable {
 
   companion object {
     private val DEFAULT_FONT_SIZE = JBUI.scale(11)
-    private const val STATUS_PADDING = 4
-    private const val STATUS_HEIGHT = 16
-    private const val RADIUS = 8
+    private val STATUS_PADDING = JBUI.scale(4)
+    private val STATUS_HEIGHT = JBUI.scale(16)
+    private val RADIUS = JBUI.scale(8)
 
   }
 }
