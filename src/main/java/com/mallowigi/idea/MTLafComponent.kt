@@ -63,6 +63,12 @@ class MTLafComponent : AppLifecycleListener {
   override fun appFrameCreated(commandLineArgs: List<String>): Unit = initComponent()
 
   /**
+   * Run on App frame started temporarily
+   *
+   */
+  override fun appStarted(): Unit = initComponent()
+
+  /**
    * Activate theme when Look and feel changed
    *
    * @param source the source look and feel
