@@ -401,7 +401,8 @@ class MTButtonUI : DarculaButtonUI() {
     fun isSmallVariant(c: Component?): Boolean {
       if (c !is AbstractButton) return false
 
-      val smallVariant = c.getClientProperty("ActionToolbar.smallVariant") === java.lang.Boolean.TRUE
+      @Suppress("DEPRECATED_IDENTITY_EQUALS", "HardCodedStringLiteral")
+      val smallVariant = c.getClientProperty("ActionToolbar.smallVariant") as Boolean === java.lang.Boolean.TRUE
       val a = c.getClientProperty("styleCombo") as? ComboBoxAction
       return smallVariant || a != null && a.isSmallVariant
     }
