@@ -115,7 +115,7 @@
 
     <depends>com.intellij.modules.platform</depends>
     <depends optional="true" config-file="withLang.xml">com.intellij.modules.lang</depends>
-    <depends optional="true" config-file="withLearning.xml">training</depends>
+    <!--    <depends optional="true" config-file="withLearning.xml">training</depends>-->
 
     <!--suppress PluginXmlValidity -->
     <depends optional="true">org.jetbrains.android</depends>
@@ -132,7 +132,7 @@
     <!--    <depends optional="true" config-file="withGo.xml">com.intellij.modules.go-capable</depends>-->
     <!--    <depends optional="true" config-file="withAppCode.xml">com.intellij.modules.cidr.lang</depends>-->
     <depends optional="true" config-file="withJba.xml">com.intellij.CloudConfig</depends>
-    <depends optional="true" config-file="withXPathView.xml">XPathView</depends>
+    <!--    <depends optional="true" config-file="withXPathView.xml">XPathView</depends>-->
     <!--    <depends>com.mallowigi</depends>-->
 
     <resource-bundle>messages.MaterialThemeBundle</resource-bundle>
