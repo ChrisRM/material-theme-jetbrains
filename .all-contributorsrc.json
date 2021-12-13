@@ -1,0 +1,45 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "JavierSegoviaCordoba",
+      "name": "Javier Segovia Cordoba",
+      "avatar_url": "https://avatars.githubusercontent.com/u/7463564?v=4",
+      "profile": "https://kotlin.desarrollador-android.com/",
+      "contributions": [
+        "code",
+        "infra"
+      ]
+    },
+    {
+      "login": "Unthrottled",
+      "name": "Alex Simons",
+      "avatar_url": "https://avatars.githubusercontent.com/u/15972415?v=4",
+      "profile": "https://unthrottled.io",
+      "contributions": [
+        "code",
+        "infra"
+      ]
+    },
+    {
+      "login": "hsz",
+      "name": "Jakub Chrzanowski",
+      "avatar_url": "https://avatars.githubusercontent.com/u/108333?v=4",
+      "profile": "https://chrzanow.ski/",
+      "contributions": [
+        "gradle",
+        "consulting"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "material-theme-jetbrains",
+  "projectOwner": "mallowigi",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
