@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+
+name: Quality Checks
+concurrency:
+  group: Quality-Checks-${{ github.head_ref }}
+  cancel-in-progress: true
+on:
+  pull_request:
+jobs:
+  quality-checks:
+    runs-on: ubuntu-20.04
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.4.0
+      - name: Cache Pre-commit
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.cache/pre-commit
+            ~/.cache/jsonschema_validate
+            ~/.cache/pip
+          key: ${{ runner.os }}-${{ hashFiles('./.pre-commit-config.yaml') }}
+      - name: Pre-commit
+        uses: pre-commit/action@v2.0.3

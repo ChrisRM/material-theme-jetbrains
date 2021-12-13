@@ -1,0 +1,15 @@
+extends: default
+
+rules:
+  braces:
+    forbid: non-empty
+  brackets:
+    forbid: non-empty
+  comments:
+    min-spaces-from-content: 1
+  document-end: disable
+  document-start: disable
+  line-length:
+    max: 300
+  truthy:
+    check-keys: false

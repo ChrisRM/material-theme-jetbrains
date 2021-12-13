@@ -1,0 +1,145 @@
+# yaml-language-server: $schema=https://json.schemastore.org/pre-commit-config.json
+
+minimum_pre_commit_version: 2.13.0
+fail_fast: false
+default_stages:
+  - commit
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.0.1
+    hooks:
+      - id: check-added-large-files
+      - id: check-case-conflict
+      - id: check-executables-have-shebangs
+      - id: check-shebang-scripts-are-executable
+      - id: check-merge-conflict
+      - id: check-symlinks
+      - id: detect-private-key
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+        exclude: ^\.idea
+      - id: mixed-line-ending
+      - id: check-json
+      - id: check-xml
+      - id: check-yaml
+      - id: pretty-format-json
+        args:
+          - --autofix
+          - --no-sort-keys
+  - repo: https://github.com/jumanjihouse/pre-commit-hooks
+    rev: 2.1.5
+    hooks:
+      - id: forbid-binary
+        exclude: ^\.idea
+        exclude_types:
+          - image
+          - icon
+  - repo: https://github.com/jumanjihouse/pre-commit-hook-yamlfmt
+    rev: 0.1.0
+    hooks:
+      - id: yamlfmt
+        args:
+          - --mapping
+          - '2'
+          - --sequence
+          - '4'
+          - --offset
+          - '2'
+          - --width
+          - '300'
+          - --implicit_start
+  - repo: https://github.com/adrienverge/yamllint
+    rev: v1.26.1
+    hooks:
+      - id: yamllint
+        name: Lint YAML files
+        args:
+          - --strict
+  - repo: https://github.com/sirosen/check-jsonschema
+    rev: 0.4.0
+    hooks:
+      - id: check-jsonschema
+        name: Validate GitHub Workflows
+        files: ^\.github/workflows/.*\.yml
+        types:
+          - yaml
+        args:
+          - --schemafile
+          - https://json.schemastore.org/github-workflow.json
+      - id: check-jsonschema
+        name: Validate GitHub Actions
+        files: >
+          (?x)^(
+            action.(yml|yaml)|
+            \.github/actions/.*
+          )$
+        types:
+          - yaml
+        args:
+          - --schemafile
+          - https://json.schemastore.org/github-action
+      - id: check-jsonschema
+        name: Validate DependaBot
+        files: ^\.github/dependabot\.yml
+        types:
+          - yaml
+        args:
+          - --schemafile
+          - https://json.schemastore.org/dependabot-2.0.json
+      - id: check-jsonschema
+        name: Validate MarkdownLint
+        files: .*\.markdownlint\.yaml
+        types:
+          - yaml
+        args:
+          - --schemafile
+          - https://json.schemastore.org/markdownlint.json
+      - id: check-jsonschema
+        name: Validate Pre-commit
+        files: .*.pre-commit-config\.yaml
+        types:
+          - yaml
+        args:
+          - --schemafile
+          - https://json.schemastore.org/pre-commit-config.json
+      - id: check-jsonschema
+        name: Validate Docker-Compose
+        files: .*docker-compose\.yml
+        types:
+          - yaml
+        args:
+          - --schemafile
+          - https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json
+      - id: check-jsonschema
+        name: Validate Renovate
+        files: ^\.github/renovate\.json
+        types:
+          - json
+        args:
+          - --schemafile
+          - https://docs.renovatebot.com/renovate-schema.json
+  - repo: https://github.com/commitizen-tools/commitizen
+    rev: v2.17.13
+    hooks:
+      - id: commitizen
+        name: Lint commit message
+        stages:
+          - commit-msg
+  - repo: https://github.com/alessandrojcm/commitlint-pre-commit-hook
+    rev: v5.0.0
+    hooks:
+      - id: commitlint
+        stages:
+          - commit-msg
+        additional_dependencies:
+          - '@commitlint/config-conventional'
+  - repo: local
+    hooks:
+      - id: markdownlint
+        name: Lint Markdown files
+        language: docker_image
+        entry: 06kellyjac/markdownlint-cli:0.28.1
+        args:
+          - --fix
+        types:
+          - markdown
