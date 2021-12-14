@@ -89,7 +89,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   public static final int MIN_TABS_HEIGHT = 10;
   public static final int MAX_TREE_INDENT = 40;
   public static final int MIN_TREE_INDENT = 0;
-  public static final int MAX_SIDEBAR_HEIGHT = 36;
+  public static final int MAX_SIDEBAR_HEIGHT = 44;
   public static final int MIN_SIDEBAR_HEIGHT = DEFAULT_LINE_HEIGHT;
   public static final int MIN_FONT_SIZE = 6;
   public static final int MAX_FONT_SIZE = 24;
@@ -1354,7 +1354,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   }
   // endregion
 
-  //region ----------- Inverted Completion Color ----------- 
+  //region ----------- Inverted Completion Color -----------
   public boolean isInvertedSelectionColor() {
     return isInvertedSelectionColor;
   }
@@ -1510,7 +1510,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   }
   //endregion
 
-  //region ----------- Accent Mode ----------- 
+  //region ----------- Accent Mode -----------
   public boolean isAccentMode() {
     return isPremium && accentMode;
   }
