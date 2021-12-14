@@ -45,6 +45,9 @@ import javax.swing.RootPaneContainer
  *
  */
 class MTChangeLafAnimator {
+  private val totalFrames = 60
+  private val cycleDuration = 1200
+
   // The current alpha, changed by the fade in animator
   private var myAlpha = 1f
 
@@ -55,9 +58,9 @@ class MTChangeLafAnimator {
   internal val fadeInAnimator: Animator = FadeInAnimator()
 
   init {
-    // When this constructor is invoked (e.g. during showSnapshot), we gather all open windows
+    // When this constructor is invoked (e.g., during showSnapshot), we gather all open windows
     // and create a snapshot of the window before the switch. We then attach this snapshot to the windows'
-    // root layer and progressively reduce it's opacity to simulate a "fading in"
+    // root layer and progressively reduce its opacity to simulate a "fading in"
     val windows = Window.getWindows()
     for (window in windows) {
       if (window is RootPaneContainer && window.isShowing) {
@@ -111,9 +114,9 @@ class MTChangeLafAnimator {
    * This animator will modify the alpha between each frame, thus creating a fade in effect
    *
    */
-  inner class FadeInAnimator : Animator("MTChangeLAF", 60, 1200, false) {
+  inner class FadeInAnimator : Animator("MTChangeLAF", totalFrames, cycleDuration, false) {
     /**
-     * when the animation starts/resume
+     * When the animation starts/resume
      *
      */
     override fun resume() {

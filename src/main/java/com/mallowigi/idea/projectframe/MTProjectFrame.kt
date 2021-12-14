@@ -43,24 +43,32 @@ import java.awt.Insets
 import javax.swing.JComponent
 import javax.swing.JPanel
 
+/**
+ * Service for managing the Project Frame
+ *
+ * @property myProject project
+ */
 class MTProjectFrame private constructor(private val myProject: Project) : IdeRootPaneNorthExtension(), Disposable {
+  private val topBottom = 12
   private val connect: MessageBusConnection = myProject.messageBus.connect()
   private var myWrapperPanel: JComponent? = null
   private var myProjectFramePanel: JPanel? = null
 
   init {
-    connect.subscribe(
-      MTTopics.CONFIG,
-      object : ConfigNotifier {
-        override fun configChanged(mtConfig: MTConfig) = addFrame(shouldShowProjectFrame())
-      }
-    )
-    connect.subscribe(
-      MTTopics.PROJECT_CONFIG,
-      object : ProjectConfigNotifier {
-        override fun projectConfigChanged(mtConfig: MTProjectConfig) = addFrame(shouldShowProjectFrame())
-      }
-    )
+    with(connect) {
+      subscribe(
+        MTTopics.CONFIG,
+        object : ConfigNotifier {
+          override fun configChanged(mtConfig: MTConfig) = addFrame(shouldShowProjectFrame())
+        }
+      )
+      subscribe(
+        MTTopics.PROJECT_CONFIG,
+        object : ProjectConfigNotifier {
+          override fun projectConfigChanged(mtConfig: MTProjectConfig) = addFrame(shouldShowProjectFrame())
+        }
+      )
+    }
   }
 
   /**
@@ -74,6 +82,7 @@ class MTProjectFrame private constructor(private val myProject: Project) : IdeRo
    *
    * @param enabled
    */
+  @Suppress("ReplaceNotNullAssertionWithElvisReturn")
   private fun addFrame(enabled: Boolean) {
     if (myWrapperPanel == null) return
 
@@ -116,7 +125,7 @@ class MTProjectFrame private constructor(private val myProject: Project) : IdeRo
     val container: JPanel = object : JPanel(BorderLayout()) {
       override fun paintComponent(g: Graphics) = mtProjectTitlePanel.paintComponent(g)
 
-      override fun getInsets(): Insets = JBInsets.create(JBUI.scale(12), 0)
+      override fun getInsets(): Insets = JBInsets.create(JBUI.scale(topBottom), 0)
     }
 
     container.add(mtProjectTitlePanel, BorderLayout.CENTER)
@@ -135,9 +144,7 @@ class MTProjectFrame private constructor(private val myProject: Project) : IdeRo
    * Returns a copy of the project frame
    *
    */
-  override fun copy(): IdeRootPaneNorthExtension {
-    return MTProjectFrame(myProject)
-  }
+  override fun copy(): IdeRootPaneNorthExtension = MTProjectFrame(myProject)
 
   /**
    * Returns whether the current config/project config should show project frame

@@ -160,6 +160,7 @@ class OverlayPainter : AWTEventListener, Disposable {
    * The Overlay itself
    */
   private class OverlayComponent(private val myInsets: Insets) : JComponent() {
+    @Suppress("MagicNumber")
     override fun paintComponent(g: Graphics) {
       val g2d = g as Graphics2D
       val oldColor = g2d.color

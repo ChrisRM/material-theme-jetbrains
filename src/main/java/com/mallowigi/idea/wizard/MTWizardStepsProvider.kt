@@ -28,9 +28,22 @@ package com.mallowigi.idea.wizard
 import com.intellij.ide.customize.AbstractCustomizeWizardStep
 import com.intellij.ide.customize.CustomizeIDEWizardDialog
 import com.intellij.ide.customize.CustomizeIDEWizardStepsProvider
-import com.mallowigi.idea.wizard.steps.*
+import com.mallowigi.idea.wizard.steps.MTWizardAccentPanel
+import com.mallowigi.idea.wizard.steps.MTWizardContrastPanel
+import com.mallowigi.idea.wizard.steps.MTWizardFinishPanel
+import com.mallowigi.idea.wizard.steps.MTWizardOtherOptionsPanel
+import com.mallowigi.idea.wizard.steps.MTWizardThemesPanel
+import com.mallowigi.idea.wizard.steps.MTWizardWelcomePanel
 
+/**
+ * Wizard Steps
+ *
+ */
 class MTWizardStepsProvider : CustomizeIDEWizardStepsProvider {
+  /**
+   * Add wizard steps
+   *
+   */
   override fun initSteps(wizardDialog: CustomizeIDEWizardDialog, steps: MutableList<in AbstractCustomizeWizardStep?>) {
     steps.add(MTWizardWelcomePanel())
     steps.add(MTWizardThemesPanel())

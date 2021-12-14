@@ -31,9 +31,9 @@ import javax.swing.Icon
 /**
  * Interface Facade for themes.
  *
- * Not to be confused with MTThemeable. MTThemeable is an interface to design themes by defining their resources, such as
- * getBackgroundColor, getSelectionColor, activate, etc, whereas MTThemeFacade represents themes that can be serialized, containing
- * methods such as getThemeId, getThemeIsDark, getAuthor etc.
+ * Not to be confused with MTThemeable. MTThemeable is an interface to design themes by defining their resources, such
+ * as getBackgroundColor, getSelectionColor, activate, etc., whereas MTThemeFacade represents themes that can be
+ * serialized, containing methods such as getThemeId, getThemeIsDark, getAuthor etc.
  *
  * A MTConfig contains a MTThemeFacade which contains itself a MTThemeable.
  *
@@ -68,14 +68,14 @@ interface MTThemeFacade {
   val name: String
 
   /**
-   * The internal theme name, e.g. the name to display in dropdowns
+   * The internal theme name, e.g., the name to display in dropdowns
    *
    * @return the internal theme name
    */
   val themeName: String
 
   /**
-   * The internal theme id (OCEANIC, DARKER, PALENIGHT...)
+   * The internal theme id (OCEANIC, DARKER, PALENIGHT…)
    *
    * @return the unique identifier for themes
    */

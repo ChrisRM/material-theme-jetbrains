@@ -40,17 +40,19 @@ import javax.swing.JComponent
 /**
  * Represents the wizard main panel
  */
-class MTWizardDialog(
-  stepsProvider: CustomizeIDEWizardStepsProvider?,
-  firstRun: Boolean,
-) : CustomizeIDEWizardDialog(stepsProvider!!) {
+class MTWizardDialog(stepsProvider: CustomizeIDEWizardStepsProvider?, firstRun: Boolean) :
+  CustomizeIDEWizardDialog(stepsProvider!!) {
   private val configCopy: MTConfig
+
+  private val width = 1200
+  private val height = 800
 
   init {
     title = MTWizardBundle.message("mt.wizard.title")
     peer.setAppIcons()
     configCopy = MTConfig.getInstance().clone()
-    setSize(1200, 800)
+    setSize(width, height)
+
     if (firstRun) {
       MTThemeManager.instance.setLookAndFeel(MTTheme.OCEANIC)
       MTThemeManager.instance.activate()
@@ -59,19 +61,29 @@ class MTWizardDialog(
     initCurrentStep()
   }
 
+  /**
+   * Open Wizard
+   *
+   */
   override fun actionPerformed(e: ActionEvent) {
     super.actionPerformed(e)
     initCurrentStep()
   }
 
+  /**
+   * Create center panel
+   *
+   */
   override fun createCenterPanel(): JComponent? {
     val centerPanel = super.createCenterPanel()
-    if (centerPanel != null) {
-      centerPanel.preferredSize = JBUI.size(1200, 800)
-    }
+    if (centerPanel != null) centerPanel.preferredSize = JBUI.size(width, height)
     return centerPanel
   }
 
+  /**
+   * On cancel action
+   *
+   */
   override fun doCancelAction() {
     super.doCancelAction()
     MTConfig.getInstance().loadState(configCopy)
@@ -79,14 +91,14 @@ class MTWizardDialog(
   }
 
   private fun initCurrentStep() {
-    if (myIndex == mySteps.size - 1) {
-      myNextButton.text = MTWizardBundle.message("finish.button")
-    }
+    if (myIndex == mySteps.size - 1) myNextButton.text = MTWizardBundle.message("finish.button")
   }
 
-  override fun createCancelAction(): ActionListener = ActionListener { e: ActionEvent? ->
-    if (!PopupUtil.handleEscKeyEvent()) {
-      doCancelAction(e)
-    }
+  /**
+   * Create cancel action
+   *
+   */
+  override fun createCancelAction(): ActionListener = ActionListener {
+    if (!PopupUtil.handleEscKeyEvent()) doCancelAction(it)
   }
 }

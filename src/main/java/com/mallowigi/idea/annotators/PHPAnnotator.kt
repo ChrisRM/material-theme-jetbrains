@@ -28,6 +28,10 @@ package com.mallowigi.idea.annotators
 import com.intellij.openapi.editor.colors.TextAttributesKey
 import com.intellij.psi.PsiElement
 
+/**
+ * Annotator for PHP Additions
+ *
+ */
 internal class PHPAnnotator : BaseAnnotator() {
   override fun getKeywordKind(element: PsiElement): TextAttributesKey? {
     var kind: TextAttributesKey? = null

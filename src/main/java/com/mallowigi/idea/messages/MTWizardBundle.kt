@@ -26,6 +26,7 @@
 package com.mallowigi.idea.messages
 
 import com.intellij.DynamicBundle
+import com.intellij.openapi.util.NlsContexts
 import org.jetbrains.annotations.NonNls
 import org.jetbrains.annotations.PropertyKey
 import java.util.ResourceBundle
@@ -49,6 +50,8 @@ object MTWizardBundle : DynamicBundle(BUNDLE) {
     vararg params: Any,
   ): String = messageOrDefault(ResourceBundle.getBundle(BUNDLE), key, defaultValue, *params)
 
+  @Suppress("UnstableApiUsage")
+  @NlsContexts.DialogTitle
   @JvmStatic
   fun message(@PropertyKey(resourceBundle = BUNDLE) key: String, vararg params: Any): String =
     getMessage(key, *params)

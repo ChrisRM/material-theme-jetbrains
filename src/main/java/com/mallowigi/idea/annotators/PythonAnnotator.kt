@@ -28,6 +28,10 @@ package com.mallowigi.idea.annotators
 import com.intellij.openapi.editor.colors.TextAttributesKey
 import com.intellij.psi.PsiElement
 
+/**
+ * Annotator for Python Additions
+ *
+ */
 internal class PythonAnnotator : BaseAnnotator() {
   override fun getKeywordKind(element: PsiElement): TextAttributesKey? {
     var kind: TextAttributesKey? = null
@@ -52,7 +56,7 @@ internal class PythonAnnotator : BaseAnnotator() {
   companion object {
     val PY_KEYWORD = TextAttributesKey.find("PY.KEYWORD")
     val PY_PRIMITIVE = TextAttributesKey.find("PY.NUMBER")
-    val PY_FUNCTION = TextAttributesKey.find("PY.PREDEFINED_USAGE")
+    private val PY_FUNCTION = TextAttributesKey.find("PY.PREDEFINED_USAGE")
 
     @JvmField
     val DEF = TextAttributesKey.createTextAttributesKey("PY.DEF", PY_KEYWORD)

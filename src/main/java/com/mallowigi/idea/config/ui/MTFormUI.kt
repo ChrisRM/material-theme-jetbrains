@@ -33,6 +33,11 @@ import javax.swing.JComponent
  */
 interface MTFormUI {
   /**
+   * The main component
+   */
+  val content: JComponent?
+
+  /**
    * Initializes the form
    *
    */
@@ -49,11 +54,6 @@ interface MTFormUI {
    *
    */
   fun setupComponents()
-
-  /**
-   * The main component
-   */
-  val content: JComponent?
 
   /**
    * Disposes the form

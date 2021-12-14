@@ -25,11 +25,13 @@
  */
 package com.mallowigi.idea.annotators
 
-import com.intellij.openapi.editor.DefaultLanguageHighlighterColors
 import com.intellij.openapi.editor.colors.TextAttributesKey
 import com.intellij.psi.PsiElement
-import com.intellij.util.ObjectUtils
 
+/**
+ * Annotator for Kotlin Additions
+ *
+ */
 internal class KotlinAnnotator : BaseAnnotator() {
   override fun getKeywordKind(element: PsiElement): TextAttributesKey? {
     var kind: TextAttributesKey? = null
@@ -49,15 +51,6 @@ internal class KotlinAnnotator : BaseAnnotator() {
   }
 
   companion object {
-    private val KOTLIN_KEYWORD = ObjectUtils.notNull(
-      TextAttributesKey.find("KOTLIN_KEYWORD"),
-      DefaultLanguageHighlighterColors.KEYWORD
-    )
-    private val KOTLIN_NUMBER = ObjectUtils.notNull(
-      TextAttributesKey.find("KOTLIN_NUMBER"),
-      DefaultLanguageHighlighterColors.KEYWORD
-    )
-
     @JvmField
     val MODIFIER = TextAttributesKey.createTextAttributesKey("KOTLIN.MODIFIER", JavaAnnotator.MODIFIER)
 

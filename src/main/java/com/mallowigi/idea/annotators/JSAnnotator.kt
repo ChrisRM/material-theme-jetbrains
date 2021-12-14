@@ -36,24 +36,30 @@ import com.intellij.psi.util.PsiTreeUtil
 import com.intellij.util.ObjectUtils
 import com.mallowigi.idea.config.application.MTConfig
 
-@Suppress("KDocMissingDocumentation")
+/**
+ * JavaScript Additions Annotator
+ *
+ */
 internal open class JSAnnotator : BaseAnnotator() {
+  @Suppress("ReturnCount")
   override fun visitElement(element: PsiElement) {
     assert(myHolder != null)
     val kind = getKeywordKind(element) ?: return
 
-    if (PsiTreeUtil.getParentOfType(element, PsiComment::class.java) != null) return
+    when {
+      PsiTreeUtil.getParentOfType(element, PsiComment::class.java) != null -> return
+      element !is LeafPsiElement                                           -> return
+      else                                                                 -> {
+        val textRange = element.getTextRange()
+        val range = TextRange(textRange.startOffset, textRange.endOffset)
+        val enforcedLanguageAdditions = MTConfig.getInstance().isEnforcedLanguageAdditions
+        val highlightSeverity =
+          if (enforcedLanguageAdditions) HighlightSeverity.WEAK_WARNING else HighlightSeverity.INFORMATION
 
-    if (element !is LeafPsiElement) return
-
-    val textRange = element.getTextRange()
-    val range = TextRange(textRange.startOffset, textRange.endOffset)
-    val enforcedLanguageAdditions = MTConfig.getInstance().isEnforcedLanguageAdditions
-    val highlightSeverity =
-      if (enforcedLanguageAdditions) HighlightSeverity.WEAK_WARNING else HighlightSeverity.INFORMATION
-
-    (myHolder ?: return).newSilentAnnotation(highlightSeverity).needsUpdateOnTyping(false).range(range)
-      .textAttributes(kind).create()
+        (myHolder ?: return).newSilentAnnotation(highlightSeverity).needsUpdateOnTyping(false).range(range)
+          .textAttributes(kind).create()
+      }
+    }
   }
 
   @Suppress("ComplexMethod")

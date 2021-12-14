@@ -63,6 +63,8 @@ performance:
     active: false
 
 style:
+  SerialVersionUIDInSerializableClass:
+    active: false
   ClassOrdering:
     active: true
   CollapsibleIfStatements:
@@ -92,6 +94,7 @@ style:
     ignoreEnums: true
     excludes:
       - '**/*Theme*'
+      - '**/*Painter*'
   MandatoryBracesIfStatements:
     active: true
   MandatoryBracesLoops:

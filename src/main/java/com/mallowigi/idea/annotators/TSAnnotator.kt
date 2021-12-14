@@ -30,6 +30,10 @@ import com.intellij.openapi.editor.colors.TextAttributesKey
 import com.intellij.psi.PsiElement
 import com.intellij.util.ObjectUtils
 
+/**
+ * Annotator for TypeScript additions
+ *
+ */
 internal class TSAnnotator : JSAnnotator() {
   public override fun getKeywordKind(element: PsiElement): TextAttributesKey? {
     var kind = super.getKeywordKind(element)

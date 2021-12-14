@@ -33,6 +33,7 @@ import com.intellij.notification.Notifications
 import com.intellij.notification.impl.NotificationsManagerImpl
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.ui.popup.Balloon
+import com.intellij.openapi.util.NlsContexts
 import com.intellij.openapi.wm.WindowManager
 import com.intellij.ui.BalloonLayoutData
 import com.intellij.ui.awt.RelativePoint
@@ -46,7 +47,10 @@ import java.util.Objects
  * Service for sending notifications
  *
  */
+@Suppress("UnstableApiUsage")
 object MTNotifications {
+  private const val fromTop = 20
+
   /**
    * Notification channel ID
    */
@@ -57,6 +61,7 @@ object MTNotifications {
    *
    * @param project  the project to display in
    */
+  @Suppress("DialogTitleCapitalization")
   @JvmStatic
   fun showUpdate(project: Project) {
     val notification = createNotification(
@@ -74,7 +79,10 @@ object MTNotifications {
    * @param content the content text
    */
   @JvmStatic
-  fun showSimple(project: Project, content: String) {
+  fun showSimple(
+    project: Project,
+    @NlsContexts.NotificationContent content: String,
+  ) {
     val notification = createNotification("", content, NotificationType.INFORMATION)
     Notifications.Bus.notify(notification, project)
   }
@@ -91,8 +99,8 @@ object MTNotifications {
   @JvmStatic
   fun showWithListener(
     project: Project,
-    title: String,
-    content: String,
+    @NlsContexts.NotificationTitle title: String,
+    @NlsContexts.NotificationContent content: String,
     type: NotificationType,
     listener: NotificationListener?,
   ) {
@@ -109,8 +117,8 @@ object MTNotifications {
    * @return new notification to be displayed
    */
   private fun createNotification(
-    title: String,
-    content: String,
+    @NlsContexts.NotificationTitle title: String,
+    @NlsContexts.NotificationContent content: String,
     type: NotificationType,
   ): Notification {
     val group = NotificationGroupManager.getInstance().getNotificationGroup(CHANNEL)
@@ -127,8 +135,8 @@ object MTNotifications {
    * @return new notification to be displayed
    */
   private fun createNotification(
-    title: String,
-    content: String,
+    @NlsContexts.NotificationTitle title: String,
+    @NlsContexts.NotificationContent content: String,
     type: NotificationType,
     listener: NotificationListener?,
   ): Notification {
@@ -147,7 +155,7 @@ object MTNotifications {
     run {
       val frame = WindowManager.getInstance().getIdeFrame(project) ?: return
       val bounds = Objects.requireNonNull(frame).component.bounds
-      val target = RelativePoint(frame.component, Point(bounds.x + bounds.width, 20))
+      val target = RelativePoint(frame.component, Point(bounds.x + bounds.width, fromTop))
       try {
         // Create a notification balloon using the manager
         val balloon = NotificationsManagerImpl.createBalloon(

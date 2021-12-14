@@ -23,6 +23,8 @@
  *
  *
  */
+@file:Suppress("HardCodedStringLiteral", "RegExpRedundantEscape", "MagicNumber")
+
 package com.mallowigi.idea.projectframe
 
 import com.intellij.ide.RecentProjectsManagerBase
@@ -49,12 +51,41 @@ internal class MTProjectTitlePanel(private val myProject: Project) : JPanel(Bord
   private val filePattern = Regex("\\{file\\}")
 
   /**
+   * Getter for the stripe color
+   */
+  private val stripeColor: Color
+    get() {
+      val projectConfig = MTUiUtils.getProjectConfigIfEnabled(myProject)
+      if (projectConfig != null && projectConfig.isUseProjectFrame) return projectConfig.projectFrameColor
+
+      val projectColor = Color(MTUiUtils.stringToARGB(myProject.name))
+      return ColorUtil.withAlpha(MTUiUtils.darker(projectColor, 2), 0.5)
+    }
+
+  /**
+   * The project frame text to draw
+   */
+  private val projectFrameText: String
+    get() {
+      val projectConfig = MTUiUtils.getProjectConfigIfEnabled(myProject)
+      val mtConfig = MTConfig.getInstance()
+
+      val textToDraw = when {
+        projectConfig != null && projectConfig.isUseCustomTitle -> projectConfig.customTitle
+        mtConfig.isUseCustomTitle                               -> mtConfig.customTitle
+        else                                                    -> MTConfig.DEFAULT_TITLE
+      }
+      return replacePatterns(textToDraw)
+    }
+
+  /**
    * Draw project text and icon
    *
    * @param g
    * @param rect
    * @param projectText
    */
+  @Suppress("MagicNumber")
   private fun drawProjectTextAndIcon(g: Graphics2D, rect: Rectangle, projectText: String) {
     val fm = g.getFontMetrics(g.font)
     val textWidth = fm.stringWidth(projectText) - 1
@@ -66,7 +97,7 @@ internal class MTProjectTitlePanel(private val myProject: Project) : JPanel(Bord
     // Draw icon
     if (shouldPaintIcon()) {
       val recentProjectsManage: RecentProjectsManagerBase = RecentProjectsManagerBase.instanceEx
-      val recentIcon = recentProjectsManage.getProjectIcon(myProject.basePath!!, false)
+      val recentIcon = recentProjectsManage.getProjectIcon(myProject.basePath ?: return, false)
       recentIcon.paintIcon(this, g, x - recentIcon.iconWidth - padding * 2, JBUI.scale(padding) / 2)
     }
 
@@ -105,18 +136,6 @@ internal class MTProjectTitlePanel(private val myProject: Project) : JPanel(Bord
   }
 
   /**
-   * Getter for the stripe color
-   */
-  private val stripeColor: Color
-    get() {
-      val projectConfig = MTUiUtils.getProjectConfigIfEnabled(myProject)
-      if (projectConfig != null && projectConfig.isUseProjectFrame) return projectConfig.projectFrameColor
-
-      val projectColor = Color(MTUiUtils.stringToARGB(myProject.name))
-      return ColorUtil.withAlpha(MTUiUtils.darker(projectColor, 2), 0.5)
-    }
-
-  /**
    * Checks whether the text should be drawn, from the configs
    *
    */
@@ -133,22 +152,6 @@ internal class MTProjectTitlePanel(private val myProject: Project) : JPanel(Bord
     val projectConfig = MTUiUtils.getProjectConfigIfEnabled(myProject)
     return projectConfig?.isUseProjectIcon ?: MTConfig.getInstance().isUseProjectIcon
   }
-
-  /**
-   * The project frame text to draw
-   */
-  private val projectFrameText: String
-    get() {
-      val projectConfig = MTUiUtils.getProjectConfigIfEnabled(myProject)
-      val mtConfig = MTConfig.getInstance()
-
-      val textToDraw = when {
-        projectConfig != null && projectConfig.isUseCustomTitle -> projectConfig.customTitle
-        mtConfig.isUseCustomTitle                               -> mtConfig.customTitle
-        else                                                    -> MTConfig.DEFAULT_TITLE
-      }
-      return replacePatterns(textToDraw)
-    }
 
   /**
    * Replace patterns with their config value

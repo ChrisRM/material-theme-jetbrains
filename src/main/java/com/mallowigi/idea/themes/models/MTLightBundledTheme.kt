@@ -42,6 +42,7 @@ class MTLightBundledTheme : MTBundledTheme() {
   override val order: Int
     get() = 2000
 
+  @Suppress("UnusedPrivateMember")
   private fun readResolve(): Any {
     themeParser = MTLightBundledThemeParser(this)
     return this

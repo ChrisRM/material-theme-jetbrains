@@ -36,24 +36,34 @@ import javax.swing.JButton
 import javax.swing.event.ChangeEvent
 import javax.swing.plaf.basic.BasicButtonListener
 
+/**
+ * Highlight buttons with animation
+ *
+ * @constructor
+ *
+ * @param button the button to animate
+ */
 class MTButtonHighlighter(button: AbstractButton?) : BasicButtonListener(button) {
 
+  /**
+   * When button state changed
+   *
+   */
   override fun stateChanged(e: ChangeEvent) {
     val button = e.source as JButton
     val model = button.model
     val rollover = model.isRollover
 
-    if (rollover) {
-      highlightButton(button)
-    } else {
-      removeHighlight(button)
+    when {
+      rollover -> highlightButton(button)
+      else     -> removeHighlight(button)
     }
   }
 
   private fun highlightButton(jButton: JButton) {
     val hoverColor = hoverColor(jButton)
     val preHoverColor = preHoverColor(jButton)
-    val buttonBackgroundTimer = ButtonBackgroundTimer(/* fps = */ 20)
+    val buttonBackgroundTimer = ButtonBackgroundTimer(FPS)
 
     val colors: Deque<Color> = ArrayDeque(ANIM_STEPS)
     val textColor = textColor(highlight = true)
@@ -69,7 +79,7 @@ class MTButtonHighlighter(button: AbstractButton?) : BasicButtonListener(button)
   private fun removeHighlight(jButton: JButton) {
     val hoverColor = hoverColor(jButton)
     val preHoverColor = preHoverColor(jButton)
-    val buttonBackgroundTimer = ButtonBackgroundTimer(/* fps = */ 20)
+    val buttonBackgroundTimer = ButtonBackgroundTimer(FPS)
 
     val colors: Deque<Color> = ArrayDeque(ANIM_STEPS)
     val textColor = textColor(highlight = false)
@@ -83,24 +93,34 @@ class MTButtonHighlighter(button: AbstractButton?) : BasicButtonListener(button)
   }
 
   private fun preHoverColor(jButton: JButton): Color = try {
-    if (DarculaButtonUI.isDefaultButton(jButton)) MTButtonUI.primaryButtonBg() else MTButtonUI.buttonBg()
+    when {
+      DarculaButtonUI.isDefaultButton(jButton) -> MTButtonUI.primaryButtonBg()
+      else                                     -> MTButtonUI.buttonBg()
+    }
   } catch (e: Exception) {
     // swallow exception
     MTButtonUI.buttonBg()
   }
 
   private fun hoverColor(jButton: JButton): Color = try {
-    if (DarculaButtonUI.isDefaultButton(jButton)) MTButtonUI.primaryButtonHoverColor() else MTButtonUI.buttonHoverColor()
+    when {
+      DarculaButtonUI.isDefaultButton(jButton) -> MTButtonUI.primaryButtonHoverColor()
+      else                                     -> MTButtonUI.buttonHoverColor()
+    }
   } catch (e: Exception) {
     // swallow exception
     MTButtonUI.buttonHoverColor()
   }
 
   private fun textColor(highlight: Boolean) =
-    if (highlight) MTButtonUI.selectedButtonFg() else MTButtonUI.buttonFg()
+    when {
+      highlight -> MTButtonUI.selectedButtonFg()
+      else      -> MTButtonUI.buttonFg()
+    }
 
   companion object {
     private const val ANIM_STEPS = 5
     private const val BALANCE = 0.2
+    private const val FPS = 20
   }
 }

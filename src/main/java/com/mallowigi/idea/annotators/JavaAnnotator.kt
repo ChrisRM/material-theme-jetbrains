@@ -30,6 +30,10 @@ import com.intellij.openapi.editor.colors.TextAttributesKey
 import com.intellij.psi.PsiElement
 import com.intellij.util.ObjectUtils
 
+/**
+ * Annotator for Java Additions
+ *
+ */
 internal class JavaAnnotator : BaseAnnotator() {
   override fun getKeywordKind(element: PsiElement): TextAttributesKey? {
     var kind: TextAttributesKey? = null

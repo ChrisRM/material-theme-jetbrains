@@ -46,6 +46,9 @@ import javax.swing.UIManager
  *
  */
 abstract class MTToggleAction : ToggleAction() {
+  private val defaultIconSize = 18
+  private val iconRadius = 4
+
   /**
    * Whether the action is toggled
    *
@@ -94,7 +97,8 @@ abstract class MTToggleAction : ToggleAction() {
     e.presentation.isEnabled = MTMainProductLicenseChecker.instance.isLicensed
   }
 
-  private fun regularIcon(icon: Icon): Icon = IconUtil.toSize(icon, JBUI.scale(18), JBUI.scale(18))
+  private fun regularIcon(icon: Icon): Icon =
+    IconUtil.toSize(icon, JBUI.scale(defaultIconSize), JBUI.scale(defaultIconSize))
 
   private fun selectedFallbackIcon(icon: Icon?): Icon = object : Icon {
     override fun paintIcon(component: Component, g: Graphics, x: Int, y: Int) {
@@ -102,15 +106,15 @@ abstract class MTToggleAction : ToggleAction() {
       try {
         GraphicsUtil.setupAAPainting(g2d)
         g2d.color = JBUI.CurrentTheme.ActionButton.pressedBackground()
-        g2d.fillRoundRect(0, 0, iconWidth, iconHeight, 4, 4)
+        g2d.fillRoundRect(0, 0, iconWidth, iconHeight, iconRadius, iconRadius)
       } finally {
         g2d.dispose()
       }
     }
 
-    override fun getIconWidth(): Int = icon?.iconWidth ?: JBUI.scale(18)
+    override fun getIconWidth(): Int = icon?.iconWidth ?: JBUI.scale(defaultIconSize)
 
-    override fun getIconHeight(): Int = icon?.iconHeight ?: JBUI.scale(18)
+    override fun getIconHeight(): Int = icon?.iconHeight ?: JBUI.scale(defaultIconSize)
   }
 
   /**

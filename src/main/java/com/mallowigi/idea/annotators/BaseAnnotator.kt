@@ -52,27 +52,28 @@ internal abstract class BaseAnnotator : PsiElementVisitor(), Annotator {
     }
   }
 
+  @Suppress("ReturnCount")
   override fun visitElement(element: PsiElement) {
     assert(myHolder != null)
     val kind = getKeywordKind(element) ?: return
 
-    if (PsiTreeUtil.getParentOfType(element, PsiComment::class.java) != null) {
-      return
-    } else if (PsiTreeUtil.getParentOfType(element, XmlTag::class.java) != null) {
-      return
+    when {
+      PsiTreeUtil.getParentOfType(element, PsiComment::class.java) != null -> return
+      PsiTreeUtil.getParentOfType(element, XmlTag::class.java) != null     -> return
+      else                                                                 -> {
+        val textRange = element.textRange
+        val range = TextRange(textRange.startOffset, textRange.endOffset)
+        val enforcedLanguageAdditions = MTConfig.getInstance().isEnforcedLanguageAdditions
+        val highlightSeverity =
+          if (enforcedLanguageAdditions) HighlightSeverity.WEAK_WARNING else HighlightSeverity.INFORMATION
+
+        (myHolder ?: return).newSilentAnnotation(highlightSeverity)
+          .needsUpdateOnTyping(false)
+          .range(range)
+          .textAttributes(kind)
+          .create()
+      }
     }
-
-    val textRange = element.textRange
-    val range = TextRange(textRange.startOffset, textRange.endOffset)
-    val enforcedLanguageAdditions = MTConfig.getInstance().isEnforcedLanguageAdditions
-    val highlightSeverity =
-      if (enforcedLanguageAdditions) HighlightSeverity.WEAK_WARNING else HighlightSeverity.INFORMATION
-
-    (myHolder ?: return).newSilentAnnotation(highlightSeverity)
-      .needsUpdateOnTyping(false)
-      .range(range)
-      .textAttributes(kind)
-      .create()
   }
 
   protected abstract fun getKeywordKind(element: PsiElement): TextAttributesKey?
