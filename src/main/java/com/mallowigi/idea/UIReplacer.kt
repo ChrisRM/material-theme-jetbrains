@@ -143,22 +143,22 @@ object UIReplacer {
 
   @Throws(NoSuchFieldException::class, IllegalAccessException::class)
   private fun patchColors() {
-    setFinalStatic(JBColor::class.java, "red", JBColor(MTUI.MTColor.RED, MTUI.MTColor.DARK_RED))
-    setFinalStatic(JBColor::class.java, "RED", JBColor(MTUI.MTColor.RED, MTUI.MTColor.DARK_RED))
+    setFinalStatic(JBColor::class.java, "red", JBColor(MTUI.MTColor.DARK_RED, MTUI.MTColor.RED))
+    setFinalStatic(JBColor::class.java, "RED", JBColor(MTUI.MTColor.DARK_RED, MTUI.MTColor.RED))
     setFinalStatic(JBColor::class.java, "blue", accentColor)
     setFinalStatic(JBColor::class.java, "BLUE", accentColor)
-    setFinalStatic(JBColor::class.java, "orange", JBColor(MTUI.MTColor.ORANGE, MTUI.MTColor.DARK_ORANGE))
-    setFinalStatic(JBColor::class.java, "ORANGE", JBColor(MTUI.MTColor.ORANGE, MTUI.MTColor.DARK_ORANGE))
-    setFinalStatic(JBColor::class.java, "pink", JBColor(MTUI.MTColor.PINK, MTUI.MTColor.DARK_PINK))
-    setFinalStatic(JBColor::class.java, "PINK", JBColor(MTUI.MTColor.PINK, MTUI.MTColor.DARK_PINK))
-    setFinalStatic(JBColor::class.java, "yellow", JBColor(MTUI.MTColor.YELLOW, MTUI.MTColor.DARK_YELLOW))
-    setFinalStatic(JBColor::class.java, "YELLOW", JBColor(MTUI.MTColor.YELLOW, MTUI.MTColor.DARK_YELLOW))
-    setFinalStatic(JBColor::class.java, "green", JBColor(MTUI.MTColor.GREEN, MTUI.MTColor.DARK_GREEN))
-    setFinalStatic(JBColor::class.java, "GREEN", JBColor(MTUI.MTColor.GREEN, MTUI.MTColor.DARK_GREEN))
-    setFinalStatic(JBColor::class.java, "magenta", JBColor(MTUI.MTColor.PURPLE, MTUI.MTColor.DARK_PURPLE))
-    setFinalStatic(JBColor::class.java, "MAGENTA", JBColor(MTUI.MTColor.PURPLE, MTUI.MTColor.DARK_PURPLE))
-    setFinalStatic(JBColor::class.java, "cyan", JBColor(MTUI.MTColor.CYAN, MTUI.MTColor.DARK_CYAN))
-    setFinalStatic(JBColor::class.java, "CYAN", JBColor(MTUI.MTColor.CYAN, MTUI.MTColor.DARK_CYAN))
+    setFinalStatic(JBColor::class.java, "orange", JBColor(MTUI.MTColor.DARK_ORANGE, MTUI.MTColor.ORANGE))
+    setFinalStatic(JBColor::class.java, "ORANGE", JBColor(MTUI.MTColor.DARK_ORANGE, MTUI.MTColor.ORANGE))
+    setFinalStatic(JBColor::class.java, "pink", JBColor(MTUI.MTColor.DARK_PINK, MTUI.MTColor.PINK))
+    setFinalStatic(JBColor::class.java, "PINK", JBColor(MTUI.MTColor.DARK_PINK, MTUI.MTColor.PINK))
+    setFinalStatic(JBColor::class.java, "yellow", JBColor(MTUI.MTColor.DARK_YELLOW, MTUI.MTColor.YELLOW))
+    setFinalStatic(JBColor::class.java, "YELLOW", JBColor(MTUI.MTColor.DARK_YELLOW, MTUI.MTColor.YELLOW))
+    setFinalStatic(JBColor::class.java, "green", JBColor(MTUI.MTColor.DARK_GREEN, MTUI.MTColor.GREEN))
+    setFinalStatic(JBColor::class.java, "GREEN", JBColor(MTUI.MTColor.DARK_GREEN, MTUI.MTColor.GREEN))
+    setFinalStatic(JBColor::class.java, "magenta", JBColor(MTUI.MTColor.DARK_PURPLE, MTUI.MTColor.PURPLE))
+    setFinalStatic(JBColor::class.java, "MAGENTA", JBColor(MTUI.MTColor.DARK_PURPLE, MTUI.MTColor.PURPLE))
+    setFinalStatic(JBColor::class.java, "cyan", JBColor(MTUI.MTColor.DARK_CYAN, MTUI.MTColor.CYAN))
+    setFinalStatic(JBColor::class.java, "CYAN", JBColor(MTUI.MTColor.DARK_CYAN, MTUI.MTColor.CYAN))
     setFinalStatic(JBColor::class.java, "white", background)
     setFinalStatic(JBColor::class.java, "WHITE", background)
     setFinalStatic(JBColor::class.java, "black", foreground)
@@ -169,11 +169,11 @@ object UIReplacer {
     setFinalStatic(DarculaColors::class.java, "BLUE", accentColor)
     setFinalStatic(DarculaColors::class.java, "RED", accentColor)
     setFinalStatic(PlatformColors::class.java, "BLUE", accentColor)
-    setFinalStatic(LightColors::class.java, "BLUE", JBColor(MTUI.MTColor.BLUE, MTUI.MTColor.DARK_BLUE))
-    setFinalStatic(LightColors::class.java, "RED", JBColor(MTUI.MTColor.RED, MTUI.MTColor.DARK_RED))
-    setFinalStatic(LightColors::class.java, "YELLOW", JBColor(MTUI.MTColor.YELLOW, MTUI.MTColor.DARK_YELLOW))
-    setFinalStatic(LightColors::class.java, "GREEN", JBColor(MTUI.MTColor.GREEN, MTUI.MTColor.DARK_GREEN))
-    setFinalStatic(LightColors::class.java, "CYAN", JBColor(MTUI.MTColor.CYAN, MTUI.MTColor.DARK_CYAN))
+    setFinalStatic(LightColors::class.java, "BLUE", JBColor(MTUI.MTColor.DARK_BLUE, MTUI.MTColor.BLUE))
+    setFinalStatic(LightColors::class.java, "RED", JBColor(MTUI.MTColor.DARK_RED, MTUI.MTColor.RED))
+    setFinalStatic(LightColors::class.java, "YELLOW", JBColor(MTUI.MTColor.DARK_YELLOW, MTUI.MTColor.YELLOW))
+    setFinalStatic(LightColors::class.java, "GREEN", JBColor(MTUI.MTColor.DARK_GREEN, MTUI.MTColor.GREEN))
+    setFinalStatic(LightColors::class.java, "CYAN", JBColor(MTUI.MTColor.DARK_CYAN, MTUI.MTColor.CYAN))
   }
 
   /**
@@ -400,4 +400,3 @@ object UIReplacer {
     }
   }
 }
-
