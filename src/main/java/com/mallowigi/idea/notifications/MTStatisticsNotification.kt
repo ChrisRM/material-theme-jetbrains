@@ -57,5 +57,4 @@ class MTStatisticsNotification : Notification(
      */
     const val SHOW_STATISTICS_AGREEMENT: String = "mt.showStatisticsAgreement"
   }
-
 }

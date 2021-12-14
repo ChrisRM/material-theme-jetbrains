@@ -33,7 +33,7 @@ object FontResources {
    * The font resources
    */
   @JvmField
-  val fontResources: Set<String> = setOf(
+  val regularFontResources: Set<String> = setOf(
     "Button.font",
     "Component.font",
     "CheckBox.font",

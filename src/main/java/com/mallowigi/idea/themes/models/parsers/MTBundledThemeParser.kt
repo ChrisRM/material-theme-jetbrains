@@ -34,6 +34,7 @@ import javax.swing.plaf.ColorUIResource
 /**
  * Bridge class for Bundled themes for parsing bundled themes xml
  */
+@Suppress("TooManyFunctions")
 abstract class MTBundledThemeParser internal constructor(private val mtBundledTheme: MTBundledTheme) {
   private val colors: MutableCollection<MTThemeColor>
     get() = mtBundledTheme.colors.toMutableList()

@@ -106,5 +106,4 @@ class MTUpdatesComponent : StartupActivity.Background {
    * @return: the notification
    */
   private fun createInstallAtomNotification(): Notification = MTInstallAtomNotification()
-
 }

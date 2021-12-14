@@ -78,5 +78,4 @@ class XPathListener : LafManagerListener, StartupActivity {
       xpathConfig.contextAttributes.foregroundColor = config.contextAttributes.foregroundColor
     }
   }
-
 }

@@ -90,7 +90,8 @@ class KotlinColorSettings : BaseColorSettings() {
         AttributesDescriptor(message("keywords.true.false"), PRIMITIVE),
         AttributesDescriptor(message("keywords.data"), DATA),
         AttributesDescriptor(message("keywords.sealed.override.open"), SEALED_OVERRIDE),
-        AttributesDescriptor(message("keywords.operator.infix"), OP_INFIX))
+        AttributesDescriptor(message("keywords.operator.infix"), OP_INFIX)
+      )
       KOTLIN_DESCRIPTORS.putAll(createAdditionalHlAttrs())
     }
 

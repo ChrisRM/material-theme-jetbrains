@@ -186,5 +186,4 @@ object MTBundledThemesManager {
     xStream.addDefaultImplementation(MTLightBundledTheme::class.java, MTBundledTheme::class.java)
     return xStream
   }
-
 }

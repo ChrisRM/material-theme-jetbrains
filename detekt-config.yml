@@ -4,7 +4,13 @@
 exceptions:
   InstanceOfCheckForException:
     active: true
-    excludes: [ '**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**' ]
+    excludes:
+      - '**/test/**'
+      - '**/androidTest/**'
+      - '**/commonTest/**'
+      - '**/jvmTest/**'
+      - '**/jsTest/**'
+      - '**/iosTest/**'
   NotImplementedDeclaration:
     active: true
   TooGenericExceptionCaught:
@@ -12,11 +18,11 @@ exceptions:
   SwallowedException:
     active: false
     ignoredExceptionTypes:
-      - 'InterruptedException'
-      - 'MalformedURLException'
-      - 'NumberFormatException'
-      - 'ParseException'
-    allowedExceptionNameRegex: '_|(ignore|expected).*'
+      - InterruptedException
+      - MalformedURLException
+      - NumberFormatException
+      - ParseException
+    allowedExceptionNameRegex: _|(ignore|expected).*
 
 formatting:
   autoCorrect: true
@@ -35,8 +41,11 @@ formatting:
     active: true
   NoEmptyFirstLineInMethodBlock:
     active: true
+  NoMultipleSpaces:
+    active: false
   NoWildcardImports:
-    excludes: [ '**/*Steps*' ]
+    excludes:
+      - '**/*Steps*'
   PackageName:
     active: true
   ParameterListWrapping:
@@ -74,14 +83,15 @@ style:
     active: true
   ForbiddenComment:
     active: true
-    values: [ ]
+    values: []
   MagicNumber:
     active: true
     ignorePropertyDeclaration: true
     ignoreAnnotation: true
     ignoreRanges: true
     ignoreEnums: true
-    excludes: [ '**/*Theme*' ]
+    excludes:
+      - '**/*Theme*'
   MandatoryBracesIfStatements:
     active: true
   MandatoryBracesLoops:
@@ -157,15 +167,38 @@ comments:
     matchDeclarationsOrder: true
   UndocumentedPublicClass:
     active: false
-    excludes: [ '**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**', '**/*Bundle*', '**/actions/**' ]
+    excludes:
+      - '**/test/**'
+      - '**/androidTest/**'
+      - '**/commonTest/**'
+      - '**/jvmTest/**'
+      - '**/jsTest/**'
+      - '**/iosTest/**'
+      - '**/*Bundle*'
+      - '**/actions/**'
   UndocumentedPublicFunction:
     active: false
-    excludes: [ '**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**', '**/*Bundle*', '**/actions/**' ]
+    excludes:
+      - '**/test/**'
+      - '**/androidTest/**'
+      - '**/commonTest/**'
+      - '**/jvmTest/**'
+      - '**/jsTest/**'
+      - '**/iosTest/**'
+      - '**/*Bundle*'
+      - '**/actions/**'
 
 complexity:
   LargeClass:
     active: true
-    excludes: [ '**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**', '**/*Resources*' ]
+    excludes:
+      - '**/test/**'
+      - '**/androidTest/**'
+      - '**/commonTest/**'
+      - '**/jvmTest/**'
+      - '**/jsTest/**'
+      - '**/iosTest/**'
+      - '**/*Resources*'
   NamedArguments:
     active: true
   ReplaceSafeCallChainWithRun:
@@ -175,10 +208,23 @@ complexity:
     threshold: 3
     ignoreAnnotation: true
     excludeStringsWithLessThan5Characters: true
-    ignoreStringsRegex: '$^'
-    excludes: [ '**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**', "**/build.gradle.kts" ]
+    ignoreStringsRegex: $^
+    excludes:
+      - '**/test/**'
+      - '**/androidTest/**'
+      - '**/commonTest/**'
+      - '**/jvmTest/**'
+      - '**/jsTest/**'
+      - '**/iosTest/**'
+      - '**/build.gradle.kts'
   TooManyFunctions:
-    excludes: [ '**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**' ]
+    excludes:
+      - '**/test/**'
+      - '**/androidTest/**'
+      - '**/commonTest/**'
+      - '**/jvmTest/**'
+      - '**/jsTest/**'
+      - '**/iosTest/**'
     thresholdInFiles: 11
     thresholdInClasses: 11
     thresholdInInterfaces: 11
@@ -200,7 +246,9 @@ naming:
   FunctionMaxLength:
     active: true
     maximumFunctionNameLength: 36
-    excludes: [ '**/*Page*', '**/*Settings*' ]
+    excludes:
+      - '**/*Page*'
+      - '**/*Settings*'
   FunctionMinLength:
     active: true
     minimumFunctionNameLength: 2
@@ -227,7 +275,8 @@ potential-bugs:
     active: true
   MissingPackageDeclaration:
     active: true
-    excludes: [ '**/*.kts' ]
+    excludes:
+      - '**/*.kts'
   MissingWhenCase:
     active: true
   NullableToStringCall:

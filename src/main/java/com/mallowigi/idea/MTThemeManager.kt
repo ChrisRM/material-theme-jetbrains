@@ -398,7 +398,7 @@ object MTThemeManager : Disposable {
     val accentColor = ColorUtil.fromHex(mtConfig.accentColor)
     val transparentAccentColor = ColorUtil.toAlpha(accentColor, 70)
 
-    AccentResources.accentResources.forEach { UIManager.put(it, accentColor) }
+    AccentResources.accentedResources.forEach { UIManager.put(it, accentColor) }
 
     AccentResources.accentTransparentResources.forEach { UIManager.put(it, transparentAccentColor) }
 
@@ -506,7 +506,7 @@ object MTThemeManager : Disposable {
     val monoFont = FontUIResource(monospaceFont, Font.PLAIN, fontSize)
 
     // Keep old style and size
-    FontResources.fontResources.forEach {
+    FontResources.regularFontResources.forEach {
       val curFont = ObjectUtils.notNull(uiDefaults.getFont(it), font)
       uiDefaults[it] = font.deriveFont(curFont.style, curFont.size.toFloat())
     }
@@ -541,7 +541,7 @@ object MTThemeManager : Disposable {
     val monoFont = FontUIResource(monospaceFont, Font.PLAIN, MTConfig.DEFAULT_FONT_SIZE)
 
     // Keep old style and size
-    FontResources.fontResources.forEach {
+    FontResources.regularFontResources.forEach {
       val curFont = ObjectUtils.notNull(uiDefaults.getFont(it), uiFont)
       uiDefaults[it] = uiFont.deriveFont(curFont.style, curFont.size.toFloat())
     }
@@ -730,5 +730,4 @@ object MTThemeManager : Disposable {
 
     LafManager.getInstance().updateUI()
   }
-
 }

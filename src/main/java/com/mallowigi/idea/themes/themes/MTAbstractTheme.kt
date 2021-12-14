@@ -78,6 +78,10 @@ import javax.swing.UIManager
 import javax.swing.UnsupportedLookAndFeelException
 import javax.swing.plaf.ColorUIResource
 
+/**
+ * Abstract Theme for Material Themes
+ *
+ */
 abstract class MTAbstractTheme protected constructor() : Serializable, MTThemeable, MTSerializedTheme {
 
   @Transient
@@ -169,7 +173,7 @@ abstract class MTAbstractTheme protected constructor() : Serializable, MTThemeab
       // Set MT Look and Feel
       setLookAndFeel()
     } catch (e: UnsupportedLookAndFeelException) {
-      e.printStackTrace()
+      thisLogger().error(e)
     }
   }
 
@@ -261,7 +265,7 @@ abstract class MTAbstractTheme protected constructor() : Serializable, MTThemeab
     }
   }
 
-  @Suppress("HardCodedStringLiteral")
+  @Suppress("HardCodedStringLiteral", "NestedBlockDepth")
   private fun installBackgroundImage() {
     val currentSpec = PropertiesComponent.getInstance().getValue(IdeBackgroundUtil.FRAME_PROP)
     val oldCurrentSpec = PropertiesComponent.getInstance().getValue("old.mt.${IdeBackgroundUtil.FRAME_PROP}")
@@ -398,5 +402,4 @@ abstract class MTAbstractTheme protected constructor() : Serializable, MTThemeab
     PropertiesComponent.getInstance().setValue("old.mt.${IdeBackgroundUtil.FRAME_PROP}", null)
     ApplicationManager.getApplication().invokeLater { IdeBackgroundUtil.repaintAllWindows() }
   }
-
 }

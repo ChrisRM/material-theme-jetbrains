@@ -110,7 +110,7 @@ object MTCheckboxIconLookup {
     editable: Boolean,
     pressed: Boolean,
   ): Icon {
-    @NonNls var key = "checkboxes/${name}"
+    @NonNls var key = "checkboxes/$name"
     if (editable) key += "Editable"
     if (selected) key += "Selected"
 
@@ -120,11 +120,10 @@ object MTCheckboxIconLookup {
       !enabled -> key += "Disabled"
     }
 
-    @NonNls val path = "${ICONS_DIR_PREFIX}${key}.svg"
+    @NonNls val path = "${ICONS_DIR_PREFIX}$key.svg"
     return ObjectUtils.notNull(
       IconLoader.findIcon(path, MTCheckboxIconLookup::class.java, true, true),
       AllIcons.Actions.Stub
     )
   }
-
 }

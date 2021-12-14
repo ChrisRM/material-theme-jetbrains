@@ -72,5 +72,4 @@ class ButtonBackgroundTimer(private val fps: Int) {
         }
       }
     }
-
 }

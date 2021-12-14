@@ -46,5 +46,4 @@ class MTDarkBundledTheme : MTBundledTheme() {
     themeParser = MTDarkBundledThemeParser(this)
     return this
   }
-
 }

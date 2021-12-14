@@ -81,5 +81,4 @@ class MTDarculaLaf : DarculaLaf() {
     defaults["grayFilter"] = UIUtil.GrayFilter(-100, -100, 100)
     defaults["text.grayFilter"] = UIUtil.GrayFilter(-15, -10, 100)
   }
-
 }

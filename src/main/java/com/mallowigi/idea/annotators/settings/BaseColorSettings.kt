@@ -100,5 +100,4 @@ abstract class BaseColorSettings : ColorSettingsPage, DisplayPrioritySortable {
    */
   @Suppress("UnstableApiUsage")
   abstract override fun getPriority(): DisplayPriority
-
 }

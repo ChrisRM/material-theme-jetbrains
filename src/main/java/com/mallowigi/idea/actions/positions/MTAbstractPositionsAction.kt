@@ -54,5 +54,4 @@ abstract class MTAbstractPositionsAction : MTToggleAction() {
 
     super.setSelected(e, state)
   }
-
 }

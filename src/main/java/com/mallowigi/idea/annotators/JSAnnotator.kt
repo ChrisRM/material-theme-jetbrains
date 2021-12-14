@@ -56,6 +56,7 @@ internal open class JSAnnotator : BaseAnnotator() {
       .textAttributes(kind).create()
   }
 
+  @Suppress("ComplexMethod")
   override fun getKeywordKind(element: PsiElement): TextAttributesKey? {
     var kind: TextAttributesKey? = null
     when (element.text) {

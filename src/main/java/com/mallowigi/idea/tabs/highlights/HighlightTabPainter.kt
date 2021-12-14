@@ -72,6 +72,14 @@ abstract class HighlightTabPainter {
   abstract fun paintRight(borderThickness: Int, g2d: Graphics2D, rect: Rectangle)
 
   companion object {
+
+    /**
+     * Gets the UISettings current tab placement
+     */
+    @JvmStatic
+    val editorTabPlacement: Int
+      get() = UISettings.instance.editorTabPlacement
+
     /**
      * Factory method to get the HighlightTabPainter from a position
      *
@@ -95,13 +103,6 @@ abstract class HighlightTabPainter {
         else                             -> DefaultHighlightTabPainter()
       }
     }
-
-    /**
-     * Gets the UISettings current tab placement
-     */
-    @JvmStatic
-    val editorTabPlacement: Int
-      get() = UISettings.instance.editorTabPlacement
 
     /**
      * Paint the rectangle on right with given border thickness

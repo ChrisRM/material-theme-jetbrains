@@ -123,7 +123,7 @@ object MTLafInstaller {
    *
    * @param defaults of type UIDefaults
    */
-  @Suppress("HardCodedStringLiteral")
+  @Suppress("HardCodedStringLiteral", "LongMethod")
   fun installDefaults(defaults: UIDefaults) {
     defaults["ActionsList.icon.gap"] = 8
     defaults["ActionsList.mnemonic.icon.gap"] = 6
@@ -508,4 +508,3 @@ object MTLafInstaller {
     }
   }
 }
-

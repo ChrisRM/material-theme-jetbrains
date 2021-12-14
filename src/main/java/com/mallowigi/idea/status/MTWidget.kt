@@ -223,6 +223,5 @@ class MTWidget : JButton(), Disposable {
     private val STATUS_PADDING = JBUI.scale(4)
     private val STATUS_HEIGHT = JBUI.scale(16)
     private val RADIUS = JBUI.scale(8)
-
   }
 }

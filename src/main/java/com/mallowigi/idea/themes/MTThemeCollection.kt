@@ -134,7 +134,6 @@ object MTThemeCollection {
 
       override val isCustom: Boolean
         get() = false
-
     }
   }
 }

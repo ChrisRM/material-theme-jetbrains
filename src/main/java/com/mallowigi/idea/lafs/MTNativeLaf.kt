@@ -58,5 +58,4 @@ class MTNativeLaf(
     MTLafInstaller.loadDefaults(defaults)
     (currentLookAndFeel as UIThemeBasedLookAndFeelInfo).installTheme(defaults, true)
   }
-
 }

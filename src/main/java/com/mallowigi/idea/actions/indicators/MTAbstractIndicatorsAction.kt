@@ -56,5 +56,4 @@ abstract class MTAbstractIndicatorsAction : MTToggleAction() {
     instance.trackValue(MTAnalytics.INDICATOR_STYLE, indicatorStyle)
     super.setSelected(e, state)
   }
-
 }

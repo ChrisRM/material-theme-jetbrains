@@ -70,5 +70,4 @@ internal class MTStatusWidget : CustomStatusBarWidget {
   }
 
   override fun getComponent(): JComponent = mtWidget
-
 }

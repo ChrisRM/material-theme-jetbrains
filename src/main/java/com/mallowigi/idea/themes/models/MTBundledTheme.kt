@@ -38,6 +38,7 @@ import javax.swing.plaf.ColorUIResource
  * Model for External and Custom Themes
  *
  */
+@Suppress("TooManyFunctions")
 @XStreamAlias("mtTheme")
 abstract class MTBundledTheme : MTAbstractTheme() {
 

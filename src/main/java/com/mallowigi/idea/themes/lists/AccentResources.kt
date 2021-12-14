@@ -34,7 +34,7 @@ object AccentResources {
    * All accent resources
    */
   @JvmField
-  val accentResources: Set<String> = setOf(
+  val accentedResources: Set<String> = setOf(
     "ActionButton.pressedBackground",
     "ActionButton.pressedBorderColor",
     "BookmarkIcon.background",

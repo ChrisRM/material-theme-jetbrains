@@ -155,7 +155,6 @@ object MTUI {
       isDefaultButton -> JBColor.namedColor(DEFAULT_BORDER_COLOR, Gray.xBF)
       else            -> JBColor.namedColor(BORDER_COLOR, Gray.xBF)
     }
-
   }
 
   object TextField {
@@ -177,7 +176,6 @@ object MTUI {
 
     @JvmStatic
     fun getBorderColor(enabled: Boolean): Color = if (enabled) separatorColor else disabledSeparatorColor
-
   }
 
   object List {
@@ -279,7 +277,6 @@ object MTUI {
       val inactiveContrastBG = JBColor.namedColor(INACTIVE_TAB_CONTRAST_BACKGROUND, JBColor(0xdae4ed, 0x3d4b5c))
       return if (isContrast) inactiveContrastBG else inactiveTabBG
     }
-
   }
 
   object Slider {
@@ -421,7 +418,6 @@ object MTUI {
 
     @JvmStatic
     fun getSelectedColor(enabled: Boolean): Color = if (enabled) selectionEnabledColor else selectionDisabledColor
-
   }
 
   object ProgressBar {
@@ -636,7 +632,6 @@ object MTUI {
       val mnemIndex = if (DarculaLaf.isAltPressed()) label.displayedMnemonicIndex else -1
       UIUtilities.drawStringUnderlineCharAt(label, g, s, mnemIndex, textX, textY)
     }
-
   }
 
   object Panel {

@@ -46,5 +46,4 @@ class MTLightBundledTheme : MTBundledTheme() {
     themeParser = MTLightBundledThemeParser(this)
     return this
   }
-
 }

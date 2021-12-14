@@ -64,25 +64,22 @@ class MTRowPainter : Control.Painter {
    * @param leaf whether it's a leaf
    * @return the offset (indent)
    */
-  override fun getRendererOffset(control: Control, depth: Int, leaf: Boolean): Int {
-    if (depth < 0) {
-      // do not paint row
-      return -1
-    }
-    if (depth == 0) {
-      return 0
-    }
+  override fun getRendererOffset(control: Control, depth: Int, leaf: Boolean): Int =
+    when {
+      depth < 0  -> -1
+      depth == 0 -> 0
+      else       -> {
+        val controlWidth = control.width
+        val left = getLeftIndent(controlWidth / 2)
+        val right = rightIndent
+        var offset = leafIndent
 
-    val controlWidth = control.width
-    val left = getLeftIndent(controlWidth / 2)
-    val right = rightIndent
-    var offset = leafIndent
-
-    if (offset < 0) {
-      offset = max(controlWidth + left - controlWidth / 2 + JBUIScale.scale(2), left + right)
+        if (offset < 0) {
+          offset = max(controlWidth + left - controlWidth / 2 + JBUIScale.scale(2), left + right)
+        }
+        if (depth > 1) (depth - 1) * (left + right) + offset else offset
+      }
     }
-    return if (depth > 1) (depth - 1) * (left + right) + offset else offset
-  }
 
   /**
    * Get control offset
@@ -93,10 +90,8 @@ class MTRowPainter : Control.Painter {
    * @return the control offset
    */
   override fun getControlOffset(control: Control, depth: Int, leaf: Boolean): Int {
-    if (depth <= 0 || leaf) {
-      // do not paint control
-      return -1
-    }
+    if (depth <= 0 || leaf) return -1
+
     val controlWidth = control.width
     val left = getLeftIndent(controlWidth / 2)
     val offset = left - controlWidth / 2
@@ -108,7 +103,7 @@ class MTRowPainter : Control.Painter {
    * Paint component
    *
    */
-  @Suppress("kotlin:S3776")
+  @Suppress("kotlin:S3776", "HardCodedStringLiteral", "ComplexMethod", "ComplexCondition")
   override fun paint(
     c: Component,
     g: Graphics,
@@ -127,15 +122,12 @@ class MTRowPainter : Control.Painter {
       val listFocusedSelectionPainter = listFocusedSelectionPainter
       listFocusedSelectionPainter.paintBorder(c, g, x, y, width, height)
     }
-    if (depth <= 0) {
-      return
-    }
+
+    if (depth <= 0) return
 
     // Should we paint indent lines?
     val paintLines = shouldPaintLines()
-    if (!paintLines && leaf) {
-      return
-    }
+    if (!paintLines && leaf) return
 
     // Compute the position of the paint lines
     val controlWidth = control.width
@@ -154,15 +146,13 @@ class MTRowPainter : Control.Painter {
       }
       if (!leaf && expanded) {
         val offset = (height - control.height) / 2
-        if (offset > 0) {
-          paintLine(g, lineX, y + height - offset, controlWidth, offset)
-        }
+        if (offset > 0) paintLine(g, lineX, y + height - offset, controlWidth, offset)
       }
     }
-    if (leaf) {
-      // do not paint control for a leaf node
-      return
-    }
+
+    // do not paint control for a leaf node
+    if (leaf) return
+
     control.paint(c, g, controlX, y, controlWidth, height, expanded, selected)
   }
 
@@ -182,14 +172,14 @@ class MTRowPainter : Control.Painter {
       val dx = x + width / 2.0 - PaintUtil.devPixel(g)
 
       LinePainter2D.paint(
-        g,
-        dx,
-        y.toDouble(),
-        dx,
-        (y + height).toDouble(),
-        LinePainter2D.StrokeType.CENTERED,
-        1.0,
-        RenderingHints.VALUE_ANTIALIAS_ON
+        /* g = */ g,
+        /* x1 = */ dx,
+        /* y1 = */ y.toDouble(),
+        /* x2 = */ dx,
+        /* y2 = */ (y + height).toDouble(),
+        /* strokeType = */ LinePainter2D.StrokeType.CENTERED,
+        /* strokeWidth = */ 1.0,
+        /* valueAA = */ RenderingHints.VALUE_ANTIALIAS_ON
       )
     } else {
       val newX = x + width / 2
@@ -203,5 +193,4 @@ class MTRowPainter : Control.Painter {
     val settings: UISettings = UISettings.instanceOrNull!!
     return settings.showTreeIndentGuides
   }
-
 }

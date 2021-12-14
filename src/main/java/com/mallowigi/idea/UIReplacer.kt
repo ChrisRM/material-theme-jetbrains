@@ -110,7 +110,6 @@ object UIReplacer {
       if ("CodeWithMeGuest" != PlatformUtils.getPlatformPrefix()) {
         patchLocalHistory()
       }
-
     } catch (e: Exception) {
       thisLogger().error(e)
     }
@@ -290,13 +289,13 @@ object UIReplacer {
       MTUI.MTColor.ORANGE
     )
     val ourDefaultColors = ContainerUtil.immutableMapBuilder<String, Color>()
-      .put("Sea", UIManager.getColor("FileColor.Blue")) //NON-NLS
-      .put("Forest", UIManager.getColor("FileColor.Green")) //NON-NLS
-      .put("Spice", UIManager.getColor("FileColor.Orange")) //NON-NLS
-      .put("Crimson", UIManager.getColor("FileColor.Rose")) //NON-NLS
-      .put("DeepPurple", UIManager.getColor("FileColor.Violet")) //NON-NLS
-      .put("Amber", UIManager.getColor("FileColor.Yellow")) //NON-NLS
-      .put("Theme Excluded Color", excludedColor) //NON-NLS
+      .put("Sea", UIManager.getColor("FileColor.Blue")) // NON-NLS
+      .put("Forest", UIManager.getColor("FileColor.Green")) // NON-NLS
+      .put("Spice", UIManager.getColor("FileColor.Orange")) // NON-NLS
+      .put("Crimson", UIManager.getColor("FileColor.Rose")) // NON-NLS
+      .put("DeepPurple", UIManager.getColor("FileColor.Violet")) // NON-NLS
+      .put("Amber", UIManager.getColor("FileColor.Yellow")) // NON-NLS
+      .put("Theme Excluded Color", excludedColor) // NON-NLS
       .build()
     val fields = FileColorManagerImpl::class.java.declaredFields
     val objects = Arrays.stream(fields)
@@ -342,7 +341,6 @@ object UIReplacer {
       val backgroundColorField = LookupCellRenderer::class.java.getDeclaredField("BACKGROUND_COLOR")
       setFinalStatic(backgroundColorField, autoCompleteBackground)
       setFinalStatic(IdeTooltipManager::class.java, "GRAPHITE_COLOR", secondaryBackground)
-
     } catch (e: NoSuchFieldException) {
       thisLogger().error(e)
     } catch (e: IllegalAccessException) {
@@ -392,7 +390,6 @@ object UIReplacer {
       )
       setFinalStatic(InspectionTreeTailRenderer::class.java, "TREE_GRAY", labelDisabledForeground)
       setFinalStatic(InspectionTreeTailRenderer::class.java, "TREE_RED", JBColor(MTUI.MTColor.RED, MTUI.MTColor.RED))
-
     } catch (e: NoSuchFieldException) {
       thisLogger().error(e)
     } catch (e: IllegalAccessException) {
