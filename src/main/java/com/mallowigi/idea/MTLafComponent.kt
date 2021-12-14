@@ -64,9 +64,11 @@ class MTLafComponent : AppLifecycleListener {
 
   /**
    * Run on App frame started temporarily
-   *
+   * TODO Remove once code with license checker is fixed
    */
-  override fun appStarted(): Unit = initComponent()
+  @Suppress("UnstableApiUsage")
+  override fun appStarted(): Unit =
+    ApplicationManager.getApplication().invokeAndWait({ activateLaf(activeLookAndFeel) }, ModalityState.NON_MODAL)
 
   /**
    * Activate theme when Look and feel changed
