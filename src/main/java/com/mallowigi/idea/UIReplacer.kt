@@ -168,11 +168,11 @@ object UIReplacer {
     setFinalStatic(DarculaColors::class.java, "BLUE", accentColor)
     setFinalStatic(DarculaColors::class.java, "RED", accentColor)
     setFinalStatic(PlatformColors::class.java, "BLUE", accentColor)
-    setFinalStatic(LightColors::class.java, "BLUE", JBColor(MTUI.MTColor.DARK_BLUE, MTUI.MTColor.BLUE))
-    setFinalStatic(LightColors::class.java, "RED", JBColor(MTUI.MTColor.DARK_RED, MTUI.MTColor.RED))
-    setFinalStatic(LightColors::class.java, "YELLOW", JBColor(MTUI.MTColor.DARK_YELLOW, MTUI.MTColor.YELLOW))
-    setFinalStatic(LightColors::class.java, "GREEN", JBColor(MTUI.MTColor.DARK_GREEN, MTUI.MTColor.GREEN))
-    setFinalStatic(LightColors::class.java, "CYAN", JBColor(MTUI.MTColor.DARK_CYAN, MTUI.MTColor.CYAN))
+    setFinalStatic(LightColors::class.java, "BLUE", JBColor(MTUI.MTColor.BLUE, MTUI.MTColor.DARK_BLUE))
+    setFinalStatic(LightColors::class.java, "RED", JBColor(MTUI.MTColor.RED, MTUI.MTColor.DARK_RED))
+    setFinalStatic(LightColors::class.java, "YELLOW", JBColor(MTUI.MTColor.YELLOW, MTUI.MTColor.DARK_YELLOW))
+    setFinalStatic(LightColors::class.java, "GREEN", JBColor(MTUI.MTColor.GREEN, MTUI.MTColor.DARK_GREEN))
+    setFinalStatic(LightColors::class.java, "CYAN", JBColor(MTUI.MTColor.CYAN, MTUI.MTColor.DARK_CYAN))
   }
 
   /**
