@@ -184,7 +184,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   @Property
   boolean useMaterialWallpapers = false;
   @Property
-  boolean useColoredDirectories = true;
+  boolean useColoredDirectories = false;
   @Property
   boolean useCustomTitle = false;
   @Property
@@ -448,7 +448,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     treeFontSizeEnabled = false;
     upperCaseButtons = true;
     upperCaseTabs = false;
-    useColoredDirectories = true;
+    useColoredDirectories = false;
     useCustomTitle = false;
     useMaterialFont2 = false;
     useGlobalFont = false;
