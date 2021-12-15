@@ -75,7 +75,7 @@ abstract class MTBundledTheme : MTAbstractTheme() {
   @Suppress("HardCodedStringLiteral")
   @Tag
   @XStreamAlias("colors")
-  val colors: List<MTThemeColor> = ArrayList(16)
+  val colors: MutableList<MTThemeColor> = ArrayList(16)
 
   /**
    * The theme parser, according to the bridge design pattern every subclass must define the parser

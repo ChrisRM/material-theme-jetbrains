@@ -37,7 +37,7 @@ import javax.swing.plaf.ColorUIResource
 @Suppress("TooManyFunctions")
 abstract class MTBundledThemeParser internal constructor(private val mtBundledTheme: MTBundledTheme) {
   private val colors: MutableCollection<MTThemeColor>
-    get() = mtBundledTheme.colors.toMutableList()
+    get() = mtBundledTheme.colors
 
   //region ----------- Default colors -------------
   /**
@@ -353,7 +353,7 @@ abstract class MTBundledThemeParser internal constructor(private val mtBundledTh
     if (color == null) {
       color = MTThemeColor()
       color.id = tag
-      colors += color
+      colors.add(color)
     }
     color.value = ColorUtil.toHex(newColor, true)
   }
