@@ -25,16 +25,13 @@
  */
 package com.mallowigi.idea.actions
 
-import com.intellij.application.options.colors.ColorAndFontOptions
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
-import com.intellij.openapi.diagnostic.thisLogger
-import com.intellij.openapi.editor.colors.EditorColorsManager
 import com.intellij.openapi.ui.Messages
 import com.mallowigi.idea.MTAnalytics
+import com.mallowigi.idea.MTThemeManager
 import com.mallowigi.idea.messages.MaterialThemeBundle.message
 import com.mallowigi.idea.notifications.MTNotifications
-import java.lang.reflect.InvocationTargetException
 
 /**
  * Resets the color scheme
@@ -47,29 +44,14 @@ class MTResetColorScheme : AnAction() {
    */
   override fun actionPerformed(e: AnActionEvent) {
     if (Messages.showOkCancelDialog(
-        message("action.MTResetColorScheme.explanation"),
-        message("action.MTResetColorScheme.text"),
-        message("common.ok"),
-        message("common.cancel"),
-        Messages.getQuestionIcon()
+        /* message = */ message("action.MTResetColorScheme.explanation"),
+        /* title = */ message("action.MTResetColorScheme.text"),
+        /* okText = */ message("common.ok"),
+        /* cancelText = */ message("common.cancel"),
+        /* icon = */ Messages.getQuestionIcon()
       ) == Messages.OK
     ) {
-      val scheme = EditorColorsManager.getInstance().globalScheme
-      val options = ColorAndFontOptions()
-      options.reset()
-      options.selectScheme(scheme.name)
-
-      try {
-        val method = ColorAndFontOptions::class.java.getDeclaredMethod("resetSchemeToOriginal", String::class.java)
-        method.isAccessible = true
-        method.invoke(options, scheme.name)
-      } catch (ex: NoSuchMethodException) {
-        thisLogger().error(e)
-      } catch (ex: InvocationTargetException) {
-        thisLogger().error(e)
-      } catch (ex: IllegalAccessException) {
-        thisLogger().error(e)
-      }
+      MTThemeManager.resetColorScheme()
 
       MTAnalytics.instance.track(MTAnalytics.RESET_COLOR_SCHEME)
       MTNotifications.showSimple(e.project ?: return, message("MTResetColorScheme.notification"))

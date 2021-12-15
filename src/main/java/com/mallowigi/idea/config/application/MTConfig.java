@@ -121,6 +121,8 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   @Property
   boolean allowDataCollection = false;
   @Property
+  boolean autoResetColorScheme = false;
+  @Property
   boolean borderedButtons = false;
   @Property
   boolean compactDropdowns = false;
@@ -340,6 +342,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     setAccentColor(ColorUtil.toHex(form.getCustomAccentColor()));
     setAccentMode(form.isAccentMode());
     setAccentScrollbars(form.isAccentScrollbars());
+    setAutoResetColorScheme(form.isAutoResetColorScheme());
     setIsActiveBoldTab(form.isActiveBoldTab());
     setBorderedButtons(form.isBorderedButtons());
     setCodeAdditionsEnabled(form.isCodeAdditionsEnabled());
@@ -401,6 +404,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     accentColor = ACCENT_COLOR;
     accentMode = false;
     accentScrollbars = true;
+    autoResetColorScheme = false;
     isActiveBoldTab = false;
     borderedButtons = false;
     codeAdditionsEnabled = true;
@@ -1432,6 +1436,37 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    */
   public boolean isUseGlobalFont() {
     return isPremium && useGlobalFont;
+  }
+
+  //endregion
+
+  // region ----------- Auto Reset Color Scheme -----------
+
+  /**
+   * Sets the autoResetColorScheme of this MTConfig object.
+   *
+   * @param autoResetColorScheme the autoResetColorScheme of this MTConfig object.
+   */
+  public void setAutoResetColorScheme(final boolean autoResetColorScheme) {
+    this.autoResetColorScheme = autoResetColorScheme;
+  }
+
+  /**
+   * ...
+   *
+   * @return boolean
+   */
+  public boolean isAutoResetColorSchemeChanged(final boolean autoResetColorScheme) {
+    return this.autoResetColorScheme != autoResetColorScheme;
+  }
+
+  /**
+   * Returns the autoResetColorScheme of this MTConfig object.
+   *
+   * @return the autoResetColorScheme (type boolean) of this MTConfig object.
+   */
+  public boolean isAutoResetColorScheme() {
+    return autoResetColorScheme;
   }
 
   //endregion

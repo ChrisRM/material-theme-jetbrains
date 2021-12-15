@@ -192,6 +192,7 @@ public class MTForm implements MTFormUI, Disposable {
   private OnOffButton enforceLanguageOnOff;
   private JCheckBox isColoredOpenedDirsCheckbox;
   private JCheckBox showWhatsNewCheckbox;
+  private JCheckBox autoResetColorSchemeCheckbox;
   private JButton resetDefaultsButton;
   // GEN-END:variables
 
@@ -221,6 +222,7 @@ public class MTForm implements MTFormUI, Disposable {
     final MTConfig mtConfig = (MTConfig) config;
 
     MTConfig.setPremium(true);
+    setAutoResetColorScheme(mtConfig.isAutoResetColorScheme());
     setCodeAdditionsEnabled(mtConfig.isCodeAdditionsEnabled());
     setCustomAccentColor(ColorUtil.fromHex(mtConfig.getAccentColor()));
     setCustomSidebarHeight(mtConfig.getCustomSidebarHeight());
@@ -288,6 +290,7 @@ public class MTForm implements MTFormUI, Disposable {
 
     boolean modified = mtConfig.isReset();
     modified = modified || mtConfig.isActiveBoldTabChanged(isActiveBoldTab());
+    modified = modified || mtConfig.isAutoResetColorSchemeChanged(isAutoResetColorScheme());
     modified = modified || mtConfig.isAccentColorChanged(getCustomAccentColor());
     modified = modified || mtConfig.isAccentModeChanged(isAccentMode());
     modified = modified || mtConfig.isAccentScrollbarsChanged(isAccentScrollbars());
@@ -854,6 +857,16 @@ public class MTForm implements MTFormUI, Disposable {
   }
   //endregion
 
+  //region Auto Reset Color Scheme
+  public final boolean isAutoResetColorScheme() {
+    return autoResetColorSchemeCheckbox.isSelected();
+  }
+
+  private void setAutoResetColorScheme(final boolean isAutoResetColorScheme) {
+    autoResetColorSchemeCheckbox.setSelected(isAutoResetColorScheme);
+  }
+  //endregion
+
   // endregion
 
   // region ----------- Project Frame Settings ------------
@@ -1077,6 +1090,12 @@ public class MTForm implements MTFormUI, Disposable {
     enableDisableProjectFrameOptions(useProjectFrameCheckbox.isSelected());
 
   }
+
+  private void autoResetColorScheme(final ActionEvent e) {
+    if (autoResetColorSchemeCheckbox.isSelected()) {
+      showAutoResetDialog();
+    }
+  }
   //endregion
 
   @Override
@@ -1084,7 +1103,8 @@ public class MTForm implements MTFormUI, Disposable {
     "OverlyLongMethod",
     "HardCodedStringLiteral",
     "ConstantConditions"
-  })
+    ,
+    "LongLine"})
   public final void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
@@ -1180,6 +1200,7 @@ public class MTForm implements MTFormUI, Disposable {
     enforceLanguageOnOff = new OnOffButton();
     isColoredOpenedDirsCheckbox = new JCheckBox();
     showWhatsNewCheckbox = new JCheckBox();
+    autoResetColorSchemeCheckbox = new JCheckBox();
     resetDefaultsButton = new JButton();
 
     //======== content ========
@@ -1724,7 +1745,8 @@ public class MTForm implements MTFormUI, Disposable {
             // rows
             "[]" +
               "[]" +
-              "[31,fill]" +
+              "[31]" +
+              "[]" +
               "[]"));
 
           //---- tweaksDesc ----
@@ -1757,6 +1779,12 @@ public class MTForm implements MTFormUI, Disposable {
           showWhatsNewCheckbox.setText(bundle.getString("MTForm.showWhatsNewCheckbox.text"));
           showWhatsNewCheckbox.setToolTipText(bundle.getString("MTForm.showWhatsNewCheckbox.toolTipText"));
           otherTweaksPanel.add(showWhatsNewCheckbox, "cell 0 3,align left center,grow 0 0");
+
+          //---- autoResetColorSchemeCheckbox ----
+          autoResetColorSchemeCheckbox.setText(bundle.getString("MTForm.autoResetColorSchemeCheckbox.text"));
+          autoResetColorSchemeCheckbox.setToolTipText(bundle.getString("MTForm.autoResetColorSchemeCheckbox.toolTipText"));
+          autoResetColorSchemeCheckbox.addActionListener(e -> autoResetColorScheme(e));
+          otherTweaksPanel.add(autoResetColorSchemeCheckbox, "cell 0 4,align left center,grow 0 0");
         }
         tabbedPane1.addTab(bundle.getString("MTForm.otherTweaksPanel.tab.title"), null, otherTweaksPanel, bundle.getString("MTForm" +
           ".otherTweaksPanel.tab.toolTipText"));
@@ -1797,13 +1825,14 @@ public class MTForm implements MTFormUI, Disposable {
     themeComboBox.setModel(new DefaultComboBoxModel<MTThemeFacade>(MTThemeCollection.getAllThemes()));
     themeComboBox.setRenderer(new ListCellRendererWrapper<MTThemeFacade>() {
       @Override
-      public void customize(final JList jList, final MTThemeFacade value, final int i, final boolean b, final boolean b1) {
+      public void customize(final JList list, final MTThemeFacade value, final int i, final boolean b, final boolean b1) {
         final Icon baseIcon;
         if (value == null) {
           return;
         }
         baseIcon = value.getIcon();
         setIcon(baseIcon);
+        //noinspection HardCodedStringLiteral
         setText(value.getThemeName());
       }
     });
@@ -2001,6 +2030,13 @@ public class MTForm implements MTFormUI, Disposable {
     Messages.showWarningDialog(
       MaterialThemeBundle.message("MTForm.enforceLanguageAdditions.warning.message"),
       MaterialThemeBundle.message("MTForm.enforceLanguageAdditions.warning.title")
+    );
+  }
+
+  public static void showAutoResetDialog() {
+    Messages.showWarningDialog(
+      MaterialThemeBundle.message("MTForm.autoResetColorScheme.warning.message"),
+      MaterialThemeBundle.message("MTForm.autoResetColorScheme.warning.title")
     );
   }
 }

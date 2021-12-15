@@ -25,6 +25,7 @@
  */
 package com.mallowigi.idea
 
+import com.intellij.application.options.colors.ColorAndFontOptions
 import com.intellij.ide.ui.LafManager
 import com.intellij.ide.ui.UISettings
 import com.intellij.ide.ui.UITheme
@@ -34,6 +35,7 @@ import com.intellij.ide.ui.laf.darcula.DarculaInstaller
 import com.intellij.openapi.Disposable
 import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.application.ModalityState
+import com.intellij.openapi.diagnostic.thisLogger
 import com.intellij.openapi.editor.EditorFactory
 import com.intellij.openapi.editor.colors.EditorColorsManager
 import com.intellij.openapi.editor.colors.impl.AppEditorFontOptions
@@ -63,6 +65,7 @@ import com.mallowigi.idea.utils.MTUiUtils
 import com.mallowigi.idea.utils.animator.MTChangeLafService
 import java.awt.Color
 import java.awt.Font
+import java.lang.reflect.InvocationTargetException
 import java.util.Locale
 import javax.swing.UIDefaults
 import javax.swing.UIManager
@@ -358,6 +361,9 @@ object MTThemeManager : Disposable {
 
     // Monochrome filter and co
     LafManager.getInstance().updateUI()
+
+    resetColorScheme()
+
     // Custom UI Patches
     UIReplacer.patchUI()
     fireThemeChanged(newTheme)
@@ -716,6 +722,36 @@ object MTThemeManager : Disposable {
     mtConfig.tabsHeight = newTabsHeight
   }
   //endregion
+
+  /**
+   * Triggers a Reset color scheme action
+   *
+   */
+  fun resetColorScheme() {
+    when {
+      mtConfig.selectedTheme.isNative || mtConfig.selectedTheme.isCustom -> return
+      !mtConfig.isAutoResetColorScheme                                   -> return
+      else                                                               -> {
+        val scheme = EditorColorsManager.getInstance().globalScheme
+        val options = ColorAndFontOptions()
+        options.reset()
+        options.selectScheme(scheme.name)
+
+        try {
+          val method = ColorAndFontOptions::class.java.getDeclaredMethod("resetSchemeToOriginal", String::class.java)
+          method.isAccessible = true
+          method.invoke(options, scheme.name)
+        } catch (ex: NoSuchMethodException) {
+          thisLogger().error(ex)
+        } catch (ex: InvocationTargetException) {
+          thisLogger().error(ex)
+        } catch (ex: IllegalAccessException) {
+          thisLogger().error(ex)
+        }
+      }
+    }
+
+  }
 
   /**
    * Trigger a reloadUI event

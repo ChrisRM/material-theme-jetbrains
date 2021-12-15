@@ -233,6 +233,11 @@ class MTConfigTopHitProvider : ApplicationLevelProvider {
           "isUseProjectFrame",
           "setUseProjectFrame"
         ),
+        option(
+          MaterialThemeBundle.message("MTForm.autoResetColorSchemeCheckbox.text"),
+          "isAutoResetColorScheme",
+          "setAutoResetColorScheme"
+        ),
       )
     )
 

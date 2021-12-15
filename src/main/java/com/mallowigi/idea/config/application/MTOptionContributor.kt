@@ -107,6 +107,7 @@ class MTOptionContributor : SearchableOptionContributor() {
         MaterialThemeBundle.message("MTForm.useMaterialFontCheckbox.text"),
         MaterialThemeBundle.message("MTForm.useGlobalFontCheckbox.text"),
         MaterialThemeBundle.message("MTForm.useMaterialWallpapersCheckbox.text"),
+        MaterialThemeBundle.message("MTForm.autoResetColorSchemeCheckbox.text"),
         MaterialThemeBundle.message("MTForm.useProjectFrameCheckbox.text")
       )
 
