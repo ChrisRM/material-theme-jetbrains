@@ -26,6 +26,7 @@
 package com.mallowigi.idea.config.ui.load
 
 import com.intellij.icons.AllIcons
+import com.intellij.ide.GeneralSettings
 import com.intellij.ide.util.PropertiesComponent
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
@@ -68,6 +69,11 @@ class MTLoadCustomThemeComboBoxAction(private val mtCustomThemeForm: MTCustomThe
     e.presentation.icon = AllIcons.General.GearPlain
   }
 
+  /**
+   * Get min height
+   *
+   * @return
+   */
   override fun getMinHeight(): Int = 40
 
   /**
@@ -118,6 +124,9 @@ class MTLoadCustomThemeComboBoxAction(private val mtCustomThemeForm: MTCustomThe
    */
   inner class ImportBundledThemeAction(private val mtThemeFacade: MTThemeFacade) :
     AnAction(mtThemeFacade.themeName, mtThemeFacade.themeName, mtThemeFacade.icon) {
+    /**
+     * When Import action is triggered
+     */
     override fun actionPerformed(e: AnActionEvent) {
       customThemeConfig.importFrom(mtThemeFacade.theme)
       mtCustomThemeForm.setFormState(customThemeConfig)
@@ -133,17 +142,21 @@ class MTLoadCustomThemeComboBoxAction(private val mtCustomThemeForm: MTCustomThe
     /* description = */ message("MTCustomThemeForm.loadFromButton.fromDisk.description"),
     /* icon = */ AllIcons.Actions.Install
   ) {
+    /**
+     * When Load from XML action is triggered
+     */
     override fun actionPerformed(e: AnActionEvent) {
       val descriptor: FileChooserDescriptor = MyFileChooserDescriptor()
       descriptor.title = message("MTCustomThemeForm.importButton.selectFile")
 
-      // Search in plugins folder
-      val oldPath = PropertiesComponent.getInstance().getValue("plugins.preselection.path") ?: return
+      val oldPath =
+        PropertiesComponent.getInstance().getValue("plugins.preselection.path")
+          ?: e.project?.basePath
+          ?: GeneralSettings.getInstance().defaultProjectDirectory
 
       // Open the file chooser at the old path location
       val toSelect = VfsUtil.findFileByIoFile(File(FileUtil.toSystemDependentName(oldPath)), false)
 
-      // Once selected, call loadTheme
       FileChooser.chooseFile(descriptor, null, null, toSelect, ::loadTheme)
     }
 
@@ -182,6 +195,9 @@ class MTLoadCustomThemeComboBoxAction(private val mtCustomThemeForm: MTCustomThe
     /* description = */ message("MTCustomThemeForm.loadFromButton.saveAs.description"),
     /* icon = */ AllIcons.Actions.MenuSaveall
   ) {
+    /**
+     * When Save Action is triggered
+     */
     override fun actionPerformed(e: AnActionEvent): Unit = MTSaveCustomThemeDialog(mtCustomThemeForm).show()
   }
 

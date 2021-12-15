@@ -31,6 +31,7 @@ import com.intellij.openapi.application.WriteAction
 import com.intellij.openapi.fileChooser.FileChooserFactory
 import com.intellij.openapi.fileChooser.FileSaverDescriptor
 import com.intellij.openapi.ui.Messages
+import com.intellij.openapi.util.NlsContexts
 import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.util.ThrowableRunnable
 import com.mallowigi.idea.messages.MaterialThemeBundle.message
@@ -125,6 +126,8 @@ object MTBundledThemesManager {
    * @param targetFile the xml file
    * @return the message
    */
+  @Suppress("UnstableApiUsage")
+  @NlsContexts.DialogMessage
   private fun generateMessage(customTheme: MTBundledTheme, targetFile: VirtualFile): String {
     val message: String = try {
       // Save to disk
