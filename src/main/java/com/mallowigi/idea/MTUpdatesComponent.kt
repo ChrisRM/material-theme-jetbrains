@@ -32,6 +32,7 @@ import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.startup.StartupActivity
 import com.mallowigi.idea.config.application.MTConfig
+import com.mallowigi.idea.notifications.MTAutoResetNotification
 import com.mallowigi.idea.notifications.MTInstallAtomNotification
 import com.mallowigi.idea.notifications.MTNotifications
 import com.mallowigi.idea.notifications.MTStatisticsNotification
@@ -48,6 +49,9 @@ class MTUpdatesComponent : StartupActivity.Background {
 
   private val isInstallAtomShown: Boolean
     get() = PropertiesComponent.getInstance().isValueSet(MTInstallAtomNotification.SHOW_INSTALL_ATOM)
+
+  private val isAutoResetShown: Boolean
+    get() = PropertiesComponent.getInstance().isValueSet(MTAutoResetNotification.MT_AUTO_RESET)
 
   private var config: MTConfig? = MTConfig.getInstance()
 
@@ -66,6 +70,7 @@ class MTUpdatesComponent : StartupActivity.Background {
     val pluginVersion = MTUiUtils.getVersion()
     val updated = pluginVersion != mtConfig.version
     val showWhatsNew = mtConfig.isShowWhatsNew
+    val isUseAutoReset = mtConfig.isAutoResetColorScheme
     mtConfig.version = pluginVersion
 
     // Show notification update
@@ -88,6 +93,12 @@ class MTUpdatesComponent : StartupActivity.Background {
       Notifications.Bus.notify(notification, project)
     }
 
+    // Auto reset color scheme
+    if (!isAutoResetShown && !isUseAutoReset) {
+      val notification = createAutoResetNotification()
+      Notifications.Bus.notify(notification, project)
+    }
+
     if (updated) {
       MTNotifications.showUpdate(project)
     }
@@ -106,4 +117,11 @@ class MTUpdatesComponent : StartupActivity.Background {
    * @return: the notification
    */
   private fun createInstallAtomNotification(): Notification = MTInstallAtomNotification()
+
+  /**
+   * Create auto reset notification
+   *
+   * @return: the notification
+   */
+  private fun createAutoResetNotification(): Notification = MTAutoResetNotification()
 }

@@ -10,9 +10,14 @@
         <option value="fieldCanBeFinal" />
         <option value="localCanBeFinal" />
         <option value="methodMayBeStatic" />
+        <option value="customUnqualifiedStaticMemberAccess" />
         <option value="missingOverrideAnnotation" />
         <option value="useBlocks" />
         <option value="unnecessaryThis" />
+        <option value="finalPrivateMethod" />
+        <option value="explicitTypeCanBeDiamond" />
+        <option value="unnecessarySemicolon" />
+        <option value="accessCanBeTightened" />
       </set>
     </option>
     <option name="configurationPath" value="" />

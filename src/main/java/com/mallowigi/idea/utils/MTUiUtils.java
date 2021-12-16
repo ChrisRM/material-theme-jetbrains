@@ -50,6 +50,7 @@ import com.intellij.openapi.options.ShowSettingsUtil;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.util.IconLoader;
+import com.intellij.openapi.util.NlsContexts;
 import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.openapi.wm.impl.IdeBackgroundUtil;
 import com.intellij.ui.ColorUtil;
@@ -110,8 +111,9 @@ public enum MTUiUtils {
   public static final String PLUGIN_ID = "com.chrisrm.idea.MaterialThemeUI";
   @NonNls
   public static final String ATOM_PLUGIN_ID = "com.mallowigi";
+  @NlsContexts.ConfigurableName
   @NonNls
-  public static final String APPEARANCE_SECTION = "Appearance";
+  public static final String APPEARANCE_SECTION = MaterialThemeBundle.message("configurable.name.appearance");
   @NonNls
   public static final String DARCULA = "Darcula";
   @NonNls
@@ -355,7 +357,8 @@ public enum MTUiUtils {
    * @param <T>          type of the value
    * @return the enum if found, or the default value
    */
-  @SuppressWarnings("unchecked")
+  @SuppressWarnings({"unchecked",
+    "RedundantSuppression"})
   public static <T extends Enum<T>> String parseEnumValue(final Object value, final T defaultValue) {
     if (value instanceof String) {
       @NonNls final String name = StringUtil.toUpperCase((String) value);
@@ -383,7 +386,7 @@ public enum MTUiUtils {
    * @param preferredSize tooltip size
    * @return the tooltip as LightweightHint
    */
-  public static LightweightHint createHintTooltip(final String message, final Dimension preferredSize) {
+  public static LightweightHint createHintTooltip(@NlsContexts.HintText final String message, final Dimension preferredSize) {
     // Create a tooltip
     final JComponent informationLabel = HintUtil.createInformationLabel(message);
     informationLabel.setBorder(JBUI.Borders.empty(6, 6, 5, 6));
@@ -402,11 +405,13 @@ public enum MTUiUtils {
    * @param preferredSize tooltip size
    * @return the tooltip as LightweightHint
    */
-  public static LightweightHint createLinkHintTooltip(final String message, final String linkUrl, final Dimension preferredSize) {
+  public static LightweightHint createLinkHintTooltip(@NlsContexts.HintText final String message,
+                                                      final String linkUrl,
+                                                      final Dimension preferredSize) {
     // Create a tooltip
     final JComponent informationLabel = HintUtil.createInformationLabel(
       message,
-      e -> {
+      (HyperlinkEvent e) -> {
         try {
           if (e.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
             Desktop.getDesktop().browse(new URI(linkUrl));
@@ -607,6 +612,7 @@ public enum MTUiUtils {
   /**
    * Checks if the window is a dialog or popup window
    */
+  @SuppressWarnings("java:S1142")
   public static boolean isDialogWindow(final Window window) {
     if (window == null) {
       return false;
@@ -623,6 +629,7 @@ public enum MTUiUtils {
   /**
    * Checks if a window is a context menu
    */
+  @SuppressWarnings("java:S134")
   public static boolean isContextMenu(final Window window) {
     if (window instanceof JWindow) {
       final JLayeredPane layeredPane = ((RootPaneContainer) window).getLayeredPane();

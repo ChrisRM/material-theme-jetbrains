@@ -362,8 +362,6 @@ object MTThemeManager : Disposable {
     // Monochrome filter and co
     LafManager.getInstance().updateUI()
 
-    resetColorScheme()
-
     // Custom UI Patches
     UIReplacer.patchUI()
     fireThemeChanged(newTheme)
@@ -724,23 +722,24 @@ object MTThemeManager : Disposable {
   //endregion
 
   /**
-   * Triggers a Reset color scheme action
+   * Resets current color scheme if setting is active (only Material schemes)
    *
    */
   fun resetColorScheme() {
+    val globalScheme = EditorColorsManager.getInstance().globalScheme
     when {
       mtConfig.selectedTheme.isNative || mtConfig.selectedTheme.isCustom -> return
       !mtConfig.isAutoResetColorScheme                                   -> return
+      !globalScheme.name.contains("Material")                            -> return
       else                                                               -> {
-        val scheme = EditorColorsManager.getInstance().globalScheme
         val options = ColorAndFontOptions()
         options.reset()
-        options.selectScheme(scheme.name)
+        options.selectScheme(globalScheme.name)
 
         try {
           val method = ColorAndFontOptions::class.java.getDeclaredMethod("resetSchemeToOriginal", String::class.java)
           method.isAccessible = true
-          method.invoke(options, scheme.name)
+          method.invoke(options, globalScheme.name)
         } catch (ex: NoSuchMethodException) {
           thisLogger().error(ex)
         } catch (ex: InvocationTargetException) {

@@ -2033,7 +2033,7 @@ public class MTForm implements MTFormUI, Disposable {
     );
   }
 
-  public static void showAutoResetDialog() {
+  private static void showAutoResetDialog() {
     Messages.showWarningDialog(
       MaterialThemeBundle.message("MTForm.autoResetColorScheme.warning.message"),
       MaterialThemeBundle.message("MTForm.autoResetColorScheme.warning.title")
