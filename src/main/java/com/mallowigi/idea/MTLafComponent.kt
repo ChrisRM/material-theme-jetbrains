@@ -67,7 +67,7 @@ class MTLafComponent : AppLifecycleListener {
    * TODO Remove once code with license checker is fixed
    */
   @Suppress("UnstableApiUsage")
-  override fun appStarted(): Unit {
+  override fun appStarted() {
     ApplicationManager.getApplication().invokeAndWait(fun() {
       MTThemeManager.resetColorScheme()
       activateLaf(activeLookAndFeel)
@@ -97,6 +97,7 @@ class MTLafComponent : AppLifecycleListener {
    *
    * @param currentLookAndFeel
    */
+  @Suppress("HardCodedStringLiteral")
   private fun activateLaf(currentLookAndFeel: UIManager.LookAndFeelInfo?) {
     val oldLaf = LafManager.getInstance().currentLookAndFeel
     if (oldLaf is UIThemeBasedLookAndFeelInfo) {
