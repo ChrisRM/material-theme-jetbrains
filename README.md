@@ -1,28 +1,45 @@
 # Material Theme UI for JetBrains
 
 <div align="center">
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
   <a href="https://www.material-theme.com">
 <img src="logo.svg" width="320" height="320" alt="logo"></img>
 </a>
 </div>
 
+-----
 
-This is a port of the famous [Material Theme](https://github.com/equinusocio/vsc-material-theme) for JetBrains IDEs, allowing a total customization of the IDE 
-including Themes, Color Schemes, Icons and many other features.
+This is a port of the famous [Material Theme](https://github.com/equinusocio/vsc-material-theme) for JetBrains IDEs, allowing a total customization of the IDE including Themes, Color Schemes, Icons and many other features.
+
+
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
+
+[![GitHub issues](https://img.shields.io/github/issues/mallowigi/material-theme-issues.svg)](https://github.com/mallowigi/material-theme-issues/issues)
+[![GitHub stars](https://img.shields.io/github/stars/ChrisRM/material-theme-jetbrains.svg)](https://github.com/ChrisRM/material-theme-jetbrains/stargazers)
+[![Twitter](https://img.shields.io/twitter/url/https/github.com/mallowigi/material-theme-issues.svg?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2Fmallowigi%2Fmaterial-theme-issues)
+
+![GitHub tag](https://img.shields.io/github/tag/mallowigi/material-theme-issues.svg)
+![JetBrains IntelliJ Plugins](https://img.shields.io/jetbrains/plugin/v/8006-material-theme-ui.svg)
+
+![Github All Releases](https://img.shields.io/github/downloads/ChrisRM/material-theme-jetbrains/total.svg)
+![JetBrains IntelliJ plugins](https://img.shields.io/jetbrains/plugin/d/8006-material-theme-ui.svg?label=plugin%20downloads)
+
+![laptop-full](laptop-full.png)
+
+
+## Documentation
+
+<https://www.material-theme.com>
 
 ## Pricing
 
-Since version 6.0.0 the plugin is now a paid plugin based on a freemium model. **It means that the plugin is still free**, but extra features are only available
-for paid customers. Previous versions are still available for free, but further updates will only be available on the Paid Version.
+Since version 6.0.0 the plugin is now a paid plugin based on a freemium model. **It means that the plugin is still free**, but extra features are only available for paid customers. Previous versions are still available for free, but further updates will only be available on the Paid Version.
 
 The plugin is priced at $1.5 USD monthly, or $15 annually for individuals, and $7.5 monthly/$75 annually for enterprises.
 Academics, open-source and user groups are free of charge, and non-profit organizations and educational organizations can get a discount.
 
-Also, people that have contributed more than $1 in the past, and code contributors can get a **free lifetime license**! Contact me with your contact information
-at <elior@material-theme.com> to apply.
+Also, people that have contributed more than $1 in the past, and code contributors can get a **free lifetime license**! Contact me with your contact information at <elior@material-theme.com> to apply.
 
 **Thanks for your support for all this time!!! You guys are the best!!!**
 
@@ -59,27 +76,12 @@ To do so you could either go to _Help → Activate License_ or from the _Materia
 
 ----
 
-[![GitHub issues](https://img.shields.io/github/issues/mallowigi/material-theme-issues.svg)](https://github.com/mallowigi/material-theme-issues/issues) 
-[![GitHub stars](https://img.shields.io/github/stars/ChrisRM/material-theme-jetbrains.svg)](https://github.com/ChrisRM/material-theme-jetbrains/stargazers)
-[![Twitter](https://img.shields.io/twitter/url/https/github.com/mallowigi/material-theme-issues.svg?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2Fmallowigi%2Fmaterial-theme-issues)
-
-![GitHub tag](https://img.shields.io/github/tag/mallowigi/material-theme-issues.svg)
-![JetBrains IntelliJ Plugins](https://img.shields.io/jetbrains/plugin/v/8006-material-theme-ui.svg)
-
-![Github All Releases](https://img.shields.io/github/downloads/ChrisRM/material-theme-jetbrains/total.svg)
-![JetBrains IntelliJ plugins](https://img.shields.io/jetbrains/plugin/d/8006-material-theme-ui.svg?label=plugin%20downloads)
-
 ### Plugin pages
 
-<https://plugins.jetbrains.com/plugin/8006-material-theme-ui>
-<https://plugins.jetbrains.com/plugin/12124-material-theme-ui-lite>
-<https://plugins.jetbrains.com/plugin/10044-atom-material-icons>
+- <https://plugins.jetbrains.com/plugin/8006-material-theme-ui>
+- <https://plugins.jetbrains.com/plugin/12124-material-theme-ui-lite>
+- <https://plugins.jetbrains.com/plugin/10044-atom-material-icons>
 
-## Documentation
-
-<https://www.material-theme.com>
-
-![laptop-full](laptop-full.png)
 
 ### Donate via Paypal
 
@@ -192,8 +194,6 @@ This project exists thanks to all the people who contribute.
 <table>
   <tr>
     <td align="center"><a href="https://unthrottled.io"><img src="https://avatars.githubusercontent.com/u/15972415?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Alex Simons</b></sub></a><br /><a href="https://github.com/mallowigi/material-theme-jetbrains/commits?author=Unthrottled" title="Code">💻</a> <a href="#infra-Unthrottled" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
-  </tr>
-  <tr>
     <td align="center"><a href="https://kotlin.desarrollador-android.com/"><img src="https://avatars.githubusercontent.com/u/7463564?v=4" width="100px;" alt=""/><br /><sub><b>Javier Segovia Cordoba</b></sub></a><br /><a href="https://github.com/mallowigi/material-theme-jetbrains/commits?author=JavierSegoviaCordoba" title="Code">💻</a> <a href="#infra-JavierSegoviaCordoba" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
   </tr>
 </table>
