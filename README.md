@@ -1,60 +1,15 @@
+# Material Theme UI for JetBrains (Archived)
+
+
 <div align="center">
   <a href="https://www.material-theme.com">
 <img src="logo.svg" width="320" height="320" alt="logo"></img>
 </a>
 </div>
 
-# Material Theme UI for JetBrains
 
-This is a port of the famous [Material Theme](https://github.com/equinusocio/vsc-material-theme) for JetBrains IDEs, allowing a total customization of the IDE including Themes, Color Schemes, Icons and many other features.
-
-### Pricing
-
-Since version 6.0.0 the plugin is now a paid plugin based on a freemium model. **It means that the plugin is still free**, but extra features are only available for paid customers. Previous versions are still available for free, but further updates will only be available on the Paid Version.
-
-The plugin is priced at $1.5 USD monthly, or $15 annually for individuals, and $7.5 monthly/$75 annually for enterprises.
-Academics, open-source and user groups are free of charge, and non-profit organizations and educational organizations can get a discount.
-
-Also, people that have contributed more than 1$ in the past, and code contributors can get a **free lifetime license**! Contact me with your contact information at <elior@material-theme.com> to apply.
-
-**Thanks for your support for all this time!!! You guys are the best!!!**
-
-In any case, there is a free version available for everyone here but with limited features: [Material Theme UI Lite](https://plugins.jetbrains.com/plugin/12124-material-theme-ui-lite)
-
-#### License Activation
-
-Once you have bought a License, you will still need to activate it to enjoy the premium features.
-
-To do so you could either go to _Help -> Activate License_ or from the _Material Theme Settings_.
-
-**NOTE: You will need to restart the IDE**
-
-##### Feature Comparison:
-
-
-| Feature               | Premium Version | Free Version           | Lite Version           |
-|:----------------------|:----------------|:-----------------------|:-----------------------|
-| Built-in Themes       | Yes             | Yes                    | Yes                    |
-| Color Schemes         | Yes             | Yes                    | Yes                    |
-| Fonts                 | Yes             | Yes                    | Yes                    |
-| Wallpapers            | Yes             | Yes                    | Yes                    |
-| File Status Colors    | Yes             | Yes                    | Yes                    |
-| Accent Colors         | Yes             | Yes (not configurable) | Yes (not configurable) |
-| Material Components   | Yes             | Yes                    | Yes (partial support)  |
-| Support               | Yes             | Yes                    | Yes (partial)          |
-| Custom Themes         | Yes             | No                     | No                     |
-| Tab Settings          | Yes             | Partial (Tab Height)   | No                     |
-| Compact Settings      | Yes             | Yes                    | No                     |
-| Project View Settings | Yes             | Partial                | No                     |
-| Component Settings    | Yes             | Partial (Scrollbars)   | No                     |
-| Language Additions    | Yes             | No                     | No                     |
-| External Themes       | Yes             | No                     | No                     |
-| Update rate           | High            | Medium                 | Low                    |
-
-----
-
-[![GitHub issues](https://img.shields.io/github/issues/ChrisRM/material-theme-jetbrains.svg)](https://github.com/ChrisRM/material-theme-jetbrains/issues) [![GitHub stars](https://img.shields.io/github/stars/ChrisRM/material-theme-jetbrains.svg)](https://github.com/ChrisRM/material-theme-jetbrains/stargazers)
-[![Twitter](https://img.shields.io/twitter/url/https/github.com/ChrisRM/material-theme-jetbrains.svg?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2FChrisRM%2Fmaterial-theme-jetbrains)
+[![GitHub issues](https://img.shields.io/github/issues/mallowigi/material-theme-issues.svg)](https://github.com/mallowigi/material-theme-issues/issues) [![GitHub stars](https://img.shields.io/github/stars/ChrisRM/material-theme-jetbrains.svg)](https://github.com/ChrisRM/material-theme-jetbrains/stargazers)
+[![Twitter](https://img.shields.io/twitter/url/https/github.com/mallowigi/material-theme-issues.svg?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2FChrisRM%2Fmaterial-theme-jetbrains)
 
 
 ![GitHub tag](https://img.shields.io/github/tag/ChrisRM/material-theme-jetbrains.svg)
@@ -65,15 +20,33 @@ To do so you could either go to _Help -> Activate License_ or from the _Material
 ![JetBrains IntelliJ plugins](https://img.shields.io/jetbrains/plugin/d/8006-material-theme-ui.svg?label=plugin%20downloads)
 
 
-#### Plugin pages:
+This is a port of the famous [Material Theme](https://github.com/equinusocio/vsc-material-theme) for JetBrains IDEs, allowing a total customization of the IDE including Themes, Color Schemes, Icons and many other features.
 
-<https://plugins.jetbrains.com/plugin/8006-material-theme-ui>
-<https://plugins.jetbrains.com/plugin/10044-atom-material-icons>
+![laptop-full](laptop-full.png)
 
+--------
 ## Documentation:
 <https://www.material-theme.com>
 
-![laptop-full](laptop-full.png)
+--------
+
+## DEPRECATION NOTE
+
+This repository is now archived, as the Material Theme Plugin has become closed-source since February 2021. This repository only serve as a historical record of the work done throughout the years, but the development is now done elsewhere.
+
+Please report any issues or questions at the [Material Theme Issues Repo](https://github.com/mallowigi/material-theme-issues).
+
+**Thank you for your support!**
+
+------
+
+
+#### Plugin pages:
+
+- <https://plugins.jetbrains.com/plugin/8006-material-theme-ui>
+- <https://plugins.jetbrains.com/plugin/12124-material-theme-ui-lite>
+- <https://plugins.jetbrains.com/plugin/10044-atom-material-icons>
+
 
 #### Donate via Paypal:
 
@@ -94,31 +67,24 @@ _@Mallowigi_:
 
 --------------------
 
-## Contribution
-
-Pull requests are appreciated! I can use some help on bugs and features listed in 
-<https://github.com/ChrisRM/material-theme-jetbrains/issues>, or you can send me some new ideas!
-
---------------------
-
 # Authors:
  
 Twitter: [@crmag](https://twitter.com/crmag)
 [@mallowigi](https://twitter.com/mallowigi)
 
-Official page: [@MJetbrains](https://twitter.com/MJetbrains)
+Official page: [@AtomMaterialUI](https://twitter.com/AtomMaterialUI)
 
-Github: [@ChrisRM](https://github.com/chrisrm) [@Mallowigi](https://github.com/mallowigi)
+GitHub: [@ChrisRM](https://github.com/chrisrm) [@Mallowigi](https://github.com/mallowigi)
 
 **Thanks to [@equinusocio](https://github.com/equinusocio) and his original [Material Theme](https://github.com/equinusocio/vsc-material-theme) for the inspiration.**
 
 # Contact
-You can contact us or ask questions via [Gitter](https://gitter.im/Material-Theme-Jetbrains/Lobby#) or our brand new
+You can contact us or ask questions on our
 [Slack community!](https://join.slack.com/t/material-theme-ui/shared_invite/zt-4w78iblt-cHXYRYERpuGNbD~TqsD8rg)
 
 Come say hello!
 
-## Other portings
+## Other ports
 
 The Material Theme has been ported to many other editors, applications, websites and other platforms:
 - [Visual Studio Code](https://github.com/equinusocio/vsc-material-theme/) (by [@equinusocio](https://github.com/equinusocio)
@@ -129,7 +95,6 @@ The Material Theme has been ported to many other editors, applications, websites
 - [Terminal OSX](https://gist.github.com/mvaneijgen/4c56701215847dd5ddcf) (by [@mvaneijgen](https://github.com/mvaneijgen)).
 - [iTerm2](https://gist.github.com/Revod/3f3115f8d4b90fc986fd4b61441c2567) (by [@Revod](https://github.com/Revod)) and [iTerm2 Palenight](https://github.com/JonathanSpeek/palenight-iterm2) (by [@jonathanspeek](https://github.com/jonathanspeek)).
 - [ConEmu](https://gist.github.com/rajadain/b306b2ba71bd58a1df41) (by [@rajadain](https://github.com/rajadain)).
-- [Slack Sidebar](https://slack.com/) (`#263238`, `#2E3A40`, `#80CBC4`, `#FFFFFF`, `#13191C`, `#FFFFFF`, `#50FA7B`, `#FF5555`)
 - [Nylas N1](https://github.com/jackiehluo/n1-material) (thanks to [@jackiehluo](https://github.com/jackiehluo))
 - [Base16](https://github.com/ntpeters/base16-materialtheme-scheme) (by [@ntpeters](https://github.com/ntpeters))
 - [Notepad++](https://github.com/Codextor/npp-material-theme) (by [@Codextor](https://github.com/Codextor))
