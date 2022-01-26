@@ -47,6 +47,6 @@ It should contain:
 * If needed a list of enabled plugins
 * Material Theme Plugin version
 
-If possible please also give out your Material Theme/Material Custom Theme configuration file. To find your configuration file, see: https://intellij-support.jetbrains.com/hc/en-us/articles/206544519-Directories-used-by-the-IDE-to-store-settings-caches-plugins-and-logs. On Ubuntu this could be `~/.IntelliJIdea2019.1/config/options` for example.
+If possible please also give out your Material Theme/Material Custom Theme configuration file. To find your configuration file, see: https://intellij-support.jetbrains.com/hc/en-us/articles/206544519-Directories-used-by-the-IDE-to-store-settings-caches-plugins-and-logs. On Ubuntu this could be `~/.IntelliJIdea2019.1/config/options` or `~/.config/JetBrains/PhpStorm2021.3/options` for example.
 
 Note that not providing any of the required info will result of your issue being closed.
